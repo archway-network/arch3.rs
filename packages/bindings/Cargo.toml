@@ -12,3 +12,7 @@ readme = "README.md"
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
+cosmwasm-std = "=1.0.0"
+schemars = "0.8.11"
+serde = { version = "1.0.147", default-features = false, features = ["derive"] }
+thiserror = { version = "1.0.37" }
