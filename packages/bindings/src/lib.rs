@@ -1,14 +1,5 @@
-pub fn add(left: usize, right: usize) -> usize {
-    left + right
-}
+mod msg;
 
-#[cfg(test)]
-mod tests {
-    use super::*;
+pub use msg::{ArchwayMsg, WithdrawRewardsResponse};
 
-    #[test]
-    fn it_works() {
-        let result = add(2, 2);
-        assert_eq!(result, 4);
-    }
-}
+pub type Coins = Vec<cosmwasm_std::Coin>;
