@@ -368,6 +368,7 @@ dependencies = [
 name = "increment"
 version = "0.1.0"
 dependencies = [
+ "archway-bindings",
  "cosmwasm-schema",
  "cosmwasm-std",
  "cosmwasm-storage",

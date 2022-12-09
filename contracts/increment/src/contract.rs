@@ -1,3 +1,4 @@
+use archway_bindings::{ArchwayQuery, ArchwayResult};
 use cosmwasm_std::entry_point;
 use cosmwasm_std::{to_binary, Binary, Deps, DepsMut, Env, MessageInfo, Response, StdResult};
 use cw2::set_contract_version;
@@ -12,11 +13,11 @@ const CONTRACT_VERSION: &str = env!("CARGO_PKG_VERSION");
 
 #[entry_point]
 pub fn instantiate(
-    deps: DepsMut,
+    deps: DepsMut<ArchwayQuery>,
     _env: Env,
     info: MessageInfo,
     msg: InstantiateMsg,
-) -> Result<Response, ContractError> {
+) -> ArchwayResult<ContractError> {
     let state = State {
         count: msg.count,
         owner: info.sender.clone(),
@@ -32,26 +33,31 @@ pub fn instantiate(
 
 #[entry_point]
 pub fn execute(
-    deps: DepsMut,
+    deps: DepsMut<ArchwayQuery>,
     _env: Env,
     info: MessageInfo,
     msg: ExecuteMsg,
-) -> Result<Response, ContractError> {
+) -> ArchwayResult<ContractError> {
     match msg {
-        ExecuteMsg::Increment {} => try_increment(deps),
-        ExecuteMsg::Reset { count } => try_reset(deps, info, count),
+        ExecuteMsg::Increment {} => increment(deps),
+        ExecuteMsg::Reset { count } => reset(deps, info, count),
     }
 }
 
-pub fn try_increment(deps: DepsMut) -> Result<Response, ContractError> {
+pub fn increment(deps: DepsMut<ArchwayQuery>) -> ArchwayResult<ContractError> {
     STATE.update(deps.storage, |mut state| -> Result<_, ContractError> {
         state.count += 1;
         Ok(state)
     })?;
 
-    Ok(Response::new().add_attribute("method", "try_increment"))
+    Ok(Response::new().add_attribute("method", "increment"))
 }
-pub fn try_reset(deps: DepsMut, info: MessageInfo, count: i32) -> Result<Response, ContractError> {
+
+pub fn reset(
+    deps: DepsMut<ArchwayQuery>,
+    info: MessageInfo,
+    count: i32,
+) -> ArchwayResult<ContractError> {
     STATE.update(deps.storage, |mut state| -> Result<_, ContractError> {
         if info.sender != state.owner {
             return Err(ContractError::Unauthorized {});
@@ -64,13 +70,13 @@ pub fn try_reset(deps: DepsMut, info: MessageInfo, count: i32) -> Result<Respons
 }
 
 #[entry_point]
-pub fn query(deps: Deps, _env: Env, msg: QueryMsg) -> StdResult<Binary> {
+pub fn query(deps: Deps<ArchwayQuery>, _env: Env, msg: QueryMsg) -> StdResult<Binary> {
     match msg {
         QueryMsg::GetCount {} => to_binary(&query_count(deps)?),
     }
 }
 
-fn query_count(deps: Deps) -> StdResult<CountResponse> {
+fn query_count(deps: Deps<ArchwayQuery>) -> StdResult<CountResponse> {
     let state = STATE.load(deps.storage)?;
     Ok(CountResponse { count: state.count })
 }
@@ -78,14 +84,13 @@ fn query_count(deps: Deps) -> StdResult<CountResponse> {
 #[cfg(test)]
 mod tests {
     use super::*;
-    use cosmwasm_std::testing::{
-        mock_dependencies, mock_dependencies_with_balance, mock_env, mock_info,
-    };
-    use cosmwasm_std::{coins, from_binary};
+    use archway_bindings::testing::{mock_dependencies, mock_dependencies_with_balance};
+    use cosmwasm_std::testing::{mock_env, mock_info};
+    use cosmwasm_std::{coins, from_binary, ContractResult, QueryResponse};
 
     #[test]
     fn proper_initialization() {
-        let mut deps = mock_dependencies();
+        let mut deps = mock_dependencies(archway_query_handler);
 
         let msg = InstantiateMsg { count: 17 };
         let info = mock_info("creator", &coins(1000, "earth"));
@@ -102,7 +107,7 @@ mod tests {
 
     #[test]
     fn increment() {
-        let mut deps = mock_dependencies_with_balance(&coins(2, "token"));
+        let mut deps = mock_dependencies_with_balance(&coins(2, "token"), archway_query_handler);
 
         let msg = InstantiateMsg { count: 17 };
         let info = mock_info("creator", &coins(2, "token"));
@@ -121,7 +126,7 @@ mod tests {
 
     #[test]
     fn reset() {
-        let mut deps = mock_dependencies_with_balance(&coins(2, "token"));
+        let mut deps = mock_dependencies_with_balance(&coins(2, "token"), archway_query_handler);
 
         let msg = InstantiateMsg { count: 17 };
         let info = mock_info("creator", &coins(2, "token"));
@@ -145,5 +150,9 @@ mod tests {
         let res = query(deps.as_ref(), mock_env(), QueryMsg::GetCount {}).unwrap();
         let value: CountResponse = from_binary(&res).unwrap();
         assert_eq!(5, value.count);
+    }
+
+    pub fn archway_query_handler(_query: &ArchwayQuery) -> ContractResult<QueryResponse> {
+        todo!()
     }
 }
