@@ -1,5 +1,5 @@
 use archway_bindings::{ArchwayMsg, ArchwayQuery, ArchwayResult};
-use cosmwasm_std::{entry_point, Addr};
+use cosmwasm_std::{entry_point, Addr, SubMsg};
 use cosmwasm_std::{to_binary, Binary, Deps, DepsMut, Env, MessageInfo, Response, StdResult};
 use cw2::set_contract_version;
 
@@ -10,6 +10,8 @@ use crate::state::{State, STATE};
 // version info for migration info
 const CONTRACT_NAME: &str = "crates.io:increment";
 const CONTRACT_VERSION: &str = env!("CARGO_PKG_VERSION");
+
+const REWARDS_WITHDRAW_REPLY: u64 = 1001;
 
 #[entry_point]
 pub fn instantiate(
@@ -44,6 +46,7 @@ pub fn execute(
         ExecuteMsg::UpdateRewardsAddress { rewards_address } => {
             update_rewards_address(rewards_address.unwrap_or(env.contract.address))
         }
+        ExecuteMsg::WithdrawRewards {} => withdraw_rewards(),
     }
 }
 
@@ -78,6 +81,16 @@ pub fn update_rewards_address(rewards_address: Addr) -> ArchwayResult<ContractEr
     let res = Response::new()
         .add_message(msg)
         .add_attribute("method", "update_rewards_address");
+
+    Ok(res)
+}
+
+fn withdraw_rewards() -> ArchwayResult<ContractError> {
+    let msg = ArchwayMsg::withdraw_rewards_by_limit(0);
+
+    let res = Response::new()
+        .add_submessage(SubMsg::reply_on_success(msg, REWARDS_WITHDRAW_REPLY))
+        .add_attribute("method", "withdraw_rewards");
 
     Ok(res)
 }

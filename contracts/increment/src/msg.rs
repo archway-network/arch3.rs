@@ -13,6 +13,7 @@ pub enum ExecuteMsg {
     Increment {},
     Reset { count: i32 },
     UpdateRewardsAddress { rewards_address: Option<Addr> },
+    WithdrawRewards {},
 }
 
 #[derive(Serialize, Deserialize, Clone, Debug, PartialEq, JsonSchema)]
