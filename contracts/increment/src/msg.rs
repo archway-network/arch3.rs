@@ -1,3 +1,4 @@
+use archway_bindings::Coins;
 use cosmwasm_std::Addr;
 use schemars::JsonSchema;
 use serde::{Deserialize, Serialize};
@@ -22,10 +23,17 @@ pub enum QueryMsg {
     // GetCount returns the current count as a json-encoded number
     GetCount {},
     Metadata { contract_address: Option<Addr> },
+    OutstandingRewards {},
 }
 
 // We define a custom struct for each query response
 #[derive(Serialize, Deserialize, Clone, Debug, PartialEq, JsonSchema)]
 pub struct CountResponse {
     pub count: i32,
+}
+
+#[derive(Serialize, Deserialize, Clone, Debug, PartialEq, JsonSchema)]
+pub struct OutstandingRewardsResponse {
+    pub rewards_balance: Coins,
+    pub total_records: u64,
 }

@@ -1,5 +1,6 @@
 use archway_bindings::{
-    ArchwayMsg, ArchwayQuery, ArchwayResult, ContractMetadataResponse, WithdrawRewardsResponse,
+    ArchwayMsg, ArchwayQuery, ArchwayResult, ContractMetadataResponse, PageRequest,
+    RewardsRecordsResponse, WithdrawRewardsResponse,
 };
 use cosmwasm_std::{
     entry_point, to_binary, Addr, Binary, Deps, DepsMut, Env, MessageInfo, Reply, Response,
@@ -10,7 +11,7 @@ use cw_utils::NativeBalance;
 
 use crate::error::ContractError;
 use crate::helpers;
-use crate::msg::{CountResponse, ExecuteMsg, InstantiateMsg, QueryMsg};
+use crate::msg::{CountResponse, ExecuteMsg, InstantiateMsg, OutstandingRewardsResponse, QueryMsg};
 use crate::state::{State, STATE};
 
 // version info for migration info
@@ -140,6 +141,7 @@ pub fn query(deps: Deps<ArchwayQuery>, env: Env, msg: QueryMsg) -> StdResult<Bin
             deps,
             contract_address.unwrap_or(env.contract.address),
         )?),
+        QueryMsg::OutstandingRewards {} => to_binary(&outstanding_rewards(deps, env)?),
     }
 }
 
@@ -156,10 +158,39 @@ fn contract_metadata(
     deps.querier.query(&req)
 }
 
+fn outstanding_rewards(
+    deps: Deps<ArchwayQuery>,
+    env: Env,
+) -> StdResult<OutstandingRewardsResponse> {
+    let rewards_address = env.contract.address;
+    let req = ArchwayQuery::rewards_records_with_pagination(
+        rewards_address,
+        PageRequest::new().count_total(),
+    )
+    .into();
+
+    let response: RewardsRecordsResponse = deps.querier.query(&req)?;
+    let rewards_coins = response
+        .records
+        .iter()
+        .flat_map(|r| r.rewards.iter().cloned())
+        .collect();
+    let mut rewards_balance = NativeBalance(rewards_coins);
+    rewards_balance.normalize();
+
+    let total_records = response.pagination.and_then(|p| p.total).unwrap_or(0);
+
+    Ok(OutstandingRewardsResponse {
+        rewards_balance: rewards_balance.into_vec(),
+        total_records,
+    })
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
     use archway_bindings::testing::{mock_dependencies, mock_dependencies_with_balance};
+    use archway_bindings::{PageResponse, RewardsRecord};
     use cosmwasm_std::testing::{mock_env, mock_info};
     use cosmwasm_std::{coins, from_binary, ContractResult, QueryResponse};
 
@@ -234,6 +265,32 @@ mod tests {
             } => to_binary(&ContractMetadataResponse {
                 owner_address: String::from("owner"),
                 rewards_address: String::from("rewards"),
+            }),
+
+            ArchwayQuery::RewardsRecords {
+                rewards_address: _,
+                pagination: _,
+            } => to_binary(&RewardsRecordsResponse {
+                records: vec![
+                    RewardsRecord {
+                        id: 1,
+                        rewards_address: String::from("rewards"),
+                        rewards: coins(50, "coin"),
+                        calculated_height: 12345,
+                        calculated_time: String::from("2022-11-11T11:11:22"),
+                    },
+                    RewardsRecord {
+                        id: 2,
+                        rewards_address: String::from("rewards"),
+                        rewards: coins(50, "coin"),
+                        calculated_height: 12346,
+                        calculated_time: String::from("2022-11-11T11:22:33"),
+                    },
+                ],
+                pagination: Some(PageResponse {
+                    next_key: None,
+                    total: Some(2),
+                }),
             }),
 
             _ => todo!(),
