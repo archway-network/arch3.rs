@@ -1,6 +1,8 @@
 mod msg;
 mod pagination;
 mod query;
+
+#[cfg(not(target_arch = "wasm32"))]
 pub mod testing;
 
 pub use msg::{ArchwayMsg, WithdrawRewardsResponse};
