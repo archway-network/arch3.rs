@@ -1,5 +1,5 @@
-use archway_bindings::{ArchwayQuery, ArchwayResult};
-use cosmwasm_std::entry_point;
+use archway_bindings::{ArchwayMsg, ArchwayQuery, ArchwayResult};
+use cosmwasm_std::{entry_point, Addr};
 use cosmwasm_std::{to_binary, Binary, Deps, DepsMut, Env, MessageInfo, Response, StdResult};
 use cw2::set_contract_version;
 
@@ -34,13 +34,16 @@ pub fn instantiate(
 #[entry_point]
 pub fn execute(
     deps: DepsMut<ArchwayQuery>,
-    _env: Env,
+    env: Env,
     info: MessageInfo,
     msg: ExecuteMsg,
 ) -> ArchwayResult<ContractError> {
     match msg {
         ExecuteMsg::Increment {} => increment(deps),
         ExecuteMsg::Reset { count } => reset(deps, info, count),
+        ExecuteMsg::UpdateRewardsAddress { rewards_address } => {
+            update_rewards_address(rewards_address.unwrap_or(env.contract.address))
+        }
     }
 }
 
@@ -67,6 +70,16 @@ pub fn reset(
     })?;
 
     Ok(Response::new().add_attribute("method", "reset"))
+}
+
+pub fn update_rewards_address(rewards_address: Addr) -> ArchwayResult<ContractError> {
+    let msg = ArchwayMsg::update_rewards_address(rewards_address);
+
+    let res = Response::new()
+        .add_message(msg)
+        .add_attribute("method", "update_rewards_address");
+
+    Ok(res)
 }
 
 #[entry_point]
