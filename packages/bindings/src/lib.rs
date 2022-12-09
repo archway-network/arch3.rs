@@ -1,6 +1,7 @@
 mod msg;
 mod pagination;
 mod query;
+pub mod testing;
 
 pub use msg::{ArchwayMsg, WithdrawRewardsResponse};
 pub use pagination::{PageRequest, PageResponse};
