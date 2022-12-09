@@ -1,6 +1,10 @@
-use archway_bindings::{ArchwayMsg, ArchwayQuery, ArchwayResult, WithdrawRewardsResponse};
-use cosmwasm_std::{entry_point, Addr, Reply, StdError, SubMsg};
-use cosmwasm_std::{to_binary, Binary, Deps, DepsMut, Env, MessageInfo, Response, StdResult};
+use archway_bindings::{
+    ArchwayMsg, ArchwayQuery, ArchwayResult, ContractMetadataResponse, WithdrawRewardsResponse,
+};
+use cosmwasm_std::{
+    entry_point, to_binary, Addr, Binary, Deps, DepsMut, Env, MessageInfo, Reply, Response,
+    StdError, StdResult, SubMsg,
+};
 use cw2::set_contract_version;
 use cw_utils::NativeBalance;
 
@@ -129,15 +133,27 @@ fn after_rewards_withdrawn(_deps: DepsMut<ArchwayQuery>, msg: Reply) -> StdResul
 }
 
 #[entry_point]
-pub fn query(deps: Deps<ArchwayQuery>, _env: Env, msg: QueryMsg) -> StdResult<Binary> {
+pub fn query(deps: Deps<ArchwayQuery>, env: Env, msg: QueryMsg) -> StdResult<Binary> {
     match msg {
         QueryMsg::GetCount {} => to_binary(&query_count(deps)?),
+        QueryMsg::Metadata { contract_address } => to_binary(&contract_metadata(
+            deps,
+            contract_address.unwrap_or(env.contract.address),
+        )?),
     }
 }
 
 fn query_count(deps: Deps<ArchwayQuery>) -> StdResult<CountResponse> {
     let state = STATE.load(deps.storage)?;
     Ok(CountResponse { count: state.count })
+}
+
+fn contract_metadata(
+    deps: Deps<ArchwayQuery>,
+    contract_address: impl Into<String>,
+) -> StdResult<ContractMetadataResponse> {
+    let req = ArchwayQuery::contract_metadata(contract_address).into();
+    deps.querier.query(&req)
 }
 
 #[cfg(test)]
@@ -211,7 +227,17 @@ mod tests {
         assert_eq!(5, value.count);
     }
 
-    pub fn archway_query_handler(_query: &ArchwayQuery) -> ContractResult<QueryResponse> {
-        todo!()
+    pub fn archway_query_handler(query: &ArchwayQuery) -> ContractResult<QueryResponse> {
+        let response = match query {
+            ArchwayQuery::ContractMetadata {
+                contract_address: _,
+            } => to_binary(&ContractMetadataResponse {
+                owner_address: String::from("owner"),
+                rewards_address: String::from("rewards"),
+            }),
+
+            _ => todo!(),
+        };
+        response.into()
     }
 }
