@@ -7,3 +7,5 @@ pub use pagination::{PageRequest, PageResponse};
 pub use query::{ArchwayQuery, ContractMetadataResponse, RewardsRecord, RewardsRecordsResponse};
 
 pub type Coins = Vec<cosmwasm_std::Coin>;
+
+pub type ArchwayResult<E> = Result<cosmwasm_std::Response<ArchwayMsg>, E>;
