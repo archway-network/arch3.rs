@@ -44,9 +44,11 @@ cosmwasm-std = "=1.0.0"
 cosmwasm-storage = "=1.0.0"
 archway-bindings = { version = "0.1.0", path = "../../packages/bindings" }
 cw-storage-plus = "0.14"
+cw-utils = "0.14"
 cw2 = "0.14"
 schemars = "0.8"
 serde = { version = "1.0", default-features = false, features = ["derive"] }
+serde-json-wasm = "0.5"
 thiserror = "1.0"
 
 [dev-dependencies]

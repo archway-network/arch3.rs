@@ -1,9 +1,11 @@
-use archway_bindings::{ArchwayMsg, ArchwayQuery, ArchwayResult};
-use cosmwasm_std::{entry_point, Addr, SubMsg};
+use archway_bindings::{ArchwayMsg, ArchwayQuery, ArchwayResult, WithdrawRewardsResponse};
+use cosmwasm_std::{entry_point, Addr, Reply, StdError, SubMsg};
 use cosmwasm_std::{to_binary, Binary, Deps, DepsMut, Env, MessageInfo, Response, StdResult};
 use cw2::set_contract_version;
+use cw_utils::NativeBalance;
 
 use crate::error::ContractError;
+use crate::helpers;
 use crate::msg::{CountResponse, ExecuteMsg, InstantiateMsg, QueryMsg};
 use crate::state::{State, STATE};
 
@@ -91,6 +93,37 @@ fn withdraw_rewards() -> ArchwayResult<ContractError> {
     let res = Response::new()
         .add_submessage(SubMsg::reply_on_success(msg, REWARDS_WITHDRAW_REPLY))
         .add_attribute("method", "withdraw_rewards");
+
+    Ok(res)
+}
+
+#[entry_point]
+pub fn reply(deps: DepsMut<ArchwayQuery>, _env: Env, msg: Reply) -> StdResult<Response> {
+    match msg.id {
+        REWARDS_WITHDRAW_REPLY => after_rewards_withdrawn(deps, msg),
+        id => Err(StdError::not_found(format!("Unknown reply id: {}", id))),
+    }
+}
+
+fn after_rewards_withdrawn(_deps: DepsMut<ArchwayQuery>, msg: Reply) -> StdResult<Response> {
+    let data = helpers::parse_reply_data(msg)?;
+    let withdraw_response: WithdrawRewardsResponse =
+        serde_json_wasm::from_slice::<WithdrawRewardsResponse>(&data.0)
+            .map_err(|e| StdError::generic_err(e.to_string()))?;
+
+    let mut rewards_balance = NativeBalance(withdraw_response.total_rewards);
+    rewards_balance.normalize();
+
+    let total_rewards: Vec<String> = rewards_balance
+        .into_vec()
+        .iter()
+        .map(|coin| coin.to_string())
+        .collect();
+
+    let res = Response::new()
+        .add_attribute("method", "after_rewards_withdrawn")
+        .add_attribute("records_num", withdraw_response.records_num.to_string())
+        .add_attribute("total_rewards", total_rewards.concat());
 
     Ok(res)
 }
