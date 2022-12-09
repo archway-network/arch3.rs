@@ -1,14 +1,14 @@
-pub fn add(left: usize, right: usize) -> usize {
-    left + right
-}
+mod msg;
+mod pagination;
+mod query;
 
-#[cfg(test)]
-mod tests {
-    use super::*;
+#[cfg(not(target_arch = "wasm32"))]
+pub mod testing;
 
-    #[test]
-    fn it_works() {
-        let result = add(2, 2);
-        assert_eq!(result, 4);
-    }
-}
+pub use msg::{ArchwayMsg, WithdrawRewardsResponse};
+pub use pagination::{PageRequest, PageResponse};
+pub use query::{ArchwayQuery, ContractMetadataResponse, RewardsRecord, RewardsRecordsResponse};
+
+pub type Coins = Vec<cosmwasm_std::Coin>;
+
+pub type ArchwayResult<E> = Result<cosmwasm_std::Response<ArchwayMsg>, E>;
