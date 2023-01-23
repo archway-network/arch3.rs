@@ -1,10 +1,7 @@
+use cosmwasm_schema::cw_serde;
 use cosmwasm_std::{CosmosMsg, CustomMsg};
-use schemars::JsonSchema;
-use serde::{Deserialize, Serialize};
 
-#[non_exhaustive]
-#[derive(Serialize, Deserialize, Clone, Debug, PartialEq, JsonSchema)]
-#[serde(rename_all = "snake_case")]
+#[cw_serde]
 pub enum ArchwayMsg {
     UpdateContractMetadata {
         owner_address: Option<String>,

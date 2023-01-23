@@ -1,24 +1,21 @@
+use cosmwasm_schema::{cw_serde, QueryResponses};
 use cosmwasm_std::CustomQuery;
-use schemars::JsonSchema;
-use serde::{Deserialize, Serialize};
 
 use crate::pagination::PageRequest;
+use crate::types::{gov, rewards};
 
-#[non_exhaustive]
-#[derive(Serialize, Deserialize, Clone, Debug, PartialEq, JsonSchema)]
-#[serde(rename_all = "snake_case")]
+#[cw_serde]
+#[derive(QueryResponses)]
 pub enum ArchwayQuery {
-    ContractMetadata {
-        contract_address: String,
-    },
+    #[returns(rewards::ContractMetadataResponse)]
+    ContractMetadata { contract_address: String },
+    #[returns(rewards::RewardsRecordsResponse)]
     RewardsRecords {
         rewards_address: String,
         pagination: Option<PageRequest>,
     },
-    GovVote {
-        proposal_id: u64,
-        voter: String,
-    },
+    #[returns(gov::VoteResponse)]
+    GovVote { proposal_id: u64, voter: String },
 }
 
 impl CustomQuery for ArchwayQuery {}
