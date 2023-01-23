@@ -84,15 +84,15 @@ impl ArchwayQuery {
         ArchwayQuery::GovProposals {
             voter: voter.map(|v| v.into()),
             depositor: depositor.map(|v| v.into()),
-            status: status,
-            page: page,
+            status,
+            page,
             limit: 100,
         }
     }
 
     pub fn gov_vote(proposal_id: u64, voter: impl Into<String>) -> Self {
         ArchwayQuery::GovVote {
-            proposal_id: proposal_id,
+            proposal_id,
             voter: voter.into(),
         }
     }
