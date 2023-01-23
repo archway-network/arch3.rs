@@ -1,3 +1,4 @@
+use archway_bindings::types::gov::ProposalStatus;
 use archway_bindings::Coins;
 use cosmwasm_std::Addr;
 use schemars::JsonSchema;
@@ -22,8 +23,19 @@ pub enum ExecuteMsg {
 pub enum QueryMsg {
     // GetCount returns the current count as a json-encoded number
     GetCount {},
-    Metadata { contract_address: Option<Addr> },
+    Metadata {
+        contract_address: Option<Addr>,
+    },
     OutstandingRewards {},
+    GovProposals {
+        voter: Option<Addr>,
+        depositor: Option<Addr>,
+        status: Option<ProposalStatus>,
+    },
+    GovVote {
+        proposal_id: u64,
+        voter: Addr,
+    },
 }
 
 // We define a custom struct for each query response
