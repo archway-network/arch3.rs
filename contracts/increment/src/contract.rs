@@ -1,4 +1,4 @@
-use archway_bindings::types::gov::{ProposalStatus, ProposalsResponse, VoteResponse};
+use archway_bindings::types::gov::VoteResponse;
 use archway_bindings::types::rewards::{
     ContractMetadataResponse, RewardsRecordsResponse, WithdrawRewardsResponse,
 };
@@ -143,11 +143,6 @@ pub fn query(deps: Deps<ArchwayQuery>, env: Env, msg: QueryMsg) -> StdResult<Bin
             contract_address.unwrap_or(env.contract.address),
         )?),
         QueryMsg::OutstandingRewards {} => to_binary(&outstanding_rewards(deps, env)?),
-        QueryMsg::GovProposals {
-            voter,
-            depositor,
-            status,
-        } => to_binary(&gov_proposals(deps, voter, depositor, status)?),
         QueryMsg::GovVote { proposal_id, voter } => to_binary(&gov_vote(deps, proposal_id, voter)?),
     }
 }
@@ -191,18 +186,6 @@ fn outstanding_rewards(
         rewards_balance: rewards_balance.into_vec(),
         total_records,
     })
-}
-
-fn gov_proposals(
-    deps: Deps<ArchwayQuery>,
-    voter: Option<impl Into<String>>,
-    depositor: Option<impl Into<String>>,
-    status: Option<ProposalStatus>,
-) -> StdResult<ProposalsResponse> {
-    let req = ArchwayQuery::gov_proposals(voter, depositor, status).into();
-    let response: ProposalsResponse = deps.querier.query(&req)?;
-
-    Ok(response)
 }
 
 fn gov_vote(
