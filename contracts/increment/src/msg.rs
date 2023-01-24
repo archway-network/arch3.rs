@@ -1,15 +1,16 @@
-use archway_bindings::Coins;
+use archway_bindings::{
+    types::{gov, rewards},
+    Coins,
+};
+use cosmwasm_schema::{cw_serde, QueryResponses};
 use cosmwasm_std::Addr;
-use schemars::JsonSchema;
-use serde::{Deserialize, Serialize};
 
-#[derive(Serialize, Deserialize, Clone, Debug, PartialEq, JsonSchema)]
+#[cw_serde]
 pub struct InstantiateMsg {
     pub count: i32,
 }
 
-#[derive(Serialize, Deserialize, Clone, Debug, PartialEq, JsonSchema)]
-#[serde(rename_all = "snake_case")]
+#[cw_serde]
 pub enum ExecuteMsg {
     Increment {},
     Reset { count: i32 },
@@ -17,23 +18,25 @@ pub enum ExecuteMsg {
     WithdrawRewards {},
 }
 
-#[derive(Serialize, Deserialize, Clone, Debug, PartialEq, JsonSchema)]
-#[serde(rename_all = "snake_case")]
+#[cw_serde]
+#[derive(QueryResponses)]
 pub enum QueryMsg {
-    // GetCount returns the current count as a json-encoded number
+    #[returns(CountResponse)]
     GetCount {},
+    #[returns(rewards::ContractMetadataResponse)]
     Metadata { contract_address: Option<Addr> },
+    #[returns(OutstandingRewardsResponse)]
     OutstandingRewards {},
+    #[returns(gov::VoteResponse)]
     GovVote { proposal_id: u64, voter: Addr },
 }
 
-// We define a custom struct for each query response
-#[derive(Serialize, Deserialize, Clone, Debug, PartialEq, JsonSchema)]
+#[cw_serde]
 pub struct CountResponse {
     pub count: i32,
 }
 
-#[derive(Serialize, Deserialize, Clone, Debug, PartialEq, JsonSchema)]
+#[cw_serde]
 pub struct OutstandingRewardsResponse {
     pub rewards_balance: Coins,
     pub total_records: u64,
