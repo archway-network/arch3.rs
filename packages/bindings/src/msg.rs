@@ -2,8 +2,6 @@ use cosmwasm_std::{CosmosMsg, CustomMsg};
 use schemars::JsonSchema;
 use serde::{Deserialize, Serialize};
 
-use crate::Coins;
-
 #[non_exhaustive]
 #[derive(Serialize, Deserialize, Clone, Debug, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
@@ -54,13 +52,6 @@ impl ArchwayMsg {
             record_ids,
         }
     }
-}
-
-#[derive(Serialize, Deserialize, Clone, Debug, PartialEq, JsonSchema)]
-#[serde(rename_all = "snake_case")]
-pub struct WithdrawRewardsResponse {
-    pub records_num: u64,
-    pub total_rewards: Coins,
 }
 
 #[cfg(test)]

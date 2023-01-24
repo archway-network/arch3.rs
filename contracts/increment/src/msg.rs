@@ -24,6 +24,7 @@ pub enum QueryMsg {
     GetCount {},
     Metadata { contract_address: Option<Addr> },
     OutstandingRewards {},
+    GovVote { proposal_id: u64, voter: Addr },
 }
 
 // We define a custom struct for each query response

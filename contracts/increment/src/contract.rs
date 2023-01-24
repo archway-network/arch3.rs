@@ -1,7 +1,8 @@
-use archway_bindings::{
-    ArchwayMsg, ArchwayQuery, ArchwayResult, ContractMetadataResponse, PageRequest,
-    RewardsRecordsResponse, WithdrawRewardsResponse,
+use archway_bindings::types::gov::VoteResponse;
+use archway_bindings::types::rewards::{
+    ContractMetadataResponse, RewardsRecordsResponse, WithdrawRewardsResponse,
 };
+use archway_bindings::{ArchwayMsg, ArchwayQuery, ArchwayResult, PageRequest};
 use cosmwasm_std::{
     entry_point, to_binary, Addr, Binary, Deps, DepsMut, Env, MessageInfo, Reply, Response,
     StdError, StdResult, SubMsg,
@@ -142,6 +143,7 @@ pub fn query(deps: Deps<ArchwayQuery>, env: Env, msg: QueryMsg) -> StdResult<Bin
             contract_address.unwrap_or(env.contract.address),
         )?),
         QueryMsg::OutstandingRewards {} => to_binary(&outstanding_rewards(deps, env)?),
+        QueryMsg::GovVote { proposal_id, voter } => to_binary(&gov_vote(deps, proposal_id, voter)?),
     }
 }
 
@@ -186,11 +188,24 @@ fn outstanding_rewards(
     })
 }
 
+fn gov_vote(
+    deps: Deps<ArchwayQuery>,
+    proposal_id: u64,
+    voter: impl Into<String>,
+) -> StdResult<VoteResponse> {
+    let req = ArchwayQuery::gov_vote(proposal_id, voter).into();
+    let response: VoteResponse = deps.querier.query(&req)?;
+
+    Ok(response)
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
     use archway_bindings::testing::{mock_dependencies, mock_dependencies_with_balance};
-    use archway_bindings::{PageResponse, RewardsRecord};
+    use archway_bindings::types::rewards::RewardsRecord;
+    use archway_bindings::PageResponse;
+
     use cosmwasm_std::testing::{mock_env, mock_info};
     use cosmwasm_std::{coins, from_binary, ContractResult, QueryResponse};
 

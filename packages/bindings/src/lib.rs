@@ -2,12 +2,14 @@ mod msg;
 mod pagination;
 mod query;
 
+pub mod types;
+
 #[cfg(not(target_arch = "wasm32"))]
 pub mod testing;
 
-pub use msg::{ArchwayMsg, WithdrawRewardsResponse};
+pub use msg::ArchwayMsg;
 pub use pagination::{PageRequest, PageResponse};
-pub use query::{ArchwayQuery, ContractMetadataResponse, RewardsRecord, RewardsRecordsResponse};
+pub use query::ArchwayQuery;
 
 pub type Coins = Vec<cosmwasm_std::Coin>;
 
