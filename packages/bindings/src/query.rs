@@ -9,6 +9,8 @@ use crate::types::{gov, rewards};
 pub enum ArchwayQuery {
     #[returns(rewards::ContractMetadataResponse)]
     ContractMetadata { contract_address: String },
+    #[returns(rewards::FlatFeeResponse)]
+    FlatFee { contract_address: String },
     #[returns(rewards::RewardsRecordsResponse)]
     RewardsRecords {
         rewards_address: String,
@@ -23,6 +25,12 @@ impl CustomQuery for ArchwayQuery {}
 impl ArchwayQuery {
     pub fn contract_metadata(contract_address: impl Into<String>) -> Self {
         ArchwayQuery::ContractMetadata {
+            contract_address: contract_address.into(),
+        }
+    }
+
+    pub fn flat_fee(contract_address: impl Into<String>) -> Self {
+        ArchwayQuery::FlatFee {
             contract_address: contract_address.into(),
         }
     }
