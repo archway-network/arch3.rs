@@ -1,11 +1,11 @@
 use archway_bindings::types::gov::VoteResponse;
 use archway_bindings::types::rewards::{
-    ContractMetadataResponse, RewardsRecordsResponse, WithdrawRewardsResponse,
+    ContractMetadataResponse, FlatFeeResponse, RewardsRecordsResponse, WithdrawRewardsResponse,
 };
 use archway_bindings::{ArchwayMsg, ArchwayQuery, ArchwayResult, PageRequest};
 use cosmwasm_std::{
-    entry_point, to_binary, Addr, Binary, Deps, DepsMut, Env, MessageInfo, Reply, Response,
-    StdError, StdResult, SubMsg,
+    coin, entry_point, to_binary, Addr, Binary, Deps, DepsMut, Env, MessageInfo, Reply, Response,
+    StdError, StdResult, SubMsg, Uint128,
 };
 use cw2::set_contract_version;
 use cw_utils::NativeBalance;
@@ -54,6 +54,9 @@ pub fn execute(
         ExecuteMsg::UpdateRewardsAddress { rewards_address } => {
             update_rewards_address(env, rewards_address)
         }
+        ExecuteMsg::SetFlatFee { amount } => {
+            set_flat_fee(deps.as_ref(), env.contract.address, amount)
+        }
         ExecuteMsg::WithdrawRewards {} => withdraw_rewards(),
     }
 }
@@ -93,6 +96,21 @@ pub fn update_rewards_address(
     let res = Response::new()
         .add_message(msg)
         .add_attribute("method", "update_rewards_address");
+
+    Ok(res)
+}
+
+fn set_flat_fee(
+    deps: Deps<ArchwayQuery>,
+    contract_address: Addr,
+    amount: Uint128,
+) -> ArchwayResult<ContractError> {
+    let denom = deps.querier.query_bonded_denom()?;
+    let msg = ArchwayMsg::set_flat_fee(contract_address, coin(amount.u128(), denom));
+
+    let res = Response::new()
+        .add_message(msg)
+        .add_attribute("method", "set_fees");
 
     Ok(res)
 }
@@ -146,6 +164,7 @@ pub fn query(deps: Deps<ArchwayQuery>, env: Env, msg: QueryMsg) -> StdResult<Bin
             deps,
             contract_address.unwrap_or(env.contract.address),
         )?),
+        QueryMsg::FlatFee {} => to_binary(&flat_fee(deps, env.contract.address)?),
         QueryMsg::OutstandingRewards {} => to_binary(&outstanding_rewards(deps, env)?),
         QueryMsg::GovVote { proposal_id, voter } => to_binary(&gov_vote(deps, proposal_id, voter)?),
     }
@@ -161,6 +180,14 @@ fn contract_metadata(
     contract_address: impl Into<String>,
 ) -> StdResult<ContractMetadataResponse> {
     let req = ArchwayQuery::contract_metadata(contract_address).into();
+    deps.querier.query(&req)
+}
+
+fn flat_fee(
+    deps: Deps<ArchwayQuery>,
+    contract_address: impl Into<String>,
+) -> StdResult<FlatFeeResponse> {
+    let req = ArchwayQuery::flat_fee(contract_address).into();
     deps.querier.query(&req)
 }
 
