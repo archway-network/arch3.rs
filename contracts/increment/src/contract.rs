@@ -52,7 +52,7 @@ pub fn execute(
         ExecuteMsg::Increment {} => increment(deps),
         ExecuteMsg::Reset { count } => reset(deps, info, count),
         ExecuteMsg::UpdateRewardsAddress { rewards_address } => {
-            update_rewards_address(rewards_address.unwrap_or(env.contract.address))
+            update_rewards_address(env, rewards_address)
         }
         ExecuteMsg::WithdrawRewards {} => withdraw_rewards(),
     }
@@ -83,8 +83,12 @@ pub fn reset(
     Ok(Response::new().add_attribute("method", "reset"))
 }
 
-pub fn update_rewards_address(rewards_address: Addr) -> ArchwayResult<ContractError> {
-    let msg = ArchwayMsg::update_rewards_address(rewards_address);
+pub fn update_rewards_address(
+    env: Env,
+    rewards_address: Option<Addr>,
+) -> ArchwayResult<ContractError> {
+    let rewards_address = rewards_address.unwrap_or(env.contract.address.clone());
+    let msg = ArchwayMsg::update_rewards_address(env.contract.address, rewards_address);
 
     let res = Response::new()
         .add_message(msg)
