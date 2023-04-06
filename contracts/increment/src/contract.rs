@@ -87,8 +87,8 @@ pub fn update_rewards_address(
     env: Env,
     rewards_address: Option<Addr>,
 ) -> ArchwayResult<ContractError> {
-    let rewards_address = rewards_address.unwrap_or(env.contract.address.clone());
-    let msg = ArchwayMsg::update_rewards_address(env.contract.address, rewards_address);
+    let rewards_address = rewards_address.unwrap_or(env.contract.address);
+    let msg = ArchwayMsg::update_rewards_address(rewards_address);
 
     let res = Response::new()
         .add_message(msg)
