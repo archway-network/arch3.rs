@@ -4,6 +4,7 @@ use cosmwasm_std::{CosmosMsg, CustomMsg};
 #[cw_serde]
 pub enum ArchwayMsg {
     UpdateContractMetadata {
+        contract_address: Option<String>,
         owner_address: Option<String>,
         rewards_address: Option<String>,
     },
@@ -24,6 +25,18 @@ impl From<ArchwayMsg> for CosmosMsg<ArchwayMsg> {
 impl ArchwayMsg {
     pub fn update_rewards_ownership(owner_address: impl Into<String>) -> Self {
         ArchwayMsg::UpdateContractMetadata {
+            contract_address: None,
+            owner_address: Some(owner_address.into()),
+            rewards_address: None,
+        }
+    }
+
+    pub fn update_external_rewards_ownership(
+        contract_address: impl Into<String>,
+        owner_address: impl Into<String>,
+    ) -> Self {
+        ArchwayMsg::UpdateContractMetadata {
+            contract_address: Some(contract_address.into()),
             owner_address: Some(owner_address.into()),
             rewards_address: None,
         }
@@ -31,6 +44,18 @@ impl ArchwayMsg {
 
     pub fn update_rewards_address(rewards_address: impl Into<String>) -> Self {
         ArchwayMsg::UpdateContractMetadata {
+            contract_address: None,
+            owner_address: None,
+            rewards_address: Some(rewards_address.into()),
+        }
+    }
+
+    pub fn update_external_rewards_address(
+        contract_address: impl Into<String>,
+        rewards_address: impl Into<String>,
+    ) -> Self {
+        ArchwayMsg::UpdateContractMetadata {
+            contract_address: Some(contract_address.into()),
             owner_address: None,
             rewards_address: Some(rewards_address.into()),
         }
@@ -57,9 +82,11 @@ mod tests {
 
     #[test]
     fn from_archway_msg_works() {
+        let contract_address = String::from("contract_address");
         let owner_address = String::from("owner");
         let rewards_address = String::from("rewards");
         let update_metadata = ArchwayMsg::UpdateContractMetadata {
+            contract_address: Some(contract_address),
             owner_address: Some(owner_address),
             rewards_address: Some(rewards_address),
         };
