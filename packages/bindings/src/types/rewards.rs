@@ -1,4 +1,5 @@
 use cosmwasm_schema::cw_serde;
+use cosmwasm_std::Coin;
 
 use crate::{Coins, PageResponse};
 
@@ -12,6 +13,11 @@ pub struct WithdrawRewardsResponse {
 pub struct ContractMetadataResponse {
     pub owner_address: String,
     pub rewards_address: String,
+}
+
+#[cw_serde]
+pub struct FlatFeeResponse {
+    pub flat_fee_amount: Coin,
 }
 
 #[cw_serde]

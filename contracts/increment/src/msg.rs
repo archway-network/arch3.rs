@@ -3,7 +3,7 @@ use archway_bindings::{
     Coins,
 };
 use cosmwasm_schema::{cw_serde, QueryResponses};
-use cosmwasm_std::Addr;
+use cosmwasm_std::{Addr, Uint128};
 
 #[cw_serde]
 pub struct InstantiateMsg {
@@ -15,6 +15,7 @@ pub enum ExecuteMsg {
     Increment {},
     Reset { count: i32 },
     UpdateRewardsAddress { rewards_address: Option<Addr> },
+    SetFlatFee { amount: Uint128 },
     WithdrawRewards {},
 }
 
@@ -25,6 +26,8 @@ pub enum QueryMsg {
     GetCount {},
     #[returns(rewards::ContractMetadataResponse)]
     Metadata { contract_address: Option<Addr> },
+    #[returns(rewards::FlatFeeResponse)]
+    FlatFee {},
     #[returns(OutstandingRewardsResponse)]
     OutstandingRewards {},
     #[returns(gov::VoteResponse)]
