@@ -4,6 +4,21 @@ version = "0.2.0"
 edition = "2021"
 description = "CosmWasm bindings to interact with Archway's modules"
 authors = ["Augusto Elesbão <aelesbao@users.noreply.github.com>"]
+categories = [
+  "cryptography",
+  "cryptography::cryptocurrencies",
+  "database",
+  "wasm",
+]
+keywords = [
+  "archway",
+  "blockchain",
+  "cosmos",
+  "cosmwasm",
+  "productivity",
+  "smart-contracts",
+  "tendermint",
+]
 license = "Apache-2.0"
 repository = "https://github.com/archway-network/archway-bindings"
 homepage = "https://archway.io"
