@@ -28,16 +28,26 @@ readme = "README.md"
 [dependencies]
 prost = "0.11.9"
 prost-types = "0.11.9"
-
-# cosmos-sdk-proto@0.18.0 is the latest version for the cosmos-sdk 0.45.x protos
-cosmos-sdk-proto = { version = "0.18.0", default-features = false }
-
 tonic = { version = "0.9", optional = true, default-features = false, features = [
   "codegen",
   "prost",
 ] }
+# cosmos-sdk-proto@0.18.0 is the latest version for the cosmos-sdk 0.45.x protos
+cosmos-sdk-proto = { version = "0.18.0", features = [
+  "cosmwasm",
+], default-features = false }
 
 [build-dependencies]
 error-chain = "0.12.4"
 glob = "0.3.1"
+regex = "1.9.3"
 tonic-build = "0.9.2"
+
+[features]
+default = ["grpc-transport"]
+grpc = ["tonic"]
+grpc-transport = ["grpc", "tonic/transport"]
+
+[package.metadata.docs.rs]
+all-features = true
+rustdoc-args = ["--cfg", "docsrs"]

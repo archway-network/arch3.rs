@@ -7,6 +7,7 @@ use std::{
 
 use error_chain::error_chain;
 use glob::glob;
+use regex::Regex;
 
 const ARCHWAY_DIR: &str = "archway-network";
 
@@ -25,25 +26,10 @@ error_chain! {
 
 fn main() -> Result<()> {
     let archway_dir = format!("{}/{}", workspace_root()?, ARCHWAY_DIR);
-    let archway_proto_dir = format!("{}/proto", archway_dir);
-
-    let protos = collect_protos(archway_proto_dir.as_str())?;
-    let includes = &[
-        archway_proto_dir,
-        format!("{}/third_party/proto", archway_dir),
-    ];
-
-    tonic_build::configure()
-        .build_client(false)
-        .build_server(false)
-        .extern_path(".cosmos", "::cosmos_sdk_proto::cosmos")
-        .out_dir(OUT_DIR)
-        .compile(protos.as_slice(), includes)?;
-
-    let rev = git_rev(archway_dir.as_str())?;
-    output_protocol_version(OUT_DIR, rev.as_str())?;
+    compile_proto(archway_dir.as_str())?;
     cleanup(OUT_DIR)?;
-
+    apply_patches(OUT_DIR)?;
+    output_protocol_version(OUT_DIR, archway_dir.as_str())?;
     Ok(())
 }
 
@@ -57,25 +43,74 @@ fn workspace_root() -> Result<String> {
     Ok(workspace_root.to_string_lossy().to_string())
 }
 
-fn collect_protos(proto_dir: &str) -> Result<Vec<PathBuf>> {
+fn compile_proto(archway_dir: &str) -> Result<()> {
+    let archway_proto_dir = format!("{}/proto", archway_dir);
+    let protos = collect_proto_files(archway_proto_dir.as_str())?;
+    let includes = &[
+        archway_proto_dir,
+        format!("{}/third_party/proto", archway_dir),
+    ];
+
+    tonic_build::configure()
+        .build_client(true)
+        .build_server(true)
+        .extern_path(".cosmos", "::cosmos_sdk_proto::cosmos")
+        .extern_path(".tendermint", "::cosmos_sdk_proto::tendermint")
+        .client_mod_attribute(".", "#[cfg(feature = \"grpc\")]")
+        .client_mod_attribute(".", "#[cfg_attr(docsrs, doc(cfg(feature = \"grpc\")))]")
+        .server_mod_attribute(".", "#[cfg(feature = \"grpc\")]")
+        .server_mod_attribute(".", "#[cfg_attr(docsrs, doc(cfg(feature = \"grpc\")))]")
+        .out_dir(OUT_DIR)
+        .compile(protos.as_slice(), includes)?;
+
+    Ok(())
+}
+
+fn collect_proto_files(proto_dir: &str) -> Result<Vec<PathBuf>> {
     let proto_glob = format!("{proto_dir}/**/*.proto");
     let protos: Vec<PathBuf> = glob(proto_glob.as_str())?.flatten().collect();
     Ok(protos)
 }
 
-fn git_rev(archway_dir: &str) -> Result<String> {
-    let rev = run_cmd("git", ["-C", archway_dir, "describe", "--tags"])?;
-    Ok(rev)
+fn apply_patches(out_dir: &str) -> Result<()> {
+    /// Regex substitutions to apply to the prost-generated output
+    const REPLACEMENTS: &[(&str, &str)] = &[
+        // Feature-gate gRPC impls which use `tonic::transport`
+        (
+            "impl(.+)tonic::transport(.+)",
+            "#[cfg(feature = \"grpc-transport\")]\n    \
+             #[cfg_attr(docsrs, doc(cfg(feature = \"grpc-transport\")))]\n    \
+             impl${1}tonic::transport${2}",
+        ),
+    ];
+
+    let src_files_glob = format!("{out_dir}/*.rs");
+    let src_files: Vec<PathBuf> = glob(src_files_glob.as_str())?.flatten().collect();
+    for src in src_files {
+        let mut contents = fs::read_to_string(src.as_path())?;
+
+        for &(regex, replacement) in REPLACEMENTS {
+            contents = Regex::new(regex)
+                .unwrap_or_else(|_| panic!("invalid regex: {}", regex))
+                .replace_all(&contents, replacement)
+                .to_string();
+        }
+
+        fs::write(src, &contents)?;
+    }
+
+    Ok(())
 }
 
-fn output_protocol_version(out_dir: &str, rev: &str) -> Result<()> {
+fn output_protocol_version(out_dir: &str, archway_dir: &str) -> Result<()> {
+    let git_rev = run_cmd("git", ["-C", archway_dir, "describe", "--tags"])?;
     let path = Path::new(out_dir).join("ARCHWAY_COMMIT");
-    fs::write(path, rev)?;
+    fs::write(path, git_rev)?;
     Ok(())
 }
 
 fn cleanup(out_dir: &str) -> Result<()> {
-    for pkg in EXCLUDED_PROTO_PACKAGES {
+    for &pkg in EXCLUDED_PROTO_PACKAGES {
         let excluded_files_glob = format!("{out_dir}/{pkg}.*.rs");
         glob(excluded_files_glob.as_str())?
             .flatten()
