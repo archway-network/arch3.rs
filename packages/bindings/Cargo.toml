@@ -22,7 +22,9 @@ repository = "https://github.com/archway-network/archway-bindings"
 homepage = "https://archway.io"
 readme = "README.md"
 
-# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+[features]
+backtraces = ["cosmwasm-std/backtraces"]
+staking = ["cosmwasm-std/staking"]
 
 [dependencies]
 cosmwasm-schema = { workspace = true }
