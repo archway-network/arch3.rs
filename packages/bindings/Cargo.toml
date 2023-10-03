@@ -13,11 +13,9 @@ categories = [
 keywords = [
   "archway",
   "blockchain",
-  "cosmos",
   "cosmwasm",
-  "productivity",
   "smart-contracts",
-  "tendermint",
+  "wasm",
 ]
 license = "Apache-2.0"
 repository = "https://github.com/archway-network/archway-bindings"
