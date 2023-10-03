@@ -20,3 +20,6 @@ artifacts/
 .vscode/
 .idea/
 *.iml
+
+# Local network history
+.archway/local-1.json
