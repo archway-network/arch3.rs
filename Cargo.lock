@@ -15,7 +15,7 @@ dependencies = [
 
 [[package]]
 name = "archway-bindings"
-version = "0.1.0"
+version = "0.2.0"
 dependencies = [
  "cosmwasm-schema",
  "cosmwasm-std",
@@ -410,7 +410,7 @@ dependencies = [
 
 [[package]]
 name = "increment"
-version = "0.1.0"
+version = "0.2.0"
 dependencies = [
  "archway-bindings",
  "cosmwasm-schema",
