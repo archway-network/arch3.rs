@@ -1,4 +1,4 @@
 [submodule "archway-network"]
 	path = archway-network
 	url = https://github.com/archway-network/archway
-	branch = tags/v3.0.0
+	branch = tags/v4.0.2
