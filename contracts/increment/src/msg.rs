@@ -16,7 +16,7 @@ pub enum ExecuteMsg {
     Reset { count: i32 },
     UpdateRewardsAddress { rewards_address: Option<Addr> },
     SetFlatFee { amount: Uint128 },
-    WithdrawRewards {},
+    WithdrawRewards { stake_to_validator: Option<Addr> },
 }
 
 #[cw_serde]
