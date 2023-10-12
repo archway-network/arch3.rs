@@ -3,40 +3,35 @@
 set -euo pipefail
 
 SCRIPT_DIR="$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )"
+ROOT_DIR="$(dirname "${SCRIPT_DIR}")"
+
+CHAIN_ID="${CHAIN_ID:-constantine-3}"
 
 echo ":: Build"
-archway build --optimize
+#archway contracts build
 
-pushd ${SCRIPT_DIR}/../contracts/increment
-
+echo ""
 echo ":: Switching network"
-archway network -m -e 'local'
+archway config chains use "${CHAIN_ID}"
 
 echo ""
 echo ":: Store"
-archway store --from alice --no-confirm --no-verify
+archway contracts store increment --from deployer --no-confirm
 
 echo ""
 echo ":: Instantiate"
-archway instantiate --no-confirm --from alice --default-label --args '{ "count": 0 }'
+archway contracts instantiate increment --from deployer --no-confirm --skip-validation --args '{ "count": 0 }'
 
-# CONTRACT_ADDRESS="$(jq -r '[.developer.deployments[] | select(.type == "instantiate")] | .[0].address' config.json)"
-
-# echo ""
-# echo ":: Metadata"
-# archway metadata --no-confirm --from alice \
-#   --owner-address "${CONTRACT_ADDRESS}" \
-#   --rewards-address "${CONTRACT_ADDRESS}"
-
-# echo ""
-# echo ":: Increment"
-# archway tx --no-confirm --from alice --args '{ "increment": {} }'
+CONTRACT_ADDRESS="$(jq -r '[.deployments[] | select(.action == "instantiate")] | .[0].contract.address' "${ROOT_DIR}/.archway/${CHAIN_ID}.json")"
 
 echo ""
-echo ":: Get proposals"
-archway query contract-state smart --args '{ "gov_proposals": {} }'
-archway query contract-state smart --args '{ "gov_vote": { "proposal_id": 1, "voter": "archway1qfj2k2al6wvyp7fghtw70exv8dlw2lykutcg2x" } }'
+echo ":: Metadata"
+archway contracts metadata increment --from deployer --no-confirm --owner-address "${CONTRACT_ADDRESS}" --rewards-address "${CONTRACT_ADDRESS}"
 
-git checkout config.json
+echo ""
+echo ":: Increment"
+archway contracts execute increment --from deployer --no-confirm --skip-validation --args '{ "increment": {} }' --gas-adjustment 1.4
 
-popd
+echo ""
+echo ":: Get Rewards"
+archway rewards query "${CONTRACT_ADDRESS}"
