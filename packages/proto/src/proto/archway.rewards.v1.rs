@@ -3,12 +3,12 @@
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct Params {
     /// inflation_rewards_ratio defines the percentage of minted inflation tokens
-    /// that are used for dApp rewards \[0.0, 1.0\]. If set to 0.0, no inflation
+    /// that are used for dApp rewards [0.0, 1.0]. If set to 0.0, no inflation
     /// rewards are distributed.
     #[prost(string, tag = "1")]
     pub inflation_rewards_ratio: ::prost::alloc::string::String,
     /// tx_fee_rebate_ratio defines the percentage of tx fees that are used for
-    /// dApp rewards \[0.0, 1.0\]. If set to 0.0, no fee rewards are distributed.
+    /// dApp rewards [0.0, 1.0]. If set to 0.0, no fee rewards are distributed.
     #[prost(string, tag = "2")]
     pub tx_fee_rebate_ratio: ::prost::alloc::string::String,
     /// max_withdraw_records defines the maximum number of RewardsRecord objects
@@ -875,9 +875,7 @@ pub mod query_server {
                             request: tonic::Request<super::QueryParamsRequest>,
                         ) -> Self::Future {
                             let inner = Arc::clone(&self.0);
-                            let fut = async move {
-                                <T as Query>::params(&inner, request).await
-                            };
+                            let fut = async move { (*inner).params(request).await };
                             Box::pin(fut)
                         }
                     }
@@ -922,7 +920,7 @@ pub mod query_server {
                         ) -> Self::Future {
                             let inner = Arc::clone(&self.0);
                             let fut = async move {
-                                <T as Query>::contract_metadata(&inner, request).await
+                                (*inner).contract_metadata(request).await
                             };
                             Box::pin(fut)
                         }
@@ -971,7 +969,7 @@ pub mod query_server {
                         ) -> Self::Future {
                             let inner = Arc::clone(&self.0);
                             let fut = async move {
-                                <T as Query>::block_rewards_tracking(&inner, request).await
+                                (*inner).block_rewards_tracking(request).await
                             };
                             Box::pin(fut)
                         }
@@ -1017,7 +1015,7 @@ pub mod query_server {
                         ) -> Self::Future {
                             let inner = Arc::clone(&self.0);
                             let fut = async move {
-                                <T as Query>::rewards_pool(&inner, request).await
+                                (*inner).rewards_pool(request).await
                             };
                             Box::pin(fut)
                         }
@@ -1063,7 +1061,7 @@ pub mod query_server {
                         ) -> Self::Future {
                             let inner = Arc::clone(&self.0);
                             let fut = async move {
-                                <T as Query>::estimate_tx_fees(&inner, request).await
+                                (*inner).estimate_tx_fees(request).await
                             };
                             Box::pin(fut)
                         }
@@ -1109,7 +1107,7 @@ pub mod query_server {
                         ) -> Self::Future {
                             let inner = Arc::clone(&self.0);
                             let fut = async move {
-                                <T as Query>::rewards_records(&inner, request).await
+                                (*inner).rewards_records(request).await
                             };
                             Box::pin(fut)
                         }
@@ -1157,7 +1155,7 @@ pub mod query_server {
                         ) -> Self::Future {
                             let inner = Arc::clone(&self.0);
                             let fut = async move {
-                                <T as Query>::outstanding_rewards(&inner, request).await
+                                (*inner).outstanding_rewards(request).await
                             };
                             Box::pin(fut)
                         }
@@ -1202,9 +1200,7 @@ pub mod query_server {
                             request: tonic::Request<super::QueryFlatFeeRequest>,
                         ) -> Self::Future {
                             let inner = Arc::clone(&self.0);
-                            let fut = async move {
-                                <T as Query>::flat_fee(&inner, request).await
-                            };
+                            let fut = async move { (*inner).flat_fee(request).await };
                             Box::pin(fut)
                         }
                     }
@@ -1671,7 +1667,7 @@ pub mod msg_server {
                         ) -> Self::Future {
                             let inner = Arc::clone(&self.0);
                             let fut = async move {
-                                <T as Msg>::set_contract_metadata(&inner, request).await
+                                (*inner).set_contract_metadata(request).await
                             };
                             Box::pin(fut)
                         }
@@ -1715,7 +1711,7 @@ pub mod msg_server {
                         ) -> Self::Future {
                             let inner = Arc::clone(&self.0);
                             let fut = async move {
-                                <T as Msg>::withdraw_rewards(&inner, request).await
+                                (*inner).withdraw_rewards(request).await
                             };
                             Box::pin(fut)
                         }
@@ -1759,7 +1755,7 @@ pub mod msg_server {
                         ) -> Self::Future {
                             let inner = Arc::clone(&self.0);
                             let fut = async move {
-                                <T as Msg>::set_flat_fee(&inner, request).await
+                                (*inner).set_flat_fee(request).await
                             };
                             Box::pin(fut)
                         }

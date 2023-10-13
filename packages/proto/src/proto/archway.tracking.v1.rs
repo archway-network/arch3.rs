@@ -379,7 +379,7 @@ pub mod query_server {
                         ) -> Self::Future {
                             let inner = Arc::clone(&self.0);
                             let fut = async move {
-                                <T as Query>::block_gas_tracking(&inner, request).await
+                                (*inner).block_gas_tracking(request).await
                             };
                             Box::pin(fut)
                         }
