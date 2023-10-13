@@ -123,7 +123,11 @@ fn run_cmd(
     cmd: impl AsRef<OsStr>,
     args: impl IntoIterator<Item = impl AsRef<OsStr>>,
 ) -> Result<String> {
-    let process::Output { stdout, status, .. } = process::Command::new(&cmd)
+    let process::Output {
+        stdout,
+        stderr,
+        status,
+    } = process::Command::new(&cmd)
         .args(args)
         .output()
         .unwrap_or_else(|e| match e.kind() {
@@ -134,14 +138,17 @@ fn run_cmd(
             _ => panic!("error running '{:?}': {:?}", cmd.as_ref(), e),
         });
 
+    let output = std::str::from_utf8(&stdout)?.trim();
     if !status.success() {
+        let error = std::str::from_utf8(&stderr)?.trim();
         panic!(
-            "{:?} exited with error code: {:?}",
+            "{:?} exited with error code: {:?}\nstdout: {:?}\nstderr: {:?}",
             cmd.as_ref(),
-            status.code()
+            status.code().unwrap_or(-1),
+            output,
+            error
         );
     }
 
-    let output = std::str::from_utf8(&stdout)?.trim();
     Ok(output.to_string())
 }
