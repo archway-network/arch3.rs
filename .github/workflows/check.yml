@@ -13,7 +13,11 @@ jobs:
           - stable
     steps:
       - name: Checkout sources
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
+        with:
+          submodules: recursive
+          fetch-depth: 0
+          fetch-tags: true
 
       - name: Install stable toolchain
         uses: actions-rs/toolchain@v1
@@ -22,6 +26,9 @@ jobs:
           target: wasm32-unknown-unknown
           override: true
           profile: minimal
+
+      - name: Install Protoc
+        uses: arduino/setup-protoc@v2
 
       - name: Run unit tests
         uses: actions-rs/cargo@v1
@@ -35,7 +42,7 @@ jobs:
         uses: actions-rs/cargo@v1
         with:
           command: build
-          args: --release --lib --target wasm32-unknown-unknown
+          args: --release --lib --target wasm32-unknown-unknown --no-default-features
         env:
           RUSTFLAGS: "-C link-arg=-s"
 
@@ -49,7 +56,11 @@ jobs:
           - stable
     steps:
       - name: Checkout sources
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
+        with:
+          submodules: recursive
+          fetch-depth: 0
+          fetch-tags: true
 
       - name: Install stable toolchain
         uses: actions-rs/toolchain@v1
@@ -58,6 +69,9 @@ jobs:
           override: true
           profile: minimal
           components: rustfmt, clippy
+
+      - name: Install Protoc
+        uses: arduino/setup-protoc@v2
 
       - name: Run cargo fmt
         uses: actions-rs/cargo@v1

@@ -3,7 +3,12 @@ name = "archway-bindings"
 version = "0.2.0"
 edition = "2021"
 description = "CosmWasm bindings to interact with Archway's modules"
-authors = ["Augusto Elesbão <aelesbao@users.noreply.github.com>"]
+authors.workspace = true
+license.workspace = true
+repository.workspace = true
+homepage.workspace = true
+readme = "README.md"
+
 categories = [
   "cryptography",
   "cryptography::cryptocurrencies",
@@ -17,10 +22,6 @@ keywords = [
   "smart-contracts",
   "wasm",
 ]
-license = "Apache-2.0"
-repository = "https://github.com/archway-network/archway-bindings"
-homepage = "https://archway.io"
-readme = "README.md"
 
 [features]
 backtraces = ["cosmwasm-std/backtraces"]

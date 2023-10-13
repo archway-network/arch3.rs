@@ -1,8 +1,12 @@
 [package]
 name = "increment"
 version = "0.2.0"
-authors = ["Augusto Elesbão <aelesbao@users.noreply.github.com>"]
 edition = "2021"
+authors.workspace = true
+license.workspace = true
+repository.workspace = true
+homepage.workspace = true
+readme = "README.md"
 
 exclude = [
   # Those files are rust-optimizer artifacts. You might want to commit them for convenience but they should not be part of the source code publication.
