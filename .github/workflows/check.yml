@@ -13,9 +13,10 @@ jobs:
           - stable
     steps:
       - name: Checkout sources
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
         with:
           submodules: recursive
+          fetch-tags: true
 
       - name: Install stable toolchain
         uses: actions-rs/toolchain@v1
@@ -54,9 +55,10 @@ jobs:
           - stable
     steps:
       - name: Checkout sources
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
         with:
           submodules: recursive
+          fetch-tags: true
 
       - name: Install stable toolchain
         uses: actions-rs/toolchain@v1
