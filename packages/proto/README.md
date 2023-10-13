@@ -2,10 +2,10 @@
 
 Rust build of Archway's ProtoBuf definitions.
 
-This package can be used both in CosmWasm smart contracts and gRPC clients. It
-is based on the [`cosmos-sdk-proto v0.18.0`](https://github.com/cosmos/cosmos-rust) crate to provide the Cosmos SDK
-`v0.45.x` messages, and follows the same features definitions, with the `tonic`
-gRPC clients enabled by default.
+This package can be used both in CosmWasm smart contracts and gRPC clients.
+It is based on the [`cosmos-sdk-proto v0.18.0`](https://github.com/cosmos/cosmos-rust)
+crate to provide the Cosmos SDK `v0.45.x` messages and follows the same feature
+definitions, with the `tonic` gRPC clients enabled by default.
 
 ## Usage
 
