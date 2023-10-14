@@ -123,7 +123,7 @@ fn withdraw_rewards(
     env: Env,
     stake_to_validator: Option<Addr>,
 ) -> ArchwayResult<ContractError> {
-    let msg = ArchwayMsg::withdraw_rewards_by_limit(0);
+    let msg = ArchwayMsg::withdraw_max_rewards();
     let withdraw_rewards_msg = if let Some(validator_addr) = stake_to_validator {
         let tx_index = env.transaction.map(|tx| tx.index).unwrap_or(0);
         STAKE_REWARDS_VALIDATOR.save(
