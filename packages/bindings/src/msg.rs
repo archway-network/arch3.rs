@@ -141,6 +141,18 @@ impl ArchwayMsg {
         }
     }
 
+    /// Creates an `ArchwayMsg` to withdraw all rewards from the contract up to the maximum limit
+    /// of records specified by the governance parameter `rewards.MaxWithdrawRecords`.
+    ///
+    /// This action should be executed from a contract only if its set as the `rewards_address` in
+    /// a contract metadata.
+    pub fn withdraw_max_rewards() -> Self {
+        ArchwayMsg::WithdrawRewards {
+            records_limit: Some(0),
+            record_ids: vec![],
+        }
+    }
+
     /// Creates an `ArchwayMsg` to withdraw rewards from the contract.
     ///
     /// This action should be executed from a contract only if its set as the `rewards_address` in
