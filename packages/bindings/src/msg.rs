@@ -35,7 +35,7 @@ pub enum ArchwayMsg {
     /// it's set as the `owner_address` in the metadata of `contract_address`. The tx will fail if
     /// the `contract_address` has no metadata.
     SetFlatFee {
-        contract_address: Option<String>,
+        contract_address: String,
         flat_fee_amount: Coin,
     },
     /// Withdraws rewards from the contract. This action should be executed from a contract only if
@@ -136,7 +136,7 @@ impl ArchwayMsg {
     /// * `amount` - The flat fee amount.
     pub fn set_flat_fee(contract_address: impl Into<String>, amount: Coin) -> Self {
         ArchwayMsg::SetFlatFee {
-            contract_address: Some(contract_address.into()),
+            contract_address: contract_address.into(),
             flat_fee_amount: amount,
         }
     }
