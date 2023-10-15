@@ -9,10 +9,10 @@ Rust SDK for Archway.
 
 ## Packages
 
-| Package                                   |                    Version                    |                         Docs                          | Description                                           |
-|-------------------------------------------|:---------------------------------------------:|:-----------------------------------------------------:|:------------------------------------------------------|
-| [`archway-bindings`](./packages/bindings) | [![crates.io][bindings-image]][bindings-link] | [![docs.rs][bindings-docs-image]][bindings-docs-link] | CosmWasm bindings to interact with Archway's modules. |
-| [`archway-proto`](./packages/proto)       |    [![crates.io][proto-image]][proto-link]    |    [![docs.rs][proto-docs-image]][proto-docs-link]    | Rust build of Archway's ProtoBuf definitions.         |
+| Package                           | Description                                           |                    Version                    |                         Docs                          |
+|-----------------------------------|:------------------------------------------------------|:---------------------------------------------:|:-----------------------------------------------------:|
+| [`bindings`](./packages/bindings) | CosmWasm bindings to interact with Archway's modules. | [![crates.io][bindings-image]][bindings-link] | [![docs.rs][bindings-docs-image]][bindings-docs-link] |
+| [`proto`](./packages/proto)       | Rust build of Archway's ProtoBuf definitions.         |    [![crates.io][proto-image]][proto-link]    |    [![docs.rs][proto-docs-image]][proto-docs-link]    |
 
 ## License
 
