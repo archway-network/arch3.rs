@@ -33,7 +33,7 @@ optimize = """docker run --rm -v "$(pwd)":/code \
 """
 
 [dependencies]
-archway-bindings = { version = "0.2.0", path = "../../packages/bindings" }
+archway-bindings = { path = "../../packages/bindings" }
 cosmwasm-schema = { workspace = true }
 cosmwasm-std = { workspace = true, features = ["staking", "stargate"] }
 cosmwasm-storage = { workspace = true }
