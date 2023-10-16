@@ -30,12 +30,6 @@ tonic = { version = "0.9.2", optional = true, default-features = false, features
 # cosmos-sdk-proto@0.18.0 is the latest version for the cosmos-sdk 0.45.x protos
 cosmos-sdk-proto = { version = "0.18.0", default-features = false }
 
-[build-dependencies]
-error-chain = "0.12.4"
-glob = "0.3.1"
-regex = "1.9.3"
-tonic-build = "0.9.2"
-
 [features]
 default = ["grpc-transport"]
 grpc-transport = ["grpc", "tonic/transport", "cosmos-sdk-proto/grpc-transport"]
