@@ -10,8 +10,7 @@ use glob::glob;
 use regex::Regex;
 
 const ARCHWAY_DIR: &str = "archway-network";
-
-const OUT_DIR: &str = "src/proto";
+const OUT_DIR: &str = "packages/proto/src/proto";
 
 const EXCLUDED_PROTO_PACKAGES: &[&str] = &["google"];
 
@@ -26,10 +25,13 @@ error_chain! {
 
 fn main() -> Result<()> {
     let archway_dir = format!("{}/{}", workspace_root()?, ARCHWAY_DIR);
-    compile_proto(archway_dir.as_str())?;
-    cleanup(OUT_DIR)?;
-    apply_patches(OUT_DIR)?;
-    output_protocol_version(OUT_DIR, archway_dir.as_str())?;
+    let out_dir = format!("{}/{}", workspace_root()?, OUT_DIR);
+
+    compile_proto(out_dir.as_str(), archway_dir.as_str())?;
+    cleanup(out_dir.as_str())?;
+    apply_patches(out_dir.as_str())?;
+    output_protocol_version(out_dir.as_str(), archway_dir.as_str())?;
+
     Ok(())
 }
 
@@ -43,7 +45,7 @@ fn workspace_root() -> Result<String> {
     Ok(workspace_root.to_string_lossy().to_string())
 }
 
-fn compile_proto(archway_dir: &str) -> Result<()> {
+fn compile_proto(out_dir: &str, archway_dir: &str) -> Result<()> {
     let archway_proto_dir = format!("{}/proto", archway_dir);
     let protos = collect_proto_files(archway_proto_dir.as_str())?;
     let includes = &[
@@ -60,7 +62,8 @@ fn compile_proto(archway_dir: &str) -> Result<()> {
         .client_mod_attribute(".", "#[cfg_attr(docsrs, doc(cfg(feature = \"grpc\")))]")
         .server_mod_attribute(".", "#[cfg(feature = \"grpc\")]")
         .server_mod_attribute(".", "#[cfg_attr(docsrs, doc(cfg(feature = \"grpc\")))]")
-        .out_dir(OUT_DIR)
+        .emit_rerun_if_changed(false)
+        .out_dir(out_dir)
         .compile(protos.as_slice(), includes)?;
 
     Ok(())
