@@ -28,7 +28,7 @@ archway-proto = "0.1.0"
 
 ## License
 
-This project is licensed under the Apache-2.0 License - see the [LICENSE][license-link] file for details.
+This project is licensed under the Apache-2.0 License - see the [NOTICE][notice-link] and [LICENSE][license-link] files for details.
 
 [//]: # "badges"
 [crate-image]: https://buildstats.info/crate/archway-proto
@@ -41,3 +41,4 @@ This project is licensed under the Apache-2.0 License - see the [LICENSE][licens
 
 [//]: # "links"
 [cosmos-rust]: https://github.com/cosmos/cosmos-rust
+[notice-link]: https://github.com/archway-network/arch3.rs/blob/main/NOTICE
