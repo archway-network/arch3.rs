@@ -16,7 +16,7 @@ Rust SDK for Archway.
 
 ## License
 
-This project is licensed under the Apache-2.0 License - see the [LICENSE][license-link] file for details.
+This project is licensed under the Apache-2.0 License - see the [NOTICE][notice-link] and [LICENSE][license-link] files for details.
 
 [//]: # "badges"
 [build-image]: https://github.com/archway-network/arch3.rs/actions/workflows/check.yml/badge.svg
@@ -34,3 +34,6 @@ This project is licensed under the Apache-2.0 License - see the [LICENSE][licens
 [proto-link]: https://crates.io/crates/archway-proto
 [proto-docs-image]: https://docs.rs/archway-proto/badge.svg
 [proto-docs-link]: https://docs.rs/archway-proto/
+
+[//]: # "links"
+[notice-link]: https://github.com/archway-network/arch3.rs/blob/main/NOTICE

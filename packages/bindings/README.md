@@ -17,7 +17,7 @@ The bindings follow the [specs] defined by the Archway Protocol.
 
 ## License
 
-This project is licensed under the Apache-2.0 License - see the [LICENSE][license-link] file for details.
+This project is licensed under the Apache-2.0 License - see the [NOTICE][notice-link] and [LICENSE][license-link] files for details.
 
 [//]: # "badges"
 [crate-image]: https://buildstats.info/crate/archway-bindings
@@ -31,3 +31,4 @@ This project is licensed under the Apache-2.0 License - see the [LICENSE][licens
 [//]: # "general links"
 [example contract]: https://github.com/archway-network/arch3.rs/tree/main/contracts/increment
 [specs]: https://github.com/archway-network/archway/blob/main/x/rewards/spec/08_wasm_bindings.md
+[notice-link]: https://github.com/archway-network/arch3.rs/blob/main/NOTICE
