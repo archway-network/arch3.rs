@@ -9,7 +9,7 @@ resolver = "2"
 [workspace.package]
 authors = ["Augusto Elesbão <aelesbao@users.noreply.github.com>"]
 license = "Apache-2.0"
-repository = "https://github.com/archway-network/archway-bindings"
+repository = "https://github.com/archway-network/arch3.rs"
 homepage = "https://archway.io"
 
 [workspace.dependencies]
