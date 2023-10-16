@@ -12,6 +12,12 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 - **proto:** generated ProtoBuf structs from the protocol (#18)
 - **proto:** tonic gRPC client and server (#18)
 
+## archway-bindings v0.2.1 (2023-10-16)
+
+### Fixed
+
+- **bindings:** fixed docs.rs build (#27)
+
 ## archway-bindings v0.2.0 (2023-10-15)
 
 ### Added
