@@ -9,7 +9,7 @@ use error_chain::error_chain;
 use glob::glob;
 use regex::Regex;
 
-const ARCHWAY_DIR: &str = "archway-network";
+const ARCHWAY_DIR: &str = "archway";
 const OUT_DIR: &str = "packages/proto/src/proto";
 
 const EXCLUDED_PROTO_PACKAGES: &[&str] = &["google"];
