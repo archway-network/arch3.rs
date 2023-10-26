@@ -58,9 +58,11 @@ dependencies = [
 name = "archway-proto"
 version = "0.1.0"
 dependencies = [
+ "anyhow",
  "cosmos-sdk-proto",
  "prost",
  "prost-types",
+ "tokio",
  "tonic",
 ]
 
@@ -725,17 +727,6 @@ dependencies = [
  "ff",
  "rand_core 0.6.4",
  "subtle",
-]
-
-[[package]]
-name = "grpc-client"
-version = "0.1.0"
-dependencies = [
- "anyhow",
- "archway-proto",
- "prost",
- "tokio",
- "tonic",
 ]
 
 [[package]]
