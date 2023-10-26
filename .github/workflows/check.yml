@@ -42,7 +42,7 @@ jobs:
         uses: actions-rs/cargo@v1
         with:
           command: build
-          args: --release --lib --target wasm32-unknown-unknown --no-default-features
+          args: --release --lib --target wasm32-unknown-unknown --package increment
         env:
           RUSTFLAGS: "-C link-arg=-s"
 
