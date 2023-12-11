@@ -1,0 +1,16 @@
+[package]
+name = "proto-build"
+version = "0.1.0"
+edition = "2021"
+description = "Build script for archway-proto"
+authors.workspace = true
+license.workspace = true
+repository.workspace = true
+homepage.workspace = true
+publish = false
+
+[dependencies]
+error-chain = "0.12.4"
+glob = "0.3.1"
+regex = "1.9.3"
+tonic-build = "0.9.2"

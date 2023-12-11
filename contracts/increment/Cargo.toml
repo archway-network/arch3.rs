@@ -1,8 +1,12 @@
 [package]
 name = "increment"
-version = "0.1.0"
-authors = ["Augusto Elesbão <aelesbao@gmail.com>"]
+version = "0.2.0"
 edition = "2021"
+authors.workspace = true
+license.workspace = true
+repository.workspace = true
+homepage.workspace = true
+readme = "README.md"
 
 exclude = [
   # Those files are rust-optimizer artifacts. You might want to commit them for convenience but they should not be part of the source code publication.
@@ -15,17 +19,6 @@ exclude = [
 [lib]
 crate-type = ["cdylib", "rlib"]
 
-[profile.release]
-opt-level = 3
-debug = false
-rpath = false
-lto = true
-debug-assertions = false
-codegen-units = 1
-panic = 'abort'
-incremental = false
-overflow-checks = true
-
 [features]
 # for more explicit tests, cargo test --features=backtraces
 backtraces = ["cosmwasm-std/backtraces"]
@@ -36,20 +29,20 @@ optimize = """docker run --rm -v "$(pwd)":/code \
   --mount type=volume,source="cosmwasm_sccache",target=/root/.cache/sccache \
   --mount type=volume,source="$(basename "$(pwd)")_cache",target=/code/target \
   --mount type=volume,source=registry_cache,target=/usr/local/cargo/registry \
-    cosmwasm/rust-optimizer:0.12.10
+    cosmwasm/rust-optimizer:0.14.0
 """
 
 [dependencies]
-archway-bindings = { version = "0.1.0", path = "../../packages/bindings" }
+archway-bindings = { path = "../../packages/bindings" }
 cosmwasm-schema = { workspace = true }
-cosmwasm-std = { workspace = true }
+cosmwasm-std = { workspace = true, features = ["staking", "stargate"] }
 cosmwasm-storage = { workspace = true }
 cw-storage-plus = { workspace = true }
 cw-utils = { workspace = true }
 cw2 = { workspace = true }
 schemars = { workspace = true }
 serde = { workspace = true }
-serde-json-wasm = "0.5"
+serde-json-wasm = "1.0.0"
 thiserror = { workspace = true }
 
 [dev-dependencies]

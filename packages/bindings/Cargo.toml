@@ -1,15 +1,31 @@
 [package]
 name = "archway-bindings"
-version = "0.1.0"
+version = "0.2.1"
 edition = "2021"
 description = "CosmWasm bindings to interact with Archway's modules"
-authors = ["Augusto Elesbão <aelesbao@users.noreply.github.com>"]
-license = "Apache-2.0"
-repository = "https://github.com/archway-network/archway-bindings"
-homepage = "https://archway.io"
+authors.workspace = true
+license.workspace = true
+repository.workspace = true
+homepage.workspace = true
 readme = "README.md"
 
-# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+categories = [
+  "cryptography",
+  "cryptography::cryptocurrencies",
+  "database",
+  "wasm",
+]
+keywords = [
+  "archway",
+  "blockchain",
+  "cosmwasm",
+  "smart-contracts",
+  "wasm",
+]
+
+[features]
+backtraces = ["cosmwasm-std/backtraces"]
+staking = ["cosmwasm-std/staking"]
 
 [dependencies]
 cosmwasm-schema = { workspace = true }
@@ -17,3 +33,7 @@ cosmwasm-std = { workspace = true }
 schemars = { workspace = true }
 serde = { workspace = true }
 thiserror = { workspace = true }
+
+[package.metadata.docs.rs]
+features = ["staking"]
+rustdoc-args = ["--cfg", "docsrs"]

@@ -1,0 +1,49 @@
+[package]
+name = "archway-proto"
+version = "0.1.0"
+edition = "2021"
+description = "Rust build of Archway's ProtoBuf definitions"
+authors.workspace = true
+license.workspace = true
+repository.workspace = true
+homepage.workspace = true
+readme = "README.md"
+
+categories = [
+  "cryptography",
+  "cryptography::cryptocurrencies",
+  "database",
+  "wasm",
+]
+keywords = [
+  "archway",
+  "blockchain",
+  "cosmwasm",
+  "proto",
+  "smart-contracts",
+]
+
+[dependencies]
+prost = "0.11.9"
+prost-types = "0.11.9"
+tonic = { version = "0.9.2", optional = true, default-features = false, features = ["codegen", "prost"] }
+# cosmos-sdk-proto@0.18.0 is the latest version for the cosmos-sdk 0.45.x protos
+cosmos-sdk-proto = { version = "0.18.0", default-features = false }
+
+[dev_dependencies]
+anyhow = "1.0.75"
+tonic = { version = "0.9.2", features = ["tls", "tls-roots", "tls-roots-common", "gzip"] }
+tokio = { version = "1.33.0", features = ["full"] }
+
+[features]
+default = ["grpc-transport"]
+grpc-transport = ["grpc", "tonic/transport", "cosmos-sdk-proto/grpc-transport"]
+grpc = ["tonic", "cosmos-sdk-proto/grpc"]
+cosmwasm = ["cosmos-sdk-proto/cosmwasm"]
+
+[package.metadata.docs.rs]
+all-features = true
+rustdoc-args = ["--cfg", "docsrs"]
+
+[[example]]
+name = "grpc-client"
