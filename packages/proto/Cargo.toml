@@ -25,7 +25,6 @@ tonic = { version = "0.11.0", optional = true, default-features = false, feature
   "prost",
 ] }
 tendermint-proto = { version = "0.36.0", default-features = false }
-serde = { workspace = true, optional = true }
 
 [dev-dependencies]
 anyhow = "1.0.75"
@@ -38,11 +37,10 @@ tonic = { version = "0.11.0", features = [
 tokio = { version = "1.33.0", features = ["full"] }
 
 [features]
-default = ["grpc-transport", "serde"]
+default = ["grpc-transport"]
 grpc-transport = ["grpc", "tonic/transport"]
 grpc = ["tonic", "tendermint-proto/grpc"]
-cosmwasm = ["serde"]
-serde = ["dep:serde"]
+cosmwasm = []
 
 [package.metadata.docs.rs]
 all-features = true

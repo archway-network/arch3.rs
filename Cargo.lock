@@ -61,7 +61,6 @@ dependencies = [
  "anyhow",
  "prost",
  "prost-types",
- "serde",
  "tendermint-proto",
  "tokio",
  "tonic 0.11.0",

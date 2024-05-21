@@ -12,7 +12,3 @@ plugins:
       - client_mod_attribute=.=#[cfg_attr(docsrs\, doc(cfg(feature = "grpc")))]
       - server_mod_attribute=.=#[cfg(feature = "grpc")]
       - server_mod_attribute=.=#[cfg_attr(docsrs\, doc(cfg(feature = "grpc")))]
-  - plugin: buf.build/community/neoeinstein-prost-serde:v0.3.0
-    out: .
-    opt:
-      - extern_path=.tendermint=::tendermint_proto::v0_37
