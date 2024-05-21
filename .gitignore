@@ -23,3 +23,6 @@ artifacts/
 
 # Local network history
 .archway/local-1.json
+
+# Exported by proto-build
+/proto

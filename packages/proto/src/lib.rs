@@ -10,11 +10,13 @@ mod type_urls;
 pub use prost;
 pub use prost_types::Any;
 
-pub use cosmos_sdk_proto as cosmos;
-pub use cosmos_sdk_proto::tendermint;
+pub use tendermint_proto as tendermint;
 
 /// The version (commit hash) of the Archway protocol used when generating this library.
 pub const ARCHWAY_VERSION: &str = include_str!("proto/ARCHWAY_COMMIT");
+pub const COSMOS_SDK_VERSION: &str = include_str!("proto/COSMOS_SDK_COMMIT");
+pub const IBC_VERSION: &str = include_str!("proto/IBC_COMMIT");
+pub const WASMD_VERSION: &str = include_str!("proto/WASMD_COMMIT");
 
 pub mod archway {
     pub mod genmsg {
