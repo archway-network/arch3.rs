@@ -82,20 +82,22 @@ fn update_submodules(submodules_dir: &str) {
     run_git(["-C", wasmd_dir.as_str(), "reset", "--hard", WASMD_REV]).unwrap();
 }
 
-fn export_protos(submodules_dir: &str, proto_dir: &str) {
-    fs::remove_dir_all(proto_dir).unwrap();
+fn export_protos(submodules_dir: &str, proto_dir: impl AsRef<Path>) {
+    if proto_dir.as_ref().exists() {
+        fs::remove_dir_all(&proto_dir).unwrap();
+    }
 
     let archway_proto = format!("{}/{}/{}", submodules_dir, ARCHWAY_DIR, "proto");
-    run_buf_export(archway_proto, proto_dir).unwrap();
+    run_buf_export(archway_proto, &proto_dir).unwrap();
 
     let sdk_proto = format!("{}/{}/{}", submodules_dir, COSMOS_SDK_DIR, "proto");
-    run_buf_export(sdk_proto, proto_dir).unwrap();
+    run_buf_export(sdk_proto, &proto_dir).unwrap();
 
     let ibc_proto = format!("{}/{}/{}", submodules_dir, IBC_DIR, "proto");
-    run_buf_export(ibc_proto, proto_dir).unwrap();
+    run_buf_export(ibc_proto, &proto_dir).unwrap();
 
     let wasmd_proto = format!("{}/{}/{}", submodules_dir, WASMD_DIR, "proto");
-    run_buf_export(wasmd_proto, proto_dir).unwrap();
+    run_buf_export(wasmd_proto, &proto_dir).unwrap();
 }
 
 fn output_versions(out_dir: &str) {
@@ -165,6 +167,11 @@ fn run_buf_export(proto_path: impl AsRef<Path>, export_dir: impl AsRef<Path>) ->
 
 fn run_buf_generate(proto_path: impl AsRef<Path>, out_dir: impl AsRef<Path>) -> Result<String> {
     println!("Generating proto...");
+
+    if out_dir.as_ref().exists() {
+        fs::remove_dir_all(&out_dir).unwrap();
+    }
+
     run_cmd(
         "buf",
         [

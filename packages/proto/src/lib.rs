@@ -5,7 +5,10 @@
 #![forbid(unsafe_code)]
 #![warn(trivial_casts, trivial_numeric_casts, unused_import_braces)]
 
+mod proto;
 mod type_urls;
+
+pub use proto::*;
 
 pub use prost;
 pub use prost_types::Any;
@@ -17,23 +20,3 @@ pub const ARCHWAY_VERSION: &str = include_str!("proto/ARCHWAY_COMMIT");
 pub const COSMOS_SDK_VERSION: &str = include_str!("proto/COSMOS_SDK_COMMIT");
 pub const IBC_VERSION: &str = include_str!("proto/IBC_COMMIT");
 pub const WASMD_VERSION: &str = include_str!("proto/WASMD_COMMIT");
-
-pub mod archway {
-    pub mod genmsg {
-        pub mod v1 {
-            include!("proto/archway.genmsg.v1.rs");
-        }
-    }
-
-    pub mod rewards {
-        pub mod v1 {
-            include!("proto/archway.rewards.v1.rs");
-        }
-    }
-
-    pub mod tracking {
-        pub mod v1 {
-            include!("proto/archway.tracking.v1.rs");
-        }
-    }
-}

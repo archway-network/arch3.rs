@@ -12,3 +12,7 @@ plugins:
       - client_mod_attribute=.=#[cfg_attr(docsrs\, doc(cfg(feature = "grpc")))]
       - server_mod_attribute=.=#[cfg(feature = "grpc")]
       - server_mod_attribute=.=#[cfg_attr(docsrs\, doc(cfg(feature = "grpc")))]
+  - plugin: buf.build/community/neoeinstein-prost-crate:v0.4.0
+    out: .
+    opt:
+      - no_features
