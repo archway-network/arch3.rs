@@ -39,7 +39,7 @@ error_chain! {
     }
 }
 
-fn main() -> () {
+fn main() {
     let root = workspace_root();
     let submodules_dir = format!("{}/{}", root, "external");
     let proto_dir = format!("{}/{}", root, PROTO_DIR);
