@@ -19,6 +19,7 @@
 /// With LengthOp this is tricker but not impossible. Which is why the "leafPrefixEqual" field
 /// in the ProofSpec is valuable to prevent this mutability. And why all trees should
 /// length-prefix the data before hashing it.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct ExistenceProof {
@@ -42,6 +43,7 @@ impl ::prost::Name for ExistenceProof {
 /// NonExistenceProof takes a proof of two neighbors, one left of the desired key,
 /// one right of the desired key. If both proofs are valid AND they are neighbors,
 /// then there is no valid proof for the given key.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct NonExistenceProof {
@@ -62,6 +64,7 @@ impl ::prost::Name for NonExistenceProof {
 }
 ///
 /// CommitmentProof is either an ExistenceProof or a NonExistenceProof, or a Batch of such messages
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct CommitmentProof {
@@ -70,6 +73,7 @@ pub struct CommitmentProof {
 }
 /// Nested message and enum types in `CommitmentProof`.
 pub mod commitment_proof {
+    #[derive(::serde::Serialize, ::serde::Deserialize)]
     #[allow(clippy::derive_partial_eq_without_eq)]
     #[derive(Clone, PartialEq, ::prost::Oneof)]
     pub enum Proof {
@@ -105,6 +109,7 @@ impl ::prost::Name for CommitmentProof {
 ///
 /// Then combine the bytes, and hash it
 /// output = hash(prefix || length(hkey) || hkey || length(hvalue) || hvalue)
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct LeafOp {
@@ -144,6 +149,7 @@ impl ::prost::Name for LeafOp {
 /// Any special data, like prepending child with the length, or prepending the entire operation with
 /// some value to differentiate from leaf nodes, should be included in prefix and suffix.
 /// If either of prefix or suffix is empty, we just treat it as an empty string
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct InnerOp {
@@ -172,6 +178,7 @@ impl ::prost::Name for InnerOp {
 /// generate a given hash (by interpretting the preimage differently).
 /// We need this for proper security, requires client knows a priori what
 /// tree format server uses. But not in code, rather a configuration object.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct ProofSpec {
@@ -204,6 +211,7 @@ impl ::prost::Name for ProofSpec {
 /// isLeftMost(spec: InnerSpec, op: InnerOp)
 /// isRightMost(spec: InnerSpec, op: InnerOp)
 /// isLeftNeighbor(spec: InnerSpec, left: InnerOp, right: InnerOp)
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct InnerSpec {
@@ -234,6 +242,7 @@ impl ::prost::Name for InnerSpec {
 }
 ///
 /// BatchProof is a group of multiple proof types than can be compressed
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct BatchProof {
@@ -248,6 +257,7 @@ impl ::prost::Name for BatchProof {
     }
 }
 /// Use BatchEntry not CommitmentProof, to avoid recursion
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct BatchEntry {
@@ -256,6 +266,7 @@ pub struct BatchEntry {
 }
 /// Nested message and enum types in `BatchEntry`.
 pub mod batch_entry {
+    #[derive(::serde::Serialize, ::serde::Deserialize)]
     #[allow(clippy::derive_partial_eq_without_eq)]
     #[derive(Clone, PartialEq, ::prost::Oneof)]
     pub enum Proof {
@@ -274,6 +285,7 @@ impl ::prost::Name for BatchEntry {
 }
 // ***** all items here are compressed forms ******
 
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct CompressedBatchProof {
@@ -290,6 +302,7 @@ impl ::prost::Name for CompressedBatchProof {
     }
 }
 /// Use BatchEntry not CommitmentProof, to avoid recursion
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct CompressedBatchEntry {
@@ -298,6 +311,7 @@ pub struct CompressedBatchEntry {
 }
 /// Nested message and enum types in `CompressedBatchEntry`.
 pub mod compressed_batch_entry {
+    #[derive(::serde::Serialize, ::serde::Deserialize)]
     #[allow(clippy::derive_partial_eq_without_eq)]
     #[derive(Clone, PartialEq, ::prost::Oneof)]
     pub enum Proof {
@@ -314,6 +328,7 @@ impl ::prost::Name for CompressedBatchEntry {
         ::prost::alloc::format!("cosmos.ics23.v1.{}", Self::NAME)
     }
 }
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct CompressedExistenceProof {
@@ -334,6 +349,7 @@ impl ::prost::Name for CompressedExistenceProof {
         ::prost::alloc::format!("cosmos.ics23.v1.{}", Self::NAME)
     }
 }
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct CompressedNonExistenceProof {
@@ -352,7 +368,19 @@ impl ::prost::Name for CompressedNonExistenceProof {
         ::prost::alloc::format!("cosmos.ics23.v1.{}", Self::NAME)
     }
 }
-#[derive(Clone, Copy, Debug, PartialEq, Eq, Hash, PartialOrd, Ord, ::prost::Enumeration)]
+#[derive(
+    ::serde::Serialize,
+    ::serde::Deserialize,
+    Clone,
+    Copy,
+    Debug,
+    PartialEq,
+    Eq,
+    Hash,
+    PartialOrd,
+    Ord,
+    ::prost::Enumeration,
+)]
 #[repr(i32)]
 pub enum HashOp {
     /// NO_HASH is the default if no data passed. Note this is an illegal argument some places.
@@ -400,7 +428,19 @@ impl HashOp {
 /// to include length information. After encoding the length with the given
 /// algorithm, the length will be prepended to the key and value bytes.
 /// (Each one with it's own encoded length)
-#[derive(Clone, Copy, Debug, PartialEq, Eq, Hash, PartialOrd, Ord, ::prost::Enumeration)]
+#[derive(
+    ::serde::Serialize,
+    ::serde::Deserialize,
+    Clone,
+    Copy,
+    Debug,
+    PartialEq,
+    Eq,
+    Hash,
+    PartialOrd,
+    Ord,
+    ::prost::Enumeration,
+)]
 #[repr(i32)]
 pub enum LengthOp {
     /// NO_PREFIX don't include any length info
@@ -1212,5 +1252,4 @@ pub const FILE_DESCRIPTOR_SET: &[u8] = &[
     0x01, 0x12, 0x04, 0xe8, 0x01, 0x1b, 0x20, 0x0a, 0x0d, 0x0a, 0x05, 0x04, 0x0c, 0x02, 0x02, 0x03,
     0x12, 0x04, 0xe8, 0x01, 0x23, 0x24, 0x62, 0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
 ];
-include!("cosmos.ics23.v1.serde.rs");
 // @@protoc_insertion_point(module)

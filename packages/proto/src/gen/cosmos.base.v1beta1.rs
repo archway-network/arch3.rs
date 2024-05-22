@@ -3,6 +3,7 @@
 ///
 /// NOTE: The amount field is an Int which implements the custom method
 /// signatures required by gogoproto.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct Coin {
@@ -22,6 +23,7 @@ impl ::prost::Name for Coin {
 ///
 /// NOTE: The amount field is an Dec which implements the custom method
 /// signatures required by gogoproto.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct DecCoin {
@@ -38,6 +40,7 @@ impl ::prost::Name for DecCoin {
     }
 }
 /// IntProto defines a Protobuf wrapper around an Int object.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct IntProto {
@@ -52,6 +55,7 @@ impl ::prost::Name for IntProto {
     }
 }
 /// DecProto defines a Protobuf wrapper around a Dec object.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct DecProto {
@@ -185,5 +189,4 @@ pub const FILE_DESCRIPTOR_SET: &[u8] = &[
     0x04, 0x03, 0x02, 0x00, 0x08, 0xe9, 0xfb, 0x03, 0x12, 0x03, 0x2e, 0x58, 0x74, 0x62, 0x06, 0x70,
     0x72, 0x6f, 0x74, 0x6f, 0x33,
 ];
-include!("cosmos.base.v1beta1.serde.rs");
 // @@protoc_insertion_point(module)

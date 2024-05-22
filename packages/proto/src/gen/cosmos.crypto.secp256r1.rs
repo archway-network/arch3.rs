@@ -1,5 +1,6 @@
 // @generated
 /// PubKey defines a secp256r1 ECDSA public key.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct PubKey {
@@ -16,6 +17,7 @@ impl ::prost::Name for PubKey {
     }
 }
 /// PrivKey defines a secp256r1 ECDSA private key.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct PrivKey {
@@ -94,5 +96,4 @@ pub const FILE_DESCRIPTOR_SET: &[u8] = &[
     0x03, 0x15, 0x13, 0x37, 0x0a, 0x0f, 0x0a, 0x08, 0x04, 0x01, 0x02, 0x00, 0x08, 0xeb, 0xfb, 0x03,
     0x12, 0x03, 0x15, 0x14, 0x36, 0x62, 0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
 ];
-include!("cosmos.crypto.secp256r1.serde.rs");
 // @@protoc_insertion_point(module)

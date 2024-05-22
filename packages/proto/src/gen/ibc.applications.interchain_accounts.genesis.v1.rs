@@ -1,5 +1,6 @@
 // @generated
 /// GenesisState defines the interchain accounts genesis state
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct GenesisState {
@@ -19,6 +20,7 @@ impl ::prost::Name for GenesisState {
     }
 }
 /// ControllerGenesisState defines the interchain accounts controller genesis state
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct ControllerGenesisState {
@@ -42,6 +44,7 @@ impl ::prost::Name for ControllerGenesisState {
     }
 }
 /// HostGenesisState defines the interchain accounts host genesis state
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct HostGenesisState {
@@ -66,6 +69,7 @@ impl ::prost::Name for HostGenesisState {
 }
 /// ActiveChannel contains a connection ID, port ID and associated active channel ID, as well as a boolean flag to
 /// indicate if the channel is middleware enabled
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct ActiveChannel {
@@ -89,6 +93,7 @@ impl ::prost::Name for ActiveChannel {
     }
 }
 /// RegisteredInterchainAccount contains a connection ID, port ID and associated interchain account address
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct RegisteredInterchainAccount {
@@ -383,5 +388,4 @@ pub const FILE_DESCRIPTOR_SET: &[u8] = &[
     0x08, 0x12, 0x03, 0x33, 0x1d, 0x50, 0x0a, 0x0f, 0x0a, 0x08, 0x04, 0x04, 0x02, 0x02, 0x08, 0xee,
     0xfb, 0x03, 0x12, 0x03, 0x33, 0x1e, 0x4f, 0x62, 0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
 ];
-include!("ibc.applications.interchain_accounts.genesis.v1.serde.rs");
 // @@protoc_insertion_point(module)

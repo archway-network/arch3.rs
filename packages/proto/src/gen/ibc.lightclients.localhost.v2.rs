@@ -1,5 +1,6 @@
 // @generated
 /// ClientState defines the 09-localhost client state
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct ClientState {
@@ -57,5 +58,4 @@ pub const FILE_DESCRIPTOR_SET: &[u8] = &[
     0x2e, 0x4c, 0x0a, 0x0f, 0x0a, 0x08, 0x04, 0x00, 0x02, 0x00, 0x08, 0xe9, 0xfb, 0x03, 0x12, 0x03,
     0x0e, 0x2f, 0x4b, 0x62, 0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
 ];
-include!("ibc.lightclients.localhost.v2.serde.rs");
 // @@protoc_insertion_point(module)

@@ -1,6 +1,7 @@
 // @generated
 /// ValidatorSigningInfo defines a validator's signing info for monitoring their
 /// liveness activity.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct ValidatorSigningInfo {
@@ -34,6 +35,7 @@ impl ::prost::Name for ValidatorSigningInfo {
     }
 }
 /// Params represents the parameters used for by the slashing module.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct Params {
@@ -56,6 +58,7 @@ impl ::prost::Name for Params {
     }
 }
 /// GenesisState defines the slashing module's genesis state.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct GenesisState {
@@ -79,6 +82,7 @@ impl ::prost::Name for GenesisState {
     }
 }
 /// SigningInfo stores validator signing info of corresponding address.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct SigningInfo {
@@ -98,6 +102,7 @@ impl ::prost::Name for SigningInfo {
 }
 /// ValidatorMissedBlocks contains array of missed blocks of corresponding
 /// address.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct ValidatorMissedBlocks {
@@ -116,6 +121,7 @@ impl ::prost::Name for ValidatorMissedBlocks {
     }
 }
 /// MissedBlock contains height and missed status as boolean.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct MissedBlock {
@@ -134,6 +140,7 @@ impl ::prost::Name for MissedBlock {
     }
 }
 /// QueryParamsRequest is the request type for the Query/Params RPC method
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct QueryParamsRequest {}
@@ -145,6 +152,7 @@ impl ::prost::Name for QueryParamsRequest {
     }
 }
 /// QueryParamsResponse is the response type for the Query/Params RPC method
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct QueryParamsResponse {
@@ -160,6 +168,7 @@ impl ::prost::Name for QueryParamsResponse {
 }
 /// QuerySigningInfoRequest is the request type for the Query/SigningInfo RPC
 /// method
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct QuerySigningInfoRequest {
@@ -176,6 +185,7 @@ impl ::prost::Name for QuerySigningInfoRequest {
 }
 /// QuerySigningInfoResponse is the response type for the Query/SigningInfo RPC
 /// method
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct QuerySigningInfoResponse {
@@ -192,6 +202,7 @@ impl ::prost::Name for QuerySigningInfoResponse {
 }
 /// QuerySigningInfosRequest is the request type for the Query/SigningInfos RPC
 /// method
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct QuerySigningInfosRequest {
@@ -207,6 +218,7 @@ impl ::prost::Name for QuerySigningInfosRequest {
 }
 /// QuerySigningInfosResponse is the response type for the Query/SigningInfos RPC
 /// method
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct QuerySigningInfosResponse {
@@ -224,6 +236,7 @@ impl ::prost::Name for QuerySigningInfosResponse {
     }
 }
 /// MsgUnjail defines the Msg/Unjail request type
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct MsgUnjail {
@@ -238,6 +251,7 @@ impl ::prost::Name for MsgUnjail {
     }
 }
 /// MsgUnjailResponse defines the Msg/Unjail response type
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct MsgUnjailResponse {}
@@ -251,6 +265,7 @@ impl ::prost::Name for MsgUnjailResponse {
 /// MsgUpdateParams is the Msg/UpdateParams request type.
 ///
 /// Since: cosmos-sdk 0.47
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct MsgUpdateParams {
@@ -274,6 +289,7 @@ impl ::prost::Name for MsgUpdateParams {
 /// MsgUpdateParams message.
 ///
 /// Since: cosmos-sdk 0.47
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct MsgUpdateParamsResponse {}
@@ -1037,6 +1053,5 @@ pub const FILE_DESCRIPTOR_SET: &[u8] = &[
     0x20, 0x30, 0x2e, 0x34, 0x37, 0x0a, 0x0a, 0x0a, 0x0a, 0x03, 0x04, 0x03, 0x01, 0x12, 0x03, 0x43,
     0x08, 0x1f, 0x62, 0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
 ];
-include!("cosmos.slashing.v1beta1.serde.rs");
 include!("cosmos.slashing.v1beta1.tonic.rs");
 // @@protoc_insertion_point(module)

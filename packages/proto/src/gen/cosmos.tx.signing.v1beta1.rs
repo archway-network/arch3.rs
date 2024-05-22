@@ -1,5 +1,6 @@
 // @generated
 /// SignatureDescriptors wraps multiple SignatureDescriptor's.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct SignatureDescriptors {
@@ -18,6 +19,7 @@ impl ::prost::Name for SignatureDescriptors {
 /// a signature including the public key of the signer, signing modes and the
 /// signature itself. It is primarily used for coordinating signatures between
 /// clients.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct SignatureDescriptor {
@@ -35,6 +37,7 @@ pub struct SignatureDescriptor {
 /// Nested message and enum types in `SignatureDescriptor`.
 pub mod signature_descriptor {
     /// Data represents signature data
+    #[derive(::serde::Serialize, ::serde::Deserialize)]
     #[allow(clippy::derive_partial_eq_without_eq)]
     #[derive(Clone, PartialEq, ::prost::Message)]
     pub struct Data {
@@ -45,6 +48,7 @@ pub mod signature_descriptor {
     /// Nested message and enum types in `Data`.
     pub mod data {
         /// Single is the signature data for a single signer
+        #[derive(::serde::Serialize, ::serde::Deserialize)]
         #[allow(clippy::derive_partial_eq_without_eq)]
         #[derive(Clone, PartialEq, ::prost::Message)]
         pub struct Single {
@@ -66,6 +70,7 @@ pub mod signature_descriptor {
             }
         }
         /// Multi is the signature data for a multisig public key
+        #[derive(::serde::Serialize, ::serde::Deserialize)]
         #[allow(clippy::derive_partial_eq_without_eq)]
         #[derive(Clone, PartialEq, ::prost::Message)]
         pub struct Multi {
@@ -89,6 +94,7 @@ pub mod signature_descriptor {
             }
         }
         /// sum is the oneof that specifies whether this represents single or multi-signature data
+        #[derive(::serde::Serialize, ::serde::Deserialize)]
         #[allow(clippy::derive_partial_eq_without_eq)]
         #[derive(Clone, PartialEq, ::prost::Oneof)]
         pub enum Sum {
@@ -126,7 +132,19 @@ impl ::prost::Name for SignatureDescriptor {
 /// encouraged to open a small PR against this file to add a new case
 /// to this SignMode enum describing their sign mode so that different
 /// apps have a consistent version of this enum.
-#[derive(Clone, Copy, Debug, PartialEq, Eq, Hash, PartialOrd, Ord, ::prost::Enumeration)]
+#[derive(
+    ::serde::Serialize,
+    ::serde::Deserialize,
+    Clone,
+    Copy,
+    Debug,
+    PartialEq,
+    Eq,
+    Hash,
+    PartialOrd,
+    Ord,
+    ::prost::Enumeration,
+)]
 #[repr(i32)]
 pub enum SignMode {
     /// SIGN_MODE_UNSPECIFIED specifies an unknown signing mode and will be
@@ -511,5 +529,4 @@ pub const FILE_DESCRIPTOR_SET: &[u8] = &[
     0x01, 0x03, 0x00, 0x03, 0x01, 0x02, 0x01, 0x03, 0x12, 0x03, 0x66, 0x21, 0x22, 0x62, 0x06, 0x70,
     0x72, 0x6f, 0x74, 0x6f, 0x33,
 ];
-include!("cosmos.tx.signing.v1beta1.serde.rs");
 // @@protoc_insertion_point(module)

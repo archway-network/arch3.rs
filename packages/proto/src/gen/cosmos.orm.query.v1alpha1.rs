@@ -1,5 +1,6 @@
 // @generated
 /// GetRequest is the Query/Get request type.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct GetRequest {
@@ -25,6 +26,7 @@ impl ::prost::Name for GetRequest {
     }
 }
 /// GetResponse is the Query/Get response type.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct GetResponse {
@@ -41,6 +43,7 @@ impl ::prost::Name for GetResponse {
     }
 }
 /// ListRequest is the Query/List request type.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct ListRequest {
@@ -63,6 +66,7 @@ pub struct ListRequest {
 /// Nested message and enum types in `ListRequest`.
 pub mod list_request {
     /// Prefix specifies the arguments to a prefix query.
+    #[derive(::serde::Serialize, ::serde::Deserialize)]
     #[allow(clippy::derive_partial_eq_without_eq)]
     #[derive(Clone, PartialEq, ::prost::Message)]
     pub struct Prefix {
@@ -80,6 +84,7 @@ pub mod list_request {
         }
     }
     /// Range specifies the arguments to a range query.
+    #[derive(::serde::Serialize, ::serde::Deserialize)]
     #[allow(clippy::derive_partial_eq_without_eq)]
     #[derive(Clone, PartialEq, ::prost::Message)]
     pub struct Range {
@@ -104,6 +109,7 @@ pub mod list_request {
     /// query is the query expression corresponding to the provided index. If
     /// neither prefix nor range is specified, the query will list all the fields
     /// in the index.
+    #[derive(::serde::Serialize, ::serde::Deserialize)]
     #[allow(clippy::derive_partial_eq_without_eq)]
     #[derive(Clone, PartialEq, ::prost::Oneof)]
     pub enum Query {
@@ -123,6 +129,7 @@ impl ::prost::Name for ListRequest {
     }
 }
 /// ListResponse is the Query/List response type.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct ListResponse {
@@ -141,6 +148,7 @@ impl ::prost::Name for ListResponse {
     }
 }
 /// IndexValue represents the value of a field in an ORM index expression.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct IndexValue {
@@ -151,6 +159,7 @@ pub struct IndexValue {
 /// Nested message and enum types in `IndexValue`.
 pub mod index_value {
     /// value specifies the index value
+    #[derive(::serde::Serialize, ::serde::Deserialize)]
     #[allow(clippy::derive_partial_eq_without_eq)]
     #[derive(Clone, PartialEq, ::prost::Oneof)]
     pub enum Value {
@@ -564,6 +573,5 @@ pub const FILE_DESCRIPTOR_SET: &[u8] = &[
     0x04, 0x04, 0x02, 0x07, 0x03, 0x12, 0x04, 0x80, 0x01, 0x28, 0x29, 0x62, 0x06, 0x70, 0x72, 0x6f,
     0x74, 0x6f, 0x33,
 ];
-include!("cosmos.orm.query.v1alpha1.serde.rs");
 include!("cosmos.orm.query.v1alpha1.tonic.rs");
 // @@protoc_insertion_point(module)

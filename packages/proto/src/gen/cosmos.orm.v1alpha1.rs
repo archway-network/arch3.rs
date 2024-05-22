@@ -1,5 +1,6 @@
 // @generated
 /// ModuleSchemaDescriptor describe's a module's ORM schema.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct ModuleSchemaDescriptor {
@@ -13,6 +14,7 @@ pub struct ModuleSchemaDescriptor {
 /// Nested message and enum types in `ModuleSchemaDescriptor`.
 pub mod module_schema_descriptor {
     /// FileEntry describes an ORM file used in a module.
+    #[derive(::serde::Serialize, ::serde::Deserialize)]
     #[allow(clippy::derive_partial_eq_without_eq)]
     #[derive(Clone, PartialEq, ::prost::Message)]
     pub struct FileEntry {
@@ -47,7 +49,19 @@ impl ::prost::Name for ModuleSchemaDescriptor {
     }
 }
 /// StorageType
-#[derive(Clone, Copy, Debug, PartialEq, Eq, Hash, PartialOrd, Ord, ::prost::Enumeration)]
+#[derive(
+    ::serde::Serialize,
+    ::serde::Deserialize,
+    Clone,
+    Copy,
+    Debug,
+    PartialEq,
+    Eq,
+    Hash,
+    PartialOrd,
+    Ord,
+    ::prost::Enumeration,
+)]
 #[repr(i32)]
 pub enum StorageType {
     /// STORAGE_TYPE_DEFAULT_UNSPECIFIED indicates the persistent
@@ -345,5 +359,4 @@ pub const FILE_DESCRIPTOR_SET: &[u8] = &[
     0x0c, 0x0a, 0x05, 0x05, 0x00, 0x02, 0x04, 0x02, 0x12, 0x03, 0x4a, 0x1c, 0x1d, 0x62, 0x06, 0x70,
     0x72, 0x6f, 0x74, 0x6f, 0x33,
 ];
-include!("cosmos.orm.v1alpha1.serde.rs");
 // @@protoc_insertion_point(module)

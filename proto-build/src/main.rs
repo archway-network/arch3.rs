@@ -145,14 +145,6 @@ fn apply_cosmos_staking_patches(out_dir: &str) {
 
     patch_file(format!("{out_dir}/cosmos.staking.v1beta1.rs"), REPLACEMENTS)
         .expect("error patching cosmos.staking.v1beta1.rs");
-
-    const SERDE_REPLACEMENTS: &[(&str, &str)] = &[("::Validators::", "::Policy::")];
-
-    patch_file(
-        format!("{out_dir}/cosmos.staking.v1beta1.serde.rs"),
-        SERDE_REPLACEMENTS,
-    )
-    .expect("error patching cosmos.staking.v1beta1.serde.rs");
 }
 
 fn patch_file(path: impl AsRef<Path>, replacements: &[(&str, &str)]) -> io::Result<()> {

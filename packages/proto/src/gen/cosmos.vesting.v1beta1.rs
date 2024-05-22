@@ -1,6 +1,7 @@
 // @generated
 /// BaseVestingAccount implements the VestingAccount interface. It contains all
 /// the necessary fields needed for any vesting account implementation.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct BaseVestingAccount {
@@ -25,6 +26,7 @@ impl ::prost::Name for BaseVestingAccount {
 }
 /// ContinuousVestingAccount implements the VestingAccount interface. It
 /// continuously vests by unlocking coins linearly with respect to time.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct ContinuousVestingAccount {
@@ -44,6 +46,7 @@ impl ::prost::Name for ContinuousVestingAccount {
 /// DelayedVestingAccount implements the VestingAccount interface. It vests all
 /// coins after a specific time, but non prior. In other words, it keeps them
 /// locked until a specified time.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct DelayedVestingAccount {
@@ -58,6 +61,7 @@ impl ::prost::Name for DelayedVestingAccount {
     }
 }
 /// Period defines a length of time and amount of coins that will vest.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct Period {
@@ -76,6 +80,7 @@ impl ::prost::Name for Period {
 }
 /// PeriodicVestingAccount implements the VestingAccount interface. It
 /// periodically vests by unlocking coins during each specified period.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct PeriodicVestingAccount {
@@ -98,6 +103,7 @@ impl ::prost::Name for PeriodicVestingAccount {
 /// still be used for delegating and for governance votes even while locked.
 ///
 /// Since: cosmos-sdk 0.43
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct PermanentLockedAccount {
@@ -113,6 +119,7 @@ impl ::prost::Name for PermanentLockedAccount {
 }
 /// MsgCreateVestingAccount defines a message that enables creating a vesting
 /// account.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct MsgCreateVestingAccount {
@@ -136,6 +143,7 @@ impl ::prost::Name for MsgCreateVestingAccount {
     }
 }
 /// MsgCreateVestingAccountResponse defines the Msg/CreateVestingAccount response type.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct MsgCreateVestingAccountResponse {}
@@ -150,6 +158,7 @@ impl ::prost::Name for MsgCreateVestingAccountResponse {
 /// locked account.
 ///
 /// Since: cosmos-sdk 0.46
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct MsgCreatePermanentLockedAccount {
@@ -170,6 +179,7 @@ impl ::prost::Name for MsgCreatePermanentLockedAccount {
 /// MsgCreatePermanentLockedAccountResponse defines the Msg/CreatePermanentLockedAccount response type.
 ///
 /// Since: cosmos-sdk 0.46
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct MsgCreatePermanentLockedAccountResponse {}
@@ -184,6 +194,7 @@ impl ::prost::Name for MsgCreatePermanentLockedAccountResponse {
 /// account.
 ///
 /// Since: cosmos-sdk 0.46
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct MsgCreatePeriodicVestingAccount {
@@ -208,6 +219,7 @@ impl ::prost::Name for MsgCreatePeriodicVestingAccount {
 /// response type.
 ///
 /// Since: cosmos-sdk 0.46
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct MsgCreatePeriodicVestingAccountResponse {}
@@ -821,6 +833,5 @@ pub const FILE_DESCRIPTOR_SET: &[u8] = &[
     0x0a, 0x03, 0x04, 0x05, 0x01, 0x12, 0x03, 0x63, 0x08, 0x2f, 0x62, 0x06, 0x70, 0x72, 0x6f, 0x74,
     0x6f, 0x33,
 ];
-include!("cosmos.vesting.v1beta1.serde.rs");
 include!("cosmos.vesting.v1beta1.tonic.rs");
 // @@protoc_insertion_point(module)

@@ -1,6 +1,7 @@
 // @generated
 /// Capability defines an implementation of an object capability. The index
 /// provided to a Capability must be globally unique.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct Capability {
@@ -16,6 +17,7 @@ impl ::prost::Name for Capability {
 }
 /// Owner defines a single capability owner. An owner is defined by the name of
 /// capability and the module name.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct Owner {
@@ -33,6 +35,7 @@ impl ::prost::Name for Owner {
 }
 /// CapabilityOwners defines a set of owners of a single Capability. The set of
 /// owners must be unique.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct CapabilityOwners {
@@ -47,6 +50,7 @@ impl ::prost::Name for CapabilityOwners {
     }
 }
 /// GenesisOwners defines the capability owners with their corresponding index.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct GenesisOwners {
@@ -65,6 +69,7 @@ impl ::prost::Name for GenesisOwners {
     }
 }
 /// GenesisState defines the capability module's genesis state.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct GenesisState {
@@ -248,5 +253,4 @@ pub const FILE_DESCRIPTOR_SET: &[u8] = &[
     0x01, 0x02, 0x01, 0x08, 0xf5, 0x8c, 0xa6, 0x05, 0x12, 0x03, 0x19, 0x43, 0x60, 0x62, 0x06, 0x70,
     0x72, 0x6f, 0x74, 0x6f, 0x33,
 ];
-include!("cosmos.capability.v1beta1.serde.rs");
 // @@protoc_insertion_point(module)

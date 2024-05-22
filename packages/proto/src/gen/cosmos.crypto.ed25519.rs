@@ -4,6 +4,7 @@
 /// It must not be used in a non Tendermint key context because it doesn't implement
 /// ADR-28. Nevertheless, you will like to use ed25519 in app user level
 /// then you must create a new proto message and follow ADR-28 for Address construction.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct PubKey {
@@ -19,6 +20,7 @@ impl ::prost::Name for PubKey {
 }
 /// Deprecated: PrivKey defines a ed25519 private key.
 /// NOTE: ed25519 keys must not be used in SDK apps except in a tendermint validator context.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct PrivKey {
@@ -136,5 +138,4 @@ pub const FILE_DESCRIPTOR_SET: &[u8] = &[
     0x04, 0x01, 0x02, 0x00, 0x08, 0xef, 0xfb, 0x03, 0x12, 0x03, 0x25, 0x11, 0x43, 0x62, 0x06, 0x70,
     0x72, 0x6f, 0x74, 0x6f, 0x33,
 ];
-include!("cosmos.crypto.ed25519.serde.rs");
 // @@protoc_insertion_point(module)

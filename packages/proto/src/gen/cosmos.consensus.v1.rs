@@ -1,5 +1,6 @@
 // @generated
 /// QueryParamsRequest defines the request type for querying x/consensus parameters.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct QueryParamsRequest {}
@@ -11,6 +12,7 @@ impl ::prost::Name for QueryParamsRequest {
     }
 }
 /// QueryParamsResponse defines the response type for querying x/consensus parameters.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct QueryParamsResponse {
@@ -28,6 +30,7 @@ impl ::prost::Name for QueryParamsResponse {
     }
 }
 /// MsgUpdateParams is the Msg/UpdateParams request type.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct MsgUpdateParams {
@@ -55,6 +58,7 @@ impl ::prost::Name for MsgUpdateParams {
 }
 /// MsgUpdateParamsResponse defines the response structure for executing a
 /// MsgUpdateParams message.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct MsgUpdateParamsResponse {}
@@ -257,6 +261,5 @@ pub const FILE_DESCRIPTOR_SET: &[u8] = &[
     0x0a, 0x0a, 0x03, 0x04, 0x01, 0x01, 0x12, 0x03, 0x26, 0x08, 0x1f, 0x62, 0x06, 0x70, 0x72, 0x6f,
     0x74, 0x6f, 0x33,
 ];
-include!("cosmos.consensus.v1.serde.rs");
 include!("cosmos.consensus.v1.tonic.rs");
 // @@protoc_insertion_point(module)

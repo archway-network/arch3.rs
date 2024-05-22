@@ -1,6 +1,7 @@
 // @generated
 /// ClientState from Tendermint tracks the current validator set, latest height,
 /// and a possible frozen height.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct ClientState {
@@ -54,6 +55,7 @@ impl ::prost::Name for ClientState {
     }
 }
 /// ConsensusState defines the consensus state from Tendermint.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct ConsensusState {
@@ -76,6 +78,7 @@ impl ::prost::Name for ConsensusState {
 }
 /// Misbehaviour is a wrapper over two conflicting Headers
 /// that implements Misbehaviour interface expected by ICS-02
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct Misbehaviour {
@@ -107,6 +110,7 @@ impl ::prost::Name for Misbehaviour {
 /// current time in order to correctly verify, and the TrustedValidators must
 /// hash to TrustedConsensusState.NextValidatorsHash since that is the last
 /// trusted validator set at the TrustedHeight.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct Header {
@@ -128,6 +132,7 @@ impl ::prost::Name for Header {
 }
 /// Fraction defines the protobuf message type for tmmath.Fraction that only
 /// supports positive values.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct Fraction {
@@ -609,5 +614,4 @@ pub const FILE_DESCRIPTOR_SET: &[u8] = &[
     0x05, 0x04, 0x04, 0x02, 0x01, 0x03, 0x12, 0x03, 0x71, 0x17, 0x18, 0x62, 0x06, 0x70, 0x72, 0x6f,
     0x74, 0x6f, 0x33,
 ];
-include!("ibc.lightclients.tendermint.v1.serde.rs");
 // @@protoc_insertion_point(module)

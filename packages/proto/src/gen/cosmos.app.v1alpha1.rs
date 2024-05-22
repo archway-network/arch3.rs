@@ -1,5 +1,6 @@
 // @generated
 /// ModuleDescriptor describes an app module.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct ModuleDescriptor {
@@ -32,6 +33,7 @@ impl ::prost::Name for ModuleDescriptor {
     }
 }
 /// PackageReference is a reference to a protobuf package used by a module.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct PackageReference {
@@ -85,6 +87,7 @@ impl ::prost::Name for PackageReference {
 }
 /// MigrateFromInfo is information on a module version that a newer module
 /// can migrate from.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct MigrateFromInfo {
@@ -107,6 +110,7 @@ impl ::prost::Name for MigrateFromInfo {
 /// allow a mixture of declarative and imperative app wiring, however, apps
 /// that strive for the maximum ease of maintainability should be able to describe
 /// their state machine with a config object alone.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct Config {
@@ -127,6 +131,7 @@ impl ::prost::Name for Config {
     }
 }
 /// ModuleConfig is a module configuration for an app.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct ModuleConfig {
@@ -160,6 +165,7 @@ impl ::prost::Name for ModuleConfig {
     }
 }
 /// GolangBinding is an explicit interface type to implementing type binding for dependency injection.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct GolangBinding {
@@ -178,6 +184,7 @@ impl ::prost::Name for GolangBinding {
     }
 }
 /// QueryConfigRequest is the Query/Config request type.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct QueryConfigRequest {}
@@ -189,6 +196,7 @@ impl ::prost::Name for QueryConfigRequest {
     }
 }
 /// QueryConfigRequest is the Query/Config response type.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct QueryConfigResponse {
@@ -759,6 +767,5 @@ pub const FILE_DESCRIPTOR_SET: &[u8] = &[
     0x0c, 0x0a, 0x05, 0x04, 0x01, 0x02, 0x00, 0x03, 0x12, 0x03, 0x14, 0x12, 0x13, 0x62, 0x06, 0x70,
     0x72, 0x6f, 0x74, 0x6f, 0x33,
 ];
-include!("cosmos.app.v1alpha1.serde.rs");
 include!("cosmos.app.v1alpha1.tonic.rs");
 // @@protoc_insertion_point(module)

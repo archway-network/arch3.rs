@@ -1,6 +1,7 @@
 // @generated
 /// ClientState defines a solo machine client that tracks the current consensus
 /// state and if the client is frozen.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct ClientState {
@@ -27,6 +28,7 @@ impl ::prost::Name for ClientState {
 /// ConsensusState defines a solo machine consensus state. The sequence of a
 /// consensus state is contained in the "height" key used in storing the
 /// consensus state.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct ConsensusState {
@@ -49,6 +51,7 @@ impl ::prost::Name for ConsensusState {
     }
 }
 /// Header defines a solo machine consensus header
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct Header {
@@ -73,6 +76,7 @@ impl ::prost::Name for Header {
 }
 /// Misbehaviour defines misbehaviour for a solo machine which consists
 /// of a sequence and two signatures over different messages at that sequence.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct Misbehaviour {
@@ -94,6 +98,7 @@ impl ::prost::Name for Misbehaviour {
 }
 /// SignatureAndData contains a signature and the data signed over to create that
 /// signature.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct SignatureAndData {
@@ -115,6 +120,7 @@ impl ::prost::Name for SignatureAndData {
 }
 /// TimestampedSignatureData contains the signature data and the timestamp of the
 /// signature.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct TimestampedSignatureData {
@@ -131,6 +137,7 @@ impl ::prost::Name for TimestampedSignatureData {
     }
 }
 /// SignBytes defines the signed bytes used for signature verification.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct SignBytes {
@@ -155,6 +162,7 @@ impl ::prost::Name for SignBytes {
     }
 }
 /// HeaderData returns the SignBytes data for update verification.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct HeaderData {
@@ -173,6 +181,7 @@ impl ::prost::Name for HeaderData {
     }
 }
 /// ClientStateData returns the SignBytes data for client state verification.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct ClientStateData {
@@ -190,6 +199,7 @@ impl ::prost::Name for ClientStateData {
 }
 /// ConsensusStateData returns the SignBytes data for consensus state
 /// verification.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct ConsensusStateData {
@@ -207,6 +217,7 @@ impl ::prost::Name for ConsensusStateData {
 }
 /// ConnectionStateData returns the SignBytes data for connection state
 /// verification.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct ConnectionStateData {
@@ -225,6 +236,7 @@ impl ::prost::Name for ConnectionStateData {
 }
 /// ChannelStateData returns the SignBytes data for channel state
 /// verification.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct ChannelStateData {
@@ -242,6 +254,7 @@ impl ::prost::Name for ChannelStateData {
 }
 /// PacketCommitmentData returns the SignBytes data for packet commitment
 /// verification.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct PacketCommitmentData {
@@ -259,6 +272,7 @@ impl ::prost::Name for PacketCommitmentData {
 }
 /// PacketAcknowledgementData returns the SignBytes data for acknowledgement
 /// verification.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct PacketAcknowledgementData {
@@ -276,6 +290,7 @@ impl ::prost::Name for PacketAcknowledgementData {
 }
 /// PacketReceiptAbsenceData returns the SignBytes data for
 /// packet receipt absence verification.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct PacketReceiptAbsenceData {
@@ -291,6 +306,7 @@ impl ::prost::Name for PacketReceiptAbsenceData {
 }
 /// NextSequenceRecvData returns the SignBytes data for verification of the next
 /// sequence to be received.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct NextSequenceRecvData {
@@ -308,7 +324,19 @@ impl ::prost::Name for NextSequenceRecvData {
 }
 /// DataType defines the type of solo machine proof being created. This is done
 /// to preserve uniqueness of different data sign byte encodings.
-#[derive(Clone, Copy, Debug, PartialEq, Eq, Hash, PartialOrd, Ord, ::prost::Enumeration)]
+#[derive(
+    ::serde::Serialize,
+    ::serde::Deserialize,
+    Clone,
+    Copy,
+    Debug,
+    PartialEq,
+    Eq,
+    Hash,
+    PartialOrd,
+    Ord,
+    ::prost::Enumeration,
+)]
 #[repr(i32)]
 pub enum DataType {
     /// Default State
@@ -1041,5 +1069,4 @@ pub const FILE_DESCRIPTOR_SET: &[u8] = &[
     0x1b, 0x4c, 0x0a, 0x10, 0x0a, 0x08, 0x04, 0x0f, 0x02, 0x01, 0x08, 0xee, 0xfb, 0x03, 0x12, 0x04,
     0xbb, 0x01, 0x1c, 0x4b, 0x62, 0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
 ];
-include!("ibc.lightclients.solomachine.v2.serde.rs");
 // @@protoc_insertion_point(module)

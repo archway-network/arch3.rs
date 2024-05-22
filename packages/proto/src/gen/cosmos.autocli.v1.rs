@@ -1,5 +1,6 @@
 // @generated
 /// ModuleOptions describes the CLI options for a Cosmos SDK module.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct ModuleOptions {
@@ -18,6 +19,7 @@ impl ::prost::Name for ModuleOptions {
     }
 }
 /// ServiceCommandDescriptor describes a CLI command based on a protobuf service.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct ServiceCommandDescriptor {
@@ -47,6 +49,7 @@ impl ::prost::Name for ServiceCommandDescriptor {
 }
 /// RpcCommandOptions specifies options for commands generated from protobuf
 /// rpc methods.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct RpcCommandOptions {
@@ -109,6 +112,7 @@ impl ::prost::Name for RpcCommandOptions {
 /// By default, all request fields are configured as flags based on the
 /// kebab-case name of the field. Fields can be turned into positional arguments
 /// instead by using RpcCommandOptions.positional_args.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct FlagOptions {
@@ -145,6 +149,7 @@ impl ::prost::Name for FlagOptions {
     }
 }
 /// PositionalArgDescriptor describes a positional argument.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct PositionalArgDescriptor {
@@ -166,6 +171,7 @@ impl ::prost::Name for PositionalArgDescriptor {
     }
 }
 /// AppOptionsRequest is the RemoteInfoService/AppOptions request type.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct AppOptionsRequest {}
@@ -177,6 +183,7 @@ impl ::prost::Name for AppOptionsRequest {
     }
 }
 /// AppOptionsResponse is the RemoteInfoService/AppOptions response type.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct AppOptionsResponse {
@@ -701,6 +708,5 @@ pub const FILE_DESCRIPTOR_SET: &[u8] = &[
     0x04, 0x01, 0x02, 0x00, 0x01, 0x12, 0x03, 0x1a, 0x1d, 0x2b, 0x0a, 0x0c, 0x0a, 0x05, 0x04, 0x01,
     0x02, 0x00, 0x03, 0x12, 0x03, 0x1a, 0x2e, 0x2f, 0x62, 0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
 ];
-include!("cosmos.autocli.v1.serde.rs");
 include!("cosmos.autocli.v1.tonic.rs");
 // @@protoc_insertion_point(module)

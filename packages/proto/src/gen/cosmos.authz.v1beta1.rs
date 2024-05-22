@@ -1,6 +1,7 @@
 // @generated
 /// GenericAuthorization gives the grantee unrestricted permissions to execute
 /// the provided method on behalf of the granter's account.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct GenericAuthorization {
@@ -17,6 +18,7 @@ impl ::prost::Name for GenericAuthorization {
 }
 /// Grant gives permissions to execute
 /// the provide method with expiration time.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct Grant {
@@ -37,6 +39,7 @@ impl ::prost::Name for Grant {
 }
 /// GrantAuthorization extends a grant with both the addresses of the grantee and granter.
 /// It is used in genesis.proto and query.proto
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct GrantAuthorization {
@@ -57,6 +60,7 @@ impl ::prost::Name for GrantAuthorization {
     }
 }
 /// GrantQueueItem contains the list of TypeURL of a sdk.Msg.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct GrantQueueItem {
@@ -72,6 +76,7 @@ impl ::prost::Name for GrantQueueItem {
     }
 }
 /// EventGrant is emitted on Msg/Grant
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct EventGrant {
@@ -93,6 +98,7 @@ impl ::prost::Name for EventGrant {
     }
 }
 /// EventRevoke is emitted on Msg/Revoke
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct EventRevoke {
@@ -114,6 +120,7 @@ impl ::prost::Name for EventRevoke {
     }
 }
 /// GenesisState defines the authz module's genesis state.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct GenesisState {
@@ -128,6 +135,7 @@ impl ::prost::Name for GenesisState {
     }
 }
 /// QueryGrantsRequest is the request type for the Query/Grants RPC method.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct QueryGrantsRequest {
@@ -150,6 +158,7 @@ impl ::prost::Name for QueryGrantsRequest {
     }
 }
 /// QueryGrantsResponse is the response type for the Query/Authorizations RPC method.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct QueryGrantsResponse {
@@ -168,6 +177,7 @@ impl ::prost::Name for QueryGrantsResponse {
     }
 }
 /// QueryGranterGrantsRequest is the request type for the Query/GranterGrants RPC method.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct QueryGranterGrantsRequest {
@@ -185,6 +195,7 @@ impl ::prost::Name for QueryGranterGrantsRequest {
     }
 }
 /// QueryGranterGrantsResponse is the response type for the Query/GranterGrants RPC method.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct QueryGranterGrantsResponse {
@@ -203,6 +214,7 @@ impl ::prost::Name for QueryGranterGrantsResponse {
     }
 }
 /// QueryGranteeGrantsRequest is the request type for the Query/IssuedGrants RPC method.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct QueryGranteeGrantsRequest {
@@ -220,6 +232,7 @@ impl ::prost::Name for QueryGranteeGrantsRequest {
     }
 }
 /// QueryGranteeGrantsResponse is the response type for the Query/GranteeGrants RPC method.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct QueryGranteeGrantsResponse {
@@ -239,6 +252,7 @@ impl ::prost::Name for QueryGranteeGrantsResponse {
 }
 /// MsgGrant is a request type for Grant method. It declares authorization to the grantee
 /// on behalf of the granter with the provided expiration time.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct MsgGrant {
@@ -257,6 +271,7 @@ impl ::prost::Name for MsgGrant {
     }
 }
 /// MsgExecResponse defines the Msg/MsgExecResponse response type.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct MsgExecResponse {
@@ -273,6 +288,7 @@ impl ::prost::Name for MsgExecResponse {
 /// MsgExec attempts to execute the provided messages using
 /// authorizations granted to the grantee. Each message should have only
 /// one signer corresponding to the granter of the authorization.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct MsgExec {
@@ -292,6 +308,7 @@ impl ::prost::Name for MsgExec {
     }
 }
 /// MsgGrantResponse defines the Msg/MsgGrant response type.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct MsgGrantResponse {}
@@ -304,6 +321,7 @@ impl ::prost::Name for MsgGrantResponse {
 }
 /// MsgRevoke revokes any authorization with the provided sdk.Msg type on the
 /// granter's account with that has been granted to the grantee.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct MsgRevoke {
@@ -322,6 +340,7 @@ impl ::prost::Name for MsgRevoke {
     }
 }
 /// MsgRevokeResponse defines the Msg/MsgRevokeResponse response type.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct MsgRevokeResponse {}
@@ -1166,6 +1185,5 @@ pub const FILE_DESCRIPTOR_SET: &[u8] = &[
     0x6e, 0x73, 0x65, 0x20, 0x74, 0x79, 0x70, 0x65, 0x2e, 0x0a, 0x0a, 0x0a, 0x0a, 0x03, 0x04, 0x05,
     0x01, 0x12, 0x03, 0x50, 0x08, 0x19, 0x62, 0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
 ];
-include!("cosmos.authz.v1beta1.serde.rs");
 include!("cosmos.authz.v1beta1.tonic.rs");
 // @@protoc_insertion_point(module)

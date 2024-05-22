@@ -4,6 +4,7 @@
 /// if the y-coordinate is the lexicographically largest of the two associated with
 /// the x-coordinate. Otherwise the first byte is a 0x03.
 /// This prefix is followed with the x-coordinate.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct PubKey {
@@ -18,6 +19,7 @@ impl ::prost::Name for PubKey {
     }
 }
 /// PrivKey defines a secp256k1 private key.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct PrivKey {
@@ -117,5 +119,4 @@ pub const FILE_DESCRIPTOR_SET: &[u8] = &[
     0x01, 0x02, 0x00, 0x01, 0x12, 0x03, 0x24, 0x08, 0x0b, 0x0a, 0x0c, 0x0a, 0x05, 0x04, 0x01, 0x02,
     0x00, 0x03, 0x12, 0x03, 0x24, 0x0e, 0x0f, 0x62, 0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
 ];
-include!("cosmos.crypto.secp256k1.serde.rs");
 // @@protoc_insertion_point(module)

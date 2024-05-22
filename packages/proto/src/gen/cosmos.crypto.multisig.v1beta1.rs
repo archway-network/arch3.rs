@@ -2,6 +2,7 @@
 /// MultiSignature wraps the signatures from a multisig.LegacyAminoPubKey.
 /// See cosmos.tx.v1betata1.ModeInfo.Multi for how to specify which signers
 /// signed and with which modes.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct MultiSignature {
@@ -19,6 +20,7 @@ impl ::prost::Name for MultiSignature {
 /// This is used to ensure that the encoded data takes up a minimal amount of
 /// space after proto encoding.
 /// This is not thread safe, and is not intended for concurrent usage.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct CompactBitArray {
@@ -107,5 +109,4 @@ pub const FILE_DESCRIPTOR_SET: &[u8] = &[
     0x01, 0x02, 0x01, 0x03, 0x12, 0x03, 0x17, 0x1d, 0x1e, 0x62, 0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f,
     0x33,
 ];
-include!("cosmos.crypto.multisig.v1beta1.serde.rs");
 // @@protoc_insertion_point(module)

@@ -1,6 +1,7 @@
 // @generated
 /// Params defines the set of on-chain interchain accounts parameters.
 /// The following parameters may be used to disable the host submodule.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct Params {
@@ -22,6 +23,7 @@ impl ::prost::Name for Params {
     }
 }
 /// QueryParamsRequest is the request type for the Query/Params RPC method.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct QueryParamsRequest {}
@@ -36,6 +38,7 @@ impl ::prost::Name for QueryParamsRequest {
     }
 }
 /// QueryParamsResponse is the response type for the Query/Params RPC method.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct QueryParamsResponse {
@@ -192,6 +195,5 @@ pub const FILE_DESCRIPTOR_SET: &[u8] = &[
     0x04, 0x01, 0x02, 0x00, 0x03, 0x12, 0x03, 0x17, 0x12, 0x13, 0x62, 0x06, 0x70, 0x72, 0x6f, 0x74,
     0x6f, 0x33,
 ];
-include!("ibc.applications.interchain_accounts.host.v1.serde.rs");
 include!("ibc.applications.interchain_accounts.host.v1.tonic.rs");
 // @@protoc_insertion_point(module)

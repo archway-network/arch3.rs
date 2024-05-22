@@ -1,5 +1,6 @@
 // @generated
 /// GenesisState defines the ibc module's genesis state.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct GenesisState {
@@ -100,5 +101,4 @@ pub const FILE_DESCRIPTOR_SET: &[u8] = &[
     0x08, 0xee, 0xfb, 0x03, 0x12, 0x03, 0x15, 0x25, 0x56, 0x62, 0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f,
     0x33,
 ];
-include!("ibc.core.types.v1.serde.rs");
 // @@protoc_insertion_point(module)

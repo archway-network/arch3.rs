@@ -1,6 +1,7 @@
 // @generated
 /// CommitInfo defines commit information used by the multi-store when committing
 /// a version/height.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct CommitInfo {
@@ -20,6 +21,7 @@ impl ::prost::Name for CommitInfo {
 }
 /// StoreInfo defines store-specific commit information. It contains a reference
 /// between a store name and the commit ID.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct StoreInfo {
@@ -37,6 +39,7 @@ impl ::prost::Name for StoreInfo {
 }
 /// CommitID defines the commitment information when a specific store is
 /// committed.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct CommitId {
@@ -57,6 +60,7 @@ impl ::prost::Name for CommitId {
 /// Deletes
 ///
 /// Since: cosmos-sdk 0.43
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct StoreKvPair {
@@ -80,6 +84,7 @@ impl ::prost::Name for StoreKvPair {
 }
 /// BlockMetadata contains all the abci event data of a block
 /// the file streamer dump them into files together with the state changes.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct BlockMetadata {
@@ -102,6 +107,7 @@ pub struct BlockMetadata {
 /// Nested message and enum types in `BlockMetadata`.
 pub mod block_metadata {
     /// DeliverTx encapulate deliver tx request and response.
+    #[derive(::serde::Serialize, ::serde::Deserialize)]
     #[allow(clippy::derive_partial_eq_without_eq)]
     #[derive(Clone, PartialEq, ::prost::Message)]
     pub struct DeliverTx {
@@ -370,5 +376,4 @@ pub const FILE_DESCRIPTOR_SET: &[u8] = &[
     0x05, 0x04, 0x01, 0x02, 0x05, 0x03, 0x12, 0x03, 0x20, 0x35, 0x36, 0x62, 0x06, 0x70, 0x72, 0x6f,
     0x74, 0x6f, 0x33,
 ];
-include!("cosmos.base.store.v1beta1.serde.rs");
 // @@protoc_insertion_point(module)

@@ -1,6 +1,7 @@
 // @generated
 /// InterfaceDescriptor describes an interface type to be used with
 /// accepts_interface and implements_interface and declared by declare_interface.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct InterfaceDescriptor {
@@ -29,6 +30,7 @@ impl ::prost::Name for InterfaceDescriptor {
 /// Scalars should ideally define an encoding such that there is only one
 /// valid syntactical representation for a given semantic meaning,
 /// i.e. the encoding should be deterministic.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct ScalarDescriptor {
@@ -57,7 +59,19 @@ impl ::prost::Name for ScalarDescriptor {
         ::prost::alloc::format!("cosmos_proto.{}", Self::NAME)
     }
 }
-#[derive(Clone, Copy, Debug, PartialEq, Eq, Hash, PartialOrd, Ord, ::prost::Enumeration)]
+#[derive(
+    ::serde::Serialize,
+    ::serde::Deserialize,
+    Clone,
+    Copy,
+    Debug,
+    PartialEq,
+    Eq,
+    Hash,
+    PartialOrd,
+    Ord,
+    ::prost::Enumeration,
+)]
 #[repr(i32)]
 pub enum ScalarType {
     Unspecified = 0,
@@ -397,5 +411,4 @@ pub const FILE_DESCRIPTOR_SET: &[u8] = &[
     0x15, 0x0a, 0x0c, 0x0a, 0x05, 0x05, 0x00, 0x02, 0x02, 0x02, 0x12, 0x03, 0x5f, 0x18, 0x19, 0x62,
     0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
 ];
-include!("cosmos_proto.serde.rs");
 // @@protoc_insertion_point(module)

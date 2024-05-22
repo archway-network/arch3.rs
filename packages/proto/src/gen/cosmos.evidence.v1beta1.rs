@@ -1,6 +1,7 @@
 // @generated
 /// Equivocation implements the Evidence interface and defines evidence of double
 /// signing misbehavior.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct Equivocation {
@@ -25,6 +26,7 @@ impl ::prost::Name for Equivocation {
     }
 }
 /// GenesisState defines the evidence module's genesis state.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct GenesisState {
@@ -40,6 +42,7 @@ impl ::prost::Name for GenesisState {
     }
 }
 /// QueryEvidenceRequest is the request type for the Query/Evidence RPC method.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct QueryEvidenceRequest {
@@ -62,6 +65,7 @@ impl ::prost::Name for QueryEvidenceRequest {
     }
 }
 /// QueryEvidenceResponse is the response type for the Query/Evidence RPC method.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct QueryEvidenceResponse {
@@ -78,6 +82,7 @@ impl ::prost::Name for QueryEvidenceResponse {
 }
 /// QueryEvidenceRequest is the request type for the Query/AllEvidence RPC
 /// method.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct QueryAllEvidenceRequest {
@@ -94,6 +99,7 @@ impl ::prost::Name for QueryAllEvidenceRequest {
 }
 /// QueryAllEvidenceResponse is the response type for the Query/AllEvidence RPC
 /// method.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct QueryAllEvidenceResponse {
@@ -113,6 +119,7 @@ impl ::prost::Name for QueryAllEvidenceResponse {
 }
 /// MsgSubmitEvidence represents a message that supports submitting arbitrary
 /// Evidence of misbehavior such as equivocation or counterfactual signing.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct MsgSubmitEvidence {
@@ -131,6 +138,7 @@ impl ::prost::Name for MsgSubmitEvidence {
     }
 }
 /// MsgSubmitEvidenceResponse defines the Msg/SubmitEvidence response type.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct MsgSubmitEvidenceResponse {
@@ -543,6 +551,5 @@ pub const FILE_DESCRIPTOR_SET: &[u8] = &[
     0x04, 0x01, 0x02, 0x00, 0x01, 0x12, 0x03, 0x28, 0x08, 0x0c, 0x0a, 0x0c, 0x0a, 0x05, 0x04, 0x01,
     0x02, 0x00, 0x03, 0x12, 0x03, 0x28, 0x0f, 0x10, 0x62, 0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
 ];
-include!("cosmos.evidence.v1beta1.serde.rs");
 include!("cosmos.evidence.v1beta1.tonic.rs");
 // @@protoc_insertion_point(module)

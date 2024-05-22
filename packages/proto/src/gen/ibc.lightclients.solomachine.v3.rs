@@ -1,6 +1,7 @@
 // @generated
 /// ClientState defines a solo machine client that tracks the current consensus
 /// state and if the client is frozen.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct ClientState {
@@ -23,6 +24,7 @@ impl ::prost::Name for ClientState {
 /// ConsensusState defines a solo machine consensus state. The sequence of a
 /// consensus state is contained in the "height" key used in storing the
 /// consensus state.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct ConsensusState {
@@ -45,6 +47,7 @@ impl ::prost::Name for ConsensusState {
     }
 }
 /// Header defines a solo machine consensus header
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct Header {
@@ -66,6 +69,7 @@ impl ::prost::Name for Header {
 }
 /// Misbehaviour defines misbehaviour for a solo machine which consists
 /// of a sequence and two signatures over different messages at that sequence.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct Misbehaviour {
@@ -85,6 +89,7 @@ impl ::prost::Name for Misbehaviour {
 }
 /// SignatureAndData contains a signature and the data signed over to create that
 /// signature.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct SignatureAndData {
@@ -106,6 +111,7 @@ impl ::prost::Name for SignatureAndData {
 }
 /// TimestampedSignatureData contains the signature data and the timestamp of the
 /// signature.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct TimestampedSignatureData {
@@ -122,6 +128,7 @@ impl ::prost::Name for TimestampedSignatureData {
     }
 }
 /// SignBytes defines the signed bytes used for signature verification.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct SignBytes {
@@ -149,6 +156,7 @@ impl ::prost::Name for SignBytes {
     }
 }
 /// HeaderData returns the SignBytes data for update verification.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct HeaderData {
@@ -495,5 +503,4 @@ pub const FILE_DESCRIPTOR_SET: &[u8] = &[
     0x08, 0x12, 0x03, 0x61, 0x1d, 0x50, 0x0a, 0x0f, 0x0a, 0x08, 0x04, 0x07, 0x02, 0x01, 0x08, 0xee,
     0xfb, 0x03, 0x12, 0x03, 0x61, 0x1e, 0x4f, 0x62, 0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
 ];
-include!("ibc.lightclients.solomachine.v3.serde.rs");
 // @@protoc_insertion_point(module)

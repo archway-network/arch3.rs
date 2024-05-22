@@ -1,5 +1,6 @@
 // @generated
 /// ParameterChangeProposal defines a proposal to change one or more parameters.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct ParameterChangeProposal {
@@ -19,6 +20,7 @@ impl ::prost::Name for ParameterChangeProposal {
 }
 /// ParamChange defines an individual parameter change, for use in
 /// ParameterChangeProposal.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct ParamChange {
@@ -37,6 +39,7 @@ impl ::prost::Name for ParamChange {
     }
 }
 /// QueryParamsRequest is request type for the Query/Params RPC method.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct QueryParamsRequest {
@@ -55,6 +58,7 @@ impl ::prost::Name for QueryParamsRequest {
     }
 }
 /// QueryParamsResponse is response type for the Query/Params RPC method.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct QueryParamsResponse {
@@ -73,6 +77,7 @@ impl ::prost::Name for QueryParamsResponse {
 /// subspaces and all keys for a subspace.
 ///
 /// Since: cosmos-sdk 0.46
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct QuerySubspacesRequest {}
@@ -87,6 +92,7 @@ impl ::prost::Name for QuerySubspacesRequest {
 /// registered subspaces and all keys for a subspace.
 ///
 /// Since: cosmos-sdk 0.46
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct QuerySubspacesResponse {
@@ -104,6 +110,7 @@ impl ::prost::Name for QuerySubspacesResponse {
 /// the subspace.
 ///
 /// Since: cosmos-sdk 0.46
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct Subspace {
@@ -375,6 +382,5 @@ pub const FILE_DESCRIPTOR_SET: &[u8] = &[
     0x01, 0x01, 0x12, 0x03, 0x3d, 0x12, 0x16, 0x0a, 0x0c, 0x0a, 0x05, 0x04, 0x04, 0x02, 0x01, 0x03,
     0x12, 0x03, 0x3d, 0x1d, 0x1e, 0x62, 0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
 ];
-include!("cosmos.params.v1beta1.serde.rs");
 include!("cosmos.params.v1beta1.tonic.rs");
 // @@protoc_insertion_point(module)

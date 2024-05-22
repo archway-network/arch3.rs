@@ -1,5 +1,6 @@
 // @generated
 /// InterchainAccountPacketData is comprised of a raw transaction, type of transaction and optional memo field.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct InterchainAccountPacketData {
@@ -18,6 +19,7 @@ impl ::prost::Name for InterchainAccountPacketData {
     }
 }
 /// CosmosTx contains a list of sdk.Msg's. It should be used when sending transactions to an SDK host chain.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct CosmosTx {
@@ -33,7 +35,19 @@ impl ::prost::Name for CosmosTx {
 }
 /// Type defines a classification of message issued from a controller chain to its associated interchain accounts
 /// host
-#[derive(Clone, Copy, Debug, PartialEq, Eq, Hash, PartialOrd, Ord, ::prost::Enumeration)]
+#[derive(
+    ::serde::Serialize,
+    ::serde::Deserialize,
+    Clone,
+    Copy,
+    Debug,
+    PartialEq,
+    Eq,
+    Hash,
+    PartialOrd,
+    Ord,
+    ::prost::Enumeration,
+)]
 #[repr(i32)]
 pub enum Type {
     /// Default zero value enumeration
@@ -62,6 +76,7 @@ impl Type {
     }
 }
 /// An InterchainAccount is defined as a BaseAccount & the address of the account owner on the controller chain
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct InterchainAccount {
@@ -80,6 +95,7 @@ impl ::prost::Name for InterchainAccount {
 }
 /// Metadata defines a set of protocol specific data encoded into the ICS27 channel version bytestring
 /// See ICS004: <https://github.com/cosmos/ibc/tree/master/spec/core/ics-004-channel-and-packet-semantics#Versioning>
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct Metadata {
@@ -380,5 +396,4 @@ pub const FILE_DESCRIPTOR_SET: &[u8] = &[
     0x05, 0x04, 0x00, 0x02, 0x05, 0x03, 0x12, 0x03, 0x17, 0x13, 0x14, 0x62, 0x06, 0x70, 0x72, 0x6f,
     0x74, 0x6f, 0x33,
 ];
-include!("ibc.applications.interchain_accounts.v1.serde.rs");
 // @@protoc_insertion_point(module)

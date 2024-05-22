@@ -8,10 +8,9 @@ plugins:
       - extern_path=.google.protobuf.Duration=::pbjson_types::Duration
       - extern_path=.google.protobuf.Any=::pbjson_types::Any
       - extern_path=.google.protobuf.FileDescriptorProto=::pbjson_types::FileDescriptorProto
+      - type_attribute=.=#[derive(::serde::Serialize\, ::serde::Deserialize)]
       - enable_type_names
       - file_descriptor_set
-  - plugin: buf.build/community/neoeinstein-prost-serde:v0.2.3
-    out: .
   - plugin: buf.build/community/neoeinstein-tonic:v0.4.0
     out: .
     opt:

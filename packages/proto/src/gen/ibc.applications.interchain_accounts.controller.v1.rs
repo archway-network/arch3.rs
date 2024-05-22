@@ -1,6 +1,7 @@
 // @generated
 /// Params defines the set of on-chain interchain accounts parameters.
 /// The following parameters may be used to disable the controller submodule.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct Params {
@@ -19,6 +20,7 @@ impl ::prost::Name for Params {
     }
 }
 /// QueryInterchainAccountRequest is the request type for the Query/InterchainAccount RPC method.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct QueryInterchainAccountRequest {
@@ -38,6 +40,7 @@ impl ::prost::Name for QueryInterchainAccountRequest {
     }
 }
 /// QueryInterchainAccountResponse the response type for the Query/InterchainAccount RPC method.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct QueryInterchainAccountResponse {
@@ -55,6 +58,7 @@ impl ::prost::Name for QueryInterchainAccountResponse {
     }
 }
 /// QueryParamsRequest is the request type for the Query/Params RPC method.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct QueryParamsRequest {}
@@ -69,6 +73,7 @@ impl ::prost::Name for QueryParamsRequest {
     }
 }
 /// QueryParamsResponse is the response type for the Query/Params RPC method.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct QueryParamsResponse {
@@ -87,6 +92,7 @@ impl ::prost::Name for QueryParamsResponse {
     }
 }
 /// MsgRegisterInterchainAccount defines the payload for Msg/RegisterAccount
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct MsgRegisterInterchainAccount {
@@ -108,6 +114,7 @@ impl ::prost::Name for MsgRegisterInterchainAccount {
     }
 }
 /// MsgRegisterInterchainAccountResponse defines the response for Msg/RegisterAccount
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct MsgRegisterInterchainAccountResponse {
@@ -127,6 +134,7 @@ impl ::prost::Name for MsgRegisterInterchainAccountResponse {
     }
 }
 /// MsgSendTx defines the payload for Msg/SendTx
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct MsgSendTx {
@@ -152,6 +160,7 @@ impl ::prost::Name for MsgSendTx {
     }
 }
 /// MsgSendTxResponse defines the response for MsgSendTx
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct MsgSendTxResponse {
@@ -561,6 +570,5 @@ pub const FILE_DESCRIPTOR_SET: &[u8] = &[
     0x04, 0x03, 0x02, 0x00, 0x03, 0x12, 0x03, 0x31, 0x14, 0x15, 0x62, 0x06, 0x70, 0x72, 0x6f, 0x74,
     0x6f, 0x33,
 ];
-include!("ibc.applications.interchain_accounts.controller.v1.serde.rs");
 include!("ibc.applications.interchain_accounts.controller.v1.tonic.rs");
 // @@protoc_insertion_point(module)

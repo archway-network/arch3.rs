@@ -1,6 +1,7 @@
 // @generated
 /// Member represents a group member with an account address,
 /// non-zero weight, metadata and added_at timestamp.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct Member {
@@ -27,6 +28,7 @@ impl ::prost::Name for Member {
 /// MemberRequest represents a group member to be used in Msg server requests.
 /// Contrary to `Member`, it doesn't have any `added_at` field
 /// since this field cannot be set as part of requests.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct MemberRequest {
@@ -53,6 +55,7 @@ impl ::prost::Name for MemberRequest {
 ///     `threshold`.
 /// 2. The voting and execution periods of the proposal respect the parameters
 ///     given by `windows`.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct ThresholdDecisionPolicy {
@@ -77,6 +80,7 @@ impl ::prost::Name for ThresholdDecisionPolicy {
 ///     is greater or equal than the given `percentage`.
 /// 2. The voting and execution periods of the proposal respect the parameters
 ///     given by `windows`.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct PercentageDecisionPolicy {
@@ -96,6 +100,7 @@ impl ::prost::Name for PercentageDecisionPolicy {
     }
 }
 /// DecisionPolicyWindows defines the different windows for voting and execution.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct DecisionPolicyWindows {
@@ -129,6 +134,7 @@ impl ::prost::Name for DecisionPolicyWindows {
 //
 
 /// GroupInfo represents the high-level on-chain information for a group.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct GroupInfo {
@@ -162,6 +168,7 @@ impl ::prost::Name for GroupInfo {
     }
 }
 /// GroupMember represents the relationship between a group and a member.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct GroupMember {
@@ -180,6 +187,7 @@ impl ::prost::Name for GroupMember {
     }
 }
 /// GroupPolicyInfo represents the high-level on-chain information for a group policy.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct GroupPolicyInfo {
@@ -219,6 +227,7 @@ impl ::prost::Name for GroupPolicyInfo {
 /// for a group policy to decide upon.
 /// A proposal consists of a set of `sdk.Msg`s that will be executed if the proposal
 /// passes as well as some optional metadata associated with the proposal.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct Proposal {
@@ -290,6 +299,7 @@ impl ::prost::Name for Proposal {
     }
 }
 /// TallyResult represents the sum of weighted votes for each vote option.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct TallyResult {
@@ -314,6 +324,7 @@ impl ::prost::Name for TallyResult {
     }
 }
 /// Vote represents a vote for a proposal.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct Vote {
@@ -341,7 +352,19 @@ impl ::prost::Name for Vote {
     }
 }
 /// VoteOption enumerates the valid vote options for a given proposal.
-#[derive(Clone, Copy, Debug, PartialEq, Eq, Hash, PartialOrd, Ord, ::prost::Enumeration)]
+#[derive(
+    ::serde::Serialize,
+    ::serde::Deserialize,
+    Clone,
+    Copy,
+    Debug,
+    PartialEq,
+    Eq,
+    Hash,
+    PartialOrd,
+    Ord,
+    ::prost::Enumeration,
+)]
 #[repr(i32)]
 pub enum VoteOption {
     /// VOTE_OPTION_UNSPECIFIED defines an unspecified vote option which will
@@ -383,7 +406,19 @@ impl VoteOption {
     }
 }
 /// ProposalStatus defines proposal statuses.
-#[derive(Clone, Copy, Debug, PartialEq, Eq, Hash, PartialOrd, Ord, ::prost::Enumeration)]
+#[derive(
+    ::serde::Serialize,
+    ::serde::Deserialize,
+    Clone,
+    Copy,
+    Debug,
+    PartialEq,
+    Eq,
+    Hash,
+    PartialOrd,
+    Ord,
+    ::prost::Enumeration,
+)]
 #[repr(i32)]
 pub enum ProposalStatus {
     /// An empty value is invalid and not allowed.
@@ -432,7 +467,19 @@ impl ProposalStatus {
     }
 }
 /// ProposalExecutorResult defines types of proposal executor results.
-#[derive(Clone, Copy, Debug, PartialEq, Eq, Hash, PartialOrd, Ord, ::prost::Enumeration)]
+#[derive(
+    ::serde::Serialize,
+    ::serde::Deserialize,
+    Clone,
+    Copy,
+    Debug,
+    PartialEq,
+    Eq,
+    Hash,
+    PartialOrd,
+    Ord,
+    ::prost::Enumeration,
+)]
 #[repr(i32)]
 pub enum ProposalExecutorResult {
     /// An empty value is not allowed.
@@ -469,6 +516,7 @@ impl ProposalExecutorResult {
     }
 }
 /// EventCreateGroup is an event emitted when a group is created.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct EventCreateGroup {
@@ -484,6 +532,7 @@ impl ::prost::Name for EventCreateGroup {
     }
 }
 /// EventUpdateGroup is an event emitted when a group is updated.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct EventUpdateGroup {
@@ -499,6 +548,7 @@ impl ::prost::Name for EventUpdateGroup {
     }
 }
 /// EventCreateGroupPolicy is an event emitted when a group policy is created.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct EventCreateGroupPolicy {
@@ -514,6 +564,7 @@ impl ::prost::Name for EventCreateGroupPolicy {
     }
 }
 /// EventUpdateGroupPolicy is an event emitted when a group policy is updated.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct EventUpdateGroupPolicy {
@@ -529,6 +580,7 @@ impl ::prost::Name for EventUpdateGroupPolicy {
     }
 }
 /// EventSubmitProposal is an event emitted when a proposal is created.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct EventSubmitProposal {
@@ -544,6 +596,7 @@ impl ::prost::Name for EventSubmitProposal {
     }
 }
 /// EventWithdrawProposal is an event emitted when a proposal is withdrawn.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct EventWithdrawProposal {
@@ -559,6 +612,7 @@ impl ::prost::Name for EventWithdrawProposal {
     }
 }
 /// EventVote is an event emitted when a voter votes on a proposal.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct EventVote {
@@ -574,6 +628,7 @@ impl ::prost::Name for EventVote {
     }
 }
 /// EventExec is an event emitted when a proposal is executed.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct EventExec {
@@ -595,6 +650,7 @@ impl ::prost::Name for EventExec {
     }
 }
 /// EventLeaveGroup is an event emitted when group member leaves the group.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct EventLeaveGroup {
@@ -613,6 +669,7 @@ impl ::prost::Name for EventLeaveGroup {
     }
 }
 /// EventProposalPruned is an event emitted when a proposal is pruned.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct EventProposalPruned {
@@ -634,6 +691,7 @@ impl ::prost::Name for EventProposalPruned {
     }
 }
 /// GenesisState defines the group module's genesis state.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct GenesisState {
@@ -673,6 +731,7 @@ impl ::prost::Name for GenesisState {
     }
 }
 /// QueryGroupInfoRequest is the Query/GroupInfo request type.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct QueryGroupInfoRequest {
@@ -688,6 +747,7 @@ impl ::prost::Name for QueryGroupInfoRequest {
     }
 }
 /// QueryGroupInfoResponse is the Query/GroupInfo response type.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct QueryGroupInfoResponse {
@@ -703,6 +763,7 @@ impl ::prost::Name for QueryGroupInfoResponse {
     }
 }
 /// QueryGroupPolicyInfoRequest is the Query/GroupPolicyInfo request type.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct QueryGroupPolicyInfoRequest {
@@ -718,6 +779,7 @@ impl ::prost::Name for QueryGroupPolicyInfoRequest {
     }
 }
 /// QueryGroupPolicyInfoResponse is the Query/GroupPolicyInfo response type.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct QueryGroupPolicyInfoResponse {
@@ -733,6 +795,7 @@ impl ::prost::Name for QueryGroupPolicyInfoResponse {
     }
 }
 /// QueryGroupMembersRequest is the Query/GroupMembers request type.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct QueryGroupMembersRequest {
@@ -751,6 +814,7 @@ impl ::prost::Name for QueryGroupMembersRequest {
     }
 }
 /// QueryGroupMembersResponse is the Query/GroupMembersResponse response type.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct QueryGroupMembersResponse {
@@ -769,6 +833,7 @@ impl ::prost::Name for QueryGroupMembersResponse {
     }
 }
 /// QueryGroupsByAdminRequest is the Query/GroupsByAdmin request type.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct QueryGroupsByAdminRequest {
@@ -787,6 +852,7 @@ impl ::prost::Name for QueryGroupsByAdminRequest {
     }
 }
 /// QueryGroupsByAdminResponse is the Query/GroupsByAdminResponse response type.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct QueryGroupsByAdminResponse {
@@ -805,6 +871,7 @@ impl ::prost::Name for QueryGroupsByAdminResponse {
     }
 }
 /// QueryGroupPoliciesByGroupRequest is the Query/GroupPoliciesByGroup request type.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct QueryGroupPoliciesByGroupRequest {
@@ -823,6 +890,7 @@ impl ::prost::Name for QueryGroupPoliciesByGroupRequest {
     }
 }
 /// QueryGroupPoliciesByGroupResponse is the Query/GroupPoliciesByGroup response type.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct QueryGroupPoliciesByGroupResponse {
@@ -841,6 +909,7 @@ impl ::prost::Name for QueryGroupPoliciesByGroupResponse {
     }
 }
 /// QueryGroupPoliciesByAdminRequest is the Query/GroupPoliciesByAdmin request type.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct QueryGroupPoliciesByAdminRequest {
@@ -859,6 +928,7 @@ impl ::prost::Name for QueryGroupPoliciesByAdminRequest {
     }
 }
 /// QueryGroupPoliciesByAdminResponse is the Query/GroupPoliciesByAdmin response type.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct QueryGroupPoliciesByAdminResponse {
@@ -877,6 +947,7 @@ impl ::prost::Name for QueryGroupPoliciesByAdminResponse {
     }
 }
 /// QueryProposalRequest is the Query/Proposal request type.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct QueryProposalRequest {
@@ -892,6 +963,7 @@ impl ::prost::Name for QueryProposalRequest {
     }
 }
 /// QueryProposalResponse is the Query/Proposal response type.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct QueryProposalResponse {
@@ -907,6 +979,7 @@ impl ::prost::Name for QueryProposalResponse {
     }
 }
 /// QueryProposalsByGroupPolicyRequest is the Query/ProposalByGroupPolicy request type.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct QueryProposalsByGroupPolicyRequest {
@@ -925,6 +998,7 @@ impl ::prost::Name for QueryProposalsByGroupPolicyRequest {
     }
 }
 /// QueryProposalsByGroupPolicyResponse is the Query/ProposalByGroupPolicy response type.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct QueryProposalsByGroupPolicyResponse {
@@ -943,6 +1017,7 @@ impl ::prost::Name for QueryProposalsByGroupPolicyResponse {
     }
 }
 /// QueryVoteByProposalVoterRequest is the Query/VoteByProposalVoter request type.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct QueryVoteByProposalVoterRequest {
@@ -961,6 +1036,7 @@ impl ::prost::Name for QueryVoteByProposalVoterRequest {
     }
 }
 /// QueryVoteByProposalVoterResponse is the Query/VoteByProposalVoter response type.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct QueryVoteByProposalVoterResponse {
@@ -976,6 +1052,7 @@ impl ::prost::Name for QueryVoteByProposalVoterResponse {
     }
 }
 /// QueryVotesByProposalRequest is the Query/VotesByProposal request type.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct QueryVotesByProposalRequest {
@@ -994,6 +1071,7 @@ impl ::prost::Name for QueryVotesByProposalRequest {
     }
 }
 /// QueryVotesByProposalResponse is the Query/VotesByProposal response type.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct QueryVotesByProposalResponse {
@@ -1012,6 +1090,7 @@ impl ::prost::Name for QueryVotesByProposalResponse {
     }
 }
 /// QueryVotesByVoterRequest is the Query/VotesByVoter request type.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct QueryVotesByVoterRequest {
@@ -1030,6 +1109,7 @@ impl ::prost::Name for QueryVotesByVoterRequest {
     }
 }
 /// QueryVotesByVoterResponse is the Query/VotesByVoter response type.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct QueryVotesByVoterResponse {
@@ -1048,6 +1128,7 @@ impl ::prost::Name for QueryVotesByVoterResponse {
     }
 }
 /// QueryGroupsByMemberRequest is the Query/GroupsByMember request type.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct QueryGroupsByMemberRequest {
@@ -1066,6 +1147,7 @@ impl ::prost::Name for QueryGroupsByMemberRequest {
     }
 }
 /// QueryGroupsByMemberResponse is the Query/GroupsByMember response type.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct QueryGroupsByMemberResponse {
@@ -1084,6 +1166,7 @@ impl ::prost::Name for QueryGroupsByMemberResponse {
     }
 }
 /// QueryTallyResultRequest is the Query/TallyResult request type.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct QueryTallyResultRequest {
@@ -1099,6 +1182,7 @@ impl ::prost::Name for QueryTallyResultRequest {
     }
 }
 /// QueryTallyResultResponse is the Query/TallyResult response type.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct QueryTallyResultResponse {
@@ -1116,6 +1200,7 @@ impl ::prost::Name for QueryTallyResultResponse {
 /// QueryGroupsRequest is the Query/Groups request type.
 ///
 /// Since: cosmos-sdk 0.47.1
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct QueryGroupsRequest {
@@ -1133,6 +1218,7 @@ impl ::prost::Name for QueryGroupsRequest {
 /// QueryGroupsResponse is the Query/Groups response type.
 ///
 /// Since: cosmos-sdk 0.47.1
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct QueryGroupsResponse {
@@ -1155,6 +1241,7 @@ impl ::prost::Name for QueryGroupsResponse {
 //
 
 /// MsgCreateGroup is the Msg/CreateGroup request type.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct MsgCreateGroup {
@@ -1176,6 +1263,7 @@ impl ::prost::Name for MsgCreateGroup {
     }
 }
 /// MsgCreateGroupResponse is the Msg/CreateGroup response type.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct MsgCreateGroupResponse {
@@ -1191,6 +1279,7 @@ impl ::prost::Name for MsgCreateGroupResponse {
     }
 }
 /// MsgUpdateGroupMembers is the Msg/UpdateGroupMembers request type.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct MsgUpdateGroupMembers {
@@ -1213,6 +1302,7 @@ impl ::prost::Name for MsgUpdateGroupMembers {
     }
 }
 /// MsgUpdateGroupMembersResponse is the Msg/UpdateGroupMembers response type.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct MsgUpdateGroupMembersResponse {}
@@ -1224,6 +1314,7 @@ impl ::prost::Name for MsgUpdateGroupMembersResponse {
     }
 }
 /// MsgUpdateGroupAdmin is the Msg/UpdateGroupAdmin request type.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct MsgUpdateGroupAdmin {
@@ -1245,6 +1336,7 @@ impl ::prost::Name for MsgUpdateGroupAdmin {
     }
 }
 /// MsgUpdateGroupAdminResponse is the Msg/UpdateGroupAdmin response type.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct MsgUpdateGroupAdminResponse {}
@@ -1256,6 +1348,7 @@ impl ::prost::Name for MsgUpdateGroupAdminResponse {
     }
 }
 /// MsgUpdateGroupMetadata is the Msg/UpdateGroupMetadata request type.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct MsgUpdateGroupMetadata {
@@ -1277,6 +1370,7 @@ impl ::prost::Name for MsgUpdateGroupMetadata {
     }
 }
 /// MsgUpdateGroupMetadataResponse is the Msg/UpdateGroupMetadata response type.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct MsgUpdateGroupMetadataResponse {}
@@ -1292,6 +1386,7 @@ impl ::prost::Name for MsgUpdateGroupMetadataResponse {
 //
 
 /// MsgCreateGroupPolicy is the Msg/CreateGroupPolicy request type.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct MsgCreateGroupPolicy {
@@ -1316,6 +1411,7 @@ impl ::prost::Name for MsgCreateGroupPolicy {
     }
 }
 /// MsgCreateGroupPolicyResponse is the Msg/CreateGroupPolicy response type.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct MsgCreateGroupPolicyResponse {
@@ -1331,6 +1427,7 @@ impl ::prost::Name for MsgCreateGroupPolicyResponse {
     }
 }
 /// MsgUpdateGroupPolicyAdmin is the Msg/UpdateGroupPolicyAdmin request type.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct MsgUpdateGroupPolicyAdmin {
@@ -1352,6 +1449,7 @@ impl ::prost::Name for MsgUpdateGroupPolicyAdmin {
     }
 }
 /// MsgUpdateGroupPolicyAdminResponse is the Msg/UpdateGroupPolicyAdmin response type.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct MsgUpdateGroupPolicyAdminResponse {}
@@ -1363,6 +1461,7 @@ impl ::prost::Name for MsgUpdateGroupPolicyAdminResponse {
     }
 }
 /// MsgCreateGroupWithPolicy is the Msg/CreateGroupWithPolicy request type.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct MsgCreateGroupWithPolicy {
@@ -1394,6 +1493,7 @@ impl ::prost::Name for MsgCreateGroupWithPolicy {
     }
 }
 /// MsgCreateGroupWithPolicyResponse is the Msg/CreateGroupWithPolicy response type.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct MsgCreateGroupWithPolicyResponse {
@@ -1412,6 +1512,7 @@ impl ::prost::Name for MsgCreateGroupWithPolicyResponse {
     }
 }
 /// MsgUpdateGroupPolicyDecisionPolicy is the Msg/UpdateGroupPolicyDecisionPolicy request type.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct MsgUpdateGroupPolicyDecisionPolicy {
@@ -1433,6 +1534,7 @@ impl ::prost::Name for MsgUpdateGroupPolicyDecisionPolicy {
     }
 }
 /// MsgUpdateGroupPolicyDecisionPolicyResponse is the Msg/UpdateGroupPolicyDecisionPolicy response type.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct MsgUpdateGroupPolicyDecisionPolicyResponse {}
@@ -1444,6 +1546,7 @@ impl ::prost::Name for MsgUpdateGroupPolicyDecisionPolicyResponse {
     }
 }
 /// MsgUpdateGroupPolicyMetadata is the Msg/UpdateGroupPolicyMetadata request type.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct MsgUpdateGroupPolicyMetadata {
@@ -1465,6 +1568,7 @@ impl ::prost::Name for MsgUpdateGroupPolicyMetadata {
     }
 }
 /// MsgUpdateGroupPolicyMetadataResponse is the Msg/UpdateGroupPolicyMetadata response type.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct MsgUpdateGroupPolicyMetadataResponse {}
@@ -1476,6 +1580,7 @@ impl ::prost::Name for MsgUpdateGroupPolicyMetadataResponse {
     }
 }
 /// MsgSubmitProposal is the Msg/SubmitProposal request type.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct MsgSubmitProposal {
@@ -1516,6 +1621,7 @@ impl ::prost::Name for MsgSubmitProposal {
     }
 }
 /// MsgSubmitProposalResponse is the Msg/SubmitProposal response type.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct MsgSubmitProposalResponse {
@@ -1531,6 +1637,7 @@ impl ::prost::Name for MsgSubmitProposalResponse {
     }
 }
 /// MsgWithdrawProposal is the Msg/WithdrawProposal request type.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct MsgWithdrawProposal {
@@ -1549,6 +1656,7 @@ impl ::prost::Name for MsgWithdrawProposal {
     }
 }
 /// MsgWithdrawProposalResponse is the Msg/WithdrawProposal response type.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct MsgWithdrawProposalResponse {}
@@ -1560,6 +1668,7 @@ impl ::prost::Name for MsgWithdrawProposalResponse {
     }
 }
 /// MsgVote is the Msg/Vote request type.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct MsgVote {
@@ -1588,6 +1697,7 @@ impl ::prost::Name for MsgVote {
     }
 }
 /// MsgVoteResponse is the Msg/Vote response type.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct MsgVoteResponse {}
@@ -1599,6 +1709,7 @@ impl ::prost::Name for MsgVoteResponse {
     }
 }
 /// MsgExec is the Msg/Exec request type.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct MsgExec {
@@ -1617,6 +1728,7 @@ impl ::prost::Name for MsgExec {
     }
 }
 /// MsgExecResponse is the Msg/Exec request type.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct MsgExecResponse {
@@ -1632,6 +1744,7 @@ impl ::prost::Name for MsgExecResponse {
     }
 }
 /// MsgLeaveGroup is the Msg/LeaveGroup request type.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct MsgLeaveGroup {
@@ -1650,6 +1763,7 @@ impl ::prost::Name for MsgLeaveGroup {
     }
 }
 /// MsgLeaveGroupResponse is the Msg/LeaveGroup response type.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct MsgLeaveGroupResponse {}
@@ -1665,7 +1779,19 @@ impl ::prost::Name for MsgLeaveGroupResponse {
 //
 
 /// Exec defines modes of execution of a proposal on creation or on new vote.
-#[derive(Clone, Copy, Debug, PartialEq, Eq, Hash, PartialOrd, Ord, ::prost::Enumeration)]
+#[derive(
+    ::serde::Serialize,
+    ::serde::Deserialize,
+    Clone,
+    Copy,
+    Debug,
+    PartialEq,
+    Eq,
+    Hash,
+    PartialOrd,
+    Ord,
+    ::prost::Enumeration,
+)]
 #[repr(i32)]
 pub enum Exec {
     /// An empty value means that there should be a separate
@@ -5407,6 +5533,5 @@ pub const FILE_DESCRIPTOR_SET: &[u8] = &[
     0x6e, 0x73, 0x65, 0x20, 0x74, 0x79, 0x70, 0x65, 0x2e, 0x0a, 0x0a, 0x0b, 0x0a, 0x03, 0x04, 0x1b,
     0x01, 0x12, 0x04, 0x89, 0x03, 0x08, 0x1d, 0x62, 0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
 ];
-include!("cosmos.group.v1.serde.rs");
 include!("cosmos.group.v1.tonic.rs");
 // @@protoc_insertion_point(module)

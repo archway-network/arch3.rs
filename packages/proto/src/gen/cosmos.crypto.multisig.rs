@@ -2,6 +2,7 @@
 /// LegacyAminoPubKey specifies a public key type
 /// which nests multiple public keys and a threshold,
 /// it uses legacy amino address rules.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct LegacyAminoPubKey {
@@ -111,5 +112,4 @@ pub const FILE_DESCRIPTOR_SET: &[u8] = &[
     0x0a, 0x09, 0x04, 0x00, 0x02, 0x01, 0x08, 0xf4, 0x8c, 0xa6, 0x05, 0x12, 0x03, 0x1c, 0x54, 0x72,
     0x62, 0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
 ];
-include!("cosmos.crypto.multisig.serde.rs");
 // @@protoc_insertion_point(module)

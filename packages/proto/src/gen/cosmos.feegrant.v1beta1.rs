@@ -1,6 +1,7 @@
 // @generated
 /// BasicAllowance implements Allowance with a one-time grant of coins
 /// that optionally expires. The grantee can use up to SpendLimit to cover fees.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct BasicAllowance {
@@ -22,6 +23,7 @@ impl ::prost::Name for BasicAllowance {
 }
 /// PeriodicAllowance extends Allowance to allow for both a maximum cap,
 /// as well as a limit per time period.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct PeriodicAllowance {
@@ -53,6 +55,7 @@ impl ::prost::Name for PeriodicAllowance {
     }
 }
 /// AllowedMsgAllowance creates allowance only for specified message types.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct AllowedMsgAllowance {
@@ -71,6 +74,7 @@ impl ::prost::Name for AllowedMsgAllowance {
     }
 }
 /// Grant is stored in the KVStore to record a grant with full context
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct Grant {
@@ -92,6 +96,7 @@ impl ::prost::Name for Grant {
     }
 }
 /// GenesisState contains a set of fee allowances, persisted from the store
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct GenesisState {
@@ -106,6 +111,7 @@ impl ::prost::Name for GenesisState {
     }
 }
 /// QueryAllowanceRequest is the request type for the Query/Allowance RPC method.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct QueryAllowanceRequest {
@@ -124,6 +130,7 @@ impl ::prost::Name for QueryAllowanceRequest {
     }
 }
 /// QueryAllowanceResponse is the response type for the Query/Allowance RPC method.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct QueryAllowanceResponse {
@@ -139,6 +146,7 @@ impl ::prost::Name for QueryAllowanceResponse {
     }
 }
 /// QueryAllowancesRequest is the request type for the Query/Allowances RPC method.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct QueryAllowancesRequest {
@@ -156,6 +164,7 @@ impl ::prost::Name for QueryAllowancesRequest {
     }
 }
 /// QueryAllowancesResponse is the response type for the Query/Allowances RPC method.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct QueryAllowancesResponse {
@@ -176,6 +185,7 @@ impl ::prost::Name for QueryAllowancesResponse {
 /// QueryAllowancesByGranterRequest is the request type for the Query/AllowancesByGranter RPC method.
 ///
 /// Since: cosmos-sdk 0.46
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct QueryAllowancesByGranterRequest {
@@ -195,6 +205,7 @@ impl ::prost::Name for QueryAllowancesByGranterRequest {
 /// QueryAllowancesByGranterResponse is the response type for the Query/AllowancesByGranter RPC method.
 ///
 /// Since: cosmos-sdk 0.46
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct QueryAllowancesByGranterResponse {
@@ -214,6 +225,7 @@ impl ::prost::Name for QueryAllowancesByGranterResponse {
 }
 /// MsgGrantAllowance adds permission for Grantee to spend up to Allowance
 /// of fees from the account of Granter.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct MsgGrantAllowance {
@@ -235,6 +247,7 @@ impl ::prost::Name for MsgGrantAllowance {
     }
 }
 /// MsgGrantAllowanceResponse defines the Msg/GrantAllowanceResponse response type.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct MsgGrantAllowanceResponse {}
@@ -246,6 +259,7 @@ impl ::prost::Name for MsgGrantAllowanceResponse {
     }
 }
 /// MsgRevokeAllowance removes any existing Allowance from Granter to Grantee.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct MsgRevokeAllowance {
@@ -264,6 +278,7 @@ impl ::prost::Name for MsgRevokeAllowance {
     }
 }
 /// MsgRevokeAllowanceResponse defines the Msg/RevokeAllowanceResponse response type.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct MsgRevokeAllowanceResponse {}
@@ -1078,6 +1093,5 @@ pub const FILE_DESCRIPTOR_SET: &[u8] = &[
     0x0a, 0x0a, 0x0a, 0x0a, 0x03, 0x04, 0x03, 0x01, 0x12, 0x03, 0x38, 0x08, 0x22, 0x62, 0x06, 0x70,
     0x72, 0x6f, 0x74, 0x6f, 0x33,
 ];
-include!("cosmos.feegrant.v1beta1.serde.rs");
 include!("cosmos.feegrant.v1beta1.tonic.rs");
 // @@protoc_insertion_point(module)

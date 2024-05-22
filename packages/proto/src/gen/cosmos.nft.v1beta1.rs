@@ -1,5 +1,6 @@
 // @generated
 /// EventSend is emitted on Msg/Send
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct EventSend {
@@ -24,6 +25,7 @@ impl ::prost::Name for EventSend {
     }
 }
 /// EventMint is emitted on Mint
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct EventMint {
@@ -45,6 +47,7 @@ impl ::prost::Name for EventMint {
     }
 }
 /// EventBurn is emitted on Burn
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct EventBurn {
@@ -66,6 +69,7 @@ impl ::prost::Name for EventBurn {
     }
 }
 /// Class defines the class of the nft type.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct Class {
@@ -99,6 +103,7 @@ impl ::prost::Name for Class {
     }
 }
 /// NFT defines the NFT.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct Nft {
@@ -126,6 +131,7 @@ impl ::prost::Name for Nft {
     }
 }
 /// GenesisState defines the nft module's genesis state.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct GenesisState {
@@ -144,6 +150,7 @@ impl ::prost::Name for GenesisState {
     }
 }
 /// Entry Defines all nft owned by a person
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct Entry {
@@ -162,6 +169,7 @@ impl ::prost::Name for Entry {
     }
 }
 /// QueryBalanceRequest is the request type for the Query/Balance RPC method
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct QueryBalanceRequest {
@@ -180,6 +188,7 @@ impl ::prost::Name for QueryBalanceRequest {
     }
 }
 /// QueryBalanceResponse is the response type for the Query/Balance RPC method
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct QueryBalanceResponse {
@@ -195,6 +204,7 @@ impl ::prost::Name for QueryBalanceResponse {
     }
 }
 /// QueryOwnerRequest is the request type for the Query/Owner RPC method
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct QueryOwnerRequest {
@@ -213,6 +223,7 @@ impl ::prost::Name for QueryOwnerRequest {
     }
 }
 /// QueryOwnerResponse is the response type for the Query/Owner RPC method
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct QueryOwnerResponse {
@@ -228,6 +239,7 @@ impl ::prost::Name for QueryOwnerResponse {
     }
 }
 /// QuerySupplyRequest is the request type for the Query/Supply RPC method
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct QuerySupplyRequest {
@@ -243,6 +255,7 @@ impl ::prost::Name for QuerySupplyRequest {
     }
 }
 /// QuerySupplyResponse is the response type for the Query/Supply RPC method
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct QuerySupplyResponse {
@@ -258,6 +271,7 @@ impl ::prost::Name for QuerySupplyResponse {
     }
 }
 /// QueryNFTstRequest is the request type for the Query/NFTs RPC method
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct QueryNfTsRequest {
@@ -279,6 +293,7 @@ impl ::prost::Name for QueryNfTsRequest {
     }
 }
 /// QueryNFTsResponse is the response type for the Query/NFTs RPC methods
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct QueryNfTsResponse {
@@ -297,6 +312,7 @@ impl ::prost::Name for QueryNfTsResponse {
     }
 }
 /// QueryNFTRequest is the request type for the Query/NFT RPC method
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct QueryNftRequest {
@@ -315,6 +331,7 @@ impl ::prost::Name for QueryNftRequest {
     }
 }
 /// QueryNFTResponse is the response type for the Query/NFT RPC method
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct QueryNftResponse {
@@ -330,6 +347,7 @@ impl ::prost::Name for QueryNftResponse {
     }
 }
 /// QueryClassRequest is the request type for the Query/Class RPC method
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct QueryClassRequest {
@@ -345,6 +363,7 @@ impl ::prost::Name for QueryClassRequest {
     }
 }
 /// QueryClassResponse is the response type for the Query/Class RPC method
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct QueryClassResponse {
@@ -360,6 +379,7 @@ impl ::prost::Name for QueryClassResponse {
     }
 }
 /// QueryClassesRequest is the request type for the Query/Classes RPC method
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct QueryClassesRequest {
@@ -375,6 +395,7 @@ impl ::prost::Name for QueryClassesRequest {
     }
 }
 /// QueryClassesResponse is the response type for the Query/Classes RPC method
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct QueryClassesResponse {
@@ -393,6 +414,7 @@ impl ::prost::Name for QueryClassesResponse {
     }
 }
 /// MsgSend represents a message to send a nft from one account to another account.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct MsgSend {
@@ -417,6 +439,7 @@ impl ::prost::Name for MsgSend {
     }
 }
 /// MsgSendResponse defines the Msg/Send response type.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct MsgSendResponse {}
@@ -1258,6 +1281,5 @@ pub const FILE_DESCRIPTOR_SET: &[u8] = &[
     0x2e, 0x0a, 0x0a, 0x0a, 0x0a, 0x03, 0x04, 0x01, 0x01, 0x12, 0x03, 0x21, 0x08, 0x17, 0x62, 0x06,
     0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
 ];
-include!("cosmos.nft.v1beta1.serde.rs");
 include!("cosmos.nft.v1beta1.tonic.rs");
 // @@protoc_insertion_point(module)

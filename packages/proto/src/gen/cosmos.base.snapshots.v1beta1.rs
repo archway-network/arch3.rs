@@ -1,5 +1,6 @@
 // @generated
 /// Snapshot contains Tendermint state sync snapshot info.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct Snapshot {
@@ -22,6 +23,7 @@ impl ::prost::Name for Snapshot {
     }
 }
 /// Metadata contains SDK-specific snapshot metadata.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct Metadata {
@@ -39,6 +41,7 @@ impl ::prost::Name for Metadata {
 /// SnapshotItem is an item contained in a rootmulti.Store snapshot.
 ///
 /// Since: cosmos-sdk 0.46
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct SnapshotItem {
@@ -49,6 +52,7 @@ pub struct SnapshotItem {
 /// Nested message and enum types in `SnapshotItem`.
 pub mod snapshot_item {
     /// item is the specific type of snapshot item.
+    #[derive(::serde::Serialize, ::serde::Deserialize)]
     #[allow(clippy::derive_partial_eq_without_eq)]
     #[derive(Clone, PartialEq, ::prost::Oneof)]
     pub enum Item {
@@ -76,6 +80,7 @@ impl ::prost::Name for SnapshotItem {
 /// SnapshotStoreItem contains metadata about a snapshotted store.
 ///
 /// Since: cosmos-sdk 0.46
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct SnapshotStoreItem {
@@ -92,6 +97,7 @@ impl ::prost::Name for SnapshotStoreItem {
 /// SnapshotIAVLItem is an exported IAVL node.
 ///
 /// Since: cosmos-sdk 0.46
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct SnapshotIavlItem {
@@ -116,6 +122,7 @@ impl ::prost::Name for SnapshotIavlItem {
 /// SnapshotExtensionMeta contains metadata about an external snapshotter.
 ///
 /// Since: cosmos-sdk 0.46
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct SnapshotExtensionMeta {
@@ -134,6 +141,7 @@ impl ::prost::Name for SnapshotExtensionMeta {
 /// SnapshotExtensionPayload contains payloads of an external snapshotter.
 ///
 /// Since: cosmos-sdk 0.46
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct SnapshotExtensionPayload {
@@ -151,6 +159,7 @@ impl ::prost::Name for SnapshotExtensionPayload {
 ///
 /// Since: cosmos-sdk 0.46
 /// Deprecated: This message was part of store/v2alpha1 which has been deleted from v0.47.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct SnapshotKvItem {
@@ -170,6 +179,7 @@ impl ::prost::Name for SnapshotKvItem {
 ///
 /// Since: cosmos-sdk 0.46
 /// Deprecated: This message was part of store/v2alpha1 which has been deleted from v0.47.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct SnapshotSchema {
@@ -445,5 +455,4 @@ pub const FILE_DESCRIPTOR_SET: &[u8] = &[
     0x08, 0x02, 0x00, 0x03, 0x12, 0x03, 0x58, 0x18, 0x19, 0x62, 0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f,
     0x33,
 ];
-include!("cosmos.base.snapshots.v1beta1.serde.rs");
 // @@protoc_insertion_point(module)

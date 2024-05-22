@@ -1,5 +1,6 @@
 // @generated
 /// GenesisState defines the crisis module's genesis state.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct GenesisState {
@@ -16,6 +17,7 @@ impl ::prost::Name for GenesisState {
     }
 }
 /// MsgVerifyInvariant represents a message to verify a particular invariance.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct MsgVerifyInvariant {
@@ -37,6 +39,7 @@ impl ::prost::Name for MsgVerifyInvariant {
     }
 }
 /// MsgVerifyInvariantResponse defines the Msg/VerifyInvariant response type.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct MsgVerifyInvariantResponse {}
@@ -50,6 +53,7 @@ impl ::prost::Name for MsgVerifyInvariantResponse {
 /// MsgUpdateParams is the Msg/UpdateParams request type.
 ///
 /// Since: cosmos-sdk 0.47
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct MsgUpdateParams {
@@ -71,6 +75,7 @@ impl ::prost::Name for MsgUpdateParams {
 /// MsgUpdateParams message.
 ///
 /// Since: cosmos-sdk 0.47
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct MsgUpdateParamsResponse {}
@@ -302,6 +307,5 @@ pub const FILE_DESCRIPTOR_SET: &[u8] = &[
     0x0a, 0x03, 0x04, 0x03, 0x01, 0x12, 0x03, 0x40, 0x08, 0x1f, 0x62, 0x06, 0x70, 0x72, 0x6f, 0x74,
     0x6f, 0x33,
 ];
-include!("cosmos.crisis.v1beta1.serde.rs");
 include!("cosmos.crisis.v1beta1.tonic.rs");
 // @@protoc_insertion_point(module)

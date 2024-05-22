@@ -1,5 +1,6 @@
 // @generated
 /// Callback defines the callback structure.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct Callback {
@@ -30,6 +31,7 @@ impl ::prost::Name for Callback {
     }
 }
 /// CallbackFeesFeeSplit is the breakdown of all the fees that need to be paid by the contract to reserve a callback
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct CallbackFeesFeeSplit {
@@ -56,6 +58,7 @@ impl ::prost::Name for CallbackFeesFeeSplit {
     }
 }
 /// Params defines the module parameters.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct Params {
@@ -83,7 +86,19 @@ impl ::prost::Name for Params {
     }
 }
 /// ModuleErrors defines the module level error codes
-#[derive(Clone, Copy, Debug, PartialEq, Eq, Hash, PartialOrd, Ord, ::prost::Enumeration)]
+#[derive(
+    ::serde::Serialize,
+    ::serde::Deserialize,
+    Clone,
+    Copy,
+    Debug,
+    PartialEq,
+    Eq,
+    Hash,
+    PartialOrd,
+    Ord,
+    ::prost::Enumeration,
+)]
 #[repr(i32)]
 pub enum ModuleErrors {
     /// ERR_UNKNOWN is the default error code
@@ -116,6 +131,7 @@ impl ModuleErrors {
     }
 }
 /// CallbackRegisteredEvent is emitted when a callback is registered.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct CallbackRegisteredEvent {
@@ -143,6 +159,7 @@ impl ::prost::Name for CallbackRegisteredEvent {
     }
 }
 /// CallbackCancelledEvent is emitted when a callback is cancelled.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct CallbackCancelledEvent {
@@ -170,6 +187,7 @@ impl ::prost::Name for CallbackCancelledEvent {
     }
 }
 /// CallbackExecutedSuccessEvent is emitted when a callback is executed successfully.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct CallbackExecutedSuccessEvent {
@@ -194,6 +212,7 @@ impl ::prost::Name for CallbackExecutedSuccessEvent {
     }
 }
 /// CallbackExecutedFailedEvent is emitted when a callback execution fails.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct CallbackExecutedFailedEvent {
@@ -221,6 +240,7 @@ impl ::prost::Name for CallbackExecutedFailedEvent {
     }
 }
 /// GenesisState defines the initial state of the callback module.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct GenesisState {
@@ -239,6 +259,7 @@ impl ::prost::Name for GenesisState {
     }
 }
 /// QueryParamsRequest is the request for Query.Params.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct QueryParamsRequest {}
@@ -250,6 +271,7 @@ impl ::prost::Name for QueryParamsRequest {
     }
 }
 /// QueryParamsResponse is the response for Query.Params.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct QueryParamsResponse {
@@ -265,6 +287,7 @@ impl ::prost::Name for QueryParamsResponse {
     }
 }
 /// QueryEstimateCallbackFeesRequest is the request for Query.EstimateCallbackFees.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct QueryEstimateCallbackFeesRequest {
@@ -280,6 +303,7 @@ impl ::prost::Name for QueryEstimateCallbackFeesRequest {
     }
 }
 /// QueryEstimateCallbackFeesResponse is the response for Query.EstimateCallbackFees.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct QueryEstimateCallbackFeesResponse {
@@ -298,6 +322,7 @@ impl ::prost::Name for QueryEstimateCallbackFeesResponse {
     }
 }
 /// QueryCallbacksRequest is the request for Query.Callbacks.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct QueryCallbacksRequest {
@@ -313,6 +338,7 @@ impl ::prost::Name for QueryCallbacksRequest {
     }
 }
 /// QueryCallbacksResponse is the response for Query.Callbacks.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct QueryCallbacksResponse {
@@ -328,6 +354,7 @@ impl ::prost::Name for QueryCallbacksResponse {
     }
 }
 /// MsgUpdateParams is the Msg/UpdateParams request type.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct MsgUpdateParams {
@@ -348,6 +375,7 @@ impl ::prost::Name for MsgUpdateParams {
     }
 }
 /// MsgUpdateParamsResponse defines the response structure for executing a MsgUpdateParams message.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct MsgUpdateParamsResponse {}
@@ -359,6 +387,7 @@ impl ::prost::Name for MsgUpdateParamsResponse {
     }
 }
 /// MsgRequestCallback is the Msg/RequestCallback request type.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct MsgRequestCallback {
@@ -386,6 +415,7 @@ impl ::prost::Name for MsgRequestCallback {
     }
 }
 /// MsgRequestCallbackResponse defines the response structure for executing a MsgRequestCallback message.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct MsgRequestCallbackResponse {}
@@ -397,6 +427,7 @@ impl ::prost::Name for MsgRequestCallbackResponse {
     }
 }
 /// MsgCancelCallback is the Msg/CancelCallback request type.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct MsgCancelCallback {
@@ -421,6 +452,7 @@ impl ::prost::Name for MsgCancelCallback {
     }
 }
 /// MsgCancelCallbackResponse defines the response structure for executing a MsgCancelCallback message.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct MsgCancelCallbackResponse {
@@ -1517,6 +1549,5 @@ pub const FILE_DESCRIPTOR_SET: &[u8] = &[
     0x12, 0x03, 0x49, 0x26, 0x46, 0x0a, 0x0f, 0x0a, 0x08, 0x04, 0x05, 0x02, 0x00, 0x08, 0xe9, 0xfb,
     0x03, 0x12, 0x03, 0x49, 0x28, 0x44, 0x62, 0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
 ];
-include!("archway.callback.v1.serde.rs");
 include!("archway.callback.v1.tonic.rs");
 // @@protoc_insertion_point(module)

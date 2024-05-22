@@ -1,5 +1,6 @@
 // @generated
 /// Module is the config object for the runtime module.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct Module {
@@ -40,6 +41,7 @@ impl ::prost::Name for Module {
 }
 /// StoreKeyConfig may be supplied to override the default module store key, which
 /// is the module name.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct StoreKeyConfig {
@@ -211,5 +213,4 @@ pub const FILE_DESCRIPTOR_SET: &[u8] = &[
     0x01, 0x01, 0x12, 0x03, 0x30, 0x09, 0x15, 0x0a, 0x0c, 0x0a, 0x05, 0x04, 0x01, 0x02, 0x01, 0x03,
     0x12, 0x03, 0x30, 0x18, 0x19, 0x62, 0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
 ];
-include!("cosmos.app.runtime.v1alpha1.serde.rs");
 // @@protoc_insertion_point(module)

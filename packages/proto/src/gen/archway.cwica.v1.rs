@@ -1,6 +1,18 @@
 // @generated
 /// ModuleErrors defines the module level error codes
-#[derive(Clone, Copy, Debug, PartialEq, Eq, Hash, PartialOrd, Ord, ::prost::Enumeration)]
+#[derive(
+    ::serde::Serialize,
+    ::serde::Deserialize,
+    Clone,
+    Copy,
+    Debug,
+    PartialEq,
+    Eq,
+    Hash,
+    PartialOrd,
+    Ord,
+    ::prost::Enumeration,
+)]
 #[repr(i32)]
 pub enum ModuleErrors {
     /// ERR_UNKNOWN is the default error code
@@ -33,6 +45,7 @@ impl ModuleErrors {
     }
 }
 /// Params defines the parameters for the module.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct Params {
@@ -48,6 +61,7 @@ impl ::prost::Name for Params {
     }
 }
 /// GenesisState defines the cwica module's genesis state.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct GenesisState {
@@ -63,6 +77,7 @@ impl ::prost::Name for GenesisState {
     }
 }
 /// QueryParamsRequest is request type for the Query/Params RPC method.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct QueryParamsRequest {}
@@ -74,6 +89,7 @@ impl ::prost::Name for QueryParamsRequest {
     }
 }
 /// QueryParamsResponse is response type for the Query/Params RPC method.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct QueryParamsResponse {
@@ -90,6 +106,7 @@ impl ::prost::Name for QueryParamsResponse {
 }
 /// Sudopayload is the payload for the sudo call sent by the cwica module on IBC
 /// actions
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct SudoPayload {
@@ -105,6 +122,7 @@ impl ::prost::Name for SudoPayload {
     }
 }
 /// ICASuccess is the success message after the ICA operation has taken place
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct IcaSuccess {
@@ -126,6 +144,7 @@ impl ::prost::Name for IcaSuccess {
 }
 /// AccountRegistered is contains the address of the registered account on the
 /// counterparty chain
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct AccountRegistered {
@@ -142,6 +161,7 @@ impl ::prost::Name for AccountRegistered {
     }
 }
 /// TxExecuted is the response message after the execute of the ICA tx
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct TxExecuted {
@@ -161,6 +181,7 @@ impl ::prost::Name for TxExecuted {
 }
 /// MsgRegisterInterchainAccount defines the Msg/RegisterInterchainAccount
 /// request type.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct MsgRegisterInterchainAccount {
@@ -181,6 +202,7 @@ impl ::prost::Name for MsgRegisterInterchainAccount {
 }
 /// MsgRegisterInterchainAccountResponse defines the response for
 /// Msg/RegisterInterchainAccount
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct MsgRegisterInterchainAccountResponse {}
@@ -192,6 +214,7 @@ impl ::prost::Name for MsgRegisterInterchainAccountResponse {
     }
 }
 /// MsgSendTx defines the Msg/SendTx request type.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct MsgSendTx {
@@ -220,6 +243,7 @@ impl ::prost::Name for MsgSendTx {
     }
 }
 /// MsgSendTxResponse defines the response for Msg/SendTx
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct MsgSendTxResponse {
@@ -239,6 +263,7 @@ impl ::prost::Name for MsgSendTxResponse {
     }
 }
 /// MsgUpdateParams is the MsgUpdateParams request type.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct MsgUpdateParams {
@@ -259,6 +284,7 @@ impl ::prost::Name for MsgUpdateParams {
     }
 }
 /// MsgUpdateParamsResponse is the MsgUpdateParams response type.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct MsgUpdateParamsResponse {}
@@ -834,6 +860,5 @@ pub const FILE_DESCRIPTOR_SET: &[u8] = &[
     0x70, 0x6f, 0x6e, 0x73, 0x65, 0x20, 0x74, 0x79, 0x70, 0x65, 0x2e, 0x0a, 0x0a, 0x0a, 0x0a, 0x03,
     0x04, 0x05, 0x01, 0x12, 0x03, 0x56, 0x08, 0x1f, 0x62, 0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
 ];
-include!("archway.cwica.v1.serde.rs");
 include!("archway.cwica.v1.tonic.rs");
 // @@protoc_insertion_point(module)

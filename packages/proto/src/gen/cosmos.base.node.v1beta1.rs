@@ -1,5 +1,6 @@
 // @generated
 /// ConfigRequest defines the request structure for the Config gRPC query.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct ConfigRequest {}
@@ -11,6 +12,7 @@ impl ::prost::Name for ConfigRequest {
     }
 }
 /// ConfigResponse defines the response structure for the Config gRPC query.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct ConfigResponse {
@@ -88,6 +90,5 @@ pub const FILE_DESCRIPTOR_SET: &[u8] = &[
     0x01, 0x02, 0x00, 0x03, 0x12, 0x03, 0x14, 0x1d, 0x1e, 0x62, 0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f,
     0x33,
 ];
-include!("cosmos.base.node.v1beta1.serde.rs");
 include!("cosmos.base.node.v1beta1.tonic.rs");
 // @@protoc_insertion_point(module)

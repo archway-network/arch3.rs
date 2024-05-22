@@ -1,5 +1,6 @@
 // @generated
 /// Module is the config object of the params module.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct Module {}
@@ -36,5 +37,4 @@ pub const FILE_DESCRIPTOR_SET: &[u8] = &[
     0x0a, 0x04, 0x0a, 0x0f, 0x0a, 0x08, 0x04, 0x00, 0x07, 0x87, 0xe8, 0xa2, 0x1b, 0x01, 0x12, 0x03,
     0x09, 0x04, 0x36, 0x62, 0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
 ];
-include!("cosmos.params.module.v1.serde.rs");
 // @@protoc_insertion_point(module)

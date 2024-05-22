@@ -1,5 +1,6 @@
 // @generated
 /// Record is used for representing a key in the keyring.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct Record {
@@ -17,6 +18,7 @@ pub struct Record {
 pub mod record {
     /// Item is a keyring item stored in a keyring backend.
     /// Local item
+    #[derive(::serde::Serialize, ::serde::Deserialize)]
     #[allow(clippy::derive_partial_eq_without_eq)]
     #[derive(Clone, PartialEq, ::prost::Message)]
     pub struct Local {
@@ -31,6 +33,7 @@ pub mod record {
         }
     }
     /// Ledger item
+    #[derive(::serde::Serialize, ::serde::Deserialize)]
     #[allow(clippy::derive_partial_eq_without_eq)]
     #[derive(Clone, PartialEq, ::prost::Message)]
     pub struct Ledger {
@@ -45,6 +48,7 @@ pub mod record {
         }
     }
     /// Multi item
+    #[derive(::serde::Serialize, ::serde::Deserialize)]
     #[allow(clippy::derive_partial_eq_without_eq)]
     #[derive(Clone, PartialEq, ::prost::Message)]
     pub struct Multi {}
@@ -56,6 +60,7 @@ pub mod record {
         }
     }
     /// Offline item
+    #[derive(::serde::Serialize, ::serde::Deserialize)]
     #[allow(clippy::derive_partial_eq_without_eq)]
     #[derive(Clone, PartialEq, ::prost::Message)]
     pub struct Offline {}
@@ -67,6 +72,7 @@ pub mod record {
         }
     }
     /// Record contains one of the following items
+    #[derive(::serde::Serialize, ::serde::Deserialize)]
     #[allow(clippy::derive_partial_eq_without_eq)]
     #[derive(Clone, PartialEq, ::prost::Oneof)]
     pub enum Item {
@@ -219,5 +225,4 @@ pub const FILE_DESCRIPTOR_SET: &[u8] = &[
     0x6c, 0x69, 0x6e, 0x65, 0x20, 0x69, 0x74, 0x65, 0x6d, 0x0a, 0x0a, 0x0c, 0x0a, 0x05, 0x04, 0x00,
     0x03, 0x03, 0x01, 0x12, 0x03, 0x2e, 0x0a, 0x11, 0x62, 0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
 ];
-include!("cosmos.crypto.keyring.v1.serde.rs");
 // @@protoc_insertion_point(module)

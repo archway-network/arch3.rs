@@ -1,5 +1,6 @@
 // @generated
 /// ListAllInterfacesRequest is the request type of the ListAllInterfaces RPC.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct ListAllInterfacesRequest {}
@@ -11,6 +12,7 @@ impl ::prost::Name for ListAllInterfacesRequest {
     }
 }
 /// ListAllInterfacesResponse is the response type of the ListAllInterfaces RPC.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct ListAllInterfacesResponse {
@@ -27,6 +29,7 @@ impl ::prost::Name for ListAllInterfacesResponse {
 }
 /// ListImplementationsRequest is the request type of the ListImplementations
 /// RPC.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct ListImplementationsRequest {
@@ -43,6 +46,7 @@ impl ::prost::Name for ListImplementationsRequest {
 }
 /// ListImplementationsResponse is the response type of the ListImplementations
 /// RPC.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct ListImplementationsResponse {
@@ -195,6 +199,5 @@ pub const FILE_DESCRIPTOR_SET: &[u8] = &[
     0x01, 0x12, 0x03, 0x2a, 0x12, 0x2e, 0x0a, 0x0c, 0x0a, 0x05, 0x04, 0x03, 0x02, 0x00, 0x03, 0x12,
     0x03, 0x2a, 0x31, 0x32, 0x62, 0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
 ];
-include!("cosmos.base.reflection.v1beta1.serde.rs");
 include!("cosmos.base.reflection.v1beta1.tonic.rs");
 // @@protoc_insertion_point(module)
