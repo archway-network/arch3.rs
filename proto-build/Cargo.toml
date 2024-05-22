@@ -1,6 +1,6 @@
 [package]
 name = "proto-build"
-version = "0.1.0"
+version = "0.2.0"
 edition = "2021"
 description = "Build script for archway-proto"
 authors.workspace = true
