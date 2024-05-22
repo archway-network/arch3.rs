@@ -4,8 +4,8 @@
 #[cfg_attr(docsrs, doc(cfg(feature = "grpc")))]
 pub mod query_client {
     #![allow(unused_variables, dead_code, missing_docs, clippy::let_unit_value)]
-    use tonic::codegen::*;
     use tonic::codegen::http::Uri;
+    use tonic::codegen::*;
     #[derive(Debug, Clone)]
     pub struct QueryClient<T> {
         inner: tonic::client::Grpc<T>,
@@ -51,9 +51,8 @@ pub mod query_client {
                     <T as tonic::client::GrpcService<tonic::body::BoxBody>>::ResponseBody,
                 >,
             >,
-            <T as tonic::codegen::Service<
-                http::Request<tonic::body::BoxBody>,
-            >>::Error: Into<StdError> + Send + Sync,
+            <T as tonic::codegen::Service<http::Request<tonic::body::BoxBody>>>::Error:
+                Into<StdError> + Send + Sync,
         {
             QueryClient::new(InterceptedService::new(inner, interceptor))
         }
@@ -91,23 +90,16 @@ pub mod query_client {
         pub async fn params(
             &mut self,
             request: impl tonic::IntoRequest<super::QueryParamsRequest>,
-        ) -> std::result::Result<
-            tonic::Response<super::QueryParamsResponse>,
-            tonic::Status,
-        > {
-            self.inner
-                .ready()
-                .await
-                .map_err(|e| {
-                    tonic::Status::new(
-                        tonic::Code::Unknown,
-                        format!("Service was not ready: {}", e.into()),
-                    )
-                })?;
+        ) -> std::result::Result<tonic::Response<super::QueryParamsResponse>, tonic::Status>
+        {
+            self.inner.ready().await.map_err(|e| {
+                tonic::Status::new(
+                    tonic::Code::Unknown,
+                    format!("Service was not ready: {}", e.into()),
+                )
+            })?;
             let codec = tonic::codec::ProstCodec::default();
-            let path = http::uri::PathAndQuery::from_static(
-                "/archway.rewards.v1.Query/Params",
-            );
+            let path = http::uri::PathAndQuery::from_static("/archway.rewards.v1.Query/Params");
             let mut req = request.into_request();
             req.extensions_mut()
                 .insert(GrpcMethod::new("archway.rewards.v1.Query", "Params"));
@@ -116,26 +108,22 @@ pub mod query_client {
         pub async fn contract_metadata(
             &mut self,
             request: impl tonic::IntoRequest<super::QueryContractMetadataRequest>,
-        ) -> std::result::Result<
-            tonic::Response<super::QueryContractMetadataResponse>,
-            tonic::Status,
-        > {
-            self.inner
-                .ready()
-                .await
-                .map_err(|e| {
-                    tonic::Status::new(
-                        tonic::Code::Unknown,
-                        format!("Service was not ready: {}", e.into()),
-                    )
-                })?;
+        ) -> std::result::Result<tonic::Response<super::QueryContractMetadataResponse>, tonic::Status>
+        {
+            self.inner.ready().await.map_err(|e| {
+                tonic::Status::new(
+                    tonic::Code::Unknown,
+                    format!("Service was not ready: {}", e.into()),
+                )
+            })?;
             let codec = tonic::codec::ProstCodec::default();
-            let path = http::uri::PathAndQuery::from_static(
-                "/archway.rewards.v1.Query/ContractMetadata",
-            );
+            let path =
+                http::uri::PathAndQuery::from_static("/archway.rewards.v1.Query/ContractMetadata");
             let mut req = request.into_request();
-            req.extensions_mut()
-                .insert(GrpcMethod::new("archway.rewards.v1.Query", "ContractMetadata"));
+            req.extensions_mut().insert(GrpcMethod::new(
+                "archway.rewards.v1.Query",
+                "ContractMetadata",
+            ));
             self.inner.unary(req, path, codec).await
         }
         pub async fn block_rewards_tracking(
@@ -145,46 +133,37 @@ pub mod query_client {
             tonic::Response<super::QueryBlockRewardsTrackingResponse>,
             tonic::Status,
         > {
-            self.inner
-                .ready()
-                .await
-                .map_err(|e| {
-                    tonic::Status::new(
-                        tonic::Code::Unknown,
-                        format!("Service was not ready: {}", e.into()),
-                    )
-                })?;
+            self.inner.ready().await.map_err(|e| {
+                tonic::Status::new(
+                    tonic::Code::Unknown,
+                    format!("Service was not ready: {}", e.into()),
+                )
+            })?;
             let codec = tonic::codec::ProstCodec::default();
             let path = http::uri::PathAndQuery::from_static(
                 "/archway.rewards.v1.Query/BlockRewardsTracking",
             );
             let mut req = request.into_request();
-            req.extensions_mut()
-                .insert(
-                    GrpcMethod::new("archway.rewards.v1.Query", "BlockRewardsTracking"),
-                );
+            req.extensions_mut().insert(GrpcMethod::new(
+                "archway.rewards.v1.Query",
+                "BlockRewardsTracking",
+            ));
             self.inner.unary(req, path, codec).await
         }
         pub async fn rewards_pool(
             &mut self,
             request: impl tonic::IntoRequest<super::QueryRewardsPoolRequest>,
-        ) -> std::result::Result<
-            tonic::Response<super::QueryRewardsPoolResponse>,
-            tonic::Status,
-        > {
-            self.inner
-                .ready()
-                .await
-                .map_err(|e| {
-                    tonic::Status::new(
-                        tonic::Code::Unknown,
-                        format!("Service was not ready: {}", e.into()),
-                    )
-                })?;
+        ) -> std::result::Result<tonic::Response<super::QueryRewardsPoolResponse>, tonic::Status>
+        {
+            self.inner.ready().await.map_err(|e| {
+                tonic::Status::new(
+                    tonic::Code::Unknown,
+                    format!("Service was not ready: {}", e.into()),
+                )
+            })?;
             let codec = tonic::codec::ProstCodec::default();
-            let path = http::uri::PathAndQuery::from_static(
-                "/archway.rewards.v1.Query/RewardsPool",
-            );
+            let path =
+                http::uri::PathAndQuery::from_static("/archway.rewards.v1.Query/RewardsPool");
             let mut req = request.into_request();
             req.extensions_mut()
                 .insert(GrpcMethod::new("archway.rewards.v1.Query", "RewardsPool"));
@@ -193,51 +172,43 @@ pub mod query_client {
         pub async fn estimate_tx_fees(
             &mut self,
             request: impl tonic::IntoRequest<super::QueryEstimateTxFeesRequest>,
-        ) -> std::result::Result<
-            tonic::Response<super::QueryEstimateTxFeesResponse>,
-            tonic::Status,
-        > {
-            self.inner
-                .ready()
-                .await
-                .map_err(|e| {
-                    tonic::Status::new(
-                        tonic::Code::Unknown,
-                        format!("Service was not ready: {}", e.into()),
-                    )
-                })?;
+        ) -> std::result::Result<tonic::Response<super::QueryEstimateTxFeesResponse>, tonic::Status>
+        {
+            self.inner.ready().await.map_err(|e| {
+                tonic::Status::new(
+                    tonic::Code::Unknown,
+                    format!("Service was not ready: {}", e.into()),
+                )
+            })?;
             let codec = tonic::codec::ProstCodec::default();
-            let path = http::uri::PathAndQuery::from_static(
-                "/archway.rewards.v1.Query/EstimateTxFees",
-            );
+            let path =
+                http::uri::PathAndQuery::from_static("/archway.rewards.v1.Query/EstimateTxFees");
             let mut req = request.into_request();
-            req.extensions_mut()
-                .insert(GrpcMethod::new("archway.rewards.v1.Query", "EstimateTxFees"));
+            req.extensions_mut().insert(GrpcMethod::new(
+                "archway.rewards.v1.Query",
+                "EstimateTxFees",
+            ));
             self.inner.unary(req, path, codec).await
         }
         pub async fn rewards_records(
             &mut self,
             request: impl tonic::IntoRequest<super::QueryRewardsRecordsRequest>,
-        ) -> std::result::Result<
-            tonic::Response<super::QueryRewardsRecordsResponse>,
-            tonic::Status,
-        > {
-            self.inner
-                .ready()
-                .await
-                .map_err(|e| {
-                    tonic::Status::new(
-                        tonic::Code::Unknown,
-                        format!("Service was not ready: {}", e.into()),
-                    )
-                })?;
+        ) -> std::result::Result<tonic::Response<super::QueryRewardsRecordsResponse>, tonic::Status>
+        {
+            self.inner.ready().await.map_err(|e| {
+                tonic::Status::new(
+                    tonic::Code::Unknown,
+                    format!("Service was not ready: {}", e.into()),
+                )
+            })?;
             let codec = tonic::codec::ProstCodec::default();
-            let path = http::uri::PathAndQuery::from_static(
-                "/archway.rewards.v1.Query/RewardsRecords",
-            );
+            let path =
+                http::uri::PathAndQuery::from_static("/archway.rewards.v1.Query/RewardsRecords");
             let mut req = request.into_request();
-            req.extensions_mut()
-                .insert(GrpcMethod::new("archway.rewards.v1.Query", "RewardsRecords"));
+            req.extensions_mut().insert(GrpcMethod::new(
+                "archway.rewards.v1.Query",
+                "RewardsRecords",
+            ));
             self.inner.unary(req, path, codec).await
         }
         pub async fn outstanding_rewards(
@@ -247,46 +218,36 @@ pub mod query_client {
             tonic::Response<super::QueryOutstandingRewardsResponse>,
             tonic::Status,
         > {
-            self.inner
-                .ready()
-                .await
-                .map_err(|e| {
-                    tonic::Status::new(
-                        tonic::Code::Unknown,
-                        format!("Service was not ready: {}", e.into()),
-                    )
-                })?;
+            self.inner.ready().await.map_err(|e| {
+                tonic::Status::new(
+                    tonic::Code::Unknown,
+                    format!("Service was not ready: {}", e.into()),
+                )
+            })?;
             let codec = tonic::codec::ProstCodec::default();
             let path = http::uri::PathAndQuery::from_static(
                 "/archway.rewards.v1.Query/OutstandingRewards",
             );
             let mut req = request.into_request();
-            req.extensions_mut()
-                .insert(
-                    GrpcMethod::new("archway.rewards.v1.Query", "OutstandingRewards"),
-                );
+            req.extensions_mut().insert(GrpcMethod::new(
+                "archway.rewards.v1.Query",
+                "OutstandingRewards",
+            ));
             self.inner.unary(req, path, codec).await
         }
         pub async fn flat_fee(
             &mut self,
             request: impl tonic::IntoRequest<super::QueryFlatFeeRequest>,
-        ) -> std::result::Result<
-            tonic::Response<super::QueryFlatFeeResponse>,
-            tonic::Status,
-        > {
-            self.inner
-                .ready()
-                .await
-                .map_err(|e| {
-                    tonic::Status::new(
-                        tonic::Code::Unknown,
-                        format!("Service was not ready: {}", e.into()),
-                    )
-                })?;
+        ) -> std::result::Result<tonic::Response<super::QueryFlatFeeResponse>, tonic::Status>
+        {
+            self.inner.ready().await.map_err(|e| {
+                tonic::Status::new(
+                    tonic::Code::Unknown,
+                    format!("Service was not ready: {}", e.into()),
+                )
+            })?;
             let codec = tonic::codec::ProstCodec::default();
-            let path = http::uri::PathAndQuery::from_static(
-                "/archway.rewards.v1.Query/FlatFee",
-            );
+            let path = http::uri::PathAndQuery::from_static("/archway.rewards.v1.Query/FlatFee");
             let mut req = request.into_request();
             req.extensions_mut()
                 .insert(GrpcMethod::new("archway.rewards.v1.Query", "FlatFee"));
@@ -306,17 +267,11 @@ pub mod query_server {
         async fn params(
             &self,
             request: tonic::Request<super::QueryParamsRequest>,
-        ) -> std::result::Result<
-            tonic::Response<super::QueryParamsResponse>,
-            tonic::Status,
-        >;
+        ) -> std::result::Result<tonic::Response<super::QueryParamsResponse>, tonic::Status>;
         async fn contract_metadata(
             &self,
             request: tonic::Request<super::QueryContractMetadataRequest>,
-        ) -> std::result::Result<
-            tonic::Response<super::QueryContractMetadataResponse>,
-            tonic::Status,
-        >;
+        ) -> std::result::Result<tonic::Response<super::QueryContractMetadataResponse>, tonic::Status>;
         async fn block_rewards_tracking(
             &self,
             request: tonic::Request<super::QueryBlockRewardsTrackingRequest>,
@@ -327,24 +282,15 @@ pub mod query_server {
         async fn rewards_pool(
             &self,
             request: tonic::Request<super::QueryRewardsPoolRequest>,
-        ) -> std::result::Result<
-            tonic::Response<super::QueryRewardsPoolResponse>,
-            tonic::Status,
-        >;
+        ) -> std::result::Result<tonic::Response<super::QueryRewardsPoolResponse>, tonic::Status>;
         async fn estimate_tx_fees(
             &self,
             request: tonic::Request<super::QueryEstimateTxFeesRequest>,
-        ) -> std::result::Result<
-            tonic::Response<super::QueryEstimateTxFeesResponse>,
-            tonic::Status,
-        >;
+        ) -> std::result::Result<tonic::Response<super::QueryEstimateTxFeesResponse>, tonic::Status>;
         async fn rewards_records(
             &self,
             request: tonic::Request<super::QueryRewardsRecordsRequest>,
-        ) -> std::result::Result<
-            tonic::Response<super::QueryRewardsRecordsResponse>,
-            tonic::Status,
-        >;
+        ) -> std::result::Result<tonic::Response<super::QueryRewardsRecordsResponse>, tonic::Status>;
         async fn outstanding_rewards(
             &self,
             request: tonic::Request<super::QueryOutstandingRewardsRequest>,
@@ -355,10 +301,7 @@ pub mod query_server {
         async fn flat_fee(
             &self,
             request: tonic::Request<super::QueryFlatFeeRequest>,
-        ) -> std::result::Result<
-            tonic::Response<super::QueryFlatFeeResponse>,
-            tonic::Status,
-        >;
+        ) -> std::result::Result<tonic::Response<super::QueryFlatFeeResponse>, tonic::Status>;
     }
     #[derive(Debug)]
     pub struct QueryServer<T: Query> {
@@ -383,10 +326,7 @@ pub mod query_server {
                 max_encoding_message_size: None,
             }
         }
-        pub fn with_interceptor<F>(
-            inner: T,
-            interceptor: F,
-        ) -> InterceptedService<Self, F>
+        pub fn with_interceptor<F>(inner: T, interceptor: F) -> InterceptedService<Self, F>
         where
             F: tonic::service::Interceptor,
         {
@@ -442,21 +382,15 @@ pub mod query_server {
                 "/archway.rewards.v1.Query/Params" => {
                     #[allow(non_camel_case_types)]
                     struct ParamsSvc<T: Query>(pub Arc<T>);
-                    impl<T: Query> tonic::server::UnaryService<super::QueryParamsRequest>
-                    for ParamsSvc<T> {
+                    impl<T: Query> tonic::server::UnaryService<super::QueryParamsRequest> for ParamsSvc<T> {
                         type Response = super::QueryParamsResponse;
-                        type Future = BoxFuture<
-                            tonic::Response<Self::Response>,
-                            tonic::Status,
-                        >;
+                        type Future = BoxFuture<tonic::Response<Self::Response>, tonic::Status>;
                         fn call(
                             &mut self,
                             request: tonic::Request<super::QueryParamsRequest>,
                         ) -> Self::Future {
                             let inner = Arc::clone(&self.0);
-                            let fut = async move {
-                                <T as Query>::params(&inner, request).await
-                            };
+                            let fut = async move { <T as Query>::params(&inner, request).await };
                             Box::pin(fut)
                         }
                     }
@@ -486,15 +420,11 @@ pub mod query_server {
                 "/archway.rewards.v1.Query/ContractMetadata" => {
                     #[allow(non_camel_case_types)]
                     struct ContractMetadataSvc<T: Query>(pub Arc<T>);
-                    impl<
-                        T: Query,
-                    > tonic::server::UnaryService<super::QueryContractMetadataRequest>
-                    for ContractMetadataSvc<T> {
+                    impl<T: Query> tonic::server::UnaryService<super::QueryContractMetadataRequest>
+                        for ContractMetadataSvc<T>
+                    {
                         type Response = super::QueryContractMetadataResponse;
-                        type Future = BoxFuture<
-                            tonic::Response<Self::Response>,
-                            tonic::Status,
-                        >;
+                        type Future = BoxFuture<tonic::Response<Self::Response>, tonic::Status>;
                         fn call(
                             &mut self,
                             request: tonic::Request<super::QueryContractMetadataRequest>,
@@ -532,21 +462,15 @@ pub mod query_server {
                 "/archway.rewards.v1.Query/BlockRewardsTracking" => {
                     #[allow(non_camel_case_types)]
                     struct BlockRewardsTrackingSvc<T: Query>(pub Arc<T>);
-                    impl<
-                        T: Query,
-                    > tonic::server::UnaryService<
-                        super::QueryBlockRewardsTrackingRequest,
-                    > for BlockRewardsTrackingSvc<T> {
+                    impl<T: Query>
+                        tonic::server::UnaryService<super::QueryBlockRewardsTrackingRequest>
+                        for BlockRewardsTrackingSvc<T>
+                    {
                         type Response = super::QueryBlockRewardsTrackingResponse;
-                        type Future = BoxFuture<
-                            tonic::Response<Self::Response>,
-                            tonic::Status,
-                        >;
+                        type Future = BoxFuture<tonic::Response<Self::Response>, tonic::Status>;
                         fn call(
                             &mut self,
-                            request: tonic::Request<
-                                super::QueryBlockRewardsTrackingRequest,
-                            >,
+                            request: tonic::Request<super::QueryBlockRewardsTrackingRequest>,
                         ) -> Self::Future {
                             let inner = Arc::clone(&self.0);
                             let fut = async move {
@@ -581,23 +505,16 @@ pub mod query_server {
                 "/archway.rewards.v1.Query/RewardsPool" => {
                     #[allow(non_camel_case_types)]
                     struct RewardsPoolSvc<T: Query>(pub Arc<T>);
-                    impl<
-                        T: Query,
-                    > tonic::server::UnaryService<super::QueryRewardsPoolRequest>
-                    for RewardsPoolSvc<T> {
+                    impl<T: Query> tonic::server::UnaryService<super::QueryRewardsPoolRequest> for RewardsPoolSvc<T> {
                         type Response = super::QueryRewardsPoolResponse;
-                        type Future = BoxFuture<
-                            tonic::Response<Self::Response>,
-                            tonic::Status,
-                        >;
+                        type Future = BoxFuture<tonic::Response<Self::Response>, tonic::Status>;
                         fn call(
                             &mut self,
                             request: tonic::Request<super::QueryRewardsPoolRequest>,
                         ) -> Self::Future {
                             let inner = Arc::clone(&self.0);
-                            let fut = async move {
-                                <T as Query>::rewards_pool(&inner, request).await
-                            };
+                            let fut =
+                                async move { <T as Query>::rewards_pool(&inner, request).await };
                             Box::pin(fut)
                         }
                     }
@@ -627,15 +544,11 @@ pub mod query_server {
                 "/archway.rewards.v1.Query/EstimateTxFees" => {
                     #[allow(non_camel_case_types)]
                     struct EstimateTxFeesSvc<T: Query>(pub Arc<T>);
-                    impl<
-                        T: Query,
-                    > tonic::server::UnaryService<super::QueryEstimateTxFeesRequest>
-                    for EstimateTxFeesSvc<T> {
+                    impl<T: Query> tonic::server::UnaryService<super::QueryEstimateTxFeesRequest>
+                        for EstimateTxFeesSvc<T>
+                    {
                         type Response = super::QueryEstimateTxFeesResponse;
-                        type Future = BoxFuture<
-                            tonic::Response<Self::Response>,
-                            tonic::Status,
-                        >;
+                        type Future = BoxFuture<tonic::Response<Self::Response>, tonic::Status>;
                         fn call(
                             &mut self,
                             request: tonic::Request<super::QueryEstimateTxFeesRequest>,
@@ -673,23 +586,18 @@ pub mod query_server {
                 "/archway.rewards.v1.Query/RewardsRecords" => {
                     #[allow(non_camel_case_types)]
                     struct RewardsRecordsSvc<T: Query>(pub Arc<T>);
-                    impl<
-                        T: Query,
-                    > tonic::server::UnaryService<super::QueryRewardsRecordsRequest>
-                    for RewardsRecordsSvc<T> {
+                    impl<T: Query> tonic::server::UnaryService<super::QueryRewardsRecordsRequest>
+                        for RewardsRecordsSvc<T>
+                    {
                         type Response = super::QueryRewardsRecordsResponse;
-                        type Future = BoxFuture<
-                            tonic::Response<Self::Response>,
-                            tonic::Status,
-                        >;
+                        type Future = BoxFuture<tonic::Response<Self::Response>, tonic::Status>;
                         fn call(
                             &mut self,
                             request: tonic::Request<super::QueryRewardsRecordsRequest>,
                         ) -> Self::Future {
                             let inner = Arc::clone(&self.0);
-                            let fut = async move {
-                                <T as Query>::rewards_records(&inner, request).await
-                            };
+                            let fut =
+                                async move { <T as Query>::rewards_records(&inner, request).await };
                             Box::pin(fut)
                         }
                     }
@@ -719,20 +627,15 @@ pub mod query_server {
                 "/archway.rewards.v1.Query/OutstandingRewards" => {
                     #[allow(non_camel_case_types)]
                     struct OutstandingRewardsSvc<T: Query>(pub Arc<T>);
-                    impl<
-                        T: Query,
-                    > tonic::server::UnaryService<super::QueryOutstandingRewardsRequest>
-                    for OutstandingRewardsSvc<T> {
+                    impl<T: Query>
+                        tonic::server::UnaryService<super::QueryOutstandingRewardsRequest>
+                        for OutstandingRewardsSvc<T>
+                    {
                         type Response = super::QueryOutstandingRewardsResponse;
-                        type Future = BoxFuture<
-                            tonic::Response<Self::Response>,
-                            tonic::Status,
-                        >;
+                        type Future = BoxFuture<tonic::Response<Self::Response>, tonic::Status>;
                         fn call(
                             &mut self,
-                            request: tonic::Request<
-                                super::QueryOutstandingRewardsRequest,
-                            >,
+                            request: tonic::Request<super::QueryOutstandingRewardsRequest>,
                         ) -> Self::Future {
                             let inner = Arc::clone(&self.0);
                             let fut = async move {
@@ -767,23 +670,15 @@ pub mod query_server {
                 "/archway.rewards.v1.Query/FlatFee" => {
                     #[allow(non_camel_case_types)]
                     struct FlatFeeSvc<T: Query>(pub Arc<T>);
-                    impl<
-                        T: Query,
-                    > tonic::server::UnaryService<super::QueryFlatFeeRequest>
-                    for FlatFeeSvc<T> {
+                    impl<T: Query> tonic::server::UnaryService<super::QueryFlatFeeRequest> for FlatFeeSvc<T> {
                         type Response = super::QueryFlatFeeResponse;
-                        type Future = BoxFuture<
-                            tonic::Response<Self::Response>,
-                            tonic::Status,
-                        >;
+                        type Future = BoxFuture<tonic::Response<Self::Response>, tonic::Status>;
                         fn call(
                             &mut self,
                             request: tonic::Request<super::QueryFlatFeeRequest>,
                         ) -> Self::Future {
                             let inner = Arc::clone(&self.0);
-                            let fut = async move {
-                                <T as Query>::flat_fee(&inner, request).await
-                            };
+                            let fut = async move { <T as Query>::flat_fee(&inner, request).await };
                             Box::pin(fut)
                         }
                     }
@@ -810,18 +705,14 @@ pub mod query_server {
                     };
                     Box::pin(fut)
                 }
-                _ => {
-                    Box::pin(async move {
-                        Ok(
-                            http::Response::builder()
-                                .status(200)
-                                .header("grpc-status", "12")
-                                .header("content-type", "application/grpc")
-                                .body(empty_body())
-                                .unwrap(),
-                        )
-                    })
-                }
+                _ => Box::pin(async move {
+                    Ok(http::Response::builder()
+                        .status(200)
+                        .header("grpc-status", "12")
+                        .header("content-type", "application/grpc")
+                        .body(empty_body())
+                        .unwrap())
+                }),
             }
         }
     }
@@ -856,8 +747,8 @@ pub mod query_server {
 #[cfg_attr(docsrs, doc(cfg(feature = "grpc")))]
 pub mod msg_client {
     #![allow(unused_variables, dead_code, missing_docs, clippy::let_unit_value)]
-    use tonic::codegen::*;
     use tonic::codegen::http::Uri;
+    use tonic::codegen::*;
     #[derive(Debug, Clone)]
     pub struct MsgClient<T> {
         inner: tonic::client::Grpc<T>,
@@ -890,10 +781,7 @@ pub mod msg_client {
             let inner = tonic::client::Grpc::with_origin(inner, origin);
             Self { inner }
         }
-        pub fn with_interceptor<F>(
-            inner: T,
-            interceptor: F,
-        ) -> MsgClient<InterceptedService<T, F>>
+        pub fn with_interceptor<F>(inner: T, interceptor: F) -> MsgClient<InterceptedService<T, F>>
         where
             F: tonic::service::Interceptor,
             T::ResponseBody: Default,
@@ -903,9 +791,8 @@ pub mod msg_client {
                     <T as tonic::client::GrpcService<tonic::body::BoxBody>>::ResponseBody,
                 >,
             >,
-            <T as tonic::codegen::Service<
-                http::Request<tonic::body::BoxBody>,
-            >>::Error: Into<StdError> + Send + Sync,
+            <T as tonic::codegen::Service<http::Request<tonic::body::BoxBody>>>::Error:
+                Into<StdError> + Send + Sync,
         {
             MsgClient::new(InterceptedService::new(inner, interceptor))
         }
@@ -947,46 +834,36 @@ pub mod msg_client {
             tonic::Response<super::MsgSetContractMetadataResponse>,
             tonic::Status,
         > {
-            self.inner
-                .ready()
-                .await
-                .map_err(|e| {
-                    tonic::Status::new(
-                        tonic::Code::Unknown,
-                        format!("Service was not ready: {}", e.into()),
-                    )
-                })?;
+            self.inner.ready().await.map_err(|e| {
+                tonic::Status::new(
+                    tonic::Code::Unknown,
+                    format!("Service was not ready: {}", e.into()),
+                )
+            })?;
             let codec = tonic::codec::ProstCodec::default();
-            let path = http::uri::PathAndQuery::from_static(
-                "/archway.rewards.v1.Msg/SetContractMetadata",
-            );
+            let path =
+                http::uri::PathAndQuery::from_static("/archway.rewards.v1.Msg/SetContractMetadata");
             let mut req = request.into_request();
-            req.extensions_mut()
-                .insert(
-                    GrpcMethod::new("archway.rewards.v1.Msg", "SetContractMetadata"),
-                );
+            req.extensions_mut().insert(GrpcMethod::new(
+                "archway.rewards.v1.Msg",
+                "SetContractMetadata",
+            ));
             self.inner.unary(req, path, codec).await
         }
         pub async fn withdraw_rewards(
             &mut self,
             request: impl tonic::IntoRequest<super::MsgWithdrawRewards>,
-        ) -> std::result::Result<
-            tonic::Response<super::MsgWithdrawRewardsResponse>,
-            tonic::Status,
-        > {
-            self.inner
-                .ready()
-                .await
-                .map_err(|e| {
-                    tonic::Status::new(
-                        tonic::Code::Unknown,
-                        format!("Service was not ready: {}", e.into()),
-                    )
-                })?;
+        ) -> std::result::Result<tonic::Response<super::MsgWithdrawRewardsResponse>, tonic::Status>
+        {
+            self.inner.ready().await.map_err(|e| {
+                tonic::Status::new(
+                    tonic::Code::Unknown,
+                    format!("Service was not ready: {}", e.into()),
+                )
+            })?;
             let codec = tonic::codec::ProstCodec::default();
-            let path = http::uri::PathAndQuery::from_static(
-                "/archway.rewards.v1.Msg/WithdrawRewards",
-            );
+            let path =
+                http::uri::PathAndQuery::from_static("/archway.rewards.v1.Msg/WithdrawRewards");
             let mut req = request.into_request();
             req.extensions_mut()
                 .insert(GrpcMethod::new("archway.rewards.v1.Msg", "WithdrawRewards"));
@@ -995,23 +872,16 @@ pub mod msg_client {
         pub async fn set_flat_fee(
             &mut self,
             request: impl tonic::IntoRequest<super::MsgSetFlatFee>,
-        ) -> std::result::Result<
-            tonic::Response<super::MsgSetFlatFeeResponse>,
-            tonic::Status,
-        > {
-            self.inner
-                .ready()
-                .await
-                .map_err(|e| {
-                    tonic::Status::new(
-                        tonic::Code::Unknown,
-                        format!("Service was not ready: {}", e.into()),
-                    )
-                })?;
+        ) -> std::result::Result<tonic::Response<super::MsgSetFlatFeeResponse>, tonic::Status>
+        {
+            self.inner.ready().await.map_err(|e| {
+                tonic::Status::new(
+                    tonic::Code::Unknown,
+                    format!("Service was not ready: {}", e.into()),
+                )
+            })?;
             let codec = tonic::codec::ProstCodec::default();
-            let path = http::uri::PathAndQuery::from_static(
-                "/archway.rewards.v1.Msg/SetFlatFee",
-            );
+            let path = http::uri::PathAndQuery::from_static("/archway.rewards.v1.Msg/SetFlatFee");
             let mut req = request.into_request();
             req.extensions_mut()
                 .insert(GrpcMethod::new("archway.rewards.v1.Msg", "SetFlatFee"));
@@ -1020,23 +890,16 @@ pub mod msg_client {
         pub async fn update_params(
             &mut self,
             request: impl tonic::IntoRequest<super::MsgUpdateParams>,
-        ) -> std::result::Result<
-            tonic::Response<super::MsgUpdateParamsResponse>,
-            tonic::Status,
-        > {
-            self.inner
-                .ready()
-                .await
-                .map_err(|e| {
-                    tonic::Status::new(
-                        tonic::Code::Unknown,
-                        format!("Service was not ready: {}", e.into()),
-                    )
-                })?;
+        ) -> std::result::Result<tonic::Response<super::MsgUpdateParamsResponse>, tonic::Status>
+        {
+            self.inner.ready().await.map_err(|e| {
+                tonic::Status::new(
+                    tonic::Code::Unknown,
+                    format!("Service was not ready: {}", e.into()),
+                )
+            })?;
             let codec = tonic::codec::ProstCodec::default();
-            let path = http::uri::PathAndQuery::from_static(
-                "/archway.rewards.v1.Msg/UpdateParams",
-            );
+            let path = http::uri::PathAndQuery::from_static("/archway.rewards.v1.Msg/UpdateParams");
             let mut req = request.into_request();
             req.extensions_mut()
                 .insert(GrpcMethod::new("archway.rewards.v1.Msg", "UpdateParams"));
@@ -1063,24 +926,15 @@ pub mod msg_server {
         async fn withdraw_rewards(
             &self,
             request: tonic::Request<super::MsgWithdrawRewards>,
-        ) -> std::result::Result<
-            tonic::Response<super::MsgWithdrawRewardsResponse>,
-            tonic::Status,
-        >;
+        ) -> std::result::Result<tonic::Response<super::MsgWithdrawRewardsResponse>, tonic::Status>;
         async fn set_flat_fee(
             &self,
             request: tonic::Request<super::MsgSetFlatFee>,
-        ) -> std::result::Result<
-            tonic::Response<super::MsgSetFlatFeeResponse>,
-            tonic::Status,
-        >;
+        ) -> std::result::Result<tonic::Response<super::MsgSetFlatFeeResponse>, tonic::Status>;
         async fn update_params(
             &self,
             request: tonic::Request<super::MsgUpdateParams>,
-        ) -> std::result::Result<
-            tonic::Response<super::MsgUpdateParamsResponse>,
-            tonic::Status,
-        >;
+        ) -> std::result::Result<tonic::Response<super::MsgUpdateParamsResponse>, tonic::Status>;
     }
     #[derive(Debug)]
     pub struct MsgServer<T: Msg> {
@@ -1105,10 +959,7 @@ pub mod msg_server {
                 max_encoding_message_size: None,
             }
         }
-        pub fn with_interceptor<F>(
-            inner: T,
-            interceptor: F,
-        ) -> InterceptedService<Self, F>
+        pub fn with_interceptor<F>(inner: T, interceptor: F) -> InterceptedService<Self, F>
         where
             F: tonic::service::Interceptor,
         {
@@ -1164,15 +1015,11 @@ pub mod msg_server {
                 "/archway.rewards.v1.Msg/SetContractMetadata" => {
                     #[allow(non_camel_case_types)]
                     struct SetContractMetadataSvc<T: Msg>(pub Arc<T>);
-                    impl<
-                        T: Msg,
-                    > tonic::server::UnaryService<super::MsgSetContractMetadata>
-                    for SetContractMetadataSvc<T> {
+                    impl<T: Msg> tonic::server::UnaryService<super::MsgSetContractMetadata>
+                        for SetContractMetadataSvc<T>
+                    {
                         type Response = super::MsgSetContractMetadataResponse;
-                        type Future = BoxFuture<
-                            tonic::Response<Self::Response>,
-                            tonic::Status,
-                        >;
+                        type Future = BoxFuture<tonic::Response<Self::Response>, tonic::Status>;
                         fn call(
                             &mut self,
                             request: tonic::Request<super::MsgSetContractMetadata>,
@@ -1210,21 +1057,16 @@ pub mod msg_server {
                 "/archway.rewards.v1.Msg/WithdrawRewards" => {
                     #[allow(non_camel_case_types)]
                     struct WithdrawRewardsSvc<T: Msg>(pub Arc<T>);
-                    impl<T: Msg> tonic::server::UnaryService<super::MsgWithdrawRewards>
-                    for WithdrawRewardsSvc<T> {
+                    impl<T: Msg> tonic::server::UnaryService<super::MsgWithdrawRewards> for WithdrawRewardsSvc<T> {
                         type Response = super::MsgWithdrawRewardsResponse;
-                        type Future = BoxFuture<
-                            tonic::Response<Self::Response>,
-                            tonic::Status,
-                        >;
+                        type Future = BoxFuture<tonic::Response<Self::Response>, tonic::Status>;
                         fn call(
                             &mut self,
                             request: tonic::Request<super::MsgWithdrawRewards>,
                         ) -> Self::Future {
                             let inner = Arc::clone(&self.0);
-                            let fut = async move {
-                                <T as Msg>::withdraw_rewards(&inner, request).await
-                            };
+                            let fut =
+                                async move { <T as Msg>::withdraw_rewards(&inner, request).await };
                             Box::pin(fut)
                         }
                     }
@@ -1254,21 +1096,16 @@ pub mod msg_server {
                 "/archway.rewards.v1.Msg/SetFlatFee" => {
                     #[allow(non_camel_case_types)]
                     struct SetFlatFeeSvc<T: Msg>(pub Arc<T>);
-                    impl<T: Msg> tonic::server::UnaryService<super::MsgSetFlatFee>
-                    for SetFlatFeeSvc<T> {
+                    impl<T: Msg> tonic::server::UnaryService<super::MsgSetFlatFee> for SetFlatFeeSvc<T> {
                         type Response = super::MsgSetFlatFeeResponse;
-                        type Future = BoxFuture<
-                            tonic::Response<Self::Response>,
-                            tonic::Status,
-                        >;
+                        type Future = BoxFuture<tonic::Response<Self::Response>, tonic::Status>;
                         fn call(
                             &mut self,
                             request: tonic::Request<super::MsgSetFlatFee>,
                         ) -> Self::Future {
                             let inner = Arc::clone(&self.0);
-                            let fut = async move {
-                                <T as Msg>::set_flat_fee(&inner, request).await
-                            };
+                            let fut =
+                                async move { <T as Msg>::set_flat_fee(&inner, request).await };
                             Box::pin(fut)
                         }
                     }
@@ -1298,21 +1135,16 @@ pub mod msg_server {
                 "/archway.rewards.v1.Msg/UpdateParams" => {
                     #[allow(non_camel_case_types)]
                     struct UpdateParamsSvc<T: Msg>(pub Arc<T>);
-                    impl<T: Msg> tonic::server::UnaryService<super::MsgUpdateParams>
-                    for UpdateParamsSvc<T> {
+                    impl<T: Msg> tonic::server::UnaryService<super::MsgUpdateParams> for UpdateParamsSvc<T> {
                         type Response = super::MsgUpdateParamsResponse;
-                        type Future = BoxFuture<
-                            tonic::Response<Self::Response>,
-                            tonic::Status,
-                        >;
+                        type Future = BoxFuture<tonic::Response<Self::Response>, tonic::Status>;
                         fn call(
                             &mut self,
                             request: tonic::Request<super::MsgUpdateParams>,
                         ) -> Self::Future {
                             let inner = Arc::clone(&self.0);
-                            let fut = async move {
-                                <T as Msg>::update_params(&inner, request).await
-                            };
+                            let fut =
+                                async move { <T as Msg>::update_params(&inner, request).await };
                             Box::pin(fut)
                         }
                     }
@@ -1339,18 +1171,14 @@ pub mod msg_server {
                     };
                     Box::pin(fut)
                 }
-                _ => {
-                    Box::pin(async move {
-                        Ok(
-                            http::Response::builder()
-                                .status(200)
-                                .header("grpc-status", "12")
-                                .header("content-type", "application/grpc")
-                                .body(empty_body())
-                                .unwrap(),
-                        )
-                    })
-                }
+                _ => Box::pin(async move {
+                    Ok(http::Response::builder()
+                        .status(200)
+                        .header("grpc-status", "12")
+                        .header("content-type", "application/grpc")
+                        .body(empty_body())
+                        .unwrap())
+                }),
             }
         }
     }

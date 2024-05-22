@@ -120,6 +120,13 @@ fn apply_patches(out_dir: &str) -> Result<()> {
              #[cfg_attr(docsrs, doc(cfg(feature = \"grpc-transport\")))]\n    \
              impl${1}tonic::transport${2}",
         ),
+        // Feature-gate the ProtoBuf descriptors
+        (
+            "pub const FILE_DESCRIPTOR_SET",
+            "#[cfg(feature = \"proto-descriptor\")]\n    \
+             #[cfg_attr(docsrs, doc(cfg(feature = \"proto-descriptor\")))]\n    \
+             pub const FILE_DESCRIPTOR_SET",
+        ),
     ];
 
     let src_files_glob = format!("{out_dir}/*.rs");

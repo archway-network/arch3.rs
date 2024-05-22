@@ -4,8 +4,8 @@
 #[cfg_attr(docsrs, doc(cfg(feature = "grpc")))]
 pub mod query_client {
     #![allow(unused_variables, dead_code, missing_docs, clippy::let_unit_value)]
-    use tonic::codegen::*;
     use tonic::codegen::http::Uri;
+    use tonic::codegen::*;
     #[derive(Debug, Clone)]
     pub struct QueryClient<T> {
         inner: tonic::client::Grpc<T>,
@@ -51,9 +51,8 @@ pub mod query_client {
                     <T as tonic::client::GrpcService<tonic::body::BoxBody>>::ResponseBody,
                 >,
             >,
-            <T as tonic::codegen::Service<
-                http::Request<tonic::body::BoxBody>,
-            >>::Error: Into<StdError> + Send + Sync,
+            <T as tonic::codegen::Service<http::Request<tonic::body::BoxBody>>>::Error:
+                Into<StdError> + Send + Sync,
         {
             QueryClient::new(InterceptedService::new(inner, interceptor))
         }
@@ -91,23 +90,16 @@ pub mod query_client {
         pub async fn balance(
             &mut self,
             request: impl tonic::IntoRequest<super::QueryBalanceRequest>,
-        ) -> std::result::Result<
-            tonic::Response<super::QueryBalanceResponse>,
-            tonic::Status,
-        > {
-            self.inner
-                .ready()
-                .await
-                .map_err(|e| {
-                    tonic::Status::new(
-                        tonic::Code::Unknown,
-                        format!("Service was not ready: {}", e.into()),
-                    )
-                })?;
+        ) -> std::result::Result<tonic::Response<super::QueryBalanceResponse>, tonic::Status>
+        {
+            self.inner.ready().await.map_err(|e| {
+                tonic::Status::new(
+                    tonic::Code::Unknown,
+                    format!("Service was not ready: {}", e.into()),
+                )
+            })?;
             let codec = tonic::codec::ProstCodec::default();
-            let path = http::uri::PathAndQuery::from_static(
-                "/cosmos.nft.v1beta1.Query/Balance",
-            );
+            let path = http::uri::PathAndQuery::from_static("/cosmos.nft.v1beta1.Query/Balance");
             let mut req = request.into_request();
             req.extensions_mut()
                 .insert(GrpcMethod::new("cosmos.nft.v1beta1.Query", "Balance"));
@@ -116,23 +108,16 @@ pub mod query_client {
         pub async fn owner(
             &mut self,
             request: impl tonic::IntoRequest<super::QueryOwnerRequest>,
-        ) -> std::result::Result<
-            tonic::Response<super::QueryOwnerResponse>,
-            tonic::Status,
-        > {
-            self.inner
-                .ready()
-                .await
-                .map_err(|e| {
-                    tonic::Status::new(
-                        tonic::Code::Unknown,
-                        format!("Service was not ready: {}", e.into()),
-                    )
-                })?;
+        ) -> std::result::Result<tonic::Response<super::QueryOwnerResponse>, tonic::Status>
+        {
+            self.inner.ready().await.map_err(|e| {
+                tonic::Status::new(
+                    tonic::Code::Unknown,
+                    format!("Service was not ready: {}", e.into()),
+                )
+            })?;
             let codec = tonic::codec::ProstCodec::default();
-            let path = http::uri::PathAndQuery::from_static(
-                "/cosmos.nft.v1beta1.Query/Owner",
-            );
+            let path = http::uri::PathAndQuery::from_static("/cosmos.nft.v1beta1.Query/Owner");
             let mut req = request.into_request();
             req.extensions_mut()
                 .insert(GrpcMethod::new("cosmos.nft.v1beta1.Query", "Owner"));
@@ -141,23 +126,16 @@ pub mod query_client {
         pub async fn supply(
             &mut self,
             request: impl tonic::IntoRequest<super::QuerySupplyRequest>,
-        ) -> std::result::Result<
-            tonic::Response<super::QuerySupplyResponse>,
-            tonic::Status,
-        > {
-            self.inner
-                .ready()
-                .await
-                .map_err(|e| {
-                    tonic::Status::new(
-                        tonic::Code::Unknown,
-                        format!("Service was not ready: {}", e.into()),
-                    )
-                })?;
+        ) -> std::result::Result<tonic::Response<super::QuerySupplyResponse>, tonic::Status>
+        {
+            self.inner.ready().await.map_err(|e| {
+                tonic::Status::new(
+                    tonic::Code::Unknown,
+                    format!("Service was not ready: {}", e.into()),
+                )
+            })?;
             let codec = tonic::codec::ProstCodec::default();
-            let path = http::uri::PathAndQuery::from_static(
-                "/cosmos.nft.v1beta1.Query/Supply",
-            );
+            let path = http::uri::PathAndQuery::from_static("/cosmos.nft.v1beta1.Query/Supply");
             let mut req = request.into_request();
             req.extensions_mut()
                 .insert(GrpcMethod::new("cosmos.nft.v1beta1.Query", "Supply"));
@@ -166,23 +144,15 @@ pub mod query_client {
         pub async fn nf_ts(
             &mut self,
             request: impl tonic::IntoRequest<super::QueryNfTsRequest>,
-        ) -> std::result::Result<
-            tonic::Response<super::QueryNfTsResponse>,
-            tonic::Status,
-        > {
-            self.inner
-                .ready()
-                .await
-                .map_err(|e| {
-                    tonic::Status::new(
-                        tonic::Code::Unknown,
-                        format!("Service was not ready: {}", e.into()),
-                    )
-                })?;
+        ) -> std::result::Result<tonic::Response<super::QueryNfTsResponse>, tonic::Status> {
+            self.inner.ready().await.map_err(|e| {
+                tonic::Status::new(
+                    tonic::Code::Unknown,
+                    format!("Service was not ready: {}", e.into()),
+                )
+            })?;
             let codec = tonic::codec::ProstCodec::default();
-            let path = http::uri::PathAndQuery::from_static(
-                "/cosmos.nft.v1beta1.Query/NFTs",
-            );
+            let path = http::uri::PathAndQuery::from_static("/cosmos.nft.v1beta1.Query/NFTs");
             let mut req = request.into_request();
             req.extensions_mut()
                 .insert(GrpcMethod::new("cosmos.nft.v1beta1.Query", "NFTs"));
@@ -191,23 +161,15 @@ pub mod query_client {
         pub async fn nft(
             &mut self,
             request: impl tonic::IntoRequest<super::QueryNftRequest>,
-        ) -> std::result::Result<
-            tonic::Response<super::QueryNftResponse>,
-            tonic::Status,
-        > {
-            self.inner
-                .ready()
-                .await
-                .map_err(|e| {
-                    tonic::Status::new(
-                        tonic::Code::Unknown,
-                        format!("Service was not ready: {}", e.into()),
-                    )
-                })?;
+        ) -> std::result::Result<tonic::Response<super::QueryNftResponse>, tonic::Status> {
+            self.inner.ready().await.map_err(|e| {
+                tonic::Status::new(
+                    tonic::Code::Unknown,
+                    format!("Service was not ready: {}", e.into()),
+                )
+            })?;
             let codec = tonic::codec::ProstCodec::default();
-            let path = http::uri::PathAndQuery::from_static(
-                "/cosmos.nft.v1beta1.Query/NFT",
-            );
+            let path = http::uri::PathAndQuery::from_static("/cosmos.nft.v1beta1.Query/NFT");
             let mut req = request.into_request();
             req.extensions_mut()
                 .insert(GrpcMethod::new("cosmos.nft.v1beta1.Query", "NFT"));
@@ -216,23 +178,16 @@ pub mod query_client {
         pub async fn class(
             &mut self,
             request: impl tonic::IntoRequest<super::QueryClassRequest>,
-        ) -> std::result::Result<
-            tonic::Response<super::QueryClassResponse>,
-            tonic::Status,
-        > {
-            self.inner
-                .ready()
-                .await
-                .map_err(|e| {
-                    tonic::Status::new(
-                        tonic::Code::Unknown,
-                        format!("Service was not ready: {}", e.into()),
-                    )
-                })?;
+        ) -> std::result::Result<tonic::Response<super::QueryClassResponse>, tonic::Status>
+        {
+            self.inner.ready().await.map_err(|e| {
+                tonic::Status::new(
+                    tonic::Code::Unknown,
+                    format!("Service was not ready: {}", e.into()),
+                )
+            })?;
             let codec = tonic::codec::ProstCodec::default();
-            let path = http::uri::PathAndQuery::from_static(
-                "/cosmos.nft.v1beta1.Query/Class",
-            );
+            let path = http::uri::PathAndQuery::from_static("/cosmos.nft.v1beta1.Query/Class");
             let mut req = request.into_request();
             req.extensions_mut()
                 .insert(GrpcMethod::new("cosmos.nft.v1beta1.Query", "Class"));
@@ -241,23 +196,16 @@ pub mod query_client {
         pub async fn classes(
             &mut self,
             request: impl tonic::IntoRequest<super::QueryClassesRequest>,
-        ) -> std::result::Result<
-            tonic::Response<super::QueryClassesResponse>,
-            tonic::Status,
-        > {
-            self.inner
-                .ready()
-                .await
-                .map_err(|e| {
-                    tonic::Status::new(
-                        tonic::Code::Unknown,
-                        format!("Service was not ready: {}", e.into()),
-                    )
-                })?;
+        ) -> std::result::Result<tonic::Response<super::QueryClassesResponse>, tonic::Status>
+        {
+            self.inner.ready().await.map_err(|e| {
+                tonic::Status::new(
+                    tonic::Code::Unknown,
+                    format!("Service was not ready: {}", e.into()),
+                )
+            })?;
             let codec = tonic::codec::ProstCodec::default();
-            let path = http::uri::PathAndQuery::from_static(
-                "/cosmos.nft.v1beta1.Query/Classes",
-            );
+            let path = http::uri::PathAndQuery::from_static("/cosmos.nft.v1beta1.Query/Classes");
             let mut req = request.into_request();
             req.extensions_mut()
                 .insert(GrpcMethod::new("cosmos.nft.v1beta1.Query", "Classes"));
@@ -277,52 +225,31 @@ pub mod query_server {
         async fn balance(
             &self,
             request: tonic::Request<super::QueryBalanceRequest>,
-        ) -> std::result::Result<
-            tonic::Response<super::QueryBalanceResponse>,
-            tonic::Status,
-        >;
+        ) -> std::result::Result<tonic::Response<super::QueryBalanceResponse>, tonic::Status>;
         async fn owner(
             &self,
             request: tonic::Request<super::QueryOwnerRequest>,
-        ) -> std::result::Result<
-            tonic::Response<super::QueryOwnerResponse>,
-            tonic::Status,
-        >;
+        ) -> std::result::Result<tonic::Response<super::QueryOwnerResponse>, tonic::Status>;
         async fn supply(
             &self,
             request: tonic::Request<super::QuerySupplyRequest>,
-        ) -> std::result::Result<
-            tonic::Response<super::QuerySupplyResponse>,
-            tonic::Status,
-        >;
+        ) -> std::result::Result<tonic::Response<super::QuerySupplyResponse>, tonic::Status>;
         async fn nf_ts(
             &self,
             request: tonic::Request<super::QueryNfTsRequest>,
-        ) -> std::result::Result<
-            tonic::Response<super::QueryNfTsResponse>,
-            tonic::Status,
-        >;
+        ) -> std::result::Result<tonic::Response<super::QueryNfTsResponse>, tonic::Status>;
         async fn nft(
             &self,
             request: tonic::Request<super::QueryNftRequest>,
-        ) -> std::result::Result<
-            tonic::Response<super::QueryNftResponse>,
-            tonic::Status,
-        >;
+        ) -> std::result::Result<tonic::Response<super::QueryNftResponse>, tonic::Status>;
         async fn class(
             &self,
             request: tonic::Request<super::QueryClassRequest>,
-        ) -> std::result::Result<
-            tonic::Response<super::QueryClassResponse>,
-            tonic::Status,
-        >;
+        ) -> std::result::Result<tonic::Response<super::QueryClassResponse>, tonic::Status>;
         async fn classes(
             &self,
             request: tonic::Request<super::QueryClassesRequest>,
-        ) -> std::result::Result<
-            tonic::Response<super::QueryClassesResponse>,
-            tonic::Status,
-        >;
+        ) -> std::result::Result<tonic::Response<super::QueryClassesResponse>, tonic::Status>;
     }
     #[derive(Debug)]
     pub struct QueryServer<T: Query> {
@@ -347,10 +274,7 @@ pub mod query_server {
                 max_encoding_message_size: None,
             }
         }
-        pub fn with_interceptor<F>(
-            inner: T,
-            interceptor: F,
-        ) -> InterceptedService<Self, F>
+        pub fn with_interceptor<F>(inner: T, interceptor: F) -> InterceptedService<Self, F>
         where
             F: tonic::service::Interceptor,
         {
@@ -406,23 +330,15 @@ pub mod query_server {
                 "/cosmos.nft.v1beta1.Query/Balance" => {
                     #[allow(non_camel_case_types)]
                     struct BalanceSvc<T: Query>(pub Arc<T>);
-                    impl<
-                        T: Query,
-                    > tonic::server::UnaryService<super::QueryBalanceRequest>
-                    for BalanceSvc<T> {
+                    impl<T: Query> tonic::server::UnaryService<super::QueryBalanceRequest> for BalanceSvc<T> {
                         type Response = super::QueryBalanceResponse;
-                        type Future = BoxFuture<
-                            tonic::Response<Self::Response>,
-                            tonic::Status,
-                        >;
+                        type Future = BoxFuture<tonic::Response<Self::Response>, tonic::Status>;
                         fn call(
                             &mut self,
                             request: tonic::Request<super::QueryBalanceRequest>,
                         ) -> Self::Future {
                             let inner = Arc::clone(&self.0);
-                            let fut = async move {
-                                <T as Query>::balance(&inner, request).await
-                            };
+                            let fut = async move { <T as Query>::balance(&inner, request).await };
                             Box::pin(fut)
                         }
                     }
@@ -452,21 +368,15 @@ pub mod query_server {
                 "/cosmos.nft.v1beta1.Query/Owner" => {
                     #[allow(non_camel_case_types)]
                     struct OwnerSvc<T: Query>(pub Arc<T>);
-                    impl<T: Query> tonic::server::UnaryService<super::QueryOwnerRequest>
-                    for OwnerSvc<T> {
+                    impl<T: Query> tonic::server::UnaryService<super::QueryOwnerRequest> for OwnerSvc<T> {
                         type Response = super::QueryOwnerResponse;
-                        type Future = BoxFuture<
-                            tonic::Response<Self::Response>,
-                            tonic::Status,
-                        >;
+                        type Future = BoxFuture<tonic::Response<Self::Response>, tonic::Status>;
                         fn call(
                             &mut self,
                             request: tonic::Request<super::QueryOwnerRequest>,
                         ) -> Self::Future {
                             let inner = Arc::clone(&self.0);
-                            let fut = async move {
-                                <T as Query>::owner(&inner, request).await
-                            };
+                            let fut = async move { <T as Query>::owner(&inner, request).await };
                             Box::pin(fut)
                         }
                     }
@@ -496,21 +406,15 @@ pub mod query_server {
                 "/cosmos.nft.v1beta1.Query/Supply" => {
                     #[allow(non_camel_case_types)]
                     struct SupplySvc<T: Query>(pub Arc<T>);
-                    impl<T: Query> tonic::server::UnaryService<super::QuerySupplyRequest>
-                    for SupplySvc<T> {
+                    impl<T: Query> tonic::server::UnaryService<super::QuerySupplyRequest> for SupplySvc<T> {
                         type Response = super::QuerySupplyResponse;
-                        type Future = BoxFuture<
-                            tonic::Response<Self::Response>,
-                            tonic::Status,
-                        >;
+                        type Future = BoxFuture<tonic::Response<Self::Response>, tonic::Status>;
                         fn call(
                             &mut self,
                             request: tonic::Request<super::QuerySupplyRequest>,
                         ) -> Self::Future {
                             let inner = Arc::clone(&self.0);
-                            let fut = async move {
-                                <T as Query>::supply(&inner, request).await
-                            };
+                            let fut = async move { <T as Query>::supply(&inner, request).await };
                             Box::pin(fut)
                         }
                     }
@@ -540,21 +444,15 @@ pub mod query_server {
                 "/cosmos.nft.v1beta1.Query/NFTs" => {
                     #[allow(non_camel_case_types)]
                     struct NFTsSvc<T: Query>(pub Arc<T>);
-                    impl<T: Query> tonic::server::UnaryService<super::QueryNfTsRequest>
-                    for NFTsSvc<T> {
+                    impl<T: Query> tonic::server::UnaryService<super::QueryNfTsRequest> for NFTsSvc<T> {
                         type Response = super::QueryNfTsResponse;
-                        type Future = BoxFuture<
-                            tonic::Response<Self::Response>,
-                            tonic::Status,
-                        >;
+                        type Future = BoxFuture<tonic::Response<Self::Response>, tonic::Status>;
                         fn call(
                             &mut self,
                             request: tonic::Request<super::QueryNfTsRequest>,
                         ) -> Self::Future {
                             let inner = Arc::clone(&self.0);
-                            let fut = async move {
-                                <T as Query>::nf_ts(&inner, request).await
-                            };
+                            let fut = async move { <T as Query>::nf_ts(&inner, request).await };
                             Box::pin(fut)
                         }
                     }
@@ -584,21 +482,15 @@ pub mod query_server {
                 "/cosmos.nft.v1beta1.Query/NFT" => {
                     #[allow(non_camel_case_types)]
                     struct NFTSvc<T: Query>(pub Arc<T>);
-                    impl<T: Query> tonic::server::UnaryService<super::QueryNftRequest>
-                    for NFTSvc<T> {
+                    impl<T: Query> tonic::server::UnaryService<super::QueryNftRequest> for NFTSvc<T> {
                         type Response = super::QueryNftResponse;
-                        type Future = BoxFuture<
-                            tonic::Response<Self::Response>,
-                            tonic::Status,
-                        >;
+                        type Future = BoxFuture<tonic::Response<Self::Response>, tonic::Status>;
                         fn call(
                             &mut self,
                             request: tonic::Request<super::QueryNftRequest>,
                         ) -> Self::Future {
                             let inner = Arc::clone(&self.0);
-                            let fut = async move {
-                                <T as Query>::nft(&inner, request).await
-                            };
+                            let fut = async move { <T as Query>::nft(&inner, request).await };
                             Box::pin(fut)
                         }
                     }
@@ -628,21 +520,15 @@ pub mod query_server {
                 "/cosmos.nft.v1beta1.Query/Class" => {
                     #[allow(non_camel_case_types)]
                     struct ClassSvc<T: Query>(pub Arc<T>);
-                    impl<T: Query> tonic::server::UnaryService<super::QueryClassRequest>
-                    for ClassSvc<T> {
+                    impl<T: Query> tonic::server::UnaryService<super::QueryClassRequest> for ClassSvc<T> {
                         type Response = super::QueryClassResponse;
-                        type Future = BoxFuture<
-                            tonic::Response<Self::Response>,
-                            tonic::Status,
-                        >;
+                        type Future = BoxFuture<tonic::Response<Self::Response>, tonic::Status>;
                         fn call(
                             &mut self,
                             request: tonic::Request<super::QueryClassRequest>,
                         ) -> Self::Future {
                             let inner = Arc::clone(&self.0);
-                            let fut = async move {
-                                <T as Query>::class(&inner, request).await
-                            };
+                            let fut = async move { <T as Query>::class(&inner, request).await };
                             Box::pin(fut)
                         }
                     }
@@ -672,23 +558,15 @@ pub mod query_server {
                 "/cosmos.nft.v1beta1.Query/Classes" => {
                     #[allow(non_camel_case_types)]
                     struct ClassesSvc<T: Query>(pub Arc<T>);
-                    impl<
-                        T: Query,
-                    > tonic::server::UnaryService<super::QueryClassesRequest>
-                    for ClassesSvc<T> {
+                    impl<T: Query> tonic::server::UnaryService<super::QueryClassesRequest> for ClassesSvc<T> {
                         type Response = super::QueryClassesResponse;
-                        type Future = BoxFuture<
-                            tonic::Response<Self::Response>,
-                            tonic::Status,
-                        >;
+                        type Future = BoxFuture<tonic::Response<Self::Response>, tonic::Status>;
                         fn call(
                             &mut self,
                             request: tonic::Request<super::QueryClassesRequest>,
                         ) -> Self::Future {
                             let inner = Arc::clone(&self.0);
-                            let fut = async move {
-                                <T as Query>::classes(&inner, request).await
-                            };
+                            let fut = async move { <T as Query>::classes(&inner, request).await };
                             Box::pin(fut)
                         }
                     }
@@ -715,18 +593,14 @@ pub mod query_server {
                     };
                     Box::pin(fut)
                 }
-                _ => {
-                    Box::pin(async move {
-                        Ok(
-                            http::Response::builder()
-                                .status(200)
-                                .header("grpc-status", "12")
-                                .header("content-type", "application/grpc")
-                                .body(empty_body())
-                                .unwrap(),
-                        )
-                    })
-                }
+                _ => Box::pin(async move {
+                    Ok(http::Response::builder()
+                        .status(200)
+                        .header("grpc-status", "12")
+                        .header("content-type", "application/grpc")
+                        .body(empty_body())
+                        .unwrap())
+                }),
             }
         }
     }
@@ -761,8 +635,8 @@ pub mod query_server {
 #[cfg_attr(docsrs, doc(cfg(feature = "grpc")))]
 pub mod msg_client {
     #![allow(unused_variables, dead_code, missing_docs, clippy::let_unit_value)]
-    use tonic::codegen::*;
     use tonic::codegen::http::Uri;
+    use tonic::codegen::*;
     #[derive(Debug, Clone)]
     pub struct MsgClient<T> {
         inner: tonic::client::Grpc<T>,
@@ -795,10 +669,7 @@ pub mod msg_client {
             let inner = tonic::client::Grpc::with_origin(inner, origin);
             Self { inner }
         }
-        pub fn with_interceptor<F>(
-            inner: T,
-            interceptor: F,
-        ) -> MsgClient<InterceptedService<T, F>>
+        pub fn with_interceptor<F>(inner: T, interceptor: F) -> MsgClient<InterceptedService<T, F>>
         where
             F: tonic::service::Interceptor,
             T::ResponseBody: Default,
@@ -808,9 +679,8 @@ pub mod msg_client {
                     <T as tonic::client::GrpcService<tonic::body::BoxBody>>::ResponseBody,
                 >,
             >,
-            <T as tonic::codegen::Service<
-                http::Request<tonic::body::BoxBody>,
-            >>::Error: Into<StdError> + Send + Sync,
+            <T as tonic::codegen::Service<http::Request<tonic::body::BoxBody>>>::Error:
+                Into<StdError> + Send + Sync,
         {
             MsgClient::new(InterceptedService::new(inner, interceptor))
         }
@@ -848,23 +718,15 @@ pub mod msg_client {
         pub async fn send(
             &mut self,
             request: impl tonic::IntoRequest<super::MsgSend>,
-        ) -> std::result::Result<
-            tonic::Response<super::MsgSendResponse>,
-            tonic::Status,
-        > {
-            self.inner
-                .ready()
-                .await
-                .map_err(|e| {
-                    tonic::Status::new(
-                        tonic::Code::Unknown,
-                        format!("Service was not ready: {}", e.into()),
-                    )
-                })?;
+        ) -> std::result::Result<tonic::Response<super::MsgSendResponse>, tonic::Status> {
+            self.inner.ready().await.map_err(|e| {
+                tonic::Status::new(
+                    tonic::Code::Unknown,
+                    format!("Service was not ready: {}", e.into()),
+                )
+            })?;
             let codec = tonic::codec::ProstCodec::default();
-            let path = http::uri::PathAndQuery::from_static(
-                "/cosmos.nft.v1beta1.Msg/Send",
-            );
+            let path = http::uri::PathAndQuery::from_static("/cosmos.nft.v1beta1.Msg/Send");
             let mut req = request.into_request();
             req.extensions_mut()
                 .insert(GrpcMethod::new("cosmos.nft.v1beta1.Msg", "Send"));
@@ -909,10 +771,7 @@ pub mod msg_server {
                 max_encoding_message_size: None,
             }
         }
-        pub fn with_interceptor<F>(
-            inner: T,
-            interceptor: F,
-        ) -> InterceptedService<Self, F>
+        pub fn with_interceptor<F>(inner: T, interceptor: F) -> InterceptedService<Self, F>
         where
             F: tonic::service::Interceptor,
         {
@@ -968,21 +827,15 @@ pub mod msg_server {
                 "/cosmos.nft.v1beta1.Msg/Send" => {
                     #[allow(non_camel_case_types)]
                     struct SendSvc<T: Msg>(pub Arc<T>);
-                    impl<T: Msg> tonic::server::UnaryService<super::MsgSend>
-                    for SendSvc<T> {
+                    impl<T: Msg> tonic::server::UnaryService<super::MsgSend> for SendSvc<T> {
                         type Response = super::MsgSendResponse;
-                        type Future = BoxFuture<
-                            tonic::Response<Self::Response>,
-                            tonic::Status,
-                        >;
+                        type Future = BoxFuture<tonic::Response<Self::Response>, tonic::Status>;
                         fn call(
                             &mut self,
                             request: tonic::Request<super::MsgSend>,
                         ) -> Self::Future {
                             let inner = Arc::clone(&self.0);
-                            let fut = async move {
-                                <T as Msg>::send(&inner, request).await
-                            };
+                            let fut = async move { <T as Msg>::send(&inner, request).await };
                             Box::pin(fut)
                         }
                     }
@@ -1009,18 +862,14 @@ pub mod msg_server {
                     };
                     Box::pin(fut)
                 }
-                _ => {
-                    Box::pin(async move {
-                        Ok(
-                            http::Response::builder()
-                                .status(200)
-                                .header("grpc-status", "12")
-                                .header("content-type", "application/grpc")
-                                .body(empty_body())
-                                .unwrap(),
-                        )
-                    })
-                }
+                _ => Box::pin(async move {
+                    Ok(http::Response::builder()
+                        .status(200)
+                        .header("grpc-status", "12")
+                        .header("content-type", "application/grpc")
+                        .body(empty_body())
+                        .unwrap())
+                }),
             }
         }
     }

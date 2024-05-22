@@ -4,11 +4,11 @@
 #[cfg_attr(docsrs, doc(cfg(feature = "grpc")))]
 pub mod reflection_service_client {
     #![allow(unused_variables, dead_code, missing_docs, clippy::let_unit_value)]
-    use tonic::codegen::*;
     use tonic::codegen::http::Uri;
+    use tonic::codegen::*;
     /** Package cosmos.reflection.v1 provides support for inspecting protobuf
- file descriptors.
-*/
+     file descriptors.
+    */
     #[derive(Debug, Clone)]
     pub struct ReflectionServiceClient<T> {
         inner: tonic::client::Grpc<T>,
@@ -54,9 +54,8 @@ pub mod reflection_service_client {
                     <T as tonic::client::GrpcService<tonic::body::BoxBody>>::ResponseBody,
                 >,
             >,
-            <T as tonic::codegen::Service<
-                http::Request<tonic::body::BoxBody>,
-            >>::Error: Into<StdError> + Send + Sync,
+            <T as tonic::codegen::Service<http::Request<tonic::body::BoxBody>>>::Error:
+                Into<StdError> + Send + Sync,
         {
             ReflectionServiceClient::new(InterceptedService::new(inner, interceptor))
         }
@@ -92,36 +91,28 @@ pub mod reflection_service_client {
             self
         }
         /** FileDescriptors queries all the file descriptors in the app in order
- to enable easier generation of dynamic clients.
-*/
+         to enable easier generation of dynamic clients.
+        */
         pub async fn file_descriptors(
             &mut self,
             request: impl tonic::IntoRequest<super::FileDescriptorsRequest>,
-        ) -> std::result::Result<
-            tonic::Response<super::FileDescriptorsResponse>,
-            tonic::Status,
-        > {
-            self.inner
-                .ready()
-                .await
-                .map_err(|e| {
-                    tonic::Status::new(
-                        tonic::Code::Unknown,
-                        format!("Service was not ready: {}", e.into()),
-                    )
-                })?;
+        ) -> std::result::Result<tonic::Response<super::FileDescriptorsResponse>, tonic::Status>
+        {
+            self.inner.ready().await.map_err(|e| {
+                tonic::Status::new(
+                    tonic::Code::Unknown,
+                    format!("Service was not ready: {}", e.into()),
+                )
+            })?;
             let codec = tonic::codec::ProstCodec::default();
             let path = http::uri::PathAndQuery::from_static(
                 "/cosmos.reflection.v1.ReflectionService/FileDescriptors",
             );
             let mut req = request.into_request();
-            req.extensions_mut()
-                .insert(
-                    GrpcMethod::new(
-                        "cosmos.reflection.v1.ReflectionService",
-                        "FileDescriptors",
-                    ),
-                );
+            req.extensions_mut().insert(GrpcMethod::new(
+                "cosmos.reflection.v1.ReflectionService",
+                "FileDescriptors",
+            ));
             self.inner.unary(req, path, codec).await
         }
     }
@@ -136,19 +127,16 @@ pub mod reflection_service_server {
     #[async_trait]
     pub trait ReflectionService: Send + Sync + 'static {
         /** FileDescriptors queries all the file descriptors in the app in order
- to enable easier generation of dynamic clients.
-*/
+         to enable easier generation of dynamic clients.
+        */
         async fn file_descriptors(
             &self,
             request: tonic::Request<super::FileDescriptorsRequest>,
-        ) -> std::result::Result<
-            tonic::Response<super::FileDescriptorsResponse>,
-            tonic::Status,
-        >;
+        ) -> std::result::Result<tonic::Response<super::FileDescriptorsResponse>, tonic::Status>;
     }
     /** Package cosmos.reflection.v1 provides support for inspecting protobuf
- file descriptors.
-*/
+     file descriptors.
+    */
     #[derive(Debug)]
     pub struct ReflectionServiceServer<T: ReflectionService> {
         inner: _Inner<T>,
@@ -172,10 +160,7 @@ pub mod reflection_service_server {
                 max_encoding_message_size: None,
             }
         }
-        pub fn with_interceptor<F>(
-            inner: T,
-            interceptor: F,
-        ) -> InterceptedService<Self, F>
+        pub fn with_interceptor<F>(inner: T, interceptor: F) -> InterceptedService<Self, F>
         where
             F: tonic::service::Interceptor,
         {
@@ -231,23 +216,19 @@ pub mod reflection_service_server {
                 "/cosmos.reflection.v1.ReflectionService/FileDescriptors" => {
                     #[allow(non_camel_case_types)]
                     struct FileDescriptorsSvc<T: ReflectionService>(pub Arc<T>);
-                    impl<
-                        T: ReflectionService,
-                    > tonic::server::UnaryService<super::FileDescriptorsRequest>
-                    for FileDescriptorsSvc<T> {
+                    impl<T: ReflectionService>
+                        tonic::server::UnaryService<super::FileDescriptorsRequest>
+                        for FileDescriptorsSvc<T>
+                    {
                         type Response = super::FileDescriptorsResponse;
-                        type Future = BoxFuture<
-                            tonic::Response<Self::Response>,
-                            tonic::Status,
-                        >;
+                        type Future = BoxFuture<tonic::Response<Self::Response>, tonic::Status>;
                         fn call(
                             &mut self,
                             request: tonic::Request<super::FileDescriptorsRequest>,
                         ) -> Self::Future {
                             let inner = Arc::clone(&self.0);
                             let fut = async move {
-                                <T as ReflectionService>::file_descriptors(&inner, request)
-                                    .await
+                                <T as ReflectionService>::file_descriptors(&inner, request).await
                             };
                             Box::pin(fut)
                         }
@@ -275,18 +256,14 @@ pub mod reflection_service_server {
                     };
                     Box::pin(fut)
                 }
-                _ => {
-                    Box::pin(async move {
-                        Ok(
-                            http::Response::builder()
-                                .status(200)
-                                .header("grpc-status", "12")
-                                .header("content-type", "application/grpc")
-                                .body(empty_body())
-                                .unwrap(),
-                        )
-                    })
-                }
+                _ => Box::pin(async move {
+                    Ok(http::Response::builder()
+                        .status(200)
+                        .header("grpc-status", "12")
+                        .header("content-type", "application/grpc")
+                        .body(empty_body())
+                        .unwrap())
+                }),
             }
         }
     }
@@ -312,8 +289,7 @@ pub mod reflection_service_server {
             write!(f, "{:?}", self.0)
         }
     }
-    impl<T: ReflectionService> tonic::server::NamedService
-    for ReflectionServiceServer<T> {
+    impl<T: ReflectionService> tonic::server::NamedService for ReflectionServiceServer<T> {
         const NAME: &'static str = "cosmos.reflection.v1.ReflectionService";
     }
 }

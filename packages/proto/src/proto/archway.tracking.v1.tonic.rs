@@ -4,10 +4,10 @@
 #[cfg_attr(docsrs, doc(cfg(feature = "grpc")))]
 pub mod query_client {
     #![allow(unused_variables, dead_code, missing_docs, clippy::let_unit_value)]
-    use tonic::codegen::*;
     use tonic::codegen::http::Uri;
+    use tonic::codegen::*;
     /** Query service for the tracking module.
-*/
+    */
     #[derive(Debug, Clone)]
     pub struct QueryClient<T> {
         inner: tonic::client::Grpc<T>,
@@ -53,9 +53,8 @@ pub mod query_client {
                     <T as tonic::client::GrpcService<tonic::body::BoxBody>>::ResponseBody,
                 >,
             >,
-            <T as tonic::codegen::Service<
-                http::Request<tonic::body::BoxBody>,
-            >>::Error: Into<StdError> + Send + Sync,
+            <T as tonic::codegen::Service<http::Request<tonic::body::BoxBody>>>::Error:
+                Into<StdError> + Send + Sync,
         {
             QueryClient::new(InterceptedService::new(inner, interceptor))
         }
@@ -91,32 +90,26 @@ pub mod query_client {
             self
         }
         /** BlockGasTracking returns block gas tracking for the current block
-*/
+        */
         pub async fn block_gas_tracking(
             &mut self,
             request: impl tonic::IntoRequest<super::QueryBlockGasTrackingRequest>,
-        ) -> std::result::Result<
-            tonic::Response<super::QueryBlockGasTrackingResponse>,
-            tonic::Status,
-        > {
-            self.inner
-                .ready()
-                .await
-                .map_err(|e| {
-                    tonic::Status::new(
-                        tonic::Code::Unknown,
-                        format!("Service was not ready: {}", e.into()),
-                    )
-                })?;
+        ) -> std::result::Result<tonic::Response<super::QueryBlockGasTrackingResponse>, tonic::Status>
+        {
+            self.inner.ready().await.map_err(|e| {
+                tonic::Status::new(
+                    tonic::Code::Unknown,
+                    format!("Service was not ready: {}", e.into()),
+                )
+            })?;
             let codec = tonic::codec::ProstCodec::default();
-            let path = http::uri::PathAndQuery::from_static(
-                "/archway.tracking.v1.Query/BlockGasTracking",
-            );
+            let path =
+                http::uri::PathAndQuery::from_static("/archway.tracking.v1.Query/BlockGasTracking");
             let mut req = request.into_request();
-            req.extensions_mut()
-                .insert(
-                    GrpcMethod::new("archway.tracking.v1.Query", "BlockGasTracking"),
-                );
+            req.extensions_mut().insert(GrpcMethod::new(
+                "archway.tracking.v1.Query",
+                "BlockGasTracking",
+            ));
             self.inner.unary(req, path, codec).await
         }
     }
@@ -131,17 +124,14 @@ pub mod query_server {
     #[async_trait]
     pub trait Query: Send + Sync + 'static {
         /** BlockGasTracking returns block gas tracking for the current block
-*/
+        */
         async fn block_gas_tracking(
             &self,
             request: tonic::Request<super::QueryBlockGasTrackingRequest>,
-        ) -> std::result::Result<
-            tonic::Response<super::QueryBlockGasTrackingResponse>,
-            tonic::Status,
-        >;
+        ) -> std::result::Result<tonic::Response<super::QueryBlockGasTrackingResponse>, tonic::Status>;
     }
     /** Query service for the tracking module.
-*/
+    */
     #[derive(Debug)]
     pub struct QueryServer<T: Query> {
         inner: _Inner<T>,
@@ -165,10 +155,7 @@ pub mod query_server {
                 max_encoding_message_size: None,
             }
         }
-        pub fn with_interceptor<F>(
-            inner: T,
-            interceptor: F,
-        ) -> InterceptedService<Self, F>
+        pub fn with_interceptor<F>(inner: T, interceptor: F) -> InterceptedService<Self, F>
         where
             F: tonic::service::Interceptor,
         {
@@ -224,15 +211,11 @@ pub mod query_server {
                 "/archway.tracking.v1.Query/BlockGasTracking" => {
                     #[allow(non_camel_case_types)]
                     struct BlockGasTrackingSvc<T: Query>(pub Arc<T>);
-                    impl<
-                        T: Query,
-                    > tonic::server::UnaryService<super::QueryBlockGasTrackingRequest>
-                    for BlockGasTrackingSvc<T> {
+                    impl<T: Query> tonic::server::UnaryService<super::QueryBlockGasTrackingRequest>
+                        for BlockGasTrackingSvc<T>
+                    {
                         type Response = super::QueryBlockGasTrackingResponse;
-                        type Future = BoxFuture<
-                            tonic::Response<Self::Response>,
-                            tonic::Status,
-                        >;
+                        type Future = BoxFuture<tonic::Response<Self::Response>, tonic::Status>;
                         fn call(
                             &mut self,
                             request: tonic::Request<super::QueryBlockGasTrackingRequest>,
@@ -267,18 +250,14 @@ pub mod query_server {
                     };
                     Box::pin(fut)
                 }
-                _ => {
-                    Box::pin(async move {
-                        Ok(
-                            http::Response::builder()
-                                .status(200)
-                                .header("grpc-status", "12")
-                                .header("content-type", "application/grpc")
-                                .body(empty_body())
-                                .unwrap(),
-                        )
-                    })
-                }
+                _ => Box::pin(async move {
+                    Ok(http::Response::builder()
+                        .status(200)
+                        .header("grpc-status", "12")
+                        .header("content-type", "application/grpc")
+                        .body(empty_body())
+                        .unwrap())
+                }),
             }
         }
     }

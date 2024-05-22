@@ -4,8 +4,8 @@
 #[cfg_attr(docsrs, doc(cfg(feature = "grpc")))]
 pub mod query_client {
     #![allow(unused_variables, dead_code, missing_docs, clippy::let_unit_value)]
-    use tonic::codegen::*;
     use tonic::codegen::http::Uri;
+    use tonic::codegen::*;
     #[derive(Debug, Clone)]
     pub struct QueryClient<T> {
         inner: tonic::client::Grpc<T>,
@@ -51,9 +51,8 @@ pub mod query_client {
                     <T as tonic::client::GrpcService<tonic::body::BoxBody>>::ResponseBody,
                 >,
             >,
-            <T as tonic::codegen::Service<
-                http::Request<tonic::body::BoxBody>,
-            >>::Error: Into<StdError> + Send + Sync,
+            <T as tonic::codegen::Service<http::Request<tonic::body::BoxBody>>>::Error:
+                Into<StdError> + Send + Sync,
         {
             QueryClient::new(InterceptedService::new(inner, interceptor))
         }
@@ -91,23 +90,16 @@ pub mod query_client {
         pub async fn grants(
             &mut self,
             request: impl tonic::IntoRequest<super::QueryGrantsRequest>,
-        ) -> std::result::Result<
-            tonic::Response<super::QueryGrantsResponse>,
-            tonic::Status,
-        > {
-            self.inner
-                .ready()
-                .await
-                .map_err(|e| {
-                    tonic::Status::new(
-                        tonic::Code::Unknown,
-                        format!("Service was not ready: {}", e.into()),
-                    )
-                })?;
+        ) -> std::result::Result<tonic::Response<super::QueryGrantsResponse>, tonic::Status>
+        {
+            self.inner.ready().await.map_err(|e| {
+                tonic::Status::new(
+                    tonic::Code::Unknown,
+                    format!("Service was not ready: {}", e.into()),
+                )
+            })?;
             let codec = tonic::codec::ProstCodec::default();
-            let path = http::uri::PathAndQuery::from_static(
-                "/cosmos.authz.v1beta1.Query/Grants",
-            );
+            let path = http::uri::PathAndQuery::from_static("/cosmos.authz.v1beta1.Query/Grants");
             let mut req = request.into_request();
             req.extensions_mut()
                 .insert(GrpcMethod::new("cosmos.authz.v1beta1.Query", "Grants"));
@@ -116,51 +108,43 @@ pub mod query_client {
         pub async fn granter_grants(
             &mut self,
             request: impl tonic::IntoRequest<super::QueryGranterGrantsRequest>,
-        ) -> std::result::Result<
-            tonic::Response<super::QueryGranterGrantsResponse>,
-            tonic::Status,
-        > {
-            self.inner
-                .ready()
-                .await
-                .map_err(|e| {
-                    tonic::Status::new(
-                        tonic::Code::Unknown,
-                        format!("Service was not ready: {}", e.into()),
-                    )
-                })?;
+        ) -> std::result::Result<tonic::Response<super::QueryGranterGrantsResponse>, tonic::Status>
+        {
+            self.inner.ready().await.map_err(|e| {
+                tonic::Status::new(
+                    tonic::Code::Unknown,
+                    format!("Service was not ready: {}", e.into()),
+                )
+            })?;
             let codec = tonic::codec::ProstCodec::default();
-            let path = http::uri::PathAndQuery::from_static(
-                "/cosmos.authz.v1beta1.Query/GranterGrants",
-            );
+            let path =
+                http::uri::PathAndQuery::from_static("/cosmos.authz.v1beta1.Query/GranterGrants");
             let mut req = request.into_request();
-            req.extensions_mut()
-                .insert(GrpcMethod::new("cosmos.authz.v1beta1.Query", "GranterGrants"));
+            req.extensions_mut().insert(GrpcMethod::new(
+                "cosmos.authz.v1beta1.Query",
+                "GranterGrants",
+            ));
             self.inner.unary(req, path, codec).await
         }
         pub async fn grantee_grants(
             &mut self,
             request: impl tonic::IntoRequest<super::QueryGranteeGrantsRequest>,
-        ) -> std::result::Result<
-            tonic::Response<super::QueryGranteeGrantsResponse>,
-            tonic::Status,
-        > {
-            self.inner
-                .ready()
-                .await
-                .map_err(|e| {
-                    tonic::Status::new(
-                        tonic::Code::Unknown,
-                        format!("Service was not ready: {}", e.into()),
-                    )
-                })?;
+        ) -> std::result::Result<tonic::Response<super::QueryGranteeGrantsResponse>, tonic::Status>
+        {
+            self.inner.ready().await.map_err(|e| {
+                tonic::Status::new(
+                    tonic::Code::Unknown,
+                    format!("Service was not ready: {}", e.into()),
+                )
+            })?;
             let codec = tonic::codec::ProstCodec::default();
-            let path = http::uri::PathAndQuery::from_static(
-                "/cosmos.authz.v1beta1.Query/GranteeGrants",
-            );
+            let path =
+                http::uri::PathAndQuery::from_static("/cosmos.authz.v1beta1.Query/GranteeGrants");
             let mut req = request.into_request();
-            req.extensions_mut()
-                .insert(GrpcMethod::new("cosmos.authz.v1beta1.Query", "GranteeGrants"));
+            req.extensions_mut().insert(GrpcMethod::new(
+                "cosmos.authz.v1beta1.Query",
+                "GranteeGrants",
+            ));
             self.inner.unary(req, path, codec).await
         }
     }
@@ -177,24 +161,15 @@ pub mod query_server {
         async fn grants(
             &self,
             request: tonic::Request<super::QueryGrantsRequest>,
-        ) -> std::result::Result<
-            tonic::Response<super::QueryGrantsResponse>,
-            tonic::Status,
-        >;
+        ) -> std::result::Result<tonic::Response<super::QueryGrantsResponse>, tonic::Status>;
         async fn granter_grants(
             &self,
             request: tonic::Request<super::QueryGranterGrantsRequest>,
-        ) -> std::result::Result<
-            tonic::Response<super::QueryGranterGrantsResponse>,
-            tonic::Status,
-        >;
+        ) -> std::result::Result<tonic::Response<super::QueryGranterGrantsResponse>, tonic::Status>;
         async fn grantee_grants(
             &self,
             request: tonic::Request<super::QueryGranteeGrantsRequest>,
-        ) -> std::result::Result<
-            tonic::Response<super::QueryGranteeGrantsResponse>,
-            tonic::Status,
-        >;
+        ) -> std::result::Result<tonic::Response<super::QueryGranteeGrantsResponse>, tonic::Status>;
     }
     #[derive(Debug)]
     pub struct QueryServer<T: Query> {
@@ -219,10 +194,7 @@ pub mod query_server {
                 max_encoding_message_size: None,
             }
         }
-        pub fn with_interceptor<F>(
-            inner: T,
-            interceptor: F,
-        ) -> InterceptedService<Self, F>
+        pub fn with_interceptor<F>(inner: T, interceptor: F) -> InterceptedService<Self, F>
         where
             F: tonic::service::Interceptor,
         {
@@ -278,21 +250,15 @@ pub mod query_server {
                 "/cosmos.authz.v1beta1.Query/Grants" => {
                     #[allow(non_camel_case_types)]
                     struct GrantsSvc<T: Query>(pub Arc<T>);
-                    impl<T: Query> tonic::server::UnaryService<super::QueryGrantsRequest>
-                    for GrantsSvc<T> {
+                    impl<T: Query> tonic::server::UnaryService<super::QueryGrantsRequest> for GrantsSvc<T> {
                         type Response = super::QueryGrantsResponse;
-                        type Future = BoxFuture<
-                            tonic::Response<Self::Response>,
-                            tonic::Status,
-                        >;
+                        type Future = BoxFuture<tonic::Response<Self::Response>, tonic::Status>;
                         fn call(
                             &mut self,
                             request: tonic::Request<super::QueryGrantsRequest>,
                         ) -> Self::Future {
                             let inner = Arc::clone(&self.0);
-                            let fut = async move {
-                                <T as Query>::grants(&inner, request).await
-                            };
+                            let fut = async move { <T as Query>::grants(&inner, request).await };
                             Box::pin(fut)
                         }
                     }
@@ -322,23 +288,18 @@ pub mod query_server {
                 "/cosmos.authz.v1beta1.Query/GranterGrants" => {
                     #[allow(non_camel_case_types)]
                     struct GranterGrantsSvc<T: Query>(pub Arc<T>);
-                    impl<
-                        T: Query,
-                    > tonic::server::UnaryService<super::QueryGranterGrantsRequest>
-                    for GranterGrantsSvc<T> {
+                    impl<T: Query> tonic::server::UnaryService<super::QueryGranterGrantsRequest>
+                        for GranterGrantsSvc<T>
+                    {
                         type Response = super::QueryGranterGrantsResponse;
-                        type Future = BoxFuture<
-                            tonic::Response<Self::Response>,
-                            tonic::Status,
-                        >;
+                        type Future = BoxFuture<tonic::Response<Self::Response>, tonic::Status>;
                         fn call(
                             &mut self,
                             request: tonic::Request<super::QueryGranterGrantsRequest>,
                         ) -> Self::Future {
                             let inner = Arc::clone(&self.0);
-                            let fut = async move {
-                                <T as Query>::granter_grants(&inner, request).await
-                            };
+                            let fut =
+                                async move { <T as Query>::granter_grants(&inner, request).await };
                             Box::pin(fut)
                         }
                     }
@@ -368,23 +329,18 @@ pub mod query_server {
                 "/cosmos.authz.v1beta1.Query/GranteeGrants" => {
                     #[allow(non_camel_case_types)]
                     struct GranteeGrantsSvc<T: Query>(pub Arc<T>);
-                    impl<
-                        T: Query,
-                    > tonic::server::UnaryService<super::QueryGranteeGrantsRequest>
-                    for GranteeGrantsSvc<T> {
+                    impl<T: Query> tonic::server::UnaryService<super::QueryGranteeGrantsRequest>
+                        for GranteeGrantsSvc<T>
+                    {
                         type Response = super::QueryGranteeGrantsResponse;
-                        type Future = BoxFuture<
-                            tonic::Response<Self::Response>,
-                            tonic::Status,
-                        >;
+                        type Future = BoxFuture<tonic::Response<Self::Response>, tonic::Status>;
                         fn call(
                             &mut self,
                             request: tonic::Request<super::QueryGranteeGrantsRequest>,
                         ) -> Self::Future {
                             let inner = Arc::clone(&self.0);
-                            let fut = async move {
-                                <T as Query>::grantee_grants(&inner, request).await
-                            };
+                            let fut =
+                                async move { <T as Query>::grantee_grants(&inner, request).await };
                             Box::pin(fut)
                         }
                     }
@@ -411,18 +367,14 @@ pub mod query_server {
                     };
                     Box::pin(fut)
                 }
-                _ => {
-                    Box::pin(async move {
-                        Ok(
-                            http::Response::builder()
-                                .status(200)
-                                .header("grpc-status", "12")
-                                .header("content-type", "application/grpc")
-                                .body(empty_body())
-                                .unwrap(),
-                        )
-                    })
-                }
+                _ => Box::pin(async move {
+                    Ok(http::Response::builder()
+                        .status(200)
+                        .header("grpc-status", "12")
+                        .header("content-type", "application/grpc")
+                        .body(empty_body())
+                        .unwrap())
+                }),
             }
         }
     }
@@ -457,8 +409,8 @@ pub mod query_server {
 #[cfg_attr(docsrs, doc(cfg(feature = "grpc")))]
 pub mod msg_client {
     #![allow(unused_variables, dead_code, missing_docs, clippy::let_unit_value)]
-    use tonic::codegen::*;
     use tonic::codegen::http::Uri;
+    use tonic::codegen::*;
     #[derive(Debug, Clone)]
     pub struct MsgClient<T> {
         inner: tonic::client::Grpc<T>,
@@ -491,10 +443,7 @@ pub mod msg_client {
             let inner = tonic::client::Grpc::with_origin(inner, origin);
             Self { inner }
         }
-        pub fn with_interceptor<F>(
-            inner: T,
-            interceptor: F,
-        ) -> MsgClient<InterceptedService<T, F>>
+        pub fn with_interceptor<F>(inner: T, interceptor: F) -> MsgClient<InterceptedService<T, F>>
         where
             F: tonic::service::Interceptor,
             T::ResponseBody: Default,
@@ -504,9 +453,8 @@ pub mod msg_client {
                     <T as tonic::client::GrpcService<tonic::body::BoxBody>>::ResponseBody,
                 >,
             >,
-            <T as tonic::codegen::Service<
-                http::Request<tonic::body::BoxBody>,
-            >>::Error: Into<StdError> + Send + Sync,
+            <T as tonic::codegen::Service<http::Request<tonic::body::BoxBody>>>::Error:
+                Into<StdError> + Send + Sync,
         {
             MsgClient::new(InterceptedService::new(inner, interceptor))
         }
@@ -544,23 +492,15 @@ pub mod msg_client {
         pub async fn grant(
             &mut self,
             request: impl tonic::IntoRequest<super::MsgGrant>,
-        ) -> std::result::Result<
-            tonic::Response<super::MsgGrantResponse>,
-            tonic::Status,
-        > {
-            self.inner
-                .ready()
-                .await
-                .map_err(|e| {
-                    tonic::Status::new(
-                        tonic::Code::Unknown,
-                        format!("Service was not ready: {}", e.into()),
-                    )
-                })?;
+        ) -> std::result::Result<tonic::Response<super::MsgGrantResponse>, tonic::Status> {
+            self.inner.ready().await.map_err(|e| {
+                tonic::Status::new(
+                    tonic::Code::Unknown,
+                    format!("Service was not ready: {}", e.into()),
+                )
+            })?;
             let codec = tonic::codec::ProstCodec::default();
-            let path = http::uri::PathAndQuery::from_static(
-                "/cosmos.authz.v1beta1.Msg/Grant",
-            );
+            let path = http::uri::PathAndQuery::from_static("/cosmos.authz.v1beta1.Msg/Grant");
             let mut req = request.into_request();
             req.extensions_mut()
                 .insert(GrpcMethod::new("cosmos.authz.v1beta1.Msg", "Grant"));
@@ -569,23 +509,15 @@ pub mod msg_client {
         pub async fn exec(
             &mut self,
             request: impl tonic::IntoRequest<super::MsgExec>,
-        ) -> std::result::Result<
-            tonic::Response<super::MsgExecResponse>,
-            tonic::Status,
-        > {
-            self.inner
-                .ready()
-                .await
-                .map_err(|e| {
-                    tonic::Status::new(
-                        tonic::Code::Unknown,
-                        format!("Service was not ready: {}", e.into()),
-                    )
-                })?;
+        ) -> std::result::Result<tonic::Response<super::MsgExecResponse>, tonic::Status> {
+            self.inner.ready().await.map_err(|e| {
+                tonic::Status::new(
+                    tonic::Code::Unknown,
+                    format!("Service was not ready: {}", e.into()),
+                )
+            })?;
             let codec = tonic::codec::ProstCodec::default();
-            let path = http::uri::PathAndQuery::from_static(
-                "/cosmos.authz.v1beta1.Msg/Exec",
-            );
+            let path = http::uri::PathAndQuery::from_static("/cosmos.authz.v1beta1.Msg/Exec");
             let mut req = request.into_request();
             req.extensions_mut()
                 .insert(GrpcMethod::new("cosmos.authz.v1beta1.Msg", "Exec"));
@@ -594,23 +526,15 @@ pub mod msg_client {
         pub async fn revoke(
             &mut self,
             request: impl tonic::IntoRequest<super::MsgRevoke>,
-        ) -> std::result::Result<
-            tonic::Response<super::MsgRevokeResponse>,
-            tonic::Status,
-        > {
-            self.inner
-                .ready()
-                .await
-                .map_err(|e| {
-                    tonic::Status::new(
-                        tonic::Code::Unknown,
-                        format!("Service was not ready: {}", e.into()),
-                    )
-                })?;
+        ) -> std::result::Result<tonic::Response<super::MsgRevokeResponse>, tonic::Status> {
+            self.inner.ready().await.map_err(|e| {
+                tonic::Status::new(
+                    tonic::Code::Unknown,
+                    format!("Service was not ready: {}", e.into()),
+                )
+            })?;
             let codec = tonic::codec::ProstCodec::default();
-            let path = http::uri::PathAndQuery::from_static(
-                "/cosmos.authz.v1beta1.Msg/Revoke",
-            );
+            let path = http::uri::PathAndQuery::from_static("/cosmos.authz.v1beta1.Msg/Revoke");
             let mut req = request.into_request();
             req.extensions_mut()
                 .insert(GrpcMethod::new("cosmos.authz.v1beta1.Msg", "Revoke"));
@@ -630,10 +554,7 @@ pub mod msg_server {
         async fn grant(
             &self,
             request: tonic::Request<super::MsgGrant>,
-        ) -> std::result::Result<
-            tonic::Response<super::MsgGrantResponse>,
-            tonic::Status,
-        >;
+        ) -> std::result::Result<tonic::Response<super::MsgGrantResponse>, tonic::Status>;
         async fn exec(
             &self,
             request: tonic::Request<super::MsgExec>,
@@ -641,10 +562,7 @@ pub mod msg_server {
         async fn revoke(
             &self,
             request: tonic::Request<super::MsgRevoke>,
-        ) -> std::result::Result<
-            tonic::Response<super::MsgRevokeResponse>,
-            tonic::Status,
-        >;
+        ) -> std::result::Result<tonic::Response<super::MsgRevokeResponse>, tonic::Status>;
     }
     #[derive(Debug)]
     pub struct MsgServer<T: Msg> {
@@ -669,10 +587,7 @@ pub mod msg_server {
                 max_encoding_message_size: None,
             }
         }
-        pub fn with_interceptor<F>(
-            inner: T,
-            interceptor: F,
-        ) -> InterceptedService<Self, F>
+        pub fn with_interceptor<F>(inner: T, interceptor: F) -> InterceptedService<Self, F>
         where
             F: tonic::service::Interceptor,
         {
@@ -728,21 +643,15 @@ pub mod msg_server {
                 "/cosmos.authz.v1beta1.Msg/Grant" => {
                     #[allow(non_camel_case_types)]
                     struct GrantSvc<T: Msg>(pub Arc<T>);
-                    impl<T: Msg> tonic::server::UnaryService<super::MsgGrant>
-                    for GrantSvc<T> {
+                    impl<T: Msg> tonic::server::UnaryService<super::MsgGrant> for GrantSvc<T> {
                         type Response = super::MsgGrantResponse;
-                        type Future = BoxFuture<
-                            tonic::Response<Self::Response>,
-                            tonic::Status,
-                        >;
+                        type Future = BoxFuture<tonic::Response<Self::Response>, tonic::Status>;
                         fn call(
                             &mut self,
                             request: tonic::Request<super::MsgGrant>,
                         ) -> Self::Future {
                             let inner = Arc::clone(&self.0);
-                            let fut = async move {
-                                <T as Msg>::grant(&inner, request).await
-                            };
+                            let fut = async move { <T as Msg>::grant(&inner, request).await };
                             Box::pin(fut)
                         }
                     }
@@ -772,21 +681,15 @@ pub mod msg_server {
                 "/cosmos.authz.v1beta1.Msg/Exec" => {
                     #[allow(non_camel_case_types)]
                     struct ExecSvc<T: Msg>(pub Arc<T>);
-                    impl<T: Msg> tonic::server::UnaryService<super::MsgExec>
-                    for ExecSvc<T> {
+                    impl<T: Msg> tonic::server::UnaryService<super::MsgExec> for ExecSvc<T> {
                         type Response = super::MsgExecResponse;
-                        type Future = BoxFuture<
-                            tonic::Response<Self::Response>,
-                            tonic::Status,
-                        >;
+                        type Future = BoxFuture<tonic::Response<Self::Response>, tonic::Status>;
                         fn call(
                             &mut self,
                             request: tonic::Request<super::MsgExec>,
                         ) -> Self::Future {
                             let inner = Arc::clone(&self.0);
-                            let fut = async move {
-                                <T as Msg>::exec(&inner, request).await
-                            };
+                            let fut = async move { <T as Msg>::exec(&inner, request).await };
                             Box::pin(fut)
                         }
                     }
@@ -816,21 +719,15 @@ pub mod msg_server {
                 "/cosmos.authz.v1beta1.Msg/Revoke" => {
                     #[allow(non_camel_case_types)]
                     struct RevokeSvc<T: Msg>(pub Arc<T>);
-                    impl<T: Msg> tonic::server::UnaryService<super::MsgRevoke>
-                    for RevokeSvc<T> {
+                    impl<T: Msg> tonic::server::UnaryService<super::MsgRevoke> for RevokeSvc<T> {
                         type Response = super::MsgRevokeResponse;
-                        type Future = BoxFuture<
-                            tonic::Response<Self::Response>,
-                            tonic::Status,
-                        >;
+                        type Future = BoxFuture<tonic::Response<Self::Response>, tonic::Status>;
                         fn call(
                             &mut self,
                             request: tonic::Request<super::MsgRevoke>,
                         ) -> Self::Future {
                             let inner = Arc::clone(&self.0);
-                            let fut = async move {
-                                <T as Msg>::revoke(&inner, request).await
-                            };
+                            let fut = async move { <T as Msg>::revoke(&inner, request).await };
                             Box::pin(fut)
                         }
                     }
@@ -857,18 +754,14 @@ pub mod msg_server {
                     };
                     Box::pin(fut)
                 }
-                _ => {
-                    Box::pin(async move {
-                        Ok(
-                            http::Response::builder()
-                                .status(200)
-                                .header("grpc-status", "12")
-                                .header("content-type", "application/grpc")
-                                .body(empty_body())
-                                .unwrap(),
-                        )
-                    })
-                }
+                _ => Box::pin(async move {
+                    Ok(http::Response::builder()
+                        .status(200)
+                        .header("grpc-status", "12")
+                        .header("content-type", "application/grpc")
+                        .body(empty_body())
+                        .unwrap())
+                }),
             }
         }
     }

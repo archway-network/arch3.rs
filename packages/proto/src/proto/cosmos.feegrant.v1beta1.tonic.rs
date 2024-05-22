@@ -4,8 +4,8 @@
 #[cfg_attr(docsrs, doc(cfg(feature = "grpc")))]
 pub mod query_client {
     #![allow(unused_variables, dead_code, missing_docs, clippy::let_unit_value)]
-    use tonic::codegen::*;
     use tonic::codegen::http::Uri;
+    use tonic::codegen::*;
     #[derive(Debug, Clone)]
     pub struct QueryClient<T> {
         inner: tonic::client::Grpc<T>,
@@ -51,9 +51,8 @@ pub mod query_client {
                     <T as tonic::client::GrpcService<tonic::body::BoxBody>>::ResponseBody,
                 >,
             >,
-            <T as tonic::codegen::Service<
-                http::Request<tonic::body::BoxBody>,
-            >>::Error: Into<StdError> + Send + Sync,
+            <T as tonic::codegen::Service<http::Request<tonic::body::BoxBody>>>::Error:
+                Into<StdError> + Send + Sync,
         {
             QueryClient::new(InterceptedService::new(inner, interceptor))
         }
@@ -91,51 +90,43 @@ pub mod query_client {
         pub async fn allowance(
             &mut self,
             request: impl tonic::IntoRequest<super::QueryAllowanceRequest>,
-        ) -> std::result::Result<
-            tonic::Response<super::QueryAllowanceResponse>,
-            tonic::Status,
-        > {
-            self.inner
-                .ready()
-                .await
-                .map_err(|e| {
-                    tonic::Status::new(
-                        tonic::Code::Unknown,
-                        format!("Service was not ready: {}", e.into()),
-                    )
-                })?;
+        ) -> std::result::Result<tonic::Response<super::QueryAllowanceResponse>, tonic::Status>
+        {
+            self.inner.ready().await.map_err(|e| {
+                tonic::Status::new(
+                    tonic::Code::Unknown,
+                    format!("Service was not ready: {}", e.into()),
+                )
+            })?;
             let codec = tonic::codec::ProstCodec::default();
-            let path = http::uri::PathAndQuery::from_static(
-                "/cosmos.feegrant.v1beta1.Query/Allowance",
-            );
+            let path =
+                http::uri::PathAndQuery::from_static("/cosmos.feegrant.v1beta1.Query/Allowance");
             let mut req = request.into_request();
-            req.extensions_mut()
-                .insert(GrpcMethod::new("cosmos.feegrant.v1beta1.Query", "Allowance"));
+            req.extensions_mut().insert(GrpcMethod::new(
+                "cosmos.feegrant.v1beta1.Query",
+                "Allowance",
+            ));
             self.inner.unary(req, path, codec).await
         }
         pub async fn allowances(
             &mut self,
             request: impl tonic::IntoRequest<super::QueryAllowancesRequest>,
-        ) -> std::result::Result<
-            tonic::Response<super::QueryAllowancesResponse>,
-            tonic::Status,
-        > {
-            self.inner
-                .ready()
-                .await
-                .map_err(|e| {
-                    tonic::Status::new(
-                        tonic::Code::Unknown,
-                        format!("Service was not ready: {}", e.into()),
-                    )
-                })?;
+        ) -> std::result::Result<tonic::Response<super::QueryAllowancesResponse>, tonic::Status>
+        {
+            self.inner.ready().await.map_err(|e| {
+                tonic::Status::new(
+                    tonic::Code::Unknown,
+                    format!("Service was not ready: {}", e.into()),
+                )
+            })?;
             let codec = tonic::codec::ProstCodec::default();
-            let path = http::uri::PathAndQuery::from_static(
-                "/cosmos.feegrant.v1beta1.Query/Allowances",
-            );
+            let path =
+                http::uri::PathAndQuery::from_static("/cosmos.feegrant.v1beta1.Query/Allowances");
             let mut req = request.into_request();
-            req.extensions_mut()
-                .insert(GrpcMethod::new("cosmos.feegrant.v1beta1.Query", "Allowances"));
+            req.extensions_mut().insert(GrpcMethod::new(
+                "cosmos.feegrant.v1beta1.Query",
+                "Allowances",
+            ));
             self.inner.unary(req, path, codec).await
         }
         pub async fn allowances_by_granter(
@@ -145,27 +136,21 @@ pub mod query_client {
             tonic::Response<super::QueryAllowancesByGranterResponse>,
             tonic::Status,
         > {
-            self.inner
-                .ready()
-                .await
-                .map_err(|e| {
-                    tonic::Status::new(
-                        tonic::Code::Unknown,
-                        format!("Service was not ready: {}", e.into()),
-                    )
-                })?;
+            self.inner.ready().await.map_err(|e| {
+                tonic::Status::new(
+                    tonic::Code::Unknown,
+                    format!("Service was not ready: {}", e.into()),
+                )
+            })?;
             let codec = tonic::codec::ProstCodec::default();
             let path = http::uri::PathAndQuery::from_static(
                 "/cosmos.feegrant.v1beta1.Query/AllowancesByGranter",
             );
             let mut req = request.into_request();
-            req.extensions_mut()
-                .insert(
-                    GrpcMethod::new(
-                        "cosmos.feegrant.v1beta1.Query",
-                        "AllowancesByGranter",
-                    ),
-                );
+            req.extensions_mut().insert(GrpcMethod::new(
+                "cosmos.feegrant.v1beta1.Query",
+                "AllowancesByGranter",
+            ));
             self.inner.unary(req, path, codec).await
         }
     }
@@ -182,17 +167,11 @@ pub mod query_server {
         async fn allowance(
             &self,
             request: tonic::Request<super::QueryAllowanceRequest>,
-        ) -> std::result::Result<
-            tonic::Response<super::QueryAllowanceResponse>,
-            tonic::Status,
-        >;
+        ) -> std::result::Result<tonic::Response<super::QueryAllowanceResponse>, tonic::Status>;
         async fn allowances(
             &self,
             request: tonic::Request<super::QueryAllowancesRequest>,
-        ) -> std::result::Result<
-            tonic::Response<super::QueryAllowancesResponse>,
-            tonic::Status,
-        >;
+        ) -> std::result::Result<tonic::Response<super::QueryAllowancesResponse>, tonic::Status>;
         async fn allowances_by_granter(
             &self,
             request: tonic::Request<super::QueryAllowancesByGranterRequest>,
@@ -224,10 +203,7 @@ pub mod query_server {
                 max_encoding_message_size: None,
             }
         }
-        pub fn with_interceptor<F>(
-            inner: T,
-            interceptor: F,
-        ) -> InterceptedService<Self, F>
+        pub fn with_interceptor<F>(inner: T, interceptor: F) -> InterceptedService<Self, F>
         where
             F: tonic::service::Interceptor,
         {
@@ -283,23 +259,15 @@ pub mod query_server {
                 "/cosmos.feegrant.v1beta1.Query/Allowance" => {
                     #[allow(non_camel_case_types)]
                     struct AllowanceSvc<T: Query>(pub Arc<T>);
-                    impl<
-                        T: Query,
-                    > tonic::server::UnaryService<super::QueryAllowanceRequest>
-                    for AllowanceSvc<T> {
+                    impl<T: Query> tonic::server::UnaryService<super::QueryAllowanceRequest> for AllowanceSvc<T> {
                         type Response = super::QueryAllowanceResponse;
-                        type Future = BoxFuture<
-                            tonic::Response<Self::Response>,
-                            tonic::Status,
-                        >;
+                        type Future = BoxFuture<tonic::Response<Self::Response>, tonic::Status>;
                         fn call(
                             &mut self,
                             request: tonic::Request<super::QueryAllowanceRequest>,
                         ) -> Self::Future {
                             let inner = Arc::clone(&self.0);
-                            let fut = async move {
-                                <T as Query>::allowance(&inner, request).await
-                            };
+                            let fut = async move { <T as Query>::allowance(&inner, request).await };
                             Box::pin(fut)
                         }
                     }
@@ -329,23 +297,16 @@ pub mod query_server {
                 "/cosmos.feegrant.v1beta1.Query/Allowances" => {
                     #[allow(non_camel_case_types)]
                     struct AllowancesSvc<T: Query>(pub Arc<T>);
-                    impl<
-                        T: Query,
-                    > tonic::server::UnaryService<super::QueryAllowancesRequest>
-                    for AllowancesSvc<T> {
+                    impl<T: Query> tonic::server::UnaryService<super::QueryAllowancesRequest> for AllowancesSvc<T> {
                         type Response = super::QueryAllowancesResponse;
-                        type Future = BoxFuture<
-                            tonic::Response<Self::Response>,
-                            tonic::Status,
-                        >;
+                        type Future = BoxFuture<tonic::Response<Self::Response>, tonic::Status>;
                         fn call(
                             &mut self,
                             request: tonic::Request<super::QueryAllowancesRequest>,
                         ) -> Self::Future {
                             let inner = Arc::clone(&self.0);
-                            let fut = async move {
-                                <T as Query>::allowances(&inner, request).await
-                            };
+                            let fut =
+                                async move { <T as Query>::allowances(&inner, request).await };
                             Box::pin(fut)
                         }
                     }
@@ -375,20 +336,15 @@ pub mod query_server {
                 "/cosmos.feegrant.v1beta1.Query/AllowancesByGranter" => {
                     #[allow(non_camel_case_types)]
                     struct AllowancesByGranterSvc<T: Query>(pub Arc<T>);
-                    impl<
-                        T: Query,
-                    > tonic::server::UnaryService<super::QueryAllowancesByGranterRequest>
-                    for AllowancesByGranterSvc<T> {
+                    impl<T: Query>
+                        tonic::server::UnaryService<super::QueryAllowancesByGranterRequest>
+                        for AllowancesByGranterSvc<T>
+                    {
                         type Response = super::QueryAllowancesByGranterResponse;
-                        type Future = BoxFuture<
-                            tonic::Response<Self::Response>,
-                            tonic::Status,
-                        >;
+                        type Future = BoxFuture<tonic::Response<Self::Response>, tonic::Status>;
                         fn call(
                             &mut self,
-                            request: tonic::Request<
-                                super::QueryAllowancesByGranterRequest,
-                            >,
+                            request: tonic::Request<super::QueryAllowancesByGranterRequest>,
                         ) -> Self::Future {
                             let inner = Arc::clone(&self.0);
                             let fut = async move {
@@ -420,18 +376,14 @@ pub mod query_server {
                     };
                     Box::pin(fut)
                 }
-                _ => {
-                    Box::pin(async move {
-                        Ok(
-                            http::Response::builder()
-                                .status(200)
-                                .header("grpc-status", "12")
-                                .header("content-type", "application/grpc")
-                                .body(empty_body())
-                                .unwrap(),
-                        )
-                    })
-                }
+                _ => Box::pin(async move {
+                    Ok(http::Response::builder()
+                        .status(200)
+                        .header("grpc-status", "12")
+                        .header("content-type", "application/grpc")
+                        .body(empty_body())
+                        .unwrap())
+                }),
             }
         }
     }
@@ -466,8 +418,8 @@ pub mod query_server {
 #[cfg_attr(docsrs, doc(cfg(feature = "grpc")))]
 pub mod msg_client {
     #![allow(unused_variables, dead_code, missing_docs, clippy::let_unit_value)]
-    use tonic::codegen::*;
     use tonic::codegen::http::Uri;
+    use tonic::codegen::*;
     #[derive(Debug, Clone)]
     pub struct MsgClient<T> {
         inner: tonic::client::Grpc<T>,
@@ -500,10 +452,7 @@ pub mod msg_client {
             let inner = tonic::client::Grpc::with_origin(inner, origin);
             Self { inner }
         }
-        pub fn with_interceptor<F>(
-            inner: T,
-            interceptor: F,
-        ) -> MsgClient<InterceptedService<T, F>>
+        pub fn with_interceptor<F>(inner: T, interceptor: F) -> MsgClient<InterceptedService<T, F>>
         where
             F: tonic::service::Interceptor,
             T::ResponseBody: Default,
@@ -513,9 +462,8 @@ pub mod msg_client {
                     <T as tonic::client::GrpcService<tonic::body::BoxBody>>::ResponseBody,
                 >,
             >,
-            <T as tonic::codegen::Service<
-                http::Request<tonic::body::BoxBody>,
-            >>::Error: Into<StdError> + Send + Sync,
+            <T as tonic::codegen::Service<http::Request<tonic::body::BoxBody>>>::Error:
+                Into<StdError> + Send + Sync,
         {
             MsgClient::new(InterceptedService::new(inner, interceptor))
         }
@@ -553,55 +501,44 @@ pub mod msg_client {
         pub async fn grant_allowance(
             &mut self,
             request: impl tonic::IntoRequest<super::MsgGrantAllowance>,
-        ) -> std::result::Result<
-            tonic::Response<super::MsgGrantAllowanceResponse>,
-            tonic::Status,
-        > {
-            self.inner
-                .ready()
-                .await
-                .map_err(|e| {
-                    tonic::Status::new(
-                        tonic::Code::Unknown,
-                        format!("Service was not ready: {}", e.into()),
-                    )
-                })?;
+        ) -> std::result::Result<tonic::Response<super::MsgGrantAllowanceResponse>, tonic::Status>
+        {
+            self.inner.ready().await.map_err(|e| {
+                tonic::Status::new(
+                    tonic::Code::Unknown,
+                    format!("Service was not ready: {}", e.into()),
+                )
+            })?;
             let codec = tonic::codec::ProstCodec::default();
-            let path = http::uri::PathAndQuery::from_static(
-                "/cosmos.feegrant.v1beta1.Msg/GrantAllowance",
-            );
+            let path =
+                http::uri::PathAndQuery::from_static("/cosmos.feegrant.v1beta1.Msg/GrantAllowance");
             let mut req = request.into_request();
-            req.extensions_mut()
-                .insert(
-                    GrpcMethod::new("cosmos.feegrant.v1beta1.Msg", "GrantAllowance"),
-                );
+            req.extensions_mut().insert(GrpcMethod::new(
+                "cosmos.feegrant.v1beta1.Msg",
+                "GrantAllowance",
+            ));
             self.inner.unary(req, path, codec).await
         }
         pub async fn revoke_allowance(
             &mut self,
             request: impl tonic::IntoRequest<super::MsgRevokeAllowance>,
-        ) -> std::result::Result<
-            tonic::Response<super::MsgRevokeAllowanceResponse>,
-            tonic::Status,
-        > {
-            self.inner
-                .ready()
-                .await
-                .map_err(|e| {
-                    tonic::Status::new(
-                        tonic::Code::Unknown,
-                        format!("Service was not ready: {}", e.into()),
-                    )
-                })?;
+        ) -> std::result::Result<tonic::Response<super::MsgRevokeAllowanceResponse>, tonic::Status>
+        {
+            self.inner.ready().await.map_err(|e| {
+                tonic::Status::new(
+                    tonic::Code::Unknown,
+                    format!("Service was not ready: {}", e.into()),
+                )
+            })?;
             let codec = tonic::codec::ProstCodec::default();
             let path = http::uri::PathAndQuery::from_static(
                 "/cosmos.feegrant.v1beta1.Msg/RevokeAllowance",
             );
             let mut req = request.into_request();
-            req.extensions_mut()
-                .insert(
-                    GrpcMethod::new("cosmos.feegrant.v1beta1.Msg", "RevokeAllowance"),
-                );
+            req.extensions_mut().insert(GrpcMethod::new(
+                "cosmos.feegrant.v1beta1.Msg",
+                "RevokeAllowance",
+            ));
             self.inner.unary(req, path, codec).await
         }
     }
@@ -618,17 +555,11 @@ pub mod msg_server {
         async fn grant_allowance(
             &self,
             request: tonic::Request<super::MsgGrantAllowance>,
-        ) -> std::result::Result<
-            tonic::Response<super::MsgGrantAllowanceResponse>,
-            tonic::Status,
-        >;
+        ) -> std::result::Result<tonic::Response<super::MsgGrantAllowanceResponse>, tonic::Status>;
         async fn revoke_allowance(
             &self,
             request: tonic::Request<super::MsgRevokeAllowance>,
-        ) -> std::result::Result<
-            tonic::Response<super::MsgRevokeAllowanceResponse>,
-            tonic::Status,
-        >;
+        ) -> std::result::Result<tonic::Response<super::MsgRevokeAllowanceResponse>, tonic::Status>;
     }
     #[derive(Debug)]
     pub struct MsgServer<T: Msg> {
@@ -653,10 +584,7 @@ pub mod msg_server {
                 max_encoding_message_size: None,
             }
         }
-        pub fn with_interceptor<F>(
-            inner: T,
-            interceptor: F,
-        ) -> InterceptedService<Self, F>
+        pub fn with_interceptor<F>(inner: T, interceptor: F) -> InterceptedService<Self, F>
         where
             F: tonic::service::Interceptor,
         {
@@ -712,21 +640,16 @@ pub mod msg_server {
                 "/cosmos.feegrant.v1beta1.Msg/GrantAllowance" => {
                     #[allow(non_camel_case_types)]
                     struct GrantAllowanceSvc<T: Msg>(pub Arc<T>);
-                    impl<T: Msg> tonic::server::UnaryService<super::MsgGrantAllowance>
-                    for GrantAllowanceSvc<T> {
+                    impl<T: Msg> tonic::server::UnaryService<super::MsgGrantAllowance> for GrantAllowanceSvc<T> {
                         type Response = super::MsgGrantAllowanceResponse;
-                        type Future = BoxFuture<
-                            tonic::Response<Self::Response>,
-                            tonic::Status,
-                        >;
+                        type Future = BoxFuture<tonic::Response<Self::Response>, tonic::Status>;
                         fn call(
                             &mut self,
                             request: tonic::Request<super::MsgGrantAllowance>,
                         ) -> Self::Future {
                             let inner = Arc::clone(&self.0);
-                            let fut = async move {
-                                <T as Msg>::grant_allowance(&inner, request).await
-                            };
+                            let fut =
+                                async move { <T as Msg>::grant_allowance(&inner, request).await };
                             Box::pin(fut)
                         }
                     }
@@ -756,21 +679,16 @@ pub mod msg_server {
                 "/cosmos.feegrant.v1beta1.Msg/RevokeAllowance" => {
                     #[allow(non_camel_case_types)]
                     struct RevokeAllowanceSvc<T: Msg>(pub Arc<T>);
-                    impl<T: Msg> tonic::server::UnaryService<super::MsgRevokeAllowance>
-                    for RevokeAllowanceSvc<T> {
+                    impl<T: Msg> tonic::server::UnaryService<super::MsgRevokeAllowance> for RevokeAllowanceSvc<T> {
                         type Response = super::MsgRevokeAllowanceResponse;
-                        type Future = BoxFuture<
-                            tonic::Response<Self::Response>,
-                            tonic::Status,
-                        >;
+                        type Future = BoxFuture<tonic::Response<Self::Response>, tonic::Status>;
                         fn call(
                             &mut self,
                             request: tonic::Request<super::MsgRevokeAllowance>,
                         ) -> Self::Future {
                             let inner = Arc::clone(&self.0);
-                            let fut = async move {
-                                <T as Msg>::revoke_allowance(&inner, request).await
-                            };
+                            let fut =
+                                async move { <T as Msg>::revoke_allowance(&inner, request).await };
                             Box::pin(fut)
                         }
                     }
@@ -797,18 +715,14 @@ pub mod msg_server {
                     };
                     Box::pin(fut)
                 }
-                _ => {
-                    Box::pin(async move {
-                        Ok(
-                            http::Response::builder()
-                                .status(200)
-                                .header("grpc-status", "12")
-                                .header("content-type", "application/grpc")
-                                .body(empty_body())
-                                .unwrap(),
-                        )
-                    })
-                }
+                _ => Box::pin(async move {
+                    Ok(http::Response::builder()
+                        .status(200)
+                        .header("grpc-status", "12")
+                        .header("content-type", "application/grpc")
+                        .body(empty_body())
+                        .unwrap())
+                }),
             }
         }
     }

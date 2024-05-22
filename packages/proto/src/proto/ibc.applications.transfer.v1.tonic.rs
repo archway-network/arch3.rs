@@ -4,8 +4,8 @@
 #[cfg_attr(docsrs, doc(cfg(feature = "grpc")))]
 pub mod query_client {
     #![allow(unused_variables, dead_code, missing_docs, clippy::let_unit_value)]
-    use tonic::codegen::*;
     use tonic::codegen::http::Uri;
+    use tonic::codegen::*;
     #[derive(Debug, Clone)]
     pub struct QueryClient<T> {
         inner: tonic::client::Grpc<T>,
@@ -51,9 +51,8 @@ pub mod query_client {
                     <T as tonic::client::GrpcService<tonic::body::BoxBody>>::ResponseBody,
                 >,
             >,
-            <T as tonic::codegen::Service<
-                http::Request<tonic::body::BoxBody>,
-            >>::Error: Into<StdError> + Send + Sync,
+            <T as tonic::codegen::Service<http::Request<tonic::body::BoxBody>>>::Error:
+                Into<StdError> + Send + Sync,
         {
             QueryClient::new(InterceptedService::new(inner, interceptor))
         }
@@ -91,137 +90,110 @@ pub mod query_client {
         pub async fn denom_traces(
             &mut self,
             request: impl tonic::IntoRequest<super::QueryDenomTracesRequest>,
-        ) -> std::result::Result<
-            tonic::Response<super::QueryDenomTracesResponse>,
-            tonic::Status,
-        > {
-            self.inner
-                .ready()
-                .await
-                .map_err(|e| {
-                    tonic::Status::new(
-                        tonic::Code::Unknown,
-                        format!("Service was not ready: {}", e.into()),
-                    )
-                })?;
+        ) -> std::result::Result<tonic::Response<super::QueryDenomTracesResponse>, tonic::Status>
+        {
+            self.inner.ready().await.map_err(|e| {
+                tonic::Status::new(
+                    tonic::Code::Unknown,
+                    format!("Service was not ready: {}", e.into()),
+                )
+            })?;
             let codec = tonic::codec::ProstCodec::default();
             let path = http::uri::PathAndQuery::from_static(
                 "/ibc.applications.transfer.v1.Query/DenomTraces",
             );
             let mut req = request.into_request();
-            req.extensions_mut()
-                .insert(
-                    GrpcMethod::new("ibc.applications.transfer.v1.Query", "DenomTraces"),
-                );
+            req.extensions_mut().insert(GrpcMethod::new(
+                "ibc.applications.transfer.v1.Query",
+                "DenomTraces",
+            ));
             self.inner.unary(req, path, codec).await
         }
         pub async fn denom_trace(
             &mut self,
             request: impl tonic::IntoRequest<super::QueryDenomTraceRequest>,
-        ) -> std::result::Result<
-            tonic::Response<super::QueryDenomTraceResponse>,
-            tonic::Status,
-        > {
-            self.inner
-                .ready()
-                .await
-                .map_err(|e| {
-                    tonic::Status::new(
-                        tonic::Code::Unknown,
-                        format!("Service was not ready: {}", e.into()),
-                    )
-                })?;
+        ) -> std::result::Result<tonic::Response<super::QueryDenomTraceResponse>, tonic::Status>
+        {
+            self.inner.ready().await.map_err(|e| {
+                tonic::Status::new(
+                    tonic::Code::Unknown,
+                    format!("Service was not ready: {}", e.into()),
+                )
+            })?;
             let codec = tonic::codec::ProstCodec::default();
             let path = http::uri::PathAndQuery::from_static(
                 "/ibc.applications.transfer.v1.Query/DenomTrace",
             );
             let mut req = request.into_request();
-            req.extensions_mut()
-                .insert(
-                    GrpcMethod::new("ibc.applications.transfer.v1.Query", "DenomTrace"),
-                );
+            req.extensions_mut().insert(GrpcMethod::new(
+                "ibc.applications.transfer.v1.Query",
+                "DenomTrace",
+            ));
             self.inner.unary(req, path, codec).await
         }
         pub async fn params(
             &mut self,
             request: impl tonic::IntoRequest<super::QueryParamsRequest>,
-        ) -> std::result::Result<
-            tonic::Response<super::QueryParamsResponse>,
-            tonic::Status,
-        > {
-            self.inner
-                .ready()
-                .await
-                .map_err(|e| {
-                    tonic::Status::new(
-                        tonic::Code::Unknown,
-                        format!("Service was not ready: {}", e.into()),
-                    )
-                })?;
+        ) -> std::result::Result<tonic::Response<super::QueryParamsResponse>, tonic::Status>
+        {
+            self.inner.ready().await.map_err(|e| {
+                tonic::Status::new(
+                    tonic::Code::Unknown,
+                    format!("Service was not ready: {}", e.into()),
+                )
+            })?;
             let codec = tonic::codec::ProstCodec::default();
-            let path = http::uri::PathAndQuery::from_static(
-                "/ibc.applications.transfer.v1.Query/Params",
-            );
+            let path =
+                http::uri::PathAndQuery::from_static("/ibc.applications.transfer.v1.Query/Params");
             let mut req = request.into_request();
-            req.extensions_mut()
-                .insert(GrpcMethod::new("ibc.applications.transfer.v1.Query", "Params"));
+            req.extensions_mut().insert(GrpcMethod::new(
+                "ibc.applications.transfer.v1.Query",
+                "Params",
+            ));
             self.inner.unary(req, path, codec).await
         }
         pub async fn denom_hash(
             &mut self,
             request: impl tonic::IntoRequest<super::QueryDenomHashRequest>,
-        ) -> std::result::Result<
-            tonic::Response<super::QueryDenomHashResponse>,
-            tonic::Status,
-        > {
-            self.inner
-                .ready()
-                .await
-                .map_err(|e| {
-                    tonic::Status::new(
-                        tonic::Code::Unknown,
-                        format!("Service was not ready: {}", e.into()),
-                    )
-                })?;
+        ) -> std::result::Result<tonic::Response<super::QueryDenomHashResponse>, tonic::Status>
+        {
+            self.inner.ready().await.map_err(|e| {
+                tonic::Status::new(
+                    tonic::Code::Unknown,
+                    format!("Service was not ready: {}", e.into()),
+                )
+            })?;
             let codec = tonic::codec::ProstCodec::default();
             let path = http::uri::PathAndQuery::from_static(
                 "/ibc.applications.transfer.v1.Query/DenomHash",
             );
             let mut req = request.into_request();
-            req.extensions_mut()
-                .insert(
-                    GrpcMethod::new("ibc.applications.transfer.v1.Query", "DenomHash"),
-                );
+            req.extensions_mut().insert(GrpcMethod::new(
+                "ibc.applications.transfer.v1.Query",
+                "DenomHash",
+            ));
             self.inner.unary(req, path, codec).await
         }
         pub async fn escrow_address(
             &mut self,
             request: impl tonic::IntoRequest<super::QueryEscrowAddressRequest>,
-        ) -> std::result::Result<
-            tonic::Response<super::QueryEscrowAddressResponse>,
-            tonic::Status,
-        > {
-            self.inner
-                .ready()
-                .await
-                .map_err(|e| {
-                    tonic::Status::new(
-                        tonic::Code::Unknown,
-                        format!("Service was not ready: {}", e.into()),
-                    )
-                })?;
+        ) -> std::result::Result<tonic::Response<super::QueryEscrowAddressResponse>, tonic::Status>
+        {
+            self.inner.ready().await.map_err(|e| {
+                tonic::Status::new(
+                    tonic::Code::Unknown,
+                    format!("Service was not ready: {}", e.into()),
+                )
+            })?;
             let codec = tonic::codec::ProstCodec::default();
             let path = http::uri::PathAndQuery::from_static(
                 "/ibc.applications.transfer.v1.Query/EscrowAddress",
             );
             let mut req = request.into_request();
-            req.extensions_mut()
-                .insert(
-                    GrpcMethod::new(
-                        "ibc.applications.transfer.v1.Query",
-                        "EscrowAddress",
-                    ),
-                );
+            req.extensions_mut().insert(GrpcMethod::new(
+                "ibc.applications.transfer.v1.Query",
+                "EscrowAddress",
+            ));
             self.inner.unary(req, path, codec).await
         }
         pub async fn total_escrow_for_denom(
@@ -231,27 +203,21 @@ pub mod query_client {
             tonic::Response<super::QueryTotalEscrowForDenomResponse>,
             tonic::Status,
         > {
-            self.inner
-                .ready()
-                .await
-                .map_err(|e| {
-                    tonic::Status::new(
-                        tonic::Code::Unknown,
-                        format!("Service was not ready: {}", e.into()),
-                    )
-                })?;
+            self.inner.ready().await.map_err(|e| {
+                tonic::Status::new(
+                    tonic::Code::Unknown,
+                    format!("Service was not ready: {}", e.into()),
+                )
+            })?;
             let codec = tonic::codec::ProstCodec::default();
             let path = http::uri::PathAndQuery::from_static(
                 "/ibc.applications.transfer.v1.Query/TotalEscrowForDenom",
             );
             let mut req = request.into_request();
-            req.extensions_mut()
-                .insert(
-                    GrpcMethod::new(
-                        "ibc.applications.transfer.v1.Query",
-                        "TotalEscrowForDenom",
-                    ),
-                );
+            req.extensions_mut().insert(GrpcMethod::new(
+                "ibc.applications.transfer.v1.Query",
+                "TotalEscrowForDenom",
+            ));
             self.inner.unary(req, path, codec).await
         }
     }
@@ -268,38 +234,23 @@ pub mod query_server {
         async fn denom_traces(
             &self,
             request: tonic::Request<super::QueryDenomTracesRequest>,
-        ) -> std::result::Result<
-            tonic::Response<super::QueryDenomTracesResponse>,
-            tonic::Status,
-        >;
+        ) -> std::result::Result<tonic::Response<super::QueryDenomTracesResponse>, tonic::Status>;
         async fn denom_trace(
             &self,
             request: tonic::Request<super::QueryDenomTraceRequest>,
-        ) -> std::result::Result<
-            tonic::Response<super::QueryDenomTraceResponse>,
-            tonic::Status,
-        >;
+        ) -> std::result::Result<tonic::Response<super::QueryDenomTraceResponse>, tonic::Status>;
         async fn params(
             &self,
             request: tonic::Request<super::QueryParamsRequest>,
-        ) -> std::result::Result<
-            tonic::Response<super::QueryParamsResponse>,
-            tonic::Status,
-        >;
+        ) -> std::result::Result<tonic::Response<super::QueryParamsResponse>, tonic::Status>;
         async fn denom_hash(
             &self,
             request: tonic::Request<super::QueryDenomHashRequest>,
-        ) -> std::result::Result<
-            tonic::Response<super::QueryDenomHashResponse>,
-            tonic::Status,
-        >;
+        ) -> std::result::Result<tonic::Response<super::QueryDenomHashResponse>, tonic::Status>;
         async fn escrow_address(
             &self,
             request: tonic::Request<super::QueryEscrowAddressRequest>,
-        ) -> std::result::Result<
-            tonic::Response<super::QueryEscrowAddressResponse>,
-            tonic::Status,
-        >;
+        ) -> std::result::Result<tonic::Response<super::QueryEscrowAddressResponse>, tonic::Status>;
         async fn total_escrow_for_denom(
             &self,
             request: tonic::Request<super::QueryTotalEscrowForDenomRequest>,
@@ -331,10 +282,7 @@ pub mod query_server {
                 max_encoding_message_size: None,
             }
         }
-        pub fn with_interceptor<F>(
-            inner: T,
-            interceptor: F,
-        ) -> InterceptedService<Self, F>
+        pub fn with_interceptor<F>(inner: T, interceptor: F) -> InterceptedService<Self, F>
         where
             F: tonic::service::Interceptor,
         {
@@ -390,23 +338,16 @@ pub mod query_server {
                 "/ibc.applications.transfer.v1.Query/DenomTraces" => {
                     #[allow(non_camel_case_types)]
                     struct DenomTracesSvc<T: Query>(pub Arc<T>);
-                    impl<
-                        T: Query,
-                    > tonic::server::UnaryService<super::QueryDenomTracesRequest>
-                    for DenomTracesSvc<T> {
+                    impl<T: Query> tonic::server::UnaryService<super::QueryDenomTracesRequest> for DenomTracesSvc<T> {
                         type Response = super::QueryDenomTracesResponse;
-                        type Future = BoxFuture<
-                            tonic::Response<Self::Response>,
-                            tonic::Status,
-                        >;
+                        type Future = BoxFuture<tonic::Response<Self::Response>, tonic::Status>;
                         fn call(
                             &mut self,
                             request: tonic::Request<super::QueryDenomTracesRequest>,
                         ) -> Self::Future {
                             let inner = Arc::clone(&self.0);
-                            let fut = async move {
-                                <T as Query>::denom_traces(&inner, request).await
-                            };
+                            let fut =
+                                async move { <T as Query>::denom_traces(&inner, request).await };
                             Box::pin(fut)
                         }
                     }
@@ -436,23 +377,16 @@ pub mod query_server {
                 "/ibc.applications.transfer.v1.Query/DenomTrace" => {
                     #[allow(non_camel_case_types)]
                     struct DenomTraceSvc<T: Query>(pub Arc<T>);
-                    impl<
-                        T: Query,
-                    > tonic::server::UnaryService<super::QueryDenomTraceRequest>
-                    for DenomTraceSvc<T> {
+                    impl<T: Query> tonic::server::UnaryService<super::QueryDenomTraceRequest> for DenomTraceSvc<T> {
                         type Response = super::QueryDenomTraceResponse;
-                        type Future = BoxFuture<
-                            tonic::Response<Self::Response>,
-                            tonic::Status,
-                        >;
+                        type Future = BoxFuture<tonic::Response<Self::Response>, tonic::Status>;
                         fn call(
                             &mut self,
                             request: tonic::Request<super::QueryDenomTraceRequest>,
                         ) -> Self::Future {
                             let inner = Arc::clone(&self.0);
-                            let fut = async move {
-                                <T as Query>::denom_trace(&inner, request).await
-                            };
+                            let fut =
+                                async move { <T as Query>::denom_trace(&inner, request).await };
                             Box::pin(fut)
                         }
                     }
@@ -482,21 +416,15 @@ pub mod query_server {
                 "/ibc.applications.transfer.v1.Query/Params" => {
                     #[allow(non_camel_case_types)]
                     struct ParamsSvc<T: Query>(pub Arc<T>);
-                    impl<T: Query> tonic::server::UnaryService<super::QueryParamsRequest>
-                    for ParamsSvc<T> {
+                    impl<T: Query> tonic::server::UnaryService<super::QueryParamsRequest> for ParamsSvc<T> {
                         type Response = super::QueryParamsResponse;
-                        type Future = BoxFuture<
-                            tonic::Response<Self::Response>,
-                            tonic::Status,
-                        >;
+                        type Future = BoxFuture<tonic::Response<Self::Response>, tonic::Status>;
                         fn call(
                             &mut self,
                             request: tonic::Request<super::QueryParamsRequest>,
                         ) -> Self::Future {
                             let inner = Arc::clone(&self.0);
-                            let fut = async move {
-                                <T as Query>::params(&inner, request).await
-                            };
+                            let fut = async move { <T as Query>::params(&inner, request).await };
                             Box::pin(fut)
                         }
                     }
@@ -526,23 +454,16 @@ pub mod query_server {
                 "/ibc.applications.transfer.v1.Query/DenomHash" => {
                     #[allow(non_camel_case_types)]
                     struct DenomHashSvc<T: Query>(pub Arc<T>);
-                    impl<
-                        T: Query,
-                    > tonic::server::UnaryService<super::QueryDenomHashRequest>
-                    for DenomHashSvc<T> {
+                    impl<T: Query> tonic::server::UnaryService<super::QueryDenomHashRequest> for DenomHashSvc<T> {
                         type Response = super::QueryDenomHashResponse;
-                        type Future = BoxFuture<
-                            tonic::Response<Self::Response>,
-                            tonic::Status,
-                        >;
+                        type Future = BoxFuture<tonic::Response<Self::Response>, tonic::Status>;
                         fn call(
                             &mut self,
                             request: tonic::Request<super::QueryDenomHashRequest>,
                         ) -> Self::Future {
                             let inner = Arc::clone(&self.0);
-                            let fut = async move {
-                                <T as Query>::denom_hash(&inner, request).await
-                            };
+                            let fut =
+                                async move { <T as Query>::denom_hash(&inner, request).await };
                             Box::pin(fut)
                         }
                     }
@@ -572,23 +493,18 @@ pub mod query_server {
                 "/ibc.applications.transfer.v1.Query/EscrowAddress" => {
                     #[allow(non_camel_case_types)]
                     struct EscrowAddressSvc<T: Query>(pub Arc<T>);
-                    impl<
-                        T: Query,
-                    > tonic::server::UnaryService<super::QueryEscrowAddressRequest>
-                    for EscrowAddressSvc<T> {
+                    impl<T: Query> tonic::server::UnaryService<super::QueryEscrowAddressRequest>
+                        for EscrowAddressSvc<T>
+                    {
                         type Response = super::QueryEscrowAddressResponse;
-                        type Future = BoxFuture<
-                            tonic::Response<Self::Response>,
-                            tonic::Status,
-                        >;
+                        type Future = BoxFuture<tonic::Response<Self::Response>, tonic::Status>;
                         fn call(
                             &mut self,
                             request: tonic::Request<super::QueryEscrowAddressRequest>,
                         ) -> Self::Future {
                             let inner = Arc::clone(&self.0);
-                            let fut = async move {
-                                <T as Query>::escrow_address(&inner, request).await
-                            };
+                            let fut =
+                                async move { <T as Query>::escrow_address(&inner, request).await };
                             Box::pin(fut)
                         }
                     }
@@ -618,20 +534,15 @@ pub mod query_server {
                 "/ibc.applications.transfer.v1.Query/TotalEscrowForDenom" => {
                     #[allow(non_camel_case_types)]
                     struct TotalEscrowForDenomSvc<T: Query>(pub Arc<T>);
-                    impl<
-                        T: Query,
-                    > tonic::server::UnaryService<super::QueryTotalEscrowForDenomRequest>
-                    for TotalEscrowForDenomSvc<T> {
+                    impl<T: Query>
+                        tonic::server::UnaryService<super::QueryTotalEscrowForDenomRequest>
+                        for TotalEscrowForDenomSvc<T>
+                    {
                         type Response = super::QueryTotalEscrowForDenomResponse;
-                        type Future = BoxFuture<
-                            tonic::Response<Self::Response>,
-                            tonic::Status,
-                        >;
+                        type Future = BoxFuture<tonic::Response<Self::Response>, tonic::Status>;
                         fn call(
                             &mut self,
-                            request: tonic::Request<
-                                super::QueryTotalEscrowForDenomRequest,
-                            >,
+                            request: tonic::Request<super::QueryTotalEscrowForDenomRequest>,
                         ) -> Self::Future {
                             let inner = Arc::clone(&self.0);
                             let fut = async move {
@@ -663,18 +574,14 @@ pub mod query_server {
                     };
                     Box::pin(fut)
                 }
-                _ => {
-                    Box::pin(async move {
-                        Ok(
-                            http::Response::builder()
-                                .status(200)
-                                .header("grpc-status", "12")
-                                .header("content-type", "application/grpc")
-                                .body(empty_body())
-                                .unwrap(),
-                        )
-                    })
-                }
+                _ => Box::pin(async move {
+                    Ok(http::Response::builder()
+                        .status(200)
+                        .header("grpc-status", "12")
+                        .header("content-type", "application/grpc")
+                        .body(empty_body())
+                        .unwrap())
+                }),
             }
         }
     }
@@ -709,8 +616,8 @@ pub mod query_server {
 #[cfg_attr(docsrs, doc(cfg(feature = "grpc")))]
 pub mod msg_client {
     #![allow(unused_variables, dead_code, missing_docs, clippy::let_unit_value)]
-    use tonic::codegen::*;
     use tonic::codegen::http::Uri;
+    use tonic::codegen::*;
     #[derive(Debug, Clone)]
     pub struct MsgClient<T> {
         inner: tonic::client::Grpc<T>,
@@ -743,10 +650,7 @@ pub mod msg_client {
             let inner = tonic::client::Grpc::with_origin(inner, origin);
             Self { inner }
         }
-        pub fn with_interceptor<F>(
-            inner: T,
-            interceptor: F,
-        ) -> MsgClient<InterceptedService<T, F>>
+        pub fn with_interceptor<F>(inner: T, interceptor: F) -> MsgClient<InterceptedService<T, F>>
         where
             F: tonic::service::Interceptor,
             T::ResponseBody: Default,
@@ -756,9 +660,8 @@ pub mod msg_client {
                     <T as tonic::client::GrpcService<tonic::body::BoxBody>>::ResponseBody,
                 >,
             >,
-            <T as tonic::codegen::Service<
-                http::Request<tonic::body::BoxBody>,
-            >>::Error: Into<StdError> + Send + Sync,
+            <T as tonic::codegen::Service<http::Request<tonic::body::BoxBody>>>::Error:
+                Into<StdError> + Send + Sync,
         {
             MsgClient::new(InterceptedService::new(inner, interceptor))
         }
@@ -796,26 +699,22 @@ pub mod msg_client {
         pub async fn transfer(
             &mut self,
             request: impl tonic::IntoRequest<super::MsgTransfer>,
-        ) -> std::result::Result<
-            tonic::Response<super::MsgTransferResponse>,
-            tonic::Status,
-        > {
-            self.inner
-                .ready()
-                .await
-                .map_err(|e| {
-                    tonic::Status::new(
-                        tonic::Code::Unknown,
-                        format!("Service was not ready: {}", e.into()),
-                    )
-                })?;
+        ) -> std::result::Result<tonic::Response<super::MsgTransferResponse>, tonic::Status>
+        {
+            self.inner.ready().await.map_err(|e| {
+                tonic::Status::new(
+                    tonic::Code::Unknown,
+                    format!("Service was not ready: {}", e.into()),
+                )
+            })?;
             let codec = tonic::codec::ProstCodec::default();
-            let path = http::uri::PathAndQuery::from_static(
-                "/ibc.applications.transfer.v1.Msg/Transfer",
-            );
+            let path =
+                http::uri::PathAndQuery::from_static("/ibc.applications.transfer.v1.Msg/Transfer");
             let mut req = request.into_request();
-            req.extensions_mut()
-                .insert(GrpcMethod::new("ibc.applications.transfer.v1.Msg", "Transfer"));
+            req.extensions_mut().insert(GrpcMethod::new(
+                "ibc.applications.transfer.v1.Msg",
+                "Transfer",
+            ));
             self.inner.unary(req, path, codec).await
         }
     }
@@ -832,10 +731,7 @@ pub mod msg_server {
         async fn transfer(
             &self,
             request: tonic::Request<super::MsgTransfer>,
-        ) -> std::result::Result<
-            tonic::Response<super::MsgTransferResponse>,
-            tonic::Status,
-        >;
+        ) -> std::result::Result<tonic::Response<super::MsgTransferResponse>, tonic::Status>;
     }
     #[derive(Debug)]
     pub struct MsgServer<T: Msg> {
@@ -860,10 +756,7 @@ pub mod msg_server {
                 max_encoding_message_size: None,
             }
         }
-        pub fn with_interceptor<F>(
-            inner: T,
-            interceptor: F,
-        ) -> InterceptedService<Self, F>
+        pub fn with_interceptor<F>(inner: T, interceptor: F) -> InterceptedService<Self, F>
         where
             F: tonic::service::Interceptor,
         {
@@ -919,21 +812,15 @@ pub mod msg_server {
                 "/ibc.applications.transfer.v1.Msg/Transfer" => {
                     #[allow(non_camel_case_types)]
                     struct TransferSvc<T: Msg>(pub Arc<T>);
-                    impl<T: Msg> tonic::server::UnaryService<super::MsgTransfer>
-                    for TransferSvc<T> {
+                    impl<T: Msg> tonic::server::UnaryService<super::MsgTransfer> for TransferSvc<T> {
                         type Response = super::MsgTransferResponse;
-                        type Future = BoxFuture<
-                            tonic::Response<Self::Response>,
-                            tonic::Status,
-                        >;
+                        type Future = BoxFuture<tonic::Response<Self::Response>, tonic::Status>;
                         fn call(
                             &mut self,
                             request: tonic::Request<super::MsgTransfer>,
                         ) -> Self::Future {
                             let inner = Arc::clone(&self.0);
-                            let fut = async move {
-                                <T as Msg>::transfer(&inner, request).await
-                            };
+                            let fut = async move { <T as Msg>::transfer(&inner, request).await };
                             Box::pin(fut)
                         }
                     }
@@ -960,18 +847,14 @@ pub mod msg_server {
                     };
                     Box::pin(fut)
                 }
-                _ => {
-                    Box::pin(async move {
-                        Ok(
-                            http::Response::builder()
-                                .status(200)
-                                .header("grpc-status", "12")
-                                .header("content-type", "application/grpc")
-                                .body(empty_body())
-                                .unwrap(),
-                        )
-                    })
-                }
+                _ => Box::pin(async move {
+                    Ok(http::Response::builder()
+                        .status(200)
+                        .header("grpc-status", "12")
+                        .header("content-type", "application/grpc")
+                        .body(empty_body())
+                        .unwrap())
+                }),
             }
         }
     }

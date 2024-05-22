@@ -4,8 +4,8 @@
 #[cfg_attr(docsrs, doc(cfg(feature = "grpc")))]
 pub mod query_client {
     #![allow(unused_variables, dead_code, missing_docs, clippy::let_unit_value)]
-    use tonic::codegen::*;
     use tonic::codegen::http::Uri;
+    use tonic::codegen::*;
     #[derive(Debug, Clone)]
     pub struct QueryClient<T> {
         inner: tonic::client::Grpc<T>,
@@ -51,9 +51,8 @@ pub mod query_client {
                     <T as tonic::client::GrpcService<tonic::body::BoxBody>>::ResponseBody,
                 >,
             >,
-            <T as tonic::codegen::Service<
-                http::Request<tonic::body::BoxBody>,
-            >>::Error: Into<StdError> + Send + Sync,
+            <T as tonic::codegen::Service<http::Request<tonic::body::BoxBody>>>::Error:
+                Into<StdError> + Send + Sync,
         {
             QueryClient::new(InterceptedService::new(inner, interceptor))
         }
@@ -91,23 +90,17 @@ pub mod query_client {
         pub async fn client_state(
             &mut self,
             request: impl tonic::IntoRequest<super::QueryClientStateRequest>,
-        ) -> std::result::Result<
-            tonic::Response<super::QueryClientStateResponse>,
-            tonic::Status,
-        > {
-            self.inner
-                .ready()
-                .await
-                .map_err(|e| {
-                    tonic::Status::new(
-                        tonic::Code::Unknown,
-                        format!("Service was not ready: {}", e.into()),
-                    )
-                })?;
+        ) -> std::result::Result<tonic::Response<super::QueryClientStateResponse>, tonic::Status>
+        {
+            self.inner.ready().await.map_err(|e| {
+                tonic::Status::new(
+                    tonic::Code::Unknown,
+                    format!("Service was not ready: {}", e.into()),
+                )
+            })?;
             let codec = tonic::codec::ProstCodec::default();
-            let path = http::uri::PathAndQuery::from_static(
-                "/ibc.core.client.v1.Query/ClientState",
-            );
+            let path =
+                http::uri::PathAndQuery::from_static("/ibc.core.client.v1.Query/ClientState");
             let mut req = request.into_request();
             req.extensions_mut()
                 .insert(GrpcMethod::new("ibc.core.client.v1.Query", "ClientState"));
@@ -116,23 +109,17 @@ pub mod query_client {
         pub async fn client_states(
             &mut self,
             request: impl tonic::IntoRequest<super::QueryClientStatesRequest>,
-        ) -> std::result::Result<
-            tonic::Response<super::QueryClientStatesResponse>,
-            tonic::Status,
-        > {
-            self.inner
-                .ready()
-                .await
-                .map_err(|e| {
-                    tonic::Status::new(
-                        tonic::Code::Unknown,
-                        format!("Service was not ready: {}", e.into()),
-                    )
-                })?;
+        ) -> std::result::Result<tonic::Response<super::QueryClientStatesResponse>, tonic::Status>
+        {
+            self.inner.ready().await.map_err(|e| {
+                tonic::Status::new(
+                    tonic::Code::Unknown,
+                    format!("Service was not ready: {}", e.into()),
+                )
+            })?;
             let codec = tonic::codec::ProstCodec::default();
-            let path = http::uri::PathAndQuery::from_static(
-                "/ibc.core.client.v1.Query/ClientStates",
-            );
+            let path =
+                http::uri::PathAndQuery::from_static("/ibc.core.client.v1.Query/ClientStates");
             let mut req = request.into_request();
             req.extensions_mut()
                 .insert(GrpcMethod::new("ibc.core.client.v1.Query", "ClientStates"));
@@ -141,51 +128,43 @@ pub mod query_client {
         pub async fn consensus_state(
             &mut self,
             request: impl tonic::IntoRequest<super::QueryConsensusStateRequest>,
-        ) -> std::result::Result<
-            tonic::Response<super::QueryConsensusStateResponse>,
-            tonic::Status,
-        > {
-            self.inner
-                .ready()
-                .await
-                .map_err(|e| {
-                    tonic::Status::new(
-                        tonic::Code::Unknown,
-                        format!("Service was not ready: {}", e.into()),
-                    )
-                })?;
+        ) -> std::result::Result<tonic::Response<super::QueryConsensusStateResponse>, tonic::Status>
+        {
+            self.inner.ready().await.map_err(|e| {
+                tonic::Status::new(
+                    tonic::Code::Unknown,
+                    format!("Service was not ready: {}", e.into()),
+                )
+            })?;
             let codec = tonic::codec::ProstCodec::default();
-            let path = http::uri::PathAndQuery::from_static(
-                "/ibc.core.client.v1.Query/ConsensusState",
-            );
+            let path =
+                http::uri::PathAndQuery::from_static("/ibc.core.client.v1.Query/ConsensusState");
             let mut req = request.into_request();
-            req.extensions_mut()
-                .insert(GrpcMethod::new("ibc.core.client.v1.Query", "ConsensusState"));
+            req.extensions_mut().insert(GrpcMethod::new(
+                "ibc.core.client.v1.Query",
+                "ConsensusState",
+            ));
             self.inner.unary(req, path, codec).await
         }
         pub async fn consensus_states(
             &mut self,
             request: impl tonic::IntoRequest<super::QueryConsensusStatesRequest>,
-        ) -> std::result::Result<
-            tonic::Response<super::QueryConsensusStatesResponse>,
-            tonic::Status,
-        > {
-            self.inner
-                .ready()
-                .await
-                .map_err(|e| {
-                    tonic::Status::new(
-                        tonic::Code::Unknown,
-                        format!("Service was not ready: {}", e.into()),
-                    )
-                })?;
+        ) -> std::result::Result<tonic::Response<super::QueryConsensusStatesResponse>, tonic::Status>
+        {
+            self.inner.ready().await.map_err(|e| {
+                tonic::Status::new(
+                    tonic::Code::Unknown,
+                    format!("Service was not ready: {}", e.into()),
+                )
+            })?;
             let codec = tonic::codec::ProstCodec::default();
-            let path = http::uri::PathAndQuery::from_static(
-                "/ibc.core.client.v1.Query/ConsensusStates",
-            );
+            let path =
+                http::uri::PathAndQuery::from_static("/ibc.core.client.v1.Query/ConsensusStates");
             let mut req = request.into_request();
-            req.extensions_mut()
-                .insert(GrpcMethod::new("ibc.core.client.v1.Query", "ConsensusStates"));
+            req.extensions_mut().insert(GrpcMethod::new(
+                "ibc.core.client.v1.Query",
+                "ConsensusStates",
+            ));
             self.inner.unary(req, path, codec).await
         }
         pub async fn consensus_state_heights(
@@ -195,46 +174,37 @@ pub mod query_client {
             tonic::Response<super::QueryConsensusStateHeightsResponse>,
             tonic::Status,
         > {
-            self.inner
-                .ready()
-                .await
-                .map_err(|e| {
-                    tonic::Status::new(
-                        tonic::Code::Unknown,
-                        format!("Service was not ready: {}", e.into()),
-                    )
-                })?;
+            self.inner.ready().await.map_err(|e| {
+                tonic::Status::new(
+                    tonic::Code::Unknown,
+                    format!("Service was not ready: {}", e.into()),
+                )
+            })?;
             let codec = tonic::codec::ProstCodec::default();
             let path = http::uri::PathAndQuery::from_static(
                 "/ibc.core.client.v1.Query/ConsensusStateHeights",
             );
             let mut req = request.into_request();
-            req.extensions_mut()
-                .insert(
-                    GrpcMethod::new("ibc.core.client.v1.Query", "ConsensusStateHeights"),
-                );
+            req.extensions_mut().insert(GrpcMethod::new(
+                "ibc.core.client.v1.Query",
+                "ConsensusStateHeights",
+            ));
             self.inner.unary(req, path, codec).await
         }
         pub async fn client_status(
             &mut self,
             request: impl tonic::IntoRequest<super::QueryClientStatusRequest>,
-        ) -> std::result::Result<
-            tonic::Response<super::QueryClientStatusResponse>,
-            tonic::Status,
-        > {
-            self.inner
-                .ready()
-                .await
-                .map_err(|e| {
-                    tonic::Status::new(
-                        tonic::Code::Unknown,
-                        format!("Service was not ready: {}", e.into()),
-                    )
-                })?;
+        ) -> std::result::Result<tonic::Response<super::QueryClientStatusResponse>, tonic::Status>
+        {
+            self.inner.ready().await.map_err(|e| {
+                tonic::Status::new(
+                    tonic::Code::Unknown,
+                    format!("Service was not ready: {}", e.into()),
+                )
+            })?;
             let codec = tonic::codec::ProstCodec::default();
-            let path = http::uri::PathAndQuery::from_static(
-                "/ibc.core.client.v1.Query/ClientStatus",
-            );
+            let path =
+                http::uri::PathAndQuery::from_static("/ibc.core.client.v1.Query/ClientStatus");
             let mut req = request.into_request();
             req.extensions_mut()
                 .insert(GrpcMethod::new("ibc.core.client.v1.Query", "ClientStatus"));
@@ -243,23 +213,17 @@ pub mod query_client {
         pub async fn client_params(
             &mut self,
             request: impl tonic::IntoRequest<super::QueryClientParamsRequest>,
-        ) -> std::result::Result<
-            tonic::Response<super::QueryClientParamsResponse>,
-            tonic::Status,
-        > {
-            self.inner
-                .ready()
-                .await
-                .map_err(|e| {
-                    tonic::Status::new(
-                        tonic::Code::Unknown,
-                        format!("Service was not ready: {}", e.into()),
-                    )
-                })?;
+        ) -> std::result::Result<tonic::Response<super::QueryClientParamsResponse>, tonic::Status>
+        {
+            self.inner.ready().await.map_err(|e| {
+                tonic::Status::new(
+                    tonic::Code::Unknown,
+                    format!("Service was not ready: {}", e.into()),
+                )
+            })?;
             let codec = tonic::codec::ProstCodec::default();
-            let path = http::uri::PathAndQuery::from_static(
-                "/ibc.core.client.v1.Query/ClientParams",
-            );
+            let path =
+                http::uri::PathAndQuery::from_static("/ibc.core.client.v1.Query/ClientParams");
             let mut req = request.into_request();
             req.extensions_mut()
                 .insert(GrpcMethod::new("ibc.core.client.v1.Query", "ClientParams"));
@@ -272,24 +236,21 @@ pub mod query_client {
             tonic::Response<super::QueryUpgradedClientStateResponse>,
             tonic::Status,
         > {
-            self.inner
-                .ready()
-                .await
-                .map_err(|e| {
-                    tonic::Status::new(
-                        tonic::Code::Unknown,
-                        format!("Service was not ready: {}", e.into()),
-                    )
-                })?;
+            self.inner.ready().await.map_err(|e| {
+                tonic::Status::new(
+                    tonic::Code::Unknown,
+                    format!("Service was not ready: {}", e.into()),
+                )
+            })?;
             let codec = tonic::codec::ProstCodec::default();
             let path = http::uri::PathAndQuery::from_static(
                 "/ibc.core.client.v1.Query/UpgradedClientState",
             );
             let mut req = request.into_request();
-            req.extensions_mut()
-                .insert(
-                    GrpcMethod::new("ibc.core.client.v1.Query", "UpgradedClientState"),
-                );
+            req.extensions_mut().insert(GrpcMethod::new(
+                "ibc.core.client.v1.Query",
+                "UpgradedClientState",
+            ));
             self.inner.unary(req, path, codec).await
         }
         pub async fn upgraded_consensus_state(
@@ -299,24 +260,21 @@ pub mod query_client {
             tonic::Response<super::QueryUpgradedConsensusStateResponse>,
             tonic::Status,
         > {
-            self.inner
-                .ready()
-                .await
-                .map_err(|e| {
-                    tonic::Status::new(
-                        tonic::Code::Unknown,
-                        format!("Service was not ready: {}", e.into()),
-                    )
-                })?;
+            self.inner.ready().await.map_err(|e| {
+                tonic::Status::new(
+                    tonic::Code::Unknown,
+                    format!("Service was not ready: {}", e.into()),
+                )
+            })?;
             let codec = tonic::codec::ProstCodec::default();
             let path = http::uri::PathAndQuery::from_static(
                 "/ibc.core.client.v1.Query/UpgradedConsensusState",
             );
             let mut req = request.into_request();
-            req.extensions_mut()
-                .insert(
-                    GrpcMethod::new("ibc.core.client.v1.Query", "UpgradedConsensusState"),
-                );
+            req.extensions_mut().insert(GrpcMethod::new(
+                "ibc.core.client.v1.Query",
+                "UpgradedConsensusState",
+            ));
             self.inner.unary(req, path, codec).await
         }
     }
@@ -333,31 +291,19 @@ pub mod query_server {
         async fn client_state(
             &self,
             request: tonic::Request<super::QueryClientStateRequest>,
-        ) -> std::result::Result<
-            tonic::Response<super::QueryClientStateResponse>,
-            tonic::Status,
-        >;
+        ) -> std::result::Result<tonic::Response<super::QueryClientStateResponse>, tonic::Status>;
         async fn client_states(
             &self,
             request: tonic::Request<super::QueryClientStatesRequest>,
-        ) -> std::result::Result<
-            tonic::Response<super::QueryClientStatesResponse>,
-            tonic::Status,
-        >;
+        ) -> std::result::Result<tonic::Response<super::QueryClientStatesResponse>, tonic::Status>;
         async fn consensus_state(
             &self,
             request: tonic::Request<super::QueryConsensusStateRequest>,
-        ) -> std::result::Result<
-            tonic::Response<super::QueryConsensusStateResponse>,
-            tonic::Status,
-        >;
+        ) -> std::result::Result<tonic::Response<super::QueryConsensusStateResponse>, tonic::Status>;
         async fn consensus_states(
             &self,
             request: tonic::Request<super::QueryConsensusStatesRequest>,
-        ) -> std::result::Result<
-            tonic::Response<super::QueryConsensusStatesResponse>,
-            tonic::Status,
-        >;
+        ) -> std::result::Result<tonic::Response<super::QueryConsensusStatesResponse>, tonic::Status>;
         async fn consensus_state_heights(
             &self,
             request: tonic::Request<super::QueryConsensusStateHeightsRequest>,
@@ -368,17 +314,11 @@ pub mod query_server {
         async fn client_status(
             &self,
             request: tonic::Request<super::QueryClientStatusRequest>,
-        ) -> std::result::Result<
-            tonic::Response<super::QueryClientStatusResponse>,
-            tonic::Status,
-        >;
+        ) -> std::result::Result<tonic::Response<super::QueryClientStatusResponse>, tonic::Status>;
         async fn client_params(
             &self,
             request: tonic::Request<super::QueryClientParamsRequest>,
-        ) -> std::result::Result<
-            tonic::Response<super::QueryClientParamsResponse>,
-            tonic::Status,
-        >;
+        ) -> std::result::Result<tonic::Response<super::QueryClientParamsResponse>, tonic::Status>;
         async fn upgraded_client_state(
             &self,
             request: tonic::Request<super::QueryUpgradedClientStateRequest>,
@@ -417,10 +357,7 @@ pub mod query_server {
                 max_encoding_message_size: None,
             }
         }
-        pub fn with_interceptor<F>(
-            inner: T,
-            interceptor: F,
-        ) -> InterceptedService<Self, F>
+        pub fn with_interceptor<F>(inner: T, interceptor: F) -> InterceptedService<Self, F>
         where
             F: tonic::service::Interceptor,
         {
@@ -476,23 +413,16 @@ pub mod query_server {
                 "/ibc.core.client.v1.Query/ClientState" => {
                     #[allow(non_camel_case_types)]
                     struct ClientStateSvc<T: Query>(pub Arc<T>);
-                    impl<
-                        T: Query,
-                    > tonic::server::UnaryService<super::QueryClientStateRequest>
-                    for ClientStateSvc<T> {
+                    impl<T: Query> tonic::server::UnaryService<super::QueryClientStateRequest> for ClientStateSvc<T> {
                         type Response = super::QueryClientStateResponse;
-                        type Future = BoxFuture<
-                            tonic::Response<Self::Response>,
-                            tonic::Status,
-                        >;
+                        type Future = BoxFuture<tonic::Response<Self::Response>, tonic::Status>;
                         fn call(
                             &mut self,
                             request: tonic::Request<super::QueryClientStateRequest>,
                         ) -> Self::Future {
                             let inner = Arc::clone(&self.0);
-                            let fut = async move {
-                                <T as Query>::client_state(&inner, request).await
-                            };
+                            let fut =
+                                async move { <T as Query>::client_state(&inner, request).await };
                             Box::pin(fut)
                         }
                     }
@@ -522,23 +452,16 @@ pub mod query_server {
                 "/ibc.core.client.v1.Query/ClientStates" => {
                     #[allow(non_camel_case_types)]
                     struct ClientStatesSvc<T: Query>(pub Arc<T>);
-                    impl<
-                        T: Query,
-                    > tonic::server::UnaryService<super::QueryClientStatesRequest>
-                    for ClientStatesSvc<T> {
+                    impl<T: Query> tonic::server::UnaryService<super::QueryClientStatesRequest> for ClientStatesSvc<T> {
                         type Response = super::QueryClientStatesResponse;
-                        type Future = BoxFuture<
-                            tonic::Response<Self::Response>,
-                            tonic::Status,
-                        >;
+                        type Future = BoxFuture<tonic::Response<Self::Response>, tonic::Status>;
                         fn call(
                             &mut self,
                             request: tonic::Request<super::QueryClientStatesRequest>,
                         ) -> Self::Future {
                             let inner = Arc::clone(&self.0);
-                            let fut = async move {
-                                <T as Query>::client_states(&inner, request).await
-                            };
+                            let fut =
+                                async move { <T as Query>::client_states(&inner, request).await };
                             Box::pin(fut)
                         }
                     }
@@ -568,23 +491,18 @@ pub mod query_server {
                 "/ibc.core.client.v1.Query/ConsensusState" => {
                     #[allow(non_camel_case_types)]
                     struct ConsensusStateSvc<T: Query>(pub Arc<T>);
-                    impl<
-                        T: Query,
-                    > tonic::server::UnaryService<super::QueryConsensusStateRequest>
-                    for ConsensusStateSvc<T> {
+                    impl<T: Query> tonic::server::UnaryService<super::QueryConsensusStateRequest>
+                        for ConsensusStateSvc<T>
+                    {
                         type Response = super::QueryConsensusStateResponse;
-                        type Future = BoxFuture<
-                            tonic::Response<Self::Response>,
-                            tonic::Status,
-                        >;
+                        type Future = BoxFuture<tonic::Response<Self::Response>, tonic::Status>;
                         fn call(
                             &mut self,
                             request: tonic::Request<super::QueryConsensusStateRequest>,
                         ) -> Self::Future {
                             let inner = Arc::clone(&self.0);
-                            let fut = async move {
-                                <T as Query>::consensus_state(&inner, request).await
-                            };
+                            let fut =
+                                async move { <T as Query>::consensus_state(&inner, request).await };
                             Box::pin(fut)
                         }
                     }
@@ -614,15 +532,11 @@ pub mod query_server {
                 "/ibc.core.client.v1.Query/ConsensusStates" => {
                     #[allow(non_camel_case_types)]
                     struct ConsensusStatesSvc<T: Query>(pub Arc<T>);
-                    impl<
-                        T: Query,
-                    > tonic::server::UnaryService<super::QueryConsensusStatesRequest>
-                    for ConsensusStatesSvc<T> {
+                    impl<T: Query> tonic::server::UnaryService<super::QueryConsensusStatesRequest>
+                        for ConsensusStatesSvc<T>
+                    {
                         type Response = super::QueryConsensusStatesResponse;
-                        type Future = BoxFuture<
-                            tonic::Response<Self::Response>,
-                            tonic::Status,
-                        >;
+                        type Future = BoxFuture<tonic::Response<Self::Response>, tonic::Status>;
                         fn call(
                             &mut self,
                             request: tonic::Request<super::QueryConsensusStatesRequest>,
@@ -660,21 +574,15 @@ pub mod query_server {
                 "/ibc.core.client.v1.Query/ConsensusStateHeights" => {
                     #[allow(non_camel_case_types)]
                     struct ConsensusStateHeightsSvc<T: Query>(pub Arc<T>);
-                    impl<
-                        T: Query,
-                    > tonic::server::UnaryService<
-                        super::QueryConsensusStateHeightsRequest,
-                    > for ConsensusStateHeightsSvc<T> {
+                    impl<T: Query>
+                        tonic::server::UnaryService<super::QueryConsensusStateHeightsRequest>
+                        for ConsensusStateHeightsSvc<T>
+                    {
                         type Response = super::QueryConsensusStateHeightsResponse;
-                        type Future = BoxFuture<
-                            tonic::Response<Self::Response>,
-                            tonic::Status,
-                        >;
+                        type Future = BoxFuture<tonic::Response<Self::Response>, tonic::Status>;
                         fn call(
                             &mut self,
-                            request: tonic::Request<
-                                super::QueryConsensusStateHeightsRequest,
-                            >,
+                            request: tonic::Request<super::QueryConsensusStateHeightsRequest>,
                         ) -> Self::Future {
                             let inner = Arc::clone(&self.0);
                             let fut = async move {
@@ -709,23 +617,16 @@ pub mod query_server {
                 "/ibc.core.client.v1.Query/ClientStatus" => {
                     #[allow(non_camel_case_types)]
                     struct ClientStatusSvc<T: Query>(pub Arc<T>);
-                    impl<
-                        T: Query,
-                    > tonic::server::UnaryService<super::QueryClientStatusRequest>
-                    for ClientStatusSvc<T> {
+                    impl<T: Query> tonic::server::UnaryService<super::QueryClientStatusRequest> for ClientStatusSvc<T> {
                         type Response = super::QueryClientStatusResponse;
-                        type Future = BoxFuture<
-                            tonic::Response<Self::Response>,
-                            tonic::Status,
-                        >;
+                        type Future = BoxFuture<tonic::Response<Self::Response>, tonic::Status>;
                         fn call(
                             &mut self,
                             request: tonic::Request<super::QueryClientStatusRequest>,
                         ) -> Self::Future {
                             let inner = Arc::clone(&self.0);
-                            let fut = async move {
-                                <T as Query>::client_status(&inner, request).await
-                            };
+                            let fut =
+                                async move { <T as Query>::client_status(&inner, request).await };
                             Box::pin(fut)
                         }
                     }
@@ -755,23 +656,16 @@ pub mod query_server {
                 "/ibc.core.client.v1.Query/ClientParams" => {
                     #[allow(non_camel_case_types)]
                     struct ClientParamsSvc<T: Query>(pub Arc<T>);
-                    impl<
-                        T: Query,
-                    > tonic::server::UnaryService<super::QueryClientParamsRequest>
-                    for ClientParamsSvc<T> {
+                    impl<T: Query> tonic::server::UnaryService<super::QueryClientParamsRequest> for ClientParamsSvc<T> {
                         type Response = super::QueryClientParamsResponse;
-                        type Future = BoxFuture<
-                            tonic::Response<Self::Response>,
-                            tonic::Status,
-                        >;
+                        type Future = BoxFuture<tonic::Response<Self::Response>, tonic::Status>;
                         fn call(
                             &mut self,
                             request: tonic::Request<super::QueryClientParamsRequest>,
                         ) -> Self::Future {
                             let inner = Arc::clone(&self.0);
-                            let fut = async move {
-                                <T as Query>::client_params(&inner, request).await
-                            };
+                            let fut =
+                                async move { <T as Query>::client_params(&inner, request).await };
                             Box::pin(fut)
                         }
                     }
@@ -801,20 +695,15 @@ pub mod query_server {
                 "/ibc.core.client.v1.Query/UpgradedClientState" => {
                     #[allow(non_camel_case_types)]
                     struct UpgradedClientStateSvc<T: Query>(pub Arc<T>);
-                    impl<
-                        T: Query,
-                    > tonic::server::UnaryService<super::QueryUpgradedClientStateRequest>
-                    for UpgradedClientStateSvc<T> {
+                    impl<T: Query>
+                        tonic::server::UnaryService<super::QueryUpgradedClientStateRequest>
+                        for UpgradedClientStateSvc<T>
+                    {
                         type Response = super::QueryUpgradedClientStateResponse;
-                        type Future = BoxFuture<
-                            tonic::Response<Self::Response>,
-                            tonic::Status,
-                        >;
+                        type Future = BoxFuture<tonic::Response<Self::Response>, tonic::Status>;
                         fn call(
                             &mut self,
-                            request: tonic::Request<
-                                super::QueryUpgradedClientStateRequest,
-                            >,
+                            request: tonic::Request<super::QueryUpgradedClientStateRequest>,
                         ) -> Self::Future {
                             let inner = Arc::clone(&self.0);
                             let fut = async move {
@@ -849,26 +738,19 @@ pub mod query_server {
                 "/ibc.core.client.v1.Query/UpgradedConsensusState" => {
                     #[allow(non_camel_case_types)]
                     struct UpgradedConsensusStateSvc<T: Query>(pub Arc<T>);
-                    impl<
-                        T: Query,
-                    > tonic::server::UnaryService<
-                        super::QueryUpgradedConsensusStateRequest,
-                    > for UpgradedConsensusStateSvc<T> {
+                    impl<T: Query>
+                        tonic::server::UnaryService<super::QueryUpgradedConsensusStateRequest>
+                        for UpgradedConsensusStateSvc<T>
+                    {
                         type Response = super::QueryUpgradedConsensusStateResponse;
-                        type Future = BoxFuture<
-                            tonic::Response<Self::Response>,
-                            tonic::Status,
-                        >;
+                        type Future = BoxFuture<tonic::Response<Self::Response>, tonic::Status>;
                         fn call(
                             &mut self,
-                            request: tonic::Request<
-                                super::QueryUpgradedConsensusStateRequest,
-                            >,
+                            request: tonic::Request<super::QueryUpgradedConsensusStateRequest>,
                         ) -> Self::Future {
                             let inner = Arc::clone(&self.0);
                             let fut = async move {
-                                <T as Query>::upgraded_consensus_state(&inner, request)
-                                    .await
+                                <T as Query>::upgraded_consensus_state(&inner, request).await
                             };
                             Box::pin(fut)
                         }
@@ -896,18 +778,14 @@ pub mod query_server {
                     };
                     Box::pin(fut)
                 }
-                _ => {
-                    Box::pin(async move {
-                        Ok(
-                            http::Response::builder()
-                                .status(200)
-                                .header("grpc-status", "12")
-                                .header("content-type", "application/grpc")
-                                .body(empty_body())
-                                .unwrap(),
-                        )
-                    })
-                }
+                _ => Box::pin(async move {
+                    Ok(http::Response::builder()
+                        .status(200)
+                        .header("grpc-status", "12")
+                        .header("content-type", "application/grpc")
+                        .body(empty_body())
+                        .unwrap())
+                }),
             }
         }
     }
@@ -942,8 +820,8 @@ pub mod query_server {
 #[cfg_attr(docsrs, doc(cfg(feature = "grpc")))]
 pub mod msg_client {
     #![allow(unused_variables, dead_code, missing_docs, clippy::let_unit_value)]
-    use tonic::codegen::*;
     use tonic::codegen::http::Uri;
+    use tonic::codegen::*;
     #[derive(Debug, Clone)]
     pub struct MsgClient<T> {
         inner: tonic::client::Grpc<T>,
@@ -976,10 +854,7 @@ pub mod msg_client {
             let inner = tonic::client::Grpc::with_origin(inner, origin);
             Self { inner }
         }
-        pub fn with_interceptor<F>(
-            inner: T,
-            interceptor: F,
-        ) -> MsgClient<InterceptedService<T, F>>
+        pub fn with_interceptor<F>(inner: T, interceptor: F) -> MsgClient<InterceptedService<T, F>>
         where
             F: tonic::service::Interceptor,
             T::ResponseBody: Default,
@@ -989,9 +864,8 @@ pub mod msg_client {
                     <T as tonic::client::GrpcService<tonic::body::BoxBody>>::ResponseBody,
                 >,
             >,
-            <T as tonic::codegen::Service<
-                http::Request<tonic::body::BoxBody>,
-            >>::Error: Into<StdError> + Send + Sync,
+            <T as tonic::codegen::Service<http::Request<tonic::body::BoxBody>>>::Error:
+                Into<StdError> + Send + Sync,
         {
             MsgClient::new(InterceptedService::new(inner, interceptor))
         }
@@ -1029,23 +903,16 @@ pub mod msg_client {
         pub async fn create_client(
             &mut self,
             request: impl tonic::IntoRequest<super::MsgCreateClient>,
-        ) -> std::result::Result<
-            tonic::Response<super::MsgCreateClientResponse>,
-            tonic::Status,
-        > {
-            self.inner
-                .ready()
-                .await
-                .map_err(|e| {
-                    tonic::Status::new(
-                        tonic::Code::Unknown,
-                        format!("Service was not ready: {}", e.into()),
-                    )
-                })?;
+        ) -> std::result::Result<tonic::Response<super::MsgCreateClientResponse>, tonic::Status>
+        {
+            self.inner.ready().await.map_err(|e| {
+                tonic::Status::new(
+                    tonic::Code::Unknown,
+                    format!("Service was not ready: {}", e.into()),
+                )
+            })?;
             let codec = tonic::codec::ProstCodec::default();
-            let path = http::uri::PathAndQuery::from_static(
-                "/ibc.core.client.v1.Msg/CreateClient",
-            );
+            let path = http::uri::PathAndQuery::from_static("/ibc.core.client.v1.Msg/CreateClient");
             let mut req = request.into_request();
             req.extensions_mut()
                 .insert(GrpcMethod::new("ibc.core.client.v1.Msg", "CreateClient"));
@@ -1054,23 +921,16 @@ pub mod msg_client {
         pub async fn update_client(
             &mut self,
             request: impl tonic::IntoRequest<super::MsgUpdateClient>,
-        ) -> std::result::Result<
-            tonic::Response<super::MsgUpdateClientResponse>,
-            tonic::Status,
-        > {
-            self.inner
-                .ready()
-                .await
-                .map_err(|e| {
-                    tonic::Status::new(
-                        tonic::Code::Unknown,
-                        format!("Service was not ready: {}", e.into()),
-                    )
-                })?;
+        ) -> std::result::Result<tonic::Response<super::MsgUpdateClientResponse>, tonic::Status>
+        {
+            self.inner.ready().await.map_err(|e| {
+                tonic::Status::new(
+                    tonic::Code::Unknown,
+                    format!("Service was not ready: {}", e.into()),
+                )
+            })?;
             let codec = tonic::codec::ProstCodec::default();
-            let path = http::uri::PathAndQuery::from_static(
-                "/ibc.core.client.v1.Msg/UpdateClient",
-            );
+            let path = http::uri::PathAndQuery::from_static("/ibc.core.client.v1.Msg/UpdateClient");
             let mut req = request.into_request();
             req.extensions_mut()
                 .insert(GrpcMethod::new("ibc.core.client.v1.Msg", "UpdateClient"));
@@ -1079,23 +939,17 @@ pub mod msg_client {
         pub async fn upgrade_client(
             &mut self,
             request: impl tonic::IntoRequest<super::MsgUpgradeClient>,
-        ) -> std::result::Result<
-            tonic::Response<super::MsgUpgradeClientResponse>,
-            tonic::Status,
-        > {
-            self.inner
-                .ready()
-                .await
-                .map_err(|e| {
-                    tonic::Status::new(
-                        tonic::Code::Unknown,
-                        format!("Service was not ready: {}", e.into()),
-                    )
-                })?;
+        ) -> std::result::Result<tonic::Response<super::MsgUpgradeClientResponse>, tonic::Status>
+        {
+            self.inner.ready().await.map_err(|e| {
+                tonic::Status::new(
+                    tonic::Code::Unknown,
+                    format!("Service was not ready: {}", e.into()),
+                )
+            })?;
             let codec = tonic::codec::ProstCodec::default();
-            let path = http::uri::PathAndQuery::from_static(
-                "/ibc.core.client.v1.Msg/UpgradeClient",
-            );
+            let path =
+                http::uri::PathAndQuery::from_static("/ibc.core.client.v1.Msg/UpgradeClient");
             let mut req = request.into_request();
             req.extensions_mut()
                 .insert(GrpcMethod::new("ibc.core.client.v1.Msg", "UpgradeClient"));
@@ -1104,26 +958,22 @@ pub mod msg_client {
         pub async fn submit_misbehaviour(
             &mut self,
             request: impl tonic::IntoRequest<super::MsgSubmitMisbehaviour>,
-        ) -> std::result::Result<
-            tonic::Response<super::MsgSubmitMisbehaviourResponse>,
-            tonic::Status,
-        > {
-            self.inner
-                .ready()
-                .await
-                .map_err(|e| {
-                    tonic::Status::new(
-                        tonic::Code::Unknown,
-                        format!("Service was not ready: {}", e.into()),
-                    )
-                })?;
+        ) -> std::result::Result<tonic::Response<super::MsgSubmitMisbehaviourResponse>, tonic::Status>
+        {
+            self.inner.ready().await.map_err(|e| {
+                tonic::Status::new(
+                    tonic::Code::Unknown,
+                    format!("Service was not ready: {}", e.into()),
+                )
+            })?;
             let codec = tonic::codec::ProstCodec::default();
-            let path = http::uri::PathAndQuery::from_static(
-                "/ibc.core.client.v1.Msg/SubmitMisbehaviour",
-            );
+            let path =
+                http::uri::PathAndQuery::from_static("/ibc.core.client.v1.Msg/SubmitMisbehaviour");
             let mut req = request.into_request();
-            req.extensions_mut()
-                .insert(GrpcMethod::new("ibc.core.client.v1.Msg", "SubmitMisbehaviour"));
+            req.extensions_mut().insert(GrpcMethod::new(
+                "ibc.core.client.v1.Msg",
+                "SubmitMisbehaviour",
+            ));
             self.inner.unary(req, path, codec).await
         }
     }
@@ -1140,31 +990,19 @@ pub mod msg_server {
         async fn create_client(
             &self,
             request: tonic::Request<super::MsgCreateClient>,
-        ) -> std::result::Result<
-            tonic::Response<super::MsgCreateClientResponse>,
-            tonic::Status,
-        >;
+        ) -> std::result::Result<tonic::Response<super::MsgCreateClientResponse>, tonic::Status>;
         async fn update_client(
             &self,
             request: tonic::Request<super::MsgUpdateClient>,
-        ) -> std::result::Result<
-            tonic::Response<super::MsgUpdateClientResponse>,
-            tonic::Status,
-        >;
+        ) -> std::result::Result<tonic::Response<super::MsgUpdateClientResponse>, tonic::Status>;
         async fn upgrade_client(
             &self,
             request: tonic::Request<super::MsgUpgradeClient>,
-        ) -> std::result::Result<
-            tonic::Response<super::MsgUpgradeClientResponse>,
-            tonic::Status,
-        >;
+        ) -> std::result::Result<tonic::Response<super::MsgUpgradeClientResponse>, tonic::Status>;
         async fn submit_misbehaviour(
             &self,
             request: tonic::Request<super::MsgSubmitMisbehaviour>,
-        ) -> std::result::Result<
-            tonic::Response<super::MsgSubmitMisbehaviourResponse>,
-            tonic::Status,
-        >;
+        ) -> std::result::Result<tonic::Response<super::MsgSubmitMisbehaviourResponse>, tonic::Status>;
     }
     #[derive(Debug)]
     pub struct MsgServer<T: Msg> {
@@ -1189,10 +1027,7 @@ pub mod msg_server {
                 max_encoding_message_size: None,
             }
         }
-        pub fn with_interceptor<F>(
-            inner: T,
-            interceptor: F,
-        ) -> InterceptedService<Self, F>
+        pub fn with_interceptor<F>(inner: T, interceptor: F) -> InterceptedService<Self, F>
         where
             F: tonic::service::Interceptor,
         {
@@ -1248,21 +1083,16 @@ pub mod msg_server {
                 "/ibc.core.client.v1.Msg/CreateClient" => {
                     #[allow(non_camel_case_types)]
                     struct CreateClientSvc<T: Msg>(pub Arc<T>);
-                    impl<T: Msg> tonic::server::UnaryService<super::MsgCreateClient>
-                    for CreateClientSvc<T> {
+                    impl<T: Msg> tonic::server::UnaryService<super::MsgCreateClient> for CreateClientSvc<T> {
                         type Response = super::MsgCreateClientResponse;
-                        type Future = BoxFuture<
-                            tonic::Response<Self::Response>,
-                            tonic::Status,
-                        >;
+                        type Future = BoxFuture<tonic::Response<Self::Response>, tonic::Status>;
                         fn call(
                             &mut self,
                             request: tonic::Request<super::MsgCreateClient>,
                         ) -> Self::Future {
                             let inner = Arc::clone(&self.0);
-                            let fut = async move {
-                                <T as Msg>::create_client(&inner, request).await
-                            };
+                            let fut =
+                                async move { <T as Msg>::create_client(&inner, request).await };
                             Box::pin(fut)
                         }
                     }
@@ -1292,21 +1122,16 @@ pub mod msg_server {
                 "/ibc.core.client.v1.Msg/UpdateClient" => {
                     #[allow(non_camel_case_types)]
                     struct UpdateClientSvc<T: Msg>(pub Arc<T>);
-                    impl<T: Msg> tonic::server::UnaryService<super::MsgUpdateClient>
-                    for UpdateClientSvc<T> {
+                    impl<T: Msg> tonic::server::UnaryService<super::MsgUpdateClient> for UpdateClientSvc<T> {
                         type Response = super::MsgUpdateClientResponse;
-                        type Future = BoxFuture<
-                            tonic::Response<Self::Response>,
-                            tonic::Status,
-                        >;
+                        type Future = BoxFuture<tonic::Response<Self::Response>, tonic::Status>;
                         fn call(
                             &mut self,
                             request: tonic::Request<super::MsgUpdateClient>,
                         ) -> Self::Future {
                             let inner = Arc::clone(&self.0);
-                            let fut = async move {
-                                <T as Msg>::update_client(&inner, request).await
-                            };
+                            let fut =
+                                async move { <T as Msg>::update_client(&inner, request).await };
                             Box::pin(fut)
                         }
                     }
@@ -1336,21 +1161,16 @@ pub mod msg_server {
                 "/ibc.core.client.v1.Msg/UpgradeClient" => {
                     #[allow(non_camel_case_types)]
                     struct UpgradeClientSvc<T: Msg>(pub Arc<T>);
-                    impl<T: Msg> tonic::server::UnaryService<super::MsgUpgradeClient>
-                    for UpgradeClientSvc<T> {
+                    impl<T: Msg> tonic::server::UnaryService<super::MsgUpgradeClient> for UpgradeClientSvc<T> {
                         type Response = super::MsgUpgradeClientResponse;
-                        type Future = BoxFuture<
-                            tonic::Response<Self::Response>,
-                            tonic::Status,
-                        >;
+                        type Future = BoxFuture<tonic::Response<Self::Response>, tonic::Status>;
                         fn call(
                             &mut self,
                             request: tonic::Request<super::MsgUpgradeClient>,
                         ) -> Self::Future {
                             let inner = Arc::clone(&self.0);
-                            let fut = async move {
-                                <T as Msg>::upgrade_client(&inner, request).await
-                            };
+                            let fut =
+                                async move { <T as Msg>::upgrade_client(&inner, request).await };
                             Box::pin(fut)
                         }
                     }
@@ -1380,15 +1200,11 @@ pub mod msg_server {
                 "/ibc.core.client.v1.Msg/SubmitMisbehaviour" => {
                     #[allow(non_camel_case_types)]
                     struct SubmitMisbehaviourSvc<T: Msg>(pub Arc<T>);
-                    impl<
-                        T: Msg,
-                    > tonic::server::UnaryService<super::MsgSubmitMisbehaviour>
-                    for SubmitMisbehaviourSvc<T> {
+                    impl<T: Msg> tonic::server::UnaryService<super::MsgSubmitMisbehaviour>
+                        for SubmitMisbehaviourSvc<T>
+                    {
                         type Response = super::MsgSubmitMisbehaviourResponse;
-                        type Future = BoxFuture<
-                            tonic::Response<Self::Response>,
-                            tonic::Status,
-                        >;
+                        type Future = BoxFuture<tonic::Response<Self::Response>, tonic::Status>;
                         fn call(
                             &mut self,
                             request: tonic::Request<super::MsgSubmitMisbehaviour>,
@@ -1423,18 +1239,14 @@ pub mod msg_server {
                     };
                     Box::pin(fut)
                 }
-                _ => {
-                    Box::pin(async move {
-                        Ok(
-                            http::Response::builder()
-                                .status(200)
-                                .header("grpc-status", "12")
-                                .header("content-type", "application/grpc")
-                                .body(empty_body())
-                                .unwrap(),
-                        )
-                    })
-                }
+                _ => Box::pin(async move {
+                    Ok(http::Response::builder()
+                        .status(200)
+                        .header("grpc-status", "12")
+                        .header("content-type", "application/grpc")
+                        .body(empty_body())
+                        .unwrap())
+                }),
             }
         }
     }

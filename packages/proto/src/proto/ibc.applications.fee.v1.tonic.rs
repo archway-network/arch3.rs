@@ -4,8 +4,8 @@
 #[cfg_attr(docsrs, doc(cfg(feature = "grpc")))]
 pub mod query_client {
     #![allow(unused_variables, dead_code, missing_docs, clippy::let_unit_value)]
-    use tonic::codegen::*;
     use tonic::codegen::http::Uri;
+    use tonic::codegen::*;
     #[derive(Debug, Clone)]
     pub struct QueryClient<T> {
         inner: tonic::client::Grpc<T>,
@@ -51,9 +51,8 @@ pub mod query_client {
                     <T as tonic::client::GrpcService<tonic::body::BoxBody>>::ResponseBody,
                 >,
             >,
-            <T as tonic::codegen::Service<
-                http::Request<tonic::body::BoxBody>,
-            >>::Error: Into<StdError> + Send + Sync,
+            <T as tonic::codegen::Service<http::Request<tonic::body::BoxBody>>>::Error:
+                Into<StdError> + Send + Sync,
         {
             QueryClient::new(InterceptedService::new(inner, interceptor))
         }
@@ -95,27 +94,21 @@ pub mod query_client {
             tonic::Response<super::QueryIncentivizedPacketsResponse>,
             tonic::Status,
         > {
-            self.inner
-                .ready()
-                .await
-                .map_err(|e| {
-                    tonic::Status::new(
-                        tonic::Code::Unknown,
-                        format!("Service was not ready: {}", e.into()),
-                    )
-                })?;
+            self.inner.ready().await.map_err(|e| {
+                tonic::Status::new(
+                    tonic::Code::Unknown,
+                    format!("Service was not ready: {}", e.into()),
+                )
+            })?;
             let codec = tonic::codec::ProstCodec::default();
             let path = http::uri::PathAndQuery::from_static(
                 "/ibc.applications.fee.v1.Query/IncentivizedPackets",
             );
             let mut req = request.into_request();
-            req.extensions_mut()
-                .insert(
-                    GrpcMethod::new(
-                        "ibc.applications.fee.v1.Query",
-                        "IncentivizedPackets",
-                    ),
-                );
+            req.extensions_mut().insert(GrpcMethod::new(
+                "ibc.applications.fee.v1.Query",
+                "IncentivizedPackets",
+            ));
             self.inner.unary(req, path, codec).await
         }
         pub async fn incentivized_packet(
@@ -125,162 +118,125 @@ pub mod query_client {
             tonic::Response<super::QueryIncentivizedPacketResponse>,
             tonic::Status,
         > {
-            self.inner
-                .ready()
-                .await
-                .map_err(|e| {
-                    tonic::Status::new(
-                        tonic::Code::Unknown,
-                        format!("Service was not ready: {}", e.into()),
-                    )
-                })?;
+            self.inner.ready().await.map_err(|e| {
+                tonic::Status::new(
+                    tonic::Code::Unknown,
+                    format!("Service was not ready: {}", e.into()),
+                )
+            })?;
             let codec = tonic::codec::ProstCodec::default();
             let path = http::uri::PathAndQuery::from_static(
                 "/ibc.applications.fee.v1.Query/IncentivizedPacket",
             );
             let mut req = request.into_request();
-            req.extensions_mut()
-                .insert(
-                    GrpcMethod::new(
-                        "ibc.applications.fee.v1.Query",
-                        "IncentivizedPacket",
-                    ),
-                );
+            req.extensions_mut().insert(GrpcMethod::new(
+                "ibc.applications.fee.v1.Query",
+                "IncentivizedPacket",
+            ));
             self.inner.unary(req, path, codec).await
         }
         pub async fn incentivized_packets_for_channel(
             &mut self,
-            request: impl tonic::IntoRequest<
-                super::QueryIncentivizedPacketsForChannelRequest,
-            >,
+            request: impl tonic::IntoRequest<super::QueryIncentivizedPacketsForChannelRequest>,
         ) -> std::result::Result<
             tonic::Response<super::QueryIncentivizedPacketsForChannelResponse>,
             tonic::Status,
         > {
-            self.inner
-                .ready()
-                .await
-                .map_err(|e| {
-                    tonic::Status::new(
-                        tonic::Code::Unknown,
-                        format!("Service was not ready: {}", e.into()),
-                    )
-                })?;
+            self.inner.ready().await.map_err(|e| {
+                tonic::Status::new(
+                    tonic::Code::Unknown,
+                    format!("Service was not ready: {}", e.into()),
+                )
+            })?;
             let codec = tonic::codec::ProstCodec::default();
             let path = http::uri::PathAndQuery::from_static(
                 "/ibc.applications.fee.v1.Query/IncentivizedPacketsForChannel",
             );
             let mut req = request.into_request();
-            req.extensions_mut()
-                .insert(
-                    GrpcMethod::new(
-                        "ibc.applications.fee.v1.Query",
-                        "IncentivizedPacketsForChannel",
-                    ),
-                );
+            req.extensions_mut().insert(GrpcMethod::new(
+                "ibc.applications.fee.v1.Query",
+                "IncentivizedPacketsForChannel",
+            ));
             self.inner.unary(req, path, codec).await
         }
         pub async fn total_recv_fees(
             &mut self,
             request: impl tonic::IntoRequest<super::QueryTotalRecvFeesRequest>,
-        ) -> std::result::Result<
-            tonic::Response<super::QueryTotalRecvFeesResponse>,
-            tonic::Status,
-        > {
-            self.inner
-                .ready()
-                .await
-                .map_err(|e| {
-                    tonic::Status::new(
-                        tonic::Code::Unknown,
-                        format!("Service was not ready: {}", e.into()),
-                    )
-                })?;
+        ) -> std::result::Result<tonic::Response<super::QueryTotalRecvFeesResponse>, tonic::Status>
+        {
+            self.inner.ready().await.map_err(|e| {
+                tonic::Status::new(
+                    tonic::Code::Unknown,
+                    format!("Service was not ready: {}", e.into()),
+                )
+            })?;
             let codec = tonic::codec::ProstCodec::default();
             let path = http::uri::PathAndQuery::from_static(
                 "/ibc.applications.fee.v1.Query/TotalRecvFees",
             );
             let mut req = request.into_request();
-            req.extensions_mut()
-                .insert(
-                    GrpcMethod::new("ibc.applications.fee.v1.Query", "TotalRecvFees"),
-                );
+            req.extensions_mut().insert(GrpcMethod::new(
+                "ibc.applications.fee.v1.Query",
+                "TotalRecvFees",
+            ));
             self.inner.unary(req, path, codec).await
         }
         pub async fn total_ack_fees(
             &mut self,
             request: impl tonic::IntoRequest<super::QueryTotalAckFeesRequest>,
-        ) -> std::result::Result<
-            tonic::Response<super::QueryTotalAckFeesResponse>,
-            tonic::Status,
-        > {
-            self.inner
-                .ready()
-                .await
-                .map_err(|e| {
-                    tonic::Status::new(
-                        tonic::Code::Unknown,
-                        format!("Service was not ready: {}", e.into()),
-                    )
-                })?;
+        ) -> std::result::Result<tonic::Response<super::QueryTotalAckFeesResponse>, tonic::Status>
+        {
+            self.inner.ready().await.map_err(|e| {
+                tonic::Status::new(
+                    tonic::Code::Unknown,
+                    format!("Service was not ready: {}", e.into()),
+                )
+            })?;
             let codec = tonic::codec::ProstCodec::default();
-            let path = http::uri::PathAndQuery::from_static(
-                "/ibc.applications.fee.v1.Query/TotalAckFees",
-            );
+            let path =
+                http::uri::PathAndQuery::from_static("/ibc.applications.fee.v1.Query/TotalAckFees");
             let mut req = request.into_request();
-            req.extensions_mut()
-                .insert(
-                    GrpcMethod::new("ibc.applications.fee.v1.Query", "TotalAckFees"),
-                );
+            req.extensions_mut().insert(GrpcMethod::new(
+                "ibc.applications.fee.v1.Query",
+                "TotalAckFees",
+            ));
             self.inner.unary(req, path, codec).await
         }
         pub async fn total_timeout_fees(
             &mut self,
             request: impl tonic::IntoRequest<super::QueryTotalTimeoutFeesRequest>,
-        ) -> std::result::Result<
-            tonic::Response<super::QueryTotalTimeoutFeesResponse>,
-            tonic::Status,
-        > {
-            self.inner
-                .ready()
-                .await
-                .map_err(|e| {
-                    tonic::Status::new(
-                        tonic::Code::Unknown,
-                        format!("Service was not ready: {}", e.into()),
-                    )
-                })?;
+        ) -> std::result::Result<tonic::Response<super::QueryTotalTimeoutFeesResponse>, tonic::Status>
+        {
+            self.inner.ready().await.map_err(|e| {
+                tonic::Status::new(
+                    tonic::Code::Unknown,
+                    format!("Service was not ready: {}", e.into()),
+                )
+            })?;
             let codec = tonic::codec::ProstCodec::default();
             let path = http::uri::PathAndQuery::from_static(
                 "/ibc.applications.fee.v1.Query/TotalTimeoutFees",
             );
             let mut req = request.into_request();
-            req.extensions_mut()
-                .insert(
-                    GrpcMethod::new("ibc.applications.fee.v1.Query", "TotalTimeoutFees"),
-                );
+            req.extensions_mut().insert(GrpcMethod::new(
+                "ibc.applications.fee.v1.Query",
+                "TotalTimeoutFees",
+            ));
             self.inner.unary(req, path, codec).await
         }
         pub async fn payee(
             &mut self,
             request: impl tonic::IntoRequest<super::QueryPayeeRequest>,
-        ) -> std::result::Result<
-            tonic::Response<super::QueryPayeeResponse>,
-            tonic::Status,
-        > {
-            self.inner
-                .ready()
-                .await
-                .map_err(|e| {
-                    tonic::Status::new(
-                        tonic::Code::Unknown,
-                        format!("Service was not ready: {}", e.into()),
-                    )
-                })?;
+        ) -> std::result::Result<tonic::Response<super::QueryPayeeResponse>, tonic::Status>
+        {
+            self.inner.ready().await.map_err(|e| {
+                tonic::Status::new(
+                    tonic::Code::Unknown,
+                    format!("Service was not ready: {}", e.into()),
+                )
+            })?;
             let codec = tonic::codec::ProstCodec::default();
-            let path = http::uri::PathAndQuery::from_static(
-                "/ibc.applications.fee.v1.Query/Payee",
-            );
+            let path = http::uri::PathAndQuery::from_static("/ibc.applications.fee.v1.Query/Payee");
             let mut req = request.into_request();
             req.extensions_mut()
                 .insert(GrpcMethod::new("ibc.applications.fee.v1.Query", "Payee"));
@@ -293,24 +249,21 @@ pub mod query_client {
             tonic::Response<super::QueryCounterpartyPayeeResponse>,
             tonic::Status,
         > {
-            self.inner
-                .ready()
-                .await
-                .map_err(|e| {
-                    tonic::Status::new(
-                        tonic::Code::Unknown,
-                        format!("Service was not ready: {}", e.into()),
-                    )
-                })?;
+            self.inner.ready().await.map_err(|e| {
+                tonic::Status::new(
+                    tonic::Code::Unknown,
+                    format!("Service was not ready: {}", e.into()),
+                )
+            })?;
             let codec = tonic::codec::ProstCodec::default();
             let path = http::uri::PathAndQuery::from_static(
                 "/ibc.applications.fee.v1.Query/CounterpartyPayee",
             );
             let mut req = request.into_request();
-            req.extensions_mut()
-                .insert(
-                    GrpcMethod::new("ibc.applications.fee.v1.Query", "CounterpartyPayee"),
-                );
+            req.extensions_mut().insert(GrpcMethod::new(
+                "ibc.applications.fee.v1.Query",
+                "CounterpartyPayee",
+            ));
             self.inner.unary(req, path, codec).await
         }
         pub async fn fee_enabled_channels(
@@ -320,27 +273,21 @@ pub mod query_client {
             tonic::Response<super::QueryFeeEnabledChannelsResponse>,
             tonic::Status,
         > {
-            self.inner
-                .ready()
-                .await
-                .map_err(|e| {
-                    tonic::Status::new(
-                        tonic::Code::Unknown,
-                        format!("Service was not ready: {}", e.into()),
-                    )
-                })?;
+            self.inner.ready().await.map_err(|e| {
+                tonic::Status::new(
+                    tonic::Code::Unknown,
+                    format!("Service was not ready: {}", e.into()),
+                )
+            })?;
             let codec = tonic::codec::ProstCodec::default();
             let path = http::uri::PathAndQuery::from_static(
                 "/ibc.applications.fee.v1.Query/FeeEnabledChannels",
             );
             let mut req = request.into_request();
-            req.extensions_mut()
-                .insert(
-                    GrpcMethod::new(
-                        "ibc.applications.fee.v1.Query",
-                        "FeeEnabledChannels",
-                    ),
-                );
+            req.extensions_mut().insert(GrpcMethod::new(
+                "ibc.applications.fee.v1.Query",
+                "FeeEnabledChannels",
+            ));
             self.inner.unary(req, path, codec).await
         }
         pub async fn fee_enabled_channel(
@@ -350,24 +297,21 @@ pub mod query_client {
             tonic::Response<super::QueryFeeEnabledChannelResponse>,
             tonic::Status,
         > {
-            self.inner
-                .ready()
-                .await
-                .map_err(|e| {
-                    tonic::Status::new(
-                        tonic::Code::Unknown,
-                        format!("Service was not ready: {}", e.into()),
-                    )
-                })?;
+            self.inner.ready().await.map_err(|e| {
+                tonic::Status::new(
+                    tonic::Code::Unknown,
+                    format!("Service was not ready: {}", e.into()),
+                )
+            })?;
             let codec = tonic::codec::ProstCodec::default();
             let path = http::uri::PathAndQuery::from_static(
                 "/ibc.applications.fee.v1.Query/FeeEnabledChannel",
             );
             let mut req = request.into_request();
-            req.extensions_mut()
-                .insert(
-                    GrpcMethod::new("ibc.applications.fee.v1.Query", "FeeEnabledChannel"),
-                );
+            req.extensions_mut().insert(GrpcMethod::new(
+                "ibc.applications.fee.v1.Query",
+                "FeeEnabledChannel",
+            ));
             self.inner.unary(req, path, codec).await
         }
     }
@@ -405,31 +349,19 @@ pub mod query_server {
         async fn total_recv_fees(
             &self,
             request: tonic::Request<super::QueryTotalRecvFeesRequest>,
-        ) -> std::result::Result<
-            tonic::Response<super::QueryTotalRecvFeesResponse>,
-            tonic::Status,
-        >;
+        ) -> std::result::Result<tonic::Response<super::QueryTotalRecvFeesResponse>, tonic::Status>;
         async fn total_ack_fees(
             &self,
             request: tonic::Request<super::QueryTotalAckFeesRequest>,
-        ) -> std::result::Result<
-            tonic::Response<super::QueryTotalAckFeesResponse>,
-            tonic::Status,
-        >;
+        ) -> std::result::Result<tonic::Response<super::QueryTotalAckFeesResponse>, tonic::Status>;
         async fn total_timeout_fees(
             &self,
             request: tonic::Request<super::QueryTotalTimeoutFeesRequest>,
-        ) -> std::result::Result<
-            tonic::Response<super::QueryTotalTimeoutFeesResponse>,
-            tonic::Status,
-        >;
+        ) -> std::result::Result<tonic::Response<super::QueryTotalTimeoutFeesResponse>, tonic::Status>;
         async fn payee(
             &self,
             request: tonic::Request<super::QueryPayeeRequest>,
-        ) -> std::result::Result<
-            tonic::Response<super::QueryPayeeResponse>,
-            tonic::Status,
-        >;
+        ) -> std::result::Result<tonic::Response<super::QueryPayeeResponse>, tonic::Status>;
         async fn counterparty_payee(
             &self,
             request: tonic::Request<super::QueryCounterpartyPayeeRequest>,
@@ -475,10 +407,7 @@ pub mod query_server {
                 max_encoding_message_size: None,
             }
         }
-        pub fn with_interceptor<F>(
-            inner: T,
-            interceptor: F,
-        ) -> InterceptedService<Self, F>
+        pub fn with_interceptor<F>(inner: T, interceptor: F) -> InterceptedService<Self, F>
         where
             F: tonic::service::Interceptor,
         {
@@ -534,20 +463,15 @@ pub mod query_server {
                 "/ibc.applications.fee.v1.Query/IncentivizedPackets" => {
                     #[allow(non_camel_case_types)]
                     struct IncentivizedPacketsSvc<T: Query>(pub Arc<T>);
-                    impl<
-                        T: Query,
-                    > tonic::server::UnaryService<super::QueryIncentivizedPacketsRequest>
-                    for IncentivizedPacketsSvc<T> {
+                    impl<T: Query>
+                        tonic::server::UnaryService<super::QueryIncentivizedPacketsRequest>
+                        for IncentivizedPacketsSvc<T>
+                    {
                         type Response = super::QueryIncentivizedPacketsResponse;
-                        type Future = BoxFuture<
-                            tonic::Response<Self::Response>,
-                            tonic::Status,
-                        >;
+                        type Future = BoxFuture<tonic::Response<Self::Response>, tonic::Status>;
                         fn call(
                             &mut self,
-                            request: tonic::Request<
-                                super::QueryIncentivizedPacketsRequest,
-                            >,
+                            request: tonic::Request<super::QueryIncentivizedPacketsRequest>,
                         ) -> Self::Future {
                             let inner = Arc::clone(&self.0);
                             let fut = async move {
@@ -582,20 +506,15 @@ pub mod query_server {
                 "/ibc.applications.fee.v1.Query/IncentivizedPacket" => {
                     #[allow(non_camel_case_types)]
                     struct IncentivizedPacketSvc<T: Query>(pub Arc<T>);
-                    impl<
-                        T: Query,
-                    > tonic::server::UnaryService<super::QueryIncentivizedPacketRequest>
-                    for IncentivizedPacketSvc<T> {
+                    impl<T: Query>
+                        tonic::server::UnaryService<super::QueryIncentivizedPacketRequest>
+                        for IncentivizedPacketSvc<T>
+                    {
                         type Response = super::QueryIncentivizedPacketResponse;
-                        type Future = BoxFuture<
-                            tonic::Response<Self::Response>,
-                            tonic::Status,
-                        >;
+                        type Future = BoxFuture<tonic::Response<Self::Response>, tonic::Status>;
                         fn call(
                             &mut self,
-                            request: tonic::Request<
-                                super::QueryIncentivizedPacketRequest,
-                            >,
+                            request: tonic::Request<super::QueryIncentivizedPacketRequest>,
                         ) -> Self::Future {
                             let inner = Arc::clone(&self.0);
                             let fut = async move {
@@ -630,16 +549,13 @@ pub mod query_server {
                 "/ibc.applications.fee.v1.Query/IncentivizedPacketsForChannel" => {
                     #[allow(non_camel_case_types)]
                     struct IncentivizedPacketsForChannelSvc<T: Query>(pub Arc<T>);
-                    impl<
-                        T: Query,
-                    > tonic::server::UnaryService<
-                        super::QueryIncentivizedPacketsForChannelRequest,
-                    > for IncentivizedPacketsForChannelSvc<T> {
+                    impl<T: Query>
+                        tonic::server::UnaryService<
+                            super::QueryIncentivizedPacketsForChannelRequest,
+                        > for IncentivizedPacketsForChannelSvc<T>
+                    {
                         type Response = super::QueryIncentivizedPacketsForChannelResponse;
-                        type Future = BoxFuture<
-                            tonic::Response<Self::Response>,
-                            tonic::Status,
-                        >;
+                        type Future = BoxFuture<tonic::Response<Self::Response>, tonic::Status>;
                         fn call(
                             &mut self,
                             request: tonic::Request<
@@ -648,10 +564,7 @@ pub mod query_server {
                         ) -> Self::Future {
                             let inner = Arc::clone(&self.0);
                             let fut = async move {
-                                <T as Query>::incentivized_packets_for_channel(
-                                        &inner,
-                                        request,
-                                    )
+                                <T as Query>::incentivized_packets_for_channel(&inner, request)
                                     .await
                             };
                             Box::pin(fut)
@@ -683,23 +596,18 @@ pub mod query_server {
                 "/ibc.applications.fee.v1.Query/TotalRecvFees" => {
                     #[allow(non_camel_case_types)]
                     struct TotalRecvFeesSvc<T: Query>(pub Arc<T>);
-                    impl<
-                        T: Query,
-                    > tonic::server::UnaryService<super::QueryTotalRecvFeesRequest>
-                    for TotalRecvFeesSvc<T> {
+                    impl<T: Query> tonic::server::UnaryService<super::QueryTotalRecvFeesRequest>
+                        for TotalRecvFeesSvc<T>
+                    {
                         type Response = super::QueryTotalRecvFeesResponse;
-                        type Future = BoxFuture<
-                            tonic::Response<Self::Response>,
-                            tonic::Status,
-                        >;
+                        type Future = BoxFuture<tonic::Response<Self::Response>, tonic::Status>;
                         fn call(
                             &mut self,
                             request: tonic::Request<super::QueryTotalRecvFeesRequest>,
                         ) -> Self::Future {
                             let inner = Arc::clone(&self.0);
-                            let fut = async move {
-                                <T as Query>::total_recv_fees(&inner, request).await
-                            };
+                            let fut =
+                                async move { <T as Query>::total_recv_fees(&inner, request).await };
                             Box::pin(fut)
                         }
                     }
@@ -729,23 +637,16 @@ pub mod query_server {
                 "/ibc.applications.fee.v1.Query/TotalAckFees" => {
                     #[allow(non_camel_case_types)]
                     struct TotalAckFeesSvc<T: Query>(pub Arc<T>);
-                    impl<
-                        T: Query,
-                    > tonic::server::UnaryService<super::QueryTotalAckFeesRequest>
-                    for TotalAckFeesSvc<T> {
+                    impl<T: Query> tonic::server::UnaryService<super::QueryTotalAckFeesRequest> for TotalAckFeesSvc<T> {
                         type Response = super::QueryTotalAckFeesResponse;
-                        type Future = BoxFuture<
-                            tonic::Response<Self::Response>,
-                            tonic::Status,
-                        >;
+                        type Future = BoxFuture<tonic::Response<Self::Response>, tonic::Status>;
                         fn call(
                             &mut self,
                             request: tonic::Request<super::QueryTotalAckFeesRequest>,
                         ) -> Self::Future {
                             let inner = Arc::clone(&self.0);
-                            let fut = async move {
-                                <T as Query>::total_ack_fees(&inner, request).await
-                            };
+                            let fut =
+                                async move { <T as Query>::total_ack_fees(&inner, request).await };
                             Box::pin(fut)
                         }
                     }
@@ -775,15 +676,11 @@ pub mod query_server {
                 "/ibc.applications.fee.v1.Query/TotalTimeoutFees" => {
                     #[allow(non_camel_case_types)]
                     struct TotalTimeoutFeesSvc<T: Query>(pub Arc<T>);
-                    impl<
-                        T: Query,
-                    > tonic::server::UnaryService<super::QueryTotalTimeoutFeesRequest>
-                    for TotalTimeoutFeesSvc<T> {
+                    impl<T: Query> tonic::server::UnaryService<super::QueryTotalTimeoutFeesRequest>
+                        for TotalTimeoutFeesSvc<T>
+                    {
                         type Response = super::QueryTotalTimeoutFeesResponse;
-                        type Future = BoxFuture<
-                            tonic::Response<Self::Response>,
-                            tonic::Status,
-                        >;
+                        type Future = BoxFuture<tonic::Response<Self::Response>, tonic::Status>;
                         fn call(
                             &mut self,
                             request: tonic::Request<super::QueryTotalTimeoutFeesRequest>,
@@ -821,21 +718,15 @@ pub mod query_server {
                 "/ibc.applications.fee.v1.Query/Payee" => {
                     #[allow(non_camel_case_types)]
                     struct PayeeSvc<T: Query>(pub Arc<T>);
-                    impl<T: Query> tonic::server::UnaryService<super::QueryPayeeRequest>
-                    for PayeeSvc<T> {
+                    impl<T: Query> tonic::server::UnaryService<super::QueryPayeeRequest> for PayeeSvc<T> {
                         type Response = super::QueryPayeeResponse;
-                        type Future = BoxFuture<
-                            tonic::Response<Self::Response>,
-                            tonic::Status,
-                        >;
+                        type Future = BoxFuture<tonic::Response<Self::Response>, tonic::Status>;
                         fn call(
                             &mut self,
                             request: tonic::Request<super::QueryPayeeRequest>,
                         ) -> Self::Future {
                             let inner = Arc::clone(&self.0);
-                            let fut = async move {
-                                <T as Query>::payee(&inner, request).await
-                            };
+                            let fut = async move { <T as Query>::payee(&inner, request).await };
                             Box::pin(fut)
                         }
                     }
@@ -865,15 +756,11 @@ pub mod query_server {
                 "/ibc.applications.fee.v1.Query/CounterpartyPayee" => {
                     #[allow(non_camel_case_types)]
                     struct CounterpartyPayeeSvc<T: Query>(pub Arc<T>);
-                    impl<
-                        T: Query,
-                    > tonic::server::UnaryService<super::QueryCounterpartyPayeeRequest>
-                    for CounterpartyPayeeSvc<T> {
+                    impl<T: Query> tonic::server::UnaryService<super::QueryCounterpartyPayeeRequest>
+                        for CounterpartyPayeeSvc<T>
+                    {
                         type Response = super::QueryCounterpartyPayeeResponse;
-                        type Future = BoxFuture<
-                            tonic::Response<Self::Response>,
-                            tonic::Status,
-                        >;
+                        type Future = BoxFuture<tonic::Response<Self::Response>, tonic::Status>;
                         fn call(
                             &mut self,
                             request: tonic::Request<super::QueryCounterpartyPayeeRequest>,
@@ -911,20 +798,15 @@ pub mod query_server {
                 "/ibc.applications.fee.v1.Query/FeeEnabledChannels" => {
                     #[allow(non_camel_case_types)]
                     struct FeeEnabledChannelsSvc<T: Query>(pub Arc<T>);
-                    impl<
-                        T: Query,
-                    > tonic::server::UnaryService<super::QueryFeeEnabledChannelsRequest>
-                    for FeeEnabledChannelsSvc<T> {
+                    impl<T: Query>
+                        tonic::server::UnaryService<super::QueryFeeEnabledChannelsRequest>
+                        for FeeEnabledChannelsSvc<T>
+                    {
                         type Response = super::QueryFeeEnabledChannelsResponse;
-                        type Future = BoxFuture<
-                            tonic::Response<Self::Response>,
-                            tonic::Status,
-                        >;
+                        type Future = BoxFuture<tonic::Response<Self::Response>, tonic::Status>;
                         fn call(
                             &mut self,
-                            request: tonic::Request<
-                                super::QueryFeeEnabledChannelsRequest,
-                            >,
+                            request: tonic::Request<super::QueryFeeEnabledChannelsRequest>,
                         ) -> Self::Future {
                             let inner = Arc::clone(&self.0);
                             let fut = async move {
@@ -959,15 +841,11 @@ pub mod query_server {
                 "/ibc.applications.fee.v1.Query/FeeEnabledChannel" => {
                     #[allow(non_camel_case_types)]
                     struct FeeEnabledChannelSvc<T: Query>(pub Arc<T>);
-                    impl<
-                        T: Query,
-                    > tonic::server::UnaryService<super::QueryFeeEnabledChannelRequest>
-                    for FeeEnabledChannelSvc<T> {
+                    impl<T: Query> tonic::server::UnaryService<super::QueryFeeEnabledChannelRequest>
+                        for FeeEnabledChannelSvc<T>
+                    {
                         type Response = super::QueryFeeEnabledChannelResponse;
-                        type Future = BoxFuture<
-                            tonic::Response<Self::Response>,
-                            tonic::Status,
-                        >;
+                        type Future = BoxFuture<tonic::Response<Self::Response>, tonic::Status>;
                         fn call(
                             &mut self,
                             request: tonic::Request<super::QueryFeeEnabledChannelRequest>,
@@ -1002,18 +880,14 @@ pub mod query_server {
                     };
                     Box::pin(fut)
                 }
-                _ => {
-                    Box::pin(async move {
-                        Ok(
-                            http::Response::builder()
-                                .status(200)
-                                .header("grpc-status", "12")
-                                .header("content-type", "application/grpc")
-                                .body(empty_body())
-                                .unwrap(),
-                        )
-                    })
-                }
+                _ => Box::pin(async move {
+                    Ok(http::Response::builder()
+                        .status(200)
+                        .header("grpc-status", "12")
+                        .header("content-type", "application/grpc")
+                        .body(empty_body())
+                        .unwrap())
+                }),
             }
         }
     }
@@ -1048,8 +922,8 @@ pub mod query_server {
 #[cfg_attr(docsrs, doc(cfg(feature = "grpc")))]
 pub mod msg_client {
     #![allow(unused_variables, dead_code, missing_docs, clippy::let_unit_value)]
-    use tonic::codegen::*;
     use tonic::codegen::http::Uri;
+    use tonic::codegen::*;
     #[derive(Debug, Clone)]
     pub struct MsgClient<T> {
         inner: tonic::client::Grpc<T>,
@@ -1082,10 +956,7 @@ pub mod msg_client {
             let inner = tonic::client::Grpc::with_origin(inner, origin);
             Self { inner }
         }
-        pub fn with_interceptor<F>(
-            inner: T,
-            interceptor: F,
-        ) -> MsgClient<InterceptedService<T, F>>
+        pub fn with_interceptor<F>(inner: T, interceptor: F) -> MsgClient<InterceptedService<T, F>>
         where
             F: tonic::service::Interceptor,
             T::ResponseBody: Default,
@@ -1095,9 +966,8 @@ pub mod msg_client {
                     <T as tonic::client::GrpcService<tonic::body::BoxBody>>::ResponseBody,
                 >,
             >,
-            <T as tonic::codegen::Service<
-                http::Request<tonic::body::BoxBody>,
-            >>::Error: Into<StdError> + Send + Sync,
+            <T as tonic::codegen::Service<http::Request<tonic::body::BoxBody>>>::Error:
+                Into<StdError> + Send + Sync,
         {
             MsgClient::new(InterceptedService::new(inner, interceptor))
         }
@@ -1135,26 +1005,22 @@ pub mod msg_client {
         pub async fn register_payee(
             &mut self,
             request: impl tonic::IntoRequest<super::MsgRegisterPayee>,
-        ) -> std::result::Result<
-            tonic::Response<super::MsgRegisterPayeeResponse>,
-            tonic::Status,
-        > {
-            self.inner
-                .ready()
-                .await
-                .map_err(|e| {
-                    tonic::Status::new(
-                        tonic::Code::Unknown,
-                        format!("Service was not ready: {}", e.into()),
-                    )
-                })?;
+        ) -> std::result::Result<tonic::Response<super::MsgRegisterPayeeResponse>, tonic::Status>
+        {
+            self.inner.ready().await.map_err(|e| {
+                tonic::Status::new(
+                    tonic::Code::Unknown,
+                    format!("Service was not ready: {}", e.into()),
+                )
+            })?;
             let codec = tonic::codec::ProstCodec::default();
-            let path = http::uri::PathAndQuery::from_static(
-                "/ibc.applications.fee.v1.Msg/RegisterPayee",
-            );
+            let path =
+                http::uri::PathAndQuery::from_static("/ibc.applications.fee.v1.Msg/RegisterPayee");
             let mut req = request.into_request();
-            req.extensions_mut()
-                .insert(GrpcMethod::new("ibc.applications.fee.v1.Msg", "RegisterPayee"));
+            req.extensions_mut().insert(GrpcMethod::new(
+                "ibc.applications.fee.v1.Msg",
+                "RegisterPayee",
+            ));
             self.inner.unary(req, path, codec).await
         }
         pub async fn register_counterparty_payee(
@@ -1164,79 +1030,64 @@ pub mod msg_client {
             tonic::Response<super::MsgRegisterCounterpartyPayeeResponse>,
             tonic::Status,
         > {
-            self.inner
-                .ready()
-                .await
-                .map_err(|e| {
-                    tonic::Status::new(
-                        tonic::Code::Unknown,
-                        format!("Service was not ready: {}", e.into()),
-                    )
-                })?;
+            self.inner.ready().await.map_err(|e| {
+                tonic::Status::new(
+                    tonic::Code::Unknown,
+                    format!("Service was not ready: {}", e.into()),
+                )
+            })?;
             let codec = tonic::codec::ProstCodec::default();
             let path = http::uri::PathAndQuery::from_static(
                 "/ibc.applications.fee.v1.Msg/RegisterCounterpartyPayee",
             );
             let mut req = request.into_request();
-            req.extensions_mut()
-                .insert(
-                    GrpcMethod::new(
-                        "ibc.applications.fee.v1.Msg",
-                        "RegisterCounterpartyPayee",
-                    ),
-                );
+            req.extensions_mut().insert(GrpcMethod::new(
+                "ibc.applications.fee.v1.Msg",
+                "RegisterCounterpartyPayee",
+            ));
             self.inner.unary(req, path, codec).await
         }
         pub async fn pay_packet_fee(
             &mut self,
             request: impl tonic::IntoRequest<super::MsgPayPacketFee>,
-        ) -> std::result::Result<
-            tonic::Response<super::MsgPayPacketFeeResponse>,
-            tonic::Status,
-        > {
-            self.inner
-                .ready()
-                .await
-                .map_err(|e| {
-                    tonic::Status::new(
-                        tonic::Code::Unknown,
-                        format!("Service was not ready: {}", e.into()),
-                    )
-                })?;
+        ) -> std::result::Result<tonic::Response<super::MsgPayPacketFeeResponse>, tonic::Status>
+        {
+            self.inner.ready().await.map_err(|e| {
+                tonic::Status::new(
+                    tonic::Code::Unknown,
+                    format!("Service was not ready: {}", e.into()),
+                )
+            })?;
             let codec = tonic::codec::ProstCodec::default();
-            let path = http::uri::PathAndQuery::from_static(
-                "/ibc.applications.fee.v1.Msg/PayPacketFee",
-            );
+            let path =
+                http::uri::PathAndQuery::from_static("/ibc.applications.fee.v1.Msg/PayPacketFee");
             let mut req = request.into_request();
-            req.extensions_mut()
-                .insert(GrpcMethod::new("ibc.applications.fee.v1.Msg", "PayPacketFee"));
+            req.extensions_mut().insert(GrpcMethod::new(
+                "ibc.applications.fee.v1.Msg",
+                "PayPacketFee",
+            ));
             self.inner.unary(req, path, codec).await
         }
         pub async fn pay_packet_fee_async(
             &mut self,
             request: impl tonic::IntoRequest<super::MsgPayPacketFeeAsync>,
-        ) -> std::result::Result<
-            tonic::Response<super::MsgPayPacketFeeAsyncResponse>,
-            tonic::Status,
-        > {
-            self.inner
-                .ready()
-                .await
-                .map_err(|e| {
-                    tonic::Status::new(
-                        tonic::Code::Unknown,
-                        format!("Service was not ready: {}", e.into()),
-                    )
-                })?;
+        ) -> std::result::Result<tonic::Response<super::MsgPayPacketFeeAsyncResponse>, tonic::Status>
+        {
+            self.inner.ready().await.map_err(|e| {
+                tonic::Status::new(
+                    tonic::Code::Unknown,
+                    format!("Service was not ready: {}", e.into()),
+                )
+            })?;
             let codec = tonic::codec::ProstCodec::default();
             let path = http::uri::PathAndQuery::from_static(
                 "/ibc.applications.fee.v1.Msg/PayPacketFeeAsync",
             );
             let mut req = request.into_request();
-            req.extensions_mut()
-                .insert(
-                    GrpcMethod::new("ibc.applications.fee.v1.Msg", "PayPacketFeeAsync"),
-                );
+            req.extensions_mut().insert(GrpcMethod::new(
+                "ibc.applications.fee.v1.Msg",
+                "PayPacketFeeAsync",
+            ));
             self.inner.unary(req, path, codec).await
         }
     }
@@ -1253,10 +1104,7 @@ pub mod msg_server {
         async fn register_payee(
             &self,
             request: tonic::Request<super::MsgRegisterPayee>,
-        ) -> std::result::Result<
-            tonic::Response<super::MsgRegisterPayeeResponse>,
-            tonic::Status,
-        >;
+        ) -> std::result::Result<tonic::Response<super::MsgRegisterPayeeResponse>, tonic::Status>;
         async fn register_counterparty_payee(
             &self,
             request: tonic::Request<super::MsgRegisterCounterpartyPayee>,
@@ -1267,17 +1115,11 @@ pub mod msg_server {
         async fn pay_packet_fee(
             &self,
             request: tonic::Request<super::MsgPayPacketFee>,
-        ) -> std::result::Result<
-            tonic::Response<super::MsgPayPacketFeeResponse>,
-            tonic::Status,
-        >;
+        ) -> std::result::Result<tonic::Response<super::MsgPayPacketFeeResponse>, tonic::Status>;
         async fn pay_packet_fee_async(
             &self,
             request: tonic::Request<super::MsgPayPacketFeeAsync>,
-        ) -> std::result::Result<
-            tonic::Response<super::MsgPayPacketFeeAsyncResponse>,
-            tonic::Status,
-        >;
+        ) -> std::result::Result<tonic::Response<super::MsgPayPacketFeeAsyncResponse>, tonic::Status>;
     }
     #[derive(Debug)]
     pub struct MsgServer<T: Msg> {
@@ -1302,10 +1144,7 @@ pub mod msg_server {
                 max_encoding_message_size: None,
             }
         }
-        pub fn with_interceptor<F>(
-            inner: T,
-            interceptor: F,
-        ) -> InterceptedService<Self, F>
+        pub fn with_interceptor<F>(inner: T, interceptor: F) -> InterceptedService<Self, F>
         where
             F: tonic::service::Interceptor,
         {
@@ -1361,21 +1200,16 @@ pub mod msg_server {
                 "/ibc.applications.fee.v1.Msg/RegisterPayee" => {
                     #[allow(non_camel_case_types)]
                     struct RegisterPayeeSvc<T: Msg>(pub Arc<T>);
-                    impl<T: Msg> tonic::server::UnaryService<super::MsgRegisterPayee>
-                    for RegisterPayeeSvc<T> {
+                    impl<T: Msg> tonic::server::UnaryService<super::MsgRegisterPayee> for RegisterPayeeSvc<T> {
                         type Response = super::MsgRegisterPayeeResponse;
-                        type Future = BoxFuture<
-                            tonic::Response<Self::Response>,
-                            tonic::Status,
-                        >;
+                        type Future = BoxFuture<tonic::Response<Self::Response>, tonic::Status>;
                         fn call(
                             &mut self,
                             request: tonic::Request<super::MsgRegisterPayee>,
                         ) -> Self::Future {
                             let inner = Arc::clone(&self.0);
-                            let fut = async move {
-                                <T as Msg>::register_payee(&inner, request).await
-                            };
+                            let fut =
+                                async move { <T as Msg>::register_payee(&inner, request).await };
                             Box::pin(fut)
                         }
                     }
@@ -1405,23 +1239,18 @@ pub mod msg_server {
                 "/ibc.applications.fee.v1.Msg/RegisterCounterpartyPayee" => {
                     #[allow(non_camel_case_types)]
                     struct RegisterCounterpartyPayeeSvc<T: Msg>(pub Arc<T>);
-                    impl<
-                        T: Msg,
-                    > tonic::server::UnaryService<super::MsgRegisterCounterpartyPayee>
-                    for RegisterCounterpartyPayeeSvc<T> {
+                    impl<T: Msg> tonic::server::UnaryService<super::MsgRegisterCounterpartyPayee>
+                        for RegisterCounterpartyPayeeSvc<T>
+                    {
                         type Response = super::MsgRegisterCounterpartyPayeeResponse;
-                        type Future = BoxFuture<
-                            tonic::Response<Self::Response>,
-                            tonic::Status,
-                        >;
+                        type Future = BoxFuture<tonic::Response<Self::Response>, tonic::Status>;
                         fn call(
                             &mut self,
                             request: tonic::Request<super::MsgRegisterCounterpartyPayee>,
                         ) -> Self::Future {
                             let inner = Arc::clone(&self.0);
                             let fut = async move {
-                                <T as Msg>::register_counterparty_payee(&inner, request)
-                                    .await
+                                <T as Msg>::register_counterparty_payee(&inner, request).await
                             };
                             Box::pin(fut)
                         }
@@ -1452,21 +1281,16 @@ pub mod msg_server {
                 "/ibc.applications.fee.v1.Msg/PayPacketFee" => {
                     #[allow(non_camel_case_types)]
                     struct PayPacketFeeSvc<T: Msg>(pub Arc<T>);
-                    impl<T: Msg> tonic::server::UnaryService<super::MsgPayPacketFee>
-                    for PayPacketFeeSvc<T> {
+                    impl<T: Msg> tonic::server::UnaryService<super::MsgPayPacketFee> for PayPacketFeeSvc<T> {
                         type Response = super::MsgPayPacketFeeResponse;
-                        type Future = BoxFuture<
-                            tonic::Response<Self::Response>,
-                            tonic::Status,
-                        >;
+                        type Future = BoxFuture<tonic::Response<Self::Response>, tonic::Status>;
                         fn call(
                             &mut self,
                             request: tonic::Request<super::MsgPayPacketFee>,
                         ) -> Self::Future {
                             let inner = Arc::clone(&self.0);
-                            let fut = async move {
-                                <T as Msg>::pay_packet_fee(&inner, request).await
-                            };
+                            let fut =
+                                async move { <T as Msg>::pay_packet_fee(&inner, request).await };
                             Box::pin(fut)
                         }
                     }
@@ -1496,13 +1320,9 @@ pub mod msg_server {
                 "/ibc.applications.fee.v1.Msg/PayPacketFeeAsync" => {
                     #[allow(non_camel_case_types)]
                     struct PayPacketFeeAsyncSvc<T: Msg>(pub Arc<T>);
-                    impl<T: Msg> tonic::server::UnaryService<super::MsgPayPacketFeeAsync>
-                    for PayPacketFeeAsyncSvc<T> {
+                    impl<T: Msg> tonic::server::UnaryService<super::MsgPayPacketFeeAsync> for PayPacketFeeAsyncSvc<T> {
                         type Response = super::MsgPayPacketFeeAsyncResponse;
-                        type Future = BoxFuture<
-                            tonic::Response<Self::Response>,
-                            tonic::Status,
-                        >;
+                        type Future = BoxFuture<tonic::Response<Self::Response>, tonic::Status>;
                         fn call(
                             &mut self,
                             request: tonic::Request<super::MsgPayPacketFeeAsync>,
@@ -1537,18 +1357,14 @@ pub mod msg_server {
                     };
                     Box::pin(fut)
                 }
-                _ => {
-                    Box::pin(async move {
-                        Ok(
-                            http::Response::builder()
-                                .status(200)
-                                .header("grpc-status", "12")
-                                .header("content-type", "application/grpc")
-                                .body(empty_body())
-                                .unwrap(),
-                        )
-                    })
-                }
+                _ => Box::pin(async move {
+                    Ok(http::Response::builder()
+                        .status(200)
+                        .header("grpc-status", "12")
+                        .header("content-type", "application/grpc")
+                        .body(empty_body())
+                        .unwrap())
+                }),
             }
         }
     }
