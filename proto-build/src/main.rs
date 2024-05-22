@@ -132,19 +132,39 @@ fn apply_patches(out_dir: &str) -> Result<()> {
     let src_files_glob = format!("{out_dir}/*.rs");
     let src_files: Vec<PathBuf> = glob(src_files_glob.as_str())?.flatten().collect();
     for src in src_files {
-        let mut contents = fs::read_to_string(src.as_path())?;
-
-        for &(regex, replacement) in REPLACEMENTS {
-            contents = Regex::new(regex)
-                .unwrap_or_else(|_| panic!("invalid regex: {}", regex))
-                .replace_all(&contents, replacement)
-                .to_string();
-        }
-
-        fs::write(src, &contents)?;
+        patch_file(src, REPLACEMENTS)?;
     }
 
+    apply_cosmos_staking_patches(out_dir);
+
     Ok(())
+}
+
+/// Fix clashing type names in prost-generated code.
+fn apply_cosmos_staking_patches(out_dir: &str) {
+    const REPLACEMENTS: &[(&str, &str)] = &[
+        ("enum Validators", "enum Policy"),
+        (
+            "stake_authorization::Validators",
+            "stake_authorization::Policy",
+        ),
+    ];
+
+    patch_file(format!("{out_dir}/cosmos.staking.v1beta1.rs"), REPLACEMENTS)
+        .expect("error patching cosmos.staking.v1beta1.rs");
+}
+
+fn patch_file(path: impl AsRef<Path>, replacements: &[(&str, &str)]) -> io::Result<()> {
+    let mut contents = fs::read_to_string(&path)?;
+
+    for &(regex, replacement) in replacements {
+        contents = Regex::new(regex)
+            .unwrap_or_else(|_| panic!("invalid regex: {}", regex))
+            .replace_all(&contents, replacement)
+            .to_string();
+    }
+
+    fs::write(path, &contents)
 }
 
 fn cleanup(out_dir: &str) {
