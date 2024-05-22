@@ -51,7 +51,7 @@ fn main() -> () {
     output_versions(out_dir.as_str());
     cleanup(out_dir.as_str());
     apply_patches(out_dir.as_str()).unwrap();
-    run_rustfmt().unwrap();
+    run_rustfmt(out_dir.as_str()).unwrap();
 }
 
 fn workspace_root() -> String {
@@ -190,8 +190,22 @@ fn run_git(args: impl IntoIterator<Item = impl AsRef<OsStr>>) -> Result<String> 
     run_cmd("git", args)
 }
 
-fn run_rustfmt() -> Result<String> {
-    run_cargo(["fmt", "-p", "archway-proto"])
+fn run_rustfmt(out_dir: &str) -> Result<String> {
+    println!("Running rustfmt on {}/...", out_dir);
+    let files = collect_files(out_dir, "*.rs")?.into_iter().map(Into::into);
+    let args: Vec<std::ffi::OsString> = ["--edition", "2021"]
+        .iter()
+        .map(Into::into)
+        .chain(files)
+        .collect();
+
+    run_cmd("rustfmt", args)
+}
+
+fn collect_files(dir: &str, pattern: &str) -> Result<Vec<PathBuf>> {
+    let file_glob = format!("{dir}/**/{pattern}");
+    let paths: Vec<PathBuf> = glob(file_glob.as_str())?.flatten().collect();
+    Ok(paths)
 }
 
 fn run_cargo(args: impl IntoIterator<Item = impl AsRef<OsStr>>) -> Result<String> {
