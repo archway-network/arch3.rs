@@ -22,7 +22,7 @@ impl ::prost::Name for InterchainAccountPacketData {
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct CosmosTx {
     #[prost(message, repeated, tag = "1")]
-    pub messages: ::prost::alloc::vec::Vec<::prost_types::Any>,
+    pub messages: ::prost::alloc::vec::Vec<::pbjson_types::Any>,
 }
 impl ::prost::Name for CosmosTx {
     const NAME: &'static str = "CosmosTx";
@@ -380,4 +380,5 @@ pub const FILE_DESCRIPTOR_SET: &[u8] = &[
     0x05, 0x04, 0x00, 0x02, 0x05, 0x03, 0x12, 0x03, 0x17, 0x13, 0x14, 0x62, 0x06, 0x70, 0x72, 0x6f,
     0x74, 0x6f, 0x33,
 ];
+include!("ibc.applications.interchain_accounts.v1.serde.rs");
 // @@protoc_insertion_point(module)

@@ -23,7 +23,7 @@ impl ::prost::Name for SignatureDescriptors {
 pub struct SignatureDescriptor {
     /// public_key is the public key of the signer
     #[prost(message, optional, tag = "1")]
-    pub public_key: ::core::option::Option<::prost_types::Any>,
+    pub public_key: ::core::option::Option<::pbjson_types::Any>,
     #[prost(message, optional, tag = "2")]
     pub data: ::core::option::Option<signature_descriptor::Data>,
     /// sequence is the sequence of the account, which describes the
@@ -511,4 +511,5 @@ pub const FILE_DESCRIPTOR_SET: &[u8] = &[
     0x01, 0x03, 0x00, 0x03, 0x01, 0x02, 0x01, 0x03, 0x12, 0x03, 0x66, 0x21, 0x22, 0x62, 0x06, 0x70,
     0x72, 0x6f, 0x74, 0x6f, 0x33,
 ];
+include!("cosmos.tx.signing.v1beta1.serde.rs");
 // @@protoc_insertion_point(module)

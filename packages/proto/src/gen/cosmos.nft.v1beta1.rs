@@ -89,7 +89,7 @@ pub struct Class {
     pub uri_hash: ::prost::alloc::string::String,
     /// data is the app specific metadata of the NFT class. Optional
     #[prost(message, optional, tag = "7")]
-    pub data: ::core::option::Option<::prost_types::Any>,
+    pub data: ::core::option::Option<::pbjson_types::Any>,
 }
 impl ::prost::Name for Class {
     const NAME: &'static str = "Class";
@@ -116,7 +116,7 @@ pub struct Nft {
     pub uri_hash: ::prost::alloc::string::String,
     /// data is an app specific data of the NFT. Optional
     #[prost(message, optional, tag = "10")]
-    pub data: ::core::option::Option<::prost_types::Any>,
+    pub data: ::core::option::Option<::pbjson_types::Any>,
 }
 impl ::prost::Name for Nft {
     const NAME: &'static str = "NFT";
@@ -1258,5 +1258,6 @@ pub const FILE_DESCRIPTOR_SET: &[u8] = &[
     0x2e, 0x0a, 0x0a, 0x0a, 0x0a, 0x03, 0x04, 0x01, 0x01, 0x12, 0x03, 0x21, 0x08, 0x17, 0x62, 0x06,
     0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
 ];
+include!("cosmos.nft.v1beta1.serde.rs");
 include!("cosmos.nft.v1beta1.tonic.rs");
 // @@protoc_insertion_point(module)

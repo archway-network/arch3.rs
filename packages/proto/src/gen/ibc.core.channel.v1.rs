@@ -529,7 +529,7 @@ impl ::prost::Name for QueryChannelConsensusStateRequest {
 pub struct QueryChannelConsensusStateResponse {
     /// consensus state associated with the channel
     #[prost(message, optional, tag = "1")]
-    pub consensus_state: ::core::option::Option<::prost_types::Any>,
+    pub consensus_state: ::core::option::Option<::pbjson_types::Any>,
     /// client ID associated with the consensus state
     #[prost(string, tag = "2")]
     pub client_id: ::prost::alloc::string::String,
@@ -4271,5 +4271,6 @@ pub const FILE_DESCRIPTOR_SET: &[u8] = &[
     0x02, 0x00, 0x03, 0x12, 0x04, 0xf4, 0x01, 0x1e, 0x1f, 0x62, 0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f,
     0x33,
 ];
+include!("ibc.core.channel.v1.serde.rs");
 include!("ibc.core.channel.v1.tonic.rs");
 // @@protoc_insertion_point(module)

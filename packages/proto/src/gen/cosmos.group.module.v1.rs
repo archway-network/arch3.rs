@@ -6,7 +6,7 @@ pub struct Module {
     /// max_execution_period defines the max duration after a proposal's voting period ends that members can send a MsgExec
     /// to execute the proposal.
     #[prost(message, optional, tag = "1")]
-    pub max_execution_period: ::core::option::Option<::prost_types::Duration>,
+    pub max_execution_period: ::core::option::Option<::pbjson_types::Duration>,
     /// max_metadata_len defines the max length of the metadata bytes field for various entities within the group module.
     /// Defaults to 255 if not explicitly set.
     #[prost(uint64, tag = "2")]
@@ -90,4 +90,5 @@ pub const FILE_DESCRIPTOR_SET: &[u8] = &[
     0x12, 0x03, 0x16, 0x09, 0x19, 0x0a, 0x0c, 0x0a, 0x05, 0x04, 0x00, 0x02, 0x01, 0x03, 0x12, 0x03,
     0x16, 0x1c, 0x1d, 0x62, 0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
 ];
+include!("cosmos.group.module.v1.serde.rs");
 // @@protoc_insertion_point(module)

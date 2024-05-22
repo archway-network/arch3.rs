@@ -130,7 +130,7 @@ pub struct RewardsRecord {
     pub calculated_height: i64,
     /// calculated_time defines the block time of rewards calculation event.
     #[prost(message, optional, tag = "5")]
-    pub calculated_time: ::core::option::Option<::prost_types::Timestamp>,
+    pub calculated_time: ::core::option::Option<::pbjson_types::Timestamp>,
 }
 impl ::prost::Name for RewardsRecord {
     const NAME: &'static str = "RewardsRecord";
@@ -2459,5 +2459,6 @@ pub const FILE_DESCRIPTOR_SET: &[u8] = &[
     0x0a, 0x0a, 0x0a, 0x03, 0x04, 0x07, 0x01, 0x12, 0x03, 0x6e, 0x08, 0x1f, 0x62, 0x06, 0x70, 0x72,
     0x6f, 0x74, 0x6f, 0x33,
 ];
+include!("archway.rewards.v1.serde.rs");
 include!("archway.rewards.v1.tonic.rs");
 // @@protoc_insertion_point(module)

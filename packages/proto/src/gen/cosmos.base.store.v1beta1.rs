@@ -9,7 +9,7 @@ pub struct CommitInfo {
     #[prost(message, repeated, tag = "2")]
     pub store_infos: ::prost::alloc::vec::Vec<StoreInfo>,
     #[prost(message, optional, tag = "3")]
-    pub timestamp: ::core::option::Option<::prost_types::Timestamp>,
+    pub timestamp: ::core::option::Option<::pbjson_types::Timestamp>,
 }
 impl ::prost::Name for CommitInfo {
     const NAME: &'static str = "CommitInfo";
@@ -370,4 +370,5 @@ pub const FILE_DESCRIPTOR_SET: &[u8] = &[
     0x05, 0x04, 0x01, 0x02, 0x05, 0x03, 0x12, 0x03, 0x20, 0x35, 0x36, 0x62, 0x06, 0x70, 0x72, 0x6f,
     0x74, 0x6f, 0x33,
 ];
+include!("cosmos.base.store.v1beta1.serde.rs");
 // @@protoc_insertion_point(module)

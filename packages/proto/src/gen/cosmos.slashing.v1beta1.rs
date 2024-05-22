@@ -16,7 +16,7 @@ pub struct ValidatorSigningInfo {
     pub index_offset: i64,
     /// Timestamp until which the validator is jailed due to liveness downtime.
     #[prost(message, optional, tag = "4")]
-    pub jailed_until: ::core::option::Option<::prost_types::Timestamp>,
+    pub jailed_until: ::core::option::Option<::pbjson_types::Timestamp>,
     /// Whether or not a validator has been tombstoned (killed out of validator set). It is set
     /// once the validator commits an equivocation or for any other configured misbehiavor.
     #[prost(bool, tag = "5")]
@@ -42,7 +42,7 @@ pub struct Params {
     #[prost(bytes = "vec", tag = "2")]
     pub min_signed_per_window: ::prost::alloc::vec::Vec<u8>,
     #[prost(message, optional, tag = "3")]
-    pub downtime_jail_duration: ::core::option::Option<::prost_types::Duration>,
+    pub downtime_jail_duration: ::core::option::Option<::pbjson_types::Duration>,
     #[prost(bytes = "vec", tag = "4")]
     pub slash_fraction_double_sign: ::prost::alloc::vec::Vec<u8>,
     #[prost(bytes = "vec", tag = "5")]
@@ -1037,5 +1037,6 @@ pub const FILE_DESCRIPTOR_SET: &[u8] = &[
     0x20, 0x30, 0x2e, 0x34, 0x37, 0x0a, 0x0a, 0x0a, 0x0a, 0x03, 0x04, 0x03, 0x01, 0x12, 0x03, 0x43,
     0x08, 0x1f, 0x62, 0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
 ];
+include!("cosmos.slashing.v1beta1.serde.rs");
 include!("cosmos.slashing.v1beta1.tonic.rs");
 // @@protoc_insertion_point(module)

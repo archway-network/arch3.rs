@@ -204,7 +204,7 @@ pub struct MsgSendTx {
     pub connection_id: ::prost::alloc::string::String,
     /// msgs are the messages to be submitted to the counterparty chain
     #[prost(message, repeated, tag = "3")]
-    pub msgs: ::prost::alloc::vec::Vec<::prost_types::Any>,
+    pub msgs: ::prost::alloc::vec::Vec<::pbjson_types::Any>,
     /// memo is the memo to be included in the packet
     #[prost(string, tag = "4")]
     pub memo: ::prost::alloc::string::String,
@@ -834,5 +834,6 @@ pub const FILE_DESCRIPTOR_SET: &[u8] = &[
     0x70, 0x6f, 0x6e, 0x73, 0x65, 0x20, 0x74, 0x79, 0x70, 0x65, 0x2e, 0x0a, 0x0a, 0x0a, 0x0a, 0x03,
     0x04, 0x05, 0x01, 0x12, 0x03, 0x56, 0x08, 0x1f, 0x62, 0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
 ];
+include!("archway.cwica.v1.serde.rs");
 include!("archway.cwica.v1.tonic.rs");
 // @@protoc_insertion_point(module)

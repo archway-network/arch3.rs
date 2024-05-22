@@ -4,7 +4,7 @@
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct GenesisState {
     #[prost(message, repeated, tag = "1")]
-    pub messages: ::prost::alloc::vec::Vec<::prost_types::Any>,
+    pub messages: ::prost::alloc::vec::Vec<::pbjson_types::Any>,
 }
 impl ::prost::Name for GenesisState {
     const NAME: &'static str = "GenesisState";
@@ -47,4 +47,5 @@ pub const FILE_DESCRIPTOR_SET: &[u8] = &[
     0x0a, 0x1f, 0x27, 0x0a, 0x0c, 0x0a, 0x05, 0x04, 0x00, 0x02, 0x00, 0x03, 0x12, 0x03, 0x0a, 0x2a,
     0x2b, 0x62, 0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
 ];
+include!("archway.genmsg.v1.serde.rs");
 // @@protoc_insertion_point(module)

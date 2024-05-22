@@ -21,12 +21,12 @@ impl ::prost::Name for GenericAuthorization {
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct Grant {
     #[prost(message, optional, tag = "1")]
-    pub authorization: ::core::option::Option<::prost_types::Any>,
+    pub authorization: ::core::option::Option<::pbjson_types::Any>,
     /// time when the grant will expire and will be pruned. If null, then the grant
     /// doesn't have a time expiration (other conditions  in `authorization`
     /// may apply to invalidate the grant)
     #[prost(message, optional, tag = "2")]
-    pub expiration: ::core::option::Option<::prost_types::Timestamp>,
+    pub expiration: ::core::option::Option<::pbjson_types::Timestamp>,
 }
 impl ::prost::Name for Grant {
     const NAME: &'static str = "Grant";
@@ -45,9 +45,9 @@ pub struct GrantAuthorization {
     #[prost(string, tag = "2")]
     pub grantee: ::prost::alloc::string::String,
     #[prost(message, optional, tag = "3")]
-    pub authorization: ::core::option::Option<::prost_types::Any>,
+    pub authorization: ::core::option::Option<::pbjson_types::Any>,
     #[prost(message, optional, tag = "4")]
-    pub expiration: ::core::option::Option<::prost_types::Timestamp>,
+    pub expiration: ::core::option::Option<::pbjson_types::Timestamp>,
 }
 impl ::prost::Name for GrantAuthorization {
     const NAME: &'static str = "GrantAuthorization";
@@ -282,7 +282,7 @@ pub struct MsgExec {
     /// The x/authz will try to find a grant matching (msg.signers\[0\], grantee, MsgTypeURL(msg))
     /// triple and validate it.
     #[prost(message, repeated, tag = "2")]
-    pub msgs: ::prost::alloc::vec::Vec<::prost_types::Any>,
+    pub msgs: ::prost::alloc::vec::Vec<::pbjson_types::Any>,
 }
 impl ::prost::Name for MsgExec {
     const NAME: &'static str = "MsgExec";
@@ -1166,5 +1166,6 @@ pub const FILE_DESCRIPTOR_SET: &[u8] = &[
     0x6e, 0x73, 0x65, 0x20, 0x74, 0x79, 0x70, 0x65, 0x2e, 0x0a, 0x0a, 0x0a, 0x0a, 0x03, 0x04, 0x05,
     0x01, 0x12, 0x03, 0x50, 0x08, 0x19, 0x62, 0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
 ];
+include!("cosmos.authz.v1beta1.serde.rs");
 include!("cosmos.authz.v1beta1.tonic.rs");
 // @@protoc_insertion_point(module)

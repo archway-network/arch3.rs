@@ -16,7 +16,7 @@ impl ::prost::Name for FileDescriptorsRequest {
 pub struct FileDescriptorsResponse {
     /// files is the file descriptors.
     #[prost(message, repeated, tag = "1")]
-    pub files: ::prost::alloc::vec::Vec<::prost_types::FileDescriptorProto>,
+    pub files: ::prost::alloc::vec::Vec<::pbjson_types::FileDescriptorProto>,
 }
 impl ::prost::Name for FileDescriptorsResponse {
     const NAME: &'static str = "FileDescriptorsResponse";
@@ -106,5 +106,6 @@ pub const FILE_DESCRIPTOR_SET: &[u8] = &[
     0x12, 0x03, 0x19, 0x2f, 0x34, 0x0a, 0x0c, 0x0a, 0x05, 0x04, 0x01, 0x02, 0x00, 0x03, 0x12, 0x03,
     0x19, 0x37, 0x38, 0x62, 0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
 ];
+include!("cosmos.reflection.v1.serde.rs");
 include!("cosmos.reflection.v1.tonic.rs");
 // @@protoc_insertion_point(module)

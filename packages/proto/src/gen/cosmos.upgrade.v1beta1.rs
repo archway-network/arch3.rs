@@ -17,7 +17,7 @@ pub struct Plan {
     /// If this field is not empty, an error will be thrown.
     #[deprecated]
     #[prost(message, optional, tag = "2")]
-    pub time: ::core::option::Option<::prost_types::Timestamp>,
+    pub time: ::core::option::Option<::pbjson_types::Timestamp>,
     /// The height at which the upgrade must be performed.
     #[prost(int64, tag = "3")]
     pub height: i64,
@@ -30,7 +30,7 @@ pub struct Plan {
     /// If this field is not empty, an error will be thrown.
     #[deprecated]
     #[prost(message, optional, tag = "5")]
-    pub upgraded_client_state: ::core::option::Option<::prost_types::Any>,
+    pub upgraded_client_state: ::core::option::Option<::pbjson_types::Any>,
 }
 impl ::prost::Name for Plan {
     const NAME: &'static str = "Plan";
@@ -1089,5 +1089,6 @@ pub const FILE_DESCRIPTOR_SET: &[u8] = &[
     0x34, 0x36, 0x0a, 0x0a, 0x0a, 0x0a, 0x03, 0x04, 0x03, 0x01, 0x12, 0x03, 0x3d, 0x08, 0x20, 0x62,
     0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
 ];
+include!("cosmos.upgrade.v1beta1.serde.rs");
 include!("cosmos.upgrade.v1beta1.tonic.rs");
 // @@protoc_insertion_point(module)

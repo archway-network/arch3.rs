@@ -37,7 +37,7 @@ pub struct TxResponse {
     pub gas_used: i64,
     /// The request transaction bytes.
     #[prost(message, optional, tag = "11")]
-    pub tx: ::core::option::Option<::prost_types::Any>,
+    pub tx: ::core::option::Option<::pbjson_types::Any>,
     /// Time of the previous block. For heights > 1, it's the weighted median of
     /// the timestamps of the valid votes in the block.LastCommit. For height == 1,
     /// it's genesis time.
@@ -153,7 +153,7 @@ pub struct Result {
     ///
     /// Since: cosmos-sdk 0.46
     #[prost(message, repeated, tag = "4")]
-    pub msg_responses: ::prost::alloc::vec::Vec<::prost_types::Any>,
+    pub msg_responses: ::prost::alloc::vec::Vec<::pbjson_types::Any>,
 }
 impl ::prost::Name for Result {
     const NAME: &'static str = "Result";
@@ -209,7 +209,7 @@ pub struct TxMsgData {
     ///
     /// Since: cosmos-sdk 0.46
     #[prost(message, repeated, tag = "2")]
-    pub msg_responses: ::prost::alloc::vec::Vec<::prost_types::Any>,
+    pub msg_responses: ::prost::alloc::vec::Vec<::pbjson_types::Any>,
 }
 impl ::prost::Name for TxMsgData {
     const NAME: &'static str = "TxMsgData";
@@ -749,4 +749,5 @@ pub const FILE_DESCRIPTOR_SET: &[u8] = &[
     0x19, 0x0a, 0x0d, 0x0a, 0x05, 0x04, 0x09, 0x02, 0x05, 0x03, 0x12, 0x04, 0x9c, 0x01, 0x1c, 0x1d,
     0x62, 0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
 ];
+include!("cosmos.base.abci.v1beta1.serde.rs");
 // @@protoc_insertion_point(module)

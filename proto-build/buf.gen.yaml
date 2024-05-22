@@ -4,12 +4,22 @@ plugins:
     out: .
     opt:
       - extern_path=.tendermint=::tendermint_proto::v0_37
+      - extern_path=.google.protobuf.Timestamp=::pbjson_types::Timestamp
+      - extern_path=.google.protobuf.Duration=::pbjson_types::Duration
+      - extern_path=.google.protobuf.Any=::pbjson_types::Any
+      - extern_path=.google.protobuf.FileDescriptorProto=::pbjson_types::FileDescriptorProto
       - enable_type_names
       - file_descriptor_set
+  - plugin: buf.build/community/neoeinstein-prost-serde:v0.2.3
+    out: .
   - plugin: buf.build/community/neoeinstein-tonic:v0.4.0
     out: .
     opt:
       - extern_path=.tendermint=::tendermint_proto::v0_37
+      - extern_path=.google.protobuf.Timestamp=::pbjson_types::Timestamp
+      - extern_path=.google.protobuf.Duration=::pbjson_types::Duration
+      - extern_path=.google.protobuf.Any=::pbjson_types::Any
+      - extern_path=.google.protobuf.FileDescriptorProto=::pbjson_types::FileDescriptorProto
       - client_mod_attribute=.=#[cfg(feature = "grpc")]
       - client_mod_attribute=.=#[cfg_attr(docsrs\, doc(cfg(feature = "grpc")))]
       - server_mod_attribute=.=#[cfg(feature = "grpc")]

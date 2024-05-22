@@ -28,7 +28,7 @@ impl ::prost::Name for ClientState {
 pub struct ConsensusState {
     /// public key of the solo machine
     #[prost(message, optional, tag = "1")]
-    pub public_key: ::core::option::Option<::prost_types::Any>,
+    pub public_key: ::core::option::Option<::pbjson_types::Any>,
     /// diversifier allows the same public key to be re-used across different solo
     /// machine clients (potentially on different chains) without being considered
     /// misbehaviour.
@@ -53,7 +53,7 @@ pub struct Header {
     #[prost(bytes = "vec", tag = "2")]
     pub signature: ::prost::alloc::vec::Vec<u8>,
     #[prost(message, optional, tag = "3")]
-    pub new_public_key: ::core::option::Option<::prost_types::Any>,
+    pub new_public_key: ::core::option::Option<::pbjson_types::Any>,
     #[prost(string, tag = "4")]
     pub new_diversifier: ::prost::alloc::string::String,
 }
@@ -154,7 +154,7 @@ impl ::prost::Name for SignBytes {
 pub struct HeaderData {
     /// header public key
     #[prost(message, optional, tag = "1")]
-    pub new_pub_key: ::core::option::Option<::prost_types::Any>,
+    pub new_pub_key: ::core::option::Option<::pbjson_types::Any>,
     /// header diversifier
     #[prost(string, tag = "2")]
     pub new_diversifier: ::prost::alloc::string::String,
@@ -495,4 +495,5 @@ pub const FILE_DESCRIPTOR_SET: &[u8] = &[
     0x08, 0x12, 0x03, 0x61, 0x1d, 0x50, 0x0a, 0x0f, 0x0a, 0x08, 0x04, 0x07, 0x02, 0x01, 0x08, 0xee,
     0xfb, 0x03, 0x12, 0x03, 0x61, 0x1e, 0x4f, 0x62, 0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
 ];
+include!("ibc.lightclients.solomachine.v3.serde.rs");
 // @@protoc_insertion_point(module)

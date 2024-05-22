@@ -9,7 +9,7 @@ pub struct Equivocation {
     pub height: i64,
     /// time is the equivocation time.
     #[prost(message, optional, tag = "2")]
-    pub time: ::core::option::Option<::prost_types::Timestamp>,
+    pub time: ::core::option::Option<::pbjson_types::Timestamp>,
     /// power is the equivocation validator power.
     #[prost(int64, tag = "3")]
     pub power: i64,
@@ -30,7 +30,7 @@ impl ::prost::Name for Equivocation {
 pub struct GenesisState {
     /// evidence defines all the evidence at genesis.
     #[prost(message, repeated, tag = "1")]
-    pub evidence: ::prost::alloc::vec::Vec<::prost_types::Any>,
+    pub evidence: ::prost::alloc::vec::Vec<::pbjson_types::Any>,
 }
 impl ::prost::Name for GenesisState {
     const NAME: &'static str = "GenesisState";
@@ -67,7 +67,7 @@ impl ::prost::Name for QueryEvidenceRequest {
 pub struct QueryEvidenceResponse {
     /// evidence returns the requested evidence.
     #[prost(message, optional, tag = "1")]
-    pub evidence: ::core::option::Option<::prost_types::Any>,
+    pub evidence: ::core::option::Option<::pbjson_types::Any>,
 }
 impl ::prost::Name for QueryEvidenceResponse {
     const NAME: &'static str = "QueryEvidenceResponse";
@@ -99,7 +99,7 @@ impl ::prost::Name for QueryAllEvidenceRequest {
 pub struct QueryAllEvidenceResponse {
     /// evidence returns all evidences.
     #[prost(message, repeated, tag = "1")]
-    pub evidence: ::prost::alloc::vec::Vec<::prost_types::Any>,
+    pub evidence: ::prost::alloc::vec::Vec<::pbjson_types::Any>,
     /// pagination defines the pagination in the response.
     #[prost(message, optional, tag = "2")]
     pub pagination: ::core::option::Option<super::super::base::query::v1beta1::PageResponse>,
@@ -121,7 +121,7 @@ pub struct MsgSubmitEvidence {
     pub submitter: ::prost::alloc::string::String,
     /// evidence defines the evidence of misbehavior.
     #[prost(message, optional, tag = "2")]
-    pub evidence: ::core::option::Option<::prost_types::Any>,
+    pub evidence: ::core::option::Option<::pbjson_types::Any>,
 }
 impl ::prost::Name for MsgSubmitEvidence {
     const NAME: &'static str = "MsgSubmitEvidence";
@@ -543,5 +543,6 @@ pub const FILE_DESCRIPTOR_SET: &[u8] = &[
     0x04, 0x01, 0x02, 0x00, 0x01, 0x12, 0x03, 0x28, 0x08, 0x0c, 0x0a, 0x0c, 0x0a, 0x05, 0x04, 0x01,
     0x02, 0x00, 0x03, 0x12, 0x03, 0x28, 0x0f, 0x10, 0x62, 0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
 ];
+include!("cosmos.evidence.v1beta1.serde.rs");
 include!("cosmos.evidence.v1beta1.tonic.rs");
 // @@protoc_insertion_point(module)

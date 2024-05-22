@@ -8,7 +8,7 @@ pub struct BaseAccount {
     #[prost(string, tag = "1")]
     pub address: ::prost::alloc::string::String,
     #[prost(message, optional, tag = "2")]
-    pub pub_key: ::core::option::Option<::prost_types::Any>,
+    pub pub_key: ::core::option::Option<::pbjson_types::Any>,
     #[prost(uint64, tag = "3")]
     pub account_number: u64,
     #[prost(uint64, tag = "4")]
@@ -91,7 +91,7 @@ pub struct GenesisState {
     pub params: ::core::option::Option<Params>,
     /// accounts are the accounts present at genesis.
     #[prost(message, repeated, tag = "2")]
-    pub accounts: ::prost::alloc::vec::Vec<::prost_types::Any>,
+    pub accounts: ::prost::alloc::vec::Vec<::pbjson_types::Any>,
 }
 impl ::prost::Name for GenesisState {
     const NAME: &'static str = "GenesisState";
@@ -125,7 +125,7 @@ impl ::prost::Name for QueryAccountsRequest {
 pub struct QueryAccountsResponse {
     /// accounts are the existing accounts
     #[prost(message, repeated, tag = "1")]
-    pub accounts: ::prost::alloc::vec::Vec<::prost_types::Any>,
+    pub accounts: ::prost::alloc::vec::Vec<::pbjson_types::Any>,
     /// pagination defines the pagination in the response.
     #[prost(message, optional, tag = "2")]
     pub pagination: ::core::option::Option<super::super::base::query::v1beta1::PageResponse>,
@@ -158,7 +158,7 @@ impl ::prost::Name for QueryAccountRequest {
 pub struct QueryAccountResponse {
     /// account defines the account of the corresponding address.
     #[prost(message, optional, tag = "1")]
-    pub account: ::core::option::Option<::prost_types::Any>,
+    pub account: ::core::option::Option<::pbjson_types::Any>,
 }
 impl ::prost::Name for QueryAccountResponse {
     const NAME: &'static str = "QueryAccountResponse";
@@ -213,7 +213,7 @@ impl ::prost::Name for QueryModuleAccountsRequest {
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct QueryModuleAccountsResponse {
     #[prost(message, repeated, tag = "1")]
-    pub accounts: ::prost::alloc::vec::Vec<::prost_types::Any>,
+    pub accounts: ::prost::alloc::vec::Vec<::pbjson_types::Any>,
 }
 impl ::prost::Name for QueryModuleAccountsResponse {
     const NAME: &'static str = "QueryModuleAccountsResponse";
@@ -241,7 +241,7 @@ impl ::prost::Name for QueryModuleAccountByNameRequest {
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct QueryModuleAccountByNameResponse {
     #[prost(message, optional, tag = "1")]
-    pub account: ::core::option::Option<::prost_types::Any>,
+    pub account: ::core::option::Option<::pbjson_types::Any>,
 }
 impl ::prost::Name for QueryModuleAccountByNameResponse {
     const NAME: &'static str = "QueryModuleAccountByNameResponse";
@@ -1478,5 +1478,6 @@ pub const FILE_DESCRIPTOR_SET: &[u8] = &[
     0x30, 0x2e, 0x34, 0x37, 0x0a, 0x0a, 0x0a, 0x0a, 0x03, 0x04, 0x01, 0x01, 0x12, 0x03, 0x2a, 0x08,
     0x1f, 0x62, 0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
 ];
+include!("cosmos.auth.v1beta1.serde.rs");
 include!("cosmos.auth.v1beta1.tonic.rs");
 // @@protoc_insertion_point(module)

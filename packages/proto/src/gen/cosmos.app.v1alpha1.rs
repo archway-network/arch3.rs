@@ -145,7 +145,7 @@ pub struct ModuleConfig {
     /// config is the config object for the module. Module config messages should
     /// define a ModuleDescriptor using the cosmos.app.v1alpha1.is_module extension.
     #[prost(message, optional, tag = "2")]
-    pub config: ::core::option::Option<::prost_types::Any>,
+    pub config: ::core::option::Option<::pbjson_types::Any>,
     /// golang_bindings specifies explicit interface to implementation type bindings which
     /// depinject uses to resolve interface inputs to provider functions.  The scope of this
     /// field's configuration is module specific.
@@ -759,5 +759,6 @@ pub const FILE_DESCRIPTOR_SET: &[u8] = &[
     0x0c, 0x0a, 0x05, 0x04, 0x01, 0x02, 0x00, 0x03, 0x12, 0x03, 0x14, 0x12, 0x13, 0x62, 0x06, 0x70,
     0x72, 0x6f, 0x74, 0x6f, 0x33,
 ];
+include!("cosmos.app.v1alpha1.serde.rs");
 include!("cosmos.app.v1alpha1.tonic.rs");
 // @@protoc_insertion_point(module)

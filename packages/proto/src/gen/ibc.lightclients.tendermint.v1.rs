@@ -11,13 +11,13 @@ pub struct ClientState {
     /// duration of the period since the LastestTimestamp during which the
     /// submitted headers are valid for upgrade
     #[prost(message, optional, tag = "3")]
-    pub trusting_period: ::core::option::Option<::prost_types::Duration>,
+    pub trusting_period: ::core::option::Option<::pbjson_types::Duration>,
     /// duration of the staking unbonding period
     #[prost(message, optional, tag = "4")]
-    pub unbonding_period: ::core::option::Option<::prost_types::Duration>,
+    pub unbonding_period: ::core::option::Option<::pbjson_types::Duration>,
     /// defines how much new (untrusted) header's Time can drift into the future.
     #[prost(message, optional, tag = "5")]
-    pub max_clock_drift: ::core::option::Option<::prost_types::Duration>,
+    pub max_clock_drift: ::core::option::Option<::pbjson_types::Duration>,
     /// Block height when the client was frozen due to a misbehaviour
     #[prost(message, optional, tag = "6")]
     pub frozen_height: ::core::option::Option<super::super::super::core::client::v1::Height>,
@@ -60,7 +60,7 @@ pub struct ConsensusState {
     /// timestamp that corresponds to the block height in which the ConsensusState
     /// was stored.
     #[prost(message, optional, tag = "1")]
-    pub timestamp: ::core::option::Option<::prost_types::Timestamp>,
+    pub timestamp: ::core::option::Option<::pbjson_types::Timestamp>,
     /// commitment root (i.e app hash)
     #[prost(message, optional, tag = "2")]
     pub root: ::core::option::Option<super::super::super::core::commitment::v1::MerkleRoot>,
@@ -609,4 +609,5 @@ pub const FILE_DESCRIPTOR_SET: &[u8] = &[
     0x05, 0x04, 0x04, 0x02, 0x01, 0x03, 0x12, 0x03, 0x71, 0x17, 0x18, 0x62, 0x06, 0x70, 0x72, 0x6f,
     0x74, 0x6f, 0x33,
 ];
+include!("ibc.lightclients.tendermint.v1.serde.rs");
 // @@protoc_insertion_point(module)

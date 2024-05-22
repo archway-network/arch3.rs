@@ -561,5 +561,6 @@ pub const FILE_DESCRIPTOR_SET: &[u8] = &[
     0x04, 0x03, 0x02, 0x00, 0x03, 0x12, 0x03, 0x31, 0x14, 0x15, 0x62, 0x06, 0x70, 0x72, 0x6f, 0x74,
     0x6f, 0x33,
 ];
+include!("ibc.applications.interchain_accounts.controller.v1.serde.rs");
 include!("ibc.applications.interchain_accounts.controller.v1.tonic.rs");
 // @@protoc_insertion_point(module)

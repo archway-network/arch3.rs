@@ -8,7 +8,7 @@ pub struct LegacyAminoPubKey {
     #[prost(uint32, tag = "1")]
     pub threshold: u32,
     #[prost(message, repeated, tag = "2")]
-    pub public_keys: ::prost::alloc::vec::Vec<::prost_types::Any>,
+    pub public_keys: ::prost::alloc::vec::Vec<::pbjson_types::Any>,
 }
 impl ::prost::Name for LegacyAminoPubKey {
     const NAME: &'static str = "LegacyAminoPubKey";
@@ -111,4 +111,5 @@ pub const FILE_DESCRIPTOR_SET: &[u8] = &[
     0x0a, 0x09, 0x04, 0x00, 0x02, 0x01, 0x08, 0xf4, 0x8c, 0xa6, 0x05, 0x12, 0x03, 0x1c, 0x54, 0x72,
     0x62, 0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
 ];
+include!("cosmos.crypto.multisig.serde.rs");
 // @@protoc_insertion_point(module)

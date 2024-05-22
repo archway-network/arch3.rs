@@ -69,7 +69,7 @@ pub struct Proposal {
     pub proposal_id: u64,
     /// content is the proposal's content.
     #[prost(message, optional, tag = "2")]
-    pub content: ::core::option::Option<::prost_types::Any>,
+    pub content: ::core::option::Option<::pbjson_types::Any>,
     /// status defines the proposal status.
     #[prost(enumeration = "ProposalStatus", tag = "3")]
     pub status: i32,
@@ -80,19 +80,19 @@ pub struct Proposal {
     pub final_tally_result: ::core::option::Option<TallyResult>,
     /// submit_time is the time of proposal submission.
     #[prost(message, optional, tag = "5")]
-    pub submit_time: ::core::option::Option<::prost_types::Timestamp>,
+    pub submit_time: ::core::option::Option<::pbjson_types::Timestamp>,
     /// deposit_end_time is the end time for deposition.
     #[prost(message, optional, tag = "6")]
-    pub deposit_end_time: ::core::option::Option<::prost_types::Timestamp>,
+    pub deposit_end_time: ::core::option::Option<::pbjson_types::Timestamp>,
     /// total_deposit is the total deposit on the proposal.
     #[prost(message, repeated, tag = "7")]
     pub total_deposit: ::prost::alloc::vec::Vec<super::super::base::v1beta1::Coin>,
     /// voting_start_time is the starting time to vote on a proposal.
     #[prost(message, optional, tag = "8")]
-    pub voting_start_time: ::core::option::Option<::prost_types::Timestamp>,
+    pub voting_start_time: ::core::option::Option<::pbjson_types::Timestamp>,
     /// voting_end_time is the end time of voting on a proposal.
     #[prost(message, optional, tag = "9")]
-    pub voting_end_time: ::core::option::Option<::prost_types::Timestamp>,
+    pub voting_end_time: ::core::option::Option<::pbjson_types::Timestamp>,
 }
 impl ::prost::Name for Proposal {
     const NAME: &'static str = "Proposal";
@@ -165,7 +165,7 @@ pub struct DepositParams {
     /// Maximum period for Atom holders to deposit on a proposal. Initial value: 2
     /// months.
     #[prost(message, optional, tag = "2")]
-    pub max_deposit_period: ::core::option::Option<::prost_types::Duration>,
+    pub max_deposit_period: ::core::option::Option<::pbjson_types::Duration>,
 }
 impl ::prost::Name for DepositParams {
     const NAME: &'static str = "DepositParams";
@@ -180,7 +180,7 @@ impl ::prost::Name for DepositParams {
 pub struct VotingParams {
     /// Duration of the voting period.
     #[prost(message, optional, tag = "1")]
-    pub voting_period: ::core::option::Option<::prost_types::Duration>,
+    pub voting_period: ::core::option::Option<::pbjson_types::Duration>,
 }
 impl ::prost::Name for VotingParams {
     const NAME: &'static str = "VotingParams";
@@ -620,7 +620,7 @@ impl ::prost::Name for QueryTallyResultResponse {
 pub struct MsgSubmitProposal {
     /// content is the proposal's content.
     #[prost(message, optional, tag = "1")]
-    pub content: ::core::option::Option<::prost_types::Any>,
+    pub content: ::core::option::Option<::pbjson_types::Any>,
     /// initial_deposit is the deposit value that must be paid at proposal submission.
     #[prost(message, repeated, tag = "2")]
     pub initial_deposit: ::prost::alloc::vec::Vec<super::super::base::v1beta1::Coin>,
@@ -2673,5 +2673,6 @@ pub const FILE_DESCRIPTOR_SET: &[u8] = &[
     0x79, 0x70, 0x65, 0x2e, 0x0a, 0x0a, 0x0b, 0x0a, 0x03, 0x04, 0x07, 0x01, 0x12, 0x04, 0x89, 0x01,
     0x08, 0x1a, 0x62, 0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
 ];
+include!("cosmos.gov.v1beta1.serde.rs");
 include!("cosmos.gov.v1beta1.tonic.rs");
 // @@protoc_insertion_point(module)

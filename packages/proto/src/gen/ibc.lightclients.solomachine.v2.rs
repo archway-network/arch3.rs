@@ -32,7 +32,7 @@ impl ::prost::Name for ClientState {
 pub struct ConsensusState {
     /// public key of the solo machine
     #[prost(message, optional, tag = "1")]
-    pub public_key: ::core::option::Option<::prost_types::Any>,
+    pub public_key: ::core::option::Option<::pbjson_types::Any>,
     /// diversifier allows the same public key to be re-used across different solo
     /// machine clients (potentially on different chains) without being considered
     /// misbehaviour.
@@ -60,7 +60,7 @@ pub struct Header {
     #[prost(bytes = "vec", tag = "3")]
     pub signature: ::prost::alloc::vec::Vec<u8>,
     #[prost(message, optional, tag = "4")]
-    pub new_public_key: ::core::option::Option<::prost_types::Any>,
+    pub new_public_key: ::core::option::Option<::pbjson_types::Any>,
     #[prost(string, tag = "5")]
     pub new_diversifier: ::prost::alloc::string::String,
 }
@@ -160,7 +160,7 @@ impl ::prost::Name for SignBytes {
 pub struct HeaderData {
     /// header public key
     #[prost(message, optional, tag = "1")]
-    pub new_pub_key: ::core::option::Option<::prost_types::Any>,
+    pub new_pub_key: ::core::option::Option<::pbjson_types::Any>,
     /// header diversifier
     #[prost(string, tag = "2")]
     pub new_diversifier: ::prost::alloc::string::String,
@@ -179,7 +179,7 @@ pub struct ClientStateData {
     #[prost(bytes = "vec", tag = "1")]
     pub path: ::prost::alloc::vec::Vec<u8>,
     #[prost(message, optional, tag = "2")]
-    pub client_state: ::core::option::Option<::prost_types::Any>,
+    pub client_state: ::core::option::Option<::pbjson_types::Any>,
 }
 impl ::prost::Name for ClientStateData {
     const NAME: &'static str = "ClientStateData";
@@ -196,7 +196,7 @@ pub struct ConsensusStateData {
     #[prost(bytes = "vec", tag = "1")]
     pub path: ::prost::alloc::vec::Vec<u8>,
     #[prost(message, optional, tag = "2")]
-    pub consensus_state: ::core::option::Option<::prost_types::Any>,
+    pub consensus_state: ::core::option::Option<::pbjson_types::Any>,
 }
 impl ::prost::Name for ConsensusStateData {
     const NAME: &'static str = "ConsensusStateData";
@@ -1041,4 +1041,5 @@ pub const FILE_DESCRIPTOR_SET: &[u8] = &[
     0x1b, 0x4c, 0x0a, 0x10, 0x0a, 0x08, 0x04, 0x0f, 0x02, 0x01, 0x08, 0xee, 0xfb, 0x03, 0x12, 0x04,
     0xbb, 0x01, 0x1c, 0x4b, 0x62, 0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
 ];
+include!("ibc.lightclients.solomachine.v2.serde.rs");
 // @@protoc_insertion_point(module)

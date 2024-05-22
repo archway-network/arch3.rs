@@ -8,7 +8,7 @@ pub struct Record {
     pub name: ::prost::alloc::string::String,
     /// pub_key represents a public key in any format
     #[prost(message, optional, tag = "2")]
-    pub pub_key: ::core::option::Option<::prost_types::Any>,
+    pub pub_key: ::core::option::Option<::pbjson_types::Any>,
     /// Record contains one of the following items
     #[prost(oneof = "record::Item", tags = "3, 4, 5, 6")]
     pub item: ::core::option::Option<record::Item>,
@@ -21,7 +21,7 @@ pub mod record {
     #[derive(Clone, PartialEq, ::prost::Message)]
     pub struct Local {
         #[prost(message, optional, tag = "1")]
-        pub priv_key: ::core::option::Option<::prost_types::Any>,
+        pub priv_key: ::core::option::Option<::pbjson_types::Any>,
     }
     impl ::prost::Name for Local {
         const NAME: &'static str = "Local";
@@ -219,4 +219,5 @@ pub const FILE_DESCRIPTOR_SET: &[u8] = &[
     0x6c, 0x69, 0x6e, 0x65, 0x20, 0x69, 0x74, 0x65, 0x6d, 0x0a, 0x0a, 0x0c, 0x0a, 0x05, 0x04, 0x00,
     0x03, 0x03, 0x01, 0x12, 0x03, 0x2e, 0x0a, 0x11, 0x62, 0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
 ];
+include!("cosmos.crypto.keyring.v1.serde.rs");
 // @@protoc_insertion_point(module)

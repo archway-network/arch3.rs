@@ -90,7 +90,7 @@ pub struct ContractInfo {
     /// Extension is an extension point to store custom metadata within the
     /// persistence model.
     #[prost(message, optional, tag = "7")]
-    pub extension: ::core::option::Option<::prost_types::Any>,
+    pub extension: ::core::option::Option<::pbjson_types::Any>,
 }
 impl ::prost::Name for ContractInfo {
     const NAME: &'static str = "ContractInfo";
@@ -319,12 +319,12 @@ pub struct ContractGrant {
     /// Limit defines execution limits that are enforced and updated when the grant
     /// is applied. When the limit lapsed the grant is removed.
     #[prost(message, optional, tag = "2")]
-    pub limit: ::core::option::Option<::prost_types::Any>,
+    pub limit: ::core::option::Option<::pbjson_types::Any>,
     /// Filter define more fine-grained control on the message payload passed
     /// to the contract in the operation. When no filter applies on execution, the
     /// operation is prohibited.
     #[prost(message, optional, tag = "3")]
-    pub filter: ::core::option::Option<::prost_types::Any>,
+    pub filter: ::core::option::Option<::pbjson_types::Any>,
 }
 impl ::prost::Name for ContractGrant {
     const NAME: &'static str = "ContractGrant";
@@ -6883,5 +6883,6 @@ pub const FILE_DESCRIPTOR_SET: &[u8] = &[
     0x20, 0x64, 0x61, 0x74, 0x61, 0x0a, 0x0a, 0x0b, 0x0a, 0x03, 0x04, 0x21, 0x01, 0x12, 0x04, 0xec,
     0x03, 0x08, 0x26, 0x62, 0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
 ];
+include!("cosmwasm.wasm.v1.serde.rs");
 include!("cosmwasm.wasm.v1.tonic.rs");
 // @@protoc_insertion_point(module)
