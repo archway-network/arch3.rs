@@ -46,12 +46,12 @@ fn main() {
     let out_dir = format!("{}/{}", root, OUT_DIR);
 
     update_submodules(submodules_dir.as_str());
-    export_protos(submodules_dir.as_str(), proto_dir.as_str());
-    run_buf_generate(proto_dir.as_str(), out_dir.as_str()).unwrap();
+    export(submodules_dir.as_str(), proto_dir.as_str());
+    generate(proto_dir.as_str(), out_dir.as_str()).unwrap();
     output_versions(out_dir.as_str());
     cleanup(out_dir.as_str());
     apply_patches(out_dir.as_str()).unwrap();
-    run_rustfmt(out_dir.as_str()).unwrap();
+    rustfmt(out_dir.as_str()).unwrap();
 }
 
 fn workspace_root() -> String {
@@ -82,7 +82,7 @@ fn update_submodules(submodules_dir: &str) {
     run_git(["-C", wasmd_dir.as_str(), "reset", "--hard", WASMD_REV]).unwrap();
 }
 
-fn export_protos(submodules_dir: &str, proto_dir: impl AsRef<Path>) {
+fn export(submodules_dir: &str, proto_dir: impl AsRef<Path>) {
     if proto_dir.as_ref().exists() {
         fs::remove_dir_all(&proto_dir).unwrap();
     }
@@ -192,7 +192,7 @@ fn run_buf_export(proto_path: impl AsRef<Path>, export_dir: impl AsRef<Path>) ->
     )
 }
 
-fn run_buf_generate(proto_path: impl AsRef<Path>, out_dir: impl AsRef<Path>) -> Result<String> {
+fn generate(proto_path: impl AsRef<Path>, out_dir: impl AsRef<Path>) -> Result<String> {
     println!("Generating proto...");
 
     if out_dir.as_ref().exists() {
@@ -217,7 +217,7 @@ fn run_git(args: impl IntoIterator<Item = impl AsRef<OsStr>>) -> Result<String> 
     run_cmd("git", args)
 }
 
-fn run_rustfmt(out_dir: &str) -> Result<String> {
+fn rustfmt(out_dir: &str) -> Result<String> {
     println!("Running rustfmt on {}/...", out_dir);
     let files = collect_files(out_dir, "*.rs")?.into_iter().map(Into::into);
     let args: Vec<std::ffi::OsString> = ["--edition", "2021"]
