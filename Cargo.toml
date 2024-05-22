@@ -17,7 +17,7 @@ cw-utils = "1.0.3"
 cw2 = "1.1.2"
 schemars = "0.8.20"
 serde = { version = "1.0.202", default-features = false, features = ["derive"] }
-thiserror = { version = "1.0.61" }
+thiserror = "1.0.61"
 
 [profile.release]
 codegen-units = 1
