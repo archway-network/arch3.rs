@@ -87,21 +87,14 @@ fn export(submodules_dir: &str, proto_dir: impl AsRef<Path>) {
         fs::remove_dir_all(&proto_dir).unwrap();
     }
 
-    let archway_proto = format!("{}/{}/{}", submodules_dir, ARCHWAY_DIR, "proto");
-    run_buf_export(archway_proto, &proto_dir).unwrap();
-
-    let sdk_proto = format!("{}/{}/{}", submodules_dir, COSMOS_SDK_DIR, "proto");
-    run_buf_export(sdk_proto, &proto_dir).unwrap();
-
-    let ibc_proto = format!("{}/{}/{}", submodules_dir, IBC_DIR, "proto");
-    run_buf_export(ibc_proto, &proto_dir).unwrap();
-
-    let wasmd_proto = format!("{}/{}/{}", submodules_dir, WASMD_DIR, "proto");
-    run_buf_export(wasmd_proto, &proto_dir).unwrap();
+    run_buf_export(submodules_dir, ARCHWAY_DIR, &proto_dir).unwrap();
+    run_buf_export(submodules_dir, COSMOS_SDK_DIR, &proto_dir).unwrap();
+    run_buf_export(submodules_dir, IBC_DIR, &proto_dir).unwrap();
+    run_buf_export(submodules_dir, WASMD_DIR, &proto_dir).unwrap();
 }
 
 fn output_versions(out_dir: &str) {
-    println!("Writing versions to {}/...", out_dir);
+    println!("Writing versions...");
     let out_dir = Path::new(out_dir);
     fs::write(out_dir.join("ARCHWAY_COMMIT"), ARCHWAY_REV).unwrap();
     fs::write(out_dir.join("COSMOS_SDK_COMMIT"), COSMOS_SDK_REV).unwrap();
@@ -110,7 +103,7 @@ fn output_versions(out_dir: &str) {
 }
 
 fn apply_patches(out_dir: &str) -> Result<()> {
-    println!("Applying patches to {}/...", out_dir);
+    println!("Applying patches...");
     /// Regex substitutions to apply to the prost-generated output
     const REPLACEMENTS: &[(&str, &str)] = &[
         // Feature-gate gRPC impls which use `tonic::transport`
@@ -168,7 +161,7 @@ fn patch_file(path: impl AsRef<Path>, replacements: &[(&str, &str)]) -> io::Resu
 }
 
 fn cleanup(out_dir: &str) {
-    println!("Cleaning up {}/...", out_dir);
+    println!("Cleaning up...");
     for &pkg in EXCLUDED_PROTO_PACKAGES {
         let excluded_files_glob = format!("{out_dir}/{pkg}.*.rs");
         glob(excluded_files_glob.as_str())
@@ -179,15 +172,20 @@ fn cleanup(out_dir: &str) {
     }
 }
 
-fn run_buf_export(proto_path: impl AsRef<Path>, export_dir: impl AsRef<Path>) -> Result<String> {
-    println!("Exporting {}...", proto_path.as_ref().display());
+fn run_buf_export(
+    submodules_dir: &str,
+    proto: &str,
+    export_dir: impl AsRef<Path>,
+) -> Result<String> {
+    println!("Exporting {}...", proto);
+    let proto_path = format!("{}/{}/{}", submodules_dir, proto, "proto");
     run_cmd(
         "buf",
         [
             "export",
             "-o",
             &export_dir.as_ref().display().to_string(),
-            &proto_path.as_ref().display().to_string(),
+            &proto_path,
         ],
     )
 }
@@ -218,7 +216,7 @@ fn run_git(args: impl IntoIterator<Item = impl AsRef<OsStr>>) -> Result<String> 
 }
 
 fn rustfmt(out_dir: &str) -> Result<String> {
-    println!("Running rustfmt on {}/...", out_dir);
+    println!("Running rustfmt...");
     let files = collect_files(out_dir, "*.rs")?.into_iter().map(Into::into);
     let args: Vec<std::ffi::OsString> = ["--edition", "2021"]
         .iter()
