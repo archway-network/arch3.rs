@@ -28,7 +28,7 @@ const WASMD_DIR: &str = "wasmd";
 const PROTO_DIR: &str = "proto";
 const OUT_DIR: &str = "packages/proto/src/gen";
 
-const EXCLUDED_PROTO_PACKAGES: &[&str] = &["gogoproto", "google", "tendermint"];
+const EXCLUDED_PROTO_PACKAGES: &[&str] = &["amino", "gogoproto", "google", "tendermint"];
 
 error_chain! {
     foreign_links {
@@ -163,7 +163,7 @@ fn patch_file(path: impl AsRef<Path>, replacements: &[(&str, &str)]) -> io::Resu
 fn cleanup(out_dir: &str) {
     println!("Cleaning up...");
     for &pkg in EXCLUDED_PROTO_PACKAGES {
-        let excluded_files_glob = format!("{out_dir}/{pkg}.*.rs");
+        let excluded_files_glob = format!("{out_dir}/{pkg}*.rs");
         glob(excluded_files_glob.as_str())
             .unwrap()
             .flatten()
