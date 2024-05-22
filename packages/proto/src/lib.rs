@@ -5,33 +5,23 @@
 #![forbid(unsafe_code)]
 #![warn(trivial_casts, trivial_numeric_casts, unused_import_braces)]
 
-mod type_urls;
+mod gen;
+
+pub use gen::*;
 
 pub use prost;
 pub use prost_types::Any;
 
-pub use cosmos_sdk_proto as cosmos;
-pub use cosmos_sdk_proto::tendermint;
+pub use tendermint_proto as tendermint;
 
-/// The version (commit hash) of the Archway protocol used when generating this library.
-pub const ARCHWAY_VERSION: &str = include_str!("proto/ARCHWAY_COMMIT");
+/// The Archway protocol version (or commit hash) used when generating this library.
+pub const ARCHWAY_VERSION: &str = include_str!("gen/ARCHWAY_COMMIT");
 
-pub mod archway {
-    pub mod genmsg {
-        pub mod v1 {
-            include!("proto/archway.genmsg.v1.rs");
-        }
-    }
+/// The Cosmos SDK version (or commit hash) used when generating this library.
+pub const COSMOS_SDK_VERSION: &str = include_str!("gen/COSMOS_SDK_COMMIT");
 
-    pub mod rewards {
-        pub mod v1 {
-            include!("proto/archway.rewards.v1.rs");
-        }
-    }
+/// The ibc-go version (or commit hash) used when generating this library.
+pub const IBC_VERSION: &str = include_str!("gen/IBC_COMMIT");
 
-    pub mod tracking {
-        pub mod v1 {
-            include!("proto/archway.tracking.v1.rs");
-        }
-    }
-}
+/// The wasmd version (or commit hash) of the used when generating this library.
+pub const WASMD_VERSION: &str = include_str!("gen/WASMD_COMMIT");

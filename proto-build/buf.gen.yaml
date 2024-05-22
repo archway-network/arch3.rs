@@ -1,0 +1,25 @@
+version: v1
+plugins:
+  - plugin: buf.build/community/neoeinstein-prost:v0.3.1
+    out: .
+    opt:
+      - extern_path=.tendermint=::tendermint_proto::v0_37
+      - enable_type_names
+      - file_descriptor_set
+  - plugin: buf.build/community/neoeinstein-tonic:v0.4.0
+    out: .
+    opt:
+      - extern_path=.tendermint=::tendermint_proto::v0_37
+      - client_mod_attribute=.=#[cfg(feature = "grpc")]
+      - client_mod_attribute=.=#[cfg_attr(docsrs\, doc(cfg(feature = "grpc")))]
+      - server_mod_attribute=.=#[cfg(feature = "grpc")]
+      - server_mod_attribute=.=#[cfg_attr(docsrs\, doc(cfg(feature = "grpc")))]
+  - plugin: buf.build/community/neoeinstein-prost-crate:v0.4.0
+    out: .
+    opt:
+      - only_include=.archway
+      - only_include=.cosmos
+      - only_include=.cosmos_proto
+      - only_include=.cosmwasm
+      - only_include=.ibc
+      - no_features

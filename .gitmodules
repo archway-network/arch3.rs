@@ -1,4 +1,12 @@
-[submodule "archway-network"]
-	path = archway-network
+[submodule "archway"]
+	path = external/archway
 	url = https://github.com/archway-network/archway
-	branch = tags/v4.0.2
+[submodule "external/cosmos-sdk"]
+	path = external/cosmos-sdk
+	url = https://github.com/cosmos/cosmos-sdk
+[submodule "external/ibc-go"]
+	path = external/ibc-go
+	url = https://github.com/cosmos/ibc-go
+[submodule "external/wasmd"]
+	path = external/wasmd
+	url = https://github.com/cosmwasm/wasmd
