@@ -1,9 +1,4 @@
 // @generated
-// @@protoc_insertion_point(attribute:amino)
-pub mod amino {
-    include!("amino.rs");
-    // @@protoc_insertion_point(amino)
-}
 pub mod archway {
     pub mod callback {
         // @@protoc_insertion_point(attribute:archway.callback.v1)
@@ -547,18 +542,6 @@ pub mod cosmwasm {
         }
     }
 }
-// @@protoc_insertion_point(attribute:gogoproto)
-pub mod gogoproto {
-    include!("gogoproto.rs");
-    // @@protoc_insertion_point(gogoproto)
-}
-pub mod google {
-    // @@protoc_insertion_point(attribute:google.api)
-    pub mod api {
-        include!("google.api.rs");
-        // @@protoc_insertion_point(google.api)
-    }
-}
 pub mod ibc {
     pub mod applications {
         pub mod fee {
@@ -673,39 +656,5 @@ pub mod ibc {
                 // @@protoc_insertion_point(ibc.lightclients.tendermint.v1)
             }
         }
-    }
-}
-pub mod tendermint {
-    // @@protoc_insertion_point(attribute:tendermint.abci)
-    pub mod abci {
-        include!("tendermint.abci.rs");
-        // @@protoc_insertion_point(tendermint.abci)
-    }
-    // @@protoc_insertion_point(attribute:tendermint.crypto)
-    pub mod crypto {
-        include!("tendermint.crypto.rs");
-        // @@protoc_insertion_point(tendermint.crypto)
-    }
-    pub mod libs {
-        // @@protoc_insertion_point(attribute:tendermint.libs.bits)
-        pub mod bits {
-            include!("tendermint.libs.bits.rs");
-            // @@protoc_insertion_point(tendermint.libs.bits)
-        }
-    }
-    // @@protoc_insertion_point(attribute:tendermint.p2p)
-    pub mod p2p {
-        include!("tendermint.p2p.rs");
-        // @@protoc_insertion_point(tendermint.p2p)
-    }
-    // @@protoc_insertion_point(attribute:tendermint.types)
-    pub mod types {
-        include!("tendermint.types.rs");
-        // @@protoc_insertion_point(tendermint.types)
-    }
-    // @@protoc_insertion_point(attribute:tendermint.version)
-    pub mod version {
-        include!("tendermint.version.rs");
-        // @@protoc_insertion_point(tendermint.version)
     }
 }

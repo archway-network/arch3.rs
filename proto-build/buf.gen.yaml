@@ -17,4 +17,9 @@ plugins:
   - plugin: buf.build/community/neoeinstein-prost-crate:v0.4.0
     out: .
     opt:
+      - only_include=.archway
+      - only_include=.cosmos
+      - only_include=.cosmos_proto
+      - only_include=.cosmwasm
+      - only_include=.ibc
       - no_features
