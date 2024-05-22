@@ -8,6 +8,13 @@ pub struct Module {
     #[prost(bool, tag = "1")]
     pub seal_keeper: bool,
 }
+impl ::prost::Name for Module {
+    const NAME: &'static str = "Module";
+    const PACKAGE: &'static str = "cosmos.capability.module.v1";
+    fn full_name() -> ::prost::alloc::string::String {
+        ::prost::alloc::format!("cosmos.capability.module.v1.{}", Self::NAME)
+    }
+}
 /// Encoded file descriptor set for the `cosmos.capability.module.v1` package
 #[cfg(feature = "proto-descriptor")]
 #[cfg_attr(docsrs, doc(cfg(feature = "proto-descriptor")))]

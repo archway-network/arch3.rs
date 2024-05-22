@@ -31,6 +31,13 @@ pub struct Module {
     #[prost(message, repeated, tag = "6")]
     pub override_store_keys: ::prost::alloc::vec::Vec<StoreKeyConfig>,
 }
+impl ::prost::Name for Module {
+    const NAME: &'static str = "Module";
+    const PACKAGE: &'static str = "cosmos.app.runtime.v1alpha1";
+    fn full_name() -> ::prost::alloc::string::String {
+        ::prost::alloc::format!("cosmos.app.runtime.v1alpha1.{}", Self::NAME)
+    }
+}
 /// StoreKeyConfig may be supplied to override the default module store key, which
 /// is the module name.
 #[allow(clippy::derive_partial_eq_without_eq)]
@@ -42,6 +49,13 @@ pub struct StoreKeyConfig {
     /// the kv store key to use instead of the module name.
     #[prost(string, tag = "2")]
     pub kv_store_key: ::prost::alloc::string::String,
+}
+impl ::prost::Name for StoreKeyConfig {
+    const NAME: &'static str = "StoreKeyConfig";
+    const PACKAGE: &'static str = "cosmos.app.runtime.v1alpha1";
+    fn full_name() -> ::prost::alloc::string::String {
+        ::prost::alloc::format!("cosmos.app.runtime.v1alpha1.{}", Self::NAME)
+    }
 }
 /// Encoded file descriptor set for the `cosmos.app.runtime.v1alpha1` package
 #[cfg(feature = "proto-descriptor")]

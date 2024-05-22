@@ -6,7 +6,6 @@
 #![warn(trivial_casts, trivial_numeric_casts, unused_import_braces)]
 
 mod proto;
-mod type_urls;
 
 pub use proto::*;
 

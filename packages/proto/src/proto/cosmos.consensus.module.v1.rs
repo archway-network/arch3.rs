@@ -7,6 +7,13 @@ pub struct Module {
     #[prost(string, tag = "1")]
     pub authority: ::prost::alloc::string::String,
 }
+impl ::prost::Name for Module {
+    const NAME: &'static str = "Module";
+    const PACKAGE: &'static str = "cosmos.consensus.module.v1";
+    fn full_name() -> ::prost::alloc::string::String {
+        ::prost::alloc::format!("cosmos.consensus.module.v1.{}", Self::NAME)
+    }
+}
 /// Encoded file descriptor set for the `cosmos.consensus.module.v1` package
 #[cfg(feature = "proto-descriptor")]
 #[cfg_attr(docsrs, doc(cfg(feature = "proto-descriptor")))]

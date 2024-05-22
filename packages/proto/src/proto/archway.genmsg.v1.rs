@@ -6,6 +6,13 @@ pub struct GenesisState {
     #[prost(message, repeated, tag = "1")]
     pub messages: ::prost::alloc::vec::Vec<::prost_types::Any>,
 }
+impl ::prost::Name for GenesisState {
+    const NAME: &'static str = "GenesisState";
+    const PACKAGE: &'static str = "archway.genmsg.v1";
+    fn full_name() -> ::prost::alloc::string::String {
+        ::prost::alloc::format!("archway.genmsg.v1.{}", Self::NAME)
+    }
+}
 /// Encoded file descriptor set for the `archway.genmsg.v1` package
 #[cfg(feature = "proto-descriptor")]
 #[cfg_attr(docsrs, doc(cfg(feature = "proto-descriptor")))]

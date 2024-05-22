@@ -5,6 +5,13 @@
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct Module {}
+impl ::prost::Name for Module {
+    const NAME: &'static str = "Module";
+    const PACKAGE: &'static str = "cosmos.orm.module.v1alpha1";
+    fn full_name() -> ::prost::alloc::string::String {
+        ::prost::alloc::format!("cosmos.orm.module.v1alpha1.{}", Self::NAME)
+    }
+}
 /// Encoded file descriptor set for the `cosmos.orm.module.v1alpha1` package
 #[cfg(feature = "proto-descriptor")]
 #[cfg_attr(docsrs, doc(cfg(feature = "proto-descriptor")))]

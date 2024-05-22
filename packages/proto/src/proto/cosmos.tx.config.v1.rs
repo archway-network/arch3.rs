@@ -12,6 +12,13 @@ pub struct Config {
     #[prost(bool, tag = "2")]
     pub skip_post_handler: bool,
 }
+impl ::prost::Name for Config {
+    const NAME: &'static str = "Config";
+    const PACKAGE: &'static str = "cosmos.tx.config.v1";
+    fn full_name() -> ::prost::alloc::string::String {
+        ::prost::alloc::format!("cosmos.tx.config.v1.{}", Self::NAME)
+    }
+}
 /// Encoded file descriptor set for the `cosmos.tx.config.v1` package
 #[cfg(feature = "proto-descriptor")]
 #[cfg_attr(docsrs, doc(cfg(feature = "proto-descriptor")))]

@@ -22,6 +22,13 @@ pub struct Callback {
     #[prost(uint64, tag = "6")]
     pub max_gas_limit: u64,
 }
+impl ::prost::Name for Callback {
+    const NAME: &'static str = "Callback";
+    const PACKAGE: &'static str = "archway.callback.v1";
+    fn full_name() -> ::prost::alloc::string::String {
+        ::prost::alloc::format!("archway.callback.v1.{}", Self::NAME)
+    }
+}
 /// CallbackFeesFeeSplit is the breakdown of all the fees that need to be paid by the contract to reserve a callback
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
@@ -40,6 +47,13 @@ pub struct CallbackFeesFeeSplit {
     /// surplus_fees is any extra fees passed in for the registration of the callback
     #[prost(message, optional, tag = "4")]
     pub surplus_fees: ::core::option::Option<super::super::super::cosmos::base::v1beta1::Coin>,
+}
+impl ::prost::Name for CallbackFeesFeeSplit {
+    const NAME: &'static str = "CallbackFeesFeeSplit";
+    const PACKAGE: &'static str = "archway.callback.v1";
+    fn full_name() -> ::prost::alloc::string::String {
+        ::prost::alloc::format!("archway.callback.v1.{}", Self::NAME)
+    }
 }
 /// Params defines the module parameters.
 #[allow(clippy::derive_partial_eq_without_eq)]
@@ -60,6 +74,13 @@ pub struct Params {
     /// future_reservation_fee_multiplier is used to calculate a part of the reservation fees which will need to be paid while requesting the callback.
     #[prost(string, tag = "5")]
     pub future_reservation_fee_multiplier: ::prost::alloc::string::String,
+}
+impl ::prost::Name for Params {
+    const NAME: &'static str = "Params";
+    const PACKAGE: &'static str = "archway.callback.v1";
+    fn full_name() -> ::prost::alloc::string::String {
+        ::prost::alloc::format!("archway.callback.v1.{}", Self::NAME)
+    }
 }
 /// ModuleErrors defines the module level error codes
 #[derive(Clone, Copy, Debug, PartialEq, Eq, Hash, PartialOrd, Ord, ::prost::Enumeration)]
@@ -114,6 +135,13 @@ pub struct CallbackRegisteredEvent {
     #[prost(string, tag = "5")]
     pub reserved_by: ::prost::alloc::string::String,
 }
+impl ::prost::Name for CallbackRegisteredEvent {
+    const NAME: &'static str = "CallbackRegisteredEvent";
+    const PACKAGE: &'static str = "archway.callback.v1";
+    fn full_name() -> ::prost::alloc::string::String {
+        ::prost::alloc::format!("archway.callback.v1.{}", Self::NAME)
+    }
+}
 /// CallbackCancelledEvent is emitted when a callback is cancelled.
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
@@ -134,6 +162,13 @@ pub struct CallbackCancelledEvent {
     #[prost(message, optional, tag = "5")]
     pub refund_amount: ::core::option::Option<super::super::super::cosmos::base::v1beta1::Coin>,
 }
+impl ::prost::Name for CallbackCancelledEvent {
+    const NAME: &'static str = "CallbackCancelledEvent";
+    const PACKAGE: &'static str = "archway.callback.v1";
+    fn full_name() -> ::prost::alloc::string::String {
+        ::prost::alloc::format!("archway.callback.v1.{}", Self::NAME)
+    }
+}
 /// CallbackExecutedSuccessEvent is emitted when a callback is executed successfully.
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
@@ -150,6 +185,13 @@ pub struct CallbackExecutedSuccessEvent {
     /// gas_used is the amount of gas consumed during the callback execution
     #[prost(uint64, tag = "4")]
     pub gas_used: u64,
+}
+impl ::prost::Name for CallbackExecutedSuccessEvent {
+    const NAME: &'static str = "CallbackExecutedSuccessEvent";
+    const PACKAGE: &'static str = "archway.callback.v1";
+    fn full_name() -> ::prost::alloc::string::String {
+        ::prost::alloc::format!("archway.callback.v1.{}", Self::NAME)
+    }
 }
 /// CallbackExecutedFailedEvent is emitted when a callback execution fails.
 #[allow(clippy::derive_partial_eq_without_eq)]
@@ -171,6 +213,13 @@ pub struct CallbackExecutedFailedEvent {
     #[prost(string, tag = "5")]
     pub error: ::prost::alloc::string::String,
 }
+impl ::prost::Name for CallbackExecutedFailedEvent {
+    const NAME: &'static str = "CallbackExecutedFailedEvent";
+    const PACKAGE: &'static str = "archway.callback.v1";
+    fn full_name() -> ::prost::alloc::string::String {
+        ::prost::alloc::format!("archway.callback.v1.{}", Self::NAME)
+    }
+}
 /// GenesisState defines the initial state of the callback module.
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
@@ -182,10 +231,24 @@ pub struct GenesisState {
     #[prost(message, repeated, tag = "2")]
     pub callbacks: ::prost::alloc::vec::Vec<Callback>,
 }
+impl ::prost::Name for GenesisState {
+    const NAME: &'static str = "GenesisState";
+    const PACKAGE: &'static str = "archway.callback.v1";
+    fn full_name() -> ::prost::alloc::string::String {
+        ::prost::alloc::format!("archway.callback.v1.{}", Self::NAME)
+    }
+}
 /// QueryParamsRequest is the request for Query.Params.
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct QueryParamsRequest {}
+impl ::prost::Name for QueryParamsRequest {
+    const NAME: &'static str = "QueryParamsRequest";
+    const PACKAGE: &'static str = "archway.callback.v1";
+    fn full_name() -> ::prost::alloc::string::String {
+        ::prost::alloc::format!("archway.callback.v1.{}", Self::NAME)
+    }
+}
 /// QueryParamsResponse is the response for Query.Params.
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
@@ -194,6 +257,13 @@ pub struct QueryParamsResponse {
     #[prost(message, optional, tag = "1")]
     pub params: ::core::option::Option<Params>,
 }
+impl ::prost::Name for QueryParamsResponse {
+    const NAME: &'static str = "QueryParamsResponse";
+    const PACKAGE: &'static str = "archway.callback.v1";
+    fn full_name() -> ::prost::alloc::string::String {
+        ::prost::alloc::format!("archway.callback.v1.{}", Self::NAME)
+    }
+}
 /// QueryEstimateCallbackFeesRequest is the request for Query.EstimateCallbackFees.
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
@@ -201,6 +271,13 @@ pub struct QueryEstimateCallbackFeesRequest {
     /// block_height is the height at which to estimate the callback fees
     #[prost(int64, tag = "1")]
     pub block_height: i64,
+}
+impl ::prost::Name for QueryEstimateCallbackFeesRequest {
+    const NAME: &'static str = "QueryEstimateCallbackFeesRequest";
+    const PACKAGE: &'static str = "archway.callback.v1";
+    fn full_name() -> ::prost::alloc::string::String {
+        ::prost::alloc::format!("archway.callback.v1.{}", Self::NAME)
+    }
 }
 /// QueryEstimateCallbackFeesResponse is the response for Query.EstimateCallbackFees.
 #[allow(clippy::derive_partial_eq_without_eq)]
@@ -213,6 +290,13 @@ pub struct QueryEstimateCallbackFeesResponse {
     #[prost(message, optional, tag = "2")]
     pub fee_split: ::core::option::Option<CallbackFeesFeeSplit>,
 }
+impl ::prost::Name for QueryEstimateCallbackFeesResponse {
+    const NAME: &'static str = "QueryEstimateCallbackFeesResponse";
+    const PACKAGE: &'static str = "archway.callback.v1";
+    fn full_name() -> ::prost::alloc::string::String {
+        ::prost::alloc::format!("archway.callback.v1.{}", Self::NAME)
+    }
+}
 /// QueryCallbacksRequest is the request for Query.Callbacks.
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
@@ -221,6 +305,13 @@ pub struct QueryCallbacksRequest {
     #[prost(int64, tag = "1")]
     pub block_height: i64,
 }
+impl ::prost::Name for QueryCallbacksRequest {
+    const NAME: &'static str = "QueryCallbacksRequest";
+    const PACKAGE: &'static str = "archway.callback.v1";
+    fn full_name() -> ::prost::alloc::string::String {
+        ::prost::alloc::format!("archway.callback.v1.{}", Self::NAME)
+    }
+}
 /// QueryCallbacksResponse is the response for Query.Callbacks.
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
@@ -228,6 +319,13 @@ pub struct QueryCallbacksResponse {
     /// callbacks is the list of callbacks registered at the given height
     #[prost(message, repeated, tag = "1")]
     pub callbacks: ::prost::alloc::vec::Vec<Callback>,
+}
+impl ::prost::Name for QueryCallbacksResponse {
+    const NAME: &'static str = "QueryCallbacksResponse";
+    const PACKAGE: &'static str = "archway.callback.v1";
+    fn full_name() -> ::prost::alloc::string::String {
+        ::prost::alloc::format!("archway.callback.v1.{}", Self::NAME)
+    }
 }
 /// MsgUpdateParams is the Msg/UpdateParams request type.
 #[allow(clippy::derive_partial_eq_without_eq)]
@@ -242,10 +340,24 @@ pub struct MsgUpdateParams {
     #[prost(message, optional, tag = "2")]
     pub params: ::core::option::Option<Params>,
 }
+impl ::prost::Name for MsgUpdateParams {
+    const NAME: &'static str = "MsgUpdateParams";
+    const PACKAGE: &'static str = "archway.callback.v1";
+    fn full_name() -> ::prost::alloc::string::String {
+        ::prost::alloc::format!("archway.callback.v1.{}", Self::NAME)
+    }
+}
 /// MsgUpdateParamsResponse defines the response structure for executing a MsgUpdateParams message.
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct MsgUpdateParamsResponse {}
+impl ::prost::Name for MsgUpdateParamsResponse {
+    const NAME: &'static str = "MsgUpdateParamsResponse";
+    const PACKAGE: &'static str = "archway.callback.v1";
+    fn full_name() -> ::prost::alloc::string::String {
+        ::prost::alloc::format!("archway.callback.v1.{}", Self::NAME)
+    }
+}
 /// MsgRequestCallback is the Msg/RequestCallback request type.
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
@@ -266,10 +378,24 @@ pub struct MsgRequestCallback {
     #[prost(message, optional, tag = "5")]
     pub fees: ::core::option::Option<super::super::super::cosmos::base::v1beta1::Coin>,
 }
+impl ::prost::Name for MsgRequestCallback {
+    const NAME: &'static str = "MsgRequestCallback";
+    const PACKAGE: &'static str = "archway.callback.v1";
+    fn full_name() -> ::prost::alloc::string::String {
+        ::prost::alloc::format!("archway.callback.v1.{}", Self::NAME)
+    }
+}
 /// MsgRequestCallbackResponse defines the response structure for executing a MsgRequestCallback message.
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct MsgRequestCallbackResponse {}
+impl ::prost::Name for MsgRequestCallbackResponse {
+    const NAME: &'static str = "MsgRequestCallbackResponse";
+    const PACKAGE: &'static str = "archway.callback.v1";
+    fn full_name() -> ::prost::alloc::string::String {
+        ::prost::alloc::format!("archway.callback.v1.{}", Self::NAME)
+    }
+}
 /// MsgCancelCallback is the Msg/CancelCallback request type.
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
@@ -287,6 +413,13 @@ pub struct MsgCancelCallback {
     #[prost(int64, tag = "4")]
     pub callback_height: i64,
 }
+impl ::prost::Name for MsgCancelCallback {
+    const NAME: &'static str = "MsgCancelCallback";
+    const PACKAGE: &'static str = "archway.callback.v1";
+    fn full_name() -> ::prost::alloc::string::String {
+        ::prost::alloc::format!("archway.callback.v1.{}", Self::NAME)
+    }
+}
 /// MsgCancelCallbackResponse defines the response structure for executing a MsgCancelCallback message.
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
@@ -294,6 +427,13 @@ pub struct MsgCancelCallbackResponse {
     /// refund is the amount of fees being refunded due to the cancellation of the callback
     #[prost(message, optional, tag = "1")]
     pub refund: ::core::option::Option<super::super::super::cosmos::base::v1beta1::Coin>,
+}
+impl ::prost::Name for MsgCancelCallbackResponse {
+    const NAME: &'static str = "MsgCancelCallbackResponse";
+    const PACKAGE: &'static str = "archway.callback.v1";
+    fn full_name() -> ::prost::alloc::string::String {
+        ::prost::alloc::format!("archway.callback.v1.{}", Self::NAME)
+    }
 }
 /// Encoded file descriptor set for the `archway.callback.v1` package
 #[cfg(feature = "proto-descriptor")]

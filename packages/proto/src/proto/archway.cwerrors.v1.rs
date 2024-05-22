@@ -20,6 +20,13 @@ pub struct SudoError {
     #[prost(string, tag = "5")]
     pub error_message: ::prost::alloc::string::String,
 }
+impl ::prost::Name for SudoError {
+    const NAME: &'static str = "SudoError";
+    const PACKAGE: &'static str = "archway.cwerrors.v1";
+    fn full_name() -> ::prost::alloc::string::String {
+        ::prost::alloc::format!("archway.cwerrors.v1.{}", Self::NAME)
+    }
+}
 /// ModuleErrors defines the module level error codes
 #[derive(Clone, Copy, Debug, PartialEq, Eq, Hash, PartialOrd, Ord, ::prost::Enumeration)]
 #[repr(i32)]
@@ -63,6 +70,13 @@ pub struct Params {
     #[prost(int64, tag = "3")]
     pub subscription_period: i64,
 }
+impl ::prost::Name for Params {
+    const NAME: &'static str = "Params";
+    const PACKAGE: &'static str = "archway.cwerrors.v1";
+    fn full_name() -> ::prost::alloc::string::String {
+        ::prost::alloc::format!("archway.cwerrors.v1.{}", Self::NAME)
+    }
+}
 /// ParamsUpdatedEvent defines the event which is thrown when the module
 /// parameters are updated
 #[allow(clippy::derive_partial_eq_without_eq)]
@@ -74,6 +88,13 @@ pub struct ParamsUpdatedEvent {
     /// authority is the address of the authority that updated the parameters
     #[prost(string, tag = "2")]
     pub authority: ::prost::alloc::string::String,
+}
+impl ::prost::Name for ParamsUpdatedEvent {
+    const NAME: &'static str = "ParamsUpdatedEvent";
+    const PACKAGE: &'static str = "archway.cwerrors.v1";
+    fn full_name() -> ::prost::alloc::string::String {
+        ::prost::alloc::format!("archway.cwerrors.v1.{}", Self::NAME)
+    }
 }
 /// SubscribedToErrorsEvent defines the event which is thrown when a contract
 /// subscribes to errors
@@ -95,6 +116,13 @@ pub struct SubscribedToErrorsEvent {
     #[prost(int64, tag = "4")]
     pub subscription_valid_till: i64,
 }
+impl ::prost::Name for SubscribedToErrorsEvent {
+    const NAME: &'static str = "SubscribedToErrorsEvent";
+    const PACKAGE: &'static str = "archway.cwerrors.v1";
+    fn full_name() -> ::prost::alloc::string::String {
+        ::prost::alloc::format!("archway.cwerrors.v1.{}", Self::NAME)
+    }
+}
 /// StoringErrorEvent defines the event which is thrown when an error is stored
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
@@ -106,6 +134,13 @@ pub struct StoringErrorEvent {
     /// from the state
     #[prost(int64, tag = "2")]
     pub deletion_block_height: i64,
+}
+impl ::prost::Name for StoringErrorEvent {
+    const NAME: &'static str = "StoringErrorEvent";
+    const PACKAGE: &'static str = "archway.cwerrors.v1";
+    fn full_name() -> ::prost::alloc::string::String {
+        ::prost::alloc::format!("archway.cwerrors.v1.{}", Self::NAME)
+    }
 }
 /// SudoErrorCallbackFailedEvent defines the event which is thrown when a sudo
 /// error callback fails
@@ -119,6 +154,13 @@ pub struct SudoErrorCallbackFailedEvent {
     #[prost(string, tag = "2")]
     pub callback_error_message: ::prost::alloc::string::String,
 }
+impl ::prost::Name for SudoErrorCallbackFailedEvent {
+    const NAME: &'static str = "SudoErrorCallbackFailedEvent";
+    const PACKAGE: &'static str = "archway.cwerrors.v1";
+    fn full_name() -> ::prost::alloc::string::String {
+        ::prost::alloc::format!("archway.cwerrors.v1.{}", Self::NAME)
+    }
+}
 /// GenesisState defines the cwerrors module's genesis state.
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
@@ -130,10 +172,24 @@ pub struct GenesisState {
     #[prost(message, repeated, tag = "2")]
     pub errors: ::prost::alloc::vec::Vec<SudoError>,
 }
+impl ::prost::Name for GenesisState {
+    const NAME: &'static str = "GenesisState";
+    const PACKAGE: &'static str = "archway.cwerrors.v1";
+    fn full_name() -> ::prost::alloc::string::String {
+        ::prost::alloc::format!("archway.cwerrors.v1.{}", Self::NAME)
+    }
+}
 /// QueryParamsRequest is the request for Query.Params.
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct QueryParamsRequest {}
+impl ::prost::Name for QueryParamsRequest {
+    const NAME: &'static str = "QueryParamsRequest";
+    const PACKAGE: &'static str = "archway.cwerrors.v1";
+    fn full_name() -> ::prost::alloc::string::String {
+        ::prost::alloc::format!("archway.cwerrors.v1.{}", Self::NAME)
+    }
+}
 /// QueryParamsResponse is the response for Query.Params.
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
@@ -141,6 +197,13 @@ pub struct QueryParamsResponse {
     /// params defines all the module parameters.
     #[prost(message, optional, tag = "1")]
     pub params: ::core::option::Option<Params>,
+}
+impl ::prost::Name for QueryParamsResponse {
+    const NAME: &'static str = "QueryParamsResponse";
+    const PACKAGE: &'static str = "archway.cwerrors.v1";
+    fn full_name() -> ::prost::alloc::string::String {
+        ::prost::alloc::format!("archway.cwerrors.v1.{}", Self::NAME)
+    }
 }
 /// QueryErrorsRequest is the request for Query.Errors.
 #[allow(clippy::derive_partial_eq_without_eq)]
@@ -150,6 +213,13 @@ pub struct QueryErrorsRequest {
     #[prost(string, tag = "1")]
     pub contract_address: ::prost::alloc::string::String,
 }
+impl ::prost::Name for QueryErrorsRequest {
+    const NAME: &'static str = "QueryErrorsRequest";
+    const PACKAGE: &'static str = "archway.cwerrors.v1";
+    fn full_name() -> ::prost::alloc::string::String {
+        ::prost::alloc::format!("archway.cwerrors.v1.{}", Self::NAME)
+    }
+}
 /// QueryErrorsResponse is the response for Query.Errors.
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
@@ -158,6 +228,13 @@ pub struct QueryErrorsResponse {
     #[prost(message, repeated, tag = "1")]
     pub errors: ::prost::alloc::vec::Vec<SudoError>,
 }
+impl ::prost::Name for QueryErrorsResponse {
+    const NAME: &'static str = "QueryErrorsResponse";
+    const PACKAGE: &'static str = "archway.cwerrors.v1";
+    fn full_name() -> ::prost::alloc::string::String {
+        ::prost::alloc::format!("archway.cwerrors.v1.{}", Self::NAME)
+    }
+}
 /// QueryIsSubscribedRequest is the request for Query.IsSubscribed.
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
@@ -165,6 +242,13 @@ pub struct QueryIsSubscribedRequest {
     /// contract_address is the address of the contract to query if subscribed
     #[prost(string, tag = "1")]
     pub contract_address: ::prost::alloc::string::String,
+}
+impl ::prost::Name for QueryIsSubscribedRequest {
+    const NAME: &'static str = "QueryIsSubscribedRequest";
+    const PACKAGE: &'static str = "archway.cwerrors.v1";
+    fn full_name() -> ::prost::alloc::string::String {
+        ::prost::alloc::format!("archway.cwerrors.v1.{}", Self::NAME)
+    }
 }
 /// QueryIsSubscribedResponse is the response for Query.IsSubscribed.
 #[allow(clippy::derive_partial_eq_without_eq)]
@@ -177,6 +261,13 @@ pub struct QueryIsSubscribedResponse {
     /// subscription is valid
     #[prost(int64, tag = "2")]
     pub subscription_valid_till: i64,
+}
+impl ::prost::Name for QueryIsSubscribedResponse {
+    const NAME: &'static str = "QueryIsSubscribedResponse";
+    const PACKAGE: &'static str = "archway.cwerrors.v1";
+    fn full_name() -> ::prost::alloc::string::String {
+        ::prost::alloc::format!("archway.cwerrors.v1.{}", Self::NAME)
+    }
 }
 /// MsgUpdateParams is the Msg/UpdateParams request type.
 #[allow(clippy::derive_partial_eq_without_eq)]
@@ -192,11 +283,25 @@ pub struct MsgUpdateParams {
     #[prost(message, optional, tag = "2")]
     pub params: ::core::option::Option<Params>,
 }
+impl ::prost::Name for MsgUpdateParams {
+    const NAME: &'static str = "MsgUpdateParams";
+    const PACKAGE: &'static str = "archway.cwerrors.v1";
+    fn full_name() -> ::prost::alloc::string::String {
+        ::prost::alloc::format!("archway.cwerrors.v1.{}", Self::NAME)
+    }
+}
 /// MsgUpdateParamsResponse defines the response structure for executing a
 /// MsgUpdateParams message.
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct MsgUpdateParamsResponse {}
+impl ::prost::Name for MsgUpdateParamsResponse {
+    const NAME: &'static str = "MsgUpdateParamsResponse";
+    const PACKAGE: &'static str = "archway.cwerrors.v1";
+    fn full_name() -> ::prost::alloc::string::String {
+        ::prost::alloc::format!("archway.cwerrors.v1.{}", Self::NAME)
+    }
+}
 /// MsgSubscribeToError is the Msg/SubscribeToError request type.
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
@@ -213,6 +318,13 @@ pub struct MsgSubscribeToError {
     #[prost(message, optional, tag = "3")]
     pub fee: ::core::option::Option<super::super::super::cosmos::base::v1beta1::Coin>,
 }
+impl ::prost::Name for MsgSubscribeToError {
+    const NAME: &'static str = "MsgSubscribeToError";
+    const PACKAGE: &'static str = "archway.cwerrors.v1";
+    fn full_name() -> ::prost::alloc::string::String {
+        ::prost::alloc::format!("archway.cwerrors.v1.{}", Self::NAME)
+    }
+}
 /// MsgSubscribeToErrorResponse defines the response structure for executing a
 /// MsgSubscribeToError message.
 #[allow(clippy::derive_partial_eq_without_eq)]
@@ -222,6 +334,13 @@ pub struct MsgSubscribeToErrorResponse {
     /// valid
     #[prost(int64, tag = "1")]
     pub subscription_valid_till: i64,
+}
+impl ::prost::Name for MsgSubscribeToErrorResponse {
+    const NAME: &'static str = "MsgSubscribeToErrorResponse";
+    const PACKAGE: &'static str = "archway.cwerrors.v1";
+    fn full_name() -> ::prost::alloc::string::String {
+        ::prost::alloc::format!("archway.cwerrors.v1.{}", Self::NAME)
+    }
 }
 /// Encoded file descriptor set for the `archway.cwerrors.v1` package
 #[cfg(feature = "proto-descriptor")]

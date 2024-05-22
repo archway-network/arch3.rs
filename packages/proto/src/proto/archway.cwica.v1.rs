@@ -40,6 +40,13 @@ pub struct Params {
     #[prost(uint64, tag = "1")]
     pub msg_send_tx_max_messages: u64,
 }
+impl ::prost::Name for Params {
+    const NAME: &'static str = "Params";
+    const PACKAGE: &'static str = "archway.cwica.v1";
+    fn full_name() -> ::prost::alloc::string::String {
+        ::prost::alloc::format!("archway.cwica.v1.{}", Self::NAME)
+    }
+}
 /// GenesisState defines the cwica module's genesis state.
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
@@ -48,10 +55,24 @@ pub struct GenesisState {
     #[prost(message, optional, tag = "1")]
     pub params: ::core::option::Option<Params>,
 }
+impl ::prost::Name for GenesisState {
+    const NAME: &'static str = "GenesisState";
+    const PACKAGE: &'static str = "archway.cwica.v1";
+    fn full_name() -> ::prost::alloc::string::String {
+        ::prost::alloc::format!("archway.cwica.v1.{}", Self::NAME)
+    }
+}
 /// QueryParamsRequest is request type for the Query/Params RPC method.
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct QueryParamsRequest {}
+impl ::prost::Name for QueryParamsRequest {
+    const NAME: &'static str = "QueryParamsRequest";
+    const PACKAGE: &'static str = "archway.cwica.v1";
+    fn full_name() -> ::prost::alloc::string::String {
+        ::prost::alloc::format!("archway.cwica.v1.{}", Self::NAME)
+    }
+}
 /// QueryParamsResponse is response type for the Query/Params RPC method.
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
@@ -59,6 +80,13 @@ pub struct QueryParamsResponse {
     /// params defines the parameters for the module
     #[prost(message, optional, tag = "1")]
     pub params: ::core::option::Option<Params>,
+}
+impl ::prost::Name for QueryParamsResponse {
+    const NAME: &'static str = "QueryParamsResponse";
+    const PACKAGE: &'static str = "archway.cwica.v1";
+    fn full_name() -> ::prost::alloc::string::String {
+        ::prost::alloc::format!("archway.cwica.v1.{}", Self::NAME)
+    }
 }
 /// Sudopayload is the payload for the sudo call sent by the cwica module on IBC
 /// actions
@@ -68,6 +96,13 @@ pub struct SudoPayload {
     /// ICA is the message which carries the success responses
     #[prost(message, optional, tag = "1")]
     pub ica: ::core::option::Option<IcaSuccess>,
+}
+impl ::prost::Name for SudoPayload {
+    const NAME: &'static str = "SudoPayload";
+    const PACKAGE: &'static str = "archway.cwica.v1";
+    fn full_name() -> ::prost::alloc::string::String {
+        ::prost::alloc::format!("archway.cwica.v1.{}", Self::NAME)
+    }
 }
 /// ICASuccess is the success message after the ICA operation has taken place
 #[allow(clippy::derive_partial_eq_without_eq)]
@@ -82,6 +117,13 @@ pub struct IcaSuccess {
     #[prost(message, optional, tag = "2")]
     pub tx_executed: ::core::option::Option<TxExecuted>,
 }
+impl ::prost::Name for IcaSuccess {
+    const NAME: &'static str = "ICASuccess";
+    const PACKAGE: &'static str = "archway.cwica.v1";
+    fn full_name() -> ::prost::alloc::string::String {
+        ::prost::alloc::format!("archway.cwica.v1.{}", Self::NAME)
+    }
+}
 /// AccountRegistered is contains the address of the registered account on the
 /// counterparty chain
 #[allow(clippy::derive_partial_eq_without_eq)]
@@ -91,6 +133,13 @@ pub struct AccountRegistered {
     /// chain
     #[prost(string, tag = "1")]
     pub counterparty_address: ::prost::alloc::string::String,
+}
+impl ::prost::Name for AccountRegistered {
+    const NAME: &'static str = "AccountRegistered";
+    const PACKAGE: &'static str = "archway.cwica.v1";
+    fn full_name() -> ::prost::alloc::string::String {
+        ::prost::alloc::format!("archway.cwica.v1.{}", Self::NAME)
+    }
 }
 /// TxExecuted is the response message after the execute of the ICA tx
 #[allow(clippy::derive_partial_eq_without_eq)]
@@ -102,6 +151,13 @@ pub struct TxExecuted {
     /// data is the response data after the tx has been executed
     #[prost(bytes = "vec", tag = "2")]
     pub data: ::prost::alloc::vec::Vec<u8>,
+}
+impl ::prost::Name for TxExecuted {
+    const NAME: &'static str = "TxExecuted";
+    const PACKAGE: &'static str = "archway.cwica.v1";
+    fn full_name() -> ::prost::alloc::string::String {
+        ::prost::alloc::format!("archway.cwica.v1.{}", Self::NAME)
+    }
 }
 /// MsgRegisterInterchainAccount defines the Msg/RegisterInterchainAccount
 /// request type.
@@ -116,11 +172,25 @@ pub struct MsgRegisterInterchainAccount {
     #[prost(string, tag = "2")]
     pub connection_id: ::prost::alloc::string::String,
 }
+impl ::prost::Name for MsgRegisterInterchainAccount {
+    const NAME: &'static str = "MsgRegisterInterchainAccount";
+    const PACKAGE: &'static str = "archway.cwica.v1";
+    fn full_name() -> ::prost::alloc::string::String {
+        ::prost::alloc::format!("archway.cwica.v1.{}", Self::NAME)
+    }
+}
 /// MsgRegisterInterchainAccountResponse defines the response for
 /// Msg/RegisterInterchainAccount
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct MsgRegisterInterchainAccountResponse {}
+impl ::prost::Name for MsgRegisterInterchainAccountResponse {
+    const NAME: &'static str = "MsgRegisterInterchainAccountResponse";
+    const PACKAGE: &'static str = "archway.cwica.v1";
+    fn full_name() -> ::prost::alloc::string::String {
+        ::prost::alloc::format!("archway.cwica.v1.{}", Self::NAME)
+    }
+}
 /// MsgSendTx defines the Msg/SendTx request type.
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
@@ -142,6 +212,13 @@ pub struct MsgSendTx {
     #[prost(uint64, tag = "5")]
     pub timeout: u64,
 }
+impl ::prost::Name for MsgSendTx {
+    const NAME: &'static str = "MsgSendTx";
+    const PACKAGE: &'static str = "archway.cwica.v1";
+    fn full_name() -> ::prost::alloc::string::String {
+        ::prost::alloc::format!("archway.cwica.v1.{}", Self::NAME)
+    }
+}
 /// MsgSendTxResponse defines the response for Msg/SendTx
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
@@ -153,6 +230,13 @@ pub struct MsgSendTxResponse {
     /// channel is the channel id the transaction was submitted from
     #[prost(string, tag = "2")]
     pub channel: ::prost::alloc::string::String,
+}
+impl ::prost::Name for MsgSendTxResponse {
+    const NAME: &'static str = "MsgSendTxResponse";
+    const PACKAGE: &'static str = "archway.cwica.v1";
+    fn full_name() -> ::prost::alloc::string::String {
+        ::prost::alloc::format!("archway.cwica.v1.{}", Self::NAME)
+    }
 }
 /// MsgUpdateParams is the MsgUpdateParams request type.
 #[allow(clippy::derive_partial_eq_without_eq)]
@@ -167,10 +251,24 @@ pub struct MsgUpdateParams {
     #[prost(message, optional, tag = "2")]
     pub params: ::core::option::Option<Params>,
 }
+impl ::prost::Name for MsgUpdateParams {
+    const NAME: &'static str = "MsgUpdateParams";
+    const PACKAGE: &'static str = "archway.cwica.v1";
+    fn full_name() -> ::prost::alloc::string::String {
+        ::prost::alloc::format!("archway.cwica.v1.{}", Self::NAME)
+    }
+}
 /// MsgUpdateParamsResponse is the MsgUpdateParams response type.
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct MsgUpdateParamsResponse {}
+impl ::prost::Name for MsgUpdateParamsResponse {
+    const NAME: &'static str = "MsgUpdateParamsResponse";
+    const PACKAGE: &'static str = "archway.cwica.v1";
+    fn full_name() -> ::prost::alloc::string::String {
+        ::prost::alloc::format!("archway.cwica.v1.{}", Self::NAME)
+    }
+}
 /// Encoded file descriptor set for the `archway.cwica.v1` package
 #[cfg(feature = "proto-descriptor")]
 #[cfg_attr(docsrs, doc(cfg(feature = "proto-descriptor")))]

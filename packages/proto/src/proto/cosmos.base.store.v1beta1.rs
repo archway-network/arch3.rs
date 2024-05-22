@@ -11,6 +11,13 @@ pub struct CommitInfo {
     #[prost(message, optional, tag = "3")]
     pub timestamp: ::core::option::Option<::prost_types::Timestamp>,
 }
+impl ::prost::Name for CommitInfo {
+    const NAME: &'static str = "CommitInfo";
+    const PACKAGE: &'static str = "cosmos.base.store.v1beta1";
+    fn full_name() -> ::prost::alloc::string::String {
+        ::prost::alloc::format!("cosmos.base.store.v1beta1.{}", Self::NAME)
+    }
+}
 /// StoreInfo defines store-specific commit information. It contains a reference
 /// between a store name and the commit ID.
 #[allow(clippy::derive_partial_eq_without_eq)]
@@ -21,6 +28,13 @@ pub struct StoreInfo {
     #[prost(message, optional, tag = "2")]
     pub commit_id: ::core::option::Option<CommitId>,
 }
+impl ::prost::Name for StoreInfo {
+    const NAME: &'static str = "StoreInfo";
+    const PACKAGE: &'static str = "cosmos.base.store.v1beta1";
+    fn full_name() -> ::prost::alloc::string::String {
+        ::prost::alloc::format!("cosmos.base.store.v1beta1.{}", Self::NAME)
+    }
+}
 /// CommitID defines the commitment information when a specific store is
 /// committed.
 #[allow(clippy::derive_partial_eq_without_eq)]
@@ -30,6 +44,13 @@ pub struct CommitId {
     pub version: i64,
     #[prost(bytes = "vec", tag = "2")]
     pub hash: ::prost::alloc::vec::Vec<u8>,
+}
+impl ::prost::Name for CommitId {
+    const NAME: &'static str = "CommitID";
+    const PACKAGE: &'static str = "cosmos.base.store.v1beta1";
+    fn full_name() -> ::prost::alloc::string::String {
+        ::prost::alloc::format!("cosmos.base.store.v1beta1.{}", Self::NAME)
+    }
 }
 /// StoreKVPair is a KVStore KVPair used for listening to state changes (Sets and Deletes)
 /// It optionally includes the StoreKey for the originating KVStore and a Boolean flag to distinguish between Sets and
@@ -49,6 +70,13 @@ pub struct StoreKvPair {
     pub key: ::prost::alloc::vec::Vec<u8>,
     #[prost(bytes = "vec", tag = "4")]
     pub value: ::prost::alloc::vec::Vec<u8>,
+}
+impl ::prost::Name for StoreKvPair {
+    const NAME: &'static str = "StoreKVPair";
+    const PACKAGE: &'static str = "cosmos.base.store.v1beta1";
+    fn full_name() -> ::prost::alloc::string::String {
+        ::prost::alloc::format!("cosmos.base.store.v1beta1.{}", Self::NAME)
+    }
 }
 /// BlockMetadata contains all the abci event data of a block
 /// the file streamer dump them into files together with the state changes.
@@ -81,6 +109,20 @@ pub mod block_metadata {
         pub request: ::core::option::Option<::tendermint_proto::v0_37::abci::RequestDeliverTx>,
         #[prost(message, optional, tag = "2")]
         pub response: ::core::option::Option<::tendermint_proto::v0_37::abci::ResponseDeliverTx>,
+    }
+    impl ::prost::Name for DeliverTx {
+        const NAME: &'static str = "DeliverTx";
+        const PACKAGE: &'static str = "cosmos.base.store.v1beta1";
+        fn full_name() -> ::prost::alloc::string::String {
+            ::prost::alloc::format!("cosmos.base.store.v1beta1.BlockMetadata.{}", Self::NAME)
+        }
+    }
+}
+impl ::prost::Name for BlockMetadata {
+    const NAME: &'static str = "BlockMetadata";
+    const PACKAGE: &'static str = "cosmos.base.store.v1beta1";
+    fn full_name() -> ::prost::alloc::string::String {
+        ::prost::alloc::format!("cosmos.base.store.v1beta1.{}", Self::NAME)
     }
 }
 /// Encoded file descriptor set for the `cosmos.base.store.v1beta1` package

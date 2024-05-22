@@ -9,6 +9,13 @@ pub struct Module {
     #[prost(string, tag = "2")]
     pub authority: ::prost::alloc::string::String,
 }
+impl ::prost::Name for Module {
+    const NAME: &'static str = "Module";
+    const PACKAGE: &'static str = "cosmos.mint.module.v1";
+    fn full_name() -> ::prost::alloc::string::String {
+        ::prost::alloc::format!("cosmos.mint.module.v1.{}", Self::NAME)
+    }
+}
 /// Encoded file descriptor set for the `cosmos.mint.module.v1` package
 #[cfg(feature = "proto-descriptor")]
 #[cfg_attr(docsrs, doc(cfg(feature = "proto-descriptor")))]

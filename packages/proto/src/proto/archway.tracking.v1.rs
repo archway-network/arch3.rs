@@ -15,6 +15,13 @@ pub struct TxInfo {
     #[prost(uint64, tag = "3")]
     pub total_gas: u64,
 }
+impl ::prost::Name for TxInfo {
+    const NAME: &'static str = "TxInfo";
+    const PACKAGE: &'static str = "archway.tracking.v1";
+    fn full_name() -> ::prost::alloc::string::String {
+        ::prost::alloc::format!("archway.tracking.v1.{}", Self::NAME)
+    }
+}
 /// ContractOperationInfo keeps a single contract operation gas consumption data.
 /// Object is being created by the IngestGasRecord call from the wasmd.
 #[allow(clippy::derive_partial_eq_without_eq)]
@@ -42,6 +49,13 @@ pub struct ContractOperationInfo {
     #[prost(uint64, tag = "6")]
     pub sdk_gas: u64,
 }
+impl ::prost::Name for ContractOperationInfo {
+    const NAME: &'static str = "ContractOperationInfo";
+    const PACKAGE: &'static str = "archway.tracking.v1";
+    fn full_name() -> ::prost::alloc::string::String {
+        ::prost::alloc::format!("archway.tracking.v1.{}", Self::NAME)
+    }
+}
 /// BlockTracking is the tracking information for a block.
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
@@ -49,6 +63,13 @@ pub struct BlockTracking {
     /// txs defines the list of transactions tracked in the block.
     #[prost(message, repeated, tag = "1")]
     pub txs: ::prost::alloc::vec::Vec<TxTracking>,
+}
+impl ::prost::Name for BlockTracking {
+    const NAME: &'static str = "BlockTracking";
+    const PACKAGE: &'static str = "archway.tracking.v1";
+    fn full_name() -> ::prost::alloc::string::String {
+        ::prost::alloc::format!("archway.tracking.v1.{}", Self::NAME)
+    }
 }
 /// TxTracking is the tracking information for a single transaction.
 #[allow(clippy::derive_partial_eq_without_eq)]
@@ -61,6 +82,13 @@ pub struct TxTracking {
     /// transaction.
     #[prost(message, repeated, tag = "2")]
     pub contract_operations: ::prost::alloc::vec::Vec<ContractOperationInfo>,
+}
+impl ::prost::Name for TxTracking {
+    const NAME: &'static str = "TxTracking";
+    const PACKAGE: &'static str = "archway.tracking.v1";
+    fn full_name() -> ::prost::alloc::string::String {
+        ::prost::alloc::format!("archway.tracking.v1.{}", Self::NAME)
+    }
 }
 /// ContractOperation denotes which operation consumed gas.
 #[derive(Clone, Copy, Debug, PartialEq, Eq, Hash, PartialOrd, Ord, ::prost::Enumeration)]
@@ -133,16 +161,37 @@ pub struct GenesisState {
     #[prost(message, repeated, tag = "4")]
     pub contract_op_infos: ::prost::alloc::vec::Vec<ContractOperationInfo>,
 }
+impl ::prost::Name for GenesisState {
+    const NAME: &'static str = "GenesisState";
+    const PACKAGE: &'static str = "archway.tracking.v1";
+    fn full_name() -> ::prost::alloc::string::String {
+        ::prost::alloc::format!("archway.tracking.v1.{}", Self::NAME)
+    }
+}
 /// QueryBlockGasTrackingRequest is the request for Query.BlockGasTracking.
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct QueryBlockGasTrackingRequest {}
+impl ::prost::Name for QueryBlockGasTrackingRequest {
+    const NAME: &'static str = "QueryBlockGasTrackingRequest";
+    const PACKAGE: &'static str = "archway.tracking.v1";
+    fn full_name() -> ::prost::alloc::string::String {
+        ::prost::alloc::format!("archway.tracking.v1.{}", Self::NAME)
+    }
+}
 /// QueryBlockGasTrackingResponse is the response for Query.BlockGasTracking.
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct QueryBlockGasTrackingResponse {
     #[prost(message, optional, tag = "1")]
     pub block: ::core::option::Option<BlockTracking>,
+}
+impl ::prost::Name for QueryBlockGasTrackingResponse {
+    const NAME: &'static str = "QueryBlockGasTrackingResponse";
+    const PACKAGE: &'static str = "archway.tracking.v1";
+    fn full_name() -> ::prost::alloc::string::String {
+        ::prost::alloc::format!("archway.tracking.v1.{}", Self::NAME)
+    }
 }
 /// Encoded file descriptor set for the `archway.tracking.v1` package
 #[cfg(feature = "proto-descriptor")]

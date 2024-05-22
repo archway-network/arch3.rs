@@ -6,10 +6,24 @@ pub struct MsgRegisterAsGranter {
     #[prost(string, tag = "1")]
     pub granting_contract: ::prost::alloc::string::String,
 }
+impl ::prost::Name for MsgRegisterAsGranter {
+    const NAME: &'static str = "MsgRegisterAsGranter";
+    const PACKAGE: &'static str = "archway.cwfees.v1";
+    fn full_name() -> ::prost::alloc::string::String {
+        ::prost::alloc::format!("archway.cwfees.v1.{}", Self::NAME)
+    }
+}
 /// MsgRegisterAsGranterResponse defines the response of RegisterAsGranter.
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct MsgRegisterAsGranterResponse {}
+impl ::prost::Name for MsgRegisterAsGranterResponse {
+    const NAME: &'static str = "MsgRegisterAsGranterResponse";
+    const PACKAGE: &'static str = "archway.cwfees.v1";
+    fn full_name() -> ::prost::alloc::string::String {
+        ::prost::alloc::format!("archway.cwfees.v1.{}", Self::NAME)
+    }
+}
 /// MsgUnregisterAsGranter can be used by a cosmwasm contract to unregister itself as a fee granter.
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
@@ -17,10 +31,24 @@ pub struct MsgUnregisterAsGranter {
     #[prost(string, tag = "1")]
     pub granting_contract: ::prost::alloc::string::String,
 }
+impl ::prost::Name for MsgUnregisterAsGranter {
+    const NAME: &'static str = "MsgUnregisterAsGranter";
+    const PACKAGE: &'static str = "archway.cwfees.v1";
+    fn full_name() -> ::prost::alloc::string::String {
+        ::prost::alloc::format!("archway.cwfees.v1.{}", Self::NAME)
+    }
+}
 /// MsgUnregisterAsGranterResponse defines the response of UnregisterAsGranter.
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct MsgUnregisterAsGranterResponse {}
+impl ::prost::Name for MsgUnregisterAsGranterResponse {
+    const NAME: &'static str = "MsgUnregisterAsGranterResponse";
+    const PACKAGE: &'static str = "archway.cwfees.v1";
+    fn full_name() -> ::prost::alloc::string::String {
+        ::prost::alloc::format!("archway.cwfees.v1.{}", Self::NAME)
+    }
+}
 /// IsGrantingContract is the request type of IsGrantingContract RPC.
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
@@ -30,6 +58,13 @@ pub struct IsGrantingContractRequest {
     #[prost(string, tag = "1")]
     pub contract_address: ::prost::alloc::string::String,
 }
+impl ::prost::Name for IsGrantingContractRequest {
+    const NAME: &'static str = "IsGrantingContractRequest";
+    const PACKAGE: &'static str = "archway.cwfees.v1";
+    fn full_name() -> ::prost::alloc::string::String {
+        ::prost::alloc::format!("archway.cwfees.v1.{}", Self::NAME)
+    }
+}
 /// IsGrantingContractResponse is the response type of IsGRantingContract RPC.
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
@@ -38,12 +73,26 @@ pub struct IsGrantingContractResponse {
     #[prost(bool, tag = "1")]
     pub is_granting_contract: bool,
 }
+impl ::prost::Name for IsGrantingContractResponse {
+    const NAME: &'static str = "IsGrantingContractResponse";
+    const PACKAGE: &'static str = "archway.cwfees.v1";
+    fn full_name() -> ::prost::alloc::string::String {
+        ::prost::alloc::format!("archway.cwfees.v1.{}", Self::NAME)
+    }
+}
 /// GenesisState represents the genesis state of the cwfeesant module.
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct GenesisState {
     #[prost(string, repeated, tag = "1")]
     pub granting_contracts: ::prost::alloc::vec::Vec<::prost::alloc::string::String>,
+}
+impl ::prost::Name for GenesisState {
+    const NAME: &'static str = "GenesisState";
+    const PACKAGE: &'static str = "archway.cwfees.v1";
+    fn full_name() -> ::prost::alloc::string::String {
+        ::prost::alloc::format!("archway.cwfees.v1.{}", Self::NAME)
+    }
 }
 /// Encoded file descriptor set for the `archway.cwfees.v1` package
 #[cfg(feature = "proto-descriptor")]

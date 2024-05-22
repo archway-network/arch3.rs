@@ -4,6 +4,7 @@ plugins:
     out: .
     opt:
       - extern_path=.tendermint=::tendermint_proto::v0_37
+      - enable_type_names
       - file_descriptor_set
   - plugin: buf.build/community/neoeinstein-tonic:v0.4.0
     out: .

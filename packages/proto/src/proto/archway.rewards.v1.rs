@@ -25,6 +25,13 @@ pub struct Params {
     pub min_price_of_gas:
         ::core::option::Option<super::super::super::cosmos::base::v1beta1::DecCoin>,
 }
+impl ::prost::Name for Params {
+    const NAME: &'static str = "Params";
+    const PACKAGE: &'static str = "archway.rewards.v1";
+    fn full_name() -> ::prost::alloc::string::String {
+        ::prost::alloc::format!("archway.rewards.v1.{}", Self::NAME)
+    }
+}
 /// ContractMetadata defines the contract rewards distribution options for a
 /// particular contract.
 #[allow(clippy::derive_partial_eq_without_eq)]
@@ -49,6 +56,13 @@ pub struct ContractMetadata {
     #[prost(bool, tag = "4")]
     pub withdraw_to_wallet: bool,
 }
+impl ::prost::Name for ContractMetadata {
+    const NAME: &'static str = "ContractMetadata";
+    const PACKAGE: &'static str = "archway.rewards.v1";
+    fn full_name() -> ::prost::alloc::string::String {
+        ::prost::alloc::format!("archway.rewards.v1.{}", Self::NAME)
+    }
+}
 /// BlockRewards defines block related rewards distribution data.
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
@@ -64,6 +78,13 @@ pub struct BlockRewards {
     #[prost(uint64, tag = "3")]
     pub max_gas: u64,
 }
+impl ::prost::Name for BlockRewards {
+    const NAME: &'static str = "BlockRewards";
+    const PACKAGE: &'static str = "archway.rewards.v1";
+    fn full_name() -> ::prost::alloc::string::String {
+        ::prost::alloc::format!("archway.rewards.v1.{}", Self::NAME)
+    }
+}
 /// TxRewards defines transaction related rewards distribution data.
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
@@ -78,6 +99,13 @@ pub struct TxRewards {
     /// fee_rewards is the rewards to be distributed.
     #[prost(message, repeated, tag = "3")]
     pub fee_rewards: ::prost::alloc::vec::Vec<super::super::super::cosmos::base::v1beta1::Coin>,
+}
+impl ::prost::Name for TxRewards {
+    const NAME: &'static str = "TxRewards";
+    const PACKAGE: &'static str = "archway.rewards.v1";
+    fn full_name() -> ::prost::alloc::string::String {
+        ::prost::alloc::format!("archway.rewards.v1.{}", Self::NAME)
+    }
 }
 /// RewardsRecord defines a record that is used to distribute rewards later (lazy
 /// distribution). This record is being created by the x/rewards EndBlocker and
@@ -104,6 +132,13 @@ pub struct RewardsRecord {
     #[prost(message, optional, tag = "5")]
     pub calculated_time: ::core::option::Option<::prost_types::Timestamp>,
 }
+impl ::prost::Name for RewardsRecord {
+    const NAME: &'static str = "RewardsRecord";
+    const PACKAGE: &'static str = "archway.rewards.v1";
+    fn full_name() -> ::prost::alloc::string::String {
+        ::prost::alloc::format!("archway.rewards.v1.{}", Self::NAME)
+    }
+}
 /// FlatFee defines the flat fee for a particular contract.
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
@@ -114,6 +149,13 @@ pub struct FlatFee {
     /// flat_fee defines the minimum flat fee set by the contract_owner
     #[prost(message, optional, tag = "2")]
     pub flat_fee: ::core::option::Option<super::super::super::cosmos::base::v1beta1::Coin>,
+}
+impl ::prost::Name for FlatFee {
+    const NAME: &'static str = "FlatFee";
+    const PACKAGE: &'static str = "archway.rewards.v1";
+    fn full_name() -> ::prost::alloc::string::String {
+        ::prost::alloc::format!("archway.rewards.v1.{}", Self::NAME)
+    }
 }
 /// ContractMetadataSetEvent is emitted when the contract metadata is created or
 /// updated.
@@ -126,6 +168,13 @@ pub struct ContractMetadataSetEvent {
     /// metadata defines the new contract metadata state.
     #[prost(message, optional, tag = "2")]
     pub metadata: ::core::option::Option<ContractMetadata>,
+}
+impl ::prost::Name for ContractMetadataSetEvent {
+    const NAME: &'static str = "ContractMetadataSetEvent";
+    const PACKAGE: &'static str = "archway.rewards.v1";
+    fn full_name() -> ::prost::alloc::string::String {
+        ::prost::alloc::format!("archway.rewards.v1.{}", Self::NAME)
+    }
 }
 /// ContractRewardCalculationEvent is emitted when the contract reward is
 /// calculated.
@@ -150,6 +199,13 @@ pub struct ContractRewardCalculationEvent {
     #[prost(message, optional, tag = "5")]
     pub metadata: ::core::option::Option<ContractMetadata>,
 }
+impl ::prost::Name for ContractRewardCalculationEvent {
+    const NAME: &'static str = "ContractRewardCalculationEvent";
+    const PACKAGE: &'static str = "archway.rewards.v1";
+    fn full_name() -> ::prost::alloc::string::String {
+        ::prost::alloc::format!("archway.rewards.v1.{}", Self::NAME)
+    }
+}
 /// RewardsWithdrawEvent is emitted when credited rewards for a specific
 /// rewards_address are distributed. Event could be triggered by a transaction
 /// (via CLI for example) or by a contract via WASM bindings.
@@ -163,6 +219,13 @@ pub struct RewardsWithdrawEvent {
     #[prost(message, repeated, tag = "2")]
     pub rewards: ::prost::alloc::vec::Vec<super::super::super::cosmos::base::v1beta1::Coin>,
 }
+impl ::prost::Name for RewardsWithdrawEvent {
+    const NAME: &'static str = "RewardsWithdrawEvent";
+    const PACKAGE: &'static str = "archway.rewards.v1";
+    fn full_name() -> ::prost::alloc::string::String {
+        ::prost::alloc::format!("archway.rewards.v1.{}", Self::NAME)
+    }
+}
 /// MinConsensusFeeSetEvent is emitted when the minimum consensus fee is updated.
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
@@ -170,6 +233,13 @@ pub struct MinConsensusFeeSetEvent {
     /// fee defines the updated minimum gas unit price.
     #[prost(message, optional, tag = "1")]
     pub fee: ::core::option::Option<super::super::super::cosmos::base::v1beta1::DecCoin>,
+}
+impl ::prost::Name for MinConsensusFeeSetEvent {
+    const NAME: &'static str = "MinConsensusFeeSetEvent";
+    const PACKAGE: &'static str = "archway.rewards.v1";
+    fn full_name() -> ::prost::alloc::string::String {
+        ::prost::alloc::format!("archway.rewards.v1.{}", Self::NAME)
+    }
 }
 /// ContractFlatFeeSetEvent is emitted when the contract flat fee is updated
 #[allow(clippy::derive_partial_eq_without_eq)]
@@ -183,6 +253,13 @@ pub struct ContractFlatFeeSetEvent {
     /// contract
     #[prost(message, optional, tag = "2")]
     pub flat_fee: ::core::option::Option<super::super::super::cosmos::base::v1beta1::Coin>,
+}
+impl ::prost::Name for ContractFlatFeeSetEvent {
+    const NAME: &'static str = "ContractFlatFeeSetEvent";
+    const PACKAGE: &'static str = "archway.rewards.v1";
+    fn full_name() -> ::prost::alloc::string::String {
+        ::prost::alloc::format!("archway.rewards.v1.{}", Self::NAME)
+    }
 }
 /// GenesisState defines the initial state of the tracking module.
 #[allow(clippy::derive_partial_eq_without_eq)]
@@ -215,16 +292,37 @@ pub struct GenesisState {
     #[prost(message, repeated, tag = "8")]
     pub flat_fees: ::prost::alloc::vec::Vec<FlatFee>,
 }
+impl ::prost::Name for GenesisState {
+    const NAME: &'static str = "GenesisState";
+    const PACKAGE: &'static str = "archway.rewards.v1";
+    fn full_name() -> ::prost::alloc::string::String {
+        ::prost::alloc::format!("archway.rewards.v1.{}", Self::NAME)
+    }
+}
 /// QueryParamsRequest is the request for Query.Params.
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct QueryParamsRequest {}
+impl ::prost::Name for QueryParamsRequest {
+    const NAME: &'static str = "QueryParamsRequest";
+    const PACKAGE: &'static str = "archway.rewards.v1";
+    fn full_name() -> ::prost::alloc::string::String {
+        ::prost::alloc::format!("archway.rewards.v1.{}", Self::NAME)
+    }
+}
 /// QueryParamsResponse is the response for Query.Params.
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct QueryParamsResponse {
     #[prost(message, optional, tag = "1")]
     pub params: ::core::option::Option<Params>,
+}
+impl ::prost::Name for QueryParamsResponse {
+    const NAME: &'static str = "QueryParamsResponse";
+    const PACKAGE: &'static str = "archway.rewards.v1";
+    fn full_name() -> ::prost::alloc::string::String {
+        ::prost::alloc::format!("archway.rewards.v1.{}", Self::NAME)
+    }
 }
 /// QueryContractMetadataRequest is the request for Query.ContractMetadata.
 #[allow(clippy::derive_partial_eq_without_eq)]
@@ -234,6 +332,13 @@ pub struct QueryContractMetadataRequest {
     #[prost(string, tag = "1")]
     pub contract_address: ::prost::alloc::string::String,
 }
+impl ::prost::Name for QueryContractMetadataRequest {
+    const NAME: &'static str = "QueryContractMetadataRequest";
+    const PACKAGE: &'static str = "archway.rewards.v1";
+    fn full_name() -> ::prost::alloc::string::String {
+        ::prost::alloc::format!("archway.rewards.v1.{}", Self::NAME)
+    }
+}
 /// QueryContractMetadataResponse is the response for Query.ContractMetadata.
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
@@ -241,11 +346,25 @@ pub struct QueryContractMetadataResponse {
     #[prost(message, optional, tag = "1")]
     pub metadata: ::core::option::Option<ContractMetadata>,
 }
+impl ::prost::Name for QueryContractMetadataResponse {
+    const NAME: &'static str = "QueryContractMetadataResponse";
+    const PACKAGE: &'static str = "archway.rewards.v1";
+    fn full_name() -> ::prost::alloc::string::String {
+        ::prost::alloc::format!("archway.rewards.v1.{}", Self::NAME)
+    }
+}
 /// QueryBlockRewardsTrackingRequest is the request for
 /// Query.BlockRewardsTracking.
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct QueryBlockRewardsTrackingRequest {}
+impl ::prost::Name for QueryBlockRewardsTrackingRequest {
+    const NAME: &'static str = "QueryBlockRewardsTrackingRequest";
+    const PACKAGE: &'static str = "archway.rewards.v1";
+    fn full_name() -> ::prost::alloc::string::String {
+        ::prost::alloc::format!("archway.rewards.v1.{}", Self::NAME)
+    }
+}
 /// QueryBlockRewardsTrackingResponse is the response for
 /// Query.BlockRewardsTracking.
 #[allow(clippy::derive_partial_eq_without_eq)]
@@ -254,10 +373,24 @@ pub struct QueryBlockRewardsTrackingResponse {
     #[prost(message, optional, tag = "1")]
     pub block: ::core::option::Option<BlockTracking>,
 }
+impl ::prost::Name for QueryBlockRewardsTrackingResponse {
+    const NAME: &'static str = "QueryBlockRewardsTrackingResponse";
+    const PACKAGE: &'static str = "archway.rewards.v1";
+    fn full_name() -> ::prost::alloc::string::String {
+        ::prost::alloc::format!("archway.rewards.v1.{}", Self::NAME)
+    }
+}
 /// QueryRewardsPoolRequest is the request for Query.RewardsPool.
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct QueryRewardsPoolRequest {}
+impl ::prost::Name for QueryRewardsPoolRequest {
+    const NAME: &'static str = "QueryRewardsPoolRequest";
+    const PACKAGE: &'static str = "archway.rewards.v1";
+    fn full_name() -> ::prost::alloc::string::String {
+        ::prost::alloc::format!("archway.rewards.v1.{}", Self::NAME)
+    }
+}
 /// QueryRewardsPoolResponse is the response for Query.RewardsPool.
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
@@ -272,6 +405,13 @@ pub struct QueryRewardsPoolResponse {
     #[prost(message, repeated, tag = "2")]
     pub treasury_funds: ::prost::alloc::vec::Vec<super::super::super::cosmos::base::v1beta1::Coin>,
 }
+impl ::prost::Name for QueryRewardsPoolResponse {
+    const NAME: &'static str = "QueryRewardsPoolResponse";
+    const PACKAGE: &'static str = "archway.rewards.v1";
+    fn full_name() -> ::prost::alloc::string::String {
+        ::prost::alloc::format!("archway.rewards.v1.{}", Self::NAME)
+    }
+}
 /// QueryEstimateTxFeesRequest is the request for Query.EstimateTxFees.
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
@@ -282,6 +422,13 @@ pub struct QueryEstimateTxFeesRequest {
     /// contract_address whose flat fee is considered when estimating tx fees.
     #[prost(string, tag = "2")]
     pub contract_address: ::prost::alloc::string::String,
+}
+impl ::prost::Name for QueryEstimateTxFeesRequest {
+    const NAME: &'static str = "QueryEstimateTxFeesRequest";
+    const PACKAGE: &'static str = "archway.rewards.v1";
+    fn full_name() -> ::prost::alloc::string::String {
+        ::prost::alloc::format!("archway.rewards.v1.{}", Self::NAME)
+    }
 }
 /// QueryEstimateTxFeesResponse is the response for Query.EstimateTxFees.
 #[allow(clippy::derive_partial_eq_without_eq)]
@@ -294,6 +441,13 @@ pub struct QueryEstimateTxFeesResponse {
     #[prost(message, repeated, tag = "2")]
     pub estimated_fee: ::prost::alloc::vec::Vec<super::super::super::cosmos::base::v1beta1::Coin>,
 }
+impl ::prost::Name for QueryEstimateTxFeesResponse {
+    const NAME: &'static str = "QueryEstimateTxFeesResponse";
+    const PACKAGE: &'static str = "archway.rewards.v1";
+    fn full_name() -> ::prost::alloc::string::String {
+        ::prost::alloc::format!("archway.rewards.v1.{}", Self::NAME)
+    }
+}
 /// BlockTracking is the tracking information for a block.
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
@@ -304,6 +458,13 @@ pub struct BlockTracking {
     /// tx_rewards defines the transaction rewards for the block.
     #[prost(message, repeated, tag = "2")]
     pub tx_rewards: ::prost::alloc::vec::Vec<TxRewards>,
+}
+impl ::prost::Name for BlockTracking {
+    const NAME: &'static str = "BlockTracking";
+    const PACKAGE: &'static str = "archway.rewards.v1";
+    fn full_name() -> ::prost::alloc::string::String {
+        ::prost::alloc::format!("archway.rewards.v1.{}", Self::NAME)
+    }
 }
 /// QueryRewardsRecordsRequest is the request for Query.RewardsRecords.
 #[allow(clippy::derive_partial_eq_without_eq)]
@@ -318,6 +479,13 @@ pub struct QueryRewardsRecordsRequest {
     pub pagination:
         ::core::option::Option<super::super::super::cosmos::base::query::v1beta1::PageRequest>,
 }
+impl ::prost::Name for QueryRewardsRecordsRequest {
+    const NAME: &'static str = "QueryRewardsRecordsRequest";
+    const PACKAGE: &'static str = "archway.rewards.v1";
+    fn full_name() -> ::prost::alloc::string::String {
+        ::prost::alloc::format!("archway.rewards.v1.{}", Self::NAME)
+    }
+}
 /// QueryRewardsRecordsResponse is the response for Query.RewardsRecords.
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
@@ -330,6 +498,13 @@ pub struct QueryRewardsRecordsResponse {
     pub pagination:
         ::core::option::Option<super::super::super::cosmos::base::query::v1beta1::PageResponse>,
 }
+impl ::prost::Name for QueryRewardsRecordsResponse {
+    const NAME: &'static str = "QueryRewardsRecordsResponse";
+    const PACKAGE: &'static str = "archway.rewards.v1";
+    fn full_name() -> ::prost::alloc::string::String {
+        ::prost::alloc::format!("archway.rewards.v1.{}", Self::NAME)
+    }
+}
 /// QueryOutstandingRewardsRequest is the request for Query.OutstandingRewards.
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
@@ -338,6 +513,13 @@ pub struct QueryOutstandingRewardsRequest {
     /// (bech32 encoded).
     #[prost(string, tag = "1")]
     pub rewards_address: ::prost::alloc::string::String,
+}
+impl ::prost::Name for QueryOutstandingRewardsRequest {
+    const NAME: &'static str = "QueryOutstandingRewardsRequest";
+    const PACKAGE: &'static str = "archway.rewards.v1";
+    fn full_name() -> ::prost::alloc::string::String {
+        ::prost::alloc::format!("archway.rewards.v1.{}", Self::NAME)
+    }
 }
 /// QueryOutstandingRewardsResponse is the response for Query.OutstandingRewards.
 #[allow(clippy::derive_partial_eq_without_eq)]
@@ -351,6 +533,13 @@ pub struct QueryOutstandingRewardsResponse {
     #[prost(uint64, tag = "2")]
     pub records_num: u64,
 }
+impl ::prost::Name for QueryOutstandingRewardsResponse {
+    const NAME: &'static str = "QueryOutstandingRewardsResponse";
+    const PACKAGE: &'static str = "archway.rewards.v1";
+    fn full_name() -> ::prost::alloc::string::String {
+        ::prost::alloc::format!("archway.rewards.v1.{}", Self::NAME)
+    }
+}
 /// QueryFlatFeeRequest is the request for Query.FlatFeet
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
@@ -358,6 +547,13 @@ pub struct QueryFlatFeeRequest {
     /// contract_address is the contract address (bech32 encoded).
     #[prost(string, tag = "1")]
     pub contract_address: ::prost::alloc::string::String,
+}
+impl ::prost::Name for QueryFlatFeeRequest {
+    const NAME: &'static str = "QueryFlatFeeRequest";
+    const PACKAGE: &'static str = "archway.rewards.v1";
+    fn full_name() -> ::prost::alloc::string::String {
+        ::prost::alloc::format!("archway.rewards.v1.{}", Self::NAME)
+    }
 }
 /// QueryFlatFeeResponse is the response for Query.FlatFee
 #[allow(clippy::derive_partial_eq_without_eq)]
@@ -367,6 +563,13 @@ pub struct QueryFlatFeeResponse {
     /// contract execution.
     #[prost(message, optional, tag = "1")]
     pub flat_fee_amount: ::core::option::Option<super::super::super::cosmos::base::v1beta1::Coin>,
+}
+impl ::prost::Name for QueryFlatFeeResponse {
+    const NAME: &'static str = "QueryFlatFeeResponse";
+    const PACKAGE: &'static str = "archway.rewards.v1";
+    fn full_name() -> ::prost::alloc::string::String {
+        ::prost::alloc::format!("archway.rewards.v1.{}", Self::NAME)
+    }
 }
 /// MsgSetContractMetadata is the request for Msg.SetContractMetadata.
 #[allow(clippy::derive_partial_eq_without_eq)]
@@ -380,10 +583,24 @@ pub struct MsgSetContractMetadata {
     #[prost(message, optional, tag = "2")]
     pub metadata: ::core::option::Option<ContractMetadata>,
 }
+impl ::prost::Name for MsgSetContractMetadata {
+    const NAME: &'static str = "MsgSetContractMetadata";
+    const PACKAGE: &'static str = "archway.rewards.v1";
+    fn full_name() -> ::prost::alloc::string::String {
+        ::prost::alloc::format!("archway.rewards.v1.{}", Self::NAME)
+    }
+}
 /// MsgSetContractMetadataResponse is the response for Msg.SetContractMetadata.
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct MsgSetContractMetadataResponse {}
+impl ::prost::Name for MsgSetContractMetadataResponse {
+    const NAME: &'static str = "MsgSetContractMetadataResponse";
+    const PACKAGE: &'static str = "archway.rewards.v1";
+    fn full_name() -> ::prost::alloc::string::String {
+        ::prost::alloc::format!("archway.rewards.v1.{}", Self::NAME)
+    }
+}
 /// MsgWithdrawRewards is the request for Msg.WithdrawRewards.
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
@@ -403,11 +620,25 @@ pub mod msg_withdraw_rewards {
         #[prost(uint64, tag = "1")]
         pub limit: u64,
     }
+    impl ::prost::Name for RecordsLimit {
+        const NAME: &'static str = "RecordsLimit";
+        const PACKAGE: &'static str = "archway.rewards.v1";
+        fn full_name() -> ::prost::alloc::string::String {
+            ::prost::alloc::format!("archway.rewards.v1.MsgWithdrawRewards.{}", Self::NAME)
+        }
+    }
     #[allow(clippy::derive_partial_eq_without_eq)]
     #[derive(Clone, PartialEq, ::prost::Message)]
     pub struct RecordIDs {
         #[prost(uint64, repeated, tag = "1")]
         pub ids: ::prost::alloc::vec::Vec<u64>,
+    }
+    impl ::prost::Name for RecordIDs {
+        const NAME: &'static str = "RecordIDs";
+        const PACKAGE: &'static str = "archway.rewards.v1";
+        fn full_name() -> ::prost::alloc::string::String {
+            ::prost::alloc::format!("archway.rewards.v1.MsgWithdrawRewards.{}", Self::NAME)
+        }
     }
     /// mode defines the operation type.
     #[allow(clippy::derive_partial_eq_without_eq)]
@@ -422,6 +653,13 @@ pub mod msg_withdraw_rewards {
         RecordIds(RecordIDs),
     }
 }
+impl ::prost::Name for MsgWithdrawRewards {
+    const NAME: &'static str = "MsgWithdrawRewards";
+    const PACKAGE: &'static str = "archway.rewards.v1";
+    fn full_name() -> ::prost::alloc::string::String {
+        ::prost::alloc::format!("archway.rewards.v1.{}", Self::NAME)
+    }
+}
 /// MsgWithdrawRewardsResponse is the response for Msg.WithdrawRewards.
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
@@ -432,6 +670,13 @@ pub struct MsgWithdrawRewardsResponse {
     /// rewards are the total rewards transferred.
     #[prost(message, repeated, tag = "2")]
     pub total_rewards: ::prost::alloc::vec::Vec<super::super::super::cosmos::base::v1beta1::Coin>,
+}
+impl ::prost::Name for MsgWithdrawRewardsResponse {
+    const NAME: &'static str = "MsgWithdrawRewardsResponse";
+    const PACKAGE: &'static str = "archway.rewards.v1";
+    fn full_name() -> ::prost::alloc::string::String {
+        ::prost::alloc::format!("archway.rewards.v1.{}", Self::NAME)
+    }
 }
 /// MsgSetFlatFee is the request for Msg.SetFlatFee.
 #[allow(clippy::derive_partial_eq_without_eq)]
@@ -447,10 +692,24 @@ pub struct MsgSetFlatFee {
     #[prost(message, optional, tag = "3")]
     pub flat_fee_amount: ::core::option::Option<super::super::super::cosmos::base::v1beta1::Coin>,
 }
+impl ::prost::Name for MsgSetFlatFee {
+    const NAME: &'static str = "MsgSetFlatFee";
+    const PACKAGE: &'static str = "archway.rewards.v1";
+    fn full_name() -> ::prost::alloc::string::String {
+        ::prost::alloc::format!("archway.rewards.v1.{}", Self::NAME)
+    }
+}
 /// MsgSetFlatFeeResponse is the response for Msg.SetFlatFee.
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct MsgSetFlatFeeResponse {}
+impl ::prost::Name for MsgSetFlatFeeResponse {
+    const NAME: &'static str = "MsgSetFlatFeeResponse";
+    const PACKAGE: &'static str = "archway.rewards.v1";
+    fn full_name() -> ::prost::alloc::string::String {
+        ::prost::alloc::format!("archway.rewards.v1.{}", Self::NAME)
+    }
+}
 /// MsgUpdateParams is the Msg/UpdateParams request type.
 ///
 /// Since: archway v5 && cosmos-sdk 0.47
@@ -466,6 +725,13 @@ pub struct MsgUpdateParams {
     #[prost(message, optional, tag = "2")]
     pub params: ::core::option::Option<Params>,
 }
+impl ::prost::Name for MsgUpdateParams {
+    const NAME: &'static str = "MsgUpdateParams";
+    const PACKAGE: &'static str = "archway.rewards.v1";
+    fn full_name() -> ::prost::alloc::string::String {
+        ::prost::alloc::format!("archway.rewards.v1.{}", Self::NAME)
+    }
+}
 /// MsgUpdateParamsResponse defines the response structure for executing a
 /// MsgUpdateParams message.
 ///
@@ -473,6 +739,13 @@ pub struct MsgUpdateParams {
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct MsgUpdateParamsResponse {}
+impl ::prost::Name for MsgUpdateParamsResponse {
+    const NAME: &'static str = "MsgUpdateParamsResponse";
+    const PACKAGE: &'static str = "archway.rewards.v1";
+    fn full_name() -> ::prost::alloc::string::String {
+        ::prost::alloc::format!("archway.rewards.v1.{}", Self::NAME)
+    }
+}
 /// Encoded file descriptor set for the `archway.rewards.v1` package
 #[cfg(feature = "proto-descriptor")]
 #[cfg_attr(docsrs, doc(cfg(feature = "proto-descriptor")))]

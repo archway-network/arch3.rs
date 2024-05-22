@@ -7,6 +7,13 @@ pub struct MerkleRoot {
     #[prost(bytes = "vec", tag = "1")]
     pub hash: ::prost::alloc::vec::Vec<u8>,
 }
+impl ::prost::Name for MerkleRoot {
+    const NAME: &'static str = "MerkleRoot";
+    const PACKAGE: &'static str = "ibc.core.commitment.v1";
+    fn full_name() -> ::prost::alloc::string::String {
+        ::prost::alloc::format!("ibc.core.commitment.v1.{}", Self::NAME)
+    }
+}
 /// MerklePrefix is merkle path prefixed to the key.
 /// The constructed key from the Path and the key will be append(Path.KeyPath,
 /// append(Path.KeyPrefix, key...))
@@ -16,6 +23,13 @@ pub struct MerklePrefix {
     #[prost(bytes = "vec", tag = "1")]
     pub key_prefix: ::prost::alloc::vec::Vec<u8>,
 }
+impl ::prost::Name for MerklePrefix {
+    const NAME: &'static str = "MerklePrefix";
+    const PACKAGE: &'static str = "ibc.core.commitment.v1";
+    fn full_name() -> ::prost::alloc::string::String {
+        ::prost::alloc::format!("ibc.core.commitment.v1.{}", Self::NAME)
+    }
+}
 /// MerklePath is the path used to verify commitment proofs, which can be an
 /// arbitrary structured object (defined by a commitment type).
 /// MerklePath is represented from root-to-leaf
@@ -24,6 +38,13 @@ pub struct MerklePrefix {
 pub struct MerklePath {
     #[prost(string, repeated, tag = "1")]
     pub key_path: ::prost::alloc::vec::Vec<::prost::alloc::string::String>,
+}
+impl ::prost::Name for MerklePath {
+    const NAME: &'static str = "MerklePath";
+    const PACKAGE: &'static str = "ibc.core.commitment.v1";
+    fn full_name() -> ::prost::alloc::string::String {
+        ::prost::alloc::format!("ibc.core.commitment.v1.{}", Self::NAME)
+    }
 }
 /// MerkleProof is a wrapper type over a chain of CommitmentProofs.
 /// It demonstrates membership or non-membership for an element or set of
@@ -36,6 +57,13 @@ pub struct MerkleProof {
     #[prost(message, repeated, tag = "1")]
     pub proofs:
         ::prost::alloc::vec::Vec<super::super::super::super::cosmos::ics23::v1::CommitmentProof>,
+}
+impl ::prost::Name for MerkleProof {
+    const NAME: &'static str = "MerkleProof";
+    const PACKAGE: &'static str = "ibc.core.commitment.v1";
+    fn full_name() -> ::prost::alloc::string::String {
+        ::prost::alloc::format!("ibc.core.commitment.v1.{}", Self::NAME)
+    }
 }
 /// Encoded file descriptor set for the `ibc.core.commitment.v1` package
 #[cfg(feature = "proto-descriptor")]

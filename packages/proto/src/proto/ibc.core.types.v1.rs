@@ -13,6 +13,13 @@ pub struct GenesisState {
     #[prost(message, optional, tag = "3")]
     pub channel_genesis: ::core::option::Option<super::super::channel::v1::GenesisState>,
 }
+impl ::prost::Name for GenesisState {
+    const NAME: &'static str = "GenesisState";
+    const PACKAGE: &'static str = "ibc.core.types.v1";
+    fn full_name() -> ::prost::alloc::string::String {
+        ::prost::alloc::format!("ibc.core.types.v1.{}", Self::NAME)
+    }
+}
 /// Encoded file descriptor set for the `ibc.core.types.v1` package
 #[cfg(feature = "proto-descriptor")]
 #[cfg_attr(docsrs, doc(cfg(feature = "proto-descriptor")))]

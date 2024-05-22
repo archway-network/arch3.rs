@@ -31,6 +31,13 @@ pub struct ExistenceProof {
     #[prost(message, repeated, tag = "4")]
     pub path: ::prost::alloc::vec::Vec<InnerOp>,
 }
+impl ::prost::Name for ExistenceProof {
+    const NAME: &'static str = "ExistenceProof";
+    const PACKAGE: &'static str = "cosmos.ics23.v1";
+    fn full_name() -> ::prost::alloc::string::String {
+        ::prost::alloc::format!("cosmos.ics23.v1.{}", Self::NAME)
+    }
+}
 ///
 /// NonExistenceProof takes a proof of two neighbors, one left of the desired key,
 /// one right of the desired key. If both proofs are valid AND they are neighbors,
@@ -45,6 +52,13 @@ pub struct NonExistenceProof {
     pub left: ::core::option::Option<ExistenceProof>,
     #[prost(message, optional, tag = "3")]
     pub right: ::core::option::Option<ExistenceProof>,
+}
+impl ::prost::Name for NonExistenceProof {
+    const NAME: &'static str = "NonExistenceProof";
+    const PACKAGE: &'static str = "cosmos.ics23.v1";
+    fn full_name() -> ::prost::alloc::string::String {
+        ::prost::alloc::format!("cosmos.ics23.v1.{}", Self::NAME)
+    }
 }
 ///
 /// CommitmentProof is either an ExistenceProof or a NonExistenceProof, or a Batch of such messages
@@ -67,6 +81,13 @@ pub mod commitment_proof {
         Batch(super::BatchProof),
         #[prost(message, tag = "4")]
         Compressed(super::CompressedBatchProof),
+    }
+}
+impl ::prost::Name for CommitmentProof {
+    const NAME: &'static str = "CommitmentProof";
+    const PACKAGE: &'static str = "cosmos.ics23.v1";
+    fn full_name() -> ::prost::alloc::string::String {
+        ::prost::alloc::format!("cosmos.ics23.v1.{}", Self::NAME)
     }
 }
 /// *
@@ -100,6 +121,13 @@ pub struct LeafOp {
     #[prost(bytes = "vec", tag = "5")]
     pub prefix: ::prost::alloc::vec::Vec<u8>,
 }
+impl ::prost::Name for LeafOp {
+    const NAME: &'static str = "LeafOp";
+    const PACKAGE: &'static str = "cosmos.ics23.v1";
+    fn full_name() -> ::prost::alloc::string::String {
+        ::prost::alloc::format!("cosmos.ics23.v1.{}", Self::NAME)
+    }
+}
 /// *
 /// InnerOp represents a merkle-proof step that is not a leaf.
 /// It represents concatenating two children and hashing them to provide the next result.
@@ -125,6 +153,13 @@ pub struct InnerOp {
     pub prefix: ::prost::alloc::vec::Vec<u8>,
     #[prost(bytes = "vec", tag = "3")]
     pub suffix: ::prost::alloc::vec::Vec<u8>,
+}
+impl ::prost::Name for InnerOp {
+    const NAME: &'static str = "InnerOp";
+    const PACKAGE: &'static str = "cosmos.ics23.v1";
+    fn full_name() -> ::prost::alloc::string::String {
+        ::prost::alloc::format!("cosmos.ics23.v1.{}", Self::NAME)
+    }
 }
 /// *
 /// ProofSpec defines what the expected parameters are for a given proof type.
@@ -152,6 +187,13 @@ pub struct ProofSpec {
     /// min_depth (if > 0) is the minimum number of InnerOps allowed (mainly for fixed-depth tries)
     #[prost(int32, tag = "4")]
     pub min_depth: i32,
+}
+impl ::prost::Name for ProofSpec {
+    const NAME: &'static str = "ProofSpec";
+    const PACKAGE: &'static str = "cosmos.ics23.v1";
+    fn full_name() -> ::prost::alloc::string::String {
+        ::prost::alloc::format!("cosmos.ics23.v1.{}", Self::NAME)
+    }
 }
 ///
 /// InnerSpec contains all store-specific structure info to determine if two proofs from a
@@ -183,6 +225,13 @@ pub struct InnerSpec {
     #[prost(enumeration = "HashOp", tag = "6")]
     pub hash: i32,
 }
+impl ::prost::Name for InnerSpec {
+    const NAME: &'static str = "InnerSpec";
+    const PACKAGE: &'static str = "cosmos.ics23.v1";
+    fn full_name() -> ::prost::alloc::string::String {
+        ::prost::alloc::format!("cosmos.ics23.v1.{}", Self::NAME)
+    }
+}
 ///
 /// BatchProof is a group of multiple proof types than can be compressed
 #[allow(clippy::derive_partial_eq_without_eq)]
@@ -190,6 +239,13 @@ pub struct InnerSpec {
 pub struct BatchProof {
     #[prost(message, repeated, tag = "1")]
     pub entries: ::prost::alloc::vec::Vec<BatchEntry>,
+}
+impl ::prost::Name for BatchProof {
+    const NAME: &'static str = "BatchProof";
+    const PACKAGE: &'static str = "cosmos.ics23.v1";
+    fn full_name() -> ::prost::alloc::string::String {
+        ::prost::alloc::format!("cosmos.ics23.v1.{}", Self::NAME)
+    }
 }
 /// Use BatchEntry not CommitmentProof, to avoid recursion
 #[allow(clippy::derive_partial_eq_without_eq)]
@@ -209,6 +265,13 @@ pub mod batch_entry {
         Nonexist(super::NonExistenceProof),
     }
 }
+impl ::prost::Name for BatchEntry {
+    const NAME: &'static str = "BatchEntry";
+    const PACKAGE: &'static str = "cosmos.ics23.v1";
+    fn full_name() -> ::prost::alloc::string::String {
+        ::prost::alloc::format!("cosmos.ics23.v1.{}", Self::NAME)
+    }
+}
 // ***** all items here are compressed forms ******
 
 #[allow(clippy::derive_partial_eq_without_eq)]
@@ -218,6 +281,13 @@ pub struct CompressedBatchProof {
     pub entries: ::prost::alloc::vec::Vec<CompressedBatchEntry>,
     #[prost(message, repeated, tag = "2")]
     pub lookup_inners: ::prost::alloc::vec::Vec<InnerOp>,
+}
+impl ::prost::Name for CompressedBatchProof {
+    const NAME: &'static str = "CompressedBatchProof";
+    const PACKAGE: &'static str = "cosmos.ics23.v1";
+    fn full_name() -> ::prost::alloc::string::String {
+        ::prost::alloc::format!("cosmos.ics23.v1.{}", Self::NAME)
+    }
 }
 /// Use BatchEntry not CommitmentProof, to avoid recursion
 #[allow(clippy::derive_partial_eq_without_eq)]
@@ -237,6 +307,13 @@ pub mod compressed_batch_entry {
         Nonexist(super::CompressedNonExistenceProof),
     }
 }
+impl ::prost::Name for CompressedBatchEntry {
+    const NAME: &'static str = "CompressedBatchEntry";
+    const PACKAGE: &'static str = "cosmos.ics23.v1";
+    fn full_name() -> ::prost::alloc::string::String {
+        ::prost::alloc::format!("cosmos.ics23.v1.{}", Self::NAME)
+    }
+}
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct CompressedExistenceProof {
@@ -250,6 +327,13 @@ pub struct CompressedExistenceProof {
     #[prost(int32, repeated, tag = "4")]
     pub path: ::prost::alloc::vec::Vec<i32>,
 }
+impl ::prost::Name for CompressedExistenceProof {
+    const NAME: &'static str = "CompressedExistenceProof";
+    const PACKAGE: &'static str = "cosmos.ics23.v1";
+    fn full_name() -> ::prost::alloc::string::String {
+        ::prost::alloc::format!("cosmos.ics23.v1.{}", Self::NAME)
+    }
+}
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct CompressedNonExistenceProof {
@@ -260,6 +344,13 @@ pub struct CompressedNonExistenceProof {
     pub left: ::core::option::Option<CompressedExistenceProof>,
     #[prost(message, optional, tag = "3")]
     pub right: ::core::option::Option<CompressedExistenceProof>,
+}
+impl ::prost::Name for CompressedNonExistenceProof {
+    const NAME: &'static str = "CompressedNonExistenceProof";
+    const PACKAGE: &'static str = "cosmos.ics23.v1";
+    fn full_name() -> ::prost::alloc::string::String {
+        ::prost::alloc::format!("cosmos.ics23.v1.{}", Self::NAME)
+    }
 }
 #[derive(Clone, Copy, Debug, PartialEq, Eq, Hash, PartialOrd, Ord, ::prost::Enumeration)]
 #[repr(i32)]

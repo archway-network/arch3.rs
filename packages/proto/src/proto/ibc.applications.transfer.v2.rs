@@ -21,6 +21,13 @@ pub struct FungibleTokenPacketData {
     #[prost(string, tag = "5")]
     pub memo: ::prost::alloc::string::String,
 }
+impl ::prost::Name for FungibleTokenPacketData {
+    const NAME: &'static str = "FungibleTokenPacketData";
+    const PACKAGE: &'static str = "ibc.applications.transfer.v2";
+    fn full_name() -> ::prost::alloc::string::String {
+        ::prost::alloc::format!("ibc.applications.transfer.v2.{}", Self::NAME)
+    }
+}
 /// Encoded file descriptor set for the `ibc.applications.transfer.v2` package
 #[cfg(feature = "proto-descriptor")]
 #[cfg_attr(docsrs, doc(cfg(feature = "proto-descriptor")))]
