@@ -49,6 +49,7 @@ fn main() {
     export_protos(submodules_dir.as_str(), proto_dir.as_str());
     run_buf_generate(proto_dir.as_str(), out_dir.as_str()).unwrap();
     output_versions(out_dir.as_str());
+    cleanup(out_dir.as_str());
     apply_patches(out_dir.as_str()).unwrap();
     run_rustfmt(out_dir.as_str()).unwrap();
 }
@@ -97,15 +98,6 @@ fn export_protos(submodules_dir: &str, proto_dir: impl AsRef<Path>) {
 
     let wasmd_proto = format!("{}/{}/{}", submodules_dir, WASMD_DIR, "proto");
     run_buf_export(wasmd_proto, &proto_dir).unwrap();
-
-    for &pkg in EXCLUDED_PROTO_PACKAGES {
-        let excluded_files_glob = format!("{}/{pkg}.*", proto_dir.as_ref().display());
-        glob(excluded_files_glob.as_str())
-            .unwrap()
-            .flatten()
-            .try_for_each(fs::remove_file)
-            .unwrap();
-    }
 }
 
 fn output_versions(out_dir: &str) {
@@ -173,6 +165,18 @@ fn patch_file(path: impl AsRef<Path>, replacements: &[(&str, &str)]) -> io::Resu
     }
 
     fs::write(path, &contents)
+}
+
+fn cleanup(out_dir: &str) {
+    println!("Cleaning up {}/...", out_dir);
+    for &pkg in EXCLUDED_PROTO_PACKAGES {
+        let excluded_files_glob = format!("{out_dir}/{pkg}.*.rs");
+        glob(excluded_files_glob.as_str())
+            .unwrap()
+            .flatten()
+            .try_for_each(fs::remove_file)
+            .unwrap();
+    }
 }
 
 fn run_buf_export(proto_path: impl AsRef<Path>, export_dir: impl AsRef<Path>) -> Result<String> {
