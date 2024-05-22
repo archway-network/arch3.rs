@@ -1,6 +1,6 @@
 use cosmwasm_std::{
-    coin, entry_point, to_binary, Addr, Binary, Deps, DepsMut, Env, MessageInfo, Reply, Response,
-    StakingMsg, StdError, StdResult, SubMsg, Uint128,
+    coin, entry_point, to_json_binary, Addr, Binary, Deps, DepsMut, Env, MessageInfo, Reply,
+    Response, StakingMsg, StdError, StdResult, SubMsg, Uint128,
 };
 use cw2::set_contract_version;
 use cw_utils::NativeBalance;
@@ -192,14 +192,16 @@ fn stake_contract_rewards(
 #[entry_point]
 pub fn query(deps: Deps<ArchwayQuery>, env: Env, msg: QueryMsg) -> StdResult<Binary> {
     match msg {
-        QueryMsg::GetCount {} => to_binary(&query_count(deps)?),
-        QueryMsg::Metadata { contract_address } => to_binary(&contract_metadata(
+        QueryMsg::GetCount {} => to_json_binary(&query_count(deps)?),
+        QueryMsg::Metadata { contract_address } => to_json_binary(&contract_metadata(
             deps,
             contract_address.unwrap_or(env.contract.address),
         )?),
-        QueryMsg::FlatFee {} => to_binary(&flat_fee(deps, env.contract.address)?),
-        QueryMsg::OutstandingRewards {} => to_binary(&outstanding_rewards(deps, env)?),
-        QueryMsg::GovVote { proposal_id, voter } => to_binary(&gov_vote(deps, proposal_id, voter)?),
+        QueryMsg::FlatFee {} => to_json_binary(&flat_fee(deps, env.contract.address)?),
+        QueryMsg::OutstandingRewards {} => to_json_binary(&outstanding_rewards(deps, env)?),
+        QueryMsg::GovVote { proposal_id, voter } => {
+            to_json_binary(&gov_vote(deps, proposal_id, voter)?)
+        }
     }
 }
 
@@ -266,7 +268,7 @@ fn gov_vote(
 #[cfg(test)]
 mod tests {
     use cosmwasm_std::testing::{mock_env, mock_info};
-    use cosmwasm_std::{coins, from_binary, ContractResult, QueryResponse};
+    use cosmwasm_std::{coins, from_json, ContractResult, QueryResponse};
 
     use archway_bindings::testing::{mock_dependencies, mock_dependencies_with_balance};
     use archway_bindings::types::rewards::RewardsRecord;
@@ -287,7 +289,7 @@ mod tests {
 
         // it worked, let's query the state
         let res = query(deps.as_ref(), mock_env(), QueryMsg::GetCount {}).unwrap();
-        let value: CountResponse = from_binary(&res).unwrap();
+        let value: CountResponse = from_json(&res).unwrap();
         assert_eq!(17, value.count);
     }
 
@@ -306,7 +308,7 @@ mod tests {
 
         // should increase counter by 1
         let res = query(deps.as_ref(), mock_env(), QueryMsg::GetCount {}).unwrap();
-        let value: CountResponse = from_binary(&res).unwrap();
+        let value: CountResponse = from_json(&res).unwrap();
         assert_eq!(18, value.count);
     }
 
@@ -334,7 +336,7 @@ mod tests {
 
         // should now be 5
         let res = query(deps.as_ref(), mock_env(), QueryMsg::GetCount {}).unwrap();
-        let value: CountResponse = from_binary(&res).unwrap();
+        let value: CountResponse = from_json(&res).unwrap();
         assert_eq!(5, value.count);
     }
 
@@ -342,7 +344,7 @@ mod tests {
         let response = match query {
             ArchwayQuery::ContractMetadata {
                 contract_address: _,
-            } => to_binary(&ContractMetadataResponse {
+            } => to_json_binary(&ContractMetadataResponse {
                 owner_address: String::from("owner"),
                 rewards_address: String::from("rewards"),
             }),
@@ -350,7 +352,7 @@ mod tests {
             ArchwayQuery::RewardsRecords {
                 rewards_address: _,
                 pagination: _,
-            } => to_binary(&RewardsRecordsResponse {
+            } => to_json_binary(&RewardsRecordsResponse {
                 records: vec![
                     RewardsRecord {
                         id: 1,
