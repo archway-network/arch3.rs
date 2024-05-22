@@ -26,7 +26,7 @@ const WASMD_REV: &str = "v0.45.0";
 const WASMD_DIR: &str = "wasmd";
 
 const PROTO_DIR: &str = "proto";
-const OUT_DIR: &str = "packages/proto/src/proto";
+const OUT_DIR: &str = "packages/proto/src/gen";
 
 const EXCLUDED_PROTO_PACKAGES: &[&str] = &["gogoproto", "google", "tendermint"];
 
