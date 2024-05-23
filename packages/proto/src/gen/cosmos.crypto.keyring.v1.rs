@@ -1,5 +1,6 @@
 // @generated
 /// Record is used for representing a key in the keyring.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct Record {
@@ -8,7 +9,7 @@ pub struct Record {
     pub name: ::prost::alloc::string::String,
     /// pub_key represents a public key in any format
     #[prost(message, optional, tag = "2")]
-    pub pub_key: ::core::option::Option<::prost_types::Any>,
+    pub pub_key: ::core::option::Option<::pbjson_types::Any>,
     /// Record contains one of the following items
     #[prost(oneof = "record::Item", tags = "3, 4, 5, 6")]
     pub item: ::core::option::Option<record::Item>,
@@ -17,11 +18,12 @@ pub struct Record {
 pub mod record {
     /// Item is a keyring item stored in a keyring backend.
     /// Local item
+    #[derive(::serde::Serialize, ::serde::Deserialize)]
     #[allow(clippy::derive_partial_eq_without_eq)]
     #[derive(Clone, PartialEq, ::prost::Message)]
     pub struct Local {
         #[prost(message, optional, tag = "1")]
-        pub priv_key: ::core::option::Option<::prost_types::Any>,
+        pub priv_key: ::core::option::Option<::pbjson_types::Any>,
     }
     impl ::prost::Name for Local {
         const NAME: &'static str = "Local";
@@ -31,6 +33,7 @@ pub mod record {
         }
     }
     /// Ledger item
+    #[derive(::serde::Serialize, ::serde::Deserialize)]
     #[allow(clippy::derive_partial_eq_without_eq)]
     #[derive(Clone, PartialEq, ::prost::Message)]
     pub struct Ledger {
@@ -45,6 +48,7 @@ pub mod record {
         }
     }
     /// Multi item
+    #[derive(::serde::Serialize, ::serde::Deserialize)]
     #[allow(clippy::derive_partial_eq_without_eq)]
     #[derive(Clone, PartialEq, ::prost::Message)]
     pub struct Multi {}
@@ -56,6 +60,7 @@ pub mod record {
         }
     }
     /// Offline item
+    #[derive(::serde::Serialize, ::serde::Deserialize)]
     #[allow(clippy::derive_partial_eq_without_eq)]
     #[derive(Clone, PartialEq, ::prost::Message)]
     pub struct Offline {}
@@ -67,6 +72,7 @@ pub mod record {
         }
     }
     /// Record contains one of the following items
+    #[derive(::serde::Serialize, ::serde::Deserialize)]
     #[allow(clippy::derive_partial_eq_without_eq)]
     #[derive(Clone, PartialEq, ::prost::Oneof)]
     pub enum Item {

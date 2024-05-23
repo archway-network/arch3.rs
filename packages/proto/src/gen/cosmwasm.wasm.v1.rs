@@ -1,5 +1,6 @@
 // @generated
 /// AccessTypeParam
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct AccessTypeParam {
@@ -14,6 +15,7 @@ impl ::prost::Name for AccessTypeParam {
     }
 }
 /// AccessConfig access control type.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct AccessConfig {
@@ -30,6 +32,7 @@ impl ::prost::Name for AccessConfig {
     }
 }
 /// Params defines the set of wasm parameters.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct Params {
@@ -46,6 +49,7 @@ impl ::prost::Name for Params {
     }
 }
 /// CodeInfo is data for the uploaded contract WASM code
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct CodeInfo {
@@ -67,6 +71,7 @@ impl ::prost::Name for CodeInfo {
     }
 }
 /// ContractInfo stores a WASM contract instance
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct ContractInfo {
@@ -90,7 +95,7 @@ pub struct ContractInfo {
     /// Extension is an extension point to store custom metadata within the
     /// persistence model.
     #[prost(message, optional, tag = "7")]
-    pub extension: ::core::option::Option<::prost_types::Any>,
+    pub extension: ::core::option::Option<::pbjson_types::Any>,
 }
 impl ::prost::Name for ContractInfo {
     const NAME: &'static str = "ContractInfo";
@@ -100,6 +105,7 @@ impl ::prost::Name for ContractInfo {
     }
 }
 /// ContractCodeHistoryEntry metadata to a contract.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct ContractCodeHistoryEntry {
@@ -123,6 +129,7 @@ impl ::prost::Name for ContractCodeHistoryEntry {
 }
 /// AbsoluteTxPosition is a unique transaction position that allows for global
 /// ordering of transactions.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct AbsoluteTxPosition {
@@ -142,6 +149,7 @@ impl ::prost::Name for AbsoluteTxPosition {
     }
 }
 /// Model is a struct that holds a KV pair
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct Model {
@@ -160,7 +168,19 @@ impl ::prost::Name for Model {
     }
 }
 /// AccessType permission types
-#[derive(Clone, Copy, Debug, PartialEq, Eq, Hash, PartialOrd, Ord, ::prost::Enumeration)]
+#[derive(
+    ::serde::Serialize,
+    ::serde::Deserialize,
+    Clone,
+    Copy,
+    Debug,
+    PartialEq,
+    Eq,
+    Hash,
+    PartialOrd,
+    Ord,
+    ::prost::Enumeration,
+)]
 #[repr(i32)]
 pub enum AccessType {
     /// AccessTypeUnspecified placeholder for empty value
@@ -197,7 +217,19 @@ impl AccessType {
     }
 }
 /// ContractCodeHistoryOperationType actions that caused a code change
-#[derive(Clone, Copy, Debug, PartialEq, Eq, Hash, PartialOrd, Ord, ::prost::Enumeration)]
+#[derive(
+    ::serde::Serialize,
+    ::serde::Deserialize,
+    Clone,
+    Copy,
+    Debug,
+    PartialEq,
+    Eq,
+    Hash,
+    PartialOrd,
+    Ord,
+    ::prost::Enumeration,
+)]
 #[repr(i32)]
 pub enum ContractCodeHistoryOperationType {
     /// ContractCodeHistoryOperationTypeUnspecified placeholder for empty value
@@ -241,6 +273,7 @@ impl ContractCodeHistoryOperationType {
 }
 /// StoreCodeAuthorization defines authorization for wasm code upload.
 /// Since: wasmd 0.42
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct StoreCodeAuthorization {
@@ -257,6 +290,7 @@ impl ::prost::Name for StoreCodeAuthorization {
 }
 /// ContractExecutionAuthorization defines authorization for wasm execute.
 /// Since: wasmd 0.30
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct ContractExecutionAuthorization {
@@ -273,6 +307,7 @@ impl ::prost::Name for ContractExecutionAuthorization {
 }
 /// ContractMigrationAuthorization defines authorization for wasm contract
 /// migration. Since: wasmd 0.30
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct ContractMigrationAuthorization {
@@ -288,6 +323,7 @@ impl ::prost::Name for ContractMigrationAuthorization {
     }
 }
 /// CodeGrant a granted permission for a single code
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct CodeGrant {
@@ -310,6 +346,7 @@ impl ::prost::Name for CodeGrant {
 }
 /// ContractGrant a granted permission for a single contract
 /// Since: wasmd 0.30
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct ContractGrant {
@@ -319,12 +356,12 @@ pub struct ContractGrant {
     /// Limit defines execution limits that are enforced and updated when the grant
     /// is applied. When the limit lapsed the grant is removed.
     #[prost(message, optional, tag = "2")]
-    pub limit: ::core::option::Option<::prost_types::Any>,
+    pub limit: ::core::option::Option<::pbjson_types::Any>,
     /// Filter define more fine-grained control on the message payload passed
     /// to the contract in the operation. When no filter applies on execution, the
     /// operation is prohibited.
     #[prost(message, optional, tag = "3")]
-    pub filter: ::core::option::Option<::prost_types::Any>,
+    pub filter: ::core::option::Option<::pbjson_types::Any>,
 }
 impl ::prost::Name for ContractGrant {
     const NAME: &'static str = "ContractGrant";
@@ -335,6 +372,7 @@ impl ::prost::Name for ContractGrant {
 }
 /// MaxCallsLimit limited number of calls to the contract. No funds transferable.
 /// Since: wasmd 0.30
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct MaxCallsLimit {
@@ -351,6 +389,7 @@ impl ::prost::Name for MaxCallsLimit {
 }
 /// MaxFundsLimit defines the maximal amounts that can be sent to the contract.
 /// Since: wasmd 0.30
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct MaxFundsLimit {
@@ -368,6 +407,7 @@ impl ::prost::Name for MaxFundsLimit {
 /// CombinedLimit defines the maximal amounts that can be sent to a contract and
 /// the maximal number of calls executable. Both need to remain >0 to be valid.
 /// Since: wasmd 0.30
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct CombinedLimit {
@@ -388,6 +428,7 @@ impl ::prost::Name for CombinedLimit {
 /// AllowAllMessagesFilter is a wildcard to allow any type of contract payload
 /// message.
 /// Since: wasmd 0.30
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct AllowAllMessagesFilter {}
@@ -401,6 +442,7 @@ impl ::prost::Name for AllowAllMessagesFilter {
 /// AcceptedMessageKeysFilter accept only the specific contract message keys in
 /// the json object to be executed.
 /// Since: wasmd 0.30
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct AcceptedMessageKeysFilter {
@@ -418,6 +460,7 @@ impl ::prost::Name for AcceptedMessageKeysFilter {
 /// AcceptedMessagesFilter accept only the specific raw contract messages to be
 /// executed.
 /// Since: wasmd 0.30
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct AcceptedMessagesFilter {
@@ -433,6 +476,7 @@ impl ::prost::Name for AcceptedMessagesFilter {
     }
 }
 /// GenesisState - genesis state of x/wasm
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct GenesisState {
@@ -453,6 +497,7 @@ impl ::prost::Name for GenesisState {
     }
 }
 /// Code struct encompasses CodeInfo and CodeBytes
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct Code {
@@ -474,6 +519,7 @@ impl ::prost::Name for Code {
     }
 }
 /// Contract struct encompasses ContractAddress, ContractInfo, and ContractState
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct Contract {
@@ -494,6 +540,7 @@ impl ::prost::Name for Contract {
     }
 }
 /// Sequence key and value of an id generation counter
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct Sequence {
@@ -510,6 +557,7 @@ impl ::prost::Name for Sequence {
     }
 }
 /// MsgIBCSend
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct MsgIbcSend {
@@ -537,6 +585,7 @@ impl ::prost::Name for MsgIbcSend {
     }
 }
 /// MsgIBCSendResponse
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct MsgIbcSendResponse {
@@ -552,6 +601,7 @@ impl ::prost::Name for MsgIbcSendResponse {
     }
 }
 /// MsgIBCCloseChannel port and channel need to be owned by the contract
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct MsgIbcCloseChannel {
@@ -569,6 +619,7 @@ impl ::prost::Name for MsgIbcCloseChannel {
 /// an explicit StoreCodeProposal. To submit WASM code to the system,
 /// a simple MsgStoreCode can be invoked from the x/gov module via
 /// a v1 governance proposal.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct StoreCodeProposal {
@@ -613,6 +664,7 @@ impl ::prost::Name for StoreCodeProposal {
 /// an explicit InstantiateContractProposal. To instantiate a contract,
 /// a simple MsgInstantiateContract can be invoked from the x/gov module via
 /// a v1 governance proposal.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct InstantiateContractProposal {
@@ -652,6 +704,7 @@ impl ::prost::Name for InstantiateContractProposal {
 /// an explicit InstantiateContract2Proposal. To instantiate contract 2,
 /// a simple MsgInstantiateContract2 can be invoked from the x/gov module via
 /// a v1 governance proposal.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct InstantiateContract2Proposal {
@@ -698,6 +751,7 @@ impl ::prost::Name for InstantiateContract2Proposal {
 /// an explicit MigrateContractProposal. To migrate a contract,
 /// a simple MsgMigrateContract can be invoked from the x/gov module via
 /// a v1 governance proposal.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct MigrateContractProposal {
@@ -730,6 +784,7 @@ impl ::prost::Name for MigrateContractProposal {
 /// an explicit SudoContractProposal. To call sudo on a contract,
 /// a simple MsgSudoContract can be invoked from the x/gov module via
 /// a v1 governance proposal.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct SudoContractProposal {
@@ -757,6 +812,7 @@ impl ::prost::Name for SudoContractProposal {
 /// an explicit ExecuteContractProposal. To call execute on a contract,
 /// a simple MsgExecuteContract can be invoked from the x/gov module via
 /// a v1 governance proposal.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct ExecuteContractProposal {
@@ -790,6 +846,7 @@ impl ::prost::Name for ExecuteContractProposal {
 /// an explicit UpdateAdminProposal. To set an admin for a contract,
 /// a simple MsgUpdateAdmin can be invoked from the x/gov module via
 /// a v1 governance proposal.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct UpdateAdminProposal {
@@ -817,6 +874,7 @@ impl ::prost::Name for UpdateAdminProposal {
 /// an explicit ClearAdminProposal. To clear the admin of a contract,
 /// a simple MsgClearAdmin can be invoked from the x/gov module via
 /// a v1 governance proposal.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct ClearAdminProposal {
@@ -841,6 +899,7 @@ impl ::prost::Name for ClearAdminProposal {
 /// an explicit PinCodesProposal. To pin a set of code ids in the wasmvm
 /// cache, a simple MsgPinCodes can be invoked from the x/gov module via
 /// a v1 governance proposal.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct PinCodesProposal {
@@ -865,6 +924,7 @@ impl ::prost::Name for PinCodesProposal {
 /// an explicit UnpinCodesProposal. To unpin a set of code ids in the wasmvm
 /// cache, a simple MsgUnpinCodes can be invoked from the x/gov module via
 /// a v1 governance proposal.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct UnpinCodesProposal {
@@ -887,6 +947,7 @@ impl ::prost::Name for UnpinCodesProposal {
 }
 /// AccessConfigUpdate contains the code id and the access config to be
 /// applied.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct AccessConfigUpdate {
@@ -908,6 +969,7 @@ impl ::prost::Name for AccessConfigUpdate {
 /// an explicit UpdateInstantiateConfigProposal. To update instantiate config
 /// to a set of code ids, a simple MsgUpdateInstantiateConfig can be invoked from
 /// the x/gov module via a v1 governance proposal.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct UpdateInstantiateConfigProposal {
@@ -933,6 +995,7 @@ impl ::prost::Name for UpdateInstantiateConfigProposal {
 /// an explicit StoreAndInstantiateContractProposal. To store and instantiate
 /// the contract, a simple MsgStoreAndInstantiateContract can be invoked from
 /// the x/gov module via a v1 governance proposal.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct StoreAndInstantiateContractProposal {
@@ -987,6 +1050,7 @@ impl ::prost::Name for StoreAndInstantiateContractProposal {
 }
 /// QueryContractInfoRequest is the request type for the Query/ContractInfo RPC
 /// method
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct QueryContractInfoRequest {
@@ -1003,6 +1067,7 @@ impl ::prost::Name for QueryContractInfoRequest {
 }
 /// QueryContractInfoResponse is the response type for the Query/ContractInfo RPC
 /// method
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct QueryContractInfoResponse {
@@ -1021,6 +1086,7 @@ impl ::prost::Name for QueryContractInfoResponse {
 }
 /// QueryContractHistoryRequest is the request type for the Query/ContractHistory
 /// RPC method
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct QueryContractHistoryRequest {
@@ -1041,6 +1107,7 @@ impl ::prost::Name for QueryContractHistoryRequest {
 }
 /// QueryContractHistoryResponse is the response type for the
 /// Query/ContractHistory RPC method
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct QueryContractHistoryResponse {
@@ -1060,6 +1127,7 @@ impl ::prost::Name for QueryContractHistoryResponse {
 }
 /// QueryContractsByCodeRequest is the request type for the Query/ContractsByCode
 /// RPC method
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct QueryContractsByCodeRequest {
@@ -1080,6 +1148,7 @@ impl ::prost::Name for QueryContractsByCodeRequest {
 }
 /// QueryContractsByCodeResponse is the response type for the
 /// Query/ContractsByCode RPC method
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct QueryContractsByCodeResponse {
@@ -1100,6 +1169,7 @@ impl ::prost::Name for QueryContractsByCodeResponse {
 }
 /// QueryAllContractStateRequest is the request type for the
 /// Query/AllContractState RPC method
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct QueryAllContractStateRequest {
@@ -1120,6 +1190,7 @@ impl ::prost::Name for QueryAllContractStateRequest {
 }
 /// QueryAllContractStateResponse is the response type for the
 /// Query/AllContractState RPC method
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct QueryAllContractStateResponse {
@@ -1139,6 +1210,7 @@ impl ::prost::Name for QueryAllContractStateResponse {
 }
 /// QueryRawContractStateRequest is the request type for the
 /// Query/RawContractState RPC method
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct QueryRawContractStateRequest {
@@ -1157,6 +1229,7 @@ impl ::prost::Name for QueryRawContractStateRequest {
 }
 /// QueryRawContractStateResponse is the response type for the
 /// Query/RawContractState RPC method
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct QueryRawContractStateResponse {
@@ -1173,6 +1246,7 @@ impl ::prost::Name for QueryRawContractStateResponse {
 }
 /// QuerySmartContractStateRequest is the request type for the
 /// Query/SmartContractState RPC method
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct QuerySmartContractStateRequest {
@@ -1192,6 +1266,7 @@ impl ::prost::Name for QuerySmartContractStateRequest {
 }
 /// QuerySmartContractStateResponse is the response type for the
 /// Query/SmartContractState RPC method
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct QuerySmartContractStateResponse {
@@ -1207,6 +1282,7 @@ impl ::prost::Name for QuerySmartContractStateResponse {
     }
 }
 /// QueryCodeRequest is the request type for the Query/Code RPC method
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct QueryCodeRequest {
@@ -1222,6 +1298,7 @@ impl ::prost::Name for QueryCodeRequest {
     }
 }
 /// CodeInfoResponse contains code meta data from CodeInfo
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct CodeInfoResponse {
@@ -1243,6 +1320,7 @@ impl ::prost::Name for CodeInfoResponse {
     }
 }
 /// QueryCodeResponse is the response type for the Query/Code RPC method
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct QueryCodeResponse {
@@ -1259,6 +1337,7 @@ impl ::prost::Name for QueryCodeResponse {
     }
 }
 /// QueryCodesRequest is the request type for the Query/Codes RPC method
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct QueryCodesRequest {
@@ -1275,6 +1354,7 @@ impl ::prost::Name for QueryCodesRequest {
     }
 }
 /// QueryCodesResponse is the response type for the Query/Codes RPC method
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct QueryCodesResponse {
@@ -1294,6 +1374,7 @@ impl ::prost::Name for QueryCodesResponse {
 }
 /// QueryPinnedCodesRequest is the request type for the Query/PinnedCodes
 /// RPC method
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct QueryPinnedCodesRequest {
@@ -1311,6 +1392,7 @@ impl ::prost::Name for QueryPinnedCodesRequest {
 }
 /// QueryPinnedCodesResponse is the response type for the
 /// Query/PinnedCodes RPC method
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct QueryPinnedCodesResponse {
@@ -1329,6 +1411,7 @@ impl ::prost::Name for QueryPinnedCodesResponse {
     }
 }
 /// QueryParamsRequest is the request type for the Query/Params RPC method.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct QueryParamsRequest {}
@@ -1340,6 +1423,7 @@ impl ::prost::Name for QueryParamsRequest {
     }
 }
 /// QueryParamsResponse is the response type for the Query/Params RPC method.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct QueryParamsResponse {
@@ -1356,6 +1440,7 @@ impl ::prost::Name for QueryParamsResponse {
 }
 /// QueryContractsByCreatorRequest is the request type for the
 /// Query/ContractsByCreator RPC method.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct QueryContractsByCreatorRequest {
@@ -1376,6 +1461,7 @@ impl ::prost::Name for QueryContractsByCreatorRequest {
 }
 /// QueryContractsByCreatorResponse is the response type for the
 /// Query/ContractsByCreator RPC method.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct QueryContractsByCreatorResponse {
@@ -1395,6 +1481,7 @@ impl ::prost::Name for QueryContractsByCreatorResponse {
     }
 }
 /// MsgStoreCode submit Wasm code to the system
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct MsgStoreCode {
@@ -1417,6 +1504,7 @@ impl ::prost::Name for MsgStoreCode {
     }
 }
 /// MsgStoreCodeResponse returns store result data.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct MsgStoreCodeResponse {
@@ -1436,6 +1524,7 @@ impl ::prost::Name for MsgStoreCodeResponse {
 }
 /// MsgInstantiateContract create a new smart contract instance for the given
 /// code id.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct MsgInstantiateContract {
@@ -1466,6 +1555,7 @@ impl ::prost::Name for MsgInstantiateContract {
     }
 }
 /// MsgInstantiateContractResponse return instantiation result data
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct MsgInstantiateContractResponse {
@@ -1485,6 +1575,7 @@ impl ::prost::Name for MsgInstantiateContractResponse {
 }
 /// MsgInstantiateContract2 create a new smart contract instance for the given
 /// code id with a predicable address.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct MsgInstantiateContract2 {
@@ -1522,6 +1613,7 @@ impl ::prost::Name for MsgInstantiateContract2 {
     }
 }
 /// MsgInstantiateContract2Response return instantiation result data
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct MsgInstantiateContract2Response {
@@ -1540,6 +1632,7 @@ impl ::prost::Name for MsgInstantiateContract2Response {
     }
 }
 /// MsgExecuteContract submits the given message data to a smart contract
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct MsgExecuteContract {
@@ -1564,6 +1657,7 @@ impl ::prost::Name for MsgExecuteContract {
     }
 }
 /// MsgExecuteContractResponse returns execution result data.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct MsgExecuteContractResponse {
@@ -1579,6 +1673,7 @@ impl ::prost::Name for MsgExecuteContractResponse {
     }
 }
 /// MsgMigrateContract runs a code upgrade/ downgrade for a smart contract
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct MsgMigrateContract {
@@ -1603,6 +1698,7 @@ impl ::prost::Name for MsgMigrateContract {
     }
 }
 /// MsgMigrateContractResponse returns contract migration result data.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct MsgMigrateContractResponse {
@@ -1619,6 +1715,7 @@ impl ::prost::Name for MsgMigrateContractResponse {
     }
 }
 /// MsgUpdateAdmin sets a new admin for a smart contract
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct MsgUpdateAdmin {
@@ -1640,6 +1737,7 @@ impl ::prost::Name for MsgUpdateAdmin {
     }
 }
 /// MsgUpdateAdminResponse returns empty data
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct MsgUpdateAdminResponse {}
@@ -1651,6 +1749,7 @@ impl ::prost::Name for MsgUpdateAdminResponse {
     }
 }
 /// MsgClearAdmin removes any admin stored for a smart contract
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct MsgClearAdmin {
@@ -1669,6 +1768,7 @@ impl ::prost::Name for MsgClearAdmin {
     }
 }
 /// MsgClearAdminResponse returns empty data
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct MsgClearAdminResponse {}
@@ -1680,6 +1780,7 @@ impl ::prost::Name for MsgClearAdminResponse {
     }
 }
 /// MsgUpdateInstantiateConfig updates instantiate config for a smart contract
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct MsgUpdateInstantiateConfig {
@@ -1701,6 +1802,7 @@ impl ::prost::Name for MsgUpdateInstantiateConfig {
     }
 }
 /// MsgUpdateInstantiateConfigResponse returns empty data
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct MsgUpdateInstantiateConfigResponse {}
@@ -1714,6 +1816,7 @@ impl ::prost::Name for MsgUpdateInstantiateConfigResponse {
 /// MsgUpdateParams is the MsgUpdateParams request type.
 ///
 /// Since: 0.40
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct MsgUpdateParams {
@@ -1737,6 +1840,7 @@ impl ::prost::Name for MsgUpdateParams {
 /// MsgUpdateParams message.
 ///
 /// Since: 0.40
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct MsgUpdateParamsResponse {}
@@ -1750,6 +1854,7 @@ impl ::prost::Name for MsgUpdateParamsResponse {
 /// MsgSudoContract is the MsgSudoContract request type.
 ///
 /// Since: 0.40
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct MsgSudoContract {
@@ -1774,6 +1879,7 @@ impl ::prost::Name for MsgSudoContract {
 /// MsgSudoContract message.
 ///
 /// Since: 0.40
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct MsgSudoContractResponse {
@@ -1791,6 +1897,7 @@ impl ::prost::Name for MsgSudoContractResponse {
 /// MsgPinCodes is the MsgPinCodes request type.
 ///
 /// Since: 0.40
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct MsgPinCodes {
@@ -1812,6 +1919,7 @@ impl ::prost::Name for MsgPinCodes {
 /// MsgPinCodes message.
 ///
 /// Since: 0.40
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct MsgPinCodesResponse {}
@@ -1825,6 +1933,7 @@ impl ::prost::Name for MsgPinCodesResponse {
 /// MsgUnpinCodes is the MsgUnpinCodes request type.
 ///
 /// Since: 0.40
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct MsgUnpinCodes {
@@ -1846,6 +1955,7 @@ impl ::prost::Name for MsgUnpinCodes {
 /// MsgUnpinCodes message.
 ///
 /// Since: 0.40
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct MsgUnpinCodesResponse {}
@@ -1860,6 +1970,7 @@ impl ::prost::Name for MsgUnpinCodesResponse {
 /// request type.
 ///
 /// Since: 0.40
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct MsgStoreAndInstantiateContract {
@@ -1912,6 +2023,7 @@ impl ::prost::Name for MsgStoreAndInstantiateContract {
 /// for executing a MsgStoreAndInstantiateContract message.
 ///
 /// Since: 0.40
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct MsgStoreAndInstantiateContractResponse {
@@ -1931,6 +2043,7 @@ impl ::prost::Name for MsgStoreAndInstantiateContractResponse {
 }
 /// MsgAddCodeUploadParamsAddresses is the
 /// MsgAddCodeUploadParamsAddresses request type.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct MsgAddCodeUploadParamsAddresses {
@@ -1949,6 +2062,7 @@ impl ::prost::Name for MsgAddCodeUploadParamsAddresses {
 }
 /// MsgAddCodeUploadParamsAddressesResponse defines the response
 /// structure for executing a MsgAddCodeUploadParamsAddresses message.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct MsgAddCodeUploadParamsAddressesResponse {}
@@ -1961,6 +2075,7 @@ impl ::prost::Name for MsgAddCodeUploadParamsAddressesResponse {
 }
 /// MsgRemoveCodeUploadParamsAddresses is the
 /// MsgRemoveCodeUploadParamsAddresses request type.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct MsgRemoveCodeUploadParamsAddresses {
@@ -1979,6 +2094,7 @@ impl ::prost::Name for MsgRemoveCodeUploadParamsAddresses {
 }
 /// MsgRemoveCodeUploadParamsAddressesResponse defines the response
 /// structure for executing a MsgRemoveCodeUploadParamsAddresses message.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct MsgRemoveCodeUploadParamsAddressesResponse {}
@@ -1993,6 +2109,7 @@ impl ::prost::Name for MsgRemoveCodeUploadParamsAddressesResponse {
 /// request type.
 ///
 /// Since: 0.42
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct MsgStoreAndMigrateContract {
@@ -2023,6 +2140,7 @@ impl ::prost::Name for MsgStoreAndMigrateContract {
 /// for executing a MsgStoreAndMigrateContract message.
 ///
 /// Since: 0.42
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct MsgStoreAndMigrateContractResponse {
@@ -2044,6 +2162,7 @@ impl ::prost::Name for MsgStoreAndMigrateContractResponse {
     }
 }
 /// MsgUpdateContractLabel sets a new label for a smart contract
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct MsgUpdateContractLabel {
@@ -2065,6 +2184,7 @@ impl ::prost::Name for MsgUpdateContractLabel {
     }
 }
 /// MsgUpdateContractLabelResponse returns empty data
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct MsgUpdateContractLabelResponse {}

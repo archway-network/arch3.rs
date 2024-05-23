@@ -1,5 +1,6 @@
 // @generated
 /// TableDescriptor describes an ORM table.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct TableDescriptor {
@@ -23,6 +24,7 @@ impl ::prost::Name for TableDescriptor {
     }
 }
 /// PrimaryKeyDescriptor describes a table primary key.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct PrimaryKeyDescriptor {
@@ -72,6 +74,7 @@ impl ::prost::Name for PrimaryKeyDescriptor {
     }
 }
 /// PrimaryKeyDescriptor describes a table secondary index.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct SecondaryIndexDescriptor {
@@ -103,6 +106,7 @@ impl ::prost::Name for SecondaryIndexDescriptor {
     }
 }
 /// TableDescriptor describes an ORM singleton table which has at most one instance.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct SingletonDescriptor {

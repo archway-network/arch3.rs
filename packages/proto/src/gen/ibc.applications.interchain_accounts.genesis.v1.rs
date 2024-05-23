@@ -1,5 +1,6 @@
 // @generated
 /// GenesisState defines the interchain accounts genesis state
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct GenesisState {
@@ -19,6 +20,7 @@ impl ::prost::Name for GenesisState {
     }
 }
 /// ControllerGenesisState defines the interchain accounts controller genesis state
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct ControllerGenesisState {
@@ -42,6 +44,7 @@ impl ::prost::Name for ControllerGenesisState {
     }
 }
 /// HostGenesisState defines the interchain accounts host genesis state
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct HostGenesisState {
@@ -66,6 +69,7 @@ impl ::prost::Name for HostGenesisState {
 }
 /// ActiveChannel contains a connection ID, port ID and associated active channel ID, as well as a boolean flag to
 /// indicate if the channel is middleware enabled
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct ActiveChannel {
@@ -89,6 +93,7 @@ impl ::prost::Name for ActiveChannel {
     }
 }
 /// RegisteredInterchainAccount contains a connection ID, port ID and associated interchain account address
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct RegisteredInterchainAccount {

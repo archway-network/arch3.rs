@@ -1,6 +1,7 @@
 // @generated
 /// Block is tendermint type Block, with the Header proposer address
 /// field converted to bech32 string.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct Block {
@@ -21,6 +22,7 @@ impl ::prost::Name for Block {
     }
 }
 /// Header defines the structure of a Tendermint block header.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct Header {
@@ -32,7 +34,7 @@ pub struct Header {
     #[prost(int64, tag = "3")]
     pub height: i64,
     #[prost(message, optional, tag = "4")]
-    pub time: ::core::option::Option<::prost_types::Timestamp>,
+    pub time: ::core::option::Option<::pbjson_types::Timestamp>,
     /// prev block info
     #[prost(message, optional, tag = "5")]
     pub last_block_id: ::core::option::Option<::tendermint_proto::v0_37::types::BlockId>,
@@ -82,6 +84,7 @@ impl ::prost::Name for Header {
     }
 }
 /// GetValidatorSetByHeightRequest is the request type for the Query/GetValidatorSetByHeight RPC method.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct GetValidatorSetByHeightRequest {
@@ -99,6 +102,7 @@ impl ::prost::Name for GetValidatorSetByHeightRequest {
     }
 }
 /// GetValidatorSetByHeightResponse is the response type for the Query/GetValidatorSetByHeight RPC method.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct GetValidatorSetByHeightResponse {
@@ -118,6 +122,7 @@ impl ::prost::Name for GetValidatorSetByHeightResponse {
     }
 }
 /// GetLatestValidatorSetRequest is the request type for the Query/GetValidatorSetByHeight RPC method.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct GetLatestValidatorSetRequest {
@@ -133,6 +138,7 @@ impl ::prost::Name for GetLatestValidatorSetRequest {
     }
 }
 /// GetLatestValidatorSetResponse is the response type for the Query/GetValidatorSetByHeight RPC method.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct GetLatestValidatorSetResponse {
@@ -152,13 +158,14 @@ impl ::prost::Name for GetLatestValidatorSetResponse {
     }
 }
 /// Validator is the type for the validator-set.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct Validator {
     #[prost(string, tag = "1")]
     pub address: ::prost::alloc::string::String,
     #[prost(message, optional, tag = "2")]
-    pub pub_key: ::core::option::Option<::prost_types::Any>,
+    pub pub_key: ::core::option::Option<::pbjson_types::Any>,
     #[prost(int64, tag = "3")]
     pub voting_power: i64,
     #[prost(int64, tag = "4")]
@@ -172,6 +179,7 @@ impl ::prost::Name for Validator {
     }
 }
 /// GetBlockByHeightRequest is the request type for the Query/GetBlockByHeight RPC method.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct GetBlockByHeightRequest {
@@ -186,6 +194,7 @@ impl ::prost::Name for GetBlockByHeightRequest {
     }
 }
 /// GetBlockByHeightResponse is the response type for the Query/GetBlockByHeight RPC method.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct GetBlockByHeightResponse {
@@ -206,6 +215,7 @@ impl ::prost::Name for GetBlockByHeightResponse {
     }
 }
 /// GetLatestBlockRequest is the request type for the Query/GetLatestBlock RPC method.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct GetLatestBlockRequest {}
@@ -217,6 +227,7 @@ impl ::prost::Name for GetLatestBlockRequest {
     }
 }
 /// GetLatestBlockResponse is the response type for the Query/GetLatestBlock RPC method.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct GetLatestBlockResponse {
@@ -237,6 +248,7 @@ impl ::prost::Name for GetLatestBlockResponse {
     }
 }
 /// GetSyncingRequest is the request type for the Query/GetSyncing RPC method.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct GetSyncingRequest {}
@@ -248,6 +260,7 @@ impl ::prost::Name for GetSyncingRequest {
     }
 }
 /// GetSyncingResponse is the response type for the Query/GetSyncing RPC method.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct GetSyncingResponse {
@@ -262,6 +275,7 @@ impl ::prost::Name for GetSyncingResponse {
     }
 }
 /// GetNodeInfoRequest is the request type for the Query/GetNodeInfo RPC method.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct GetNodeInfoRequest {}
@@ -273,6 +287,7 @@ impl ::prost::Name for GetNodeInfoRequest {
     }
 }
 /// GetNodeInfoResponse is the response type for the Query/GetNodeInfo RPC method.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct GetNodeInfoResponse {
@@ -289,6 +304,7 @@ impl ::prost::Name for GetNodeInfoResponse {
     }
 }
 /// VersionInfo is the type for the GetNodeInfoResponse message.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct VersionInfo {
@@ -318,6 +334,7 @@ impl ::prost::Name for VersionInfo {
     }
 }
 /// Module is the type for VersionInfo
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct Module {
@@ -339,6 +356,7 @@ impl ::prost::Name for Module {
     }
 }
 /// ABCIQueryRequest defines the request structure for the ABCIQuery gRPC query.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct AbciQueryRequest {
@@ -362,6 +380,7 @@ impl ::prost::Name for AbciQueryRequest {
 ///
 /// Note: This type is a duplicate of the ResponseQuery proto type defined in
 /// Tendermint.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct AbciQueryResponse {
@@ -398,6 +417,7 @@ impl ::prost::Name for AbciQueryResponse {
 /// hash.
 ///
 /// Note: This type is a duplicate of the ProofOp proto type defined in Tendermint.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct ProofOp {
@@ -418,6 +438,7 @@ impl ::prost::Name for ProofOp {
 /// ProofOps is Merkle proof defined by the list of ProofOps.
 ///
 /// Note: This type is a duplicate of the ProofOps proto type defined in Tendermint.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct ProofOps {

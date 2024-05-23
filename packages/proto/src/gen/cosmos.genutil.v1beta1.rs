@@ -1,5 +1,6 @@
 // @generated
 /// GenesisState defines the raw genesis transaction in JSON.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct GenesisState {

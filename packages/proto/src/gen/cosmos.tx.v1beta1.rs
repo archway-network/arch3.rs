@@ -1,5 +1,6 @@
 // @generated
 /// Tx is the standard type used for broadcasting transactions.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct Tx {
@@ -28,6 +29,7 @@ impl ::prost::Name for Tx {
 /// verification. The binary `serialize(tx: TxRaw)` is stored in Tendermint and
 /// the hash `sha256(serialize(tx: TxRaw))` becomes the "txhash", commonly used
 /// as the transaction ID.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct TxRaw {
@@ -53,6 +55,7 @@ impl ::prost::Name for TxRaw {
     }
 }
 /// SignDoc is the type used for generating sign bytes for SIGN_MODE_DIRECT.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct SignDoc {
@@ -84,6 +87,7 @@ impl ::prost::Name for SignDoc {
 /// SIGN_MODE_DIRECT_AUX.
 ///
 /// Since: cosmos-sdk 0.46
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct SignDocDirectAux {
@@ -93,7 +97,7 @@ pub struct SignDocDirectAux {
     pub body_bytes: ::prost::alloc::vec::Vec<u8>,
     /// public_key is the public key of the signing account.
     #[prost(message, optional, tag = "2")]
-    pub public_key: ::core::option::Option<::prost_types::Any>,
+    pub public_key: ::core::option::Option<::pbjson_types::Any>,
     /// chain_id is the identifier of the chain this transaction targets.
     /// It prevents signed transactions from being used on another chain by an
     /// attacker.
@@ -122,6 +126,7 @@ impl ::prost::Name for SignDocDirectAux {
     }
 }
 /// TxBody is the body of a transaction that all signers sign over.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct TxBody {
@@ -133,7 +138,7 @@ pub struct TxBody {
     /// is referred to as the primary signer and pays the fee for the whole
     /// transaction.
     #[prost(message, repeated, tag = "1")]
-    pub messages: ::prost::alloc::vec::Vec<::prost_types::Any>,
+    pub messages: ::prost::alloc::vec::Vec<::pbjson_types::Any>,
     /// memo is any arbitrary note/comment to be added to the transaction.
     /// WARNING: in clients, any publicly exposed text should not be called memo,
     /// but should be called `note` instead (see <https://github.com/cosmos/cosmos-sdk/issues/9122>).
@@ -147,12 +152,12 @@ pub struct TxBody {
     /// when the default options are not sufficient. If any of these are present
     /// and can't be handled, the transaction will be rejected
     #[prost(message, repeated, tag = "1023")]
-    pub extension_options: ::prost::alloc::vec::Vec<::prost_types::Any>,
+    pub extension_options: ::prost::alloc::vec::Vec<::pbjson_types::Any>,
     /// extension_options are arbitrary options that can be added by chains
     /// when the default options are not sufficient. If any of these are present
     /// and can't be handled, they will be ignored
     #[prost(message, repeated, tag = "2047")]
-    pub non_critical_extension_options: ::prost::alloc::vec::Vec<::prost_types::Any>,
+    pub non_critical_extension_options: ::prost::alloc::vec::Vec<::pbjson_types::Any>,
 }
 impl ::prost::Name for TxBody {
     const NAME: &'static str = "TxBody";
@@ -163,6 +168,7 @@ impl ::prost::Name for TxBody {
 }
 /// AuthInfo describes the fee and signer modes that are used to sign a
 /// transaction.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct AuthInfo {
@@ -196,6 +202,7 @@ impl ::prost::Name for AuthInfo {
 }
 /// SignerInfo describes the public key and signing mode of a single top-level
 /// signer.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct SignerInfo {
@@ -203,7 +210,7 @@ pub struct SignerInfo {
     /// that already exist in state. If unset, the verifier can use the required \
     /// signer address for this position and lookup the public key.
     #[prost(message, optional, tag = "1")]
-    pub public_key: ::core::option::Option<::prost_types::Any>,
+    pub public_key: ::core::option::Option<::pbjson_types::Any>,
     /// mode_info describes the signing mode of the signer and is a nested
     /// structure to support nested multisig pubkey's
     #[prost(message, optional, tag = "2")]
@@ -222,6 +229,7 @@ impl ::prost::Name for SignerInfo {
     }
 }
 /// ModeInfo describes the signing mode of a single or nested multisig signer.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct ModeInfo {
@@ -235,6 +243,7 @@ pub mod mode_info {
     /// Single is the mode info for a single signer. It is structured as a message
     /// to allow for additional fields such as locale for SIGN_MODE_TEXTUAL in the
     /// future
+    #[derive(::serde::Serialize, ::serde::Deserialize)]
     #[allow(clippy::derive_partial_eq_without_eq)]
     #[derive(Clone, PartialEq, ::prost::Message)]
     pub struct Single {
@@ -250,6 +259,7 @@ pub mod mode_info {
         }
     }
     /// Multi is the mode info for a multisig public key
+    #[derive(::serde::Serialize, ::serde::Deserialize)]
     #[allow(clippy::derive_partial_eq_without_eq)]
     #[derive(Clone, PartialEq, ::prost::Message)]
     pub struct Multi {
@@ -271,6 +281,7 @@ pub mod mode_info {
     }
     /// sum is the oneof that specifies whether this represents a single or nested
     /// multisig signer
+    #[derive(::serde::Serialize, ::serde::Deserialize)]
     #[allow(clippy::derive_partial_eq_without_eq)]
     #[derive(Clone, PartialEq, ::prost::Oneof)]
     pub enum Sum {
@@ -292,6 +303,7 @@ impl ::prost::Name for ModeInfo {
 /// Fee includes the amount of coins paid in fees and the maximum
 /// gas to be used by the transaction. The ratio yields an effective "gasprice",
 /// which must be above some miminum to be accepted into the mempool.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct Fee {
@@ -323,6 +335,7 @@ impl ::prost::Name for Fee {
 /// Tip is the tip used for meta-transactions.
 ///
 /// Since: cosmos-sdk 0.46
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct Tip {
@@ -346,6 +359,7 @@ impl ::prost::Name for Tip {
 /// by the node if sent directly as-is.
 ///
 /// Since: cosmos-sdk 0.46
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct AuxSignerData {
@@ -375,6 +389,7 @@ impl ::prost::Name for AuxSignerData {
 }
 /// GetTxsEventRequest is the request type for the Service.TxsByEvents
 /// RPC method.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct GetTxsEventRequest {
@@ -405,6 +420,7 @@ impl ::prost::Name for GetTxsEventRequest {
 }
 /// GetTxsEventResponse is the response type for the Service.TxsByEvents
 /// RPC method.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct GetTxsEventResponse {
@@ -432,6 +448,7 @@ impl ::prost::Name for GetTxsEventResponse {
 }
 /// BroadcastTxRequest is the request type for the Service.BroadcastTxRequest
 /// RPC method.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct BroadcastTxRequest {
@@ -450,6 +467,7 @@ impl ::prost::Name for BroadcastTxRequest {
 }
 /// BroadcastTxResponse is the response type for the
 /// Service.BroadcastTx method.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct BroadcastTxResponse {
@@ -466,6 +484,7 @@ impl ::prost::Name for BroadcastTxResponse {
 }
 /// SimulateRequest is the request type for the Service.Simulate
 /// RPC method.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct SimulateRequest {
@@ -489,6 +508,7 @@ impl ::prost::Name for SimulateRequest {
 }
 /// SimulateResponse is the response type for the
 /// Service.SimulateRPC method.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct SimulateResponse {
@@ -508,6 +528,7 @@ impl ::prost::Name for SimulateResponse {
 }
 /// GetTxRequest is the request type for the Service.GetTx
 /// RPC method.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct GetTxRequest {
@@ -523,6 +544,7 @@ impl ::prost::Name for GetTxRequest {
     }
 }
 /// GetTxResponse is the response type for the Service.GetTx method.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct GetTxResponse {
@@ -544,6 +566,7 @@ impl ::prost::Name for GetTxResponse {
 /// RPC method.
 ///
 /// Since: cosmos-sdk 0.45.2
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct GetBlockWithTxsRequest {
@@ -564,6 +587,7 @@ impl ::prost::Name for GetBlockWithTxsRequest {
 /// GetBlockWithTxsResponse is the response type for the Service.GetBlockWithTxs method.
 ///
 /// Since: cosmos-sdk 0.45.2
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct GetBlockWithTxsResponse {
@@ -589,6 +613,7 @@ impl ::prost::Name for GetBlockWithTxsResponse {
 /// RPC method.
 ///
 /// Since: cosmos-sdk 0.47
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct TxDecodeRequest {
@@ -607,6 +632,7 @@ impl ::prost::Name for TxDecodeRequest {
 /// Service.TxDecode method.
 ///
 /// Since: cosmos-sdk 0.47
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct TxDecodeResponse {
@@ -625,6 +651,7 @@ impl ::prost::Name for TxDecodeResponse {
 /// RPC method.
 ///
 /// Since: cosmos-sdk 0.47
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct TxEncodeRequest {
@@ -643,6 +670,7 @@ impl ::prost::Name for TxEncodeRequest {
 /// Service.TxEncode method.
 ///
 /// Since: cosmos-sdk 0.47
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct TxEncodeResponse {
@@ -661,6 +689,7 @@ impl ::prost::Name for TxEncodeResponse {
 /// RPC method.
 ///
 /// Since: cosmos-sdk 0.47
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct TxEncodeAminoRequest {
@@ -678,6 +707,7 @@ impl ::prost::Name for TxEncodeAminoRequest {
 /// RPC method.
 ///
 /// Since: cosmos-sdk 0.47
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct TxEncodeAminoResponse {
@@ -695,6 +725,7 @@ impl ::prost::Name for TxEncodeAminoResponse {
 /// RPC method.
 ///
 /// Since: cosmos-sdk 0.47
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct TxDecodeAminoRequest {
@@ -712,6 +743,7 @@ impl ::prost::Name for TxDecodeAminoRequest {
 /// RPC method.
 ///
 /// Since: cosmos-sdk 0.47
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct TxDecodeAminoResponse {
@@ -726,7 +758,19 @@ impl ::prost::Name for TxDecodeAminoResponse {
     }
 }
 /// OrderBy defines the sorting order
-#[derive(Clone, Copy, Debug, PartialEq, Eq, Hash, PartialOrd, Ord, ::prost::Enumeration)]
+#[derive(
+    ::serde::Serialize,
+    ::serde::Deserialize,
+    Clone,
+    Copy,
+    Debug,
+    PartialEq,
+    Eq,
+    Hash,
+    PartialOrd,
+    Ord,
+    ::prost::Enumeration,
+)]
 #[repr(i32)]
 pub enum OrderBy {
     /// ORDER_BY_UNSPECIFIED specifies an unknown sorting order. OrderBy defaults to ASC in this case.
@@ -759,7 +803,19 @@ impl OrderBy {
     }
 }
 /// BroadcastMode specifies the broadcast mode for the TxService.Broadcast RPC method.
-#[derive(Clone, Copy, Debug, PartialEq, Eq, Hash, PartialOrd, Ord, ::prost::Enumeration)]
+#[derive(
+    ::serde::Serialize,
+    ::serde::Deserialize,
+    Clone,
+    Copy,
+    Debug,
+    PartialEq,
+    Eq,
+    Hash,
+    PartialOrd,
+    Ord,
+    ::prost::Enumeration,
+)]
 #[repr(i32)]
 pub enum BroadcastMode {
     /// zero-value for mode ordering

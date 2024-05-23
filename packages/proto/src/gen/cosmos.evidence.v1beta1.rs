@@ -1,6 +1,7 @@
 // @generated
 /// Equivocation implements the Evidence interface and defines evidence of double
 /// signing misbehavior.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct Equivocation {
@@ -9,7 +10,7 @@ pub struct Equivocation {
     pub height: i64,
     /// time is the equivocation time.
     #[prost(message, optional, tag = "2")]
-    pub time: ::core::option::Option<::prost_types::Timestamp>,
+    pub time: ::core::option::Option<::pbjson_types::Timestamp>,
     /// power is the equivocation validator power.
     #[prost(int64, tag = "3")]
     pub power: i64,
@@ -25,12 +26,13 @@ impl ::prost::Name for Equivocation {
     }
 }
 /// GenesisState defines the evidence module's genesis state.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct GenesisState {
     /// evidence defines all the evidence at genesis.
     #[prost(message, repeated, tag = "1")]
-    pub evidence: ::prost::alloc::vec::Vec<::prost_types::Any>,
+    pub evidence: ::prost::alloc::vec::Vec<::pbjson_types::Any>,
 }
 impl ::prost::Name for GenesisState {
     const NAME: &'static str = "GenesisState";
@@ -40,6 +42,7 @@ impl ::prost::Name for GenesisState {
     }
 }
 /// QueryEvidenceRequest is the request type for the Query/Evidence RPC method.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct QueryEvidenceRequest {
@@ -62,12 +65,13 @@ impl ::prost::Name for QueryEvidenceRequest {
     }
 }
 /// QueryEvidenceResponse is the response type for the Query/Evidence RPC method.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct QueryEvidenceResponse {
     /// evidence returns the requested evidence.
     #[prost(message, optional, tag = "1")]
-    pub evidence: ::core::option::Option<::prost_types::Any>,
+    pub evidence: ::core::option::Option<::pbjson_types::Any>,
 }
 impl ::prost::Name for QueryEvidenceResponse {
     const NAME: &'static str = "QueryEvidenceResponse";
@@ -78,6 +82,7 @@ impl ::prost::Name for QueryEvidenceResponse {
 }
 /// QueryEvidenceRequest is the request type for the Query/AllEvidence RPC
 /// method.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct QueryAllEvidenceRequest {
@@ -94,12 +99,13 @@ impl ::prost::Name for QueryAllEvidenceRequest {
 }
 /// QueryAllEvidenceResponse is the response type for the Query/AllEvidence RPC
 /// method.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct QueryAllEvidenceResponse {
     /// evidence returns all evidences.
     #[prost(message, repeated, tag = "1")]
-    pub evidence: ::prost::alloc::vec::Vec<::prost_types::Any>,
+    pub evidence: ::prost::alloc::vec::Vec<::pbjson_types::Any>,
     /// pagination defines the pagination in the response.
     #[prost(message, optional, tag = "2")]
     pub pagination: ::core::option::Option<super::super::base::query::v1beta1::PageResponse>,
@@ -113,6 +119,7 @@ impl ::prost::Name for QueryAllEvidenceResponse {
 }
 /// MsgSubmitEvidence represents a message that supports submitting arbitrary
 /// Evidence of misbehavior such as equivocation or counterfactual signing.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct MsgSubmitEvidence {
@@ -121,7 +128,7 @@ pub struct MsgSubmitEvidence {
     pub submitter: ::prost::alloc::string::String,
     /// evidence defines the evidence of misbehavior.
     #[prost(message, optional, tag = "2")]
-    pub evidence: ::core::option::Option<::prost_types::Any>,
+    pub evidence: ::core::option::Option<::pbjson_types::Any>,
 }
 impl ::prost::Name for MsgSubmitEvidence {
     const NAME: &'static str = "MsgSubmitEvidence";
@@ -131,6 +138,7 @@ impl ::prost::Name for MsgSubmitEvidence {
     }
 }
 /// MsgSubmitEvidenceResponse defines the Msg/SubmitEvidence response type.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct MsgSubmitEvidenceResponse {

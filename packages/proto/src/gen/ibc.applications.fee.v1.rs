@@ -1,5 +1,6 @@
 // @generated
 /// IncentivizedAcknowledgement is the acknowledgement format to be used by applications wrapped in the fee middleware
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct IncentivizedAcknowledgement {
@@ -21,6 +22,7 @@ impl ::prost::Name for IncentivizedAcknowledgement {
     }
 }
 /// Fee defines the ICS29 receive, acknowledgement and timeout fees
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct Fee {
@@ -43,6 +45,7 @@ impl ::prost::Name for Fee {
     }
 }
 /// PacketFee contains ICS29 relayer fees, refund address and optional list of permitted relayers
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct PacketFee {
@@ -64,6 +67,7 @@ impl ::prost::Name for PacketFee {
     }
 }
 /// PacketFees contains a list of type PacketFee
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct PacketFees {
@@ -79,6 +83,7 @@ impl ::prost::Name for PacketFees {
     }
 }
 /// IdentifiedPacketFees contains a list of type PacketFee and associated PacketId
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct IdentifiedPacketFees {
@@ -97,6 +102,7 @@ impl ::prost::Name for IdentifiedPacketFees {
     }
 }
 /// GenesisState defines the ICS29 fee middleware genesis state
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct GenesisState {
@@ -124,6 +130,7 @@ impl ::prost::Name for GenesisState {
     }
 }
 /// FeeEnabledChannel contains the PortID & ChannelID for a fee enabled channel
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct FeeEnabledChannel {
@@ -142,6 +149,7 @@ impl ::prost::Name for FeeEnabledChannel {
     }
 }
 /// RegisteredPayee contains the relayer address and payee address for a specific channel
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct RegisteredPayee {
@@ -164,6 +172,7 @@ impl ::prost::Name for RegisteredPayee {
 }
 /// RegisteredCounterpartyPayee contains the relayer address and counterparty payee address for a specific channel (used
 /// for recv fee distribution)
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct RegisteredCounterpartyPayee {
@@ -185,6 +194,7 @@ impl ::prost::Name for RegisteredCounterpartyPayee {
     }
 }
 /// ForwardRelayerAddress contains the forward relayer address and PacketId used for async acknowledgements
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct ForwardRelayerAddress {
@@ -204,6 +214,7 @@ impl ::prost::Name for ForwardRelayerAddress {
 }
 /// Metadata defines the ICS29 channel specific metadata encoded into the channel version bytestring
 /// See ICS004: <https://github.com/cosmos/ibc/tree/master/spec/core/ics-004-channel-and-packet-semantics#Versioning>
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct Metadata {
@@ -222,6 +233,7 @@ impl ::prost::Name for Metadata {
     }
 }
 /// QueryIncentivizedPacketsRequest defines the request type for the IncentivizedPackets rpc
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct QueryIncentivizedPacketsRequest {
@@ -242,6 +254,7 @@ impl ::prost::Name for QueryIncentivizedPacketsRequest {
     }
 }
 /// QueryIncentivizedPacketsResponse defines the response type for the IncentivizedPackets rpc
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct QueryIncentivizedPacketsResponse {
@@ -257,6 +270,7 @@ impl ::prost::Name for QueryIncentivizedPacketsResponse {
     }
 }
 /// QueryIncentivizedPacketRequest defines the request type for the IncentivizedPacket rpc
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct QueryIncentivizedPacketRequest {
@@ -275,6 +289,7 @@ impl ::prost::Name for QueryIncentivizedPacketRequest {
     }
 }
 /// QueryIncentivizedPacketsResponse defines the response type for the IncentivizedPacket rpc
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct QueryIncentivizedPacketResponse {
@@ -291,6 +306,7 @@ impl ::prost::Name for QueryIncentivizedPacketResponse {
 }
 /// QueryIncentivizedPacketsForChannelRequest defines the request type for querying for all incentivized packets
 /// for a specific channel
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct QueryIncentivizedPacketsForChannelRequest {
@@ -315,6 +331,7 @@ impl ::prost::Name for QueryIncentivizedPacketsForChannelRequest {
     }
 }
 /// QueryIncentivizedPacketsResponse defines the response type for the incentivized packets RPC
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct QueryIncentivizedPacketsForChannelResponse {
@@ -330,6 +347,7 @@ impl ::prost::Name for QueryIncentivizedPacketsForChannelResponse {
     }
 }
 /// QueryTotalRecvFeesRequest defines the request type for the TotalRecvFees rpc
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct QueryTotalRecvFeesRequest {
@@ -345,6 +363,7 @@ impl ::prost::Name for QueryTotalRecvFeesRequest {
     }
 }
 /// QueryTotalRecvFeesResponse defines the response type for the TotalRecvFees rpc
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct QueryTotalRecvFeesResponse {
@@ -361,6 +380,7 @@ impl ::prost::Name for QueryTotalRecvFeesResponse {
     }
 }
 /// QueryTotalAckFeesRequest defines the request type for the TotalAckFees rpc
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct QueryTotalAckFeesRequest {
@@ -376,6 +396,7 @@ impl ::prost::Name for QueryTotalAckFeesRequest {
     }
 }
 /// QueryTotalAckFeesResponse defines the response type for the TotalAckFees rpc
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct QueryTotalAckFeesResponse {
@@ -391,6 +412,7 @@ impl ::prost::Name for QueryTotalAckFeesResponse {
     }
 }
 /// QueryTotalTimeoutFeesRequest defines the request type for the TotalTimeoutFees rpc
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct QueryTotalTimeoutFeesRequest {
@@ -406,6 +428,7 @@ impl ::prost::Name for QueryTotalTimeoutFeesRequest {
     }
 }
 /// QueryTotalTimeoutFeesResponse defines the response type for the TotalTimeoutFees rpc
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct QueryTotalTimeoutFeesResponse {
@@ -422,6 +445,7 @@ impl ::prost::Name for QueryTotalTimeoutFeesResponse {
     }
 }
 /// QueryPayeeRequest defines the request type for the Payee rpc
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct QueryPayeeRequest {
@@ -440,6 +464,7 @@ impl ::prost::Name for QueryPayeeRequest {
     }
 }
 /// QueryPayeeResponse defines the response type for the Payee rpc
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct QueryPayeeResponse {
@@ -455,6 +480,7 @@ impl ::prost::Name for QueryPayeeResponse {
     }
 }
 /// QueryCounterpartyPayeeRequest defines the request type for the CounterpartyPayee rpc
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct QueryCounterpartyPayeeRequest {
@@ -473,6 +499,7 @@ impl ::prost::Name for QueryCounterpartyPayeeRequest {
     }
 }
 /// QueryCounterpartyPayeeResponse defines the response type for the CounterpartyPayee rpc
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct QueryCounterpartyPayeeResponse {
@@ -488,6 +515,7 @@ impl ::prost::Name for QueryCounterpartyPayeeResponse {
     }
 }
 /// QueryFeeEnabledChannelsRequest defines the request type for the FeeEnabledChannels rpc
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct QueryFeeEnabledChannelsRequest {
@@ -508,6 +536,7 @@ impl ::prost::Name for QueryFeeEnabledChannelsRequest {
     }
 }
 /// QueryFeeEnabledChannelsResponse defines the response type for the FeeEnabledChannels rpc
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct QueryFeeEnabledChannelsResponse {
@@ -523,6 +552,7 @@ impl ::prost::Name for QueryFeeEnabledChannelsResponse {
     }
 }
 /// QueryFeeEnabledChannelRequest defines the request type for the FeeEnabledChannel rpc
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct QueryFeeEnabledChannelRequest {
@@ -541,6 +571,7 @@ impl ::prost::Name for QueryFeeEnabledChannelRequest {
     }
 }
 /// QueryFeeEnabledChannelResponse defines the response type for the FeeEnabledChannel rpc
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct QueryFeeEnabledChannelResponse {
@@ -556,6 +587,7 @@ impl ::prost::Name for QueryFeeEnabledChannelResponse {
     }
 }
 /// MsgRegisterPayee defines the request type for the RegisterPayee rpc
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct MsgRegisterPayee {
@@ -580,6 +612,7 @@ impl ::prost::Name for MsgRegisterPayee {
     }
 }
 /// MsgRegisterPayeeResponse defines the response type for the RegisterPayee rpc
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct MsgRegisterPayeeResponse {}
@@ -591,6 +624,7 @@ impl ::prost::Name for MsgRegisterPayeeResponse {
     }
 }
 /// MsgRegisterCounterpartyPayee defines the request type for the RegisterCounterpartyPayee rpc
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct MsgRegisterCounterpartyPayee {
@@ -615,6 +649,7 @@ impl ::prost::Name for MsgRegisterCounterpartyPayee {
     }
 }
 /// MsgRegisterCounterpartyPayeeResponse defines the response type for the RegisterCounterpartyPayee rpc
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct MsgRegisterCounterpartyPayeeResponse {}
@@ -628,6 +663,7 @@ impl ::prost::Name for MsgRegisterCounterpartyPayeeResponse {
 /// MsgPayPacketFee defines the request type for the PayPacketFee rpc
 /// This Msg can be used to pay for a packet at the next sequence send & should be combined with the Msg that will be
 /// paid for
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct MsgPayPacketFee {
@@ -655,6 +691,7 @@ impl ::prost::Name for MsgPayPacketFee {
     }
 }
 /// MsgPayPacketFeeResponse defines the response type for the PayPacketFee rpc
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct MsgPayPacketFeeResponse {}
@@ -667,6 +704,7 @@ impl ::prost::Name for MsgPayPacketFeeResponse {
 }
 /// MsgPayPacketFeeAsync defines the request type for the PayPacketFeeAsync rpc
 /// This Msg can be used to pay for a packet at a specified sequence (instead of the next sequence send)
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct MsgPayPacketFeeAsync {
@@ -685,6 +723,7 @@ impl ::prost::Name for MsgPayPacketFeeAsync {
     }
 }
 /// MsgPayPacketFeeAsyncResponse defines the response type for the PayPacketFeeAsync rpc
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct MsgPayPacketFeeAsyncResponse {}

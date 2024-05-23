@@ -1,5 +1,6 @@
 // @generated
 /// ConfigRequest defines the request structure for the Config gRPC query.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct ConfigRequest {}
@@ -11,6 +12,7 @@ impl ::prost::Name for ConfigRequest {
     }
 }
 /// ConfigResponse defines the response structure for the Config gRPC query.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct ConfigResponse {

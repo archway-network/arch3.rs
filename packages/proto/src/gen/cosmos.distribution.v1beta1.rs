@@ -1,5 +1,6 @@
 // @generated
 /// Params defines the set of params for the distribution module.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct Params {
@@ -37,6 +38,7 @@ impl ::prost::Name for Params {
 ///   + number of slashes which ended the associated period (and might need to
 ///   read that record)
 ///   + one per validator for the zeroeth period, set on initialization
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct ValidatorHistoricalRewards {
@@ -55,6 +57,7 @@ impl ::prost::Name for ValidatorHistoricalRewards {
 /// ValidatorCurrentRewards represents current rewards and current
 /// period for a validator kept as a running counter and incremented
 /// each block as long as the validator's tokens remain constant.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct ValidatorCurrentRewards {
@@ -72,6 +75,7 @@ impl ::prost::Name for ValidatorCurrentRewards {
 }
 /// ValidatorAccumulatedCommission represents accumulated commission
 /// for a validator kept as a running counter, can be withdrawn at any time.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct ValidatorAccumulatedCommission {
@@ -87,6 +91,7 @@ impl ::prost::Name for ValidatorAccumulatedCommission {
 }
 /// ValidatorOutstandingRewards represents outstanding (un-withdrawn) rewards
 /// for a validator inexpensive to track, allows simple sanity checks.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct ValidatorOutstandingRewards {
@@ -104,6 +109,7 @@ impl ::prost::Name for ValidatorOutstandingRewards {
 /// Height is implicit within the store key.
 /// This is needed to calculate appropriate amount of staking tokens
 /// for delegations which are withdrawn after a slash has occurred.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct ValidatorSlashEvent {
@@ -120,6 +126,7 @@ impl ::prost::Name for ValidatorSlashEvent {
     }
 }
 /// ValidatorSlashEvents is a collection of ValidatorSlashEvent messages.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct ValidatorSlashEvents {
@@ -134,6 +141,7 @@ impl ::prost::Name for ValidatorSlashEvents {
     }
 }
 /// FeePool is the global fee pool for distribution.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct FeePool {
@@ -155,6 +163,7 @@ impl ::prost::Name for FeePool {
 /// longer a need for an explicit CommunityPoolSpendProposal. To spend community
 /// pool funds, a simple MsgCommunityPoolSpend can be invoked from the x/gov
 /// module via a v1 governance proposal.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct CommunityPoolSpendProposal {
@@ -180,6 +189,7 @@ impl ::prost::Name for CommunityPoolSpendProposal {
 /// occurred). NOTE: Even though validators are slashed to whole staking tokens,
 /// the delegators within the validator may be left with less than a full token,
 /// thus sdk.Dec is used.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct DelegatorStartingInfo {
@@ -199,6 +209,7 @@ impl ::prost::Name for DelegatorStartingInfo {
 }
 /// DelegationDelegatorReward represents the properties
 /// of a delegator's delegation reward.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct DelegationDelegatorReward {
@@ -216,6 +227,7 @@ impl ::prost::Name for DelegationDelegatorReward {
 }
 /// CommunityPoolSpendProposalWithDeposit defines a CommunityPoolSpendProposal
 /// with a deposit
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct CommunityPoolSpendProposalWithDeposit {
@@ -240,6 +252,7 @@ impl ::prost::Name for CommunityPoolSpendProposalWithDeposit {
 /// DelegatorWithdrawInfo is the address for where distributions rewards are
 /// withdrawn to by default this struct is only used at genesis to feed in
 /// default withdraw addresses.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct DelegatorWithdrawInfo {
@@ -258,6 +271,7 @@ impl ::prost::Name for DelegatorWithdrawInfo {
     }
 }
 /// ValidatorOutstandingRewardsRecord is used for import/export via genesis json.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct ValidatorOutstandingRewardsRecord {
@@ -277,6 +291,7 @@ impl ::prost::Name for ValidatorOutstandingRewardsRecord {
 }
 /// ValidatorAccumulatedCommissionRecord is used for import / export via genesis
 /// json.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct ValidatorAccumulatedCommissionRecord {
@@ -296,6 +311,7 @@ impl ::prost::Name for ValidatorAccumulatedCommissionRecord {
 }
 /// ValidatorHistoricalRewardsRecord is used for import / export via genesis
 /// json.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct ValidatorHistoricalRewardsRecord {
@@ -317,6 +333,7 @@ impl ::prost::Name for ValidatorHistoricalRewardsRecord {
     }
 }
 /// ValidatorCurrentRewardsRecord is used for import / export via genesis json.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct ValidatorCurrentRewardsRecord {
@@ -335,6 +352,7 @@ impl ::prost::Name for ValidatorCurrentRewardsRecord {
     }
 }
 /// DelegatorStartingInfoRecord used for import / export via genesis json.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct DelegatorStartingInfoRecord {
@@ -356,6 +374,7 @@ impl ::prost::Name for DelegatorStartingInfoRecord {
     }
 }
 /// ValidatorSlashEventRecord is used for import / export via genesis json.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct ValidatorSlashEventRecord {
@@ -380,6 +399,7 @@ impl ::prost::Name for ValidatorSlashEventRecord {
     }
 }
 /// GenesisState defines the distribution module's genesis state.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct GenesisState {
@@ -423,6 +443,7 @@ impl ::prost::Name for GenesisState {
     }
 }
 /// QueryParamsRequest is the request type for the Query/Params RPC method.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct QueryParamsRequest {}
@@ -434,6 +455,7 @@ impl ::prost::Name for QueryParamsRequest {
     }
 }
 /// QueryParamsResponse is the response type for the Query/Params RPC method.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct QueryParamsResponse {
@@ -449,6 +471,7 @@ impl ::prost::Name for QueryParamsResponse {
     }
 }
 /// QueryValidatorDistributionInfoRequest is the request type for the Query/ValidatorDistributionInfo RPC method.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct QueryValidatorDistributionInfoRequest {
@@ -464,6 +487,7 @@ impl ::prost::Name for QueryValidatorDistributionInfoRequest {
     }
 }
 /// QueryValidatorDistributionInfoResponse is the response type for the Query/ValidatorDistributionInfo RPC method.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct QueryValidatorDistributionInfoResponse {
@@ -486,6 +510,7 @@ impl ::prost::Name for QueryValidatorDistributionInfoResponse {
 }
 /// QueryValidatorOutstandingRewardsRequest is the request type for the
 /// Query/ValidatorOutstandingRewards RPC method.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct QueryValidatorOutstandingRewardsRequest {
@@ -502,6 +527,7 @@ impl ::prost::Name for QueryValidatorOutstandingRewardsRequest {
 }
 /// QueryValidatorOutstandingRewardsResponse is the response type for the
 /// Query/ValidatorOutstandingRewards RPC method.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct QueryValidatorOutstandingRewardsResponse {
@@ -517,6 +543,7 @@ impl ::prost::Name for QueryValidatorOutstandingRewardsResponse {
 }
 /// QueryValidatorCommissionRequest is the request type for the
 /// Query/ValidatorCommission RPC method
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct QueryValidatorCommissionRequest {
@@ -533,6 +560,7 @@ impl ::prost::Name for QueryValidatorCommissionRequest {
 }
 /// QueryValidatorCommissionResponse is the response type for the
 /// Query/ValidatorCommission RPC method
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct QueryValidatorCommissionResponse {
@@ -549,6 +577,7 @@ impl ::prost::Name for QueryValidatorCommissionResponse {
 }
 /// QueryValidatorSlashesRequest is the request type for the
 /// Query/ValidatorSlashes RPC method
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct QueryValidatorSlashesRequest {
@@ -574,6 +603,7 @@ impl ::prost::Name for QueryValidatorSlashesRequest {
 }
 /// QueryValidatorSlashesResponse is the response type for the
 /// Query/ValidatorSlashes RPC method.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct QueryValidatorSlashesResponse {
@@ -593,6 +623,7 @@ impl ::prost::Name for QueryValidatorSlashesResponse {
 }
 /// QueryDelegationRewardsRequest is the request type for the
 /// Query/DelegationRewards RPC method.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct QueryDelegationRewardsRequest {
@@ -612,6 +643,7 @@ impl ::prost::Name for QueryDelegationRewardsRequest {
 }
 /// QueryDelegationRewardsResponse is the response type for the
 /// Query/DelegationRewards RPC method.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct QueryDelegationRewardsResponse {
@@ -628,6 +660,7 @@ impl ::prost::Name for QueryDelegationRewardsResponse {
 }
 /// QueryDelegationTotalRewardsRequest is the request type for the
 /// Query/DelegationTotalRewards RPC method.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct QueryDelegationTotalRewardsRequest {
@@ -644,6 +677,7 @@ impl ::prost::Name for QueryDelegationTotalRewardsRequest {
 }
 /// QueryDelegationTotalRewardsResponse is the response type for the
 /// Query/DelegationTotalRewards RPC method.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct QueryDelegationTotalRewardsResponse {
@@ -663,6 +697,7 @@ impl ::prost::Name for QueryDelegationTotalRewardsResponse {
 }
 /// QueryDelegatorValidatorsRequest is the request type for the
 /// Query/DelegatorValidators RPC method.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct QueryDelegatorValidatorsRequest {
@@ -679,6 +714,7 @@ impl ::prost::Name for QueryDelegatorValidatorsRequest {
 }
 /// QueryDelegatorValidatorsResponse is the response type for the
 /// Query/DelegatorValidators RPC method.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct QueryDelegatorValidatorsResponse {
@@ -695,6 +731,7 @@ impl ::prost::Name for QueryDelegatorValidatorsResponse {
 }
 /// QueryDelegatorWithdrawAddressRequest is the request type for the
 /// Query/DelegatorWithdrawAddress RPC method.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct QueryDelegatorWithdrawAddressRequest {
@@ -711,6 +748,7 @@ impl ::prost::Name for QueryDelegatorWithdrawAddressRequest {
 }
 /// QueryDelegatorWithdrawAddressResponse is the response type for the
 /// Query/DelegatorWithdrawAddress RPC method.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct QueryDelegatorWithdrawAddressResponse {
@@ -727,6 +765,7 @@ impl ::prost::Name for QueryDelegatorWithdrawAddressResponse {
 }
 /// QueryCommunityPoolRequest is the request type for the Query/CommunityPool RPC
 /// method.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct QueryCommunityPoolRequest {}
@@ -739,6 +778,7 @@ impl ::prost::Name for QueryCommunityPoolRequest {
 }
 /// QueryCommunityPoolResponse is the response type for the Query/CommunityPool
 /// RPC method.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct QueryCommunityPoolResponse {
@@ -755,6 +795,7 @@ impl ::prost::Name for QueryCommunityPoolResponse {
 }
 /// MsgSetWithdrawAddress sets the withdraw address for
 /// a delegator (or validator self-delegation).
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct MsgSetWithdrawAddress {
@@ -772,6 +813,7 @@ impl ::prost::Name for MsgSetWithdrawAddress {
 }
 /// MsgSetWithdrawAddressResponse defines the Msg/SetWithdrawAddress response
 /// type.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct MsgSetWithdrawAddressResponse {}
@@ -784,6 +826,7 @@ impl ::prost::Name for MsgSetWithdrawAddressResponse {
 }
 /// MsgWithdrawDelegatorReward represents delegation withdrawal to a delegator
 /// from a single validator.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct MsgWithdrawDelegatorReward {
@@ -801,6 +844,7 @@ impl ::prost::Name for MsgWithdrawDelegatorReward {
 }
 /// MsgWithdrawDelegatorRewardResponse defines the Msg/WithdrawDelegatorReward
 /// response type.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct MsgWithdrawDelegatorRewardResponse {
@@ -817,6 +861,7 @@ impl ::prost::Name for MsgWithdrawDelegatorRewardResponse {
 }
 /// MsgWithdrawValidatorCommission withdraws the full commission to the validator
 /// address.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct MsgWithdrawValidatorCommission {
@@ -832,6 +877,7 @@ impl ::prost::Name for MsgWithdrawValidatorCommission {
 }
 /// MsgWithdrawValidatorCommissionResponse defines the
 /// Msg/WithdrawValidatorCommission response type.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct MsgWithdrawValidatorCommissionResponse {
@@ -848,6 +894,7 @@ impl ::prost::Name for MsgWithdrawValidatorCommissionResponse {
 }
 /// MsgFundCommunityPool allows an account to directly
 /// fund the community pool.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct MsgFundCommunityPool {
@@ -864,6 +911,7 @@ impl ::prost::Name for MsgFundCommunityPool {
     }
 }
 /// MsgFundCommunityPoolResponse defines the Msg/FundCommunityPool response type.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct MsgFundCommunityPoolResponse {}
@@ -877,6 +925,7 @@ impl ::prost::Name for MsgFundCommunityPoolResponse {
 /// MsgUpdateParams is the Msg/UpdateParams request type.
 ///
 /// Since: cosmos-sdk 0.47
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct MsgUpdateParams {
@@ -900,6 +949,7 @@ impl ::prost::Name for MsgUpdateParams {
 /// MsgUpdateParams message.
 ///
 /// Since: cosmos-sdk 0.47
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct MsgUpdateParamsResponse {}
@@ -915,6 +965,7 @@ impl ::prost::Name for MsgUpdateParamsResponse {
 /// proposal with the governance module being the executing authority.
 ///
 /// Since: cosmos-sdk 0.47
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct MsgCommunityPoolSpend {
@@ -937,6 +988,7 @@ impl ::prost::Name for MsgCommunityPoolSpend {
 /// MsgCommunityPoolSpend message.
 ///
 /// Since: cosmos-sdk 0.47
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct MsgCommunityPoolSpendResponse {}

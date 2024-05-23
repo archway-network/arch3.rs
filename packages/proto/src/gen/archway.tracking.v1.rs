@@ -1,6 +1,7 @@
 // @generated
 /// TxInfo keeps a transaction gas tracking data.
 /// Object is being created at the module EndBlocker.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct TxInfo {
@@ -24,6 +25,7 @@ impl ::prost::Name for TxInfo {
 }
 /// ContractOperationInfo keeps a single contract operation gas consumption data.
 /// Object is being created by the IngestGasRecord call from the wasmd.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct ContractOperationInfo {
@@ -57,6 +59,7 @@ impl ::prost::Name for ContractOperationInfo {
     }
 }
 /// BlockTracking is the tracking information for a block.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct BlockTracking {
@@ -72,6 +75,7 @@ impl ::prost::Name for BlockTracking {
     }
 }
 /// TxTracking is the tracking information for a single transaction.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct TxTracking {
@@ -91,7 +95,19 @@ impl ::prost::Name for TxTracking {
     }
 }
 /// ContractOperation denotes which operation consumed gas.
-#[derive(Clone, Copy, Debug, PartialEq, Eq, Hash, PartialOrd, Ord, ::prost::Enumeration)]
+#[derive(
+    ::serde::Serialize,
+    ::serde::Deserialize,
+    Clone,
+    Copy,
+    Debug,
+    PartialEq,
+    Eq,
+    Hash,
+    PartialOrd,
+    Ord,
+    ::prost::Enumeration,
+)]
 #[repr(i32)]
 pub enum ContractOperation {
     /// Invalid or unknown operation
@@ -144,6 +160,7 @@ impl ContractOperation {
     }
 }
 /// GenesisState defines the initial state of the tracking module.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct GenesisState {
@@ -169,6 +186,7 @@ impl ::prost::Name for GenesisState {
     }
 }
 /// QueryBlockGasTrackingRequest is the request for Query.BlockGasTracking.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct QueryBlockGasTrackingRequest {}
@@ -180,6 +198,7 @@ impl ::prost::Name for QueryBlockGasTrackingRequest {
     }
 }
 /// QueryBlockGasTrackingResponse is the response for Query.BlockGasTracking.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct QueryBlockGasTrackingResponse {

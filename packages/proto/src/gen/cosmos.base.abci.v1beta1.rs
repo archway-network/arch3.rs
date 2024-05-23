@@ -1,6 +1,7 @@
 // @generated
 /// TxResponse defines a structure containing relevant tx data and metadata. The
 /// tags are stringified and the log is JSON decoded.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct TxResponse {
@@ -37,7 +38,7 @@ pub struct TxResponse {
     pub gas_used: i64,
     /// The request transaction bytes.
     #[prost(message, optional, tag = "11")]
-    pub tx: ::core::option::Option<::prost_types::Any>,
+    pub tx: ::core::option::Option<::pbjson_types::Any>,
     /// Time of the previous block. For heights > 1, it's the weighted median of
     /// the timestamps of the valid votes in the block.LastCommit. For height == 1,
     /// it's genesis time.
@@ -60,6 +61,7 @@ impl ::prost::Name for TxResponse {
     }
 }
 /// ABCIMessageLog defines a structure containing an indexed tx ABCI message log.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct AbciMessageLog {
@@ -81,6 +83,7 @@ impl ::prost::Name for AbciMessageLog {
 }
 /// StringEvent defines en Event object wrapper where all the attributes
 /// contain key/value pairs that are strings instead of raw bytes.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct StringEvent {
@@ -98,6 +101,7 @@ impl ::prost::Name for StringEvent {
 }
 /// Attribute defines an attribute wrapper where the key and value are
 /// strings instead of raw bytes.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct Attribute {
@@ -114,6 +118,7 @@ impl ::prost::Name for Attribute {
     }
 }
 /// GasInfo defines tx execution gas context.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct GasInfo {
@@ -132,6 +137,7 @@ impl ::prost::Name for GasInfo {
     }
 }
 /// Result is the union of ResponseFormat and ResponseCheckTx.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct Result {
@@ -153,7 +159,7 @@ pub struct Result {
     ///
     /// Since: cosmos-sdk 0.46
     #[prost(message, repeated, tag = "4")]
-    pub msg_responses: ::prost::alloc::vec::Vec<::prost_types::Any>,
+    pub msg_responses: ::prost::alloc::vec::Vec<::pbjson_types::Any>,
 }
 impl ::prost::Name for Result {
     const NAME: &'static str = "Result";
@@ -164,6 +170,7 @@ impl ::prost::Name for Result {
 }
 /// SimulationResponse defines the response generated when a transaction is
 /// successfully simulated.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct SimulationResponse {
@@ -181,6 +188,7 @@ impl ::prost::Name for SimulationResponse {
 }
 /// MsgData defines the data returned in a Result object during message
 /// execution.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct MsgData {
@@ -198,6 +206,7 @@ impl ::prost::Name for MsgData {
 }
 /// TxMsgData defines a list of MsgData. A transaction will have a MsgData object
 /// for each message.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct TxMsgData {
@@ -209,7 +218,7 @@ pub struct TxMsgData {
     ///
     /// Since: cosmos-sdk 0.46
     #[prost(message, repeated, tag = "2")]
-    pub msg_responses: ::prost::alloc::vec::Vec<::prost_types::Any>,
+    pub msg_responses: ::prost::alloc::vec::Vec<::pbjson_types::Any>,
 }
 impl ::prost::Name for TxMsgData {
     const NAME: &'static str = "TxMsgData";
@@ -219,6 +228,7 @@ impl ::prost::Name for TxMsgData {
     }
 }
 /// SearchTxsResult defines a structure for querying txs pageable
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct SearchTxsResult {

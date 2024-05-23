@@ -1,5 +1,6 @@
 // @generated
 /// MsgRegisterAsGranter allows a contract to register itself as a fee granter.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct MsgRegisterAsGranter {
@@ -14,6 +15,7 @@ impl ::prost::Name for MsgRegisterAsGranter {
     }
 }
 /// MsgRegisterAsGranterResponse defines the response of RegisterAsGranter.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct MsgRegisterAsGranterResponse {}
@@ -25,6 +27,7 @@ impl ::prost::Name for MsgRegisterAsGranterResponse {
     }
 }
 /// MsgUnregisterAsGranter can be used by a cosmwasm contract to unregister itself as a fee granter.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct MsgUnregisterAsGranter {
@@ -39,6 +42,7 @@ impl ::prost::Name for MsgUnregisterAsGranter {
     }
 }
 /// MsgUnregisterAsGranterResponse defines the response of UnregisterAsGranter.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct MsgUnregisterAsGranterResponse {}
@@ -50,6 +54,7 @@ impl ::prost::Name for MsgUnregisterAsGranterResponse {
     }
 }
 /// IsGrantingContract is the request type of IsGrantingContract RPC.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct IsGrantingContractRequest {
@@ -66,6 +71,7 @@ impl ::prost::Name for IsGrantingContractRequest {
     }
 }
 /// IsGrantingContractResponse is the response type of IsGRantingContract RPC.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct IsGrantingContractResponse {
@@ -81,6 +87,7 @@ impl ::prost::Name for IsGrantingContractResponse {
     }
 }
 /// GenesisState represents the genesis state of the cwfeesant module.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct GenesisState {

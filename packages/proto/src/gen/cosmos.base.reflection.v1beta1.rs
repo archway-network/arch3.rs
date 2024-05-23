@@ -1,5 +1,6 @@
 // @generated
 /// ListAllInterfacesRequest is the request type of the ListAllInterfaces RPC.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct ListAllInterfacesRequest {}
@@ -11,6 +12,7 @@ impl ::prost::Name for ListAllInterfacesRequest {
     }
 }
 /// ListAllInterfacesResponse is the response type of the ListAllInterfaces RPC.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct ListAllInterfacesResponse {
@@ -27,6 +29,7 @@ impl ::prost::Name for ListAllInterfacesResponse {
 }
 /// ListImplementationsRequest is the request type of the ListImplementations
 /// RPC.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct ListImplementationsRequest {
@@ -43,6 +46,7 @@ impl ::prost::Name for ListImplementationsRequest {
 }
 /// ListImplementationsResponse is the response type of the ListImplementations
 /// RPC.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct ListImplementationsResponse {

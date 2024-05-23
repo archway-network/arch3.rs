@@ -1,5 +1,6 @@
 // @generated
 /// GetRequest is the Query/Get request type.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct GetRequest {
@@ -25,13 +26,14 @@ impl ::prost::Name for GetRequest {
     }
 }
 /// GetResponse is the Query/Get response type.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct GetResponse {
     /// result is the result of the get query. If no value is found, the gRPC
     /// status code NOT_FOUND will be returned.
     #[prost(message, optional, tag = "1")]
-    pub result: ::core::option::Option<::prost_types::Any>,
+    pub result: ::core::option::Option<::pbjson_types::Any>,
 }
 impl ::prost::Name for GetResponse {
     const NAME: &'static str = "GetResponse";
@@ -41,6 +43,7 @@ impl ::prost::Name for GetResponse {
     }
 }
 /// ListRequest is the Query/List request type.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct ListRequest {
@@ -63,6 +66,7 @@ pub struct ListRequest {
 /// Nested message and enum types in `ListRequest`.
 pub mod list_request {
     /// Prefix specifies the arguments to a prefix query.
+    #[derive(::serde::Serialize, ::serde::Deserialize)]
     #[allow(clippy::derive_partial_eq_without_eq)]
     #[derive(Clone, PartialEq, ::prost::Message)]
     pub struct Prefix {
@@ -80,6 +84,7 @@ pub mod list_request {
         }
     }
     /// Range specifies the arguments to a range query.
+    #[derive(::serde::Serialize, ::serde::Deserialize)]
     #[allow(clippy::derive_partial_eq_without_eq)]
     #[derive(Clone, PartialEq, ::prost::Message)]
     pub struct Range {
@@ -104,6 +109,7 @@ pub mod list_request {
     /// query is the query expression corresponding to the provided index. If
     /// neither prefix nor range is specified, the query will list all the fields
     /// in the index.
+    #[derive(::serde::Serialize, ::serde::Deserialize)]
     #[allow(clippy::derive_partial_eq_without_eq)]
     #[derive(Clone, PartialEq, ::prost::Oneof)]
     pub enum Query {
@@ -123,12 +129,13 @@ impl ::prost::Name for ListRequest {
     }
 }
 /// ListResponse is the Query/List response type.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct ListResponse {
     /// results are the results of the query.
     #[prost(message, repeated, tag = "1")]
-    pub results: ::prost::alloc::vec::Vec<::prost_types::Any>,
+    pub results: ::prost::alloc::vec::Vec<::pbjson_types::Any>,
     /// pagination is the pagination response.
     #[prost(message, optional, tag = "5")]
     pub pagination: ::core::option::Option<super::super::super::base::query::v1beta1::PageResponse>,
@@ -141,6 +148,7 @@ impl ::prost::Name for ListResponse {
     }
 }
 /// IndexValue represents the value of a field in an ORM index expression.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct IndexValue {
@@ -151,6 +159,7 @@ pub struct IndexValue {
 /// Nested message and enum types in `IndexValue`.
 pub mod index_value {
     /// value specifies the index value
+    #[derive(::serde::Serialize, ::serde::Deserialize)]
     #[allow(clippy::derive_partial_eq_without_eq)]
     #[derive(Clone, PartialEq, ::prost::Oneof)]
     pub enum Value {
@@ -176,10 +185,10 @@ pub mod index_value {
         Bool(bool),
         /// timestamp specifies a value for a timestamp index field.
         #[prost(message, tag = "7")]
-        Timestamp(::prost_types::Timestamp),
+        Timestamp(::pbjson_types::Timestamp),
         /// duration specifies a value for a duration index field.
         #[prost(message, tag = "8")]
-        Duration(::prost_types::Duration),
+        Duration(::pbjson_types::Duration),
     }
 }
 impl ::prost::Name for IndexValue {

@@ -1,6 +1,7 @@
 // @generated
 /// InterfaceDescriptor describes an interface type to be used with
 /// accepts_interface and implements_interface and declared by declare_interface.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct InterfaceDescriptor {
@@ -29,6 +30,7 @@ impl ::prost::Name for InterfaceDescriptor {
 /// Scalars should ideally define an encoding such that there is only one
 /// valid syntactical representation for a given semantic meaning,
 /// i.e. the encoding should be deterministic.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct ScalarDescriptor {
@@ -57,7 +59,19 @@ impl ::prost::Name for ScalarDescriptor {
         ::prost::alloc::format!("cosmos_proto.{}", Self::NAME)
     }
 }
-#[derive(Clone, Copy, Debug, PartialEq, Eq, Hash, PartialOrd, Ord, ::prost::Enumeration)]
+#[derive(
+    ::serde::Serialize,
+    ::serde::Deserialize,
+    Clone,
+    Copy,
+    Debug,
+    PartialEq,
+    Eq,
+    Hash,
+    PartialOrd,
+    Ord,
+    ::prost::Enumeration,
+)]
 #[repr(i32)]
 pub enum ScalarType {
     Unspecified = 0,

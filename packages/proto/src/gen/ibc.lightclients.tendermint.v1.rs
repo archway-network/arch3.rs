@@ -1,6 +1,7 @@
 // @generated
 /// ClientState from Tendermint tracks the current validator set, latest height,
 /// and a possible frozen height.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct ClientState {
@@ -11,13 +12,13 @@ pub struct ClientState {
     /// duration of the period since the LastestTimestamp during which the
     /// submitted headers are valid for upgrade
     #[prost(message, optional, tag = "3")]
-    pub trusting_period: ::core::option::Option<::prost_types::Duration>,
+    pub trusting_period: ::core::option::Option<::pbjson_types::Duration>,
     /// duration of the staking unbonding period
     #[prost(message, optional, tag = "4")]
-    pub unbonding_period: ::core::option::Option<::prost_types::Duration>,
+    pub unbonding_period: ::core::option::Option<::pbjson_types::Duration>,
     /// defines how much new (untrusted) header's Time can drift into the future.
     #[prost(message, optional, tag = "5")]
-    pub max_clock_drift: ::core::option::Option<::prost_types::Duration>,
+    pub max_clock_drift: ::core::option::Option<::pbjson_types::Duration>,
     /// Block height when the client was frozen due to a misbehaviour
     #[prost(message, optional, tag = "6")]
     pub frozen_height: ::core::option::Option<super::super::super::core::client::v1::Height>,
@@ -54,13 +55,14 @@ impl ::prost::Name for ClientState {
     }
 }
 /// ConsensusState defines the consensus state from Tendermint.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct ConsensusState {
     /// timestamp that corresponds to the block height in which the ConsensusState
     /// was stored.
     #[prost(message, optional, tag = "1")]
-    pub timestamp: ::core::option::Option<::prost_types::Timestamp>,
+    pub timestamp: ::core::option::Option<::pbjson_types::Timestamp>,
     /// commitment root (i.e app hash)
     #[prost(message, optional, tag = "2")]
     pub root: ::core::option::Option<super::super::super::core::commitment::v1::MerkleRoot>,
@@ -76,6 +78,7 @@ impl ::prost::Name for ConsensusState {
 }
 /// Misbehaviour is a wrapper over two conflicting Headers
 /// that implements Misbehaviour interface expected by ICS-02
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct Misbehaviour {
@@ -107,6 +110,7 @@ impl ::prost::Name for Misbehaviour {
 /// current time in order to correctly verify, and the TrustedValidators must
 /// hash to TrustedConsensusState.NextValidatorsHash since that is the last
 /// trusted validator set at the TrustedHeight.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct Header {
@@ -128,6 +132,7 @@ impl ::prost::Name for Header {
 }
 /// Fraction defines the protobuf message type for tmmath.Fraction that only
 /// supports positive values.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct Fraction {

@@ -4,6 +4,7 @@
 /// if the y-coordinate is the lexicographically largest of the two associated with
 /// the x-coordinate. Otherwise the first byte is a 0x03.
 /// This prefix is followed with the x-coordinate.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct PubKey {
@@ -18,6 +19,7 @@ impl ::prost::Name for PubKey {
     }
 }
 /// PrivKey defines a secp256k1 private key.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct PrivKey {

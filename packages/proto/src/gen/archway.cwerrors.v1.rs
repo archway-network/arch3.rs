@@ -1,5 +1,6 @@
 // @generated
 /// SudoError defines the sudo message for the error callback
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct SudoError {
@@ -28,7 +29,19 @@ impl ::prost::Name for SudoError {
     }
 }
 /// ModuleErrors defines the module level error codes
-#[derive(Clone, Copy, Debug, PartialEq, Eq, Hash, PartialOrd, Ord, ::prost::Enumeration)]
+#[derive(
+    ::serde::Serialize,
+    ::serde::Deserialize,
+    Clone,
+    Copy,
+    Debug,
+    PartialEq,
+    Eq,
+    Hash,
+    PartialOrd,
+    Ord,
+    ::prost::Enumeration,
+)]
 #[repr(i32)]
 pub enum ModuleErrors {
     /// ERR_UNKNOWN is the default error code
@@ -57,6 +70,7 @@ impl ModuleErrors {
     }
 }
 /// Params defines the set of parameters for the cwerrors module.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct Params {
@@ -79,6 +93,7 @@ impl ::prost::Name for Params {
 }
 /// ParamsUpdatedEvent defines the event which is thrown when the module
 /// parameters are updated
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct ParamsUpdatedEvent {
@@ -98,6 +113,7 @@ impl ::prost::Name for ParamsUpdatedEvent {
 }
 /// SubscribedToErrorsEvent defines the event which is thrown when a contract
 /// subscribes to errors
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct SubscribedToErrorsEvent {
@@ -124,6 +140,7 @@ impl ::prost::Name for SubscribedToErrorsEvent {
     }
 }
 /// StoringErrorEvent defines the event which is thrown when an error is stored
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct StoringErrorEvent {
@@ -144,6 +161,7 @@ impl ::prost::Name for StoringErrorEvent {
 }
 /// SudoErrorCallbackFailedEvent defines the event which is thrown when a sudo
 /// error callback fails
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct SudoErrorCallbackFailedEvent {
@@ -162,6 +180,7 @@ impl ::prost::Name for SudoErrorCallbackFailedEvent {
     }
 }
 /// GenesisState defines the cwerrors module's genesis state.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct GenesisState {
@@ -180,6 +199,7 @@ impl ::prost::Name for GenesisState {
     }
 }
 /// QueryParamsRequest is the request for Query.Params.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct QueryParamsRequest {}
@@ -191,6 +211,7 @@ impl ::prost::Name for QueryParamsRequest {
     }
 }
 /// QueryParamsResponse is the response for Query.Params.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct QueryParamsResponse {
@@ -206,6 +227,7 @@ impl ::prost::Name for QueryParamsResponse {
     }
 }
 /// QueryErrorsRequest is the request for Query.Errors.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct QueryErrorsRequest {
@@ -221,6 +243,7 @@ impl ::prost::Name for QueryErrorsRequest {
     }
 }
 /// QueryErrorsResponse is the response for Query.Errors.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct QueryErrorsResponse {
@@ -236,6 +259,7 @@ impl ::prost::Name for QueryErrorsResponse {
     }
 }
 /// QueryIsSubscribedRequest is the request for Query.IsSubscribed.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct QueryIsSubscribedRequest {
@@ -251,6 +275,7 @@ impl ::prost::Name for QueryIsSubscribedRequest {
     }
 }
 /// QueryIsSubscribedResponse is the response for Query.IsSubscribed.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct QueryIsSubscribedResponse {
@@ -270,6 +295,7 @@ impl ::prost::Name for QueryIsSubscribedResponse {
     }
 }
 /// MsgUpdateParams is the Msg/UpdateParams request type.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct MsgUpdateParams {
@@ -292,6 +318,7 @@ impl ::prost::Name for MsgUpdateParams {
 }
 /// MsgUpdateParamsResponse defines the response structure for executing a
 /// MsgUpdateParams message.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct MsgUpdateParamsResponse {}
@@ -303,6 +330,7 @@ impl ::prost::Name for MsgUpdateParamsResponse {
     }
 }
 /// MsgSubscribeToError is the Msg/SubscribeToError request type.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct MsgSubscribeToError {
@@ -327,6 +355,7 @@ impl ::prost::Name for MsgSubscribeToError {
 }
 /// MsgSubscribeToErrorResponse defines the response structure for executing a
 /// MsgSubscribeToError message.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct MsgSubscribeToErrorResponse {

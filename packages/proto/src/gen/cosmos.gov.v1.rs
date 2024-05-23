@@ -1,5 +1,6 @@
 // @generated
 /// WeightedVoteOption defines a unit of vote for vote split.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct WeightedVoteOption {
@@ -19,6 +20,7 @@ impl ::prost::Name for WeightedVoteOption {
 }
 /// Deposit defines an amount deposited by an account address to an active
 /// proposal.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct Deposit {
@@ -40,6 +42,7 @@ impl ::prost::Name for Deposit {
     }
 }
 /// Proposal defines the core field members of a governance proposal.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct Proposal {
@@ -48,7 +51,7 @@ pub struct Proposal {
     pub id: u64,
     /// messages are the arbitrary messages to be executed if the proposal passes.
     #[prost(message, repeated, tag = "2")]
-    pub messages: ::prost::alloc::vec::Vec<::prost_types::Any>,
+    pub messages: ::prost::alloc::vec::Vec<::pbjson_types::Any>,
     /// status defines the proposal status.
     #[prost(enumeration = "ProposalStatus", tag = "3")]
     pub status: i32,
@@ -59,19 +62,19 @@ pub struct Proposal {
     pub final_tally_result: ::core::option::Option<TallyResult>,
     /// submit_time is the time of proposal submission.
     #[prost(message, optional, tag = "5")]
-    pub submit_time: ::core::option::Option<::prost_types::Timestamp>,
+    pub submit_time: ::core::option::Option<::pbjson_types::Timestamp>,
     /// deposit_end_time is the end time for deposition.
     #[prost(message, optional, tag = "6")]
-    pub deposit_end_time: ::core::option::Option<::prost_types::Timestamp>,
+    pub deposit_end_time: ::core::option::Option<::pbjson_types::Timestamp>,
     /// total_deposit is the total deposit on the proposal.
     #[prost(message, repeated, tag = "7")]
     pub total_deposit: ::prost::alloc::vec::Vec<super::super::base::v1beta1::Coin>,
     /// voting_start_time is the starting time to vote on a proposal.
     #[prost(message, optional, tag = "8")]
-    pub voting_start_time: ::core::option::Option<::prost_types::Timestamp>,
+    pub voting_start_time: ::core::option::Option<::pbjson_types::Timestamp>,
     /// voting_end_time is the end time of voting on a proposal.
     #[prost(message, optional, tag = "9")]
-    pub voting_end_time: ::core::option::Option<::prost_types::Timestamp>,
+    pub voting_end_time: ::core::option::Option<::pbjson_types::Timestamp>,
     /// metadata is any arbitrary metadata attached to the proposal.
     #[prost(string, tag = "10")]
     pub metadata: ::prost::alloc::string::String,
@@ -99,6 +102,7 @@ impl ::prost::Name for Proposal {
     }
 }
 /// TallyResult defines a standard tally for a governance proposal.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct TallyResult {
@@ -124,6 +128,7 @@ impl ::prost::Name for TallyResult {
 }
 /// Vote defines a vote on a governance proposal.
 /// A Vote consists of a proposal ID, the voter, and the vote option.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct Vote {
@@ -148,6 +153,7 @@ impl ::prost::Name for Vote {
     }
 }
 /// DepositParams defines the params for deposits on governance proposals.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct DepositParams {
@@ -157,7 +163,7 @@ pub struct DepositParams {
     /// Maximum period for Atom holders to deposit on a proposal. Initial value: 2
     /// months.
     #[prost(message, optional, tag = "2")]
-    pub max_deposit_period: ::core::option::Option<::prost_types::Duration>,
+    pub max_deposit_period: ::core::option::Option<::pbjson_types::Duration>,
 }
 impl ::prost::Name for DepositParams {
     const NAME: &'static str = "DepositParams";
@@ -167,12 +173,13 @@ impl ::prost::Name for DepositParams {
     }
 }
 /// VotingParams defines the params for voting on governance proposals.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct VotingParams {
     /// Duration of the voting period.
     #[prost(message, optional, tag = "1")]
-    pub voting_period: ::core::option::Option<::prost_types::Duration>,
+    pub voting_period: ::core::option::Option<::pbjson_types::Duration>,
 }
 impl ::prost::Name for VotingParams {
     const NAME: &'static str = "VotingParams";
@@ -182,6 +189,7 @@ impl ::prost::Name for VotingParams {
     }
 }
 /// TallyParams defines the params for tallying votes on governance proposals.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct TallyParams {
@@ -207,6 +215,7 @@ impl ::prost::Name for TallyParams {
 /// Params defines the parameters for the x/gov module.
 ///
 /// Since: cosmos-sdk 0.47
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct Params {
@@ -216,10 +225,10 @@ pub struct Params {
     /// Maximum period for Atom holders to deposit on a proposal. Initial value: 2
     /// months.
     #[prost(message, optional, tag = "2")]
-    pub max_deposit_period: ::core::option::Option<::prost_types::Duration>,
+    pub max_deposit_period: ::core::option::Option<::pbjson_types::Duration>,
     /// Duration of the voting period.
     #[prost(message, optional, tag = "3")]
-    pub voting_period: ::core::option::Option<::prost_types::Duration>,
+    pub voting_period: ::core::option::Option<::pbjson_types::Duration>,
     ///   Minimum percentage of total stake needed to vote for a result to be
     ///   considered valid.
     #[prost(string, tag = "4")]
@@ -252,7 +261,19 @@ impl ::prost::Name for Params {
     }
 }
 /// VoteOption enumerates the valid vote options for a given governance proposal.
-#[derive(Clone, Copy, Debug, PartialEq, Eq, Hash, PartialOrd, Ord, ::prost::Enumeration)]
+#[derive(
+    ::serde::Serialize,
+    ::serde::Deserialize,
+    Clone,
+    Copy,
+    Debug,
+    PartialEq,
+    Eq,
+    Hash,
+    PartialOrd,
+    Ord,
+    ::prost::Enumeration,
+)]
 #[repr(i32)]
 pub enum VoteOption {
     /// VOTE_OPTION_UNSPECIFIED defines a no-op vote option.
@@ -293,7 +314,19 @@ impl VoteOption {
     }
 }
 /// ProposalStatus enumerates the valid statuses of a proposal.
-#[derive(Clone, Copy, Debug, PartialEq, Eq, Hash, PartialOrd, Ord, ::prost::Enumeration)]
+#[derive(
+    ::serde::Serialize,
+    ::serde::Deserialize,
+    Clone,
+    Copy,
+    Debug,
+    PartialEq,
+    Eq,
+    Hash,
+    PartialOrd,
+    Ord,
+    ::prost::Enumeration,
+)]
 #[repr(i32)]
 pub enum ProposalStatus {
     /// PROPOSAL_STATUS_UNSPECIFIED defines the default proposal status.
@@ -343,6 +376,7 @@ impl ProposalStatus {
     }
 }
 /// GenesisState defines the gov module's genesis state.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct GenesisState {
@@ -387,6 +421,7 @@ impl ::prost::Name for GenesisState {
     }
 }
 /// QueryProposalRequest is the request type for the Query/Proposal RPC method.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct QueryProposalRequest {
@@ -402,6 +437,7 @@ impl ::prost::Name for QueryProposalRequest {
     }
 }
 /// QueryProposalResponse is the response type for the Query/Proposal RPC method.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct QueryProposalResponse {
@@ -417,6 +453,7 @@ impl ::prost::Name for QueryProposalResponse {
     }
 }
 /// QueryProposalsRequest is the request type for the Query/Proposals RPC method.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct QueryProposalsRequest {
@@ -442,6 +479,7 @@ impl ::prost::Name for QueryProposalsRequest {
 }
 /// QueryProposalsResponse is the response type for the Query/Proposals RPC
 /// method.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct QueryProposalsResponse {
@@ -460,6 +498,7 @@ impl ::prost::Name for QueryProposalsResponse {
     }
 }
 /// QueryVoteRequest is the request type for the Query/Vote RPC method.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct QueryVoteRequest {
@@ -478,6 +517,7 @@ impl ::prost::Name for QueryVoteRequest {
     }
 }
 /// QueryVoteResponse is the response type for the Query/Vote RPC method.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct QueryVoteResponse {
@@ -493,6 +533,7 @@ impl ::prost::Name for QueryVoteResponse {
     }
 }
 /// QueryVotesRequest is the request type for the Query/Votes RPC method.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct QueryVotesRequest {
@@ -511,6 +552,7 @@ impl ::prost::Name for QueryVotesRequest {
     }
 }
 /// QueryVotesResponse is the response type for the Query/Votes RPC method.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct QueryVotesResponse {
@@ -529,6 +571,7 @@ impl ::prost::Name for QueryVotesResponse {
     }
 }
 /// QueryParamsRequest is the request type for the Query/Params RPC method.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct QueryParamsRequest {
@@ -545,6 +588,7 @@ impl ::prost::Name for QueryParamsRequest {
     }
 }
 /// QueryParamsResponse is the response type for the Query/Params RPC method.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct QueryParamsResponse {
@@ -577,6 +621,7 @@ impl ::prost::Name for QueryParamsResponse {
     }
 }
 /// QueryDepositRequest is the request type for the Query/Deposit RPC method.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct QueryDepositRequest {
@@ -595,6 +640,7 @@ impl ::prost::Name for QueryDepositRequest {
     }
 }
 /// QueryDepositResponse is the response type for the Query/Deposit RPC method.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct QueryDepositResponse {
@@ -610,6 +656,7 @@ impl ::prost::Name for QueryDepositResponse {
     }
 }
 /// QueryDepositsRequest is the request type for the Query/Deposits RPC method.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct QueryDepositsRequest {
@@ -628,6 +675,7 @@ impl ::prost::Name for QueryDepositsRequest {
     }
 }
 /// QueryDepositsResponse is the response type for the Query/Deposits RPC method.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct QueryDepositsResponse {
@@ -646,6 +694,7 @@ impl ::prost::Name for QueryDepositsResponse {
     }
 }
 /// QueryTallyResultRequest is the request type for the Query/Tally RPC method.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct QueryTallyResultRequest {
@@ -661,6 +710,7 @@ impl ::prost::Name for QueryTallyResultRequest {
     }
 }
 /// QueryTallyResultResponse is the response type for the Query/Tally RPC method.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct QueryTallyResultResponse {
@@ -677,12 +727,13 @@ impl ::prost::Name for QueryTallyResultResponse {
 }
 /// MsgSubmitProposal defines an sdk.Msg type that supports submitting arbitrary
 /// proposal Content.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct MsgSubmitProposal {
     /// messages are the arbitrary messages to be executed if proposal passes.
     #[prost(message, repeated, tag = "1")]
-    pub messages: ::prost::alloc::vec::Vec<::prost_types::Any>,
+    pub messages: ::prost::alloc::vec::Vec<::pbjson_types::Any>,
     /// initial_deposit is the deposit value that must be paid at proposal submission.
     #[prost(message, repeated, tag = "2")]
     pub initial_deposit: ::prost::alloc::vec::Vec<super::super::base::v1beta1::Coin>,
@@ -711,6 +762,7 @@ impl ::prost::Name for MsgSubmitProposal {
     }
 }
 /// MsgSubmitProposalResponse defines the Msg/SubmitProposal response type.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct MsgSubmitProposalResponse {
@@ -727,12 +779,13 @@ impl ::prost::Name for MsgSubmitProposalResponse {
 }
 /// MsgExecLegacyContent is used to wrap the legacy content field into a message.
 /// This ensures backwards compatibility with v1beta1.MsgSubmitProposal.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct MsgExecLegacyContent {
     /// content is the proposal's content.
     #[prost(message, optional, tag = "1")]
-    pub content: ::core::option::Option<::prost_types::Any>,
+    pub content: ::core::option::Option<::pbjson_types::Any>,
     /// authority must be the gov module address.
     #[prost(string, tag = "2")]
     pub authority: ::prost::alloc::string::String,
@@ -745,6 +798,7 @@ impl ::prost::Name for MsgExecLegacyContent {
     }
 }
 /// MsgExecLegacyContentResponse defines the Msg/ExecLegacyContent response type.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct MsgExecLegacyContentResponse {}
@@ -756,6 +810,7 @@ impl ::prost::Name for MsgExecLegacyContentResponse {
     }
 }
 /// MsgVote defines a message to cast a vote.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct MsgVote {
@@ -780,6 +835,7 @@ impl ::prost::Name for MsgVote {
     }
 }
 /// MsgVoteResponse defines the Msg/Vote response type.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct MsgVoteResponse {}
@@ -791,6 +847,7 @@ impl ::prost::Name for MsgVoteResponse {
     }
 }
 /// MsgVoteWeighted defines a message to cast a vote.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct MsgVoteWeighted {
@@ -815,6 +872,7 @@ impl ::prost::Name for MsgVoteWeighted {
     }
 }
 /// MsgVoteWeightedResponse defines the Msg/VoteWeighted response type.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct MsgVoteWeightedResponse {}
@@ -826,6 +884,7 @@ impl ::prost::Name for MsgVoteWeightedResponse {
     }
 }
 /// MsgDeposit defines a message to submit a deposit to an existing proposal.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct MsgDeposit {
@@ -847,6 +906,7 @@ impl ::prost::Name for MsgDeposit {
     }
 }
 /// MsgDepositResponse defines the Msg/Deposit response type.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct MsgDepositResponse {}
@@ -860,6 +920,7 @@ impl ::prost::Name for MsgDepositResponse {
 /// MsgUpdateParams is the Msg/UpdateParams request type.
 ///
 /// Since: cosmos-sdk 0.47
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct MsgUpdateParams {
@@ -883,6 +944,7 @@ impl ::prost::Name for MsgUpdateParams {
 /// MsgUpdateParams message.
 ///
 /// Since: cosmos-sdk 0.47
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct MsgUpdateParamsResponse {}

@@ -1,5 +1,6 @@
 // @generated
 /// PubKey defines a secp256r1 ECDSA public key.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct PubKey {
@@ -16,6 +17,7 @@ impl ::prost::Name for PubKey {
     }
 }
 /// PrivKey defines a secp256r1 ECDSA private key.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct PrivKey {

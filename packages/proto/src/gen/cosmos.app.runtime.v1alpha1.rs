@@ -1,5 +1,6 @@
 // @generated
 /// Module is the config object for the runtime module.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct Module {
@@ -40,6 +41,7 @@ impl ::prost::Name for Module {
 }
 /// StoreKeyConfig may be supplied to override the default module store key, which
 /// is the module name.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct StoreKeyConfig {

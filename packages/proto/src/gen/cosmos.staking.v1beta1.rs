@@ -2,6 +2,7 @@
 /// StakeAuthorization defines authorization for delegate/undelegate/redelegate.
 ///
 /// Since: cosmos-sdk 0.43
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct StakeAuthorization {
@@ -19,6 +20,7 @@ pub struct StakeAuthorization {
 /// Nested message and enum types in `StakeAuthorization`.
 pub mod stake_authorization {
     /// Validators defines list of validator addresses.
+    #[derive(::serde::Serialize, ::serde::Deserialize)]
     #[allow(clippy::derive_partial_eq_without_eq)]
     #[derive(Clone, PartialEq, ::prost::Message)]
     pub struct Validators {
@@ -33,6 +35,7 @@ pub mod stake_authorization {
         }
     }
     /// validators is the oneof that represents either allow_list or deny_list
+    #[derive(::serde::Serialize, ::serde::Deserialize)]
     #[allow(clippy::derive_partial_eq_without_eq)]
     #[derive(Clone, PartialEq, ::prost::Oneof)]
     pub enum Policy {
@@ -55,7 +58,19 @@ impl ::prost::Name for StakeAuthorization {
 /// AuthorizationType defines the type of staking module authorization type
 ///
 /// Since: cosmos-sdk 0.43
-#[derive(Clone, Copy, Debug, PartialEq, Eq, Hash, PartialOrd, Ord, ::prost::Enumeration)]
+#[derive(
+    ::serde::Serialize,
+    ::serde::Deserialize,
+    Clone,
+    Copy,
+    Debug,
+    PartialEq,
+    Eq,
+    Hash,
+    PartialOrd,
+    Ord,
+    ::prost::Enumeration,
+)]
 #[repr(i32)]
 pub enum AuthorizationType {
     /// AUTHORIZATION_TYPE_UNSPECIFIED specifies an unknown authorization type
@@ -95,6 +110,7 @@ impl AuthorizationType {
 /// It is stored as part of staking module's state, which persists the `n` most
 /// recent HistoricalInfo
 /// (`n` is set by the staking module's `historical_entries` parameter).
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct HistoricalInfo {
@@ -112,6 +128,7 @@ impl ::prost::Name for HistoricalInfo {
 }
 /// CommissionRates defines the initial commission rates to be used for creating
 /// a validator.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct CommissionRates {
@@ -133,6 +150,7 @@ impl ::prost::Name for CommissionRates {
     }
 }
 /// Commission defines commission parameters for a given validator.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct Commission {
@@ -141,7 +159,7 @@ pub struct Commission {
     pub commission_rates: ::core::option::Option<CommissionRates>,
     /// update_time is the last time the commission rate was changed.
     #[prost(message, optional, tag = "2")]
-    pub update_time: ::core::option::Option<::prost_types::Timestamp>,
+    pub update_time: ::core::option::Option<::pbjson_types::Timestamp>,
 }
 impl ::prost::Name for Commission {
     const NAME: &'static str = "Commission";
@@ -151,6 +169,7 @@ impl ::prost::Name for Commission {
     }
 }
 /// Description defines a validator description.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct Description {
@@ -185,6 +204,7 @@ impl ::prost::Name for Description {
 /// bond shares is based on the amount of coins delegated divided by the current
 /// exchange rate. Voting power can be calculated as total bonded shares
 /// multiplied by exchange rate.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct Validator {
@@ -193,7 +213,7 @@ pub struct Validator {
     pub operator_address: ::prost::alloc::string::String,
     /// consensus_pubkey is the consensus public key of the validator, as a Protobuf Any.
     #[prost(message, optional, tag = "2")]
-    pub consensus_pubkey: ::core::option::Option<::prost_types::Any>,
+    pub consensus_pubkey: ::core::option::Option<::pbjson_types::Any>,
     /// jailed defined whether the validator has been jailed from bonded status or not.
     #[prost(bool, tag = "3")]
     pub jailed: bool,
@@ -214,7 +234,7 @@ pub struct Validator {
     pub unbonding_height: i64,
     /// unbonding_time defines, if unbonding, the min time for the validator to complete unbonding.
     #[prost(message, optional, tag = "9")]
-    pub unbonding_time: ::core::option::Option<::prost_types::Timestamp>,
+    pub unbonding_time: ::core::option::Option<::pbjson_types::Timestamp>,
     /// commission defines the commission parameters.
     #[prost(message, optional, tag = "10")]
     pub commission: ::core::option::Option<Commission>,
@@ -238,6 +258,7 @@ impl ::prost::Name for Validator {
     }
 }
 /// ValAddresses defines a repeated set of validator addresses.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct ValAddresses {
@@ -254,6 +275,7 @@ impl ::prost::Name for ValAddresses {
 /// DVPair is struct that just has a delegator-validator pair with no other data.
 /// It is intended to be used as a marshalable pointer. For example, a DVPair can
 /// be used to construct the key to getting an UnbondingDelegation from state.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct DvPair {
@@ -270,6 +292,7 @@ impl ::prost::Name for DvPair {
     }
 }
 /// DVPairs defines an array of DVPair objects.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct DvPairs {
@@ -287,6 +310,7 @@ impl ::prost::Name for DvPairs {
 /// with no other data. It is intended to be used as a marshalable pointer. For
 /// example, a DVVTriplet can be used to construct the key to getting a
 /// Redelegation from state.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct DvvTriplet {
@@ -305,6 +329,7 @@ impl ::prost::Name for DvvTriplet {
     }
 }
 /// DVVTriplets defines an array of DVVTriplet objects.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct DvvTriplets {
@@ -321,6 +346,7 @@ impl ::prost::Name for DvvTriplets {
 /// Delegation represents the bond with tokens held by an account. It is
 /// owned by one delegator, and is associated with the voting power of one
 /// validator.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct Delegation {
@@ -343,6 +369,7 @@ impl ::prost::Name for Delegation {
 }
 /// UnbondingDelegation stores all of a single delegator's unbonding bonds
 /// for a single validator in an time-ordered list.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct UnbondingDelegation {
@@ -366,6 +393,7 @@ impl ::prost::Name for UnbondingDelegation {
     }
 }
 /// UnbondingDelegationEntry defines an unbonding object with relevant metadata.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct UnbondingDelegationEntry {
@@ -374,7 +402,7 @@ pub struct UnbondingDelegationEntry {
     pub creation_height: i64,
     /// completion_time is the unix time for unbonding completion.
     #[prost(message, optional, tag = "2")]
-    pub completion_time: ::core::option::Option<::prost_types::Timestamp>,
+    pub completion_time: ::core::option::Option<::pbjson_types::Timestamp>,
     /// initial_balance defines the tokens initially scheduled to receive at completion.
     #[prost(string, tag = "3")]
     pub initial_balance: ::prost::alloc::string::String,
@@ -396,6 +424,7 @@ impl ::prost::Name for UnbondingDelegationEntry {
     }
 }
 /// RedelegationEntry defines a redelegation object with relevant metadata.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct RedelegationEntry {
@@ -404,7 +433,7 @@ pub struct RedelegationEntry {
     pub creation_height: i64,
     /// completion_time defines the unix time for redelegation completion.
     #[prost(message, optional, tag = "2")]
-    pub completion_time: ::core::option::Option<::prost_types::Timestamp>,
+    pub completion_time: ::core::option::Option<::pbjson_types::Timestamp>,
     /// initial_balance defines the initial balance when redelegation started.
     #[prost(string, tag = "3")]
     pub initial_balance: ::prost::alloc::string::String,
@@ -427,6 +456,7 @@ impl ::prost::Name for RedelegationEntry {
 }
 /// Redelegation contains the list of a particular delegator's redelegating bonds
 /// from a particular source validator to a particular destination validator.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct Redelegation {
@@ -453,12 +483,13 @@ impl ::prost::Name for Redelegation {
     }
 }
 /// Params defines the parameters for the x/staking module.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct Params {
     /// unbonding_time is the time duration of unbonding.
     #[prost(message, optional, tag = "1")]
-    pub unbonding_time: ::core::option::Option<::prost_types::Duration>,
+    pub unbonding_time: ::core::option::Option<::pbjson_types::Duration>,
     /// max_validators is the maximum number of validators.
     #[prost(uint32, tag = "2")]
     pub max_validators: u32,
@@ -484,6 +515,7 @@ impl ::prost::Name for Params {
 }
 /// DelegationResponse is equivalent to Delegation except that it contains a
 /// balance in addition to shares which is more suitable for client responses.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct DelegationResponse {
@@ -502,6 +534,7 @@ impl ::prost::Name for DelegationResponse {
 /// RedelegationEntryResponse is equivalent to a RedelegationEntry except that it
 /// contains a balance in addition to shares which is more suitable for client
 /// responses.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct RedelegationEntryResponse {
@@ -520,6 +553,7 @@ impl ::prost::Name for RedelegationEntryResponse {
 /// RedelegationResponse is equivalent to a Redelegation except that its entries
 /// contain a balance in addition to shares which is more suitable for client
 /// responses.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct RedelegationResponse {
@@ -537,6 +571,7 @@ impl ::prost::Name for RedelegationResponse {
 }
 /// Pool is used for tracking bonded and not-bonded token supply of the bond
 /// denomination.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct Pool {
@@ -554,6 +589,7 @@ impl ::prost::Name for Pool {
 }
 /// ValidatorUpdates defines an array of abci.ValidatorUpdate objects.
 /// TODO: explore moving this to proto/cosmos/base to separate modules from tendermint dependence
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct ValidatorUpdates {
@@ -568,7 +604,19 @@ impl ::prost::Name for ValidatorUpdates {
     }
 }
 /// BondStatus is the status of a validator.
-#[derive(Clone, Copy, Debug, PartialEq, Eq, Hash, PartialOrd, Ord, ::prost::Enumeration)]
+#[derive(
+    ::serde::Serialize,
+    ::serde::Deserialize,
+    Clone,
+    Copy,
+    Debug,
+    PartialEq,
+    Eq,
+    Hash,
+    PartialOrd,
+    Ord,
+    ::prost::Enumeration,
+)]
 #[repr(i32)]
 pub enum BondStatus {
     /// UNSPECIFIED defines an invalid validator status.
@@ -605,7 +653,19 @@ impl BondStatus {
     }
 }
 /// Infraction indicates the infraction a validator commited.
-#[derive(Clone, Copy, Debug, PartialEq, Eq, Hash, PartialOrd, Ord, ::prost::Enumeration)]
+#[derive(
+    ::serde::Serialize,
+    ::serde::Deserialize,
+    Clone,
+    Copy,
+    Debug,
+    PartialEq,
+    Eq,
+    Hash,
+    PartialOrd,
+    Ord,
+    ::prost::Enumeration,
+)]
 #[repr(i32)]
 pub enum Infraction {
     /// UNSPECIFIED defines an empty infraction.
@@ -638,6 +698,7 @@ impl Infraction {
     }
 }
 /// GenesisState defines the staking module's genesis state.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct GenesisState {
@@ -675,6 +736,7 @@ impl ::prost::Name for GenesisState {
     }
 }
 /// LastValidatorPower required for validator set update logic.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct LastValidatorPower {
@@ -693,6 +755,7 @@ impl ::prost::Name for LastValidatorPower {
     }
 }
 /// QueryValidatorsRequest is request type for Query/Validators RPC method.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct QueryValidatorsRequest {
@@ -711,6 +774,7 @@ impl ::prost::Name for QueryValidatorsRequest {
     }
 }
 /// QueryValidatorsResponse is response type for the Query/Validators RPC method
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct QueryValidatorsResponse {
@@ -729,6 +793,7 @@ impl ::prost::Name for QueryValidatorsResponse {
     }
 }
 /// QueryValidatorRequest is response type for the Query/Validator RPC method
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct QueryValidatorRequest {
@@ -744,6 +809,7 @@ impl ::prost::Name for QueryValidatorRequest {
     }
 }
 /// QueryValidatorResponse is response type for the Query/Validator RPC method
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct QueryValidatorResponse {
@@ -760,6 +826,7 @@ impl ::prost::Name for QueryValidatorResponse {
 }
 /// QueryValidatorDelegationsRequest is request type for the
 /// Query/ValidatorDelegations RPC method
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct QueryValidatorDelegationsRequest {
@@ -779,6 +846,7 @@ impl ::prost::Name for QueryValidatorDelegationsRequest {
 }
 /// QueryValidatorDelegationsResponse is response type for the
 /// Query/ValidatorDelegations RPC method
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct QueryValidatorDelegationsResponse {
@@ -797,6 +865,7 @@ impl ::prost::Name for QueryValidatorDelegationsResponse {
 }
 /// QueryValidatorUnbondingDelegationsRequest is required type for the
 /// Query/ValidatorUnbondingDelegations RPC method
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct QueryValidatorUnbondingDelegationsRequest {
@@ -816,6 +885,7 @@ impl ::prost::Name for QueryValidatorUnbondingDelegationsRequest {
 }
 /// QueryValidatorUnbondingDelegationsResponse is response type for the
 /// Query/ValidatorUnbondingDelegations RPC method.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct QueryValidatorUnbondingDelegationsResponse {
@@ -833,6 +903,7 @@ impl ::prost::Name for QueryValidatorUnbondingDelegationsResponse {
     }
 }
 /// QueryDelegationRequest is request type for the Query/Delegation RPC method.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct QueryDelegationRequest {
@@ -851,6 +922,7 @@ impl ::prost::Name for QueryDelegationRequest {
     }
 }
 /// QueryDelegationResponse is response type for the Query/Delegation RPC method.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct QueryDelegationResponse {
@@ -867,6 +939,7 @@ impl ::prost::Name for QueryDelegationResponse {
 }
 /// QueryUnbondingDelegationRequest is request type for the
 /// Query/UnbondingDelegation RPC method.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct QueryUnbondingDelegationRequest {
@@ -886,6 +959,7 @@ impl ::prost::Name for QueryUnbondingDelegationRequest {
 }
 /// QueryDelegationResponse is response type for the Query/UnbondingDelegation
 /// RPC method.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct QueryUnbondingDelegationResponse {
@@ -902,6 +976,7 @@ impl ::prost::Name for QueryUnbondingDelegationResponse {
 }
 /// QueryDelegatorDelegationsRequest is request type for the
 /// Query/DelegatorDelegations RPC method.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct QueryDelegatorDelegationsRequest {
@@ -921,6 +996,7 @@ impl ::prost::Name for QueryDelegatorDelegationsRequest {
 }
 /// QueryDelegatorDelegationsResponse is response type for the
 /// Query/DelegatorDelegations RPC method.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct QueryDelegatorDelegationsResponse {
@@ -940,6 +1016,7 @@ impl ::prost::Name for QueryDelegatorDelegationsResponse {
 }
 /// QueryDelegatorUnbondingDelegationsRequest is request type for the
 /// Query/DelegatorUnbondingDelegations RPC method.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct QueryDelegatorUnbondingDelegationsRequest {
@@ -959,6 +1036,7 @@ impl ::prost::Name for QueryDelegatorUnbondingDelegationsRequest {
 }
 /// QueryUnbondingDelegatorDelegationsResponse is response type for the
 /// Query/UnbondingDelegatorDelegations RPC method.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct QueryDelegatorUnbondingDelegationsResponse {
@@ -977,6 +1055,7 @@ impl ::prost::Name for QueryDelegatorUnbondingDelegationsResponse {
 }
 /// QueryRedelegationsRequest is request type for the Query/Redelegations RPC
 /// method.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct QueryRedelegationsRequest {
@@ -1002,6 +1081,7 @@ impl ::prost::Name for QueryRedelegationsRequest {
 }
 /// QueryRedelegationsResponse is response type for the Query/Redelegations RPC
 /// method.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct QueryRedelegationsResponse {
@@ -1020,6 +1100,7 @@ impl ::prost::Name for QueryRedelegationsResponse {
 }
 /// QueryDelegatorValidatorsRequest is request type for the
 /// Query/DelegatorValidators RPC method.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct QueryDelegatorValidatorsRequest {
@@ -1039,6 +1120,7 @@ impl ::prost::Name for QueryDelegatorValidatorsRequest {
 }
 /// QueryDelegatorValidatorsResponse is response type for the
 /// Query/DelegatorValidators RPC method.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct QueryDelegatorValidatorsResponse {
@@ -1058,6 +1140,7 @@ impl ::prost::Name for QueryDelegatorValidatorsResponse {
 }
 /// QueryDelegatorValidatorRequest is request type for the
 /// Query/DelegatorValidator RPC method.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct QueryDelegatorValidatorRequest {
@@ -1077,6 +1160,7 @@ impl ::prost::Name for QueryDelegatorValidatorRequest {
 }
 /// QueryDelegatorValidatorResponse response type for the
 /// Query/DelegatorValidator RPC method.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct QueryDelegatorValidatorResponse {
@@ -1093,6 +1177,7 @@ impl ::prost::Name for QueryDelegatorValidatorResponse {
 }
 /// QueryHistoricalInfoRequest is request type for the Query/HistoricalInfo RPC
 /// method.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct QueryHistoricalInfoRequest {
@@ -1109,6 +1194,7 @@ impl ::prost::Name for QueryHistoricalInfoRequest {
 }
 /// QueryHistoricalInfoResponse is response type for the Query/HistoricalInfo RPC
 /// method.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct QueryHistoricalInfoResponse {
@@ -1124,6 +1210,7 @@ impl ::prost::Name for QueryHistoricalInfoResponse {
     }
 }
 /// QueryPoolRequest is request type for the Query/Pool RPC method.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct QueryPoolRequest {}
@@ -1135,6 +1222,7 @@ impl ::prost::Name for QueryPoolRequest {
     }
 }
 /// QueryPoolResponse is response type for the Query/Pool RPC method.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct QueryPoolResponse {
@@ -1150,6 +1238,7 @@ impl ::prost::Name for QueryPoolResponse {
     }
 }
 /// QueryParamsRequest is request type for the Query/Params RPC method.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct QueryParamsRequest {}
@@ -1161,6 +1250,7 @@ impl ::prost::Name for QueryParamsRequest {
     }
 }
 /// QueryParamsResponse is response type for the Query/Params RPC method.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct QueryParamsResponse {
@@ -1176,6 +1266,7 @@ impl ::prost::Name for QueryParamsResponse {
     }
 }
 /// MsgCreateValidator defines a SDK message for creating a new validator.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct MsgCreateValidator {
@@ -1190,7 +1281,7 @@ pub struct MsgCreateValidator {
     #[prost(string, tag = "5")]
     pub validator_address: ::prost::alloc::string::String,
     #[prost(message, optional, tag = "6")]
-    pub pubkey: ::core::option::Option<::prost_types::Any>,
+    pub pubkey: ::core::option::Option<::pbjson_types::Any>,
     #[prost(message, optional, tag = "7")]
     pub value: ::core::option::Option<super::super::base::v1beta1::Coin>,
 }
@@ -1202,6 +1293,7 @@ impl ::prost::Name for MsgCreateValidator {
     }
 }
 /// MsgCreateValidatorResponse defines the Msg/CreateValidator response type.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct MsgCreateValidatorResponse {}
@@ -1213,6 +1305,7 @@ impl ::prost::Name for MsgCreateValidatorResponse {
     }
 }
 /// MsgEditValidator defines a SDK message for editing an existing validator.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct MsgEditValidator {
@@ -1237,6 +1330,7 @@ impl ::prost::Name for MsgEditValidator {
     }
 }
 /// MsgEditValidatorResponse defines the Msg/EditValidator response type.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct MsgEditValidatorResponse {}
@@ -1249,6 +1343,7 @@ impl ::prost::Name for MsgEditValidatorResponse {
 }
 /// MsgDelegate defines a SDK message for performing a delegation of coins
 /// from a delegator to a validator.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct MsgDelegate {
@@ -1267,6 +1362,7 @@ impl ::prost::Name for MsgDelegate {
     }
 }
 /// MsgDelegateResponse defines the Msg/Delegate response type.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct MsgDelegateResponse {}
@@ -1279,6 +1375,7 @@ impl ::prost::Name for MsgDelegateResponse {
 }
 /// MsgBeginRedelegate defines a SDK message for performing a redelegation
 /// of coins from a delegator and source validator to a destination validator.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct MsgBeginRedelegate {
@@ -1299,11 +1396,12 @@ impl ::prost::Name for MsgBeginRedelegate {
     }
 }
 /// MsgBeginRedelegateResponse defines the Msg/BeginRedelegate response type.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct MsgBeginRedelegateResponse {
     #[prost(message, optional, tag = "1")]
-    pub completion_time: ::core::option::Option<::prost_types::Timestamp>,
+    pub completion_time: ::core::option::Option<::pbjson_types::Timestamp>,
 }
 impl ::prost::Name for MsgBeginRedelegateResponse {
     const NAME: &'static str = "MsgBeginRedelegateResponse";
@@ -1314,6 +1412,7 @@ impl ::prost::Name for MsgBeginRedelegateResponse {
 }
 /// MsgUndelegate defines a SDK message for performing an undelegation from a
 /// delegate and a validator.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct MsgUndelegate {
@@ -1332,11 +1431,12 @@ impl ::prost::Name for MsgUndelegate {
     }
 }
 /// MsgUndelegateResponse defines the Msg/Undelegate response type.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct MsgUndelegateResponse {
     #[prost(message, optional, tag = "1")]
-    pub completion_time: ::core::option::Option<::prost_types::Timestamp>,
+    pub completion_time: ::core::option::Option<::pbjson_types::Timestamp>,
 }
 impl ::prost::Name for MsgUndelegateResponse {
     const NAME: &'static str = "MsgUndelegateResponse";
@@ -1348,6 +1448,7 @@ impl ::prost::Name for MsgUndelegateResponse {
 /// MsgCancelUnbondingDelegation defines the SDK message for performing a cancel unbonding delegation for delegator
 ///
 /// Since: cosmos-sdk 0.46
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct MsgCancelUnbondingDelegation {
@@ -1372,6 +1473,7 @@ impl ::prost::Name for MsgCancelUnbondingDelegation {
 /// MsgCancelUnbondingDelegationResponse
 ///
 /// Since: cosmos-sdk 0.46
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct MsgCancelUnbondingDelegationResponse {}
@@ -1385,6 +1487,7 @@ impl ::prost::Name for MsgCancelUnbondingDelegationResponse {
 /// MsgUpdateParams is the Msg/UpdateParams request type.
 ///
 /// Since: cosmos-sdk 0.47
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct MsgUpdateParams {
@@ -1408,6 +1511,7 @@ impl ::prost::Name for MsgUpdateParams {
 /// MsgUpdateParams message.
 ///
 /// Since: cosmos-sdk 0.47
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct MsgUpdateParamsResponse {}

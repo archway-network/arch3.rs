@@ -1,5 +1,6 @@
 // @generated
 /// AppDescriptor describes a cosmos-sdk based application
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct AppDescriptor {
@@ -31,6 +32,7 @@ impl ::prost::Name for AppDescriptor {
     }
 }
 /// TxDescriptor describes the accepted transaction type
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct TxDescriptor {
@@ -52,6 +54,7 @@ impl ::prost::Name for TxDescriptor {
 }
 /// AuthnDescriptor provides information on how to sign transactions without relying
 /// on the online RPCs GetTxMetadata and CombineUnsignedTxAndSignatures
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct AuthnDescriptor {
@@ -70,6 +73,7 @@ impl ::prost::Name for AuthnDescriptor {
 /// NOTE(fdymylja): here we could go as far as providing an entire flow on how
 /// to sign a message given a SigningModeDescriptor, but it's better to think about
 /// this another time
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct SigningModeDescriptor {
@@ -92,6 +96,7 @@ impl ::prost::Name for SigningModeDescriptor {
     }
 }
 /// ChainDescriptor describes chain information of the application
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct ChainDescriptor {
@@ -107,6 +112,7 @@ impl ::prost::Name for ChainDescriptor {
     }
 }
 /// CodecDescriptor describes the registered interfaces and provides metadata information on the types
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct CodecDescriptor {
@@ -122,6 +128,7 @@ impl ::prost::Name for CodecDescriptor {
     }
 }
 /// InterfaceDescriptor describes the implementation of an interface
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct InterfaceDescriptor {
@@ -144,6 +151,7 @@ impl ::prost::Name for InterfaceDescriptor {
     }
 }
 /// InterfaceImplementerDescriptor describes an interface implementer
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct InterfaceImplementerDescriptor {
@@ -166,6 +174,7 @@ impl ::prost::Name for InterfaceImplementerDescriptor {
 }
 /// InterfaceAcceptingMessageDescriptor describes a protobuf message which contains
 /// an interface represented as a google.protobuf.Any
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct InterfaceAcceptingMessageDescriptor {
@@ -186,6 +195,7 @@ impl ::prost::Name for InterfaceAcceptingMessageDescriptor {
     }
 }
 /// ConfigurationDescriptor contains metadata information on the sdk.Config
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct ConfigurationDescriptor {
@@ -201,6 +211,7 @@ impl ::prost::Name for ConfigurationDescriptor {
     }
 }
 /// MsgDescriptor describes a cosmos-sdk message that can be delivered with a transaction
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct MsgDescriptor {
@@ -216,6 +227,7 @@ impl ::prost::Name for MsgDescriptor {
     }
 }
 /// GetAuthnDescriptorRequest is the request used for the GetAuthnDescriptor RPC
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct GetAuthnDescriptorRequest {}
@@ -227,6 +239,7 @@ impl ::prost::Name for GetAuthnDescriptorRequest {
     }
 }
 /// GetAuthnDescriptorResponse is the response returned by the GetAuthnDescriptor RPC
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct GetAuthnDescriptorResponse {
@@ -242,6 +255,7 @@ impl ::prost::Name for GetAuthnDescriptorResponse {
     }
 }
 /// GetChainDescriptorRequest is the request used for the GetChainDescriptor RPC
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct GetChainDescriptorRequest {}
@@ -253,6 +267,7 @@ impl ::prost::Name for GetChainDescriptorRequest {
     }
 }
 /// GetChainDescriptorResponse is the response returned by the GetChainDescriptor RPC
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct GetChainDescriptorResponse {
@@ -268,6 +283,7 @@ impl ::prost::Name for GetChainDescriptorResponse {
     }
 }
 /// GetCodecDescriptorRequest is the request used for the GetCodecDescriptor RPC
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct GetCodecDescriptorRequest {}
@@ -279,6 +295,7 @@ impl ::prost::Name for GetCodecDescriptorRequest {
     }
 }
 /// GetCodecDescriptorResponse is the response returned by the GetCodecDescriptor RPC
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct GetCodecDescriptorResponse {
@@ -294,6 +311,7 @@ impl ::prost::Name for GetCodecDescriptorResponse {
     }
 }
 /// GetConfigurationDescriptorRequest is the request used for the GetConfigurationDescriptor RPC
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct GetConfigurationDescriptorRequest {}
@@ -305,6 +323,7 @@ impl ::prost::Name for GetConfigurationDescriptorRequest {
     }
 }
 /// GetConfigurationDescriptorResponse is the response returned by the GetConfigurationDescriptor RPC
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct GetConfigurationDescriptorResponse {
@@ -320,6 +339,7 @@ impl ::prost::Name for GetConfigurationDescriptorResponse {
     }
 }
 /// GetQueryServicesDescriptorRequest is the request used for the GetQueryServicesDescriptor RPC
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct GetQueryServicesDescriptorRequest {}
@@ -331,6 +351,7 @@ impl ::prost::Name for GetQueryServicesDescriptorRequest {
     }
 }
 /// GetQueryServicesDescriptorResponse is the response returned by the GetQueryServicesDescriptor RPC
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct GetQueryServicesDescriptorResponse {
@@ -346,6 +367,7 @@ impl ::prost::Name for GetQueryServicesDescriptorResponse {
     }
 }
 /// GetTxDescriptorRequest is the request used for the GetTxDescriptor RPC
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct GetTxDescriptorRequest {}
@@ -357,6 +379,7 @@ impl ::prost::Name for GetTxDescriptorRequest {
     }
 }
 /// GetTxDescriptorResponse is the response returned by the GetTxDescriptor RPC
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct GetTxDescriptorResponse {
@@ -373,6 +396,7 @@ impl ::prost::Name for GetTxDescriptorResponse {
     }
 }
 /// QueryServicesDescriptor contains the list of cosmos-sdk queriable services
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct QueryServicesDescriptor {
@@ -388,6 +412,7 @@ impl ::prost::Name for QueryServicesDescriptor {
     }
 }
 /// QueryServiceDescriptor describes a cosmos-sdk queryable service
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct QueryServiceDescriptor {
@@ -411,6 +436,7 @@ impl ::prost::Name for QueryServiceDescriptor {
 /// QueryMethodDescriptor describes a queryable method of a query service
 /// no other info is provided beside method name and tendermint queryable path
 /// because it would be redundant with the grpc reflection service
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct QueryMethodDescriptor {

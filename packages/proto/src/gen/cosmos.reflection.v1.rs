@@ -1,5 +1,6 @@
 // @generated
 /// FileDescriptorsRequest is the Query/FileDescriptors request type.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct FileDescriptorsRequest {}
@@ -11,12 +12,13 @@ impl ::prost::Name for FileDescriptorsRequest {
     }
 }
 /// FileDescriptorsResponse is the Query/FileDescriptors response type.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct FileDescriptorsResponse {
     /// files is the file descriptors.
     #[prost(message, repeated, tag = "1")]
-    pub files: ::prost::alloc::vec::Vec<::prost_types::FileDescriptorProto>,
+    pub files: ::prost::alloc::vec::Vec<::pbjson_types::FileDescriptorProto>,
 }
 impl ::prost::Name for FileDescriptorsResponse {
     const NAME: &'static str = "FileDescriptorsResponse";

@@ -1,5 +1,6 @@
 // @generated
 /// Params defines the module parameters.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct Params {
@@ -34,6 +35,7 @@ impl ::prost::Name for Params {
 }
 /// ContractMetadata defines the contract rewards distribution options for a
 /// particular contract.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct ContractMetadata {
@@ -64,6 +66,7 @@ impl ::prost::Name for ContractMetadata {
     }
 }
 /// BlockRewards defines block related rewards distribution data.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct BlockRewards {
@@ -86,6 +89,7 @@ impl ::prost::Name for BlockRewards {
     }
 }
 /// TxRewards defines transaction related rewards distribution data.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct TxRewards {
@@ -113,6 +117,7 @@ impl ::prost::Name for TxRewards {
 /// might be triggered by a Tx (via CLI for example) or by a contract via WASM
 /// bindings. For a contract to trigger rewards transfer, contract address must
 /// be set as the rewards_address in a corresponding ContractMetadata.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct RewardsRecord {
@@ -130,7 +135,7 @@ pub struct RewardsRecord {
     pub calculated_height: i64,
     /// calculated_time defines the block time of rewards calculation event.
     #[prost(message, optional, tag = "5")]
-    pub calculated_time: ::core::option::Option<::prost_types::Timestamp>,
+    pub calculated_time: ::core::option::Option<::pbjson_types::Timestamp>,
 }
 impl ::prost::Name for RewardsRecord {
     const NAME: &'static str = "RewardsRecord";
@@ -140,6 +145,7 @@ impl ::prost::Name for RewardsRecord {
     }
 }
 /// FlatFee defines the flat fee for a particular contract.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct FlatFee {
@@ -159,6 +165,7 @@ impl ::prost::Name for FlatFee {
 }
 /// ContractMetadataSetEvent is emitted when the contract metadata is created or
 /// updated.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct ContractMetadataSetEvent {
@@ -178,6 +185,7 @@ impl ::prost::Name for ContractMetadataSetEvent {
 }
 /// ContractRewardCalculationEvent is emitted when the contract reward is
 /// calculated.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct ContractRewardCalculationEvent {
@@ -209,6 +217,7 @@ impl ::prost::Name for ContractRewardCalculationEvent {
 /// RewardsWithdrawEvent is emitted when credited rewards for a specific
 /// rewards_address are distributed. Event could be triggered by a transaction
 /// (via CLI for example) or by a contract via WASM bindings.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct RewardsWithdrawEvent {
@@ -227,6 +236,7 @@ impl ::prost::Name for RewardsWithdrawEvent {
     }
 }
 /// MinConsensusFeeSetEvent is emitted when the minimum consensus fee is updated.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct MinConsensusFeeSetEvent {
@@ -242,6 +252,7 @@ impl ::prost::Name for MinConsensusFeeSetEvent {
     }
 }
 /// ContractFlatFeeSetEvent is emitted when the contract flat fee is updated
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct ContractFlatFeeSetEvent {
@@ -262,6 +273,7 @@ impl ::prost::Name for ContractFlatFeeSetEvent {
     }
 }
 /// GenesisState defines the initial state of the tracking module.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct GenesisState {
@@ -300,6 +312,7 @@ impl ::prost::Name for GenesisState {
     }
 }
 /// QueryParamsRequest is the request for Query.Params.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct QueryParamsRequest {}
@@ -311,6 +324,7 @@ impl ::prost::Name for QueryParamsRequest {
     }
 }
 /// QueryParamsResponse is the response for Query.Params.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct QueryParamsResponse {
@@ -325,6 +339,7 @@ impl ::prost::Name for QueryParamsResponse {
     }
 }
 /// QueryContractMetadataRequest is the request for Query.ContractMetadata.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct QueryContractMetadataRequest {
@@ -340,6 +355,7 @@ impl ::prost::Name for QueryContractMetadataRequest {
     }
 }
 /// QueryContractMetadataResponse is the response for Query.ContractMetadata.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct QueryContractMetadataResponse {
@@ -355,6 +371,7 @@ impl ::prost::Name for QueryContractMetadataResponse {
 }
 /// QueryBlockRewardsTrackingRequest is the request for
 /// Query.BlockRewardsTracking.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct QueryBlockRewardsTrackingRequest {}
@@ -367,6 +384,7 @@ impl ::prost::Name for QueryBlockRewardsTrackingRequest {
 }
 /// QueryBlockRewardsTrackingResponse is the response for
 /// Query.BlockRewardsTracking.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct QueryBlockRewardsTrackingResponse {
@@ -381,6 +399,7 @@ impl ::prost::Name for QueryBlockRewardsTrackingResponse {
     }
 }
 /// QueryRewardsPoolRequest is the request for Query.RewardsPool.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct QueryRewardsPoolRequest {}
@@ -392,6 +411,7 @@ impl ::prost::Name for QueryRewardsPoolRequest {
     }
 }
 /// QueryRewardsPoolResponse is the response for Query.RewardsPool.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct QueryRewardsPoolResponse {
@@ -413,6 +433,7 @@ impl ::prost::Name for QueryRewardsPoolResponse {
     }
 }
 /// QueryEstimateTxFeesRequest is the request for Query.EstimateTxFees.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct QueryEstimateTxFeesRequest {
@@ -431,6 +452,7 @@ impl ::prost::Name for QueryEstimateTxFeesRequest {
     }
 }
 /// QueryEstimateTxFeesResponse is the response for Query.EstimateTxFees.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct QueryEstimateTxFeesResponse {
@@ -449,6 +471,7 @@ impl ::prost::Name for QueryEstimateTxFeesResponse {
     }
 }
 /// BlockTracking is the tracking information for a block.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct BlockTracking {
@@ -467,6 +490,7 @@ impl ::prost::Name for BlockTracking {
     }
 }
 /// QueryRewardsRecordsRequest is the request for Query.RewardsRecords.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct QueryRewardsRecordsRequest {
@@ -487,6 +511,7 @@ impl ::prost::Name for QueryRewardsRecordsRequest {
     }
 }
 /// QueryRewardsRecordsResponse is the response for Query.RewardsRecords.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct QueryRewardsRecordsResponse {
@@ -506,6 +531,7 @@ impl ::prost::Name for QueryRewardsRecordsResponse {
     }
 }
 /// QueryOutstandingRewardsRequest is the request for Query.OutstandingRewards.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct QueryOutstandingRewardsRequest {
@@ -522,6 +548,7 @@ impl ::prost::Name for QueryOutstandingRewardsRequest {
     }
 }
 /// QueryOutstandingRewardsResponse is the response for Query.OutstandingRewards.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct QueryOutstandingRewardsResponse {
@@ -541,6 +568,7 @@ impl ::prost::Name for QueryOutstandingRewardsResponse {
     }
 }
 /// QueryFlatFeeRequest is the request for Query.FlatFeet
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct QueryFlatFeeRequest {
@@ -556,6 +584,7 @@ impl ::prost::Name for QueryFlatFeeRequest {
     }
 }
 /// QueryFlatFeeResponse is the response for Query.FlatFee
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct QueryFlatFeeResponse {
@@ -572,6 +601,7 @@ impl ::prost::Name for QueryFlatFeeResponse {
     }
 }
 /// MsgSetContractMetadata is the request for Msg.SetContractMetadata.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct MsgSetContractMetadata {
@@ -591,6 +621,7 @@ impl ::prost::Name for MsgSetContractMetadata {
     }
 }
 /// MsgSetContractMetadataResponse is the response for Msg.SetContractMetadata.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct MsgSetContractMetadataResponse {}
@@ -602,6 +633,7 @@ impl ::prost::Name for MsgSetContractMetadataResponse {
     }
 }
 /// MsgWithdrawRewards is the request for Msg.WithdrawRewards.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct MsgWithdrawRewards {
@@ -614,6 +646,7 @@ pub struct MsgWithdrawRewards {
 }
 /// Nested message and enum types in `MsgWithdrawRewards`.
 pub mod msg_withdraw_rewards {
+    #[derive(::serde::Serialize, ::serde::Deserialize)]
     #[allow(clippy::derive_partial_eq_without_eq)]
     #[derive(Clone, PartialEq, ::prost::Message)]
     pub struct RecordsLimit {
@@ -627,6 +660,7 @@ pub mod msg_withdraw_rewards {
             ::prost::alloc::format!("archway.rewards.v1.MsgWithdrawRewards.{}", Self::NAME)
         }
     }
+    #[derive(::serde::Serialize, ::serde::Deserialize)]
     #[allow(clippy::derive_partial_eq_without_eq)]
     #[derive(Clone, PartialEq, ::prost::Message)]
     pub struct RecordIDs {
@@ -641,6 +675,7 @@ pub mod msg_withdraw_rewards {
         }
     }
     /// mode defines the operation type.
+    #[derive(::serde::Serialize, ::serde::Deserialize)]
     #[allow(clippy::derive_partial_eq_without_eq)]
     #[derive(Clone, PartialEq, ::prost::Oneof)]
     pub enum Mode {
@@ -661,6 +696,7 @@ impl ::prost::Name for MsgWithdrawRewards {
     }
 }
 /// MsgWithdrawRewardsResponse is the response for Msg.WithdrawRewards.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct MsgWithdrawRewardsResponse {
@@ -679,6 +715,7 @@ impl ::prost::Name for MsgWithdrawRewardsResponse {
     }
 }
 /// MsgSetFlatFee is the request for Msg.SetFlatFee.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct MsgSetFlatFee {
@@ -700,6 +737,7 @@ impl ::prost::Name for MsgSetFlatFee {
     }
 }
 /// MsgSetFlatFeeResponse is the response for Msg.SetFlatFee.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct MsgSetFlatFeeResponse {}
@@ -713,6 +751,7 @@ impl ::prost::Name for MsgSetFlatFeeResponse {
 /// MsgUpdateParams is the Msg/UpdateParams request type.
 ///
 /// Since: archway v5 && cosmos-sdk 0.47
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct MsgUpdateParams {
@@ -736,6 +775,7 @@ impl ::prost::Name for MsgUpdateParams {
 /// MsgUpdateParams message.
 ///
 /// Since: archway v5 && cosmos-sdk 0.47
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct MsgUpdateParamsResponse {}
