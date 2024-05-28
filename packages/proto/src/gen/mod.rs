@@ -24,14 +24,20 @@ pub mod archway {
     pub mod cwica {
         // @@protoc_insertion_point(attribute:archway.cwica.v1)
         pub mod v1 {
+            #[cfg(not(feature = "replace-any"))]
             include!("archway.cwica.v1.rs");
+            #[cfg(feature = "replace-any")]
+            include!("archway.cwica.v1.advanced.rs");
             // @@protoc_insertion_point(archway.cwica.v1)
         }
     }
     pub mod genmsg {
         // @@protoc_insertion_point(attribute:archway.genmsg.v1)
         pub mod v1 {
+            #[cfg(not(feature = "replace-any"))]
             include!("archway.genmsg.v1.rs");
+            #[cfg(feature = "replace-any")]
+            include!("archway.genmsg.v1.advanced.rs");
             // @@protoc_insertion_point(archway.genmsg.v1)
         }
     }
@@ -61,7 +67,10 @@ pub mod cosmos {
         }
         // @@protoc_insertion_point(attribute:cosmos.app.v1alpha1)
         pub mod v1alpha1 {
+            #[cfg(not(feature = "replace-any"))]
             include!("cosmos.app.v1alpha1.rs");
+            #[cfg(feature = "replace-any")]
+            include!("cosmos.app.v1alpha1.advanced.rs");
             // @@protoc_insertion_point(cosmos.app.v1alpha1)
         }
     }
@@ -75,7 +84,10 @@ pub mod cosmos {
         }
         // @@protoc_insertion_point(attribute:cosmos.auth.v1beta1)
         pub mod v1beta1 {
+            #[cfg(not(feature = "replace-any"))]
             include!("cosmos.auth.v1beta1.rs");
+            #[cfg(feature = "replace-any")]
+            include!("cosmos.auth.v1beta1.advanced.rs");
             // @@protoc_insertion_point(cosmos.auth.v1beta1)
         }
     }
@@ -89,7 +101,10 @@ pub mod cosmos {
         }
         // @@protoc_insertion_point(attribute:cosmos.authz.v1beta1)
         pub mod v1beta1 {
+            #[cfg(not(feature = "replace-any"))]
             include!("cosmos.authz.v1beta1.rs");
+            #[cfg(feature = "replace-any")]
+            include!("cosmos.authz.v1beta1.advanced.rs");
             // @@protoc_insertion_point(cosmos.authz.v1beta1)
         }
     }
@@ -118,7 +133,10 @@ pub mod cosmos {
         pub mod abci {
             // @@protoc_insertion_point(attribute:cosmos.base.abci.v1beta1)
             pub mod v1beta1 {
+                #[cfg(not(feature = "replace-any"))]
                 include!("cosmos.base.abci.v1beta1.rs");
+                #[cfg(feature = "replace-any")]
+                include!("cosmos.base.abci.v1beta1.advanced.rs");
                 // @@protoc_insertion_point(cosmos.base.abci.v1beta1)
             }
         }
@@ -172,7 +190,10 @@ pub mod cosmos {
         pub mod tendermint {
             // @@protoc_insertion_point(attribute:cosmos.base.tendermint.v1beta1)
             pub mod v1beta1 {
+                #[cfg(not(feature = "replace-any"))]
                 include!("cosmos.base.tendermint.v1beta1.rs");
+                #[cfg(feature = "replace-any")]
+                include!("cosmos.base.tendermint.v1beta1.advanced.rs");
                 // @@protoc_insertion_point(cosmos.base.tendermint.v1beta1)
             }
         }
@@ -240,13 +261,19 @@ pub mod cosmos {
         pub mod keyring {
             // @@protoc_insertion_point(attribute:cosmos.crypto.keyring.v1)
             pub mod v1 {
+                #[cfg(not(feature = "replace-any"))]
                 include!("cosmos.crypto.keyring.v1.rs");
+                #[cfg(feature = "replace-any")]
+                include!("cosmos.crypto.keyring.v1.advanced.rs");
                 // @@protoc_insertion_point(cosmos.crypto.keyring.v1)
             }
         }
         // @@protoc_insertion_point(attribute:cosmos.crypto.multisig)
         pub mod multisig {
+            #[cfg(not(feature = "replace-any"))]
             include!("cosmos.crypto.multisig.rs");
+            #[cfg(feature = "replace-any")]
+            include!("cosmos.crypto.multisig.advanced.rs");
             // @@protoc_insertion_point(cosmos.crypto.multisig)
             // @@protoc_insertion_point(attribute:cosmos.crypto.multisig.v1beta1)
             pub mod v1beta1 {
@@ -289,7 +316,10 @@ pub mod cosmos {
         }
         // @@protoc_insertion_point(attribute:cosmos.evidence.v1beta1)
         pub mod v1beta1 {
+            #[cfg(not(feature = "replace-any"))]
             include!("cosmos.evidence.v1beta1.rs");
+            #[cfg(feature = "replace-any")]
+            include!("cosmos.evidence.v1beta1.advanced.rs");
             // @@protoc_insertion_point(cosmos.evidence.v1beta1)
         }
     }
@@ -303,7 +333,10 @@ pub mod cosmos {
         }
         // @@protoc_insertion_point(attribute:cosmos.feegrant.v1beta1)
         pub mod v1beta1 {
+            #[cfg(not(feature = "replace-any"))]
             include!("cosmos.feegrant.v1beta1.rs");
+            #[cfg(feature = "replace-any")]
+            include!("cosmos.feegrant.v1beta1.advanced.rs");
             // @@protoc_insertion_point(cosmos.feegrant.v1beta1)
         }
     }
@@ -331,12 +364,18 @@ pub mod cosmos {
         }
         // @@protoc_insertion_point(attribute:cosmos.gov.v1)
         pub mod v1 {
+            #[cfg(not(feature = "replace-any"))]
             include!("cosmos.gov.v1.rs");
+            #[cfg(feature = "replace-any")]
+            include!("cosmos.gov.v1.advanced.rs");
             // @@protoc_insertion_point(cosmos.gov.v1)
         }
         // @@protoc_insertion_point(attribute:cosmos.gov.v1beta1)
         pub mod v1beta1 {
+            #[cfg(not(feature = "replace-any"))]
             include!("cosmos.gov.v1beta1.rs");
+            #[cfg(feature = "replace-any")]
+            include!("cosmos.gov.v1beta1.advanced.rs");
             // @@protoc_insertion_point(cosmos.gov.v1beta1)
         }
     }
@@ -350,7 +389,10 @@ pub mod cosmos {
         }
         // @@protoc_insertion_point(attribute:cosmos.group.v1)
         pub mod v1 {
+            #[cfg(not(feature = "replace-any"))]
             include!("cosmos.group.v1.rs");
+            #[cfg(feature = "replace-any")]
+            include!("cosmos.group.v1.advanced.rs");
             // @@protoc_insertion_point(cosmos.group.v1)
         }
     }
@@ -392,7 +434,10 @@ pub mod cosmos {
         }
         // @@protoc_insertion_point(attribute:cosmos.nft.v1beta1)
         pub mod v1beta1 {
+            #[cfg(not(feature = "replace-any"))]
             include!("cosmos.nft.v1beta1.rs");
+            #[cfg(feature = "replace-any")]
+            include!("cosmos.nft.v1beta1.advanced.rs");
             // @@protoc_insertion_point(cosmos.nft.v1beta1)
         }
     }
@@ -407,7 +452,10 @@ pub mod cosmos {
         pub mod query {
             // @@protoc_insertion_point(attribute:cosmos.orm.query.v1alpha1)
             pub mod v1alpha1 {
+                #[cfg(not(feature = "replace-any"))]
                 include!("cosmos.orm.query.v1alpha1.rs");
+                #[cfg(feature = "replace-any")]
+                include!("cosmos.orm.query.v1alpha1.advanced.rs");
                 // @@protoc_insertion_point(cosmos.orm.query.v1alpha1)
             }
         }
@@ -474,7 +522,10 @@ pub mod cosmos {
         }
         // @@protoc_insertion_point(attribute:cosmos.staking.v1beta1)
         pub mod v1beta1 {
+            #[cfg(not(feature = "replace-any"))]
             include!("cosmos.staking.v1beta1.rs");
+            #[cfg(feature = "replace-any")]
+            include!("cosmos.staking.v1beta1.advanced.rs");
             // @@protoc_insertion_point(cosmos.staking.v1beta1)
         }
     }
@@ -489,13 +540,19 @@ pub mod cosmos {
         pub mod signing {
             // @@protoc_insertion_point(attribute:cosmos.tx.signing.v1beta1)
             pub mod v1beta1 {
+                #[cfg(not(feature = "replace-any"))]
                 include!("cosmos.tx.signing.v1beta1.rs");
+                #[cfg(feature = "replace-any")]
+                include!("cosmos.tx.signing.v1beta1.advanced.rs");
                 // @@protoc_insertion_point(cosmos.tx.signing.v1beta1)
             }
         }
         // @@protoc_insertion_point(attribute:cosmos.tx.v1beta1)
         pub mod v1beta1 {
+            #[cfg(not(feature = "replace-any"))]
             include!("cosmos.tx.v1beta1.rs");
+            #[cfg(feature = "replace-any")]
+            include!("cosmos.tx.v1beta1.advanced.rs");
             // @@protoc_insertion_point(cosmos.tx.v1beta1)
         }
     }
@@ -509,7 +566,10 @@ pub mod cosmos {
         }
         // @@protoc_insertion_point(attribute:cosmos.upgrade.v1beta1)
         pub mod v1beta1 {
+            #[cfg(not(feature = "replace-any"))]
             include!("cosmos.upgrade.v1beta1.rs");
+            #[cfg(feature = "replace-any")]
+            include!("cosmos.upgrade.v1beta1.advanced.rs");
             // @@protoc_insertion_point(cosmos.upgrade.v1beta1)
         }
     }
@@ -523,7 +583,10 @@ pub mod cosmos {
         }
         // @@protoc_insertion_point(attribute:cosmos.vesting.v1beta1)
         pub mod v1beta1 {
+            #[cfg(not(feature = "replace-any"))]
             include!("cosmos.vesting.v1beta1.rs");
+            #[cfg(feature = "replace-any")]
+            include!("cosmos.vesting.v1beta1.advanced.rs");
             // @@protoc_insertion_point(cosmos.vesting.v1beta1)
         }
     }
@@ -537,7 +600,10 @@ pub mod cosmwasm {
     pub mod wasm {
         // @@protoc_insertion_point(attribute:cosmwasm.wasm.v1)
         pub mod v1 {
+            #[cfg(not(feature = "replace-any"))]
             include!("cosmwasm.wasm.v1.rs");
+            #[cfg(feature = "replace-any")]
+            include!("cosmwasm.wasm.v1.advanced.rs");
             // @@protoc_insertion_point(cosmwasm.wasm.v1)
         }
     }
@@ -575,7 +641,10 @@ pub mod ibc {
             }
             // @@protoc_insertion_point(attribute:ibc.applications.interchain_accounts.v1)
             pub mod v1 {
+                #[cfg(not(feature = "replace-any"))]
                 include!("ibc.applications.interchain_accounts.v1.rs");
+                #[cfg(feature = "replace-any")]
+                include!("ibc.applications.interchain_accounts.v1.advanced.rs");
                 // @@protoc_insertion_point(ibc.applications.interchain_accounts.v1)
             }
         }
@@ -596,14 +665,20 @@ pub mod ibc {
         pub mod channel {
             // @@protoc_insertion_point(attribute:ibc.core.channel.v1)
             pub mod v1 {
+                #[cfg(not(feature = "replace-any"))]
                 include!("ibc.core.channel.v1.rs");
+                #[cfg(feature = "replace-any")]
+                include!("ibc.core.channel.v1.advanced.rs");
                 // @@protoc_insertion_point(ibc.core.channel.v1)
             }
         }
         pub mod client {
             // @@protoc_insertion_point(attribute:ibc.core.client.v1)
             pub mod v1 {
+                #[cfg(not(feature = "replace-any"))]
                 include!("ibc.core.client.v1.rs");
+                #[cfg(feature = "replace-any")]
+                include!("ibc.core.client.v1.advanced.rs");
                 // @@protoc_insertion_point(ibc.core.client.v1)
             }
         }
@@ -617,14 +692,20 @@ pub mod ibc {
         pub mod connection {
             // @@protoc_insertion_point(attribute:ibc.core.connection.v1)
             pub mod v1 {
+                #[cfg(not(feature = "replace-any"))]
                 include!("ibc.core.connection.v1.rs");
+                #[cfg(feature = "replace-any")]
+                include!("ibc.core.connection.v1.advanced.rs");
                 // @@protoc_insertion_point(ibc.core.connection.v1)
             }
         }
         pub mod types {
             // @@protoc_insertion_point(attribute:ibc.core.types.v1)
             pub mod v1 {
+                #[cfg(not(feature = "replace-any"))]
                 include!("ibc.core.types.v1.rs");
+                #[cfg(feature = "replace-any")]
+                include!("ibc.core.types.v1.advanced.rs");
                 // @@protoc_insertion_point(ibc.core.types.v1)
             }
         }
@@ -640,12 +721,18 @@ pub mod ibc {
         pub mod solomachine {
             // @@protoc_insertion_point(attribute:ibc.lightclients.solomachine.v2)
             pub mod v2 {
+                #[cfg(not(feature = "replace-any"))]
                 include!("ibc.lightclients.solomachine.v2.rs");
+                #[cfg(feature = "replace-any")]
+                include!("ibc.lightclients.solomachine.v2.advanced.rs");
                 // @@protoc_insertion_point(ibc.lightclients.solomachine.v2)
             }
             // @@protoc_insertion_point(attribute:ibc.lightclients.solomachine.v3)
             pub mod v3 {
+                #[cfg(not(feature = "replace-any"))]
                 include!("ibc.lightclients.solomachine.v3.rs");
+                #[cfg(feature = "replace-any")]
+                include!("ibc.lightclients.solomachine.v3.advanced.rs");
                 // @@protoc_insertion_point(ibc.lightclients.solomachine.v3)
             }
         }

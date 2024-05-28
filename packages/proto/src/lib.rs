@@ -5,6 +5,9 @@
 #![forbid(unsafe_code)]
 #![warn(trivial_casts, trivial_numeric_casts, unused_import_braces)]
 
+#[cfg(feature = "replace-any")]
+pub mod any;
+
 mod gen;
 
 pub use gen::*;
