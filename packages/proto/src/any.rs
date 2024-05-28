@@ -56,9 +56,9 @@ pub mod option {
     }
 
     pub fn generic_deserialize<'de, T, D>(deserializer: D) -> Result<Option<T>, D::Error>
-        where
-            T: Message + PartialEq + Default + DeserializeOwned,
-            D: Deserializer<'de>,
+    where
+        T: Message + PartialEq + Default + DeserializeOwned,
+        D: Deserializer<'de>,
     {
         Option::<T>::deserialize(deserializer)
     }
@@ -76,9 +76,9 @@ pub mod option {
     }
 
     pub fn generic_serialize<S, T>(value: &Option<T>, serializer: S) -> Result<S::Ok, S::Error>
-        where
-            S: Serializer,
-            T: Serialize + Message + PartialEq + Default,
+    where
+        S: Serializer,
+        T: Serialize + Message + PartialEq + Default,
     {
         match value {
             None => Serializer::serialize_none(serializer),
@@ -111,9 +111,9 @@ pub mod vec {
     }
 
     pub fn generic_deserialize<'de, T, D>(deserializer: D) -> Result<Vec<T>, D::Error>
-        where
-            T: Message + PartialEq + Default + DeserializeOwned,
-            D: Deserializer<'de>,
+    where
+        T: Message + PartialEq + Default + DeserializeOwned,
+        D: Deserializer<'de>,
     {
         Vec::<T>::deserialize(deserializer)
     }
@@ -132,9 +132,9 @@ pub mod vec {
     }
 
     pub fn generic_serialize<S, T>(value: &Vec<T>, serializer: S) -> Result<S::Ok, S::Error>
-        where
-            S: Serializer,
-            T: Serialize + Message + PartialEq + Default,
+    where
+        S: Serializer,
+        T: Serialize + Message + PartialEq + Default,
     {
         let mut seq = Serializer::serialize_seq(serializer, Some(value.len()))?;
         for element in value {
@@ -147,14 +147,16 @@ pub mod vec {
 #[cfg(test)]
 mod test {
     use prost::{Message, Name};
-    use serde::{Deserialize, Serialize};
     use serde::de::DeserializeOwned;
+    use serde::{Deserialize, Serialize};
     use serde_test::{assert_tokens, Token};
 
     #[derive(:: serde :: Serialize, :: serde :: Deserialize)]
     #[allow(clippy::derive_partial_eq_without_eq)]
     #[derive(Clone, PartialEq, :: prost :: Message)]
-    struct ExternalStructTest<A: Default + Message + Name + Send + Sync + Serialize + DeserializeOwned + PartialEq + Clone> {
+    struct ExternalStructTest<
+        A: Default + Message + Name + Send + Sync + Serialize + DeserializeOwned + PartialEq + Clone,
+    > {
         #[prost(message, optional, tag = "1")]
         #[serde(
             serialize_with = "crate::any::option::serialize",
@@ -163,7 +165,18 @@ mod test {
         pub optional: Option<A>,
     }
 
-    impl<A: Default + Message + Name + Send + Sync + Serialize + DeserializeOwned + PartialEq + Clone> Name for ExternalStructTest<A> {
+    impl<
+            A: Default
+                + Message
+                + Name
+                + Send
+                + Sync
+                + Serialize
+                + DeserializeOwned
+                + PartialEq
+                + Clone,
+        > Name for ExternalStructTest<A>
+    {
         const NAME: &'static str = "AnyValue";
         const PACKAGE: &'static str = "test";
 
@@ -177,7 +190,7 @@ mod test {
     #[derive(Clone, PartialEq, :: prost :: Message)]
     struct BuildTest<
         A: Default + Message + Name + Send + Sync + Serialize + DeserializeOwned + PartialEq + Clone,
-        C: Default + Message + Name + Send + Sync + Serialize + DeserializeOwned + PartialEq + Clone
+        C: Default + Message + Name + Send + Sync + Serialize + DeserializeOwned + PartialEq + Clone,
     > {
         #[prost(message, optional, tag = "1")]
         #[serde(

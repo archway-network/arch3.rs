@@ -3,12 +3,18 @@ use glob::glob;
 use proc_macro2::{Literal, Punct, Spacing, Span, TokenStream};
 use quote::{quote, TokenStreamExt};
 use regex::Regex;
+use std::cmp::Ordering;
 use std::collections::BTreeMap;
 use std::fs;
 use std::path::PathBuf;
 use syn::punctuated::Punctuated;
 use syn::token::{Paren, PathSep};
-use syn::{AngleBracketedGenericArguments, AttrStyle, Attribute, Field, Fields, FieldsNamed, GenericArgument, GenericParam, Ident, Item, ItemStruct, MacroDelimiter, Meta, MetaList, Path, PathArguments, PathSegment, TraitBound, TraitBoundModifier, Type, TypeParam, TypeParamBound, TypePath, File};
+use syn::{
+    AngleBracketedGenericArguments, AttrStyle, Attribute, Field, Fields, FieldsNamed, File,
+    GenericArgument, GenericParam, Ident, Item, ItemStruct, MacroDelimiter, Meta, MetaList, Path,
+    PathArguments, PathSegment, TraitBound, TraitBoundModifier, Type, TypeParam, TypeParamBound,
+    TypePath,
+};
 
 fn as_struct(item: &mut Item) -> Option<&mut ItemStruct> {
     match item {
@@ -53,22 +59,16 @@ fn is_important(field: &mut Field) -> Option<(FoundEnclosure, &mut TypePath)> {
 
     // If we found the types we needed
     if let Some(enclosed) = found {
-        match &mut field_type.arguments {
-            PathArguments::AngleBracketed(bracket) => {
-                for p in bracket.args.iter_mut() {
-                    match p {
-                        GenericArgument::Type(t) => {
-                            if let Some(any_path) = as_path(t) {
-                                return Some((enclosed, any_path));
-                            } else {
-                                println!("something else")
-                            }
-                        }
-                        _ => {}
+        if let PathArguments::AngleBracketed(bracket) = &mut field_type.arguments {
+            for p in bracket.args.iter_mut() {
+                if let GenericArgument::Type(t) = p {
+                    if let Some(any_path) = as_path(t) {
+                        return Some((enclosed, any_path));
+                    } else {
+                        println!("something else")
                     }
                 }
             }
-            _ => {}
         }
     }
 
@@ -111,9 +111,7 @@ fn trait_param_bound(path: Vec<&str>) -> TypeParamBound {
 fn gen_unnamed_param(name: &str) -> TypeParam {
     let mut type_param = TypeParam::from(Ident::new(name, Span::call_site()));
     type_param.bounds.push(trait_param_bound(vec!["Clone"]));
-    type_param
-        .bounds
-        .push(trait_param_bound(vec!["PartialEq"]));
+    type_param.bounds.push(trait_param_bound(vec!["PartialEq"]));
     type_param.bounds.push(trait_param_bound(vec!["Default"]));
     type_param.bounds.push(trait_param_bound(vec!["Send"]));
     type_param.bounds.push(trait_param_bound(vec!["Sync"]));
@@ -180,8 +178,7 @@ fn load_and_patch_any(out_dir: &str) -> BTreeMap<String, (File, BTreeMap<String,
                 let fields = as_named_fields(&mut item.fields).unwrap();
                 for field in fields.named.iter_mut() {
                     if let Some((ty, path)) = is_important(field) {
-                        if path.path.segments.last().unwrap().ident.to_string() == "Any" {
-
+                        if path.path.segments.last().unwrap().ident == "Any" {
                             // Set struct generics
                             let generic = GENERICS[item.generics.params.len()];
                             path.path = gen_generic(generic);
@@ -233,20 +230,12 @@ fn load_and_patch_any(out_dir: &str) -> BTreeMap<String, (File, BTreeMap<String,
         }
 
         // Remove the tonic include for now
-        if let Some(last) = ast.items.last() {
-            match last {
-                Item::Macro(_) => {
-                    ast.items.pop();
-                }
-                _ => {}
-            }
+        if let Some(Item::Macro(_)) = ast.items.last() {
+            ast.items.pop();
         }
 
-
-        let file_name = src.to_str().unwrap().split("/").last().unwrap();
+        let file_name = src.to_str().unwrap().split('/').last().unwrap();
         project_tokens.insert(file_name.to_string(), (ast, structs));
-
-
     }
 
     project_tokens
@@ -266,7 +255,7 @@ fn patch_generics(files: &mut BTreeMap<String, (File, BTreeMap<String, usize>)>)
 
         let mut new_fixes = false;
 
-        let keys: Vec<String> = files.keys().into_iter().map(|k| k.clone()).collect();
+        let keys: Vec<String> = files.keys().cloned().collect();
         for key in keys {
             let (mut ast, structs) = files.remove(&key).unwrap();
 
@@ -282,7 +271,11 @@ fn patch_generics(files: &mut BTreeMap<String, (File, BTreeMap<String, usize>)>)
                 let mut new_total_generics = 0;
 
                 // Iterate through each field and automatically update the fields and add to total field tally
-                for field in as_named_fields(&mut curr_struct.fields).unwrap().named.iter_mut() {
+                for field in as_named_fields(&mut curr_struct.fields)
+                    .unwrap()
+                    .named
+                    .iter_mut()
+                {
                     let name = field.ident.clone().unwrap().to_string();
                     let mut found_ty = None;
                     if let Some((field_ty, path)) = is_important(field) {
@@ -293,7 +286,7 @@ fn patch_generics(files: &mut BTreeMap<String, (File, BTreeMap<String, usize>)>)
                         fn push_generics(
                             ty_struct: &ItemStruct,
                             ty: &mut PathSegment,
-                            mut new_total_generics: usize
+                            mut new_total_generics: usize,
                         ) -> usize {
                             let mut args = Punctuated::new();
 
@@ -305,44 +298,53 @@ fn patch_generics(files: &mut BTreeMap<String, (File, BTreeMap<String, usize>)>)
                                 new_total_generics += 1;
                             }
 
-                            ty.arguments = PathArguments::AngleBracketed(AngleBracketedGenericArguments {
-                                colon2_token: None,
-                                lt_token: Default::default(),
-                                args,
-                                gt_token: Default::default(),
-                            });
+                            ty.arguments =
+                                PathArguments::AngleBracketed(AngleBracketedGenericArguments {
+                                    colon2_token: None,
+                                    lt_token: Default::default(),
+                                    args,
+                                    gt_token: Default::default(),
+                                });
 
                             new_total_generics
                         }
 
                         // Generis state patch
-                        if ident_name == "GenesisState" && key == "ibc.core.types.v1.rs" && name == "client_genesis" {
+                        if ident_name == "GenesisState"
+                            && key == "ibc.core.types.v1.rs"
+                            && name == "client_genesis"
+                        {
                             let (key, s) = files.get_mut("ibc.core.client.v1.rs").unwrap();
-                            let ty_struct = as_struct(key.items.get_mut(*s.get("GenesisState").unwrap()).unwrap()).unwrap();
+                            let ty_struct = as_struct(
+                                key.items.get_mut(*s.get("GenesisState").unwrap()).unwrap(),
+                            )
+                            .unwrap();
                             found_ty = Some(field_ty);
                             new_total_generics = push_generics(ty_struct, ty, new_total_generics);
-
-                        }
-                        else if let Some(i) = structs.get(&ident_name) {
-                            let ty_item = if *i < idx {
-                                left.get_mut(*i).unwrap()
-                            } else if *i > idx {
-                                right.get_mut(*i - idx - 1).unwrap()
-                            } else {
-                                continue;
+                        } else if let Some(i) = structs.get(&ident_name) {
+                            let ty_item = match i.cmp(&idx) {
+                                Ordering::Less => left.get_mut(*i).unwrap(),
+                                Ordering::Greater => right.get_mut(*i - idx - 1).unwrap(),
+                                Ordering::Equal => continue,
                             };
 
                             let ty_struct = as_struct(ty_item).unwrap();
                             found_ty = Some(field_ty);
                             new_total_generics = push_generics(ty_struct, ty, new_total_generics);
-                        }
-                        else if GENERICS.contains(&&*ident_name) {
+                        } else if GENERICS.contains(&&*ident_name) {
                             ty.ident = Ident::new(GENERICS[new_total_generics], Span::call_site());
                             new_total_generics += 1;
-
-                        }
-                        else if let Some((_, (other_ast, other_structs))) = files.iter_mut().find(|(_, (_, s))| s.contains_key(&ident_name)) {
-                            let ty_struct = as_struct(other_ast.items.get_mut(*other_structs.get(&ident_name).unwrap()).unwrap()).unwrap();
+                        } else if let Some((_, (other_ast, other_structs))) = files
+                            .iter_mut()
+                            .find(|(_, (_, s))| s.contains_key(&ident_name))
+                        {
+                            let ty_struct = as_struct(
+                                other_ast
+                                    .items
+                                    .get_mut(*other_structs.get(&ident_name).unwrap())
+                                    .unwrap(),
+                            )
+                            .unwrap();
                             found_ty = Some(field_ty);
                             new_total_generics = push_generics(ty_struct, ty, new_total_generics);
                         }
@@ -352,7 +354,7 @@ fn patch_generics(files: &mut BTreeMap<String, (File, BTreeMap<String, usize>)>)
                     if let Some(found_ty) = found_ty {
                         let last = field.attrs.last().unwrap().clone();
                         if let Meta::List(meta_list) = &last.meta {
-                            if meta_list.path.segments.last().unwrap().ident.to_string() != "serde".to_string() {
+                            if meta_list.path.segments.last().unwrap().ident != "serde" {
                                 // Set serialization function
                                 let serde_path = match found_ty {
                                     FoundEnclosure::Option => "option",
@@ -360,14 +362,16 @@ fn patch_generics(files: &mut BTreeMap<String, (File, BTreeMap<String, usize>)>)
                                 };
 
                                 let mut token_stream = TokenStream::new();
-                                token_stream.append(Ident::new("serialize_with", Span::call_site()));
+                                token_stream
+                                    .append(Ident::new("serialize_with", Span::call_site()));
                                 token_stream.append(Punct::new('=', Spacing::Alone));
                                 token_stream.append(Literal::string(&format!(
                                     "crate::any::{}::generic_serialize",
                                     serde_path
                                 )));
                                 token_stream.append(Punct::new(',', Spacing::Alone));
-                                token_stream.append(Ident::new("deserialize_with", Span::call_site()));
+                                token_stream
+                                    .append(Ident::new("deserialize_with", Span::call_site()));
                                 token_stream.append(Punct::new('=', Spacing::Alone));
                                 token_stream.append(Literal::string(&format!(
                                     "crate::any::{}::generic_deserialize",
@@ -399,10 +403,11 @@ fn patch_generics(files: &mut BTreeMap<String, (File, BTreeMap<String, usize>)>)
                 if total_generics != new_total_generics {
                     curr_struct.generics.params.clear();
 
-                    for i in 0..new_total_generics {
-                        curr_struct.generics
+                    for gen in GENERICS[0..new_total_generics].iter() {
+                        curr_struct
+                            .generics
                             .params
-                            .push(GenericParam::Type(gen_type_param(GENERICS[i])));
+                            .push(GenericParam::Type(gen_type_param(gen)));
                     }
                     new_fixes = true;
                 }
@@ -431,56 +436,52 @@ fn patch_impls(files: &mut BTreeMap<String, (File, BTreeMap<String, usize>)>) {
         for i in 1..ast.items.len() {
             let (left, right) = ast.items.split_at_mut(i);
             let item = right.get_mut(0).unwrap();
-            match item {
-                Item::Impl(impl_item) => {
-                    // Ignore if its not the Name impl
-                    if let Some(t) = impl_item.trait_.clone() {
-                        if t.1.segments.last().unwrap().ident.to_string() != "Name" {
-                            continue;
-                        }
-                    }
-
-                    // Get the struct that is getting an impl
-                    let implemented = as_path(impl_item.self_ty.as_mut())
-                        .map(|p| p.path.segments.last().unwrap().ident.to_string())
-                        .unwrap_or("".to_string());
-
-                    let idx = match structs.get(&implemented) {
-                        // If its not a struct then ignore
-                        None => continue,
-                        Some(idx) => *idx,
-                    };
-                    // Unwrap cause we know its a struct
-                    let struct_item = as_struct(left.get_mut(idx).unwrap()).unwrap();
-                    // Ignore structs with no generics
-                    if struct_item.generics.params.len() == 0 {
+            if let Item::Impl(impl_item) = item {
+                // Ignore if its not the Name impl
+                if let Some(t) = impl_item.trait_.clone() {
+                    if t.1.segments.last().unwrap().ident != "Name" {
                         continue;
                     }
-
-                    impl_item.generics = struct_item.generics.clone();
-
-                    if let Some(impl_path) = as_path(impl_item.self_ty.as_mut()) {
-                        let mut args = Punctuated::new();
-
-                        for i in 0..impl_item.generics.params.len() {
-                            args.push(GenericArgument::Type(Type::Path(TypePath {
-                                qself: None,
-                                path: gen_generic(GENERICS[i]),
-                            })));
-                        }
-
-                        let seg = impl_path.path.segments.last_mut().unwrap();
-
-                        seg.arguments =
-                            PathArguments::AngleBracketed(AngleBracketedGenericArguments {
-                                colon2_token: None,
-                                lt_token: Default::default(),
-                                args,
-                                gt_token: Default::default(),
-                            });
-                    }
                 }
-                _ => {}
+
+                // Get the struct that is getting an impl
+                let implemented = as_path(impl_item.self_ty.as_mut())
+                    .map(|p| p.path.segments.last().unwrap().ident.to_string())
+                    .unwrap_or("".to_string());
+
+                let idx = match structs.get(&implemented) {
+                    // If its not a struct then ignore
+                    None => continue,
+                    Some(idx) => *idx,
+                };
+                // Unwrap cause we know its a struct
+                let struct_item = as_struct(left.get_mut(idx).unwrap()).unwrap();
+                // Ignore structs with no generics
+                if struct_item.generics.params.is_empty() {
+                    continue;
+                }
+
+                impl_item.generics = struct_item.generics.clone();
+
+                if let Some(impl_path) = as_path(impl_item.self_ty.as_mut()) {
+                    let mut args = Punctuated::new();
+
+                    for gen in GENERICS[0..impl_item.generics.params.len()].iter() {
+                        args.push(GenericArgument::Type(Type::Path(TypePath {
+                            qself: None,
+                            path: gen_generic(gen),
+                        })));
+                    }
+
+                    let seg = impl_path.path.segments.last_mut().unwrap();
+
+                    seg.arguments = PathArguments::AngleBracketed(AngleBracketedGenericArguments {
+                        colon2_token: None,
+                        lt_token: Default::default(),
+                        args,
+                        gt_token: Default::default(),
+                    });
+                }
             }
         }
     }
@@ -490,9 +491,7 @@ fn save(out_dir: &str, files: &BTreeMap<String, (File, BTreeMap<String, usize>)>
     for (file, (data, _)) in files.iter() {
         // Patch the mod file
         let file_regex = Regex::new(r"(\.[[:alnum:]]+\.)rs").unwrap();
-        let new_file = file_regex
-            .replace(&file, "${1}advanced.rs")
-            .to_string();
+        let new_file = file_regex.replace(file, "${1}advanced.rs").to_string();
 
         patch_file(
             format!("{}/mod.rs", out_dir),
@@ -511,13 +510,14 @@ fn save(out_dir: &str, files: &BTreeMap<String, (File, BTreeMap<String, usize>)>
                     file, new_file
                 ),
             )],
-        ).unwrap();
+        )
+        .unwrap();
 
         // Export the generated structure and save in file
         fs::write(
             format!("{}/{}", out_dir, new_file),
             quote!(#data).to_string(),
         )
-            .unwrap();
+        .unwrap();
     }
 }

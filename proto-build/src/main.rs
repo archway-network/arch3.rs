@@ -141,7 +141,7 @@ fn _generate_advanced_struct(out_dir: &str) -> Result<()> {
     println!("Generating Any replacements...");
 
     // These files should be ignored
-    let ignore: Vec<PathBuf> = vec![
+    let ignore: Vec<PathBuf> = [
         "cosmos.crypto.keyring.v1.rs",
         "ibc.core.client.v1.rs",
         "ibc.core.connection.v1.rs",
@@ -292,7 +292,7 @@ fn _generate_advanced_struct(out_dir: &str) -> Result<()> {
                     r"(// @@protoc_insertion_point\(module\))",
                     &format!(
                         "include!(\"{}\");\n{}",
-                        path.split("/").last().unwrap(),
+                        path.split('/').last().unwrap(),
                         "${1}"
                     ),
                 )],
