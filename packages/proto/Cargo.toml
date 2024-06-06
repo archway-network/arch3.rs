@@ -47,7 +47,7 @@ grpc = ["tonic", "tendermint-proto/grpc"]
 cosmwasm = []
 proto-descriptor = []
 # Replaces all structs that use Any with a generic type
-replace-any = []
+abstract-any = []
 
 [package.metadata.docs.rs]
 all-features = true

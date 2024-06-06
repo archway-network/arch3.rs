@@ -491,7 +491,7 @@ fn save(out_dir: &str, files: &BTreeMap<String, (File, BTreeMap<String, usize>)>
     for (file, (data, _)) in files.iter() {
         // Patch the mod file
         let file_regex = Regex::new(r"(\.[[:alnum:]]+\.)rs").unwrap();
-        let new_file = file_regex.replace(file, "${1}advanced.rs").to_string();
+        let new_file = file_regex.replace(file, "${1}abstract.rs").to_string();
 
         patch_file(
             format!("{}/mod.rs", out_dir),
@@ -502,9 +502,9 @@ fn save(out_dir: &str, files: &BTreeMap<String, (File, BTreeMap<String, usize>)>
                 ),
                 &format!(
                     "\
-                #[cfg(not(feature = \"replace-any\"))]\n\
+                #[cfg(not(feature = \"abstract-any\"))]\n\
                 include!(\"{}\");\n\
-                #[cfg(feature = \"replace-any\")]\n\
+                #[cfg(feature = \"abstract-any\")]\n\
                 include!(\"{}\");\
                 ",
                     file, new_file
