@@ -1,3 +1,5 @@
+mod parser;
+
 use std::{
     ffi::OsStr,
     fs, io,
@@ -5,6 +7,7 @@ use std::{
     process,
 };
 
+use crate::parser::generate_advanced_struct;
 use error_chain::error_chain;
 use glob::glob;
 use regex::Regex;
@@ -51,6 +54,7 @@ fn main() {
     output_versions(out_dir.as_str());
     cleanup(out_dir.as_str());
     apply_patches(out_dir.as_str()).unwrap();
+    generate_advanced_struct(out_dir.as_str()).unwrap();
     rustfmt(out_dir.as_str()).unwrap();
 }
 
@@ -129,6 +133,173 @@ fn apply_patches(out_dir: &str) -> Result<()> {
     }
 
     apply_cosmos_staking_patches(out_dir);
+
+    Ok(())
+}
+
+fn _generate_advanced_struct(out_dir: &str) -> Result<()> {
+    println!("Generating Any replacements...");
+
+    // These files should be ignored
+    let ignore: Vec<PathBuf> = [
+        "cosmos.crypto.keyring.v1.rs",
+        "ibc.core.client.v1.rs",
+        "ibc.core.connection.v1.rs",
+    ]
+    .iter()
+    .map(|f| {
+        let mut p = PathBuf::from(out_dir);
+        p.push(f);
+        p
+    })
+    .collect();
+
+    // Premake regexes
+    let struct_regex_str = "pub struct[[^}][:alnum:][:cntrl:]]+}";
+    let struct_prost_name =
+        "[[:cntrl:]]impl ::prost::Name for [[^}][:alnum:][:cntrl:]]+}[[^}][:alnum:][:cntrl:]]+}}";
+    let struct_regex =
+        Regex::new(&format!("({})({})", struct_regex_str, struct_prost_name)).unwrap();
+    let any_regex = Regex::new("::pbjson_types::Any").unwrap();
+    let struct_start_regex = Regex::new("(pub struct [[:alnum:]]+)").unwrap();
+    let struct_prost_start_regex = Regex::new("(impl)( ::prost::Name for [[:alnum:]]+)").unwrap();
+    let generic_option_regex =
+        Regex::new("(pub [[:alnum:]]+: ::core::option::Option<[[:alpha:]]>,)").unwrap();
+    let generic_vec_regex =
+        Regex::new("(pub [[:alnum:]]+: ::prost::alloc::vec::Vec<[[:alpha:]]>,)").unwrap();
+    let file_regex = Regex::new(r"(\.[[:alnum:]]+\.)rs").unwrap();
+
+    const GENERICS: [char; 6] = ['A', 'B', 'C', 'D', 'E', 'F'];
+
+    // Get all generated files
+    let src_files_glob = format!("{out_dir}/*.rs");
+    let src_files: Vec<PathBuf> = glob(src_files_glob.as_str())?.flatten().collect();
+
+    for src in src_files {
+        if ignore.contains(&src) {
+            continue;
+        }
+
+        let current_file = fs::read_to_string(&src)?;
+
+        // Patches file that feature locks conflicting structs
+        let mut new_file = String::new();
+        let mut new_file_cursor = 0;
+
+        // Contains all the any replacements
+        let mut advanced_file = String::new();
+
+        for matched_struct in struct_regex.find_iter(&current_file) {
+            // Add necessary prefix info
+            let mut res = "\
+            #[allow(clippy::derive_partial_eq_without_eq)] \n \
+            #[derive(Clone, PartialEq, ::prost::Message, ::serde::Serialize, ::serde::Deserialize)] \n \
+            #[cfg(feature = \"replace-any\")]\n \
+            ".to_string();
+            let s = matched_struct.as_str();
+
+            // Generics builder
+            let mut generics = "<".to_string();
+
+            // Last index, it makes string building much easier
+            let mut cursor = 0;
+            // Find all occurrences of Any and replace them with a generic
+            for (i, m) in any_regex.find_iter(s).enumerate() {
+                // Build struct
+                res.push_str(&s[cursor..m.start()]);
+                res.push(GENERICS[i]);
+
+                generics.push(GENERICS[i]);
+                generics.push(',');
+                cursor = m.end();
+            }
+            res.push_str(&s[cursor..s.len()]);
+            generics.push('>');
+
+            // Add generics to the struct
+            res = struct_start_regex
+                .replace(res.as_str(), format!("{}{}", "${1}", generics))
+                .to_string();
+            res = struct_prost_start_regex
+                .replace(
+                    res.as_str(),
+                    format!(
+                        "#[cfg(feature = \"replace-any\")]\n{}{generics}{}{generics}",
+                        "${1}", "${2}"
+                    ),
+                )
+                .to_string();
+
+            // If cursor == 0 it means there was never a match
+            if cursor != 0 {
+                // Patch the file with feature gating to avoid conflicts
+                new_file.push_str(&current_file[new_file_cursor..matched_struct.start()]);
+                new_file_cursor = matched_struct.end();
+                new_file.push_str(&struct_regex.replace(
+                    matched_struct.as_str(),
+                    &format!(
+                        "{cfg}{}{cfg}{}",
+                        "${1}",
+                        "${2}",
+                        cfg = "#[cfg(not(feature = \"replace-any\"))]\n"
+                    ),
+                ));
+
+                // Add serde option serialization
+                res = generic_option_regex
+                    .replace_all(
+                        &res,
+                        "\
+                #[serde( \n \
+                    serialize_with = \"crate::any::option::serialize\", \n \
+                    deserialize_with = \"crate::any::option::deserialize\" \n \
+                )] \n \
+                ${1}\
+                ",
+                    )
+                    .to_string();
+
+                // Add serde vec serialization
+                res = generic_vec_regex
+                    .replace_all(
+                        &res,
+                        "\
+                #[serde( \n \
+                    serialize_with = \"crate::any::vec::serialize\", \n \
+                    deserialize_with = \"crate::any::vec::deserialize\" \n \
+                )] \n \
+                ${1}\
+                ",
+                    )
+                    .to_string();
+
+                advanced_file.push_str(&res);
+            }
+        }
+
+        // Create new file
+        if !advanced_file.is_empty() {
+            // Patch feature gating
+            new_file.push_str(&current_file[new_file_cursor..current_file.len()]);
+            fs::write(&src, new_file).unwrap();
+
+            let path = file_regex
+                .replace(src.to_str().unwrap(), "${1}advanced.rs")
+                .to_string();
+            patch_file(
+                src,
+                &[(
+                    r"(// @@protoc_insertion_point\(module\))",
+                    &format!(
+                        "include!(\"{}\");\n{}",
+                        path.split('/').last().unwrap(),
+                        "${1}"
+                    ),
+                )],
+            )?;
+            fs::write(path, advanced_file).unwrap();
+        }
+    }
 
     Ok(())
 }
