@@ -1,12 +1,8 @@
+use crate::utils::run::run_cmd;
 use std::fs;
 use std::path::Path;
-use crate::utils::run::run_cmd;
 
-pub fn generate(
-    buf_gen_path: &Path,
-    proto_path: &Path,
-    out_dir: &Path,
-) -> crate::Result<String> {
+pub fn generate(buf_gen_path: &Path, proto_path: &Path, out_dir: &Path) -> crate::Result<String> {
     println!("Generating proto...");
 
     if out_dir.exists() {

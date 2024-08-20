@@ -1,6 +1,6 @@
+use glob::glob;
 use std::fs;
 use std::path::Path;
-use glob::glob;
 
 const EXCLUDED_PROTO_PACKAGES: &[&str] = &["amino", "gogoproto", "google", "tendermint"];
 

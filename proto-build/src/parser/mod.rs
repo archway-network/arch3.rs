@@ -1,14 +1,12 @@
 mod commands;
-mod utils;
 mod consts;
+mod utils;
 
-use std::path::Path;
 use crate::parser::commands::{
-    load_and_patch_any::load_and_patch_any,
-    patch_generics::patch_generics,
-    patch_impls::patch_impls,
-    save::save,
+    load_and_patch_any::load_and_patch_any, patch_generics::patch_generics,
+    patch_impls::patch_impls, save::save,
 };
+use std::path::Path;
 
 pub fn generate_advanced_struct(out_dir: &Path) -> crate::Result<()> {
     println!("Loading and patching all files containing Any");

@@ -1,15 +1,17 @@
-use std::collections::BTreeMap;
-use std::fs;
-use std::path::{Path, PathBuf};
+use crate::parser::consts::GENERICS;
+use crate::parser::utils::common::{
+    create_punctuated, fields_as_named, gen_generic, item_as_struct,
+};
+use crate::parser::utils::gen_type_param::gen_type_param;
+use crate::parser::utils::is_important::{is_important, FoundEnclosure};
 use glob::glob;
 use proc_macro2::{Ident, Literal, Punct, Spacing, Span, TokenStream};
 use quote::TokenStreamExt;
-use syn::{Attribute, AttrStyle, File, GenericParam, Item, MacroDelimiter, Meta, MetaList};
+use std::collections::BTreeMap;
+use std::fs;
+use std::path::{Path, PathBuf};
 use syn::token::Paren;
-use crate::parser::consts::GENERICS;
-use crate::parser::utils::is_important::{FoundEnclosure, is_important};
-use crate::parser::utils::common::{fields_as_named, item_as_struct, create_punctuated, gen_generic};
-use crate::parser::utils::gen_type_param::gen_type_param;
+use syn::{AttrStyle, Attribute, File, GenericParam, Item, MacroDelimiter, Meta, MetaList};
 
 pub fn load_and_patch_any(out_dir: &Path) -> BTreeMap<String, (File, BTreeMap<String, usize>)> {
     // Map all file ASTs
@@ -17,7 +19,10 @@ pub fn load_and_patch_any(out_dir: &Path) -> BTreeMap<String, (File, BTreeMap<St
 
     // Get all generated files
     let src_files_glob = out_dir.join("*.rs");
-    let src_files: Vec<PathBuf> = glob(src_files_glob.to_str().unwrap()).unwrap().flatten().collect();
+    let src_files: Vec<PathBuf> = glob(src_files_glob.to_str().unwrap())
+        .unwrap()
+        .flatten()
+        .collect();
 
     for src in src_files {
         let current_file = fs::read_to_string(&src).unwrap();

@@ -1,6 +1,6 @@
 use std::ffi::OsStr;
-use std::{io, process};
 use std::path::Path;
+use std::{io, process};
 
 pub fn run_git(args: impl IntoIterator<Item = impl AsRef<OsStr>>) -> crate::Result<String> {
     run_cmd("git", args)

@@ -1,5 +1,5 @@
-use syn::{Field, GenericArgument, PathArguments, TypePath};
 use crate::parser::utils::common::type_as_path;
+use syn::{Field, GenericArgument, PathArguments, TypePath};
 
 pub enum FoundEnclosure {
     Option,

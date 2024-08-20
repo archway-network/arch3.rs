@@ -1,8 +1,10 @@
-use std::collections::BTreeMap;
-use syn::{AngleBracketedGenericArguments, File, GenericArgument, Item, PathArguments, Type, TypePath};
-use syn::punctuated::Punctuated;
 use crate::parser::consts::GENERICS;
-use crate::parser::utils::common::{type_as_path, item_as_struct, gen_generic};
+use crate::parser::utils::common::{gen_generic, item_as_struct, type_as_path};
+use std::collections::BTreeMap;
+use syn::punctuated::Punctuated;
+use syn::{
+    AngleBracketedGenericArguments, File, GenericArgument, Item, PathArguments, Type, TypePath,
+};
 
 pub fn patch_impls(files: &mut BTreeMap<String, (File, BTreeMap<String, usize>)>) {
     for (_, (ast, structs)) in files.iter_mut() {

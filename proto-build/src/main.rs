@@ -1,13 +1,11 @@
-mod parser;
-mod utils;
 mod commands;
 mod consts;
+mod parser;
+mod utils;
 
-use std::{io, path::Path, process};
 use std::path::PathBuf;
+use std::{io, path::Path, process};
 
-use crate::parser::generate_advanced_struct;
-use error_chain::error_chain;
 use crate::commands::apply_patches::apply_patches;
 use crate::commands::cleanup::cleanup;
 use crate::commands::export::export;
@@ -16,7 +14,9 @@ use crate::commands::output_version::output_versions;
 use crate::commands::rustfmt::rustfmt;
 use crate::commands::update_submodules::update_submodules;
 use crate::consts::{OUT_DIR, PROTO_DIR};
+use crate::parser::generate_advanced_struct;
 use crate::utils::run::run_cargo;
+use error_chain::error_chain;
 
 error_chain! {
     foreign_links {

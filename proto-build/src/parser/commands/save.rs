@@ -1,10 +1,10 @@
+use crate::utils::patch_file::patch_file;
+use quote::quote;
+use regex::Regex;
 use std::collections::BTreeMap;
 use std::fs;
 use std::path::Path;
-use quote::quote;
-use regex::Regex;
 use syn::File;
-use crate::utils::patch_file::patch_file;
 
 pub fn save(out_dir: &Path, files: &BTreeMap<String, (File, BTreeMap<String, usize>)>) {
     for (file, (data, _)) in files.iter() {
@@ -30,13 +30,9 @@ pub fn save(out_dir: &Path, files: &BTreeMap<String, (File, BTreeMap<String, usi
                 ),
             )],
         )
-            .unwrap();
+        .unwrap();
 
         // Export the generated structure and save in file
-        fs::write(
-            out_dir.join(new_file),
-            quote!(#data).to_string(),
-        )
-            .unwrap();
+        fs::write(out_dir.join(new_file), quote!(#data).to_string()).unwrap();
     }
 }

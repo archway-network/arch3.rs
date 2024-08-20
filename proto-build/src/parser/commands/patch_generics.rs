@@ -1,14 +1,19 @@
-use std::cmp::Ordering;
-use std::collections::BTreeMap;
+use crate::parser::consts::GENERICS;
+use crate::parser::utils::common::{
+    create_punctuated, fields_as_named, gen_generic, item_as_struct,
+};
+use crate::parser::utils::gen_type_param::gen_type_param;
+use crate::parser::utils::is_important::{is_important, FoundEnclosure};
 use proc_macro2::{Ident, Literal, Punct, Spacing, Span, TokenStream};
 use quote::TokenStreamExt;
-use syn::{AngleBracketedGenericArguments, Attribute, AttrStyle, File, GenericArgument, GenericParam, ItemStruct, MacroDelimiter, Meta, MetaList, Path, PathArguments, PathSegment, Type, TypePath};
+use std::cmp::Ordering;
+use std::collections::BTreeMap;
 use syn::punctuated::Punctuated;
 use syn::token::Paren;
-use crate::parser::consts::GENERICS;
-use crate::parser::utils::is_important::{FoundEnclosure, is_important};
-use crate::parser::utils::common::{fields_as_named, item_as_struct, create_punctuated, gen_generic};
-use crate::parser::utils::gen_type_param::gen_type_param;
+use syn::{
+    AngleBracketedGenericArguments, AttrStyle, Attribute, File, GenericArgument, GenericParam,
+    ItemStruct, MacroDelimiter, Meta, MetaList, Path, PathArguments, PathSegment, Type, TypePath,
+};
 
 pub fn patch_generics(files: &mut BTreeMap<String, (File, BTreeMap<String, usize>)>) {
     let mut updated_files = BTreeMap::new();
@@ -87,7 +92,7 @@ pub fn patch_generics(files: &mut BTreeMap<String, (File, BTreeMap<String, usize
                             let ty_struct = item_as_struct(
                                 key.items.get_mut(*s.get("GenesisState").unwrap()).unwrap(),
                             )
-                                .unwrap();
+                            .unwrap();
                             found_ty = Some(field_ty);
                             new_total_generics = push_generics(ty_struct, ty, new_total_generics);
                         } else if let Some(i) = structs.get(&ident_name) {
@@ -113,7 +118,7 @@ pub fn patch_generics(files: &mut BTreeMap<String, (File, BTreeMap<String, usize
                                     .get_mut(*other_structs.get(&ident_name).unwrap())
                                     .unwrap(),
                             )
-                                .unwrap();
+                            .unwrap();
                             found_ty = Some(field_ty);
                             new_total_generics = push_generics(ty_struct, ty, new_total_generics);
                         }

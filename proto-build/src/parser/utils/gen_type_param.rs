@@ -1,6 +1,6 @@
+use crate::parser::utils::common::create_punctuated;
 use proc_macro2::{Ident, Span};
 use syn::{Path, TraitBound, TraitBoundModifier, TypeParam, TypeParamBound};
-use crate::parser::utils::common::create_punctuated;
 
 fn trait_param_bound(path: Vec<&str>) -> TypeParamBound {
     TypeParamBound::Trait(TraitBound {

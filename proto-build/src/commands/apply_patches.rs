@@ -1,6 +1,6 @@
-use std::path::{Path, PathBuf};
-use glob::glob;
 use crate::utils::patch_file::patch_file;
+use glob::glob;
+use std::path::{Path, PathBuf};
 
 /// Fix clashing type names in prost-generated code.
 fn apply_cosmos_staking_patches(out_dir: &Path) {
