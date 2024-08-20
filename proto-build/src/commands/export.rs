@@ -1,6 +1,6 @@
 use std::fs;
 use std::path::Path;
-use crate::{ARCHWAY_DIR, COSMOS_SDK_DIR, IBC_DIR, WASMD_DIR};
+use crate::consts::{ARCHWAY_DIR, COSMOS_SDK_DIR, IBC_DIR, WASMD_DIR};
 use crate::utils::run::run_buf_export;
 
 pub fn export(submodules_dir: &Path, proto_dir: &Path) {

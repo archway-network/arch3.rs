@@ -1,6 +1,7 @@
 mod parser;
 mod utils;
 mod commands;
+mod consts;
 
 use std::{io, path::Path, process};
 use std::path::PathBuf;
@@ -14,26 +15,8 @@ use crate::commands::generate::generate;
 use crate::commands::output_version::output_versions;
 use crate::commands::rustfmt::rustfmt;
 use crate::commands::update_submodules::update_submodules;
+use crate::consts::{OUT_DIR, PROTO_DIR};
 use crate::utils::run::run_cargo;
-
-/// The Archway commit or tag to be cloned and used to build the proto files
-const ARCHWAY_REV: &str = "v7.0.1";
-const ARCHWAY_DIR: &str = "archway";
-
-/// The Cosmos SDK commit or tag to be cloned and used to build the proto files
-const COSMOS_SDK_REV: &str = "v0.47.11";
-const COSMOS_SDK_DIR: &str = "cosmos-sdk";
-
-/// The Cosmos ibc-go commit or tag to be cloned and used to build the proto files
-const IBC_REV: &str = "v7.4.0";
-const IBC_DIR: &str = "ibc-go";
-
-/// The wasmd commit or tag to be cloned and used to build the proto files
-const WASMD_REV: &str = "v0.45.0";
-const WASMD_DIR: &str = "wasmd";
-
-const PROTO_DIR: &str = "proto";
-const OUT_DIR: &str = "packages/proto/src/gen";
 
 error_chain! {
     foreign_links {

@@ -1,6 +1,6 @@
 use std::fs;
 use std::path::Path;
-use crate::{ARCHWAY_REV, COSMOS_SDK_REV, IBC_REV, WASMD_REV};
+use crate::consts::{ARCHWAY_REV, COSMOS_SDK_REV, IBC_REV, WASMD_REV};
 
 pub fn output_versions(out_dir: &Path) {
     println!("Writing versions...");
