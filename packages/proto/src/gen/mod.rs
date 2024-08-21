@@ -140,13 +140,6 @@ pub mod cosmos {
                 // @@protoc_insertion_point(cosmos.base.abci.v1beta1)
             }
         }
-        pub mod kv {
-            // @@protoc_insertion_point(attribute:cosmos.base.kv.v1beta1)
-            pub mod v1beta1 {
-                include!("cosmos.base.kv.v1beta1.rs");
-                // @@protoc_insertion_point(cosmos.base.kv.v1beta1)
-            }
-        }
         pub mod node {
             // @@protoc_insertion_point(attribute:cosmos.base.node.v1beta1)
             pub mod v1beta1 {
@@ -173,20 +166,6 @@ pub mod cosmos {
                 // @@protoc_insertion_point(cosmos.base.reflection.v2alpha1)
             }
         }
-        pub mod snapshots {
-            // @@protoc_insertion_point(attribute:cosmos.base.snapshots.v1beta1)
-            pub mod v1beta1 {
-                include!("cosmos.base.snapshots.v1beta1.rs");
-                // @@protoc_insertion_point(cosmos.base.snapshots.v1beta1)
-            }
-        }
-        pub mod store {
-            // @@protoc_insertion_point(attribute:cosmos.base.store.v1beta1)
-            pub mod v1beta1 {
-                include!("cosmos.base.store.v1beta1.rs");
-                // @@protoc_insertion_point(cosmos.base.store.v1beta1)
-            }
-        }
         pub mod tendermint {
             // @@protoc_insertion_point(attribute:cosmos.base.tendermint.v1beta1)
             pub mod v1beta1 {
@@ -203,18 +182,18 @@ pub mod cosmos {
             // @@protoc_insertion_point(cosmos.base.v1beta1)
         }
     }
-    pub mod capability {
+    pub mod circuit {
         pub mod module {
-            // @@protoc_insertion_point(attribute:cosmos.capability.module.v1)
+            // @@protoc_insertion_point(attribute:cosmos.circuit.module.v1)
             pub mod v1 {
-                include!("cosmos.capability.module.v1.rs");
-                // @@protoc_insertion_point(cosmos.capability.module.v1)
+                include!("cosmos.circuit.module.v1.rs");
+                // @@protoc_insertion_point(cosmos.circuit.module.v1)
             }
         }
-        // @@protoc_insertion_point(attribute:cosmos.capability.v1beta1)
-        pub mod v1beta1 {
-            include!("cosmos.capability.v1beta1.rs");
-            // @@protoc_insertion_point(cosmos.capability.v1beta1)
+        // @@protoc_insertion_point(attribute:cosmos.circuit.v1)
+        pub mod v1 {
+            include!("cosmos.circuit.v1.rs");
+            // @@protoc_insertion_point(cosmos.circuit.v1)
         }
     }
     pub mod consensus {
@@ -418,6 +397,13 @@ pub mod cosmos {
         }
     }
     pub mod msg {
+        pub mod textual {
+            // @@protoc_insertion_point(attribute:cosmos.msg.textual.v1)
+            pub mod v1 {
+                include!("cosmos.msg.textual.v1.rs");
+                // @@protoc_insertion_point(cosmos.msg.textual.v1)
+            }
+        }
         // @@protoc_insertion_point(attribute:cosmos.msg.v1)
         pub mod v1 {
             include!("cosmos.msg.v1.rs");
@@ -527,6 +513,36 @@ pub mod cosmos {
             #[cfg(feature = "abstract-any")]
             include!("cosmos.staking.v1beta1.abstract.rs");
             // @@protoc_insertion_point(cosmos.staking.v1beta1)
+        }
+    }
+    pub mod store {
+        pub mod internal {
+            pub mod kv {
+                // @@protoc_insertion_point(attribute:cosmos.store.internal.kv.v1beta1)
+                pub mod v1beta1 {
+                    include!("cosmos.store.internal.kv.v1beta1.rs");
+                    // @@protoc_insertion_point(cosmos.store.internal.kv.v1beta1)
+                }
+            }
+        }
+        pub mod snapshots {
+            // @@protoc_insertion_point(attribute:cosmos.store.snapshots.v1)
+            pub mod v1 {
+                include!("cosmos.store.snapshots.v1.rs");
+                // @@protoc_insertion_point(cosmos.store.snapshots.v1)
+            }
+        }
+        pub mod streaming {
+            // @@protoc_insertion_point(attribute:cosmos.store.streaming.abci)
+            pub mod abci {
+                include!("cosmos.store.streaming.abci.rs");
+                // @@protoc_insertion_point(cosmos.store.streaming.abci)
+            }
+        }
+        // @@protoc_insertion_point(attribute:cosmos.store.v1beta1)
+        pub mod v1beta1 {
+            include!("cosmos.store.v1beta1.rs");
+            // @@protoc_insertion_point(cosmos.store.v1beta1)
         }
     }
     pub mod tx {
@@ -741,6 +757,13 @@ pub mod ibc {
             pub mod v1 {
                 include!("ibc.lightclients.tendermint.v1.rs");
                 // @@protoc_insertion_point(ibc.lightclients.tendermint.v1)
+            }
+        }
+        pub mod wasm {
+            // @@protoc_insertion_point(attribute:ibc.lightclients.wasm.v1)
+            pub mod v1 {
+                include!("ibc.lightclients.wasm.v1.rs");
+                // @@protoc_insertion_point(ibc.lightclients.wasm.v1)
             }
         }
     }
