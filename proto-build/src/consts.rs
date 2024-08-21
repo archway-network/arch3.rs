@@ -11,7 +11,7 @@ pub const IBC_REV: &str = "v8.4.0";
 pub const IBC_DIR: &str = "ibc-go";
 
 /// The wasmd commit or tag to be cloned and used to build the proto files
-pub const WASMD_REV: &str = "v0.52.0";
+pub const WASMD_REV: &str = "dba033ab1eeb6d18147493395c745af7d04309f4"; // v0.52.0 with fixed buf.lock
 pub const WASMD_DIR: &str = "wasmd";
 
 pub const PROTO_DIR: &str = "proto";
