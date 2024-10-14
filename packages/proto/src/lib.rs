@@ -1,7 +1,12 @@
 #![doc = include_str!("../README.md")]
 #![doc(html_logo_url = "https://avatars.githubusercontent.com/u/86496504?s=100")]
 #![cfg_attr(docsrs, feature(doc_cfg))]
-#![allow(rustdoc::bare_urls, clippy::derive_partial_eq_without_eq)]
+#![allow(
+    rustdoc::bare_urls,
+    clippy::derive_partial_eq_without_eq,
+    clippy::doc_lazy_continuation,
+    clippy::too_long_first_doc_paragraph
+)]
 #![forbid(unsafe_code)]
 #![warn(trivial_casts, trivial_numeric_casts, unused_import_braces)]
 
