@@ -20,40 +20,17 @@ impl ::prost::Name for GenericAuthorization {
 #[derive(:: serde :: Serialize, :: serde :: Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, :: prost :: Message)]
-pub struct Grant<
-    A: Clone
-        + PartialEq
-        + Default
-        + Send
-        + Sync
-        + prost::Message
-        + serde::Serialize
-        + serde::de::DeserializeOwned
-        + prost::Name,
-> {
+pub struct Grant<A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name> {
     #[prost(message, optional, tag = "1")]
-    #[serde(
-        serialize_with = "crate::any::option::serialize",
-        deserialize_with = "crate::any::option::deserialize"
-    )]
-    pub authorization: ::core::option::Option<A>,
+    pub authorization: ::core::option::Option<crate::any::Any<A>>,
     #[doc = " time when the grant will expire and will be pruned. If null, then the grant"]
     #[doc = " doesn't have a time expiration (other conditions  in `authorization`"]
     #[doc = " may apply to invalidate the grant)"]
     #[prost(message, optional, tag = "2")]
     pub expiration: ::core::option::Option<::pbjson_types::Timestamp>,
 }
-impl<
-        A: Clone
-            + PartialEq
-            + Default
-            + Send
-            + Sync
-            + prost::Message
-            + serde::Serialize
-            + serde::de::DeserializeOwned
-            + prost::Name,
-    > ::prost::Name for Grant<A>
+impl<A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name> ::prost::Name
+    for Grant<A>
 {
     const NAME: &'static str = "Grant";
     const PACKAGE: &'static str = "cosmos.authz.v1beta1";
@@ -67,40 +44,19 @@ impl<
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, :: prost :: Message)]
 pub struct GrantAuthorization<
-    A: Clone
-        + PartialEq
-        + Default
-        + Send
-        + Sync
-        + prost::Message
-        + serde::Serialize
-        + serde::de::DeserializeOwned
-        + prost::Name,
+    A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name,
 > {
     #[prost(string, tag = "1")]
     pub granter: ::prost::alloc::string::String,
     #[prost(string, tag = "2")]
     pub grantee: ::prost::alloc::string::String,
     #[prost(message, optional, tag = "3")]
-    #[serde(
-        serialize_with = "crate::any::option::serialize",
-        deserialize_with = "crate::any::option::deserialize"
-    )]
-    pub authorization: ::core::option::Option<A>,
+    pub authorization: ::core::option::Option<crate::any::Any<A>>,
     #[prost(message, optional, tag = "4")]
     pub expiration: ::core::option::Option<::pbjson_types::Timestamp>,
 }
-impl<
-        A: Clone
-            + PartialEq
-            + Default
-            + Send
-            + Sync
-            + prost::Message
-            + serde::Serialize
-            + serde::de::DeserializeOwned
-            + prost::Name,
-    > ::prost::Name for GrantAuthorization<A>
+impl<A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name> ::prost::Name
+    for GrantAuthorization<A>
 {
     const NAME: &'static str = "GrantAuthorization";
     const PACKAGE: &'static str = "cosmos.authz.v1beta1";
@@ -172,35 +128,13 @@ impl ::prost::Name for EventRevoke {
 #[derive(:: serde :: Serialize, :: serde :: Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, :: prost :: Message)]
-pub struct GenesisState<
-    A: Clone
-        + PartialEq
-        + Default
-        + Send
-        + Sync
-        + prost::Message
-        + serde::Serialize
-        + serde::de::DeserializeOwned
-        + prost::Name,
-> {
+pub struct GenesisState<A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name>
+{
     #[prost(message, repeated, tag = "1")]
-    #[serde(
-        serialize_with = "crate::any::vec::generic_serialize",
-        deserialize_with = "crate::any::vec::generic_deserialize"
-    )]
     pub authorization: ::prost::alloc::vec::Vec<GrantAuthorization<A>>,
 }
-impl<
-        A: Clone
-            + PartialEq
-            + Default
-            + Send
-            + Sync
-            + prost::Message
-            + serde::Serialize
-            + serde::de::DeserializeOwned
-            + prost::Name,
-    > ::prost::Name for GenesisState<A>
+impl<A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name> ::prost::Name
+    for GenesisState<A>
 {
     const NAME: &'static str = "GenesisState";
     const PACKAGE: &'static str = "cosmos.authz.v1beta1";
@@ -222,10 +156,6 @@ pub struct QueryGrantsRequest {
     pub msg_type_url: ::prost::alloc::string::String,
     #[doc = " pagination defines an pagination for the request."]
     #[prost(message, optional, tag = "4")]
-    #[serde(
-        serialize_with = "crate::any::option::generic_serialize",
-        deserialize_with = "crate::any::option::generic_deserialize"
-    )]
     pub pagination: ::core::option::Option<super::super::base::query::v1beta1::PageRequest>,
 }
 impl ::prost::Name for QueryGrantsRequest {
@@ -240,42 +170,17 @@ impl ::prost::Name for QueryGrantsRequest {
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, :: prost :: Message)]
 pub struct QueryGrantsResponse<
-    A: Clone
-        + PartialEq
-        + Default
-        + Send
-        + Sync
-        + prost::Message
-        + serde::Serialize
-        + serde::de::DeserializeOwned
-        + prost::Name,
+    A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name,
 > {
     #[doc = " authorizations is a list of grants granted for grantee by granter."]
     #[prost(message, repeated, tag = "1")]
-    #[serde(
-        serialize_with = "crate::any::vec::generic_serialize",
-        deserialize_with = "crate::any::vec::generic_deserialize"
-    )]
     pub grants: ::prost::alloc::vec::Vec<Grant<A>>,
     #[doc = " pagination defines an pagination for the response."]
     #[prost(message, optional, tag = "2")]
-    #[serde(
-        serialize_with = "crate::any::option::generic_serialize",
-        deserialize_with = "crate::any::option::generic_deserialize"
-    )]
     pub pagination: ::core::option::Option<super::super::base::query::v1beta1::PageResponse>,
 }
-impl<
-        A: Clone
-            + PartialEq
-            + Default
-            + Send
-            + Sync
-            + prost::Message
-            + serde::Serialize
-            + serde::de::DeserializeOwned
-            + prost::Name,
-    > ::prost::Name for QueryGrantsResponse<A>
+impl<A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name> ::prost::Name
+    for QueryGrantsResponse<A>
 {
     const NAME: &'static str = "QueryGrantsResponse";
     const PACKAGE: &'static str = "cosmos.authz.v1beta1";
@@ -292,10 +197,6 @@ pub struct QueryGranterGrantsRequest {
     pub granter: ::prost::alloc::string::String,
     #[doc = " pagination defines an pagination for the request."]
     #[prost(message, optional, tag = "2")]
-    #[serde(
-        serialize_with = "crate::any::option::generic_serialize",
-        deserialize_with = "crate::any::option::generic_deserialize"
-    )]
     pub pagination: ::core::option::Option<super::super::base::query::v1beta1::PageRequest>,
 }
 impl ::prost::Name for QueryGranterGrantsRequest {
@@ -310,42 +211,17 @@ impl ::prost::Name for QueryGranterGrantsRequest {
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, :: prost :: Message)]
 pub struct QueryGranterGrantsResponse<
-    A: Clone
-        + PartialEq
-        + Default
-        + Send
-        + Sync
-        + prost::Message
-        + serde::Serialize
-        + serde::de::DeserializeOwned
-        + prost::Name,
+    A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name,
 > {
     #[doc = " grants is a list of grants granted by the granter."]
     #[prost(message, repeated, tag = "1")]
-    #[serde(
-        serialize_with = "crate::any::vec::generic_serialize",
-        deserialize_with = "crate::any::vec::generic_deserialize"
-    )]
     pub grants: ::prost::alloc::vec::Vec<GrantAuthorization<A>>,
     #[doc = " pagination defines an pagination for the response."]
     #[prost(message, optional, tag = "2")]
-    #[serde(
-        serialize_with = "crate::any::option::generic_serialize",
-        deserialize_with = "crate::any::option::generic_deserialize"
-    )]
     pub pagination: ::core::option::Option<super::super::base::query::v1beta1::PageResponse>,
 }
-impl<
-        A: Clone
-            + PartialEq
-            + Default
-            + Send
-            + Sync
-            + prost::Message
-            + serde::Serialize
-            + serde::de::DeserializeOwned
-            + prost::Name,
-    > ::prost::Name for QueryGranterGrantsResponse<A>
+impl<A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name> ::prost::Name
+    for QueryGranterGrantsResponse<A>
 {
     const NAME: &'static str = "QueryGranterGrantsResponse";
     const PACKAGE: &'static str = "cosmos.authz.v1beta1";
@@ -362,10 +238,6 @@ pub struct QueryGranteeGrantsRequest {
     pub grantee: ::prost::alloc::string::String,
     #[doc = " pagination defines an pagination for the request."]
     #[prost(message, optional, tag = "2")]
-    #[serde(
-        serialize_with = "crate::any::option::generic_serialize",
-        deserialize_with = "crate::any::option::generic_deserialize"
-    )]
     pub pagination: ::core::option::Option<super::super::base::query::v1beta1::PageRequest>,
 }
 impl ::prost::Name for QueryGranteeGrantsRequest {
@@ -380,42 +252,17 @@ impl ::prost::Name for QueryGranteeGrantsRequest {
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, :: prost :: Message)]
 pub struct QueryGranteeGrantsResponse<
-    A: Clone
-        + PartialEq
-        + Default
-        + Send
-        + Sync
-        + prost::Message
-        + serde::Serialize
-        + serde::de::DeserializeOwned
-        + prost::Name,
+    A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name,
 > {
     #[doc = " grants is a list of grants granted to the grantee."]
     #[prost(message, repeated, tag = "1")]
-    #[serde(
-        serialize_with = "crate::any::vec::generic_serialize",
-        deserialize_with = "crate::any::vec::generic_deserialize"
-    )]
     pub grants: ::prost::alloc::vec::Vec<GrantAuthorization<A>>,
     #[doc = " pagination defines an pagination for the response."]
     #[prost(message, optional, tag = "2")]
-    #[serde(
-        serialize_with = "crate::any::option::generic_serialize",
-        deserialize_with = "crate::any::option::generic_deserialize"
-    )]
     pub pagination: ::core::option::Option<super::super::base::query::v1beta1::PageResponse>,
 }
-impl<
-        A: Clone
-            + PartialEq
-            + Default
-            + Send
-            + Sync
-            + prost::Message
-            + serde::Serialize
-            + serde::de::DeserializeOwned
-            + prost::Name,
-    > ::prost::Name for QueryGranteeGrantsResponse<A>
+impl<A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name> ::prost::Name
+    for QueryGranteeGrantsResponse<A>
 {
     const NAME: &'static str = "QueryGranteeGrantsResponse";
     const PACKAGE: &'static str = "cosmos.authz.v1beta1";
@@ -428,39 +275,16 @@ impl<
 #[derive(:: serde :: Serialize, :: serde :: Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, :: prost :: Message)]
-pub struct MsgGrant<
-    A: Clone
-        + PartialEq
-        + Default
-        + Send
-        + Sync
-        + prost::Message
-        + serde::Serialize
-        + serde::de::DeserializeOwned
-        + prost::Name,
-> {
+pub struct MsgGrant<A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name> {
     #[prost(string, tag = "1")]
     pub granter: ::prost::alloc::string::String,
     #[prost(string, tag = "2")]
     pub grantee: ::prost::alloc::string::String,
     #[prost(message, optional, tag = "3")]
-    #[serde(
-        serialize_with = "crate::any::option::generic_serialize",
-        deserialize_with = "crate::any::option::generic_deserialize"
-    )]
     pub grant: ::core::option::Option<Grant<A>>,
 }
-impl<
-        A: Clone
-            + PartialEq
-            + Default
-            + Send
-            + Sync
-            + prost::Message
-            + serde::Serialize
-            + serde::de::DeserializeOwned
-            + prost::Name,
-    > ::prost::Name for MsgGrant<A>
+impl<A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name> ::prost::Name
+    for MsgGrant<A>
 {
     const NAME: &'static str = "MsgGrant";
     const PACKAGE: &'static str = "cosmos.authz.v1beta1";
@@ -489,40 +313,17 @@ impl ::prost::Name for MsgExecResponse {
 #[derive(:: serde :: Serialize, :: serde :: Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, :: prost :: Message)]
-pub struct MsgExec<
-    A: Clone
-        + PartialEq
-        + Default
-        + Send
-        + Sync
-        + prost::Message
-        + serde::Serialize
-        + serde::de::DeserializeOwned
-        + prost::Name,
-> {
+pub struct MsgExec<A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name> {
     #[prost(string, tag = "1")]
     pub grantee: ::prost::alloc::string::String,
     #[doc = " Execute Msg."]
     #[doc = " The x/authz will try to find a grant matching (msg.signers\\[0\\], grantee, MsgTypeURL(msg))"]
     #[doc = " triple and validate it."]
     #[prost(message, repeated, tag = "2")]
-    #[serde(
-        serialize_with = "crate::any::vec::serialize",
-        deserialize_with = "crate::any::vec::deserialize"
-    )]
-    pub msgs: ::prost::alloc::vec::Vec<A>,
+    pub msgs: ::prost::alloc::vec::Vec<crate::any::Any<A>>,
 }
-impl<
-        A: Clone
-            + PartialEq
-            + Default
-            + Send
-            + Sync
-            + prost::Message
-            + serde::Serialize
-            + serde::de::DeserializeOwned
-            + prost::Name,
-    > ::prost::Name for MsgExec<A>
+impl<A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name> ::prost::Name
+    for MsgExec<A>
 {
     const NAME: &'static str = "MsgExec";
     const PACKAGE: &'static str = "cosmos.authz.v1beta1";

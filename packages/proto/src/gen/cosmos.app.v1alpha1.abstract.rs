@@ -13,10 +13,6 @@ pub struct ModuleDescriptor {
     #[doc = " or own a single protobuf package. It is assumed that the module uses"]
     #[doc = " all of the .proto files in a single package."]
     #[prost(message, repeated, tag = "2")]
-    #[serde(
-        serialize_with = "crate::any::vec::generic_serialize",
-        deserialize_with = "crate::any::vec::generic_deserialize"
-    )]
     pub use_package: ::prost::alloc::vec::Vec<PackageReference>,
     #[doc = " can_migrate_from defines which module versions this module can migrate"]
     #[doc = " state from. The framework will check that one module version is able to"]
@@ -26,10 +22,6 @@ pub struct ModuleDescriptor {
     #[doc = " declares it can migrate from v1, the framework knows how to migrate"]
     #[doc = " from v1 to v3, assuming all 3 module versions are registered at runtime."]
     #[prost(message, repeated, tag = "3")]
-    #[serde(
-        serialize_with = "crate::any::vec::generic_serialize",
-        deserialize_with = "crate::any::vec::generic_deserialize"
-    )]
     pub can_migrate_from: ::prost::alloc::vec::Vec<MigrateFromInfo>,
 }
 impl ::prost::Name for ModuleDescriptor {
@@ -120,45 +112,18 @@ impl ::prost::Name for MigrateFromInfo {
 #[derive(:: serde :: Serialize, :: serde :: Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, :: prost :: Message)]
-pub struct Config<
-    A: Clone
-        + PartialEq
-        + Default
-        + Send
-        + Sync
-        + prost::Message
-        + serde::Serialize
-        + serde::de::DeserializeOwned
-        + prost::Name,
-> {
+pub struct Config<A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name> {
     #[doc = " modules are the module configurations for the app."]
     #[prost(message, repeated, tag = "1")]
-    #[serde(
-        serialize_with = "crate::any::vec::generic_serialize",
-        deserialize_with = "crate::any::vec::generic_deserialize"
-    )]
     pub modules: ::prost::alloc::vec::Vec<ModuleConfig<A>>,
     #[doc = " golang_bindings specifies explicit interface to implementation type bindings which"]
     #[doc = " depinject uses to resolve interface inputs to provider functions.  The scope of this"]
     #[doc = " field's configuration is global (not module specific)."]
     #[prost(message, repeated, tag = "2")]
-    #[serde(
-        serialize_with = "crate::any::vec::generic_serialize",
-        deserialize_with = "crate::any::vec::generic_deserialize"
-    )]
     pub golang_bindings: ::prost::alloc::vec::Vec<GolangBinding>,
 }
-impl<
-        A: Clone
-            + PartialEq
-            + Default
-            + Send
-            + Sync
-            + prost::Message
-            + serde::Serialize
-            + serde::de::DeserializeOwned
-            + prost::Name,
-    > ::prost::Name for Config<A>
+impl<A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name> ::prost::Name
+    for Config<A>
 {
     const NAME: &'static str = "Config";
     const PACKAGE: &'static str = "cosmos.app.v1alpha1";
@@ -170,17 +135,8 @@ impl<
 #[derive(:: serde :: Serialize, :: serde :: Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, :: prost :: Message)]
-pub struct ModuleConfig<
-    A: Clone
-        + PartialEq
-        + Default
-        + Send
-        + Sync
-        + prost::Message
-        + serde::Serialize
-        + serde::de::DeserializeOwned
-        + prost::Name,
-> {
+pub struct ModuleConfig<A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name>
+{
     #[doc = " name is the unique name of the module within the app. It should be a name"]
     #[doc = " that persists between different versions of a module so that modules"]
     #[doc = " can be smoothly upgraded to new versions."]
@@ -196,32 +152,15 @@ pub struct ModuleConfig<
     #[doc = " config is the config object for the module. Module config messages should"]
     #[doc = " define a ModuleDescriptor using the cosmos.app.v1alpha1.is_module extension."]
     #[prost(message, optional, tag = "2")]
-    #[serde(
-        serialize_with = "crate::any::option::serialize",
-        deserialize_with = "crate::any::option::deserialize"
-    )]
-    pub config: ::core::option::Option<A>,
+    pub config: ::core::option::Option<crate::any::Any<A>>,
     #[doc = " golang_bindings specifies explicit interface to implementation type bindings which"]
     #[doc = " depinject uses to resolve interface inputs to provider functions.  The scope of this"]
     #[doc = " field's configuration is module specific."]
     #[prost(message, repeated, tag = "3")]
-    #[serde(
-        serialize_with = "crate::any::vec::generic_serialize",
-        deserialize_with = "crate::any::vec::generic_deserialize"
-    )]
     pub golang_bindings: ::prost::alloc::vec::Vec<GolangBinding>,
 }
-impl<
-        A: Clone
-            + PartialEq
-            + Default
-            + Send
-            + Sync
-            + prost::Message
-            + serde::Serialize
-            + serde::de::DeserializeOwned
-            + prost::Name,
-    > ::prost::Name for ModuleConfig<A>
+impl<A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name> ::prost::Name
+    for ModuleConfig<A>
 {
     const NAME: &'static str = "ModuleConfig";
     const PACKAGE: &'static str = "cosmos.app.v1alpha1";
@@ -265,35 +204,14 @@ impl ::prost::Name for QueryConfigRequest {
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, :: prost :: Message)]
 pub struct QueryConfigResponse<
-    A: Clone
-        + PartialEq
-        + Default
-        + Send
-        + Sync
-        + prost::Message
-        + serde::Serialize
-        + serde::de::DeserializeOwned
-        + prost::Name,
+    A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name,
 > {
     #[doc = " config is the current app config."]
     #[prost(message, optional, tag = "1")]
-    #[serde(
-        serialize_with = "crate::any::option::generic_serialize",
-        deserialize_with = "crate::any::option::generic_deserialize"
-    )]
     pub config: ::core::option::Option<Config<A>>,
 }
-impl<
-        A: Clone
-            + PartialEq
-            + Default
-            + Send
-            + Sync
-            + prost::Message
-            + serde::Serialize
-            + serde::de::DeserializeOwned
-            + prost::Name,
-    > ::prost::Name for QueryConfigResponse<A>
+impl<A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name> ::prost::Name
+    for QueryConfigResponse<A>
 {
     const NAME: &'static str = "QueryConfigResponse";
     const PACKAGE: &'static str = "cosmos.app.v1alpha1";

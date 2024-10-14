@@ -5,10 +5,6 @@
 #[derive(Clone, PartialEq, :: prost :: Message)]
 pub struct Block {
     #[prost(message, optional, tag = "1")]
-    #[serde(
-        serialize_with = "crate::any::option::generic_serialize",
-        deserialize_with = "crate::any::option::generic_deserialize"
-    )]
     pub header: ::core::option::Option<Header>,
     #[prost(message, optional, tag = "2")]
     pub data: ::core::option::Option<::tendermint_proto::v0_37::types::Data>,
@@ -95,10 +91,6 @@ pub struct GetValidatorSetByHeightRequest {
     pub height: i64,
     #[doc = " pagination defines an pagination for the request."]
     #[prost(message, optional, tag = "2")]
-    #[serde(
-        serialize_with = "crate::any::option::generic_serialize",
-        deserialize_with = "crate::any::option::generic_deserialize"
-    )]
     pub pagination: ::core::option::Option<super::super::query::v1beta1::PageRequest>,
 }
 impl ::prost::Name for GetValidatorSetByHeightRequest {
@@ -113,43 +105,18 @@ impl ::prost::Name for GetValidatorSetByHeightRequest {
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, :: prost :: Message)]
 pub struct GetValidatorSetByHeightResponse<
-    A: Clone
-        + PartialEq
-        + Default
-        + Send
-        + Sync
-        + prost::Message
-        + serde::Serialize
-        + serde::de::DeserializeOwned
-        + prost::Name,
+    A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name,
 > {
     #[prost(int64, tag = "1")]
     pub block_height: i64,
     #[prost(message, repeated, tag = "2")]
-    #[serde(
-        serialize_with = "crate::any::vec::generic_serialize",
-        deserialize_with = "crate::any::vec::generic_deserialize"
-    )]
     pub validators: ::prost::alloc::vec::Vec<Validator<A>>,
     #[doc = " pagination defines an pagination for the response."]
     #[prost(message, optional, tag = "3")]
-    #[serde(
-        serialize_with = "crate::any::option::generic_serialize",
-        deserialize_with = "crate::any::option::generic_deserialize"
-    )]
     pub pagination: ::core::option::Option<super::super::query::v1beta1::PageResponse>,
 }
-impl<
-        A: Clone
-            + PartialEq
-            + Default
-            + Send
-            + Sync
-            + prost::Message
-            + serde::Serialize
-            + serde::de::DeserializeOwned
-            + prost::Name,
-    > ::prost::Name for GetValidatorSetByHeightResponse<A>
+impl<A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name> ::prost::Name
+    for GetValidatorSetByHeightResponse<A>
 {
     const NAME: &'static str = "GetValidatorSetByHeightResponse";
     const PACKAGE: &'static str = "cosmos.base.tendermint.v1beta1";
@@ -164,10 +131,6 @@ impl<
 pub struct GetLatestValidatorSetRequest {
     #[doc = " pagination defines an pagination for the request."]
     #[prost(message, optional, tag = "1")]
-    #[serde(
-        serialize_with = "crate::any::option::generic_serialize",
-        deserialize_with = "crate::any::option::generic_deserialize"
-    )]
     pub pagination: ::core::option::Option<super::super::query::v1beta1::PageRequest>,
 }
 impl ::prost::Name for GetLatestValidatorSetRequest {
@@ -182,43 +145,18 @@ impl ::prost::Name for GetLatestValidatorSetRequest {
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, :: prost :: Message)]
 pub struct GetLatestValidatorSetResponse<
-    A: Clone
-        + PartialEq
-        + Default
-        + Send
-        + Sync
-        + prost::Message
-        + serde::Serialize
-        + serde::de::DeserializeOwned
-        + prost::Name,
+    A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name,
 > {
     #[prost(int64, tag = "1")]
     pub block_height: i64,
     #[prost(message, repeated, tag = "2")]
-    #[serde(
-        serialize_with = "crate::any::vec::generic_serialize",
-        deserialize_with = "crate::any::vec::generic_deserialize"
-    )]
     pub validators: ::prost::alloc::vec::Vec<Validator<A>>,
     #[doc = " pagination defines an pagination for the response."]
     #[prost(message, optional, tag = "3")]
-    #[serde(
-        serialize_with = "crate::any::option::generic_serialize",
-        deserialize_with = "crate::any::option::generic_deserialize"
-    )]
     pub pagination: ::core::option::Option<super::super::query::v1beta1::PageResponse>,
 }
-impl<
-        A: Clone
-            + PartialEq
-            + Default
-            + Send
-            + Sync
-            + prost::Message
-            + serde::Serialize
-            + serde::de::DeserializeOwned
-            + prost::Name,
-    > ::prost::Name for GetLatestValidatorSetResponse<A>
+impl<A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name> ::prost::Name
+    for GetLatestValidatorSetResponse<A>
 {
     const NAME: &'static str = "GetLatestValidatorSetResponse";
     const PACKAGE: &'static str = "cosmos.base.tendermint.v1beta1";
@@ -230,41 +168,18 @@ impl<
 #[derive(:: serde :: Serialize, :: serde :: Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, :: prost :: Message)]
-pub struct Validator<
-    A: Clone
-        + PartialEq
-        + Default
-        + Send
-        + Sync
-        + prost::Message
-        + serde::Serialize
-        + serde::de::DeserializeOwned
-        + prost::Name,
-> {
+pub struct Validator<A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name> {
     #[prost(string, tag = "1")]
     pub address: ::prost::alloc::string::String,
     #[prost(message, optional, tag = "2")]
-    #[serde(
-        serialize_with = "crate::any::option::serialize",
-        deserialize_with = "crate::any::option::deserialize"
-    )]
-    pub pub_key: ::core::option::Option<A>,
+    pub pub_key: ::core::option::Option<crate::any::Any<A>>,
     #[prost(int64, tag = "3")]
     pub voting_power: i64,
     #[prost(int64, tag = "4")]
     pub proposer_priority: i64,
 }
-impl<
-        A: Clone
-            + PartialEq
-            + Default
-            + Send
-            + Sync
-            + prost::Message
-            + serde::Serialize
-            + serde::de::DeserializeOwned
-            + prost::Name,
-    > ::prost::Name for Validator<A>
+impl<A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name> ::prost::Name
+    for Validator<A>
 {
     const NAME: &'static str = "Validator";
     const PACKAGE: &'static str = "cosmos.base.tendermint.v1beta1";
@@ -296,17 +211,9 @@ pub struct GetBlockByHeightResponse {
     pub block_id: ::core::option::Option<::tendermint_proto::v0_37::types::BlockId>,
     #[doc = " Deprecated: please use `sdk_block` instead"]
     #[prost(message, optional, tag = "2")]
-    #[serde(
-        serialize_with = "crate::any::option::generic_serialize",
-        deserialize_with = "crate::any::option::generic_deserialize"
-    )]
     pub block: ::core::option::Option<::tendermint_proto::v0_37::types::Block>,
     #[doc = " Since: cosmos-sdk 0.47"]
     #[prost(message, optional, tag = "3")]
-    #[serde(
-        serialize_with = "crate::any::option::generic_serialize",
-        deserialize_with = "crate::any::option::generic_deserialize"
-    )]
     pub sdk_block: ::core::option::Option<Block>,
 }
 impl ::prost::Name for GetBlockByHeightResponse {
@@ -337,17 +244,9 @@ pub struct GetLatestBlockResponse {
     pub block_id: ::core::option::Option<::tendermint_proto::v0_37::types::BlockId>,
     #[doc = " Deprecated: please use `sdk_block` instead"]
     #[prost(message, optional, tag = "2")]
-    #[serde(
-        serialize_with = "crate::any::option::generic_serialize",
-        deserialize_with = "crate::any::option::generic_deserialize"
-    )]
     pub block: ::core::option::Option<::tendermint_proto::v0_37::types::Block>,
     #[doc = " Since: cosmos-sdk 0.47"]
     #[prost(message, optional, tag = "3")]
-    #[serde(
-        serialize_with = "crate::any::option::generic_serialize",
-        deserialize_with = "crate::any::option::generic_deserialize"
-    )]
     pub sdk_block: ::core::option::Option<Block>,
 }
 impl ::prost::Name for GetLatestBlockResponse {
@@ -404,10 +303,6 @@ pub struct GetNodeInfoResponse {
     #[prost(message, optional, tag = "1")]
     pub default_node_info: ::core::option::Option<::tendermint_proto::v0_37::p2p::DefaultNodeInfo>,
     #[prost(message, optional, tag = "2")]
-    #[serde(
-        serialize_with = "crate::any::option::generic_serialize",
-        deserialize_with = "crate::any::option::generic_deserialize"
-    )]
     pub application_version: ::core::option::Option<VersionInfo>,
 }
 impl ::prost::Name for GetNodeInfoResponse {
@@ -435,10 +330,6 @@ pub struct VersionInfo {
     #[prost(string, tag = "6")]
     pub go_version: ::prost::alloc::string::String,
     #[prost(message, repeated, tag = "7")]
-    #[serde(
-        serialize_with = "crate::any::vec::generic_serialize",
-        deserialize_with = "crate::any::vec::generic_deserialize"
-    )]
     pub build_deps: ::prost::alloc::vec::Vec<Module>,
     #[doc = " Since: cosmos-sdk 0.43"]
     #[prost(string, tag = "8")]
@@ -517,10 +408,6 @@ pub struct AbciQueryResponse {
     #[prost(bytes = "vec", tag = "7")]
     pub value: ::prost::alloc::vec::Vec<u8>,
     #[prost(message, optional, tag = "8")]
-    #[serde(
-        serialize_with = "crate::any::option::generic_serialize",
-        deserialize_with = "crate::any::option::generic_deserialize"
-    )]
     pub proof_ops: ::core::option::Option<ProofOps>,
     #[prost(int64, tag = "9")]
     pub height: i64,
@@ -565,10 +452,6 @@ impl ::prost::Name for ProofOp {
 #[derive(Clone, PartialEq, :: prost :: Message)]
 pub struct ProofOps {
     #[prost(message, repeated, tag = "1")]
-    #[serde(
-        serialize_with = "crate::any::vec::generic_serialize",
-        deserialize_with = "crate::any::vec::generic_deserialize"
-    )]
     pub ops: ::prost::alloc::vec::Vec<ProofOp>,
 }
 impl ::prost::Name for ProofOps {

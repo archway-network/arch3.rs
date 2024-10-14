@@ -53,10 +53,6 @@ pub struct Deposit {
     pub depositor: ::prost::alloc::string::String,
     #[doc = " amount to be deposited by depositor."]
     #[prost(message, repeated, tag = "3")]
-    #[serde(
-        serialize_with = "crate::any::vec::generic_serialize",
-        deserialize_with = "crate::any::vec::generic_deserialize"
-    )]
     pub amount: ::prost::alloc::vec::Vec<super::super::base::v1beta1::Coin>,
 }
 impl ::prost::Name for Deposit {
@@ -70,27 +66,13 @@ impl ::prost::Name for Deposit {
 #[derive(:: serde :: Serialize, :: serde :: Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, :: prost :: Message)]
-pub struct Proposal<
-    A: Clone
-        + PartialEq
-        + Default
-        + Send
-        + Sync
-        + prost::Message
-        + serde::Serialize
-        + serde::de::DeserializeOwned
-        + prost::Name,
-> {
+pub struct Proposal<A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name> {
     #[doc = " proposal_id defines the unique id of the proposal."]
     #[prost(uint64, tag = "1")]
     pub proposal_id: u64,
     #[doc = " content is the proposal's content."]
     #[prost(message, optional, tag = "2")]
-    #[serde(
-        serialize_with = "crate::any::option::serialize",
-        deserialize_with = "crate::any::option::deserialize"
-    )]
-    pub content: ::core::option::Option<A>,
+    pub content: ::core::option::Option<crate::any::Any<A>>,
     #[doc = " status defines the proposal status."]
     #[prost(enumeration = "ProposalStatus", tag = "3")]
     pub status: i32,
@@ -98,10 +80,6 @@ pub struct Proposal<
     #[doc = " querying a proposal via gRPC, this field is not populated until the"]
     #[doc = " proposal's voting period has ended."]
     #[prost(message, optional, tag = "4")]
-    #[serde(
-        serialize_with = "crate::any::option::generic_serialize",
-        deserialize_with = "crate::any::option::generic_deserialize"
-    )]
     pub final_tally_result: ::core::option::Option<TallyResult>,
     #[doc = " submit_time is the time of proposal submission."]
     #[prost(message, optional, tag = "5")]
@@ -111,10 +89,6 @@ pub struct Proposal<
     pub deposit_end_time: ::core::option::Option<::pbjson_types::Timestamp>,
     #[doc = " total_deposit is the total deposit on the proposal."]
     #[prost(message, repeated, tag = "7")]
-    #[serde(
-        serialize_with = "crate::any::vec::generic_serialize",
-        deserialize_with = "crate::any::vec::generic_deserialize"
-    )]
     pub total_deposit: ::prost::alloc::vec::Vec<super::super::base::v1beta1::Coin>,
     #[doc = " voting_start_time is the starting time to vote on a proposal."]
     #[prost(message, optional, tag = "8")]
@@ -123,17 +97,8 @@ pub struct Proposal<
     #[prost(message, optional, tag = "9")]
     pub voting_end_time: ::core::option::Option<::pbjson_types::Timestamp>,
 }
-impl<
-        A: Clone
-            + PartialEq
-            + Default
-            + Send
-            + Sync
-            + prost::Message
-            + serde::Serialize
-            + serde::de::DeserializeOwned
-            + prost::Name,
-    > ::prost::Name for Proposal<A>
+impl<A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name> ::prost::Name
+    for Proposal<A>
 {
     const NAME: &'static str = "Proposal";
     const PACKAGE: &'static str = "cosmos.gov.v1beta1";
@@ -188,10 +153,6 @@ pub struct Vote {
     #[doc = ""]
     #[doc = " Since: cosmos-sdk 0.43"]
     #[prost(message, repeated, tag = "4")]
-    #[serde(
-        serialize_with = "crate::any::vec::generic_serialize",
-        deserialize_with = "crate::any::vec::generic_deserialize"
-    )]
     pub options: ::prost::alloc::vec::Vec<WeightedVoteOption>,
 }
 impl ::prost::Name for Vote {
@@ -208,10 +169,6 @@ impl ::prost::Name for Vote {
 pub struct DepositParams {
     #[doc = " Minimum deposit for a proposal to enter voting period."]
     #[prost(message, repeated, tag = "1")]
-    #[serde(
-        serialize_with = "crate::any::vec::generic_serialize",
-        deserialize_with = "crate::any::vec::generic_deserialize"
-    )]
     pub min_deposit: ::prost::alloc::vec::Vec<super::super::base::v1beta1::Coin>,
     #[doc = " Maximum period for Atom holders to deposit on a proposal. Initial value: 2"]
     #[doc = " months."]
@@ -384,74 +341,32 @@ impl ProposalStatus {
 #[derive(:: serde :: Serialize, :: serde :: Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, :: prost :: Message)]
-pub struct GenesisState<
-    A: Clone
-        + PartialEq
-        + Default
-        + Send
-        + Sync
-        + prost::Message
-        + serde::Serialize
-        + serde::de::DeserializeOwned
-        + prost::Name,
-> {
+pub struct GenesisState<A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name>
+{
     #[doc = " starting_proposal_id is the ID of the starting proposal."]
     #[prost(uint64, tag = "1")]
     pub starting_proposal_id: u64,
     #[doc = " deposits defines all the deposits present at genesis."]
     #[prost(message, repeated, tag = "2")]
-    #[serde(
-        serialize_with = "crate::any::vec::generic_serialize",
-        deserialize_with = "crate::any::vec::generic_deserialize"
-    )]
     pub deposits: ::prost::alloc::vec::Vec<Deposit>,
     #[doc = " votes defines all the votes present at genesis."]
     #[prost(message, repeated, tag = "3")]
-    #[serde(
-        serialize_with = "crate::any::vec::generic_serialize",
-        deserialize_with = "crate::any::vec::generic_deserialize"
-    )]
     pub votes: ::prost::alloc::vec::Vec<Vote>,
     #[doc = " proposals defines all the proposals present at genesis."]
     #[prost(message, repeated, tag = "4")]
-    #[serde(
-        serialize_with = "crate::any::vec::generic_serialize",
-        deserialize_with = "crate::any::vec::generic_deserialize"
-    )]
     pub proposals: ::prost::alloc::vec::Vec<Proposal<A>>,
     #[doc = " params defines all the parameters of related to deposit."]
     #[prost(message, optional, tag = "5")]
-    #[serde(
-        serialize_with = "crate::any::option::generic_serialize",
-        deserialize_with = "crate::any::option::generic_deserialize"
-    )]
     pub deposit_params: ::core::option::Option<DepositParams>,
     #[doc = " params defines all the parameters of related to voting."]
     #[prost(message, optional, tag = "6")]
-    #[serde(
-        serialize_with = "crate::any::option::generic_serialize",
-        deserialize_with = "crate::any::option::generic_deserialize"
-    )]
     pub voting_params: ::core::option::Option<VotingParams>,
     #[doc = " params defines all the parameters of related to tally."]
     #[prost(message, optional, tag = "7")]
-    #[serde(
-        serialize_with = "crate::any::option::generic_serialize",
-        deserialize_with = "crate::any::option::generic_deserialize"
-    )]
     pub tally_params: ::core::option::Option<TallyParams>,
 }
-impl<
-        A: Clone
-            + PartialEq
-            + Default
-            + Send
-            + Sync
-            + prost::Message
-            + serde::Serialize
-            + serde::de::DeserializeOwned
-            + prost::Name,
-    > ::prost::Name for GenesisState<A>
+impl<A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name> ::prost::Name
+    for GenesisState<A>
 {
     const NAME: &'static str = "GenesisState";
     const PACKAGE: &'static str = "cosmos.gov.v1beta1";
@@ -480,34 +395,13 @@ impl ::prost::Name for QueryProposalRequest {
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, :: prost :: Message)]
 pub struct QueryProposalResponse<
-    A: Clone
-        + PartialEq
-        + Default
-        + Send
-        + Sync
-        + prost::Message
-        + serde::Serialize
-        + serde::de::DeserializeOwned
-        + prost::Name,
+    A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name,
 > {
     #[prost(message, optional, tag = "1")]
-    #[serde(
-        serialize_with = "crate::any::option::generic_serialize",
-        deserialize_with = "crate::any::option::generic_deserialize"
-    )]
     pub proposal: ::core::option::Option<Proposal<A>>,
 }
-impl<
-        A: Clone
-            + PartialEq
-            + Default
-            + Send
-            + Sync
-            + prost::Message
-            + serde::Serialize
-            + serde::de::DeserializeOwned
-            + prost::Name,
-    > ::prost::Name for QueryProposalResponse<A>
+impl<A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name> ::prost::Name
+    for QueryProposalResponse<A>
 {
     const NAME: &'static str = "QueryProposalResponse";
     const PACKAGE: &'static str = "cosmos.gov.v1beta1";
@@ -531,10 +425,6 @@ pub struct QueryProposalsRequest {
     pub depositor: ::prost::alloc::string::String,
     #[doc = " pagination defines an optional pagination for the request."]
     #[prost(message, optional, tag = "4")]
-    #[serde(
-        serialize_with = "crate::any::option::generic_serialize",
-        deserialize_with = "crate::any::option::generic_deserialize"
-    )]
     pub pagination: ::core::option::Option<super::super::base::query::v1beta1::PageRequest>,
 }
 impl ::prost::Name for QueryProposalsRequest {
@@ -550,42 +440,17 @@ impl ::prost::Name for QueryProposalsRequest {
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, :: prost :: Message)]
 pub struct QueryProposalsResponse<
-    A: Clone
-        + PartialEq
-        + Default
-        + Send
-        + Sync
-        + prost::Message
-        + serde::Serialize
-        + serde::de::DeserializeOwned
-        + prost::Name,
+    A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name,
 > {
     #[doc = " proposals defines all the requested governance proposals."]
     #[prost(message, repeated, tag = "1")]
-    #[serde(
-        serialize_with = "crate::any::vec::generic_serialize",
-        deserialize_with = "crate::any::vec::generic_deserialize"
-    )]
     pub proposals: ::prost::alloc::vec::Vec<Proposal<A>>,
     #[doc = " pagination defines the pagination in the response."]
     #[prost(message, optional, tag = "2")]
-    #[serde(
-        serialize_with = "crate::any::option::generic_serialize",
-        deserialize_with = "crate::any::option::generic_deserialize"
-    )]
     pub pagination: ::core::option::Option<super::super::base::query::v1beta1::PageResponse>,
 }
-impl<
-        A: Clone
-            + PartialEq
-            + Default
-            + Send
-            + Sync
-            + prost::Message
-            + serde::Serialize
-            + serde::de::DeserializeOwned
-            + prost::Name,
-    > ::prost::Name for QueryProposalsResponse<A>
+impl<A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name> ::prost::Name
+    for QueryProposalsResponse<A>
 {
     const NAME: &'static str = "QueryProposalsResponse";
     const PACKAGE: &'static str = "cosmos.gov.v1beta1";
@@ -619,10 +484,6 @@ impl ::prost::Name for QueryVoteRequest {
 pub struct QueryVoteResponse {
     #[doc = " vote defines the queried vote."]
     #[prost(message, optional, tag = "1")]
-    #[serde(
-        serialize_with = "crate::any::option::generic_serialize",
-        deserialize_with = "crate::any::option::generic_deserialize"
-    )]
     pub vote: ::core::option::Option<Vote>,
 }
 impl ::prost::Name for QueryVoteResponse {
@@ -642,10 +503,6 @@ pub struct QueryVotesRequest {
     pub proposal_id: u64,
     #[doc = " pagination defines an optional pagination for the request."]
     #[prost(message, optional, tag = "2")]
-    #[serde(
-        serialize_with = "crate::any::option::generic_serialize",
-        deserialize_with = "crate::any::option::generic_deserialize"
-    )]
     pub pagination: ::core::option::Option<super::super::base::query::v1beta1::PageRequest>,
 }
 impl ::prost::Name for QueryVotesRequest {
@@ -662,17 +519,9 @@ impl ::prost::Name for QueryVotesRequest {
 pub struct QueryVotesResponse {
     #[doc = " votes defines the queried votes."]
     #[prost(message, repeated, tag = "1")]
-    #[serde(
-        serialize_with = "crate::any::vec::generic_serialize",
-        deserialize_with = "crate::any::vec::generic_deserialize"
-    )]
     pub votes: ::prost::alloc::vec::Vec<Vote>,
     #[doc = " pagination defines the pagination in the response."]
     #[prost(message, optional, tag = "2")]
-    #[serde(
-        serialize_with = "crate::any::option::generic_serialize",
-        deserialize_with = "crate::any::option::generic_deserialize"
-    )]
     pub pagination: ::core::option::Option<super::super::base::query::v1beta1::PageResponse>,
 }
 impl ::prost::Name for QueryVotesResponse {
@@ -706,24 +555,12 @@ impl ::prost::Name for QueryParamsRequest {
 pub struct QueryParamsResponse {
     #[doc = " voting_params defines the parameters related to voting."]
     #[prost(message, optional, tag = "1")]
-    #[serde(
-        serialize_with = "crate::any::option::generic_serialize",
-        deserialize_with = "crate::any::option::generic_deserialize"
-    )]
     pub voting_params: ::core::option::Option<VotingParams>,
     #[doc = " deposit_params defines the parameters related to deposit."]
     #[prost(message, optional, tag = "2")]
-    #[serde(
-        serialize_with = "crate::any::option::generic_serialize",
-        deserialize_with = "crate::any::option::generic_deserialize"
-    )]
     pub deposit_params: ::core::option::Option<DepositParams>,
     #[doc = " tally_params defines the parameters related to tally."]
     #[prost(message, optional, tag = "3")]
-    #[serde(
-        serialize_with = "crate::any::option::generic_serialize",
-        deserialize_with = "crate::any::option::generic_deserialize"
-    )]
     pub tally_params: ::core::option::Option<TallyParams>,
 }
 impl ::prost::Name for QueryParamsResponse {
@@ -759,10 +596,6 @@ impl ::prost::Name for QueryDepositRequest {
 pub struct QueryDepositResponse {
     #[doc = " deposit defines the requested deposit."]
     #[prost(message, optional, tag = "1")]
-    #[serde(
-        serialize_with = "crate::any::option::generic_serialize",
-        deserialize_with = "crate::any::option::generic_deserialize"
-    )]
     pub deposit: ::core::option::Option<Deposit>,
 }
 impl ::prost::Name for QueryDepositResponse {
@@ -782,10 +615,6 @@ pub struct QueryDepositsRequest {
     pub proposal_id: u64,
     #[doc = " pagination defines an optional pagination for the request."]
     #[prost(message, optional, tag = "2")]
-    #[serde(
-        serialize_with = "crate::any::option::generic_serialize",
-        deserialize_with = "crate::any::option::generic_deserialize"
-    )]
     pub pagination: ::core::option::Option<super::super::base::query::v1beta1::PageRequest>,
 }
 impl ::prost::Name for QueryDepositsRequest {
@@ -802,17 +631,9 @@ impl ::prost::Name for QueryDepositsRequest {
 pub struct QueryDepositsResponse {
     #[doc = " deposits defines the requested deposits."]
     #[prost(message, repeated, tag = "1")]
-    #[serde(
-        serialize_with = "crate::any::vec::generic_serialize",
-        deserialize_with = "crate::any::vec::generic_deserialize"
-    )]
     pub deposits: ::prost::alloc::vec::Vec<Deposit>,
     #[doc = " pagination defines the pagination in the response."]
     #[prost(message, optional, tag = "2")]
-    #[serde(
-        serialize_with = "crate::any::option::generic_serialize",
-        deserialize_with = "crate::any::option::generic_deserialize"
-    )]
     pub pagination: ::core::option::Option<super::super::base::query::v1beta1::PageResponse>,
 }
 impl ::prost::Name for QueryDepositsResponse {
@@ -845,10 +666,6 @@ impl ::prost::Name for QueryTallyResultRequest {
 pub struct QueryTallyResultResponse {
     #[doc = " tally defines the requested tally."]
     #[prost(message, optional, tag = "1")]
-    #[serde(
-        serialize_with = "crate::any::option::generic_serialize",
-        deserialize_with = "crate::any::option::generic_deserialize"
-    )]
     pub tally: ::core::option::Option<TallyResult>,
 }
 impl ::prost::Name for QueryTallyResultResponse {
@@ -864,45 +681,20 @@ impl ::prost::Name for QueryTallyResultResponse {
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, :: prost :: Message)]
 pub struct MsgSubmitProposal<
-    A: Clone
-        + PartialEq
-        + Default
-        + Send
-        + Sync
-        + prost::Message
-        + serde::Serialize
-        + serde::de::DeserializeOwned
-        + prost::Name,
+    A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name,
 > {
     #[doc = " content is the proposal's content."]
     #[prost(message, optional, tag = "1")]
-    #[serde(
-        serialize_with = "crate::any::option::serialize",
-        deserialize_with = "crate::any::option::deserialize"
-    )]
-    pub content: ::core::option::Option<A>,
+    pub content: ::core::option::Option<crate::any::Any<A>>,
     #[doc = " initial_deposit is the deposit value that must be paid at proposal submission."]
     #[prost(message, repeated, tag = "2")]
-    #[serde(
-        serialize_with = "crate::any::vec::generic_serialize",
-        deserialize_with = "crate::any::vec::generic_deserialize"
-    )]
     pub initial_deposit: ::prost::alloc::vec::Vec<super::super::base::v1beta1::Coin>,
     #[doc = " proposer is the account address of the proposer."]
     #[prost(string, tag = "3")]
     pub proposer: ::prost::alloc::string::String,
 }
-impl<
-        A: Clone
-            + PartialEq
-            + Default
-            + Send
-            + Sync
-            + prost::Message
-            + serde::Serialize
-            + serde::de::DeserializeOwned
-            + prost::Name,
-    > ::prost::Name for MsgSubmitProposal<A>
+impl<A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name> ::prost::Name
+    for MsgSubmitProposal<A>
 {
     const NAME: &'static str = "MsgSubmitProposal";
     const PACKAGE: &'static str = "cosmos.gov.v1beta1";
@@ -975,10 +767,6 @@ pub struct MsgVoteWeighted {
     pub voter: ::prost::alloc::string::String,
     #[doc = " options defines the weighted vote options. "]
     #[prost(message, repeated, tag = "3")]
-    #[serde(
-        serialize_with = "crate::any::vec::generic_serialize",
-        deserialize_with = "crate::any::vec::generic_deserialize"
-    )]
     pub options: ::prost::alloc::vec::Vec<WeightedVoteOption>,
 }
 impl ::prost::Name for MsgVoteWeighted {
@@ -1015,10 +803,6 @@ pub struct MsgDeposit {
     pub depositor: ::prost::alloc::string::String,
     #[doc = " amount to be deposited by depositor."]
     #[prost(message, repeated, tag = "3")]
-    #[serde(
-        serialize_with = "crate::any::vec::generic_serialize",
-        deserialize_with = "crate::any::vec::generic_deserialize"
-    )]
     pub amount: ::prost::alloc::vec::Vec<super::super::base::v1beta1::Coin>,
 }
 impl ::prost::Name for MsgDeposit {

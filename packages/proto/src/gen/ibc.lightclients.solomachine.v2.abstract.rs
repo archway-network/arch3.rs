@@ -3,17 +3,8 @@
 #[derive(:: serde :: Serialize, :: serde :: Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, :: prost :: Message)]
-pub struct ClientState<
-    A: Clone
-        + PartialEq
-        + Default
-        + Send
-        + Sync
-        + prost::Message
-        + serde::Serialize
-        + serde::de::DeserializeOwned
-        + prost::Name,
-> {
+pub struct ClientState<A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name>
+{
     #[doc = " latest sequence of the client state"]
     #[prost(uint64, tag = "1")]
     pub sequence: u64,
@@ -21,27 +12,14 @@ pub struct ClientState<
     #[prost(bool, tag = "2")]
     pub is_frozen: bool,
     #[prost(message, optional, tag = "3")]
-    #[serde(
-        serialize_with = "crate::any::option::generic_serialize",
-        deserialize_with = "crate::any::option::generic_deserialize"
-    )]
     pub consensus_state: ::core::option::Option<ConsensusState<A>>,
     #[doc = " when set to true, will allow governance to update a solo machine client."]
     #[doc = " The client will be unfrozen if it is frozen."]
     #[prost(bool, tag = "4")]
     pub allow_update_after_proposal: bool,
 }
-impl<
-        A: Clone
-            + PartialEq
-            + Default
-            + Send
-            + Sync
-            + prost::Message
-            + serde::Serialize
-            + serde::de::DeserializeOwned
-            + prost::Name,
-    > ::prost::Name for ClientState<A>
+impl<A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name> ::prost::Name
+    for ClientState<A>
 {
     const NAME: &'static str = "ClientState";
     const PACKAGE: &'static str = "ibc.lightclients.solomachine.v2";
@@ -56,23 +34,11 @@ impl<
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, :: prost :: Message)]
 pub struct ConsensusState<
-    A: Clone
-        + PartialEq
-        + Default
-        + Send
-        + Sync
-        + prost::Message
-        + serde::Serialize
-        + serde::de::DeserializeOwned
-        + prost::Name,
+    A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name,
 > {
     #[doc = " public key of the solo machine"]
     #[prost(message, optional, tag = "1")]
-    #[serde(
-        serialize_with = "crate::any::option::serialize",
-        deserialize_with = "crate::any::option::deserialize"
-    )]
-    pub public_key: ::core::option::Option<A>,
+    pub public_key: ::core::option::Option<crate::any::Any<A>>,
     #[doc = " diversifier allows the same public key to be re-used across different solo"]
     #[doc = " machine clients (potentially on different chains) without being considered"]
     #[doc = " misbehaviour."]
@@ -81,17 +47,8 @@ pub struct ConsensusState<
     #[prost(uint64, tag = "3")]
     pub timestamp: u64,
 }
-impl<
-        A: Clone
-            + PartialEq
-            + Default
-            + Send
-            + Sync
-            + prost::Message
-            + serde::Serialize
-            + serde::de::DeserializeOwned
-            + prost::Name,
-    > ::prost::Name for ConsensusState<A>
+impl<A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name> ::prost::Name
+    for ConsensusState<A>
 {
     const NAME: &'static str = "ConsensusState";
     const PACKAGE: &'static str = "ibc.lightclients.solomachine.v2";
@@ -103,17 +60,7 @@ impl<
 #[derive(:: serde :: Serialize, :: serde :: Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, :: prost :: Message)]
-pub struct Header<
-    A: Clone
-        + PartialEq
-        + Default
-        + Send
-        + Sync
-        + prost::Message
-        + serde::Serialize
-        + serde::de::DeserializeOwned
-        + prost::Name,
-> {
+pub struct Header<A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name> {
     #[doc = " sequence to update solo machine public key at"]
     #[prost(uint64, tag = "1")]
     pub sequence: u64,
@@ -122,25 +69,12 @@ pub struct Header<
     #[prost(bytes = "vec", tag = "3")]
     pub signature: ::prost::alloc::vec::Vec<u8>,
     #[prost(message, optional, tag = "4")]
-    #[serde(
-        serialize_with = "crate::any::option::serialize",
-        deserialize_with = "crate::any::option::deserialize"
-    )]
-    pub new_public_key: ::core::option::Option<A>,
+    pub new_public_key: ::core::option::Option<crate::any::Any<A>>,
     #[prost(string, tag = "5")]
     pub new_diversifier: ::prost::alloc::string::String,
 }
-impl<
-        A: Clone
-            + PartialEq
-            + Default
-            + Send
-            + Sync
-            + prost::Message
-            + serde::Serialize
-            + serde::de::DeserializeOwned
-            + prost::Name,
-    > ::prost::Name for Header<A>
+impl<A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name> ::prost::Name
+    for Header<A>
 {
     const NAME: &'static str = "Header";
     const PACKAGE: &'static str = "ibc.lightclients.solomachine.v2";
@@ -159,16 +93,8 @@ pub struct Misbehaviour {
     #[prost(uint64, tag = "2")]
     pub sequence: u64,
     #[prost(message, optional, tag = "3")]
-    #[serde(
-        serialize_with = "crate::any::option::generic_serialize",
-        deserialize_with = "crate::any::option::generic_deserialize"
-    )]
     pub signature_one: ::core::option::Option<SignatureAndData>,
     #[prost(message, optional, tag = "4")]
-    #[serde(
-        serialize_with = "crate::any::option::generic_serialize",
-        deserialize_with = "crate::any::option::generic_deserialize"
-    )]
     pub signature_two: ::core::option::Option<SignatureAndData>,
 }
 impl ::prost::Name for Misbehaviour {
@@ -247,39 +173,16 @@ impl ::prost::Name for SignBytes {
 #[derive(:: serde :: Serialize, :: serde :: Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, :: prost :: Message)]
-pub struct HeaderData<
-    A: Clone
-        + PartialEq
-        + Default
-        + Send
-        + Sync
-        + prost::Message
-        + serde::Serialize
-        + serde::de::DeserializeOwned
-        + prost::Name,
-> {
+pub struct HeaderData<A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name> {
     #[doc = " header public key"]
     #[prost(message, optional, tag = "1")]
-    #[serde(
-        serialize_with = "crate::any::option::serialize",
-        deserialize_with = "crate::any::option::deserialize"
-    )]
-    pub new_pub_key: ::core::option::Option<A>,
+    pub new_pub_key: ::core::option::Option<crate::any::Any<A>>,
     #[doc = " header diversifier"]
     #[prost(string, tag = "2")]
     pub new_diversifier: ::prost::alloc::string::String,
 }
-impl<
-        A: Clone
-            + PartialEq
-            + Default
-            + Send
-            + Sync
-            + prost::Message
-            + serde::Serialize
-            + serde::de::DeserializeOwned
-            + prost::Name,
-    > ::prost::Name for HeaderData<A>
+impl<A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name> ::prost::Name
+    for HeaderData<A>
 {
     const NAME: &'static str = "HeaderData";
     const PACKAGE: &'static str = "ibc.lightclients.solomachine.v2";
@@ -292,36 +195,15 @@ impl<
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, :: prost :: Message)]
 pub struct ClientStateData<
-    A: Clone
-        + PartialEq
-        + Default
-        + Send
-        + Sync
-        + prost::Message
-        + serde::Serialize
-        + serde::de::DeserializeOwned
-        + prost::Name,
+    A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name,
 > {
     #[prost(bytes = "vec", tag = "1")]
     pub path: ::prost::alloc::vec::Vec<u8>,
     #[prost(message, optional, tag = "2")]
-    #[serde(
-        serialize_with = "crate::any::option::serialize",
-        deserialize_with = "crate::any::option::deserialize"
-    )]
-    pub client_state: ::core::option::Option<A>,
+    pub client_state: ::core::option::Option<crate::any::Any<A>>,
 }
-impl<
-        A: Clone
-            + PartialEq
-            + Default
-            + Send
-            + Sync
-            + prost::Message
-            + serde::Serialize
-            + serde::de::DeserializeOwned
-            + prost::Name,
-    > ::prost::Name for ClientStateData<A>
+impl<A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name> ::prost::Name
+    for ClientStateData<A>
 {
     const NAME: &'static str = "ClientStateData";
     const PACKAGE: &'static str = "ibc.lightclients.solomachine.v2";
@@ -335,36 +217,15 @@ impl<
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, :: prost :: Message)]
 pub struct ConsensusStateData<
-    A: Clone
-        + PartialEq
-        + Default
-        + Send
-        + Sync
-        + prost::Message
-        + serde::Serialize
-        + serde::de::DeserializeOwned
-        + prost::Name,
+    A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name,
 > {
     #[prost(bytes = "vec", tag = "1")]
     pub path: ::prost::alloc::vec::Vec<u8>,
     #[prost(message, optional, tag = "2")]
-    #[serde(
-        serialize_with = "crate::any::option::serialize",
-        deserialize_with = "crate::any::option::deserialize"
-    )]
-    pub consensus_state: ::core::option::Option<A>,
+    pub consensus_state: ::core::option::Option<crate::any::Any<A>>,
 }
-impl<
-        A: Clone
-            + PartialEq
-            + Default
-            + Send
-            + Sync
-            + prost::Message
-            + serde::Serialize
-            + serde::de::DeserializeOwned
-            + prost::Name,
-    > ::prost::Name for ConsensusStateData<A>
+impl<A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name> ::prost::Name
+    for ConsensusStateData<A>
 {
     const NAME: &'static str = "ConsensusStateData";
     const PACKAGE: &'static str = "ibc.lightclients.solomachine.v2";
@@ -381,10 +242,6 @@ pub struct ConnectionStateData {
     #[prost(bytes = "vec", tag = "1")]
     pub path: ::prost::alloc::vec::Vec<u8>,
     #[prost(message, optional, tag = "2")]
-    #[serde(
-        serialize_with = "crate::any::option::generic_serialize",
-        deserialize_with = "crate::any::option::generic_deserialize"
-    )]
     pub connection:
         ::core::option::Option<super::super::super::core::connection::v1::ConnectionEnd>,
 }
@@ -404,10 +261,6 @@ pub struct ChannelStateData {
     #[prost(bytes = "vec", tag = "1")]
     pub path: ::prost::alloc::vec::Vec<u8>,
     #[prost(message, optional, tag = "2")]
-    #[serde(
-        serialize_with = "crate::any::option::generic_serialize",
-        deserialize_with = "crate::any::option::generic_deserialize"
-    )]
     pub channel: ::core::option::Option<super::super::super::core::channel::v1::Channel>,
 }
 impl ::prost::Name for ChannelStateData {

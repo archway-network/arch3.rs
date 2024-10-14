@@ -28,36 +28,14 @@ impl ::prost::Name for Equivocation {
 #[derive(:: serde :: Serialize, :: serde :: Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, :: prost :: Message)]
-pub struct GenesisState<
-    A: Clone
-        + PartialEq
-        + Default
-        + Send
-        + Sync
-        + prost::Message
-        + serde::Serialize
-        + serde::de::DeserializeOwned
-        + prost::Name,
-> {
+pub struct GenesisState<A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name>
+{
     #[doc = " evidence defines all the evidence at genesis."]
     #[prost(message, repeated, tag = "1")]
-    #[serde(
-        serialize_with = "crate::any::vec::serialize",
-        deserialize_with = "crate::any::vec::deserialize"
-    )]
-    pub evidence: ::prost::alloc::vec::Vec<A>,
+    pub evidence: ::prost::alloc::vec::Vec<crate::any::Any<A>>,
 }
-impl<
-        A: Clone
-            + PartialEq
-            + Default
-            + Send
-            + Sync
-            + prost::Message
-            + serde::Serialize
-            + serde::de::DeserializeOwned
-            + prost::Name,
-    > ::prost::Name for GenesisState<A>
+impl<A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name> ::prost::Name
+    for GenesisState<A>
 {
     const NAME: &'static str = "GenesisState";
     const PACKAGE: &'static str = "cosmos.evidence.v1beta1";
@@ -93,35 +71,14 @@ impl ::prost::Name for QueryEvidenceRequest {
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, :: prost :: Message)]
 pub struct QueryEvidenceResponse<
-    A: Clone
-        + PartialEq
-        + Default
-        + Send
-        + Sync
-        + prost::Message
-        + serde::Serialize
-        + serde::de::DeserializeOwned
-        + prost::Name,
+    A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name,
 > {
     #[doc = " evidence returns the requested evidence."]
     #[prost(message, optional, tag = "1")]
-    #[serde(
-        serialize_with = "crate::any::option::serialize",
-        deserialize_with = "crate::any::option::deserialize"
-    )]
-    pub evidence: ::core::option::Option<A>,
+    pub evidence: ::core::option::Option<crate::any::Any<A>>,
 }
-impl<
-        A: Clone
-            + PartialEq
-            + Default
-            + Send
-            + Sync
-            + prost::Message
-            + serde::Serialize
-            + serde::de::DeserializeOwned
-            + prost::Name,
-    > ::prost::Name for QueryEvidenceResponse<A>
+impl<A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name> ::prost::Name
+    for QueryEvidenceResponse<A>
 {
     const NAME: &'static str = "QueryEvidenceResponse";
     const PACKAGE: &'static str = "cosmos.evidence.v1beta1";
@@ -137,10 +94,6 @@ impl<
 pub struct QueryAllEvidenceRequest {
     #[doc = " pagination defines an optional pagination for the request."]
     #[prost(message, optional, tag = "1")]
-    #[serde(
-        serialize_with = "crate::any::option::generic_serialize",
-        deserialize_with = "crate::any::option::generic_deserialize"
-    )]
     pub pagination: ::core::option::Option<super::super::base::query::v1beta1::PageRequest>,
 }
 impl ::prost::Name for QueryAllEvidenceRequest {
@@ -156,42 +109,17 @@ impl ::prost::Name for QueryAllEvidenceRequest {
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, :: prost :: Message)]
 pub struct QueryAllEvidenceResponse<
-    A: Clone
-        + PartialEq
-        + Default
-        + Send
-        + Sync
-        + prost::Message
-        + serde::Serialize
-        + serde::de::DeserializeOwned
-        + prost::Name,
+    A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name,
 > {
     #[doc = " evidence returns all evidences."]
     #[prost(message, repeated, tag = "1")]
-    #[serde(
-        serialize_with = "crate::any::vec::serialize",
-        deserialize_with = "crate::any::vec::deserialize"
-    )]
-    pub evidence: ::prost::alloc::vec::Vec<A>,
+    pub evidence: ::prost::alloc::vec::Vec<crate::any::Any<A>>,
     #[doc = " pagination defines the pagination in the response."]
     #[prost(message, optional, tag = "2")]
-    #[serde(
-        serialize_with = "crate::any::option::generic_serialize",
-        deserialize_with = "crate::any::option::generic_deserialize"
-    )]
     pub pagination: ::core::option::Option<super::super::base::query::v1beta1::PageResponse>,
 }
-impl<
-        A: Clone
-            + PartialEq
-            + Default
-            + Send
-            + Sync
-            + prost::Message
-            + serde::Serialize
-            + serde::de::DeserializeOwned
-            + prost::Name,
-    > ::prost::Name for QueryAllEvidenceResponse<A>
+impl<A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name> ::prost::Name
+    for QueryAllEvidenceResponse<A>
 {
     const NAME: &'static str = "QueryAllEvidenceResponse";
     const PACKAGE: &'static str = "cosmos.evidence.v1beta1";
@@ -205,38 +133,17 @@ impl<
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, :: prost :: Message)]
 pub struct MsgSubmitEvidence<
-    A: Clone
-        + PartialEq
-        + Default
-        + Send
-        + Sync
-        + prost::Message
-        + serde::Serialize
-        + serde::de::DeserializeOwned
-        + prost::Name,
+    A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name,
 > {
     #[doc = " submitter is the signer account address of evidence."]
     #[prost(string, tag = "1")]
     pub submitter: ::prost::alloc::string::String,
     #[doc = " evidence defines the evidence of misbehavior."]
     #[prost(message, optional, tag = "2")]
-    #[serde(
-        serialize_with = "crate::any::option::serialize",
-        deserialize_with = "crate::any::option::deserialize"
-    )]
-    pub evidence: ::core::option::Option<A>,
+    pub evidence: ::core::option::Option<crate::any::Any<A>>,
 }
-impl<
-        A: Clone
-            + PartialEq
-            + Default
-            + Send
-            + Sync
-            + prost::Message
-            + serde::Serialize
-            + serde::de::DeserializeOwned
-            + prost::Name,
-    > ::prost::Name for MsgSubmitEvidence<A>
+impl<A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name> ::prost::Name
+    for MsgSubmitEvidence<A>
 {
     const NAME: &'static str = "MsgSubmitEvidence";
     const PACKAGE: &'static str = "cosmos.evidence.v1beta1";

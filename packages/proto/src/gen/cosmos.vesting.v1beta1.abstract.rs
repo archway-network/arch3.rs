@@ -4,55 +4,22 @@
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, :: prost :: Message)]
 pub struct BaseVestingAccount<
-    A: Clone
-        + PartialEq
-        + Default
-        + Send
-        + Sync
-        + prost::Message
-        + serde::Serialize
-        + serde::de::DeserializeOwned
-        + prost::Name,
+    A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name,
 > {
     #[prost(message, optional, tag = "1")]
-    #[serde(
-        serialize_with = "crate::any::option::generic_serialize",
-        deserialize_with = "crate::any::option::generic_deserialize"
-    )]
     pub base_account: ::core::option::Option<super::super::auth::v1beta1::BaseAccount<A>>,
     #[prost(message, repeated, tag = "2")]
-    #[serde(
-        serialize_with = "crate::any::vec::generic_serialize",
-        deserialize_with = "crate::any::vec::generic_deserialize"
-    )]
     pub original_vesting: ::prost::alloc::vec::Vec<super::super::base::v1beta1::Coin>,
     #[prost(message, repeated, tag = "3")]
-    #[serde(
-        serialize_with = "crate::any::vec::generic_serialize",
-        deserialize_with = "crate::any::vec::generic_deserialize"
-    )]
     pub delegated_free: ::prost::alloc::vec::Vec<super::super::base::v1beta1::Coin>,
     #[prost(message, repeated, tag = "4")]
-    #[serde(
-        serialize_with = "crate::any::vec::generic_serialize",
-        deserialize_with = "crate::any::vec::generic_deserialize"
-    )]
     pub delegated_vesting: ::prost::alloc::vec::Vec<super::super::base::v1beta1::Coin>,
     #[doc = " Vesting end time, as unix timestamp (in seconds)."]
     #[prost(int64, tag = "5")]
     pub end_time: i64,
 }
-impl<
-        A: Clone
-            + PartialEq
-            + Default
-            + Send
-            + Sync
-            + prost::Message
-            + serde::Serialize
-            + serde::de::DeserializeOwned
-            + prost::Name,
-    > ::prost::Name for BaseVestingAccount<A>
+impl<A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name> ::prost::Name
+    for BaseVestingAccount<A>
 {
     const NAME: &'static str = "BaseVestingAccount";
     const PACKAGE: &'static str = "cosmos.vesting.v1beta1";
@@ -66,37 +33,16 @@ impl<
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, :: prost :: Message)]
 pub struct ContinuousVestingAccount<
-    A: Clone
-        + PartialEq
-        + Default
-        + Send
-        + Sync
-        + prost::Message
-        + serde::Serialize
-        + serde::de::DeserializeOwned
-        + prost::Name,
+    A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name,
 > {
     #[prost(message, optional, tag = "1")]
-    #[serde(
-        serialize_with = "crate::any::option::generic_serialize",
-        deserialize_with = "crate::any::option::generic_deserialize"
-    )]
     pub base_vesting_account: ::core::option::Option<BaseVestingAccount<A>>,
     #[doc = " Vesting start time, as unix timestamp (in seconds)."]
     #[prost(int64, tag = "2")]
     pub start_time: i64,
 }
-impl<
-        A: Clone
-            + PartialEq
-            + Default
-            + Send
-            + Sync
-            + prost::Message
-            + serde::Serialize
-            + serde::de::DeserializeOwned
-            + prost::Name,
-    > ::prost::Name for ContinuousVestingAccount<A>
+impl<A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name> ::prost::Name
+    for ContinuousVestingAccount<A>
 {
     const NAME: &'static str = "ContinuousVestingAccount";
     const PACKAGE: &'static str = "cosmos.vesting.v1beta1";
@@ -111,34 +57,13 @@ impl<
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, :: prost :: Message)]
 pub struct DelayedVestingAccount<
-    A: Clone
-        + PartialEq
-        + Default
-        + Send
-        + Sync
-        + prost::Message
-        + serde::Serialize
-        + serde::de::DeserializeOwned
-        + prost::Name,
+    A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name,
 > {
     #[prost(message, optional, tag = "1")]
-    #[serde(
-        serialize_with = "crate::any::option::generic_serialize",
-        deserialize_with = "crate::any::option::generic_deserialize"
-    )]
     pub base_vesting_account: ::core::option::Option<BaseVestingAccount<A>>,
 }
-impl<
-        A: Clone
-            + PartialEq
-            + Default
-            + Send
-            + Sync
-            + prost::Message
-            + serde::Serialize
-            + serde::de::DeserializeOwned
-            + prost::Name,
-    > ::prost::Name for DelayedVestingAccount<A>
+impl<A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name> ::prost::Name
+    for DelayedVestingAccount<A>
 {
     const NAME: &'static str = "DelayedVestingAccount";
     const PACKAGE: &'static str = "cosmos.vesting.v1beta1";
@@ -155,10 +80,6 @@ pub struct Period {
     #[prost(int64, tag = "1")]
     pub length: i64,
     #[prost(message, repeated, tag = "2")]
-    #[serde(
-        serialize_with = "crate::any::vec::generic_serialize",
-        deserialize_with = "crate::any::vec::generic_deserialize"
-    )]
     pub amount: ::prost::alloc::vec::Vec<super::super::base::v1beta1::Coin>,
 }
 impl ::prost::Name for Period {
@@ -174,42 +95,17 @@ impl ::prost::Name for Period {
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, :: prost :: Message)]
 pub struct PeriodicVestingAccount<
-    A: Clone
-        + PartialEq
-        + Default
-        + Send
-        + Sync
-        + prost::Message
-        + serde::Serialize
-        + serde::de::DeserializeOwned
-        + prost::Name,
+    A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name,
 > {
     #[prost(message, optional, tag = "1")]
-    #[serde(
-        serialize_with = "crate::any::option::generic_serialize",
-        deserialize_with = "crate::any::option::generic_deserialize"
-    )]
     pub base_vesting_account: ::core::option::Option<BaseVestingAccount<A>>,
     #[prost(int64, tag = "2")]
     pub start_time: i64,
     #[prost(message, repeated, tag = "3")]
-    #[serde(
-        serialize_with = "crate::any::vec::generic_serialize",
-        deserialize_with = "crate::any::vec::generic_deserialize"
-    )]
     pub vesting_periods: ::prost::alloc::vec::Vec<Period>,
 }
-impl<
-        A: Clone
-            + PartialEq
-            + Default
-            + Send
-            + Sync
-            + prost::Message
-            + serde::Serialize
-            + serde::de::DeserializeOwned
-            + prost::Name,
-    > ::prost::Name for PeriodicVestingAccount<A>
+impl<A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name> ::prost::Name
+    for PeriodicVestingAccount<A>
 {
     const NAME: &'static str = "PeriodicVestingAccount";
     const PACKAGE: &'static str = "cosmos.vesting.v1beta1";
@@ -226,34 +122,13 @@ impl<
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, :: prost :: Message)]
 pub struct PermanentLockedAccount<
-    A: Clone
-        + PartialEq
-        + Default
-        + Send
-        + Sync
-        + prost::Message
-        + serde::Serialize
-        + serde::de::DeserializeOwned
-        + prost::Name,
+    A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name,
 > {
     #[prost(message, optional, tag = "1")]
-    #[serde(
-        serialize_with = "crate::any::option::generic_serialize",
-        deserialize_with = "crate::any::option::generic_deserialize"
-    )]
     pub base_vesting_account: ::core::option::Option<BaseVestingAccount<A>>,
 }
-impl<
-        A: Clone
-            + PartialEq
-            + Default
-            + Send
-            + Sync
-            + prost::Message
-            + serde::Serialize
-            + serde::de::DeserializeOwned
-            + prost::Name,
-    > ::prost::Name for PermanentLockedAccount<A>
+impl<A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name> ::prost::Name
+    for PermanentLockedAccount<A>
 {
     const NAME: &'static str = "PermanentLockedAccount";
     const PACKAGE: &'static str = "cosmos.vesting.v1beta1";
@@ -272,10 +147,6 @@ pub struct MsgCreateVestingAccount {
     #[prost(string, tag = "2")]
     pub to_address: ::prost::alloc::string::String,
     #[prost(message, repeated, tag = "3")]
-    #[serde(
-        serialize_with = "crate::any::vec::generic_serialize",
-        deserialize_with = "crate::any::vec::generic_deserialize"
-    )]
     pub amount: ::prost::alloc::vec::Vec<super::super::base::v1beta1::Coin>,
     #[doc = " end of vesting as unix time (in seconds)."]
     #[prost(int64, tag = "4")]
@@ -315,10 +186,6 @@ pub struct MsgCreatePermanentLockedAccount {
     #[prost(string, tag = "2")]
     pub to_address: ::prost::alloc::string::String,
     #[prost(message, repeated, tag = "3")]
-    #[serde(
-        serialize_with = "crate::any::vec::generic_serialize",
-        deserialize_with = "crate::any::vec::generic_deserialize"
-    )]
     pub amount: ::prost::alloc::vec::Vec<super::super::base::v1beta1::Coin>,
 }
 impl ::prost::Name for MsgCreatePermanentLockedAccount {
@@ -358,10 +225,6 @@ pub struct MsgCreatePeriodicVestingAccount {
     #[prost(int64, tag = "3")]
     pub start_time: i64,
     #[prost(message, repeated, tag = "4")]
-    #[serde(
-        serialize_with = "crate::any::vec::generic_serialize",
-        deserialize_with = "crate::any::vec::generic_deserialize"
-    )]
     pub vesting_periods: ::prost::alloc::vec::Vec<Period>,
 }
 impl ::prost::Name for MsgCreatePeriodicVestingAccount {

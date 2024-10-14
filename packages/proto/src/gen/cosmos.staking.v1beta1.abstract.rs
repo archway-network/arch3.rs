@@ -8,10 +8,6 @@ pub struct StakeAuthorization {
     #[doc = " max_tokens specifies the maximum amount of tokens can be delegate to a validator. If it is"]
     #[doc = " empty, there is no spend limit and any amount of coins can be delegated."]
     #[prost(message, optional, tag = "1")]
-    #[serde(
-        serialize_with = "crate::any::option::generic_serialize",
-        deserialize_with = "crate::any::option::generic_deserialize"
-    )]
     pub max_tokens: ::core::option::Option<super::super::base::v1beta1::Coin>,
     #[doc = " authorization_type defines one of AuthorizationType."]
     #[prost(enumeration = "AuthorizationType", tag = "4")]
@@ -117,40 +113,15 @@ impl AuthorizationType {
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, :: prost :: Message)]
 pub struct HistoricalInfo<
-    A: Clone
-        + PartialEq
-        + Default
-        + Send
-        + Sync
-        + prost::Message
-        + serde::Serialize
-        + serde::de::DeserializeOwned
-        + prost::Name,
+    A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name,
 > {
     #[prost(message, optional, tag = "1")]
-    #[serde(
-        serialize_with = "crate::any::option::generic_serialize",
-        deserialize_with = "crate::any::option::generic_deserialize"
-    )]
     pub header: ::core::option::Option<::tendermint_proto::v0_37::types::Header>,
     #[prost(message, repeated, tag = "2")]
-    #[serde(
-        serialize_with = "crate::any::vec::generic_serialize",
-        deserialize_with = "crate::any::vec::generic_deserialize"
-    )]
     pub valset: ::prost::alloc::vec::Vec<Validator<A>>,
 }
-impl<
-        A: Clone
-            + PartialEq
-            + Default
-            + Send
-            + Sync
-            + prost::Message
-            + serde::Serialize
-            + serde::de::DeserializeOwned
-            + prost::Name,
-    > ::prost::Name for HistoricalInfo<A>
+impl<A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name> ::prost::Name
+    for HistoricalInfo<A>
 {
     const NAME: &'static str = "HistoricalInfo";
     const PACKAGE: &'static str = "cosmos.staking.v1beta1";
@@ -188,10 +159,6 @@ impl ::prost::Name for CommissionRates {
 pub struct Commission {
     #[doc = " commission_rates defines the initial commission rates to be used for creating a validator."]
     #[prost(message, optional, tag = "1")]
-    #[serde(
-        serialize_with = "crate::any::option::generic_serialize",
-        deserialize_with = "crate::any::option::generic_deserialize"
-    )]
     pub commission_rates: ::core::option::Option<CommissionRates>,
     #[doc = " update_time is the last time the commission rate was changed."]
     #[prost(message, optional, tag = "2")]
@@ -243,27 +210,13 @@ impl ::prost::Name for Description {
 #[derive(:: serde :: Serialize, :: serde :: Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, :: prost :: Message)]
-pub struct Validator<
-    A: Clone
-        + PartialEq
-        + Default
-        + Send
-        + Sync
-        + prost::Message
-        + serde::Serialize
-        + serde::de::DeserializeOwned
-        + prost::Name,
-> {
+pub struct Validator<A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name> {
     #[doc = " operator_address defines the address of the validator's operator; bech encoded in JSON."]
     #[prost(string, tag = "1")]
     pub operator_address: ::prost::alloc::string::String,
     #[doc = " consensus_pubkey is the consensus public key of the validator, as a Protobuf Any."]
     #[prost(message, optional, tag = "2")]
-    #[serde(
-        serialize_with = "crate::any::option::serialize",
-        deserialize_with = "crate::any::option::deserialize"
-    )]
-    pub consensus_pubkey: ::core::option::Option<A>,
+    pub consensus_pubkey: ::core::option::Option<crate::any::Any<A>>,
     #[doc = " jailed defined whether the validator has been jailed from bonded status or not."]
     #[prost(bool, tag = "3")]
     pub jailed: bool,
@@ -278,10 +231,6 @@ pub struct Validator<
     pub delegator_shares: ::prost::alloc::string::String,
     #[doc = " description defines the description terms for the validator."]
     #[prost(message, optional, tag = "7")]
-    #[serde(
-        serialize_with = "crate::any::option::generic_serialize",
-        deserialize_with = "crate::any::option::generic_deserialize"
-    )]
     pub description: ::core::option::Option<Description>,
     #[doc = " unbonding_height defines, if unbonding, the height at which this validator has begun unbonding."]
     #[prost(int64, tag = "8")]
@@ -291,10 +240,6 @@ pub struct Validator<
     pub unbonding_time: ::core::option::Option<::pbjson_types::Timestamp>,
     #[doc = " commission defines the commission parameters."]
     #[prost(message, optional, tag = "10")]
-    #[serde(
-        serialize_with = "crate::any::option::generic_serialize",
-        deserialize_with = "crate::any::option::generic_deserialize"
-    )]
     pub commission: ::core::option::Option<Commission>,
     #[doc = " min_self_delegation is the validator's self declared minimum self delegation."]
     #[doc = ""]
@@ -308,17 +253,8 @@ pub struct Validator<
     #[prost(uint64, repeated, tag = "13")]
     pub unbonding_ids: ::prost::alloc::vec::Vec<u64>,
 }
-impl<
-        A: Clone
-            + PartialEq
-            + Default
-            + Send
-            + Sync
-            + prost::Message
-            + serde::Serialize
-            + serde::de::DeserializeOwned
-            + prost::Name,
-    > ::prost::Name for Validator<A>
+impl<A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name> ::prost::Name
+    for Validator<A>
 {
     const NAME: &'static str = "Validator";
     const PACKAGE: &'static str = "cosmos.staking.v1beta1";
@@ -366,10 +302,6 @@ impl ::prost::Name for DvPair {
 #[derive(Clone, PartialEq, :: prost :: Message)]
 pub struct DvPairs {
     #[prost(message, repeated, tag = "1")]
-    #[serde(
-        serialize_with = "crate::any::vec::generic_serialize",
-        deserialize_with = "crate::any::vec::generic_deserialize"
-    )]
     pub pairs: ::prost::alloc::vec::Vec<DvPair>,
 }
 impl ::prost::Name for DvPairs {
@@ -407,10 +339,6 @@ impl ::prost::Name for DvvTriplet {
 #[derive(Clone, PartialEq, :: prost :: Message)]
 pub struct DvvTriplets {
     #[prost(message, repeated, tag = "1")]
-    #[serde(
-        serialize_with = "crate::any::vec::generic_serialize",
-        deserialize_with = "crate::any::vec::generic_deserialize"
-    )]
     pub triplets: ::prost::alloc::vec::Vec<DvvTriplet>,
 }
 impl ::prost::Name for DvvTriplets {
@@ -460,10 +388,6 @@ pub struct UnbondingDelegation {
     #[doc = ""]
     #[doc = " unbonding delegation entries"]
     #[prost(message, repeated, tag = "3")]
-    #[serde(
-        serialize_with = "crate::any::vec::generic_serialize",
-        deserialize_with = "crate::any::vec::generic_deserialize"
-    )]
     pub entries: ::prost::alloc::vec::Vec<UnbondingDelegationEntry>,
 }
 impl ::prost::Name for UnbondingDelegation {
@@ -554,10 +478,6 @@ pub struct Redelegation {
     #[doc = ""]
     #[doc = " redelegation entries"]
     #[prost(message, repeated, tag = "4")]
-    #[serde(
-        serialize_with = "crate::any::vec::generic_serialize",
-        deserialize_with = "crate::any::vec::generic_deserialize"
-    )]
     pub entries: ::prost::alloc::vec::Vec<RedelegationEntry>,
 }
 impl ::prost::Name for Redelegation {
@@ -605,16 +525,8 @@ impl ::prost::Name for Params {
 #[derive(Clone, PartialEq, :: prost :: Message)]
 pub struct DelegationResponse {
     #[prost(message, optional, tag = "1")]
-    #[serde(
-        serialize_with = "crate::any::option::generic_serialize",
-        deserialize_with = "crate::any::option::generic_deserialize"
-    )]
     pub delegation: ::core::option::Option<Delegation>,
     #[prost(message, optional, tag = "2")]
-    #[serde(
-        serialize_with = "crate::any::option::generic_serialize",
-        deserialize_with = "crate::any::option::generic_deserialize"
-    )]
     pub balance: ::core::option::Option<super::super::base::v1beta1::Coin>,
 }
 impl ::prost::Name for DelegationResponse {
@@ -632,10 +544,6 @@ impl ::prost::Name for DelegationResponse {
 #[derive(Clone, PartialEq, :: prost :: Message)]
 pub struct RedelegationEntryResponse {
     #[prost(message, optional, tag = "1")]
-    #[serde(
-        serialize_with = "crate::any::option::generic_serialize",
-        deserialize_with = "crate::any::option::generic_deserialize"
-    )]
     pub redelegation_entry: ::core::option::Option<RedelegationEntry>,
     #[prost(string, tag = "4")]
     pub balance: ::prost::alloc::string::String,
@@ -655,16 +563,8 @@ impl ::prost::Name for RedelegationEntryResponse {
 #[derive(Clone, PartialEq, :: prost :: Message)]
 pub struct RedelegationResponse {
     #[prost(message, optional, tag = "1")]
-    #[serde(
-        serialize_with = "crate::any::option::generic_serialize",
-        deserialize_with = "crate::any::option::generic_deserialize"
-    )]
     pub redelegation: ::core::option::Option<Redelegation>,
     #[prost(message, repeated, tag = "2")]
-    #[serde(
-        serialize_with = "crate::any::vec::generic_serialize",
-        deserialize_with = "crate::any::vec::generic_deserialize"
-    )]
     pub entries: ::prost::alloc::vec::Vec<RedelegationEntryResponse>,
 }
 impl ::prost::Name for RedelegationResponse {
@@ -806,23 +706,10 @@ impl Infraction {
 #[derive(:: serde :: Serialize, :: serde :: Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, :: prost :: Message)]
-pub struct GenesisState<
-    A: Clone
-        + PartialEq
-        + Default
-        + Send
-        + Sync
-        + prost::Message
-        + serde::Serialize
-        + serde::de::DeserializeOwned
-        + prost::Name,
-> {
+pub struct GenesisState<A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name>
+{
     #[doc = " params defines all the parameters of related to deposit."]
     #[prost(message, optional, tag = "1")]
-    #[serde(
-        serialize_with = "crate::any::option::generic_serialize",
-        deserialize_with = "crate::any::option::generic_deserialize"
-    )]
     pub params: ::core::option::Option<Params>,
     #[doc = " last_total_power tracks the total amounts of bonded tokens recorded during"]
     #[doc = " the previous end block."]
@@ -831,53 +718,24 @@ pub struct GenesisState<
     #[doc = " last_validator_powers is a special index that provides a historical list"]
     #[doc = " of the last-block's bonded validators."]
     #[prost(message, repeated, tag = "3")]
-    #[serde(
-        serialize_with = "crate::any::vec::generic_serialize",
-        deserialize_with = "crate::any::vec::generic_deserialize"
-    )]
     pub last_validator_powers: ::prost::alloc::vec::Vec<LastValidatorPower>,
     #[doc = " delegations defines the validator set at genesis."]
     #[prost(message, repeated, tag = "4")]
-    #[serde(
-        serialize_with = "crate::any::vec::generic_serialize",
-        deserialize_with = "crate::any::vec::generic_deserialize"
-    )]
     pub validators: ::prost::alloc::vec::Vec<Validator<A>>,
     #[doc = " delegations defines the delegations active at genesis."]
     #[prost(message, repeated, tag = "5")]
-    #[serde(
-        serialize_with = "crate::any::vec::generic_serialize",
-        deserialize_with = "crate::any::vec::generic_deserialize"
-    )]
     pub delegations: ::prost::alloc::vec::Vec<Delegation>,
     #[doc = " unbonding_delegations defines the unbonding delegations active at genesis."]
     #[prost(message, repeated, tag = "6")]
-    #[serde(
-        serialize_with = "crate::any::vec::generic_serialize",
-        deserialize_with = "crate::any::vec::generic_deserialize"
-    )]
     pub unbonding_delegations: ::prost::alloc::vec::Vec<UnbondingDelegation>,
     #[doc = " redelegations defines the redelegations active at genesis."]
     #[prost(message, repeated, tag = "7")]
-    #[serde(
-        serialize_with = "crate::any::vec::generic_serialize",
-        deserialize_with = "crate::any::vec::generic_deserialize"
-    )]
     pub redelegations: ::prost::alloc::vec::Vec<Redelegation>,
     #[prost(bool, tag = "8")]
     pub exported: bool,
 }
-impl<
-        A: Clone
-            + PartialEq
-            + Default
-            + Send
-            + Sync
-            + prost::Message
-            + serde::Serialize
-            + serde::de::DeserializeOwned
-            + prost::Name,
-    > ::prost::Name for GenesisState<A>
+impl<A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name> ::prost::Name
+    for GenesisState<A>
 {
     const NAME: &'static str = "GenesisState";
     const PACKAGE: &'static str = "cosmos.staking.v1beta1";
@@ -914,10 +772,6 @@ pub struct QueryValidatorsRequest {
     pub status: ::prost::alloc::string::String,
     #[doc = " pagination defines an optional pagination for the request."]
     #[prost(message, optional, tag = "2")]
-    #[serde(
-        serialize_with = "crate::any::option::generic_serialize",
-        deserialize_with = "crate::any::option::generic_deserialize"
-    )]
     pub pagination: ::core::option::Option<super::super::base::query::v1beta1::PageRequest>,
 }
 impl ::prost::Name for QueryValidatorsRequest {
@@ -932,42 +786,17 @@ impl ::prost::Name for QueryValidatorsRequest {
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, :: prost :: Message)]
 pub struct QueryValidatorsResponse<
-    A: Clone
-        + PartialEq
-        + Default
-        + Send
-        + Sync
-        + prost::Message
-        + serde::Serialize
-        + serde::de::DeserializeOwned
-        + prost::Name,
+    A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name,
 > {
     #[doc = " validators contains all the queried validators."]
     #[prost(message, repeated, tag = "1")]
-    #[serde(
-        serialize_with = "crate::any::vec::generic_serialize",
-        deserialize_with = "crate::any::vec::generic_deserialize"
-    )]
     pub validators: ::prost::alloc::vec::Vec<Validator<A>>,
     #[doc = " pagination defines the pagination in the response."]
     #[prost(message, optional, tag = "2")]
-    #[serde(
-        serialize_with = "crate::any::option::generic_serialize",
-        deserialize_with = "crate::any::option::generic_deserialize"
-    )]
     pub pagination: ::core::option::Option<super::super::base::query::v1beta1::PageResponse>,
 }
-impl<
-        A: Clone
-            + PartialEq
-            + Default
-            + Send
-            + Sync
-            + prost::Message
-            + serde::Serialize
-            + serde::de::DeserializeOwned
-            + prost::Name,
-    > ::prost::Name for QueryValidatorsResponse<A>
+impl<A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name> ::prost::Name
+    for QueryValidatorsResponse<A>
 {
     const NAME: &'static str = "QueryValidatorsResponse";
     const PACKAGE: &'static str = "cosmos.staking.v1beta1";
@@ -996,35 +825,14 @@ impl ::prost::Name for QueryValidatorRequest {
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, :: prost :: Message)]
 pub struct QueryValidatorResponse<
-    A: Clone
-        + PartialEq
-        + Default
-        + Send
-        + Sync
-        + prost::Message
-        + serde::Serialize
-        + serde::de::DeserializeOwned
-        + prost::Name,
+    A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name,
 > {
     #[doc = " validator defines the validator info."]
     #[prost(message, optional, tag = "1")]
-    #[serde(
-        serialize_with = "crate::any::option::generic_serialize",
-        deserialize_with = "crate::any::option::generic_deserialize"
-    )]
     pub validator: ::core::option::Option<Validator<A>>,
 }
-impl<
-        A: Clone
-            + PartialEq
-            + Default
-            + Send
-            + Sync
-            + prost::Message
-            + serde::Serialize
-            + serde::de::DeserializeOwned
-            + prost::Name,
-    > ::prost::Name for QueryValidatorResponse<A>
+impl<A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name> ::prost::Name
+    for QueryValidatorResponse<A>
 {
     const NAME: &'static str = "QueryValidatorResponse";
     const PACKAGE: &'static str = "cosmos.staking.v1beta1";
@@ -1043,10 +851,6 @@ pub struct QueryValidatorDelegationsRequest {
     pub validator_addr: ::prost::alloc::string::String,
     #[doc = " pagination defines an optional pagination for the request."]
     #[prost(message, optional, tag = "2")]
-    #[serde(
-        serialize_with = "crate::any::option::generic_serialize",
-        deserialize_with = "crate::any::option::generic_deserialize"
-    )]
     pub pagination: ::core::option::Option<super::super::base::query::v1beta1::PageRequest>,
 }
 impl ::prost::Name for QueryValidatorDelegationsRequest {
@@ -1063,17 +867,9 @@ impl ::prost::Name for QueryValidatorDelegationsRequest {
 #[derive(Clone, PartialEq, :: prost :: Message)]
 pub struct QueryValidatorDelegationsResponse {
     #[prost(message, repeated, tag = "1")]
-    #[serde(
-        serialize_with = "crate::any::vec::generic_serialize",
-        deserialize_with = "crate::any::vec::generic_deserialize"
-    )]
     pub delegation_responses: ::prost::alloc::vec::Vec<DelegationResponse>,
     #[doc = " pagination defines the pagination in the response."]
     #[prost(message, optional, tag = "2")]
-    #[serde(
-        serialize_with = "crate::any::option::generic_serialize",
-        deserialize_with = "crate::any::option::generic_deserialize"
-    )]
     pub pagination: ::core::option::Option<super::super::base::query::v1beta1::PageResponse>,
 }
 impl ::prost::Name for QueryValidatorDelegationsResponse {
@@ -1094,10 +890,6 @@ pub struct QueryValidatorUnbondingDelegationsRequest {
     pub validator_addr: ::prost::alloc::string::String,
     #[doc = " pagination defines an optional pagination for the request."]
     #[prost(message, optional, tag = "2")]
-    #[serde(
-        serialize_with = "crate::any::option::generic_serialize",
-        deserialize_with = "crate::any::option::generic_deserialize"
-    )]
     pub pagination: ::core::option::Option<super::super::base::query::v1beta1::PageRequest>,
 }
 impl ::prost::Name for QueryValidatorUnbondingDelegationsRequest {
@@ -1114,17 +906,9 @@ impl ::prost::Name for QueryValidatorUnbondingDelegationsRequest {
 #[derive(Clone, PartialEq, :: prost :: Message)]
 pub struct QueryValidatorUnbondingDelegationsResponse {
     #[prost(message, repeated, tag = "1")]
-    #[serde(
-        serialize_with = "crate::any::vec::generic_serialize",
-        deserialize_with = "crate::any::vec::generic_deserialize"
-    )]
     pub unbonding_responses: ::prost::alloc::vec::Vec<UnbondingDelegation>,
     #[doc = " pagination defines the pagination in the response."]
     #[prost(message, optional, tag = "2")]
-    #[serde(
-        serialize_with = "crate::any::option::generic_serialize",
-        deserialize_with = "crate::any::option::generic_deserialize"
-    )]
     pub pagination: ::core::option::Option<super::super::base::query::v1beta1::PageResponse>,
 }
 impl ::prost::Name for QueryValidatorUnbondingDelegationsResponse {
@@ -1160,10 +944,6 @@ impl ::prost::Name for QueryDelegationRequest {
 pub struct QueryDelegationResponse {
     #[doc = " delegation_responses defines the delegation info of a delegation."]
     #[prost(message, optional, tag = "1")]
-    #[serde(
-        serialize_with = "crate::any::option::generic_serialize",
-        deserialize_with = "crate::any::option::generic_deserialize"
-    )]
     pub delegation_response: ::core::option::Option<DelegationResponse>,
 }
 impl ::prost::Name for QueryDelegationResponse {
@@ -1201,10 +981,6 @@ impl ::prost::Name for QueryUnbondingDelegationRequest {
 pub struct QueryUnbondingDelegationResponse {
     #[doc = " unbond defines the unbonding information of a delegation."]
     #[prost(message, optional, tag = "1")]
-    #[serde(
-        serialize_with = "crate::any::option::generic_serialize",
-        deserialize_with = "crate::any::option::generic_deserialize"
-    )]
     pub unbond: ::core::option::Option<UnbondingDelegation>,
 }
 impl ::prost::Name for QueryUnbondingDelegationResponse {
@@ -1225,10 +1001,6 @@ pub struct QueryDelegatorDelegationsRequest {
     pub delegator_addr: ::prost::alloc::string::String,
     #[doc = " pagination defines an optional pagination for the request."]
     #[prost(message, optional, tag = "2")]
-    #[serde(
-        serialize_with = "crate::any::option::generic_serialize",
-        deserialize_with = "crate::any::option::generic_deserialize"
-    )]
     pub pagination: ::core::option::Option<super::super::base::query::v1beta1::PageRequest>,
 }
 impl ::prost::Name for QueryDelegatorDelegationsRequest {
@@ -1246,17 +1018,9 @@ impl ::prost::Name for QueryDelegatorDelegationsRequest {
 pub struct QueryDelegatorDelegationsResponse {
     #[doc = " delegation_responses defines all the delegations' info of a delegator."]
     #[prost(message, repeated, tag = "1")]
-    #[serde(
-        serialize_with = "crate::any::vec::generic_serialize",
-        deserialize_with = "crate::any::vec::generic_deserialize"
-    )]
     pub delegation_responses: ::prost::alloc::vec::Vec<DelegationResponse>,
     #[doc = " pagination defines the pagination in the response."]
     #[prost(message, optional, tag = "2")]
-    #[serde(
-        serialize_with = "crate::any::option::generic_serialize",
-        deserialize_with = "crate::any::option::generic_deserialize"
-    )]
     pub pagination: ::core::option::Option<super::super::base::query::v1beta1::PageResponse>,
 }
 impl ::prost::Name for QueryDelegatorDelegationsResponse {
@@ -1277,10 +1041,6 @@ pub struct QueryDelegatorUnbondingDelegationsRequest {
     pub delegator_addr: ::prost::alloc::string::String,
     #[doc = " pagination defines an optional pagination for the request."]
     #[prost(message, optional, tag = "2")]
-    #[serde(
-        serialize_with = "crate::any::option::generic_serialize",
-        deserialize_with = "crate::any::option::generic_deserialize"
-    )]
     pub pagination: ::core::option::Option<super::super::base::query::v1beta1::PageRequest>,
 }
 impl ::prost::Name for QueryDelegatorUnbondingDelegationsRequest {
@@ -1297,17 +1057,9 @@ impl ::prost::Name for QueryDelegatorUnbondingDelegationsRequest {
 #[derive(Clone, PartialEq, :: prost :: Message)]
 pub struct QueryDelegatorUnbondingDelegationsResponse {
     #[prost(message, repeated, tag = "1")]
-    #[serde(
-        serialize_with = "crate::any::vec::generic_serialize",
-        deserialize_with = "crate::any::vec::generic_deserialize"
-    )]
     pub unbonding_responses: ::prost::alloc::vec::Vec<UnbondingDelegation>,
     #[doc = " pagination defines the pagination in the response."]
     #[prost(message, optional, tag = "2")]
-    #[serde(
-        serialize_with = "crate::any::option::generic_serialize",
-        deserialize_with = "crate::any::option::generic_deserialize"
-    )]
     pub pagination: ::core::option::Option<super::super::base::query::v1beta1::PageResponse>,
 }
 impl ::prost::Name for QueryDelegatorUnbondingDelegationsResponse {
@@ -1334,10 +1086,6 @@ pub struct QueryRedelegationsRequest {
     pub dst_validator_addr: ::prost::alloc::string::String,
     #[doc = " pagination defines an optional pagination for the request."]
     #[prost(message, optional, tag = "4")]
-    #[serde(
-        serialize_with = "crate::any::option::generic_serialize",
-        deserialize_with = "crate::any::option::generic_deserialize"
-    )]
     pub pagination: ::core::option::Option<super::super::base::query::v1beta1::PageRequest>,
 }
 impl ::prost::Name for QueryRedelegationsRequest {
@@ -1354,17 +1102,9 @@ impl ::prost::Name for QueryRedelegationsRequest {
 #[derive(Clone, PartialEq, :: prost :: Message)]
 pub struct QueryRedelegationsResponse {
     #[prost(message, repeated, tag = "1")]
-    #[serde(
-        serialize_with = "crate::any::vec::generic_serialize",
-        deserialize_with = "crate::any::vec::generic_deserialize"
-    )]
     pub redelegation_responses: ::prost::alloc::vec::Vec<RedelegationResponse>,
     #[doc = " pagination defines the pagination in the response."]
     #[prost(message, optional, tag = "2")]
-    #[serde(
-        serialize_with = "crate::any::option::generic_serialize",
-        deserialize_with = "crate::any::option::generic_deserialize"
-    )]
     pub pagination: ::core::option::Option<super::super::base::query::v1beta1::PageResponse>,
 }
 impl ::prost::Name for QueryRedelegationsResponse {
@@ -1385,10 +1125,6 @@ pub struct QueryDelegatorValidatorsRequest {
     pub delegator_addr: ::prost::alloc::string::String,
     #[doc = " pagination defines an optional pagination for the request."]
     #[prost(message, optional, tag = "2")]
-    #[serde(
-        serialize_with = "crate::any::option::generic_serialize",
-        deserialize_with = "crate::any::option::generic_deserialize"
-    )]
     pub pagination: ::core::option::Option<super::super::base::query::v1beta1::PageRequest>,
 }
 impl ::prost::Name for QueryDelegatorValidatorsRequest {
@@ -1404,42 +1140,17 @@ impl ::prost::Name for QueryDelegatorValidatorsRequest {
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, :: prost :: Message)]
 pub struct QueryDelegatorValidatorsResponse<
-    A: Clone
-        + PartialEq
-        + Default
-        + Send
-        + Sync
-        + prost::Message
-        + serde::Serialize
-        + serde::de::DeserializeOwned
-        + prost::Name,
+    A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name,
 > {
     #[doc = " validators defines the validators' info of a delegator."]
     #[prost(message, repeated, tag = "1")]
-    #[serde(
-        serialize_with = "crate::any::vec::generic_serialize",
-        deserialize_with = "crate::any::vec::generic_deserialize"
-    )]
     pub validators: ::prost::alloc::vec::Vec<Validator<A>>,
     #[doc = " pagination defines the pagination in the response."]
     #[prost(message, optional, tag = "2")]
-    #[serde(
-        serialize_with = "crate::any::option::generic_serialize",
-        deserialize_with = "crate::any::option::generic_deserialize"
-    )]
     pub pagination: ::core::option::Option<super::super::base::query::v1beta1::PageResponse>,
 }
-impl<
-        A: Clone
-            + PartialEq
-            + Default
-            + Send
-            + Sync
-            + prost::Message
-            + serde::Serialize
-            + serde::de::DeserializeOwned
-            + prost::Name,
-    > ::prost::Name for QueryDelegatorValidatorsResponse<A>
+impl<A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name> ::prost::Name
+    for QueryDelegatorValidatorsResponse<A>
 {
     const NAME: &'static str = "QueryDelegatorValidatorsResponse";
     const PACKAGE: &'static str = "cosmos.staking.v1beta1";
@@ -1473,35 +1184,14 @@ impl ::prost::Name for QueryDelegatorValidatorRequest {
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, :: prost :: Message)]
 pub struct QueryDelegatorValidatorResponse<
-    A: Clone
-        + PartialEq
-        + Default
-        + Send
-        + Sync
-        + prost::Message
-        + serde::Serialize
-        + serde::de::DeserializeOwned
-        + prost::Name,
+    A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name,
 > {
     #[doc = " validator defines the validator info."]
     #[prost(message, optional, tag = "1")]
-    #[serde(
-        serialize_with = "crate::any::option::generic_serialize",
-        deserialize_with = "crate::any::option::generic_deserialize"
-    )]
     pub validator: ::core::option::Option<Validator<A>>,
 }
-impl<
-        A: Clone
-            + PartialEq
-            + Default
-            + Send
-            + Sync
-            + prost::Message
-            + serde::Serialize
-            + serde::de::DeserializeOwned
-            + prost::Name,
-    > ::prost::Name for QueryDelegatorValidatorResponse<A>
+impl<A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name> ::prost::Name
+    for QueryDelegatorValidatorResponse<A>
 {
     const NAME: &'static str = "QueryDelegatorValidatorResponse";
     const PACKAGE: &'static str = "cosmos.staking.v1beta1";
@@ -1532,35 +1222,14 @@ impl ::prost::Name for QueryHistoricalInfoRequest {
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, :: prost :: Message)]
 pub struct QueryHistoricalInfoResponse<
-    A: Clone
-        + PartialEq
-        + Default
-        + Send
-        + Sync
-        + prost::Message
-        + serde::Serialize
-        + serde::de::DeserializeOwned
-        + prost::Name,
+    A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name,
 > {
     #[doc = " hist defines the historical info at the given height."]
     #[prost(message, optional, tag = "1")]
-    #[serde(
-        serialize_with = "crate::any::option::generic_serialize",
-        deserialize_with = "crate::any::option::generic_deserialize"
-    )]
     pub hist: ::core::option::Option<HistoricalInfo<A>>,
 }
-impl<
-        A: Clone
-            + PartialEq
-            + Default
-            + Send
-            + Sync
-            + prost::Message
-            + serde::Serialize
-            + serde::de::DeserializeOwned
-            + prost::Name,
-    > ::prost::Name for QueryHistoricalInfoResponse<A>
+impl<A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name> ::prost::Name
+    for QueryHistoricalInfoResponse<A>
 {
     const NAME: &'static str = "QueryHistoricalInfoResponse";
     const PACKAGE: &'static str = "cosmos.staking.v1beta1";
@@ -1587,10 +1256,6 @@ impl ::prost::Name for QueryPoolRequest {
 pub struct QueryPoolResponse {
     #[doc = " pool defines the pool info."]
     #[prost(message, optional, tag = "1")]
-    #[serde(
-        serialize_with = "crate::any::option::generic_serialize",
-        deserialize_with = "crate::any::option::generic_deserialize"
-    )]
     pub pool: ::core::option::Option<Pool>,
 }
 impl ::prost::Name for QueryPoolResponse {
@@ -1619,10 +1284,6 @@ impl ::prost::Name for QueryParamsRequest {
 pub struct QueryParamsResponse {
     #[doc = " params holds all the parameters of this module."]
     #[prost(message, optional, tag = "1")]
-    #[serde(
-        serialize_with = "crate::any::option::generic_serialize",
-        deserialize_with = "crate::any::option::generic_deserialize"
-    )]
     pub params: ::core::option::Option<Params>,
 }
 impl ::prost::Name for QueryParamsResponse {
@@ -1637,27 +1298,11 @@ impl ::prost::Name for QueryParamsResponse {
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, :: prost :: Message)]
 pub struct MsgCreateValidator<
-    A: Clone
-        + PartialEq
-        + Default
-        + Send
-        + Sync
-        + prost::Message
-        + serde::Serialize
-        + serde::de::DeserializeOwned
-        + prost::Name,
+    A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name,
 > {
     #[prost(message, optional, tag = "1")]
-    #[serde(
-        serialize_with = "crate::any::option::generic_serialize",
-        deserialize_with = "crate::any::option::generic_deserialize"
-    )]
     pub description: ::core::option::Option<Description>,
     #[prost(message, optional, tag = "2")]
-    #[serde(
-        serialize_with = "crate::any::option::generic_serialize",
-        deserialize_with = "crate::any::option::generic_deserialize"
-    )]
     pub commission: ::core::option::Option<CommissionRates>,
     #[prost(string, tag = "3")]
     pub min_self_delegation: ::prost::alloc::string::String,
@@ -1666,29 +1311,12 @@ pub struct MsgCreateValidator<
     #[prost(string, tag = "5")]
     pub validator_address: ::prost::alloc::string::String,
     #[prost(message, optional, tag = "6")]
-    #[serde(
-        serialize_with = "crate::any::option::serialize",
-        deserialize_with = "crate::any::option::deserialize"
-    )]
-    pub pubkey: ::core::option::Option<A>,
+    pub pubkey: ::core::option::Option<crate::any::Any<A>>,
     #[prost(message, optional, tag = "7")]
-    #[serde(
-        serialize_with = "crate::any::option::generic_serialize",
-        deserialize_with = "crate::any::option::generic_deserialize"
-    )]
     pub value: ::core::option::Option<super::super::base::v1beta1::Coin>,
 }
-impl<
-        A: Clone
-            + PartialEq
-            + Default
-            + Send
-            + Sync
-            + prost::Message
-            + serde::Serialize
-            + serde::de::DeserializeOwned
-            + prost::Name,
-    > ::prost::Name for MsgCreateValidator<A>
+impl<A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name> ::prost::Name
+    for MsgCreateValidator<A>
 {
     const NAME: &'static str = "MsgCreateValidator";
     const PACKAGE: &'static str = "cosmos.staking.v1beta1";
@@ -1714,10 +1342,6 @@ impl ::prost::Name for MsgCreateValidatorResponse {
 #[derive(Clone, PartialEq, :: prost :: Message)]
 pub struct MsgEditValidator {
     #[prost(message, optional, tag = "1")]
-    #[serde(
-        serialize_with = "crate::any::option::generic_serialize",
-        deserialize_with = "crate::any::option::generic_deserialize"
-    )]
     pub description: ::core::option::Option<Description>,
     #[prost(string, tag = "2")]
     pub validator_address: ::prost::alloc::string::String,
@@ -1760,10 +1384,6 @@ pub struct MsgDelegate {
     #[prost(string, tag = "2")]
     pub validator_address: ::prost::alloc::string::String,
     #[prost(message, optional, tag = "3")]
-    #[serde(
-        serialize_with = "crate::any::option::generic_serialize",
-        deserialize_with = "crate::any::option::generic_deserialize"
-    )]
     pub amount: ::core::option::Option<super::super::base::v1beta1::Coin>,
 }
 impl ::prost::Name for MsgDelegate {
@@ -1798,10 +1418,6 @@ pub struct MsgBeginRedelegate {
     #[prost(string, tag = "3")]
     pub validator_dst_address: ::prost::alloc::string::String,
     #[prost(message, optional, tag = "4")]
-    #[serde(
-        serialize_with = "crate::any::option::generic_serialize",
-        deserialize_with = "crate::any::option::generic_deserialize"
-    )]
     pub amount: ::core::option::Option<super::super::base::v1beta1::Coin>,
 }
 impl ::prost::Name for MsgBeginRedelegate {
@@ -1837,10 +1453,6 @@ pub struct MsgUndelegate {
     #[prost(string, tag = "2")]
     pub validator_address: ::prost::alloc::string::String,
     #[prost(message, optional, tag = "3")]
-    #[serde(
-        serialize_with = "crate::any::option::generic_serialize",
-        deserialize_with = "crate::any::option::generic_deserialize"
-    )]
     pub amount: ::core::option::Option<super::super::base::v1beta1::Coin>,
 }
 impl ::prost::Name for MsgUndelegate {
@@ -1878,10 +1490,6 @@ pub struct MsgCancelUnbondingDelegation {
     pub validator_address: ::prost::alloc::string::String,
     #[doc = " amount is always less than or equal to unbonding delegation entry balance"]
     #[prost(message, optional, tag = "3")]
-    #[serde(
-        serialize_with = "crate::any::option::generic_serialize",
-        deserialize_with = "crate::any::option::generic_deserialize"
-    )]
     pub amount: ::core::option::Option<super::super::base::v1beta1::Coin>,
     #[doc = " creation_height is the height which the unbonding took place."]
     #[prost(int64, tag = "4")]
@@ -1922,10 +1530,6 @@ pub struct MsgUpdateParams {
     #[doc = ""]
     #[doc = " NOTE: All parameters must be supplied."]
     #[prost(message, optional, tag = "2")]
-    #[serde(
-        serialize_with = "crate::any::option::generic_serialize",
-        deserialize_with = "crate::any::option::generic_deserialize"
-    )]
     pub params: ::core::option::Option<Params>,
 }
 impl ::prost::Name for MsgUpdateParams {

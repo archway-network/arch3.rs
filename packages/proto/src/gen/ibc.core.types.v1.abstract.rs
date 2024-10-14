@@ -3,31 +3,11 @@
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, :: prost :: Message)]
 pub struct GenesisState<
-    A: Clone
-        + PartialEq
-        + Default
-        + Send
-        + Sync
-        + prost::Message
-        + serde::Serialize
-        + serde::de::DeserializeOwned
-        + prost::Name,
-    BB: Clone
-        + PartialEq
-        + Default
-        + Send
-        + Sync
-        + prost::Message
-        + serde::Serialize
-        + serde::de::DeserializeOwned
-        + prost::Name,
+    A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name,
+    BB: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name,
 > {
     #[doc = " ICS002 - Clients genesis state"]
     #[prost(message, optional, tag = "1")]
-    #[serde(
-        serialize_with = "crate::any::option::generic_serialize",
-        deserialize_with = "crate::any::option::generic_deserialize"
-    )]
     pub client_genesis: ::core::option::Option<super::super::client::v1::GenesisState<A, BB>>,
     #[doc = " ICS003 - Connections genesis state"]
     #[prost(message, optional, tag = "2")]
@@ -37,24 +17,8 @@ pub struct GenesisState<
     pub channel_genesis: ::core::option::Option<super::super::channel::v1::GenesisState>,
 }
 impl<
-        A: Clone
-            + PartialEq
-            + Default
-            + Send
-            + Sync
-            + prost::Message
-            + serde::Serialize
-            + serde::de::DeserializeOwned
-            + prost::Name,
-        BB: Clone
-            + PartialEq
-            + Default
-            + Send
-            + Sync
-            + prost::Message
-            + serde::Serialize
-            + serde::de::DeserializeOwned
-            + prost::Name,
+        A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name,
+        BB: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name,
     > ::prost::Name for GenesisState<A, BB>
 {
     const NAME: &'static str = "GenesisState";

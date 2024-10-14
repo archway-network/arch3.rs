@@ -64,10 +64,6 @@ pub struct ThresholdDecisionPolicy {
     pub threshold: ::prost::alloc::string::String,
     #[doc = " windows defines the different windows for voting and execution."]
     #[prost(message, optional, tag = "2")]
-    #[serde(
-        serialize_with = "crate::any::option::generic_serialize",
-        deserialize_with = "crate::any::option::generic_deserialize"
-    )]
     pub windows: ::core::option::Option<DecisionPolicyWindows>,
 }
 impl ::prost::Name for ThresholdDecisionPolicy {
@@ -93,10 +89,6 @@ pub struct PercentageDecisionPolicy {
     pub percentage: ::prost::alloc::string::String,
     #[doc = " windows defines the different windows for voting and execution."]
     #[prost(message, optional, tag = "2")]
-    #[serde(
-        serialize_with = "crate::any::option::generic_serialize",
-        deserialize_with = "crate::any::option::generic_deserialize"
-    )]
     pub windows: ::core::option::Option<DecisionPolicyWindows>,
 }
 impl ::prost::Name for PercentageDecisionPolicy {
@@ -180,10 +172,6 @@ pub struct GroupMember {
     pub group_id: u64,
     #[doc = " member is the member data."]
     #[prost(message, optional, tag = "2")]
-    #[serde(
-        serialize_with = "crate::any::option::generic_serialize",
-        deserialize_with = "crate::any::option::generic_deserialize"
-    )]
     pub member: ::core::option::Option<Member>,
 }
 impl ::prost::Name for GroupMember {
@@ -198,15 +186,7 @@ impl ::prost::Name for GroupMember {
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, :: prost :: Message)]
 pub struct GroupPolicyInfo<
-    A: Clone
-        + PartialEq
-        + Default
-        + Send
-        + Sync
-        + prost::Message
-        + serde::Serialize
-        + serde::de::DeserializeOwned
-        + prost::Name,
+    A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name,
 > {
     #[doc = " address is the account address of group policy."]
     #[prost(string, tag = "1")]
@@ -228,26 +208,13 @@ pub struct GroupPolicyInfo<
     pub version: u64,
     #[doc = " decision_policy specifies the group policy's decision policy."]
     #[prost(message, optional, tag = "6")]
-    #[serde(
-        serialize_with = "crate::any::option::serialize",
-        deserialize_with = "crate::any::option::deserialize"
-    )]
-    pub decision_policy: ::core::option::Option<A>,
+    pub decision_policy: ::core::option::Option<crate::any::Any<A>>,
     #[doc = " created_at is a timestamp specifying when a group policy was created."]
     #[prost(message, optional, tag = "7")]
     pub created_at: ::core::option::Option<::pbjson_types::Timestamp>,
 }
-impl<
-        A: Clone
-            + PartialEq
-            + Default
-            + Send
-            + Sync
-            + prost::Message
-            + serde::Serialize
-            + serde::de::DeserializeOwned
-            + prost::Name,
-    > ::prost::Name for GroupPolicyInfo<A>
+impl<A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name> ::prost::Name
+    for GroupPolicyInfo<A>
 {
     const NAME: &'static str = "GroupPolicyInfo";
     const PACKAGE: &'static str = "cosmos.group.v1";
@@ -262,17 +229,7 @@ impl<
 #[derive(:: serde :: Serialize, :: serde :: Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, :: prost :: Message)]
-pub struct Proposal<
-    A: Clone
-        + PartialEq
-        + Default
-        + Send
-        + Sync
-        + prost::Message
-        + serde::Serialize
-        + serde::de::DeserializeOwned
-        + prost::Name,
-> {
+pub struct Proposal<A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name> {
     #[doc = " id is the unique id of the proposal."]
     #[prost(uint64, tag = "1")]
     pub id: u64,
@@ -308,10 +265,6 @@ pub struct Proposal<
     #[doc = " populated after tallying, at voting period end or at proposal execution,"]
     #[doc = " whichever happens first."]
     #[prost(message, optional, tag = "9")]
-    #[serde(
-        serialize_with = "crate::any::option::generic_serialize",
-        deserialize_with = "crate::any::option::generic_deserialize"
-    )]
     pub final_tally_result: ::core::option::Option<TallyResult>,
     #[doc = " voting_period_end is the timestamp before which voting must be done."]
     #[doc = " Unless a successful MsgExec is called before (to execute a proposal whose"]
@@ -325,11 +278,7 @@ pub struct Proposal<
     pub executor_result: i32,
     #[doc = " messages is a list of `sdk.Msg`s that will be executed if the proposal passes."]
     #[prost(message, repeated, tag = "12")]
-    #[serde(
-        serialize_with = "crate::any::vec::serialize",
-        deserialize_with = "crate::any::vec::deserialize"
-    )]
-    pub messages: ::prost::alloc::vec::Vec<A>,
+    pub messages: ::prost::alloc::vec::Vec<crate::any::Any<A>>,
     #[doc = " title is the title of the proposal"]
     #[doc = ""]
     #[doc = " Since: cosmos-sdk 0.47"]
@@ -341,17 +290,8 @@ pub struct Proposal<
     #[prost(string, tag = "14")]
     pub summary: ::prost::alloc::string::String,
 }
-impl<
-        A: Clone
-            + PartialEq
-            + Default
-            + Send
-            + Sync
-            + prost::Message
-            + serde::Serialize
-            + serde::de::DeserializeOwned
-            + prost::Name,
-    > ::prost::Name for Proposal<A>
+impl<A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name> ::prost::Name
+    for Proposal<A>
 {
     const NAME: &'static str = "Proposal";
     const PACKAGE: &'static str = "cosmos.group.v1";
@@ -742,10 +682,6 @@ pub struct EventProposalPruned {
     pub status: i32,
     #[doc = " tally_result is the proposal tally result (when applicable)."]
     #[prost(message, optional, tag = "3")]
-    #[serde(
-        serialize_with = "crate::any::option::generic_serialize",
-        deserialize_with = "crate::any::option::generic_deserialize"
-    )]
     pub tally_result: ::core::option::Option<TallyResult>,
 }
 impl ::prost::Name for EventProposalPruned {
@@ -760,24 +696,8 @@ impl ::prost::Name for EventProposalPruned {
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, :: prost :: Message)]
 pub struct GenesisState<
-    A: Clone
-        + PartialEq
-        + Default
-        + Send
-        + Sync
-        + prost::Message
-        + serde::Serialize
-        + serde::de::DeserializeOwned
-        + prost::Name,
-    BB: Clone
-        + PartialEq
-        + Default
-        + Send
-        + Sync
-        + prost::Message
-        + serde::Serialize
-        + serde::de::DeserializeOwned
-        + prost::Name,
+    A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name,
+    BB: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name,
 > {
     #[doc = " group_seq is the group table orm.Sequence,"]
     #[doc = " it is used to get the next group ID."]
@@ -785,17 +705,9 @@ pub struct GenesisState<
     pub group_seq: u64,
     #[doc = " groups is the list of groups info."]
     #[prost(message, repeated, tag = "2")]
-    #[serde(
-        serialize_with = "crate::any::vec::generic_serialize",
-        deserialize_with = "crate::any::vec::generic_deserialize"
-    )]
     pub groups: ::prost::alloc::vec::Vec<GroupInfo>,
     #[doc = " group_members is the list of groups members."]
     #[prost(message, repeated, tag = "3")]
-    #[serde(
-        serialize_with = "crate::any::vec::generic_serialize",
-        deserialize_with = "crate::any::vec::generic_deserialize"
-    )]
     pub group_members: ::prost::alloc::vec::Vec<GroupMember>,
     #[doc = " group_policy_seq is the group policy table orm.Sequence,"]
     #[doc = " it is used to generate the next group policy account address."]
@@ -803,10 +715,6 @@ pub struct GenesisState<
     pub group_policy_seq: u64,
     #[doc = " group_policies is the list of group policies info."]
     #[prost(message, repeated, tag = "5")]
-    #[serde(
-        serialize_with = "crate::any::vec::generic_serialize",
-        deserialize_with = "crate::any::vec::generic_deserialize"
-    )]
     pub group_policies: ::prost::alloc::vec::Vec<GroupPolicyInfo<A>>,
     #[doc = " proposal_seq is the proposal table orm.Sequence,"]
     #[doc = " it is used to get the next proposal ID."]
@@ -814,38 +722,14 @@ pub struct GenesisState<
     pub proposal_seq: u64,
     #[doc = " proposals is the list of proposals."]
     #[prost(message, repeated, tag = "7")]
-    #[serde(
-        serialize_with = "crate::any::vec::generic_serialize",
-        deserialize_with = "crate::any::vec::generic_deserialize"
-    )]
     pub proposals: ::prost::alloc::vec::Vec<Proposal<BB>>,
     #[doc = " votes is the list of votes."]
     #[prost(message, repeated, tag = "8")]
-    #[serde(
-        serialize_with = "crate::any::vec::generic_serialize",
-        deserialize_with = "crate::any::vec::generic_deserialize"
-    )]
     pub votes: ::prost::alloc::vec::Vec<Vote>,
 }
 impl<
-        A: Clone
-            + PartialEq
-            + Default
-            + Send
-            + Sync
-            + prost::Message
-            + serde::Serialize
-            + serde::de::DeserializeOwned
-            + prost::Name,
-        BB: Clone
-            + PartialEq
-            + Default
-            + Send
-            + Sync
-            + prost::Message
-            + serde::Serialize
-            + serde::de::DeserializeOwned
-            + prost::Name,
+        A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name,
+        BB: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name,
     > ::prost::Name for GenesisState<A, BB>
 {
     const NAME: &'static str = "GenesisState";
@@ -877,10 +761,6 @@ impl ::prost::Name for QueryGroupInfoRequest {
 pub struct QueryGroupInfoResponse {
     #[doc = " info is the GroupInfo of the group."]
     #[prost(message, optional, tag = "1")]
-    #[serde(
-        serialize_with = "crate::any::option::generic_serialize",
-        deserialize_with = "crate::any::option::generic_deserialize"
-    )]
     pub info: ::core::option::Option<GroupInfo>,
 }
 impl ::prost::Name for QueryGroupInfoResponse {
@@ -911,35 +791,14 @@ impl ::prost::Name for QueryGroupPolicyInfoRequest {
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, :: prost :: Message)]
 pub struct QueryGroupPolicyInfoResponse<
-    A: Clone
-        + PartialEq
-        + Default
-        + Send
-        + Sync
-        + prost::Message
-        + serde::Serialize
-        + serde::de::DeserializeOwned
-        + prost::Name,
+    A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name,
 > {
     #[doc = " info is the GroupPolicyInfo of the group policy."]
     #[prost(message, optional, tag = "1")]
-    #[serde(
-        serialize_with = "crate::any::option::generic_serialize",
-        deserialize_with = "crate::any::option::generic_deserialize"
-    )]
     pub info: ::core::option::Option<GroupPolicyInfo<A>>,
 }
-impl<
-        A: Clone
-            + PartialEq
-            + Default
-            + Send
-            + Sync
-            + prost::Message
-            + serde::Serialize
-            + serde::de::DeserializeOwned
-            + prost::Name,
-    > ::prost::Name for QueryGroupPolicyInfoResponse<A>
+impl<A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name> ::prost::Name
+    for QueryGroupPolicyInfoResponse<A>
 {
     const NAME: &'static str = "QueryGroupPolicyInfoResponse";
     const PACKAGE: &'static str = "cosmos.group.v1";
@@ -957,10 +816,6 @@ pub struct QueryGroupMembersRequest {
     pub group_id: u64,
     #[doc = " pagination defines an optional pagination for the request."]
     #[prost(message, optional, tag = "2")]
-    #[serde(
-        serialize_with = "crate::any::option::generic_serialize",
-        deserialize_with = "crate::any::option::generic_deserialize"
-    )]
     pub pagination: ::core::option::Option<super::super::base::query::v1beta1::PageRequest>,
 }
 impl ::prost::Name for QueryGroupMembersRequest {
@@ -977,17 +832,9 @@ impl ::prost::Name for QueryGroupMembersRequest {
 pub struct QueryGroupMembersResponse {
     #[doc = " members are the members of the group with given group_id."]
     #[prost(message, repeated, tag = "1")]
-    #[serde(
-        serialize_with = "crate::any::vec::generic_serialize",
-        deserialize_with = "crate::any::vec::generic_deserialize"
-    )]
     pub members: ::prost::alloc::vec::Vec<GroupMember>,
     #[doc = " pagination defines the pagination in the response."]
     #[prost(message, optional, tag = "2")]
-    #[serde(
-        serialize_with = "crate::any::option::generic_serialize",
-        deserialize_with = "crate::any::option::generic_deserialize"
-    )]
     pub pagination: ::core::option::Option<super::super::base::query::v1beta1::PageResponse>,
 }
 impl ::prost::Name for QueryGroupMembersResponse {
@@ -1007,10 +854,6 @@ pub struct QueryGroupsByAdminRequest {
     pub admin: ::prost::alloc::string::String,
     #[doc = " pagination defines an optional pagination for the request."]
     #[prost(message, optional, tag = "2")]
-    #[serde(
-        serialize_with = "crate::any::option::generic_serialize",
-        deserialize_with = "crate::any::option::generic_deserialize"
-    )]
     pub pagination: ::core::option::Option<super::super::base::query::v1beta1::PageRequest>,
 }
 impl ::prost::Name for QueryGroupsByAdminRequest {
@@ -1027,17 +870,9 @@ impl ::prost::Name for QueryGroupsByAdminRequest {
 pub struct QueryGroupsByAdminResponse {
     #[doc = " groups are the groups info with the provided admin."]
     #[prost(message, repeated, tag = "1")]
-    #[serde(
-        serialize_with = "crate::any::vec::generic_serialize",
-        deserialize_with = "crate::any::vec::generic_deserialize"
-    )]
     pub groups: ::prost::alloc::vec::Vec<GroupInfo>,
     #[doc = " pagination defines the pagination in the response."]
     #[prost(message, optional, tag = "2")]
-    #[serde(
-        serialize_with = "crate::any::option::generic_serialize",
-        deserialize_with = "crate::any::option::generic_deserialize"
-    )]
     pub pagination: ::core::option::Option<super::super::base::query::v1beta1::PageResponse>,
 }
 impl ::prost::Name for QueryGroupsByAdminResponse {
@@ -1057,10 +892,6 @@ pub struct QueryGroupPoliciesByGroupRequest {
     pub group_id: u64,
     #[doc = " pagination defines an optional pagination for the request."]
     #[prost(message, optional, tag = "2")]
-    #[serde(
-        serialize_with = "crate::any::option::generic_serialize",
-        deserialize_with = "crate::any::option::generic_deserialize"
-    )]
     pub pagination: ::core::option::Option<super::super::base::query::v1beta1::PageRequest>,
 }
 impl ::prost::Name for QueryGroupPoliciesByGroupRequest {
@@ -1075,42 +906,17 @@ impl ::prost::Name for QueryGroupPoliciesByGroupRequest {
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, :: prost :: Message)]
 pub struct QueryGroupPoliciesByGroupResponse<
-    A: Clone
-        + PartialEq
-        + Default
-        + Send
-        + Sync
-        + prost::Message
-        + serde::Serialize
-        + serde::de::DeserializeOwned
-        + prost::Name,
+    A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name,
 > {
     #[doc = " group_policies are the group policies info associated with the provided group."]
     #[prost(message, repeated, tag = "1")]
-    #[serde(
-        serialize_with = "crate::any::vec::generic_serialize",
-        deserialize_with = "crate::any::vec::generic_deserialize"
-    )]
     pub group_policies: ::prost::alloc::vec::Vec<GroupPolicyInfo<A>>,
     #[doc = " pagination defines the pagination in the response."]
     #[prost(message, optional, tag = "2")]
-    #[serde(
-        serialize_with = "crate::any::option::generic_serialize",
-        deserialize_with = "crate::any::option::generic_deserialize"
-    )]
     pub pagination: ::core::option::Option<super::super::base::query::v1beta1::PageResponse>,
 }
-impl<
-        A: Clone
-            + PartialEq
-            + Default
-            + Send
-            + Sync
-            + prost::Message
-            + serde::Serialize
-            + serde::de::DeserializeOwned
-            + prost::Name,
-    > ::prost::Name for QueryGroupPoliciesByGroupResponse<A>
+impl<A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name> ::prost::Name
+    for QueryGroupPoliciesByGroupResponse<A>
 {
     const NAME: &'static str = "QueryGroupPoliciesByGroupResponse";
     const PACKAGE: &'static str = "cosmos.group.v1";
@@ -1128,10 +934,6 @@ pub struct QueryGroupPoliciesByAdminRequest {
     pub admin: ::prost::alloc::string::String,
     #[doc = " pagination defines an optional pagination for the request."]
     #[prost(message, optional, tag = "2")]
-    #[serde(
-        serialize_with = "crate::any::option::generic_serialize",
-        deserialize_with = "crate::any::option::generic_deserialize"
-    )]
     pub pagination: ::core::option::Option<super::super::base::query::v1beta1::PageRequest>,
 }
 impl ::prost::Name for QueryGroupPoliciesByAdminRequest {
@@ -1146,42 +948,17 @@ impl ::prost::Name for QueryGroupPoliciesByAdminRequest {
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, :: prost :: Message)]
 pub struct QueryGroupPoliciesByAdminResponse<
-    A: Clone
-        + PartialEq
-        + Default
-        + Send
-        + Sync
-        + prost::Message
-        + serde::Serialize
-        + serde::de::DeserializeOwned
-        + prost::Name,
+    A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name,
 > {
     #[doc = " group_policies are the group policies info with provided admin."]
     #[prost(message, repeated, tag = "1")]
-    #[serde(
-        serialize_with = "crate::any::vec::generic_serialize",
-        deserialize_with = "crate::any::vec::generic_deserialize"
-    )]
     pub group_policies: ::prost::alloc::vec::Vec<GroupPolicyInfo<A>>,
     #[doc = " pagination defines the pagination in the response."]
     #[prost(message, optional, tag = "2")]
-    #[serde(
-        serialize_with = "crate::any::option::generic_serialize",
-        deserialize_with = "crate::any::option::generic_deserialize"
-    )]
     pub pagination: ::core::option::Option<super::super::base::query::v1beta1::PageResponse>,
 }
-impl<
-        A: Clone
-            + PartialEq
-            + Default
-            + Send
-            + Sync
-            + prost::Message
-            + serde::Serialize
-            + serde::de::DeserializeOwned
-            + prost::Name,
-    > ::prost::Name for QueryGroupPoliciesByAdminResponse<A>
+impl<A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name> ::prost::Name
+    for QueryGroupPoliciesByAdminResponse<A>
 {
     const NAME: &'static str = "QueryGroupPoliciesByAdminResponse";
     const PACKAGE: &'static str = "cosmos.group.v1";
@@ -1210,35 +987,14 @@ impl ::prost::Name for QueryProposalRequest {
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, :: prost :: Message)]
 pub struct QueryProposalResponse<
-    A: Clone
-        + PartialEq
-        + Default
-        + Send
-        + Sync
-        + prost::Message
-        + serde::Serialize
-        + serde::de::DeserializeOwned
-        + prost::Name,
+    A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name,
 > {
     #[doc = " proposal is the proposal info."]
     #[prost(message, optional, tag = "1")]
-    #[serde(
-        serialize_with = "crate::any::option::generic_serialize",
-        deserialize_with = "crate::any::option::generic_deserialize"
-    )]
     pub proposal: ::core::option::Option<Proposal<A>>,
 }
-impl<
-        A: Clone
-            + PartialEq
-            + Default
-            + Send
-            + Sync
-            + prost::Message
-            + serde::Serialize
-            + serde::de::DeserializeOwned
-            + prost::Name,
-    > ::prost::Name for QueryProposalResponse<A>
+impl<A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name> ::prost::Name
+    for QueryProposalResponse<A>
 {
     const NAME: &'static str = "QueryProposalResponse";
     const PACKAGE: &'static str = "cosmos.group.v1";
@@ -1256,10 +1012,6 @@ pub struct QueryProposalsByGroupPolicyRequest {
     pub address: ::prost::alloc::string::String,
     #[doc = " pagination defines an optional pagination for the request."]
     #[prost(message, optional, tag = "2")]
-    #[serde(
-        serialize_with = "crate::any::option::generic_serialize",
-        deserialize_with = "crate::any::option::generic_deserialize"
-    )]
     pub pagination: ::core::option::Option<super::super::base::query::v1beta1::PageRequest>,
 }
 impl ::prost::Name for QueryProposalsByGroupPolicyRequest {
@@ -1274,42 +1026,17 @@ impl ::prost::Name for QueryProposalsByGroupPolicyRequest {
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, :: prost :: Message)]
 pub struct QueryProposalsByGroupPolicyResponse<
-    A: Clone
-        + PartialEq
-        + Default
-        + Send
-        + Sync
-        + prost::Message
-        + serde::Serialize
-        + serde::de::DeserializeOwned
-        + prost::Name,
+    A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name,
 > {
     #[doc = " proposals are the proposals with given group policy."]
     #[prost(message, repeated, tag = "1")]
-    #[serde(
-        serialize_with = "crate::any::vec::generic_serialize",
-        deserialize_with = "crate::any::vec::generic_deserialize"
-    )]
     pub proposals: ::prost::alloc::vec::Vec<Proposal<A>>,
     #[doc = " pagination defines the pagination in the response."]
     #[prost(message, optional, tag = "2")]
-    #[serde(
-        serialize_with = "crate::any::option::generic_serialize",
-        deserialize_with = "crate::any::option::generic_deserialize"
-    )]
     pub pagination: ::core::option::Option<super::super::base::query::v1beta1::PageResponse>,
 }
-impl<
-        A: Clone
-            + PartialEq
-            + Default
-            + Send
-            + Sync
-            + prost::Message
-            + serde::Serialize
-            + serde::de::DeserializeOwned
-            + prost::Name,
-    > ::prost::Name for QueryProposalsByGroupPolicyResponse<A>
+impl<A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name> ::prost::Name
+    for QueryProposalsByGroupPolicyResponse<A>
 {
     const NAME: &'static str = "QueryProposalsByGroupPolicyResponse";
     const PACKAGE: &'static str = "cosmos.group.v1";
@@ -1343,10 +1070,6 @@ impl ::prost::Name for QueryVoteByProposalVoterRequest {
 pub struct QueryVoteByProposalVoterResponse {
     #[doc = " vote is the vote with given proposal_id and voter."]
     #[prost(message, optional, tag = "1")]
-    #[serde(
-        serialize_with = "crate::any::option::generic_serialize",
-        deserialize_with = "crate::any::option::generic_deserialize"
-    )]
     pub vote: ::core::option::Option<Vote>,
 }
 impl ::prost::Name for QueryVoteByProposalVoterResponse {
@@ -1366,10 +1089,6 @@ pub struct QueryVotesByProposalRequest {
     pub proposal_id: u64,
     #[doc = " pagination defines an optional pagination for the request."]
     #[prost(message, optional, tag = "2")]
-    #[serde(
-        serialize_with = "crate::any::option::generic_serialize",
-        deserialize_with = "crate::any::option::generic_deserialize"
-    )]
     pub pagination: ::core::option::Option<super::super::base::query::v1beta1::PageRequest>,
 }
 impl ::prost::Name for QueryVotesByProposalRequest {
@@ -1386,17 +1105,9 @@ impl ::prost::Name for QueryVotesByProposalRequest {
 pub struct QueryVotesByProposalResponse {
     #[doc = " votes are the list of votes for given proposal_id."]
     #[prost(message, repeated, tag = "1")]
-    #[serde(
-        serialize_with = "crate::any::vec::generic_serialize",
-        deserialize_with = "crate::any::vec::generic_deserialize"
-    )]
     pub votes: ::prost::alloc::vec::Vec<Vote>,
     #[doc = " pagination defines the pagination in the response."]
     #[prost(message, optional, tag = "2")]
-    #[serde(
-        serialize_with = "crate::any::option::generic_serialize",
-        deserialize_with = "crate::any::option::generic_deserialize"
-    )]
     pub pagination: ::core::option::Option<super::super::base::query::v1beta1::PageResponse>,
 }
 impl ::prost::Name for QueryVotesByProposalResponse {
@@ -1416,10 +1127,6 @@ pub struct QueryVotesByVoterRequest {
     pub voter: ::prost::alloc::string::String,
     #[doc = " pagination defines an optional pagination for the request."]
     #[prost(message, optional, tag = "2")]
-    #[serde(
-        serialize_with = "crate::any::option::generic_serialize",
-        deserialize_with = "crate::any::option::generic_deserialize"
-    )]
     pub pagination: ::core::option::Option<super::super::base::query::v1beta1::PageRequest>,
 }
 impl ::prost::Name for QueryVotesByVoterRequest {
@@ -1436,17 +1143,9 @@ impl ::prost::Name for QueryVotesByVoterRequest {
 pub struct QueryVotesByVoterResponse {
     #[doc = " votes are the list of votes by given voter."]
     #[prost(message, repeated, tag = "1")]
-    #[serde(
-        serialize_with = "crate::any::vec::generic_serialize",
-        deserialize_with = "crate::any::vec::generic_deserialize"
-    )]
     pub votes: ::prost::alloc::vec::Vec<Vote>,
     #[doc = " pagination defines the pagination in the response."]
     #[prost(message, optional, tag = "2")]
-    #[serde(
-        serialize_with = "crate::any::option::generic_serialize",
-        deserialize_with = "crate::any::option::generic_deserialize"
-    )]
     pub pagination: ::core::option::Option<super::super::base::query::v1beta1::PageResponse>,
 }
 impl ::prost::Name for QueryVotesByVoterResponse {
@@ -1466,10 +1165,6 @@ pub struct QueryGroupsByMemberRequest {
     pub address: ::prost::alloc::string::String,
     #[doc = " pagination defines an optional pagination for the request."]
     #[prost(message, optional, tag = "2")]
-    #[serde(
-        serialize_with = "crate::any::option::generic_serialize",
-        deserialize_with = "crate::any::option::generic_deserialize"
-    )]
     pub pagination: ::core::option::Option<super::super::base::query::v1beta1::PageRequest>,
 }
 impl ::prost::Name for QueryGroupsByMemberRequest {
@@ -1486,17 +1181,9 @@ impl ::prost::Name for QueryGroupsByMemberRequest {
 pub struct QueryGroupsByMemberResponse {
     #[doc = " groups are the groups info with the provided group member."]
     #[prost(message, repeated, tag = "1")]
-    #[serde(
-        serialize_with = "crate::any::vec::generic_serialize",
-        deserialize_with = "crate::any::vec::generic_deserialize"
-    )]
     pub groups: ::prost::alloc::vec::Vec<GroupInfo>,
     #[doc = " pagination defines the pagination in the response."]
     #[prost(message, optional, tag = "2")]
-    #[serde(
-        serialize_with = "crate::any::option::generic_serialize",
-        deserialize_with = "crate::any::option::generic_deserialize"
-    )]
     pub pagination: ::core::option::Option<super::super::base::query::v1beta1::PageResponse>,
 }
 impl ::prost::Name for QueryGroupsByMemberResponse {
@@ -1529,10 +1216,6 @@ impl ::prost::Name for QueryTallyResultRequest {
 pub struct QueryTallyResultResponse {
     #[doc = " tally defines the requested tally."]
     #[prost(message, optional, tag = "1")]
-    #[serde(
-        serialize_with = "crate::any::option::generic_serialize",
-        deserialize_with = "crate::any::option::generic_deserialize"
-    )]
     pub tally: ::core::option::Option<TallyResult>,
 }
 impl ::prost::Name for QueryTallyResultResponse {
@@ -1551,10 +1234,6 @@ impl ::prost::Name for QueryTallyResultResponse {
 pub struct QueryGroupsRequest {
     #[doc = " pagination defines an optional pagination for the request."]
     #[prost(message, optional, tag = "2")]
-    #[serde(
-        serialize_with = "crate::any::option::generic_serialize",
-        deserialize_with = "crate::any::option::generic_deserialize"
-    )]
     pub pagination: ::core::option::Option<super::super::base::query::v1beta1::PageRequest>,
 }
 impl ::prost::Name for QueryGroupsRequest {
@@ -1573,17 +1252,9 @@ impl ::prost::Name for QueryGroupsRequest {
 pub struct QueryGroupsResponse {
     #[doc = " `groups` is all the groups present in state."]
     #[prost(message, repeated, tag = "1")]
-    #[serde(
-        serialize_with = "crate::any::vec::generic_serialize",
-        deserialize_with = "crate::any::vec::generic_deserialize"
-    )]
     pub groups: ::prost::alloc::vec::Vec<GroupInfo>,
     #[doc = " pagination defines the pagination in the response."]
     #[prost(message, optional, tag = "2")]
-    #[serde(
-        serialize_with = "crate::any::option::generic_serialize",
-        deserialize_with = "crate::any::option::generic_deserialize"
-    )]
     pub pagination: ::core::option::Option<super::super::base::query::v1beta1::PageResponse>,
 }
 impl ::prost::Name for QueryGroupsResponse {
@@ -1603,10 +1274,6 @@ pub struct MsgCreateGroup {
     pub admin: ::prost::alloc::string::String,
     #[doc = " members defines the group members."]
     #[prost(message, repeated, tag = "2")]
-    #[serde(
-        serialize_with = "crate::any::vec::generic_serialize",
-        deserialize_with = "crate::any::vec::generic_deserialize"
-    )]
     pub members: ::prost::alloc::vec::Vec<MemberRequest>,
     #[doc = " metadata is any arbitrary metadata to attached to the group."]
     #[prost(string, tag = "3")]
@@ -1649,10 +1316,6 @@ pub struct MsgUpdateGroupMembers {
     #[doc = " member_updates is the list of members to update,"]
     #[doc = " set weight to 0 to remove a member."]
     #[prost(message, repeated, tag = "3")]
-    #[serde(
-        serialize_with = "crate::any::vec::generic_serialize",
-        deserialize_with = "crate::any::vec::generic_deserialize"
-    )]
     pub member_updates: ::prost::alloc::vec::Vec<MemberRequest>,
 }
 impl ::prost::Name for MsgUpdateGroupMembers {
@@ -1747,15 +1410,7 @@ impl ::prost::Name for MsgUpdateGroupMetadataResponse {
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, :: prost :: Message)]
 pub struct MsgCreateGroupPolicy<
-    A: Clone
-        + PartialEq
-        + Default
-        + Send
-        + Sync
-        + prost::Message
-        + serde::Serialize
-        + serde::de::DeserializeOwned
-        + prost::Name,
+    A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name,
 > {
     #[doc = " admin is the account address of the group admin."]
     #[prost(string, tag = "1")]
@@ -1768,23 +1423,10 @@ pub struct MsgCreateGroupPolicy<
     pub metadata: ::prost::alloc::string::String,
     #[doc = " decision_policy specifies the group policy's decision policy."]
     #[prost(message, optional, tag = "4")]
-    #[serde(
-        serialize_with = "crate::any::option::serialize",
-        deserialize_with = "crate::any::option::deserialize"
-    )]
-    pub decision_policy: ::core::option::Option<A>,
+    pub decision_policy: ::core::option::Option<crate::any::Any<A>>,
 }
-impl<
-        A: Clone
-            + PartialEq
-            + Default
-            + Send
-            + Sync
-            + prost::Message
-            + serde::Serialize
-            + serde::de::DeserializeOwned
-            + prost::Name,
-    > ::prost::Name for MsgCreateGroupPolicy<A>
+impl<A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name> ::prost::Name
+    for MsgCreateGroupPolicy<A>
 {
     const NAME: &'static str = "MsgCreateGroupPolicy";
     const PACKAGE: &'static str = "cosmos.group.v1";
@@ -1847,25 +1489,13 @@ impl ::prost::Name for MsgUpdateGroupPolicyAdminResponse {
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, :: prost :: Message)]
 pub struct MsgCreateGroupWithPolicy<
-    A: Clone
-        + PartialEq
-        + Default
-        + Send
-        + Sync
-        + prost::Message
-        + serde::Serialize
-        + serde::de::DeserializeOwned
-        + prost::Name,
+    A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name,
 > {
     #[doc = " admin is the account address of the group and group policy admin."]
     #[prost(string, tag = "1")]
     pub admin: ::prost::alloc::string::String,
     #[doc = " members defines the group members."]
     #[prost(message, repeated, tag = "2")]
-    #[serde(
-        serialize_with = "crate::any::vec::generic_serialize",
-        deserialize_with = "crate::any::vec::generic_deserialize"
-    )]
     pub members: ::prost::alloc::vec::Vec<MemberRequest>,
     #[doc = " group_metadata is any arbitrary metadata attached to the group."]
     #[prost(string, tag = "3")]
@@ -1879,23 +1509,10 @@ pub struct MsgCreateGroupWithPolicy<
     pub group_policy_as_admin: bool,
     #[doc = " decision_policy specifies the group policy's decision policy."]
     #[prost(message, optional, tag = "6")]
-    #[serde(
-        serialize_with = "crate::any::option::serialize",
-        deserialize_with = "crate::any::option::deserialize"
-    )]
-    pub decision_policy: ::core::option::Option<A>,
+    pub decision_policy: ::core::option::Option<crate::any::Any<A>>,
 }
-impl<
-        A: Clone
-            + PartialEq
-            + Default
-            + Send
-            + Sync
-            + prost::Message
-            + serde::Serialize
-            + serde::de::DeserializeOwned
-            + prost::Name,
-    > ::prost::Name for MsgCreateGroupWithPolicy<A>
+impl<A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name> ::prost::Name
+    for MsgCreateGroupWithPolicy<A>
 {
     const NAME: &'static str = "MsgCreateGroupWithPolicy";
     const PACKAGE: &'static str = "cosmos.group.v1";
@@ -1927,15 +1544,7 @@ impl ::prost::Name for MsgCreateGroupWithPolicyResponse {
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, :: prost :: Message)]
 pub struct MsgUpdateGroupPolicyDecisionPolicy<
-    A: Clone
-        + PartialEq
-        + Default
-        + Send
-        + Sync
-        + prost::Message
-        + serde::Serialize
-        + serde::de::DeserializeOwned
-        + prost::Name,
+    A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name,
 > {
     #[doc = " admin is the account address of the group admin."]
     #[prost(string, tag = "1")]
@@ -1945,23 +1554,10 @@ pub struct MsgUpdateGroupPolicyDecisionPolicy<
     pub group_policy_address: ::prost::alloc::string::String,
     #[doc = " decision_policy is the updated group policy's decision policy."]
     #[prost(message, optional, tag = "3")]
-    #[serde(
-        serialize_with = "crate::any::option::serialize",
-        deserialize_with = "crate::any::option::deserialize"
-    )]
-    pub decision_policy: ::core::option::Option<A>,
+    pub decision_policy: ::core::option::Option<crate::any::Any<A>>,
 }
-impl<
-        A: Clone
-            + PartialEq
-            + Default
-            + Send
-            + Sync
-            + prost::Message
-            + serde::Serialize
-            + serde::de::DeserializeOwned
-            + prost::Name,
-    > ::prost::Name for MsgUpdateGroupPolicyDecisionPolicy<A>
+impl<A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name> ::prost::Name
+    for MsgUpdateGroupPolicyDecisionPolicy<A>
 {
     const NAME: &'static str = "MsgUpdateGroupPolicyDecisionPolicy";
     const PACKAGE: &'static str = "cosmos.group.v1";
@@ -2020,15 +1616,7 @@ impl ::prost::Name for MsgUpdateGroupPolicyMetadataResponse {
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, :: prost :: Message)]
 pub struct MsgSubmitProposal<
-    A: Clone
-        + PartialEq
-        + Default
-        + Send
-        + Sync
-        + prost::Message
-        + serde::Serialize
-        + serde::de::DeserializeOwned
-        + prost::Name,
+    A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name,
 > {
     #[doc = " group_policy_address is the account address of group policy."]
     #[prost(string, tag = "1")]
@@ -2042,11 +1630,7 @@ pub struct MsgSubmitProposal<
     pub metadata: ::prost::alloc::string::String,
     #[doc = " messages is a list of `sdk.Msg`s that will be executed if the proposal passes."]
     #[prost(message, repeated, tag = "4")]
-    #[serde(
-        serialize_with = "crate::any::vec::serialize",
-        deserialize_with = "crate::any::vec::deserialize"
-    )]
-    pub messages: ::prost::alloc::vec::Vec<A>,
+    pub messages: ::prost::alloc::vec::Vec<crate::any::Any<A>>,
     #[doc = " exec defines the mode of execution of the proposal,"]
     #[doc = " whether it should be executed immediately on creation or not."]
     #[doc = " If so, proposers signatures are considered as Yes votes."]
@@ -2063,17 +1647,8 @@ pub struct MsgSubmitProposal<
     #[prost(string, tag = "7")]
     pub summary: ::prost::alloc::string::String,
 }
-impl<
-        A: Clone
-            + PartialEq
-            + Default
-            + Send
-            + Sync
-            + prost::Message
-            + serde::Serialize
-            + serde::de::DeserializeOwned
-            + prost::Name,
-    > ::prost::Name for MsgSubmitProposal<A>
+impl<A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name> ::prost::Name
+    for MsgSubmitProposal<A>
 {
     const NAME: &'static str = "MsgSubmitProposal";
     const PACKAGE: &'static str = "cosmos.group.v1";

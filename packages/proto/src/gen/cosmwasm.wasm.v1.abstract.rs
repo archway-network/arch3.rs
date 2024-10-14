@@ -36,10 +36,6 @@ impl ::prost::Name for AccessConfig {
 #[derive(Clone, PartialEq, :: prost :: Message)]
 pub struct Params {
     #[prost(message, optional, tag = "1")]
-    #[serde(
-        serialize_with = "crate::any::option::generic_serialize",
-        deserialize_with = "crate::any::option::generic_deserialize"
-    )]
     pub code_upload_access: ::core::option::Option<AccessConfig>,
     #[prost(enumeration = "AccessType", tag = "2")]
     pub instantiate_default_permission: i32,
@@ -64,10 +60,6 @@ pub struct CodeInfo {
     pub creator: ::prost::alloc::string::String,
     #[doc = " InstantiateConfig access control to apply on contract creation, optional"]
     #[prost(message, optional, tag = "5")]
-    #[serde(
-        serialize_with = "crate::any::option::generic_serialize",
-        deserialize_with = "crate::any::option::generic_deserialize"
-    )]
     pub instantiate_config: ::core::option::Option<AccessConfig>,
 }
 impl ::prost::Name for CodeInfo {
@@ -81,17 +73,8 @@ impl ::prost::Name for CodeInfo {
 #[derive(:: serde :: Serialize, :: serde :: Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, :: prost :: Message)]
-pub struct ContractInfo<
-    A: Clone
-        + PartialEq
-        + Default
-        + Send
-        + Sync
-        + prost::Message
-        + serde::Serialize
-        + serde::de::DeserializeOwned
-        + prost::Name,
-> {
+pub struct ContractInfo<A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name>
+{
     #[doc = " CodeID is the reference to the stored Wasm code"]
     #[prost(uint64, tag = "1")]
     pub code_id: u64,
@@ -106,33 +89,16 @@ pub struct ContractInfo<
     pub label: ::prost::alloc::string::String,
     #[doc = " Created Tx position when the contract was instantiated."]
     #[prost(message, optional, tag = "5")]
-    #[serde(
-        serialize_with = "crate::any::option::generic_serialize",
-        deserialize_with = "crate::any::option::generic_deserialize"
-    )]
     pub created: ::core::option::Option<AbsoluteTxPosition>,
     #[prost(string, tag = "6")]
     pub ibc_port_id: ::prost::alloc::string::String,
     #[doc = " Extension is an extension point to store custom metadata within the"]
     #[doc = " persistence model."]
     #[prost(message, optional, tag = "7")]
-    #[serde(
-        serialize_with = "crate::any::option::serialize",
-        deserialize_with = "crate::any::option::deserialize"
-    )]
-    pub extension: ::core::option::Option<A>,
+    pub extension: ::core::option::Option<crate::any::Any<A>>,
 }
-impl<
-        A: Clone
-            + PartialEq
-            + Default
-            + Send
-            + Sync
-            + prost::Message
-            + serde::Serialize
-            + serde::de::DeserializeOwned
-            + prost::Name,
-    > ::prost::Name for ContractInfo<A>
+impl<A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name> ::prost::Name
+    for ContractInfo<A>
 {
     const NAME: &'static str = "ContractInfo";
     const PACKAGE: &'static str = "cosmwasm.wasm.v1";
@@ -152,10 +118,6 @@ pub struct ContractCodeHistoryEntry {
     pub code_id: u64,
     #[doc = " Updated Tx position when the operation was executed."]
     #[prost(message, optional, tag = "3")]
-    #[serde(
-        serialize_with = "crate::any::option::generic_serialize",
-        deserialize_with = "crate::any::option::generic_deserialize"
-    )]
     pub updated: ::core::option::Option<AbsoluteTxPosition>,
     #[prost(bytes = "vec", tag = "4")]
     pub msg: ::prost::alloc::vec::Vec<u8>,
@@ -319,10 +281,6 @@ impl ContractCodeHistoryOperationType {
 pub struct StoreCodeAuthorization {
     #[doc = " Grants for code upload"]
     #[prost(message, repeated, tag = "1")]
-    #[serde(
-        serialize_with = "crate::any::vec::generic_serialize",
-        deserialize_with = "crate::any::vec::generic_deserialize"
-    )]
     pub grants: ::prost::alloc::vec::Vec<CodeGrant>,
 }
 impl ::prost::Name for StoreCodeAuthorization {
@@ -338,52 +296,16 @@ impl ::prost::Name for StoreCodeAuthorization {
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, :: prost :: Message)]
 pub struct ContractExecutionAuthorization<
-    A: Clone
-        + PartialEq
-        + Default
-        + Send
-        + Sync
-        + prost::Message
-        + serde::Serialize
-        + serde::de::DeserializeOwned
-        + prost::Name,
-    BB: Clone
-        + PartialEq
-        + Default
-        + Send
-        + Sync
-        + prost::Message
-        + serde::Serialize
-        + serde::de::DeserializeOwned
-        + prost::Name,
+    A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name,
+    BB: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name,
 > {
     #[doc = " Grants for contract executions"]
     #[prost(message, repeated, tag = "1")]
-    #[serde(
-        serialize_with = "crate::any::vec::generic_serialize",
-        deserialize_with = "crate::any::vec::generic_deserialize"
-    )]
     pub grants: ::prost::alloc::vec::Vec<ContractGrant<A, BB>>,
 }
 impl<
-        A: Clone
-            + PartialEq
-            + Default
-            + Send
-            + Sync
-            + prost::Message
-            + serde::Serialize
-            + serde::de::DeserializeOwned
-            + prost::Name,
-        BB: Clone
-            + PartialEq
-            + Default
-            + Send
-            + Sync
-            + prost::Message
-            + serde::Serialize
-            + serde::de::DeserializeOwned
-            + prost::Name,
+        A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name,
+        BB: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name,
     > ::prost::Name for ContractExecutionAuthorization<A, BB>
 {
     const NAME: &'static str = "ContractExecutionAuthorization";
@@ -398,52 +320,16 @@ impl<
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, :: prost :: Message)]
 pub struct ContractMigrationAuthorization<
-    A: Clone
-        + PartialEq
-        + Default
-        + Send
-        + Sync
-        + prost::Message
-        + serde::Serialize
-        + serde::de::DeserializeOwned
-        + prost::Name,
-    BB: Clone
-        + PartialEq
-        + Default
-        + Send
-        + Sync
-        + prost::Message
-        + serde::Serialize
-        + serde::de::DeserializeOwned
-        + prost::Name,
+    A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name,
+    BB: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name,
 > {
     #[doc = " Grants for contract migrations"]
     #[prost(message, repeated, tag = "1")]
-    #[serde(
-        serialize_with = "crate::any::vec::generic_serialize",
-        deserialize_with = "crate::any::vec::generic_deserialize"
-    )]
     pub grants: ::prost::alloc::vec::Vec<ContractGrant<A, BB>>,
 }
 impl<
-        A: Clone
-            + PartialEq
-            + Default
-            + Send
-            + Sync
-            + prost::Message
-            + serde::Serialize
-            + serde::de::DeserializeOwned
-            + prost::Name,
-        BB: Clone
-            + PartialEq
-            + Default
-            + Send
-            + Sync
-            + prost::Message
-            + serde::Serialize
-            + serde::de::DeserializeOwned
-            + prost::Name,
+        A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name,
+        BB: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name,
     > ::prost::Name for ContractMigrationAuthorization<A, BB>
 {
     const NAME: &'static str = "ContractMigrationAuthorization";
@@ -465,10 +351,6 @@ pub struct CodeGrant {
     #[doc = " on contract creation."]
     #[doc = " Optional"]
     #[prost(message, optional, tag = "2")]
-    #[serde(
-        serialize_with = "crate::any::option::generic_serialize",
-        deserialize_with = "crate::any::option::generic_deserialize"
-    )]
     pub instantiate_permission: ::core::option::Option<AccessConfig>,
 }
 impl ::prost::Name for CodeGrant {
@@ -484,24 +366,8 @@ impl ::prost::Name for CodeGrant {
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, :: prost :: Message)]
 pub struct ContractGrant<
-    A: Clone
-        + PartialEq
-        + Default
-        + Send
-        + Sync
-        + prost::Message
-        + serde::Serialize
-        + serde::de::DeserializeOwned
-        + prost::Name,
-    BB: Clone
-        + PartialEq
-        + Default
-        + Send
-        + Sync
-        + prost::Message
-        + serde::Serialize
-        + serde::de::DeserializeOwned
-        + prost::Name,
+    A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name,
+    BB: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name,
 > {
     #[doc = " Contract is the bech32 address of the smart contract"]
     #[prost(string, tag = "1")]
@@ -509,40 +375,16 @@ pub struct ContractGrant<
     #[doc = " Limit defines execution limits that are enforced and updated when the grant"]
     #[doc = " is applied. When the limit lapsed the grant is removed."]
     #[prost(message, optional, tag = "2")]
-    #[serde(
-        serialize_with = "crate::any::option::serialize",
-        deserialize_with = "crate::any::option::deserialize"
-    )]
-    pub limit: ::core::option::Option<A>,
+    pub limit: ::core::option::Option<crate::any::Any<A>>,
     #[doc = " Filter define more fine-grained control on the message payload passed"]
     #[doc = " to the contract in the operation. When no filter applies on execution, the"]
     #[doc = " operation is prohibited."]
     #[prost(message, optional, tag = "3")]
-    #[serde(
-        serialize_with = "crate::any::option::serialize",
-        deserialize_with = "crate::any::option::deserialize"
-    )]
-    pub filter: ::core::option::Option<BB>,
+    pub filter: ::core::option::Option<crate::any::Any<BB>>,
 }
 impl<
-        A: Clone
-            + PartialEq
-            + Default
-            + Send
-            + Sync
-            + prost::Message
-            + serde::Serialize
-            + serde::de::DeserializeOwned
-            + prost::Name,
-        BB: Clone
-            + PartialEq
-            + Default
-            + Send
-            + Sync
-            + prost::Message
-            + serde::Serialize
-            + serde::de::DeserializeOwned
-            + prost::Name,
+        A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name,
+        BB: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name,
     > ::prost::Name for ContractGrant<A, BB>
 {
     const NAME: &'static str = "ContractGrant";
@@ -576,10 +418,6 @@ impl ::prost::Name for MaxCallsLimit {
 pub struct MaxFundsLimit {
     #[doc = " Amounts is the maximal amount of tokens transferable to the contract."]
     #[prost(message, repeated, tag = "1")]
-    #[serde(
-        serialize_with = "crate::any::vec::generic_serialize",
-        deserialize_with = "crate::any::vec::generic_deserialize"
-    )]
     pub amounts: ::prost::alloc::vec::Vec<super::super::super::cosmos::base::v1beta1::Coin>,
 }
 impl ::prost::Name for MaxFundsLimit {
@@ -601,10 +439,6 @@ pub struct CombinedLimit {
     pub calls_remaining: u64,
     #[doc = " Amounts is the maximal amount of tokens transferable to the contract."]
     #[prost(message, repeated, tag = "2")]
-    #[serde(
-        serialize_with = "crate::any::vec::generic_serialize",
-        deserialize_with = "crate::any::vec::generic_deserialize"
-    )]
     pub amounts: ::prost::alloc::vec::Vec<super::super::super::cosmos::base::v1beta1::Coin>,
 }
 impl ::prost::Name for CombinedLimit {
@@ -668,53 +502,19 @@ impl ::prost::Name for AcceptedMessagesFilter {
 #[derive(:: serde :: Serialize, :: serde :: Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, :: prost :: Message)]
-pub struct GenesisState<
-    A: Clone
-        + PartialEq
-        + Default
-        + Send
-        + Sync
-        + prost::Message
-        + serde::Serialize
-        + serde::de::DeserializeOwned
-        + prost::Name,
-> {
+pub struct GenesisState<A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name>
+{
     #[prost(message, optional, tag = "1")]
-    #[serde(
-        serialize_with = "crate::any::option::generic_serialize",
-        deserialize_with = "crate::any::option::generic_deserialize"
-    )]
     pub params: ::core::option::Option<Params>,
     #[prost(message, repeated, tag = "2")]
-    #[serde(
-        serialize_with = "crate::any::vec::generic_serialize",
-        deserialize_with = "crate::any::vec::generic_deserialize"
-    )]
     pub codes: ::prost::alloc::vec::Vec<Code>,
     #[prost(message, repeated, tag = "3")]
-    #[serde(
-        serialize_with = "crate::any::vec::generic_serialize",
-        deserialize_with = "crate::any::vec::generic_deserialize"
-    )]
     pub contracts: ::prost::alloc::vec::Vec<Contract<A>>,
     #[prost(message, repeated, tag = "4")]
-    #[serde(
-        serialize_with = "crate::any::vec::generic_serialize",
-        deserialize_with = "crate::any::vec::generic_deserialize"
-    )]
     pub sequences: ::prost::alloc::vec::Vec<Sequence>,
 }
-impl<
-        A: Clone
-            + PartialEq
-            + Default
-            + Send
-            + Sync
-            + prost::Message
-            + serde::Serialize
-            + serde::de::DeserializeOwned
-            + prost::Name,
-    > ::prost::Name for GenesisState<A>
+impl<A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name> ::prost::Name
+    for GenesisState<A>
 {
     const NAME: &'static str = "GenesisState";
     const PACKAGE: &'static str = "cosmwasm.wasm.v1";
@@ -730,10 +530,6 @@ pub struct Code {
     #[prost(uint64, tag = "1")]
     pub code_id: u64,
     #[prost(message, optional, tag = "2")]
-    #[serde(
-        serialize_with = "crate::any::option::generic_serialize",
-        deserialize_with = "crate::any::option::generic_deserialize"
-    )]
     pub code_info: ::core::option::Option<CodeInfo>,
     #[prost(bytes = "vec", tag = "3")]
     pub code_bytes: ::prost::alloc::vec::Vec<u8>,
@@ -752,49 +548,18 @@ impl ::prost::Name for Code {
 #[derive(:: serde :: Serialize, :: serde :: Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, :: prost :: Message)]
-pub struct Contract<
-    A: Clone
-        + PartialEq
-        + Default
-        + Send
-        + Sync
-        + prost::Message
-        + serde::Serialize
-        + serde::de::DeserializeOwned
-        + prost::Name,
-> {
+pub struct Contract<A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name> {
     #[prost(string, tag = "1")]
     pub contract_address: ::prost::alloc::string::String,
     #[prost(message, optional, tag = "2")]
-    #[serde(
-        serialize_with = "crate::any::option::generic_serialize",
-        deserialize_with = "crate::any::option::generic_deserialize"
-    )]
     pub contract_info: ::core::option::Option<ContractInfo<A>>,
     #[prost(message, repeated, tag = "3")]
-    #[serde(
-        serialize_with = "crate::any::vec::generic_serialize",
-        deserialize_with = "crate::any::vec::generic_deserialize"
-    )]
     pub contract_state: ::prost::alloc::vec::Vec<Model>,
     #[prost(message, repeated, tag = "4")]
-    #[serde(
-        serialize_with = "crate::any::vec::generic_serialize",
-        deserialize_with = "crate::any::vec::generic_deserialize"
-    )]
     pub contract_code_history: ::prost::alloc::vec::Vec<ContractCodeHistoryEntry>,
 }
-impl<
-        A: Clone
-            + PartialEq
-            + Default
-            + Send
-            + Sync
-            + prost::Message
-            + serde::Serialize
-            + serde::de::DeserializeOwned
-            + prost::Name,
-    > ::prost::Name for Contract<A>
+impl<A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name> ::prost::Name
+    for Contract<A>
 {
     const NAME: &'static str = "Contract";
     const PACKAGE: &'static str = "cosmwasm.wasm.v1";
@@ -900,10 +665,6 @@ pub struct StoreCodeProposal {
     pub wasm_byte_code: ::prost::alloc::vec::Vec<u8>,
     #[doc = " InstantiatePermission to apply on contract creation, optional"]
     #[prost(message, optional, tag = "7")]
-    #[serde(
-        serialize_with = "crate::any::option::generic_serialize",
-        deserialize_with = "crate::any::option::generic_deserialize"
-    )]
     pub instantiate_permission: ::core::option::Option<AccessConfig>,
     #[doc = " UnpinCode code on upload, optional"]
     #[prost(bool, tag = "8")]
@@ -958,10 +719,6 @@ pub struct InstantiateContractProposal {
     pub msg: ::prost::alloc::vec::Vec<u8>,
     #[doc = " Funds coins that are transferred to the contract on instantiation"]
     #[prost(message, repeated, tag = "8")]
-    #[serde(
-        serialize_with = "crate::any::vec::generic_serialize",
-        deserialize_with = "crate::any::vec::generic_deserialize"
-    )]
     pub funds: ::prost::alloc::vec::Vec<super::super::super::cosmos::base::v1beta1::Coin>,
 }
 impl ::prost::Name for InstantiateContractProposal {
@@ -1002,10 +759,6 @@ pub struct InstantiateContract2Proposal {
     pub msg: ::prost::alloc::vec::Vec<u8>,
     #[doc = " Funds coins that are transferred to the contract on instantiation"]
     #[prost(message, repeated, tag = "8")]
-    #[serde(
-        serialize_with = "crate::any::vec::generic_serialize",
-        deserialize_with = "crate::any::vec::generic_deserialize"
-    )]
     pub funds: ::prost::alloc::vec::Vec<super::super::super::cosmos::base::v1beta1::Coin>,
     #[doc = " Salt is an arbitrary value provided by the sender. Size can be 1 to 64."]
     #[prost(bytes = "vec", tag = "9")]
@@ -1108,10 +861,6 @@ pub struct ExecuteContractProposal {
     pub msg: ::prost::alloc::vec::Vec<u8>,
     #[doc = " Funds coins that are transferred to the contract on instantiation"]
     #[prost(message, repeated, tag = "6")]
-    #[serde(
-        serialize_with = "crate::any::vec::generic_serialize",
-        deserialize_with = "crate::any::vec::generic_deserialize"
-    )]
     pub funds: ::prost::alloc::vec::Vec<super::super::super::cosmos::base::v1beta1::Coin>,
 }
 impl ::prost::Name for ExecuteContractProposal {
@@ -1235,10 +984,6 @@ pub struct AccessConfigUpdate {
     pub code_id: u64,
     #[doc = " InstantiatePermission to apply to the set of code ids"]
     #[prost(message, optional, tag = "2")]
-    #[serde(
-        serialize_with = "crate::any::option::generic_serialize",
-        deserialize_with = "crate::any::option::generic_deserialize"
-    )]
     pub instantiate_permission: ::core::option::Option<AccessConfig>,
 }
 impl ::prost::Name for AccessConfigUpdate {
@@ -1265,10 +1010,6 @@ pub struct UpdateInstantiateConfigProposal {
     #[doc = " AccessConfigUpdate contains the list of code ids and the access config"]
     #[doc = " to be applied."]
     #[prost(message, repeated, tag = "3")]
-    #[serde(
-        serialize_with = "crate::any::vec::generic_serialize",
-        deserialize_with = "crate::any::vec::generic_deserialize"
-    )]
     pub access_config_updates: ::prost::alloc::vec::Vec<AccessConfigUpdate>,
 }
 impl ::prost::Name for UpdateInstantiateConfigProposal {
@@ -1300,10 +1041,6 @@ pub struct StoreAndInstantiateContractProposal {
     pub wasm_byte_code: ::prost::alloc::vec::Vec<u8>,
     #[doc = " InstantiatePermission to apply on contract creation, optional"]
     #[prost(message, optional, tag = "5")]
-    #[serde(
-        serialize_with = "crate::any::option::generic_serialize",
-        deserialize_with = "crate::any::option::generic_deserialize"
-    )]
     pub instantiate_permission: ::core::option::Option<AccessConfig>,
     #[doc = " UnpinCode code on upload, optional"]
     #[prost(bool, tag = "6")]
@@ -1319,10 +1056,6 @@ pub struct StoreAndInstantiateContractProposal {
     pub msg: ::prost::alloc::vec::Vec<u8>,
     #[doc = " Funds coins that are transferred to the contract on instantiation"]
     #[prost(message, repeated, tag = "10")]
-    #[serde(
-        serialize_with = "crate::any::vec::generic_serialize",
-        deserialize_with = "crate::any::vec::generic_deserialize"
-    )]
     pub funds: ::prost::alloc::vec::Vec<super::super::super::cosmos::base::v1beta1::Coin>,
     #[doc = " Source is the URL where the code is hosted"]
     #[prost(string, tag = "11")]
@@ -1366,37 +1099,16 @@ impl ::prost::Name for QueryContractInfoRequest {
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, :: prost :: Message)]
 pub struct QueryContractInfoResponse<
-    A: Clone
-        + PartialEq
-        + Default
-        + Send
-        + Sync
-        + prost::Message
-        + serde::Serialize
-        + serde::de::DeserializeOwned
-        + prost::Name,
+    A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name,
 > {
     #[doc = " address is the address of the contract"]
     #[prost(string, tag = "1")]
     pub address: ::prost::alloc::string::String,
     #[prost(message, optional, tag = "2")]
-    #[serde(
-        serialize_with = "crate::any::option::generic_serialize",
-        deserialize_with = "crate::any::option::generic_deserialize"
-    )]
     pub contract_info: ::core::option::Option<ContractInfo<A>>,
 }
-impl<
-        A: Clone
-            + PartialEq
-            + Default
-            + Send
-            + Sync
-            + prost::Message
-            + serde::Serialize
-            + serde::de::DeserializeOwned
-            + prost::Name,
-    > ::prost::Name for QueryContractInfoResponse<A>
+impl<A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name> ::prost::Name
+    for QueryContractInfoResponse<A>
 {
     const NAME: &'static str = "QueryContractInfoResponse";
     const PACKAGE: &'static str = "cosmwasm.wasm.v1";
@@ -1415,10 +1127,6 @@ pub struct QueryContractHistoryRequest {
     pub address: ::prost::alloc::string::String,
     #[doc = " pagination defines an optional pagination for the request."]
     #[prost(message, optional, tag = "2")]
-    #[serde(
-        serialize_with = "crate::any::option::generic_serialize",
-        deserialize_with = "crate::any::option::generic_deserialize"
-    )]
     pub pagination:
         ::core::option::Option<super::super::super::cosmos::base::query::v1beta1::PageRequest>,
 }
@@ -1436,17 +1144,9 @@ impl ::prost::Name for QueryContractHistoryRequest {
 #[derive(Clone, PartialEq, :: prost :: Message)]
 pub struct QueryContractHistoryResponse {
     #[prost(message, repeated, tag = "1")]
-    #[serde(
-        serialize_with = "crate::any::vec::generic_serialize",
-        deserialize_with = "crate::any::vec::generic_deserialize"
-    )]
     pub entries: ::prost::alloc::vec::Vec<ContractCodeHistoryEntry>,
     #[doc = " pagination defines the pagination in the response."]
     #[prost(message, optional, tag = "2")]
-    #[serde(
-        serialize_with = "crate::any::option::generic_serialize",
-        deserialize_with = "crate::any::option::generic_deserialize"
-    )]
     pub pagination:
         ::core::option::Option<super::super::super::cosmos::base::query::v1beta1::PageResponse>,
 }
@@ -1468,10 +1168,6 @@ pub struct QueryContractsByCodeRequest {
     pub code_id: u64,
     #[doc = " pagination defines an optional pagination for the request."]
     #[prost(message, optional, tag = "2")]
-    #[serde(
-        serialize_with = "crate::any::option::generic_serialize",
-        deserialize_with = "crate::any::option::generic_deserialize"
-    )]
     pub pagination:
         ::core::option::Option<super::super::super::cosmos::base::query::v1beta1::PageRequest>,
 }
@@ -1493,10 +1189,6 @@ pub struct QueryContractsByCodeResponse {
     pub contracts: ::prost::alloc::vec::Vec<::prost::alloc::string::String>,
     #[doc = " pagination defines the pagination in the response."]
     #[prost(message, optional, tag = "2")]
-    #[serde(
-        serialize_with = "crate::any::option::generic_serialize",
-        deserialize_with = "crate::any::option::generic_deserialize"
-    )]
     pub pagination:
         ::core::option::Option<super::super::super::cosmos::base::query::v1beta1::PageResponse>,
 }
@@ -1518,10 +1210,6 @@ pub struct QueryAllContractStateRequest {
     pub address: ::prost::alloc::string::String,
     #[doc = " pagination defines an optional pagination for the request."]
     #[prost(message, optional, tag = "2")]
-    #[serde(
-        serialize_with = "crate::any::option::generic_serialize",
-        deserialize_with = "crate::any::option::generic_deserialize"
-    )]
     pub pagination:
         ::core::option::Option<super::super::super::cosmos::base::query::v1beta1::PageRequest>,
 }
@@ -1539,17 +1227,9 @@ impl ::prost::Name for QueryAllContractStateRequest {
 #[derive(Clone, PartialEq, :: prost :: Message)]
 pub struct QueryAllContractStateResponse {
     #[prost(message, repeated, tag = "1")]
-    #[serde(
-        serialize_with = "crate::any::vec::generic_serialize",
-        deserialize_with = "crate::any::vec::generic_deserialize"
-    )]
     pub models: ::prost::alloc::vec::Vec<Model>,
     #[doc = " pagination defines the pagination in the response."]
     #[prost(message, optional, tag = "2")]
-    #[serde(
-        serialize_with = "crate::any::option::generic_serialize",
-        deserialize_with = "crate::any::option::generic_deserialize"
-    )]
     pub pagination:
         ::core::option::Option<super::super::super::cosmos::base::query::v1beta1::PageResponse>,
 }
@@ -1662,10 +1342,6 @@ pub struct CodeInfoResponse {
     #[prost(bytes = "vec", tag = "3")]
     pub data_hash: ::prost::alloc::vec::Vec<u8>,
     #[prost(message, optional, tag = "6")]
-    #[serde(
-        serialize_with = "crate::any::option::generic_serialize",
-        deserialize_with = "crate::any::option::generic_deserialize"
-    )]
     pub instantiate_permission: ::core::option::Option<AccessConfig>,
 }
 impl ::prost::Name for CodeInfoResponse {
@@ -1681,10 +1357,6 @@ impl ::prost::Name for CodeInfoResponse {
 #[derive(Clone, PartialEq, :: prost :: Message)]
 pub struct QueryCodeResponse {
     #[prost(message, optional, tag = "1")]
-    #[serde(
-        serialize_with = "crate::any::option::generic_serialize",
-        deserialize_with = "crate::any::option::generic_deserialize"
-    )]
     pub code_info: ::core::option::Option<CodeInfoResponse>,
     #[prost(bytes = "vec", tag = "2")]
     pub data: ::prost::alloc::vec::Vec<u8>,
@@ -1703,10 +1375,6 @@ impl ::prost::Name for QueryCodeResponse {
 pub struct QueryCodesRequest {
     #[doc = " pagination defines an optional pagination for the request."]
     #[prost(message, optional, tag = "1")]
-    #[serde(
-        serialize_with = "crate::any::option::generic_serialize",
-        deserialize_with = "crate::any::option::generic_deserialize"
-    )]
     pub pagination:
         ::core::option::Option<super::super::super::cosmos::base::query::v1beta1::PageRequest>,
 }
@@ -1723,17 +1391,9 @@ impl ::prost::Name for QueryCodesRequest {
 #[derive(Clone, PartialEq, :: prost :: Message)]
 pub struct QueryCodesResponse {
     #[prost(message, repeated, tag = "1")]
-    #[serde(
-        serialize_with = "crate::any::vec::generic_serialize",
-        deserialize_with = "crate::any::vec::generic_deserialize"
-    )]
     pub code_infos: ::prost::alloc::vec::Vec<CodeInfoResponse>,
     #[doc = " pagination defines the pagination in the response."]
     #[prost(message, optional, tag = "2")]
-    #[serde(
-        serialize_with = "crate::any::option::generic_serialize",
-        deserialize_with = "crate::any::option::generic_deserialize"
-    )]
     pub pagination:
         ::core::option::Option<super::super::super::cosmos::base::query::v1beta1::PageResponse>,
 }
@@ -1752,10 +1412,6 @@ impl ::prost::Name for QueryCodesResponse {
 pub struct QueryPinnedCodesRequest {
     #[doc = " pagination defines an optional pagination for the request."]
     #[prost(message, optional, tag = "2")]
-    #[serde(
-        serialize_with = "crate::any::option::generic_serialize",
-        deserialize_with = "crate::any::option::generic_deserialize"
-    )]
     pub pagination:
         ::core::option::Option<super::super::super::cosmos::base::query::v1beta1::PageRequest>,
 }
@@ -1776,10 +1432,6 @@ pub struct QueryPinnedCodesResponse {
     pub code_ids: ::prost::alloc::vec::Vec<u64>,
     #[doc = " pagination defines the pagination in the response."]
     #[prost(message, optional, tag = "2")]
-    #[serde(
-        serialize_with = "crate::any::option::generic_serialize",
-        deserialize_with = "crate::any::option::generic_deserialize"
-    )]
     pub pagination:
         ::core::option::Option<super::super::super::cosmos::base::query::v1beta1::PageResponse>,
 }
@@ -1809,10 +1461,6 @@ impl ::prost::Name for QueryParamsRequest {
 pub struct QueryParamsResponse {
     #[doc = " params defines the parameters of the module."]
     #[prost(message, optional, tag = "1")]
-    #[serde(
-        serialize_with = "crate::any::option::generic_serialize",
-        deserialize_with = "crate::any::option::generic_deserialize"
-    )]
     pub params: ::core::option::Option<Params>,
 }
 impl ::prost::Name for QueryParamsResponse {
@@ -1833,10 +1481,6 @@ pub struct QueryContractsByCreatorRequest {
     pub creator_address: ::prost::alloc::string::String,
     #[doc = " Pagination defines an optional pagination for the request."]
     #[prost(message, optional, tag = "2")]
-    #[serde(
-        serialize_with = "crate::any::option::generic_serialize",
-        deserialize_with = "crate::any::option::generic_deserialize"
-    )]
     pub pagination:
         ::core::option::Option<super::super::super::cosmos::base::query::v1beta1::PageRequest>,
 }
@@ -1858,10 +1502,6 @@ pub struct QueryContractsByCreatorResponse {
     pub contract_addresses: ::prost::alloc::vec::Vec<::prost::alloc::string::String>,
     #[doc = " Pagination defines the pagination in the response."]
     #[prost(message, optional, tag = "2")]
-    #[serde(
-        serialize_with = "crate::any::option::generic_serialize",
-        deserialize_with = "crate::any::option::generic_deserialize"
-    )]
     pub pagination:
         ::core::option::Option<super::super::super::cosmos::base::query::v1beta1::PageResponse>,
 }
@@ -1886,10 +1526,6 @@ pub struct MsgStoreCode {
     #[doc = " InstantiatePermission access control to apply on contract creation,"]
     #[doc = " optional"]
     #[prost(message, optional, tag = "5")]
-    #[serde(
-        serialize_with = "crate::any::option::generic_serialize",
-        deserialize_with = "crate::any::option::generic_deserialize"
-    )]
     pub instantiate_permission: ::core::option::Option<AccessConfig>,
 }
 impl ::prost::Name for MsgStoreCode {
@@ -1941,10 +1577,6 @@ pub struct MsgInstantiateContract {
     pub msg: ::prost::alloc::vec::Vec<u8>,
     #[doc = " Funds coins that are transferred to the contract on instantiation"]
     #[prost(message, repeated, tag = "6")]
-    #[serde(
-        serialize_with = "crate::any::vec::generic_serialize",
-        deserialize_with = "crate::any::vec::generic_deserialize"
-    )]
     pub funds: ::prost::alloc::vec::Vec<super::super::super::cosmos::base::v1beta1::Coin>,
 }
 impl ::prost::Name for MsgInstantiateContract {
@@ -1996,10 +1628,6 @@ pub struct MsgInstantiateContract2 {
     pub msg: ::prost::alloc::vec::Vec<u8>,
     #[doc = " Funds coins that are transferred to the contract on instantiation"]
     #[prost(message, repeated, tag = "6")]
-    #[serde(
-        serialize_with = "crate::any::vec::generic_serialize",
-        deserialize_with = "crate::any::vec::generic_deserialize"
-    )]
     pub funds: ::prost::alloc::vec::Vec<super::super::super::cosmos::base::v1beta1::Coin>,
     #[doc = " Salt is an arbitrary value provided by the sender. Size can be 1 to 64."]
     #[prost(bytes = "vec", tag = "7")]
@@ -2051,10 +1679,6 @@ pub struct MsgExecuteContract {
     pub msg: ::prost::alloc::vec::Vec<u8>,
     #[doc = " Funds coins that are transferred to the contract on execution"]
     #[prost(message, repeated, tag = "5")]
-    #[serde(
-        serialize_with = "crate::any::vec::generic_serialize",
-        deserialize_with = "crate::any::vec::generic_deserialize"
-    )]
     pub funds: ::prost::alloc::vec::Vec<super::super::super::cosmos::base::v1beta1::Coin>,
 }
 impl ::prost::Name for MsgExecuteContract {
@@ -2200,10 +1824,6 @@ pub struct MsgUpdateInstantiateConfig {
     pub code_id: u64,
     #[doc = " NewInstantiatePermission is the new access control"]
     #[prost(message, optional, tag = "3")]
-    #[serde(
-        serialize_with = "crate::any::option::generic_serialize",
-        deserialize_with = "crate::any::option::generic_deserialize"
-    )]
     pub new_instantiate_permission: ::core::option::Option<AccessConfig>,
 }
 impl ::prost::Name for MsgUpdateInstantiateConfig {
@@ -2239,10 +1859,6 @@ pub struct MsgUpdateParams {
     #[doc = ""]
     #[doc = " NOTE: All parameters must be supplied."]
     #[prost(message, optional, tag = "2")]
-    #[serde(
-        serialize_with = "crate::any::option::generic_serialize",
-        deserialize_with = "crate::any::option::generic_deserialize"
-    )]
     pub params: ::core::option::Option<Params>,
 }
 impl ::prost::Name for MsgUpdateParams {
@@ -2398,10 +2014,6 @@ pub struct MsgStoreAndInstantiateContract {
     pub wasm_byte_code: ::prost::alloc::vec::Vec<u8>,
     #[doc = " InstantiatePermission to apply on contract creation, optional"]
     #[prost(message, optional, tag = "4")]
-    #[serde(
-        serialize_with = "crate::any::option::generic_serialize",
-        deserialize_with = "crate::any::option::generic_deserialize"
-    )]
     pub instantiate_permission: ::core::option::Option<AccessConfig>,
     #[doc = " UnpinCode code on upload, optional. As default the uploaded contract is"]
     #[doc = " pinned to cache."]
@@ -2419,10 +2031,6 @@ pub struct MsgStoreAndInstantiateContract {
     #[doc = " Funds coins that are transferred from the authority account to the contract"]
     #[doc = " on instantiation"]
     #[prost(message, repeated, tag = "9")]
-    #[serde(
-        serialize_with = "crate::any::vec::generic_serialize",
-        deserialize_with = "crate::any::vec::generic_deserialize"
-    )]
     pub funds: ::prost::alloc::vec::Vec<super::super::super::cosmos::base::v1beta1::Coin>,
     #[doc = " Source is the URL where the code is hosted"]
     #[prost(string, tag = "10")]
@@ -2545,10 +2153,6 @@ pub struct MsgStoreAndMigrateContract {
     pub wasm_byte_code: ::prost::alloc::vec::Vec<u8>,
     #[doc = " InstantiatePermission to apply on contract creation, optional"]
     #[prost(message, optional, tag = "3")]
-    #[serde(
-        serialize_with = "crate::any::option::generic_serialize",
-        deserialize_with = "crate::any::option::generic_deserialize"
-    )]
     pub instantiate_permission: ::core::option::Option<AccessConfig>,
     #[doc = " Contract is the address of the smart contract"]
     #[prost(string, tag = "4")]

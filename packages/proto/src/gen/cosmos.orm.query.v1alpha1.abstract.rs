@@ -15,10 +15,6 @@ pub struct GetRequest {
     #[doc = " There must be as many values provided as there are fields in the index and"]
     #[doc = " these values must correspond to the index field types."]
     #[prost(message, repeated, tag = "3")]
-    #[serde(
-        serialize_with = "crate::any::vec::generic_serialize",
-        deserialize_with = "crate::any::vec::generic_deserialize"
-    )]
     pub values: ::prost::alloc::vec::Vec<IndexValue>,
 }
 impl ::prost::Name for GetRequest {
@@ -32,37 +28,15 @@ impl ::prost::Name for GetRequest {
 #[derive(:: serde :: Serialize, :: serde :: Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, :: prost :: Message)]
-pub struct GetResponse<
-    A: Clone
-        + PartialEq
-        + Default
-        + Send
-        + Sync
-        + prost::Message
-        + serde::Serialize
-        + serde::de::DeserializeOwned
-        + prost::Name,
-> {
+pub struct GetResponse<A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name>
+{
     #[doc = " result is the result of the get query. If no value is found, the gRPC"]
     #[doc = " status code NOT_FOUND will be returned."]
     #[prost(message, optional, tag = "1")]
-    #[serde(
-        serialize_with = "crate::any::option::serialize",
-        deserialize_with = "crate::any::option::deserialize"
-    )]
-    pub result: ::core::option::Option<A>,
+    pub result: ::core::option::Option<crate::any::Any<A>>,
 }
-impl<
-        A: Clone
-            + PartialEq
-            + Default
-            + Send
-            + Sync
-            + prost::Message
-            + serde::Serialize
-            + serde::de::DeserializeOwned
-            + prost::Name,
-    > ::prost::Name for GetResponse<A>
+impl<A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name> ::prost::Name
+    for GetResponse<A>
 {
     const NAME: &'static str = "GetResponse";
     const PACKAGE: &'static str = "cosmos.orm.query.v1alpha1";
@@ -84,10 +58,6 @@ pub struct ListRequest {
     pub index: ::prost::alloc::string::String,
     #[doc = " pagination is the pagination request."]
     #[prost(message, optional, tag = "5")]
-    #[serde(
-        serialize_with = "crate::any::option::generic_serialize",
-        deserialize_with = "crate::any::option::generic_deserialize"
-    )]
     pub pagination: ::core::option::Option<super::super::super::base::query::v1beta1::PageRequest>,
     #[doc = " query is the query expression corresponding to the provided index. If"]
     #[doc = " neither prefix nor range is specified, the query will list all the fields"]
@@ -164,43 +134,17 @@ impl ::prost::Name for ListRequest {
 #[derive(:: serde :: Serialize, :: serde :: Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, :: prost :: Message)]
-pub struct ListResponse<
-    A: Clone
-        + PartialEq
-        + Default
-        + Send
-        + Sync
-        + prost::Message
-        + serde::Serialize
-        + serde::de::DeserializeOwned
-        + prost::Name,
-> {
+pub struct ListResponse<A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name>
+{
     #[doc = " results are the results of the query."]
     #[prost(message, repeated, tag = "1")]
-    #[serde(
-        serialize_with = "crate::any::vec::serialize",
-        deserialize_with = "crate::any::vec::deserialize"
-    )]
-    pub results: ::prost::alloc::vec::Vec<A>,
+    pub results: ::prost::alloc::vec::Vec<crate::any::Any<A>>,
     #[doc = " pagination is the pagination response."]
     #[prost(message, optional, tag = "5")]
-    #[serde(
-        serialize_with = "crate::any::option::generic_serialize",
-        deserialize_with = "crate::any::option::generic_deserialize"
-    )]
     pub pagination: ::core::option::Option<super::super::super::base::query::v1beta1::PageResponse>,
 }
-impl<
-        A: Clone
-            + PartialEq
-            + Default
-            + Send
-            + Sync
-            + prost::Message
-            + serde::Serialize
-            + serde::de::DeserializeOwned
-            + prost::Name,
-    > ::prost::Name for ListResponse<A>
+impl<A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name> ::prost::Name
+    for ListResponse<A>
 {
     const NAME: &'static str = "ListResponse";
     const PACKAGE: &'static str = "cosmos.orm.query.v1alpha1";

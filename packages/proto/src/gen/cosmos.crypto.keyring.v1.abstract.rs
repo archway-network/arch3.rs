@@ -2,27 +2,13 @@
 #[derive(:: serde :: Serialize, :: serde :: Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, :: prost :: Message)]
-pub struct Record<
-    A: Clone
-        + PartialEq
-        + Default
-        + Send
-        + Sync
-        + prost::Message
-        + serde::Serialize
-        + serde::de::DeserializeOwned
-        + prost::Name,
-> {
+pub struct Record<A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name> {
     #[doc = " name represents a name of Record"]
     #[prost(string, tag = "1")]
     pub name: ::prost::alloc::string::String,
     #[doc = " pub_key represents a public key in any format"]
     #[prost(message, optional, tag = "2")]
-    #[serde(
-        serialize_with = "crate::any::option::serialize",
-        deserialize_with = "crate::any::option::deserialize"
-    )]
-    pub pub_key: ::core::option::Option<A>,
+    pub pub_key: ::core::option::Option<crate::any::Any<A>>,
     #[doc = " Record contains one of the following items"]
     #[prost(oneof = "record::Item", tags = "3, 4, 5, 6")]
     pub item: ::core::option::Option<record::Item>,
@@ -103,17 +89,8 @@ pub mod record {
         Offline(Offline),
     }
 }
-impl<
-        A: Clone
-            + PartialEq
-            + Default
-            + Send
-            + Sync
-            + prost::Message
-            + serde::Serialize
-            + serde::de::DeserializeOwned
-            + prost::Name,
-    > ::prost::Name for Record<A>
+impl<A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name> ::prost::Name
+    for Record<A>
 {
     const NAME: &'static str = "Record";
     const PACKAGE: &'static str = "cosmos.crypto.keyring.v1";

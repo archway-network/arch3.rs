@@ -4,38 +4,17 @@
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, :: prost :: Message)]
 pub struct IdentifiedClientState<
-    A: Clone
-        + PartialEq
-        + Default
-        + Send
-        + Sync
-        + prost::Message
-        + serde::Serialize
-        + serde::de::DeserializeOwned
-        + prost::Name,
+    A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name,
 > {
     #[doc = " client identifier"]
     #[prost(string, tag = "1")]
     pub client_id: ::prost::alloc::string::String,
     #[doc = " client state"]
     #[prost(message, optional, tag = "2")]
-    #[serde(
-        serialize_with = "crate::any::option::serialize",
-        deserialize_with = "crate::any::option::deserialize"
-    )]
-    pub client_state: ::core::option::Option<A>,
+    pub client_state: ::core::option::Option<crate::any::Any<A>>,
 }
-impl<
-        A: Clone
-            + PartialEq
-            + Default
-            + Send
-            + Sync
-            + prost::Message
-            + serde::Serialize
-            + serde::de::DeserializeOwned
-            + prost::Name,
-    > ::prost::Name for IdentifiedClientState<A>
+impl<A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name> ::prost::Name
+    for IdentifiedClientState<A>
 {
     const NAME: &'static str = "IdentifiedClientState";
     const PACKAGE: &'static str = "ibc.core.client.v1";
@@ -49,42 +28,17 @@ impl<
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, :: prost :: Message)]
 pub struct ConsensusStateWithHeight<
-    A: Clone
-        + PartialEq
-        + Default
-        + Send
-        + Sync
-        + prost::Message
-        + serde::Serialize
-        + serde::de::DeserializeOwned
-        + prost::Name,
+    A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name,
 > {
     #[doc = " consensus state height"]
     #[prost(message, optional, tag = "1")]
-    #[serde(
-        serialize_with = "crate::any::option::generic_serialize",
-        deserialize_with = "crate::any::option::generic_deserialize"
-    )]
     pub height: ::core::option::Option<Height>,
     #[doc = " consensus state"]
     #[prost(message, optional, tag = "2")]
-    #[serde(
-        serialize_with = "crate::any::option::serialize",
-        deserialize_with = "crate::any::option::deserialize"
-    )]
-    pub consensus_state: ::core::option::Option<A>,
+    pub consensus_state: ::core::option::Option<crate::any::Any<A>>,
 }
-impl<
-        A: Clone
-            + PartialEq
-            + Default
-            + Send
-            + Sync
-            + prost::Message
-            + serde::Serialize
-            + serde::de::DeserializeOwned
-            + prost::Name,
-    > ::prost::Name for ConsensusStateWithHeight<A>
+impl<A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name> ::prost::Name
+    for ConsensusStateWithHeight<A>
 {
     const NAME: &'static str = "ConsensusStateWithHeight";
     const PACKAGE: &'static str = "ibc.core.client.v1";
@@ -98,38 +52,17 @@ impl<
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, :: prost :: Message)]
 pub struct ClientConsensusStates<
-    A: Clone
-        + PartialEq
-        + Default
-        + Send
-        + Sync
-        + prost::Message
-        + serde::Serialize
-        + serde::de::DeserializeOwned
-        + prost::Name,
+    A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name,
 > {
     #[doc = " client identifier"]
     #[prost(string, tag = "1")]
     pub client_id: ::prost::alloc::string::String,
     #[doc = " consensus states and their heights associated with the client"]
     #[prost(message, repeated, tag = "2")]
-    #[serde(
-        serialize_with = "crate::any::vec::generic_serialize",
-        deserialize_with = "crate::any::vec::generic_deserialize"
-    )]
     pub consensus_states: ::prost::alloc::vec::Vec<ConsensusStateWithHeight<A>>,
 }
-impl<
-        A: Clone
-            + PartialEq
-            + Default
-            + Send
-            + Sync
-            + prost::Message
-            + serde::Serialize
-            + serde::de::DeserializeOwned
-            + prost::Name,
-    > ::prost::Name for ClientConsensusStates<A>
+impl<A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name> ::prost::Name
+    for ClientConsensusStates<A>
 {
     const NAME: &'static str = "ClientConsensusStates";
     const PACKAGE: &'static str = "ibc.core.client.v1";
@@ -172,34 +105,14 @@ impl ::prost::Name for ClientUpdateProposal {
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, :: prost :: Message)]
 pub struct UpgradeProposal<
-    A: Clone
-        + PartialEq
-        + Default
-        + Send
-        + Sync
-        + prost::Message
-        + serde::Serialize
-        + serde::de::DeserializeOwned
-        + prost::Name,
-    BB: Clone
-        + PartialEq
-        + Default
-        + Send
-        + Sync
-        + prost::Message
-        + serde::Serialize
-        + serde::de::DeserializeOwned
-        + prost::Name,
+    A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name,
+    BB: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name,
 > {
     #[prost(string, tag = "1")]
     pub title: ::prost::alloc::string::String,
     #[prost(string, tag = "2")]
     pub description: ::prost::alloc::string::String,
     #[prost(message, optional, tag = "3")]
-    #[serde(
-        serialize_with = "crate::any::option::generic_serialize",
-        deserialize_with = "crate::any::option::generic_deserialize"
-    )]
     pub plan: ::core::option::Option<super::super::super::super::cosmos::upgrade::v1beta1::Plan<A>>,
     #[doc = " An UpgradedClientState must be provided to perform an IBC breaking upgrade."]
     #[doc = " This will make the chain commit to the correct upgraded (self) client state"]
@@ -208,31 +121,11 @@ pub struct UpgradeProposal<
     #[doc = " of the chain. This will allow IBC connections to persist smoothly across"]
     #[doc = " planned chain upgrades"]
     #[prost(message, optional, tag = "4")]
-    #[serde(
-        serialize_with = "crate::any::option::serialize",
-        deserialize_with = "crate::any::option::deserialize"
-    )]
-    pub upgraded_client_state: ::core::option::Option<BB>,
+    pub upgraded_client_state: ::core::option::Option<crate::any::Any<BB>>,
 }
 impl<
-        A: Clone
-            + PartialEq
-            + Default
-            + Send
-            + Sync
-            + prost::Message
-            + serde::Serialize
-            + serde::de::DeserializeOwned
-            + prost::Name,
-        BB: Clone
-            + PartialEq
-            + Default
-            + Send
-            + Sync
-            + prost::Message
-            + serde::Serialize
-            + serde::de::DeserializeOwned
-            + prost::Name,
+        A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name,
+        BB: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name,
     > ::prost::Name for UpgradeProposal<A, BB>
 {
     const NAME: &'static str = "UpgradeProposal";
@@ -292,51 +185,19 @@ impl ::prost::Name for Params {
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, :: prost :: Message)]
 pub struct GenesisState<
-    A: Clone
-        + PartialEq
-        + Default
-        + Send
-        + Sync
-        + prost::Message
-        + serde::Serialize
-        + serde::de::DeserializeOwned
-        + prost::Name,
-    BB: Clone
-        + PartialEq
-        + Default
-        + Send
-        + Sync
-        + prost::Message
-        + serde::Serialize
-        + serde::de::DeserializeOwned
-        + prost::Name,
+    A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name,
+    BB: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name,
 > {
     #[doc = " client states with their corresponding identifiers"]
     #[prost(message, repeated, tag = "1")]
-    #[serde(
-        serialize_with = "crate::any::vec::generic_serialize",
-        deserialize_with = "crate::any::vec::generic_deserialize"
-    )]
     pub clients: ::prost::alloc::vec::Vec<IdentifiedClientState<A>>,
     #[doc = " consensus states from each client"]
     #[prost(message, repeated, tag = "2")]
-    #[serde(
-        serialize_with = "crate::any::vec::generic_serialize",
-        deserialize_with = "crate::any::vec::generic_deserialize"
-    )]
     pub clients_consensus: ::prost::alloc::vec::Vec<ClientConsensusStates<BB>>,
     #[doc = " metadata from each client"]
     #[prost(message, repeated, tag = "3")]
-    #[serde(
-        serialize_with = "crate::any::vec::generic_serialize",
-        deserialize_with = "crate::any::vec::generic_deserialize"
-    )]
     pub clients_metadata: ::prost::alloc::vec::Vec<IdentifiedGenesisMetadata>,
     #[prost(message, optional, tag = "4")]
-    #[serde(
-        serialize_with = "crate::any::option::generic_serialize",
-        deserialize_with = "crate::any::option::generic_deserialize"
-    )]
     pub params: ::core::option::Option<Params>,
     #[doc = " create localhost on initialization"]
     #[prost(bool, tag = "5")]
@@ -346,24 +207,8 @@ pub struct GenesisState<
     pub next_client_sequence: u64,
 }
 impl<
-        A: Clone
-            + PartialEq
-            + Default
-            + Send
-            + Sync
-            + prost::Message
-            + serde::Serialize
-            + serde::de::DeserializeOwned
-            + prost::Name,
-        BB: Clone
-            + PartialEq
-            + Default
-            + Send
-            + Sync
-            + prost::Message
-            + serde::Serialize
-            + serde::de::DeserializeOwned
-            + prost::Name,
+        A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name,
+        BB: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name,
     > ::prost::Name for GenesisState<A, BB>
 {
     const NAME: &'static str = "GenesisState";
@@ -401,10 +246,6 @@ pub struct IdentifiedGenesisMetadata {
     #[prost(string, tag = "1")]
     pub client_id: ::prost::alloc::string::String,
     #[prost(message, repeated, tag = "2")]
-    #[serde(
-        serialize_with = "crate::any::vec::generic_serialize",
-        deserialize_with = "crate::any::vec::generic_deserialize"
-    )]
     pub client_metadata: ::prost::alloc::vec::Vec<GenesisMetadata>,
 }
 impl ::prost::Name for IdentifiedGenesisMetadata {
@@ -438,45 +279,20 @@ impl ::prost::Name for QueryClientStateRequest {
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, :: prost :: Message)]
 pub struct QueryClientStateResponse<
-    A: Clone
-        + PartialEq
-        + Default
-        + Send
-        + Sync
-        + prost::Message
-        + serde::Serialize
-        + serde::de::DeserializeOwned
-        + prost::Name,
+    A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name,
 > {
     #[doc = " client state associated with the request identifier"]
     #[prost(message, optional, tag = "1")]
-    #[serde(
-        serialize_with = "crate::any::option::serialize",
-        deserialize_with = "crate::any::option::deserialize"
-    )]
-    pub client_state: ::core::option::Option<A>,
+    pub client_state: ::core::option::Option<crate::any::Any<A>>,
     #[doc = " merkle proof of existence"]
     #[prost(bytes = "vec", tag = "2")]
     pub proof: ::prost::alloc::vec::Vec<u8>,
     #[doc = " height at which the proof was retrieved"]
     #[prost(message, optional, tag = "3")]
-    #[serde(
-        serialize_with = "crate::any::option::generic_serialize",
-        deserialize_with = "crate::any::option::generic_deserialize"
-    )]
     pub proof_height: ::core::option::Option<Height>,
 }
-impl<
-        A: Clone
-            + PartialEq
-            + Default
-            + Send
-            + Sync
-            + prost::Message
-            + serde::Serialize
-            + serde::de::DeserializeOwned
-            + prost::Name,
-    > ::prost::Name for QueryClientStateResponse<A>
+impl<A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name> ::prost::Name
+    for QueryClientStateResponse<A>
 {
     const NAME: &'static str = "QueryClientStateResponse";
     const PACKAGE: &'static str = "ibc.core.client.v1";
@@ -492,10 +308,6 @@ impl<
 pub struct QueryClientStatesRequest {
     #[doc = " pagination request"]
     #[prost(message, optional, tag = "1")]
-    #[serde(
-        serialize_with = "crate::any::option::generic_serialize",
-        deserialize_with = "crate::any::option::generic_deserialize"
-    )]
     pub pagination: ::core::option::Option<
         super::super::super::super::cosmos::base::query::v1beta1::PageRequest,
     >,
@@ -513,44 +325,19 @@ impl ::prost::Name for QueryClientStatesRequest {
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, :: prost :: Message)]
 pub struct QueryClientStatesResponse<
-    A: Clone
-        + PartialEq
-        + Default
-        + Send
-        + Sync
-        + prost::Message
-        + serde::Serialize
-        + serde::de::DeserializeOwned
-        + prost::Name,
+    A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name,
 > {
     #[doc = " list of stored ClientStates of the chain."]
     #[prost(message, repeated, tag = "1")]
-    #[serde(
-        serialize_with = "crate::any::vec::generic_serialize",
-        deserialize_with = "crate::any::vec::generic_deserialize"
-    )]
     pub client_states: ::prost::alloc::vec::Vec<IdentifiedClientState<A>>,
     #[doc = " pagination response"]
     #[prost(message, optional, tag = "2")]
-    #[serde(
-        serialize_with = "crate::any::option::generic_serialize",
-        deserialize_with = "crate::any::option::generic_deserialize"
-    )]
     pub pagination: ::core::option::Option<
         super::super::super::super::cosmos::base::query::v1beta1::PageResponse,
     >,
 }
-impl<
-        A: Clone
-            + PartialEq
-            + Default
-            + Send
-            + Sync
-            + prost::Message
-            + serde::Serialize
-            + serde::de::DeserializeOwned
-            + prost::Name,
-    > ::prost::Name for QueryClientStatesResponse<A>
+impl<A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name> ::prost::Name
+    for QueryClientStatesResponse<A>
 {
     const NAME: &'static str = "QueryClientStatesResponse";
     const PACKAGE: &'static str = "ibc.core.client.v1";
@@ -592,45 +379,20 @@ impl ::prost::Name for QueryConsensusStateRequest {
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, :: prost :: Message)]
 pub struct QueryConsensusStateResponse<
-    A: Clone
-        + PartialEq
-        + Default
-        + Send
-        + Sync
-        + prost::Message
-        + serde::Serialize
-        + serde::de::DeserializeOwned
-        + prost::Name,
+    A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name,
 > {
     #[doc = " consensus state associated with the client identifier at the given height"]
     #[prost(message, optional, tag = "1")]
-    #[serde(
-        serialize_with = "crate::any::option::serialize",
-        deserialize_with = "crate::any::option::deserialize"
-    )]
-    pub consensus_state: ::core::option::Option<A>,
+    pub consensus_state: ::core::option::Option<crate::any::Any<A>>,
     #[doc = " merkle proof of existence"]
     #[prost(bytes = "vec", tag = "2")]
     pub proof: ::prost::alloc::vec::Vec<u8>,
     #[doc = " height at which the proof was retrieved"]
     #[prost(message, optional, tag = "3")]
-    #[serde(
-        serialize_with = "crate::any::option::generic_serialize",
-        deserialize_with = "crate::any::option::generic_deserialize"
-    )]
     pub proof_height: ::core::option::Option<Height>,
 }
-impl<
-        A: Clone
-            + PartialEq
-            + Default
-            + Send
-            + Sync
-            + prost::Message
-            + serde::Serialize
-            + serde::de::DeserializeOwned
-            + prost::Name,
-    > ::prost::Name for QueryConsensusStateResponse<A>
+impl<A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name> ::prost::Name
+    for QueryConsensusStateResponse<A>
 {
     const NAME: &'static str = "QueryConsensusStateResponse";
     const PACKAGE: &'static str = "ibc.core.client.v1";
@@ -649,10 +411,6 @@ pub struct QueryConsensusStatesRequest {
     pub client_id: ::prost::alloc::string::String,
     #[doc = " pagination request"]
     #[prost(message, optional, tag = "2")]
-    #[serde(
-        serialize_with = "crate::any::option::generic_serialize",
-        deserialize_with = "crate::any::option::generic_deserialize"
-    )]
     pub pagination: ::core::option::Option<
         super::super::super::super::cosmos::base::query::v1beta1::PageRequest,
     >,
@@ -670,44 +428,19 @@ impl ::prost::Name for QueryConsensusStatesRequest {
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, :: prost :: Message)]
 pub struct QueryConsensusStatesResponse<
-    A: Clone
-        + PartialEq
-        + Default
-        + Send
-        + Sync
-        + prost::Message
-        + serde::Serialize
-        + serde::de::DeserializeOwned
-        + prost::Name,
+    A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name,
 > {
     #[doc = " consensus states associated with the identifier"]
     #[prost(message, repeated, tag = "1")]
-    #[serde(
-        serialize_with = "crate::any::vec::generic_serialize",
-        deserialize_with = "crate::any::vec::generic_deserialize"
-    )]
     pub consensus_states: ::prost::alloc::vec::Vec<ConsensusStateWithHeight<A>>,
     #[doc = " pagination response"]
     #[prost(message, optional, tag = "2")]
-    #[serde(
-        serialize_with = "crate::any::option::generic_serialize",
-        deserialize_with = "crate::any::option::generic_deserialize"
-    )]
     pub pagination: ::core::option::Option<
         super::super::super::super::cosmos::base::query::v1beta1::PageResponse,
     >,
 }
-impl<
-        A: Clone
-            + PartialEq
-            + Default
-            + Send
-            + Sync
-            + prost::Message
-            + serde::Serialize
-            + serde::de::DeserializeOwned
-            + prost::Name,
-    > ::prost::Name for QueryConsensusStatesResponse<A>
+impl<A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name> ::prost::Name
+    for QueryConsensusStatesResponse<A>
 {
     const NAME: &'static str = "QueryConsensusStatesResponse";
     const PACKAGE: &'static str = "ibc.core.client.v1";
@@ -726,10 +459,6 @@ pub struct QueryConsensusStateHeightsRequest {
     pub client_id: ::prost::alloc::string::String,
     #[doc = " pagination request"]
     #[prost(message, optional, tag = "2")]
-    #[serde(
-        serialize_with = "crate::any::option::generic_serialize",
-        deserialize_with = "crate::any::option::generic_deserialize"
-    )]
     pub pagination: ::core::option::Option<
         super::super::super::super::cosmos::base::query::v1beta1::PageRequest,
     >,
@@ -749,17 +478,9 @@ impl ::prost::Name for QueryConsensusStateHeightsRequest {
 pub struct QueryConsensusStateHeightsResponse {
     #[doc = " consensus state heights"]
     #[prost(message, repeated, tag = "1")]
-    #[serde(
-        serialize_with = "crate::any::vec::generic_serialize",
-        deserialize_with = "crate::any::vec::generic_deserialize"
-    )]
     pub consensus_state_heights: ::prost::alloc::vec::Vec<Height>,
     #[doc = " pagination response"]
     #[prost(message, optional, tag = "2")]
-    #[serde(
-        serialize_with = "crate::any::option::generic_serialize",
-        deserialize_with = "crate::any::option::generic_deserialize"
-    )]
     pub pagination: ::core::option::Option<
         super::super::super::super::cosmos::base::query::v1beta1::PageResponse,
     >,
@@ -825,10 +546,6 @@ impl ::prost::Name for QueryClientParamsRequest {
 pub struct QueryClientParamsResponse {
     #[doc = " params defines the parameters of the module."]
     #[prost(message, optional, tag = "1")]
-    #[serde(
-        serialize_with = "crate::any::option::generic_serialize",
-        deserialize_with = "crate::any::option::generic_deserialize"
-    )]
     pub params: ::core::option::Option<Params>,
 }
 impl ::prost::Name for QueryClientParamsResponse {
@@ -857,35 +574,14 @@ impl ::prost::Name for QueryUpgradedClientStateRequest {
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, :: prost :: Message)]
 pub struct QueryUpgradedClientStateResponse<
-    A: Clone
-        + PartialEq
-        + Default
-        + Send
-        + Sync
-        + prost::Message
-        + serde::Serialize
-        + serde::de::DeserializeOwned
-        + prost::Name,
+    A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name,
 > {
     #[doc = " client state associated with the request identifier"]
     #[prost(message, optional, tag = "1")]
-    #[serde(
-        serialize_with = "crate::any::option::serialize",
-        deserialize_with = "crate::any::option::deserialize"
-    )]
-    pub upgraded_client_state: ::core::option::Option<A>,
+    pub upgraded_client_state: ::core::option::Option<crate::any::Any<A>>,
 }
-impl<
-        A: Clone
-            + PartialEq
-            + Default
-            + Send
-            + Sync
-            + prost::Message
-            + serde::Serialize
-            + serde::de::DeserializeOwned
-            + prost::Name,
-    > ::prost::Name for QueryUpgradedClientStateResponse<A>
+impl<A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name> ::prost::Name
+    for QueryUpgradedClientStateResponse<A>
 {
     const NAME: &'static str = "QueryUpgradedClientStateResponse";
     const PACKAGE: &'static str = "ibc.core.client.v1";
@@ -912,35 +608,14 @@ impl ::prost::Name for QueryUpgradedConsensusStateRequest {
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, :: prost :: Message)]
 pub struct QueryUpgradedConsensusStateResponse<
-    A: Clone
-        + PartialEq
-        + Default
-        + Send
-        + Sync
-        + prost::Message
-        + serde::Serialize
-        + serde::de::DeserializeOwned
-        + prost::Name,
+    A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name,
 > {
     #[doc = " Consensus state associated with the request identifier"]
     #[prost(message, optional, tag = "1")]
-    #[serde(
-        serialize_with = "crate::any::option::serialize",
-        deserialize_with = "crate::any::option::deserialize"
-    )]
-    pub upgraded_consensus_state: ::core::option::Option<A>,
+    pub upgraded_consensus_state: ::core::option::Option<crate::any::Any<A>>,
 }
-impl<
-        A: Clone
-            + PartialEq
-            + Default
-            + Send
-            + Sync
-            + prost::Message
-            + serde::Serialize
-            + serde::de::DeserializeOwned
-            + prost::Name,
-    > ::prost::Name for QueryUpgradedConsensusStateResponse<A>
+impl<A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name> ::prost::Name
+    for QueryUpgradedConsensusStateResponse<A>
 {
     const NAME: &'static str = "QueryUpgradedConsensusStateResponse";
     const PACKAGE: &'static str = "ibc.core.client.v1";
@@ -953,63 +628,23 @@ impl<
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, :: prost :: Message)]
 pub struct MsgCreateClient<
-    A: Clone
-        + PartialEq
-        + Default
-        + Send
-        + Sync
-        + prost::Message
-        + serde::Serialize
-        + serde::de::DeserializeOwned
-        + prost::Name,
-    BB: Clone
-        + PartialEq
-        + Default
-        + Send
-        + Sync
-        + prost::Message
-        + serde::Serialize
-        + serde::de::DeserializeOwned
-        + prost::Name,
+    A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name,
+    BB: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name,
 > {
     #[doc = " light client state"]
     #[prost(message, optional, tag = "1")]
-    #[serde(
-        serialize_with = "crate::any::option::serialize",
-        deserialize_with = "crate::any::option::deserialize"
-    )]
-    pub client_state: ::core::option::Option<A>,
+    pub client_state: ::core::option::Option<crate::any::Any<A>>,
     #[doc = " consensus state associated with the client that corresponds to a given"]
     #[doc = " height."]
     #[prost(message, optional, tag = "2")]
-    #[serde(
-        serialize_with = "crate::any::option::serialize",
-        deserialize_with = "crate::any::option::deserialize"
-    )]
-    pub consensus_state: ::core::option::Option<BB>,
+    pub consensus_state: ::core::option::Option<crate::any::Any<BB>>,
     #[doc = " signer address"]
     #[prost(string, tag = "3")]
     pub signer: ::prost::alloc::string::String,
 }
 impl<
-        A: Clone
-            + PartialEq
-            + Default
-            + Send
-            + Sync
-            + prost::Message
-            + serde::Serialize
-            + serde::de::DeserializeOwned
-            + prost::Name,
-        BB: Clone
-            + PartialEq
-            + Default
-            + Send
-            + Sync
-            + prost::Message
-            + serde::Serialize
-            + serde::de::DeserializeOwned
-            + prost::Name,
+        A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name,
+        BB: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name,
     > ::prost::Name for MsgCreateClient<A, BB>
 {
     const NAME: &'static str = "MsgCreateClient";
@@ -1036,41 +671,20 @@ impl ::prost::Name for MsgCreateClientResponse {
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, :: prost :: Message)]
 pub struct MsgUpdateClient<
-    A: Clone
-        + PartialEq
-        + Default
-        + Send
-        + Sync
-        + prost::Message
-        + serde::Serialize
-        + serde::de::DeserializeOwned
-        + prost::Name,
+    A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name,
 > {
     #[doc = " client unique identifier"]
     #[prost(string, tag = "1")]
     pub client_id: ::prost::alloc::string::String,
     #[doc = " client message to update the light client"]
     #[prost(message, optional, tag = "2")]
-    #[serde(
-        serialize_with = "crate::any::option::serialize",
-        deserialize_with = "crate::any::option::deserialize"
-    )]
-    pub client_message: ::core::option::Option<A>,
+    pub client_message: ::core::option::Option<crate::any::Any<A>>,
     #[doc = " signer address"]
     #[prost(string, tag = "3")]
     pub signer: ::prost::alloc::string::String,
 }
-impl<
-        A: Clone
-            + PartialEq
-            + Default
-            + Send
-            + Sync
-            + prost::Message
-            + serde::Serialize
-            + serde::de::DeserializeOwned
-            + prost::Name,
-    > ::prost::Name for MsgUpdateClient<A>
+impl<A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name> ::prost::Name
+    for MsgUpdateClient<A>
 {
     const NAME: &'static str = "MsgUpdateClient";
     const PACKAGE: &'static str = "ibc.core.client.v1";
@@ -1096,43 +710,19 @@ impl ::prost::Name for MsgUpdateClientResponse {
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, :: prost :: Message)]
 pub struct MsgUpgradeClient<
-    A: Clone
-        + PartialEq
-        + Default
-        + Send
-        + Sync
-        + prost::Message
-        + serde::Serialize
-        + serde::de::DeserializeOwned
-        + prost::Name,
-    BB: Clone
-        + PartialEq
-        + Default
-        + Send
-        + Sync
-        + prost::Message
-        + serde::Serialize
-        + serde::de::DeserializeOwned
-        + prost::Name,
+    A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name,
+    BB: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name,
 > {
     #[doc = " client unique identifier"]
     #[prost(string, tag = "1")]
     pub client_id: ::prost::alloc::string::String,
     #[doc = " upgraded client state"]
     #[prost(message, optional, tag = "2")]
-    #[serde(
-        serialize_with = "crate::any::option::serialize",
-        deserialize_with = "crate::any::option::deserialize"
-    )]
-    pub client_state: ::core::option::Option<A>,
+    pub client_state: ::core::option::Option<crate::any::Any<A>>,
     #[doc = " upgraded consensus state, only contains enough information to serve as a"]
     #[doc = " basis of trust in update logic"]
     #[prost(message, optional, tag = "3")]
-    #[serde(
-        serialize_with = "crate::any::option::serialize",
-        deserialize_with = "crate::any::option::deserialize"
-    )]
-    pub consensus_state: ::core::option::Option<BB>,
+    pub consensus_state: ::core::option::Option<crate::any::Any<BB>>,
     #[doc = " proof that old chain committed to new client"]
     #[prost(bytes = "vec", tag = "4")]
     pub proof_upgrade_client: ::prost::alloc::vec::Vec<u8>,
@@ -1144,24 +734,8 @@ pub struct MsgUpgradeClient<
     pub signer: ::prost::alloc::string::String,
 }
 impl<
-        A: Clone
-            + PartialEq
-            + Default
-            + Send
-            + Sync
-            + prost::Message
-            + serde::Serialize
-            + serde::de::DeserializeOwned
-            + prost::Name,
-        BB: Clone
-            + PartialEq
-            + Default
-            + Send
-            + Sync
-            + prost::Message
-            + serde::Serialize
-            + serde::de::DeserializeOwned
-            + prost::Name,
+        A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name,
+        BB: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name,
     > ::prost::Name for MsgUpgradeClient<A, BB>
 {
     const NAME: &'static str = "MsgUpgradeClient";
@@ -1189,15 +763,7 @@ impl ::prost::Name for MsgUpgradeClientResponse {
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, :: prost :: Message)]
 pub struct MsgSubmitMisbehaviour<
-    A: Clone
-        + PartialEq
-        + Default
-        + Send
-        + Sync
-        + prost::Message
-        + serde::Serialize
-        + serde::de::DeserializeOwned
-        + prost::Name,
+    A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name,
 > {
     #[doc = " client unique identifier"]
     #[deprecated]
@@ -1206,27 +772,14 @@ pub struct MsgSubmitMisbehaviour<
     #[doc = " misbehaviour used for freezing the light client"]
     #[deprecated]
     #[prost(message, optional, tag = "2")]
-    #[serde(
-        serialize_with = "crate::any::option::serialize",
-        deserialize_with = "crate::any::option::deserialize"
-    )]
-    pub misbehaviour: ::core::option::Option<A>,
+    pub misbehaviour: ::core::option::Option<crate::any::Any<A>>,
     #[doc = " signer address"]
     #[deprecated]
     #[prost(string, tag = "3")]
     pub signer: ::prost::alloc::string::String,
 }
-impl<
-        A: Clone
-            + PartialEq
-            + Default
-            + Send
-            + Sync
-            + prost::Message
-            + serde::Serialize
-            + serde::de::DeserializeOwned
-            + prost::Name,
-    > ::prost::Name for MsgSubmitMisbehaviour<A>
+impl<A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name> ::prost::Name
+    for MsgSubmitMisbehaviour<A>
 {
     const NAME: &'static str = "MsgSubmitMisbehaviour";
     const PACKAGE: &'static str = "ibc.core.client.v1";

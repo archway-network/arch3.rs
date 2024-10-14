@@ -12,20 +12,12 @@ pub struct ConnectionEnd {
     #[doc = " IBC version which can be utilised to determine encodings or protocols for"]
     #[doc = " channels or packets utilising this connection."]
     #[prost(message, repeated, tag = "2")]
-    #[serde(
-        serialize_with = "crate::any::vec::generic_serialize",
-        deserialize_with = "crate::any::vec::generic_deserialize"
-    )]
     pub versions: ::prost::alloc::vec::Vec<Version>,
     #[doc = " current state of the connection end."]
     #[prost(enumeration = "State", tag = "3")]
     pub state: i32,
     #[doc = " counterparty chain associated with this connection."]
     #[prost(message, optional, tag = "4")]
-    #[serde(
-        serialize_with = "crate::any::option::generic_serialize",
-        deserialize_with = "crate::any::option::generic_deserialize"
-    )]
     pub counterparty: ::core::option::Option<Counterparty>,
     #[doc = " delay period that must pass before a consensus state can be used for"]
     #[doc = " packet-verification NOTE: delay period logic is only implemented by some"]
@@ -55,20 +47,12 @@ pub struct IdentifiedConnection {
     #[doc = " IBC version which can be utilised to determine encodings or protocols for"]
     #[doc = " channels or packets utilising this connection"]
     #[prost(message, repeated, tag = "3")]
-    #[serde(
-        serialize_with = "crate::any::vec::generic_serialize",
-        deserialize_with = "crate::any::vec::generic_deserialize"
-    )]
     pub versions: ::prost::alloc::vec::Vec<Version>,
     #[doc = " current state of the connection end."]
     #[prost(enumeration = "State", tag = "4")]
     pub state: i32,
     #[doc = " counterparty chain associated with this connection."]
     #[prost(message, optional, tag = "5")]
-    #[serde(
-        serialize_with = "crate::any::option::generic_serialize",
-        deserialize_with = "crate::any::option::generic_deserialize"
-    )]
     pub counterparty: ::core::option::Option<Counterparty>,
     #[doc = " delay period associated with this connection."]
     #[prost(uint64, tag = "6")]
@@ -96,10 +80,6 @@ pub struct Counterparty {
     pub connection_id: ::prost::alloc::string::String,
     #[doc = " commitment merkle prefix of the counterparty chain."]
     #[prost(message, optional, tag = "3")]
-    #[serde(
-        serialize_with = "crate::any::option::generic_serialize",
-        deserialize_with = "crate::any::option::generic_deserialize"
-    )]
     pub prefix: ::core::option::Option<super::super::commitment::v1::MerklePrefix>,
 }
 impl ::prost::Name for Counterparty {
@@ -239,25 +219,13 @@ impl State {
 #[derive(Clone, PartialEq, :: prost :: Message)]
 pub struct GenesisState {
     #[prost(message, repeated, tag = "1")]
-    #[serde(
-        serialize_with = "crate::any::vec::generic_serialize",
-        deserialize_with = "crate::any::vec::generic_deserialize"
-    )]
     pub connections: ::prost::alloc::vec::Vec<IdentifiedConnection>,
     #[prost(message, repeated, tag = "2")]
-    #[serde(
-        serialize_with = "crate::any::vec::generic_serialize",
-        deserialize_with = "crate::any::vec::generic_deserialize"
-    )]
     pub client_connection_paths: ::prost::alloc::vec::Vec<ConnectionPaths>,
     #[doc = " the sequence for the next generated connection identifier"]
     #[prost(uint64, tag = "3")]
     pub next_connection_sequence: u64,
     #[prost(message, optional, tag = "4")]
-    #[serde(
-        serialize_with = "crate::any::option::generic_serialize",
-        deserialize_with = "crate::any::option::generic_deserialize"
-    )]
     pub params: ::core::option::Option<Params>,
 }
 impl ::prost::Name for GenesisState {
@@ -293,20 +261,12 @@ impl ::prost::Name for QueryConnectionRequest {
 pub struct QueryConnectionResponse {
     #[doc = " connection associated with the request identifier"]
     #[prost(message, optional, tag = "1")]
-    #[serde(
-        serialize_with = "crate::any::option::generic_serialize",
-        deserialize_with = "crate::any::option::generic_deserialize"
-    )]
     pub connection: ::core::option::Option<ConnectionEnd>,
     #[doc = " merkle proof of existence"]
     #[prost(bytes = "vec", tag = "2")]
     pub proof: ::prost::alloc::vec::Vec<u8>,
     #[doc = " height at which the proof was retrieved"]
     #[prost(message, optional, tag = "3")]
-    #[serde(
-        serialize_with = "crate::any::option::generic_serialize",
-        deserialize_with = "crate::any::option::generic_deserialize"
-    )]
     pub proof_height: ::core::option::Option<super::super::client::v1::Height>,
 }
 impl ::prost::Name for QueryConnectionResponse {
@@ -323,10 +283,6 @@ impl ::prost::Name for QueryConnectionResponse {
 #[derive(Clone, PartialEq, :: prost :: Message)]
 pub struct QueryConnectionsRequest {
     #[prost(message, optional, tag = "1")]
-    #[serde(
-        serialize_with = "crate::any::option::generic_serialize",
-        deserialize_with = "crate::any::option::generic_deserialize"
-    )]
     pub pagination: ::core::option::Option<
         super::super::super::super::cosmos::base::query::v1beta1::PageRequest,
     >,
@@ -346,26 +302,14 @@ impl ::prost::Name for QueryConnectionsRequest {
 pub struct QueryConnectionsResponse {
     #[doc = " list of stored connections of the chain."]
     #[prost(message, repeated, tag = "1")]
-    #[serde(
-        serialize_with = "crate::any::vec::generic_serialize",
-        deserialize_with = "crate::any::vec::generic_deserialize"
-    )]
     pub connections: ::prost::alloc::vec::Vec<IdentifiedConnection>,
     #[doc = " pagination response"]
     #[prost(message, optional, tag = "2")]
-    #[serde(
-        serialize_with = "crate::any::option::generic_serialize",
-        deserialize_with = "crate::any::option::generic_deserialize"
-    )]
     pub pagination: ::core::option::Option<
         super::super::super::super::cosmos::base::query::v1beta1::PageResponse,
     >,
     #[doc = " query block height"]
     #[prost(message, optional, tag = "3")]
-    #[serde(
-        serialize_with = "crate::any::option::generic_serialize",
-        deserialize_with = "crate::any::option::generic_deserialize"
-    )]
     pub height: ::core::option::Option<super::super::client::v1::Height>,
 }
 impl ::prost::Name for QueryConnectionsResponse {
@@ -406,10 +350,6 @@ pub struct QueryClientConnectionsResponse {
     pub proof: ::prost::alloc::vec::Vec<u8>,
     #[doc = " height at which the proof was generated"]
     #[prost(message, optional, tag = "3")]
-    #[serde(
-        serialize_with = "crate::any::option::generic_serialize",
-        deserialize_with = "crate::any::option::generic_deserialize"
-    )]
     pub proof_height: ::core::option::Option<super::super::client::v1::Height>,
 }
 impl ::prost::Name for QueryClientConnectionsResponse {
@@ -442,22 +382,10 @@ impl ::prost::Name for QueryConnectionClientStateRequest {
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, :: prost :: Message)]
 pub struct QueryConnectionClientStateResponse<
-    A: Clone
-        + PartialEq
-        + Default
-        + Send
-        + Sync
-        + prost::Message
-        + serde::Serialize
-        + serde::de::DeserializeOwned
-        + prost::Name,
+    A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name,
 > {
     #[doc = " client state associated with the channel"]
     #[prost(message, optional, tag = "1")]
-    #[serde(
-        serialize_with = "crate::any::option::generic_serialize",
-        deserialize_with = "crate::any::option::generic_deserialize"
-    )]
     pub identified_client_state:
         ::core::option::Option<super::super::client::v1::IdentifiedClientState<A>>,
     #[doc = " merkle proof of existence"]
@@ -465,23 +393,10 @@ pub struct QueryConnectionClientStateResponse<
     pub proof: ::prost::alloc::vec::Vec<u8>,
     #[doc = " height at which the proof was retrieved"]
     #[prost(message, optional, tag = "3")]
-    #[serde(
-        serialize_with = "crate::any::option::generic_serialize",
-        deserialize_with = "crate::any::option::generic_deserialize"
-    )]
     pub proof_height: ::core::option::Option<super::super::client::v1::Height>,
 }
-impl<
-        A: Clone
-            + PartialEq
-            + Default
-            + Send
-            + Sync
-            + prost::Message
-            + serde::Serialize
-            + serde::de::DeserializeOwned
-            + prost::Name,
-    > ::prost::Name for QueryConnectionClientStateResponse<A>
+impl<A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name> ::prost::Name
+    for QueryConnectionClientStateResponse<A>
 {
     const NAME: &'static str = "QueryConnectionClientStateResponse";
     const PACKAGE: &'static str = "ibc.core.connection.v1";
@@ -516,23 +431,11 @@ impl ::prost::Name for QueryConnectionConsensusStateRequest {
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, :: prost :: Message)]
 pub struct QueryConnectionConsensusStateResponse<
-    A: Clone
-        + PartialEq
-        + Default
-        + Send
-        + Sync
-        + prost::Message
-        + serde::Serialize
-        + serde::de::DeserializeOwned
-        + prost::Name,
+    A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name,
 > {
     #[doc = " consensus state associated with the channel"]
     #[prost(message, optional, tag = "1")]
-    #[serde(
-        serialize_with = "crate::any::option::serialize",
-        deserialize_with = "crate::any::option::deserialize"
-    )]
-    pub consensus_state: ::core::option::Option<A>,
+    pub consensus_state: ::core::option::Option<crate::any::Any<A>>,
     #[doc = " client ID associated with the consensus state"]
     #[prost(string, tag = "2")]
     pub client_id: ::prost::alloc::string::String,
@@ -541,23 +444,10 @@ pub struct QueryConnectionConsensusStateResponse<
     pub proof: ::prost::alloc::vec::Vec<u8>,
     #[doc = " height at which the proof was retrieved"]
     #[prost(message, optional, tag = "4")]
-    #[serde(
-        serialize_with = "crate::any::option::generic_serialize",
-        deserialize_with = "crate::any::option::generic_deserialize"
-    )]
     pub proof_height: ::core::option::Option<super::super::client::v1::Height>,
 }
-impl<
-        A: Clone
-            + PartialEq
-            + Default
-            + Send
-            + Sync
-            + prost::Message
-            + serde::Serialize
-            + serde::de::DeserializeOwned
-            + prost::Name,
-    > ::prost::Name for QueryConnectionConsensusStateResponse<A>
+impl<A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name> ::prost::Name
+    for QueryConnectionConsensusStateResponse<A>
 {
     const NAME: &'static str = "QueryConnectionConsensusStateResponse";
     const PACKAGE: &'static str = "ibc.core.connection.v1";
@@ -584,10 +474,6 @@ impl ::prost::Name for QueryConnectionParamsRequest {
 pub struct QueryConnectionParamsResponse {
     #[doc = " params defines the parameters of the module."]
     #[prost(message, optional, tag = "1")]
-    #[serde(
-        serialize_with = "crate::any::option::generic_serialize",
-        deserialize_with = "crate::any::option::generic_deserialize"
-    )]
     pub params: ::core::option::Option<Params>,
 }
 impl ::prost::Name for QueryConnectionParamsResponse {
@@ -606,16 +492,8 @@ pub struct MsgConnectionOpenInit {
     #[prost(string, tag = "1")]
     pub client_id: ::prost::alloc::string::String,
     #[prost(message, optional, tag = "2")]
-    #[serde(
-        serialize_with = "crate::any::option::generic_serialize",
-        deserialize_with = "crate::any::option::generic_deserialize"
-    )]
     pub counterparty: ::core::option::Option<Counterparty>,
     #[prost(message, optional, tag = "3")]
-    #[serde(
-        serialize_with = "crate::any::option::generic_serialize",
-        deserialize_with = "crate::any::option::generic_deserialize"
-    )]
     pub version: ::core::option::Option<Version>,
     #[prost(uint64, tag = "4")]
     pub delay_period: u64,
@@ -648,15 +526,7 @@ impl ::prost::Name for MsgConnectionOpenInitResponse {
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, :: prost :: Message)]
 pub struct MsgConnectionOpenTry<
-    A: Clone
-        + PartialEq
-        + Default
-        + Send
-        + Sync
-        + prost::Message
-        + serde::Serialize
-        + serde::de::DeserializeOwned
-        + prost::Name,
+    A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name,
 > {
     #[prost(string, tag = "1")]
     pub client_id: ::prost::alloc::string::String,
@@ -665,30 +535,14 @@ pub struct MsgConnectionOpenTry<
     #[prost(string, tag = "2")]
     pub previous_connection_id: ::prost::alloc::string::String,
     #[prost(message, optional, tag = "3")]
-    #[serde(
-        serialize_with = "crate::any::option::serialize",
-        deserialize_with = "crate::any::option::deserialize"
-    )]
-    pub client_state: ::core::option::Option<A>,
+    pub client_state: ::core::option::Option<crate::any::Any<A>>,
     #[prost(message, optional, tag = "4")]
-    #[serde(
-        serialize_with = "crate::any::option::generic_serialize",
-        deserialize_with = "crate::any::option::generic_deserialize"
-    )]
     pub counterparty: ::core::option::Option<Counterparty>,
     #[prost(uint64, tag = "5")]
     pub delay_period: u64,
     #[prost(message, repeated, tag = "6")]
-    #[serde(
-        serialize_with = "crate::any::vec::generic_serialize",
-        deserialize_with = "crate::any::vec::generic_deserialize"
-    )]
     pub counterparty_versions: ::prost::alloc::vec::Vec<Version>,
     #[prost(message, optional, tag = "7")]
-    #[serde(
-        serialize_with = "crate::any::option::generic_serialize",
-        deserialize_with = "crate::any::option::generic_deserialize"
-    )]
     pub proof_height: ::core::option::Option<super::super::client::v1::Height>,
     #[doc = " proof of the initialization the connection on Chain A: `UNITIALIZED ->"]
     #[doc = " INIT`"]
@@ -701,10 +555,6 @@ pub struct MsgConnectionOpenTry<
     #[prost(bytes = "vec", tag = "10")]
     pub proof_consensus: ::prost::alloc::vec::Vec<u8>,
     #[prost(message, optional, tag = "11")]
-    #[serde(
-        serialize_with = "crate::any::option::generic_serialize",
-        deserialize_with = "crate::any::option::generic_deserialize"
-    )]
     pub consensus_height: ::core::option::Option<super::super::client::v1::Height>,
     #[prost(string, tag = "12")]
     pub signer: ::prost::alloc::string::String,
@@ -712,17 +562,8 @@ pub struct MsgConnectionOpenTry<
     #[prost(bytes = "vec", tag = "13")]
     pub host_consensus_state_proof: ::prost::alloc::vec::Vec<u8>,
 }
-impl<
-        A: Clone
-            + PartialEq
-            + Default
-            + Send
-            + Sync
-            + prost::Message
-            + serde::Serialize
-            + serde::de::DeserializeOwned
-            + prost::Name,
-    > ::prost::Name for MsgConnectionOpenTry<A>
+impl<A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name> ::prost::Name
+    for MsgConnectionOpenTry<A>
 {
     const NAME: &'static str = "MsgConnectionOpenTry";
     const PACKAGE: &'static str = "ibc.core.connection.v1";
@@ -748,37 +589,17 @@ impl ::prost::Name for MsgConnectionOpenTryResponse {
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, :: prost :: Message)]
 pub struct MsgConnectionOpenAck<
-    A: Clone
-        + PartialEq
-        + Default
-        + Send
-        + Sync
-        + prost::Message
-        + serde::Serialize
-        + serde::de::DeserializeOwned
-        + prost::Name,
+    A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name,
 > {
     #[prost(string, tag = "1")]
     pub connection_id: ::prost::alloc::string::String,
     #[prost(string, tag = "2")]
     pub counterparty_connection_id: ::prost::alloc::string::String,
     #[prost(message, optional, tag = "3")]
-    #[serde(
-        serialize_with = "crate::any::option::generic_serialize",
-        deserialize_with = "crate::any::option::generic_deserialize"
-    )]
     pub version: ::core::option::Option<Version>,
     #[prost(message, optional, tag = "4")]
-    #[serde(
-        serialize_with = "crate::any::option::serialize",
-        deserialize_with = "crate::any::option::deserialize"
-    )]
-    pub client_state: ::core::option::Option<A>,
+    pub client_state: ::core::option::Option<crate::any::Any<A>>,
     #[prost(message, optional, tag = "5")]
-    #[serde(
-        serialize_with = "crate::any::option::generic_serialize",
-        deserialize_with = "crate::any::option::generic_deserialize"
-    )]
     pub proof_height: ::core::option::Option<super::super::client::v1::Height>,
     #[doc = " proof of the initialization the connection on Chain B: `UNITIALIZED ->"]
     #[doc = " TRYOPEN`"]
@@ -791,10 +612,6 @@ pub struct MsgConnectionOpenAck<
     #[prost(bytes = "vec", tag = "8")]
     pub proof_consensus: ::prost::alloc::vec::Vec<u8>,
     #[prost(message, optional, tag = "9")]
-    #[serde(
-        serialize_with = "crate::any::option::generic_serialize",
-        deserialize_with = "crate::any::option::generic_deserialize"
-    )]
     pub consensus_height: ::core::option::Option<super::super::client::v1::Height>,
     #[prost(string, tag = "10")]
     pub signer: ::prost::alloc::string::String,
@@ -802,17 +619,8 @@ pub struct MsgConnectionOpenAck<
     #[prost(bytes = "vec", tag = "11")]
     pub host_consensus_state_proof: ::prost::alloc::vec::Vec<u8>,
 }
-impl<
-        A: Clone
-            + PartialEq
-            + Default
-            + Send
-            + Sync
-            + prost::Message
-            + serde::Serialize
-            + serde::de::DeserializeOwned
-            + prost::Name,
-    > ::prost::Name for MsgConnectionOpenAck<A>
+impl<A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name> ::prost::Name
+    for MsgConnectionOpenAck<A>
 {
     const NAME: &'static str = "MsgConnectionOpenAck";
     const PACKAGE: &'static str = "ibc.core.connection.v1";
@@ -844,10 +652,6 @@ pub struct MsgConnectionOpenConfirm {
     #[prost(bytes = "vec", tag = "2")]
     pub proof_ack: ::prost::alloc::vec::Vec<u8>,
     #[prost(message, optional, tag = "3")]
-    #[serde(
-        serialize_with = "crate::any::option::generic_serialize",
-        deserialize_with = "crate::any::option::generic_deserialize"
-    )]
     pub proof_height: ::core::option::Option<super::super::client::v1::Height>,
     #[prost(string, tag = "4")]
     pub signer: ::prost::alloc::string::String,

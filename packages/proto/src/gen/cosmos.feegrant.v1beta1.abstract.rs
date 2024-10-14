@@ -8,10 +8,6 @@ pub struct BasicAllowance {
     #[doc = " by this allowance and will be updated as coins are spent. If it is"]
     #[doc = " empty, there is no spend limit and any amount of coins can be spent."]
     #[prost(message, repeated, tag = "1")]
-    #[serde(
-        serialize_with = "crate::any::vec::generic_serialize",
-        deserialize_with = "crate::any::vec::generic_deserialize"
-    )]
     pub spend_limit: ::prost::alloc::vec::Vec<super::super::base::v1beta1::Coin>,
     #[doc = " expiration specifies an optional time when this allowance expires"]
     #[prost(message, optional, tag = "2")]
@@ -32,10 +28,6 @@ impl ::prost::Name for BasicAllowance {
 pub struct PeriodicAllowance {
     #[doc = " basic specifies a struct of `BasicAllowance`"]
     #[prost(message, optional, tag = "1")]
-    #[serde(
-        serialize_with = "crate::any::option::generic_serialize",
-        deserialize_with = "crate::any::option::generic_deserialize"
-    )]
     pub basic: ::core::option::Option<BasicAllowance>,
     #[doc = " period specifies the time duration in which period_spend_limit coins can"]
     #[doc = " be spent before that allowance is reset"]
@@ -44,17 +36,9 @@ pub struct PeriodicAllowance {
     #[doc = " period_spend_limit specifies the maximum number of coins that can be spent"]
     #[doc = " in the period"]
     #[prost(message, repeated, tag = "3")]
-    #[serde(
-        serialize_with = "crate::any::vec::generic_serialize",
-        deserialize_with = "crate::any::vec::generic_deserialize"
-    )]
     pub period_spend_limit: ::prost::alloc::vec::Vec<super::super::base::v1beta1::Coin>,
     #[doc = " period_can_spend is the number of coins left to be spent before the period_reset time"]
     #[prost(message, repeated, tag = "4")]
-    #[serde(
-        serialize_with = "crate::any::vec::generic_serialize",
-        deserialize_with = "crate::any::vec::generic_deserialize"
-    )]
     pub period_can_spend: ::prost::alloc::vec::Vec<super::super::base::v1beta1::Coin>,
     #[doc = " period_reset is the time at which this period resets and a new one begins,"]
     #[doc = " it is calculated from the start time of the first transaction after the"]
@@ -74,38 +58,17 @@ impl ::prost::Name for PeriodicAllowance {
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, :: prost :: Message)]
 pub struct AllowedMsgAllowance<
-    A: Clone
-        + PartialEq
-        + Default
-        + Send
-        + Sync
-        + prost::Message
-        + serde::Serialize
-        + serde::de::DeserializeOwned
-        + prost::Name,
+    A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name,
 > {
     #[doc = " allowance can be any of basic and periodic fee allowance."]
     #[prost(message, optional, tag = "1")]
-    #[serde(
-        serialize_with = "crate::any::option::serialize",
-        deserialize_with = "crate::any::option::deserialize"
-    )]
-    pub allowance: ::core::option::Option<A>,
+    pub allowance: ::core::option::Option<crate::any::Any<A>>,
     #[doc = " allowed_messages are the messages for which the grantee has the access."]
     #[prost(string, repeated, tag = "2")]
     pub allowed_messages: ::prost::alloc::vec::Vec<::prost::alloc::string::String>,
 }
-impl<
-        A: Clone
-            + PartialEq
-            + Default
-            + Send
-            + Sync
-            + prost::Message
-            + serde::Serialize
-            + serde::de::DeserializeOwned
-            + prost::Name,
-    > ::prost::Name for AllowedMsgAllowance<A>
+impl<A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name> ::prost::Name
+    for AllowedMsgAllowance<A>
 {
     const NAME: &'static str = "AllowedMsgAllowance";
     const PACKAGE: &'static str = "cosmos.feegrant.v1beta1";
@@ -117,17 +80,7 @@ impl<
 #[derive(:: serde :: Serialize, :: serde :: Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, :: prost :: Message)]
-pub struct Grant<
-    A: Clone
-        + PartialEq
-        + Default
-        + Send
-        + Sync
-        + prost::Message
-        + serde::Serialize
-        + serde::de::DeserializeOwned
-        + prost::Name,
-> {
+pub struct Grant<A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name> {
     #[doc = " granter is the address of the user granting an allowance of their funds."]
     #[prost(string, tag = "1")]
     pub granter: ::prost::alloc::string::String,
@@ -136,23 +89,10 @@ pub struct Grant<
     pub grantee: ::prost::alloc::string::String,
     #[doc = " allowance can be any of basic, periodic, allowed fee allowance."]
     #[prost(message, optional, tag = "3")]
-    #[serde(
-        serialize_with = "crate::any::option::serialize",
-        deserialize_with = "crate::any::option::deserialize"
-    )]
-    pub allowance: ::core::option::Option<A>,
+    pub allowance: ::core::option::Option<crate::any::Any<A>>,
 }
-impl<
-        A: Clone
-            + PartialEq
-            + Default
-            + Send
-            + Sync
-            + prost::Message
-            + serde::Serialize
-            + serde::de::DeserializeOwned
-            + prost::Name,
-    > ::prost::Name for Grant<A>
+impl<A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name> ::prost::Name
+    for Grant<A>
 {
     const NAME: &'static str = "Grant";
     const PACKAGE: &'static str = "cosmos.feegrant.v1beta1";
@@ -164,35 +104,13 @@ impl<
 #[derive(:: serde :: Serialize, :: serde :: Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, :: prost :: Message)]
-pub struct GenesisState<
-    A: Clone
-        + PartialEq
-        + Default
-        + Send
-        + Sync
-        + prost::Message
-        + serde::Serialize
-        + serde::de::DeserializeOwned
-        + prost::Name,
-> {
+pub struct GenesisState<A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name>
+{
     #[prost(message, repeated, tag = "1")]
-    #[serde(
-        serialize_with = "crate::any::vec::generic_serialize",
-        deserialize_with = "crate::any::vec::generic_deserialize"
-    )]
     pub allowances: ::prost::alloc::vec::Vec<Grant<A>>,
 }
-impl<
-        A: Clone
-            + PartialEq
-            + Default
-            + Send
-            + Sync
-            + prost::Message
-            + serde::Serialize
-            + serde::de::DeserializeOwned
-            + prost::Name,
-    > ::prost::Name for GenesisState<A>
+impl<A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name> ::prost::Name
+    for GenesisState<A>
 {
     const NAME: &'static str = "GenesisState";
     const PACKAGE: &'static str = "cosmos.feegrant.v1beta1";
@@ -224,35 +142,14 @@ impl ::prost::Name for QueryAllowanceRequest {
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, :: prost :: Message)]
 pub struct QueryAllowanceResponse<
-    A: Clone
-        + PartialEq
-        + Default
-        + Send
-        + Sync
-        + prost::Message
-        + serde::Serialize
-        + serde::de::DeserializeOwned
-        + prost::Name,
+    A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name,
 > {
     #[doc = " allowance is a allowance granted for grantee by granter."]
     #[prost(message, optional, tag = "1")]
-    #[serde(
-        serialize_with = "crate::any::option::generic_serialize",
-        deserialize_with = "crate::any::option::generic_deserialize"
-    )]
     pub allowance: ::core::option::Option<Grant<A>>,
 }
-impl<
-        A: Clone
-            + PartialEq
-            + Default
-            + Send
-            + Sync
-            + prost::Message
-            + serde::Serialize
-            + serde::de::DeserializeOwned
-            + prost::Name,
-    > ::prost::Name for QueryAllowanceResponse<A>
+impl<A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name> ::prost::Name
+    for QueryAllowanceResponse<A>
 {
     const NAME: &'static str = "QueryAllowanceResponse";
     const PACKAGE: &'static str = "cosmos.feegrant.v1beta1";
@@ -269,10 +166,6 @@ pub struct QueryAllowancesRequest {
     pub grantee: ::prost::alloc::string::String,
     #[doc = " pagination defines an pagination for the request."]
     #[prost(message, optional, tag = "2")]
-    #[serde(
-        serialize_with = "crate::any::option::generic_serialize",
-        deserialize_with = "crate::any::option::generic_deserialize"
-    )]
     pub pagination: ::core::option::Option<super::super::base::query::v1beta1::PageRequest>,
 }
 impl ::prost::Name for QueryAllowancesRequest {
@@ -287,42 +180,17 @@ impl ::prost::Name for QueryAllowancesRequest {
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, :: prost :: Message)]
 pub struct QueryAllowancesResponse<
-    A: Clone
-        + PartialEq
-        + Default
-        + Send
-        + Sync
-        + prost::Message
-        + serde::Serialize
-        + serde::de::DeserializeOwned
-        + prost::Name,
+    A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name,
 > {
     #[doc = " allowances are allowance's granted for grantee by granter."]
     #[prost(message, repeated, tag = "1")]
-    #[serde(
-        serialize_with = "crate::any::vec::generic_serialize",
-        deserialize_with = "crate::any::vec::generic_deserialize"
-    )]
     pub allowances: ::prost::alloc::vec::Vec<Grant<A>>,
     #[doc = " pagination defines an pagination for the response."]
     #[prost(message, optional, tag = "2")]
-    #[serde(
-        serialize_with = "crate::any::option::generic_serialize",
-        deserialize_with = "crate::any::option::generic_deserialize"
-    )]
     pub pagination: ::core::option::Option<super::super::base::query::v1beta1::PageResponse>,
 }
-impl<
-        A: Clone
-            + PartialEq
-            + Default
-            + Send
-            + Sync
-            + prost::Message
-            + serde::Serialize
-            + serde::de::DeserializeOwned
-            + prost::Name,
-    > ::prost::Name for QueryAllowancesResponse<A>
+impl<A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name> ::prost::Name
+    for QueryAllowancesResponse<A>
 {
     const NAME: &'static str = "QueryAllowancesResponse";
     const PACKAGE: &'static str = "cosmos.feegrant.v1beta1";
@@ -341,10 +209,6 @@ pub struct QueryAllowancesByGranterRequest {
     pub granter: ::prost::alloc::string::String,
     #[doc = " pagination defines an pagination for the request."]
     #[prost(message, optional, tag = "2")]
-    #[serde(
-        serialize_with = "crate::any::option::generic_serialize",
-        deserialize_with = "crate::any::option::generic_deserialize"
-    )]
     pub pagination: ::core::option::Option<super::super::base::query::v1beta1::PageRequest>,
 }
 impl ::prost::Name for QueryAllowancesByGranterRequest {
@@ -361,42 +225,17 @@ impl ::prost::Name for QueryAllowancesByGranterRequest {
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, :: prost :: Message)]
 pub struct QueryAllowancesByGranterResponse<
-    A: Clone
-        + PartialEq
-        + Default
-        + Send
-        + Sync
-        + prost::Message
-        + serde::Serialize
-        + serde::de::DeserializeOwned
-        + prost::Name,
+    A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name,
 > {
     #[doc = " allowances that have been issued by the granter."]
     #[prost(message, repeated, tag = "1")]
-    #[serde(
-        serialize_with = "crate::any::vec::generic_serialize",
-        deserialize_with = "crate::any::vec::generic_deserialize"
-    )]
     pub allowances: ::prost::alloc::vec::Vec<Grant<A>>,
     #[doc = " pagination defines an pagination for the response."]
     #[prost(message, optional, tag = "2")]
-    #[serde(
-        serialize_with = "crate::any::option::generic_serialize",
-        deserialize_with = "crate::any::option::generic_deserialize"
-    )]
     pub pagination: ::core::option::Option<super::super::base::query::v1beta1::PageResponse>,
 }
-impl<
-        A: Clone
-            + PartialEq
-            + Default
-            + Send
-            + Sync
-            + prost::Message
-            + serde::Serialize
-            + serde::de::DeserializeOwned
-            + prost::Name,
-    > ::prost::Name for QueryAllowancesByGranterResponse<A>
+impl<A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name> ::prost::Name
+    for QueryAllowancesByGranterResponse<A>
 {
     const NAME: &'static str = "QueryAllowancesByGranterResponse";
     const PACKAGE: &'static str = "cosmos.feegrant.v1beta1";
@@ -410,15 +249,7 @@ impl<
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, :: prost :: Message)]
 pub struct MsgGrantAllowance<
-    A: Clone
-        + PartialEq
-        + Default
-        + Send
-        + Sync
-        + prost::Message
-        + serde::Serialize
-        + serde::de::DeserializeOwned
-        + prost::Name,
+    A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name,
 > {
     #[doc = " granter is the address of the user granting an allowance of their funds."]
     #[prost(string, tag = "1")]
@@ -428,23 +259,10 @@ pub struct MsgGrantAllowance<
     pub grantee: ::prost::alloc::string::String,
     #[doc = " allowance can be any of basic, periodic, allowed fee allowance."]
     #[prost(message, optional, tag = "3")]
-    #[serde(
-        serialize_with = "crate::any::option::serialize",
-        deserialize_with = "crate::any::option::deserialize"
-    )]
-    pub allowance: ::core::option::Option<A>,
+    pub allowance: ::core::option::Option<crate::any::Any<A>>,
 }
-impl<
-        A: Clone
-            + PartialEq
-            + Default
-            + Send
-            + Sync
-            + prost::Message
-            + serde::Serialize
-            + serde::de::DeserializeOwned
-            + prost::Name,
-    > ::prost::Name for MsgGrantAllowance<A>
+impl<A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name> ::prost::Name
+    for MsgGrantAllowance<A>
 {
     const NAME: &'static str = "MsgGrantAllowance";
     const PACKAGE: &'static str = "cosmos.feegrant.v1beta1";

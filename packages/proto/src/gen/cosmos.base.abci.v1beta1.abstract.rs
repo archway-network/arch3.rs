@@ -3,17 +3,7 @@
 #[derive(:: serde :: Serialize, :: serde :: Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, :: prost :: Message)]
-pub struct TxResponse<
-    A: Clone
-        + PartialEq
-        + Default
-        + Send
-        + Sync
-        + prost::Message
-        + serde::Serialize
-        + serde::de::DeserializeOwned
-        + prost::Name,
-> {
+pub struct TxResponse<A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name> {
     #[doc = " The block height"]
     #[prost(int64, tag = "1")]
     pub height: i64,
@@ -35,10 +25,6 @@ pub struct TxResponse<
     pub raw_log: ::prost::alloc::string::String,
     #[doc = " The output of the application's logger (typed). May be non-deterministic."]
     #[prost(message, repeated, tag = "7")]
-    #[serde(
-        serialize_with = "crate::any::vec::generic_serialize",
-        deserialize_with = "crate::any::vec::generic_deserialize"
-    )]
     pub logs: ::prost::alloc::vec::Vec<AbciMessageLog>,
     #[doc = " Additional information. May be non-deterministic."]
     #[prost(string, tag = "8")]
@@ -51,11 +37,7 @@ pub struct TxResponse<
     pub gas_used: i64,
     #[doc = " The request transaction bytes."]
     #[prost(message, optional, tag = "11")]
-    #[serde(
-        serialize_with = "crate::any::option::serialize",
-        deserialize_with = "crate::any::option::deserialize"
-    )]
-    pub tx: ::core::option::Option<A>,
+    pub tx: ::core::option::Option<crate::any::Any<A>>,
     #[doc = " Time of the previous block. For heights > 1, it's the weighted median of"]
     #[doc = " the timestamps of the valid votes in the block.LastCommit. For height == 1,"]
     #[doc = " it's genesis time."]
@@ -70,17 +52,8 @@ pub struct TxResponse<
     #[prost(message, repeated, tag = "13")]
     pub events: ::prost::alloc::vec::Vec<::tendermint_proto::v0_37::abci::Event>,
 }
-impl<
-        A: Clone
-            + PartialEq
-            + Default
-            + Send
-            + Sync
-            + prost::Message
-            + serde::Serialize
-            + serde::de::DeserializeOwned
-            + prost::Name,
-    > ::prost::Name for TxResponse<A>
+impl<A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name> ::prost::Name
+    for TxResponse<A>
 {
     const NAME: &'static str = "TxResponse";
     const PACKAGE: &'static str = "cosmos.base.abci.v1beta1";
@@ -100,10 +73,6 @@ pub struct AbciMessageLog {
     #[doc = " Events contains a slice of Event objects that were emitted during some"]
     #[doc = " execution."]
     #[prost(message, repeated, tag = "3")]
-    #[serde(
-        serialize_with = "crate::any::vec::generic_serialize",
-        deserialize_with = "crate::any::vec::generic_deserialize"
-    )]
     pub events: ::prost::alloc::vec::Vec<StringEvent>,
 }
 impl ::prost::Name for AbciMessageLog {
@@ -122,10 +91,6 @@ pub struct StringEvent {
     #[prost(string, tag = "1")]
     pub r#type: ::prost::alloc::string::String,
     #[prost(message, repeated, tag = "2")]
-    #[serde(
-        serialize_with = "crate::any::vec::generic_serialize",
-        deserialize_with = "crate::any::vec::generic_deserialize"
-    )]
     pub attributes: ::prost::alloc::vec::Vec<Attribute>,
 }
 impl ::prost::Name for StringEvent {
@@ -176,17 +141,7 @@ impl ::prost::Name for GasInfo {
 #[derive(:: serde :: Serialize, :: serde :: Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, :: prost :: Message)]
-pub struct Result<
-    A: Clone
-        + PartialEq
-        + Default
-        + Send
-        + Sync
-        + prost::Message
-        + serde::Serialize
-        + serde::de::DeserializeOwned
-        + prost::Name,
-> {
+pub struct Result<A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name> {
     #[doc = " Data is any data returned from message or handler execution. It MUST be"]
     #[doc = " length prefixed in order to separate data from multiple message executions."]
     #[doc = " Deprecated. This field is still populated, but prefer msg_response instead"]
@@ -205,23 +160,10 @@ pub struct Result<
     #[doc = ""]
     #[doc = " Since: cosmos-sdk 0.46"]
     #[prost(message, repeated, tag = "4")]
-    #[serde(
-        serialize_with = "crate::any::vec::serialize",
-        deserialize_with = "crate::any::vec::deserialize"
-    )]
-    pub msg_responses: ::prost::alloc::vec::Vec<A>,
+    pub msg_responses: ::prost::alloc::vec::Vec<crate::any::Any<A>>,
 }
-impl<
-        A: Clone
-            + PartialEq
-            + Default
-            + Send
-            + Sync
-            + prost::Message
-            + serde::Serialize
-            + serde::de::DeserializeOwned
-            + prost::Name,
-    > ::prost::Name for Result<A>
+impl<A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name> ::prost::Name
+    for Result<A>
 {
     const NAME: &'static str = "Result";
     const PACKAGE: &'static str = "cosmos.base.abci.v1beta1";
@@ -235,40 +177,15 @@ impl<
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, :: prost :: Message)]
 pub struct SimulationResponse<
-    A: Clone
-        + PartialEq
-        + Default
-        + Send
-        + Sync
-        + prost::Message
-        + serde::Serialize
-        + serde::de::DeserializeOwned
-        + prost::Name,
+    A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name,
 > {
     #[prost(message, optional, tag = "1")]
-    #[serde(
-        serialize_with = "crate::any::option::generic_serialize",
-        deserialize_with = "crate::any::option::generic_deserialize"
-    )]
     pub gas_info: ::core::option::Option<GasInfo>,
     #[prost(message, optional, tag = "2")]
-    #[serde(
-        serialize_with = "crate::any::option::generic_serialize",
-        deserialize_with = "crate::any::option::generic_deserialize"
-    )]
     pub result: ::core::option::Option<Result<A>>,
 }
-impl<
-        A: Clone
-            + PartialEq
-            + Default
-            + Send
-            + Sync
-            + prost::Message
-            + serde::Serialize
-            + serde::de::DeserializeOwned
-            + prost::Name,
-    > ::prost::Name for SimulationResponse<A>
+impl<A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name> ::prost::Name
+    for SimulationResponse<A>
 {
     const NAME: &'static str = "SimulationResponse";
     const PACKAGE: &'static str = "cosmos.base.abci.v1beta1";
@@ -299,46 +216,19 @@ impl ::prost::Name for MsgData {
 #[derive(:: serde :: Serialize, :: serde :: Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, :: prost :: Message)]
-pub struct TxMsgData<
-    A: Clone
-        + PartialEq
-        + Default
-        + Send
-        + Sync
-        + prost::Message
-        + serde::Serialize
-        + serde::de::DeserializeOwned
-        + prost::Name,
-> {
+pub struct TxMsgData<A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name> {
     #[doc = " data field is deprecated and not populated."]
     #[deprecated]
     #[prost(message, repeated, tag = "1")]
-    #[serde(
-        serialize_with = "crate::any::vec::generic_serialize",
-        deserialize_with = "crate::any::vec::generic_deserialize"
-    )]
     pub data: ::prost::alloc::vec::Vec<MsgData>,
     #[doc = " msg_responses contains the Msg handler responses packed into Anys."]
     #[doc = ""]
     #[doc = " Since: cosmos-sdk 0.46"]
     #[prost(message, repeated, tag = "2")]
-    #[serde(
-        serialize_with = "crate::any::vec::serialize",
-        deserialize_with = "crate::any::vec::deserialize"
-    )]
-    pub msg_responses: ::prost::alloc::vec::Vec<A>,
+    pub msg_responses: ::prost::alloc::vec::Vec<crate::any::Any<A>>,
 }
-impl<
-        A: Clone
-            + PartialEq
-            + Default
-            + Send
-            + Sync
-            + prost::Message
-            + serde::Serialize
-            + serde::de::DeserializeOwned
-            + prost::Name,
-    > ::prost::Name for TxMsgData<A>
+impl<A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name> ::prost::Name
+    for TxMsgData<A>
 {
     const NAME: &'static str = "TxMsgData";
     const PACKAGE: &'static str = "cosmos.base.abci.v1beta1";
@@ -351,15 +241,7 @@ impl<
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, :: prost :: Message)]
 pub struct SearchTxsResult<
-    A: Clone
-        + PartialEq
-        + Default
-        + Send
-        + Sync
-        + prost::Message
-        + serde::Serialize
-        + serde::de::DeserializeOwned
-        + prost::Name,
+    A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name,
 > {
     #[doc = " Count of all txs"]
     #[prost(uint64, tag = "1")]
@@ -378,23 +260,10 @@ pub struct SearchTxsResult<
     pub limit: u64,
     #[doc = " List of txs in current page"]
     #[prost(message, repeated, tag = "6")]
-    #[serde(
-        serialize_with = "crate::any::vec::generic_serialize",
-        deserialize_with = "crate::any::vec::generic_deserialize"
-    )]
     pub txs: ::prost::alloc::vec::Vec<TxResponse<A>>,
 }
-impl<
-        A: Clone
-            + PartialEq
-            + Default
-            + Send
-            + Sync
-            + prost::Message
-            + serde::Serialize
-            + serde::de::DeserializeOwned
-            + prost::Name,
-    > ::prost::Name for SearchTxsResult<A>
+impl<A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name> ::prost::Name
+    for SearchTxsResult<A>
 {
     const NAME: &'static str = "SearchTxsResult";
     const PACKAGE: &'static str = "cosmos.base.abci.v1beta1";

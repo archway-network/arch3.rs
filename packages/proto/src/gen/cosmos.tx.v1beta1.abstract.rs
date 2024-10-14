@@ -3,57 +3,17 @@
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, :: prost :: Message)]
 pub struct Tx<
-    A: Clone
-        + PartialEq
-        + Default
-        + Send
-        + Sync
-        + prost::Message
-        + serde::Serialize
-        + serde::de::DeserializeOwned
-        + prost::Name,
-    BB: Clone
-        + PartialEq
-        + Default
-        + Send
-        + Sync
-        + prost::Message
-        + serde::Serialize
-        + serde::de::DeserializeOwned
-        + prost::Name,
-    C: Clone
-        + PartialEq
-        + Default
-        + Send
-        + Sync
-        + prost::Message
-        + serde::Serialize
-        + serde::de::DeserializeOwned
-        + prost::Name,
-    D: Clone
-        + PartialEq
-        + Default
-        + Send
-        + Sync
-        + prost::Message
-        + serde::Serialize
-        + serde::de::DeserializeOwned
-        + prost::Name,
+    A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name,
+    BB: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name,
+    C: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name,
+    D: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name,
 > {
     #[doc = " body is the processable content of the transaction"]
     #[prost(message, optional, tag = "1")]
-    #[serde(
-        serialize_with = "crate::any::option::generic_serialize",
-        deserialize_with = "crate::any::option::generic_deserialize"
-    )]
     pub body: ::core::option::Option<TxBody<A, BB, C>>,
     #[doc = " auth_info is the authorization related content of the transaction,"]
     #[doc = " specifically signers, signer modes and fee"]
     #[prost(message, optional, tag = "2")]
-    #[serde(
-        serialize_with = "crate::any::option::generic_serialize",
-        deserialize_with = "crate::any::option::generic_deserialize"
-    )]
     pub auth_info: ::core::option::Option<AuthInfo<D>>,
     #[doc = " signatures is a list of signatures that matches the length and order of"]
     #[doc = " AuthInfo's signer_infos to allow connecting signature meta information like"]
@@ -62,42 +22,10 @@ pub struct Tx<
     pub signatures: ::prost::alloc::vec::Vec<::prost::alloc::vec::Vec<u8>>,
 }
 impl<
-        A: Clone
-            + PartialEq
-            + Default
-            + Send
-            + Sync
-            + prost::Message
-            + serde::Serialize
-            + serde::de::DeserializeOwned
-            + prost::Name,
-        BB: Clone
-            + PartialEq
-            + Default
-            + Send
-            + Sync
-            + prost::Message
-            + serde::Serialize
-            + serde::de::DeserializeOwned
-            + prost::Name,
-        C: Clone
-            + PartialEq
-            + Default
-            + Send
-            + Sync
-            + prost::Message
-            + serde::Serialize
-            + serde::de::DeserializeOwned
-            + prost::Name,
-        D: Clone
-            + PartialEq
-            + Default
-            + Send
-            + Sync
-            + prost::Message
-            + serde::Serialize
-            + serde::de::DeserializeOwned
-            + prost::Name,
+        A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name,
+        BB: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name,
+        C: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name,
+        D: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name,
     > ::prost::Name for Tx<A, BB, C, D>
 {
     const NAME: &'static str = "Tx";
@@ -173,15 +101,7 @@ impl ::prost::Name for SignDoc {
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, :: prost :: Message)]
 pub struct SignDocDirectAux<
-    A: Clone
-        + PartialEq
-        + Default
-        + Send
-        + Sync
-        + prost::Message
-        + serde::Serialize
-        + serde::de::DeserializeOwned
-        + prost::Name,
+    A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name,
 > {
     #[doc = " body_bytes is protobuf serialization of a TxBody that matches the"]
     #[doc = " representation in TxRaw."]
@@ -189,11 +109,7 @@ pub struct SignDocDirectAux<
     pub body_bytes: ::prost::alloc::vec::Vec<u8>,
     #[doc = " public_key is the public key of the signing account."]
     #[prost(message, optional, tag = "2")]
-    #[serde(
-        serialize_with = "crate::any::option::serialize",
-        deserialize_with = "crate::any::option::deserialize"
-    )]
-    pub public_key: ::core::option::Option<A>,
+    pub public_key: ::core::option::Option<crate::any::Any<A>>,
     #[doc = " chain_id is the identifier of the chain this transaction targets."]
     #[doc = " It prevents signed transactions from being used on another chain by an"]
     #[doc = " attacker."]
@@ -212,23 +128,10 @@ pub struct SignDocDirectAux<
     #[doc = " This field is ignored if the chain didn't enable tips, i.e. didn't add the"]
     #[doc = " `TipDecorator` in its posthandler."]
     #[prost(message, optional, tag = "6")]
-    #[serde(
-        serialize_with = "crate::any::option::generic_serialize",
-        deserialize_with = "crate::any::option::generic_deserialize"
-    )]
     pub tip: ::core::option::Option<Tip>,
 }
-impl<
-        A: Clone
-            + PartialEq
-            + Default
-            + Send
-            + Sync
-            + prost::Message
-            + serde::Serialize
-            + serde::de::DeserializeOwned
-            + prost::Name,
-    > ::prost::Name for SignDocDirectAux<A>
+impl<A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name> ::prost::Name
+    for SignDocDirectAux<A>
 {
     const NAME: &'static str = "SignDocDirectAux";
     const PACKAGE: &'static str = "cosmos.tx.v1beta1";
@@ -241,33 +144,9 @@ impl<
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, :: prost :: Message)]
 pub struct TxBody<
-    A: Clone
-        + PartialEq
-        + Default
-        + Send
-        + Sync
-        + prost::Message
-        + serde::Serialize
-        + serde::de::DeserializeOwned
-        + prost::Name,
-    BB: Clone
-        + PartialEq
-        + Default
-        + Send
-        + Sync
-        + prost::Message
-        + serde::Serialize
-        + serde::de::DeserializeOwned
-        + prost::Name,
-    C: Clone
-        + PartialEq
-        + Default
-        + Send
-        + Sync
-        + prost::Message
-        + serde::Serialize
-        + serde::de::DeserializeOwned
-        + prost::Name,
+    A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name,
+    BB: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name,
+    C: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name,
 > {
     #[doc = " messages is a list of messages to be executed. The required signers of"]
     #[doc = " those messages define the number and order of elements in AuthInfo's"]
@@ -277,11 +156,7 @@ pub struct TxBody<
     #[doc = " is referred to as the primary signer and pays the fee for the whole"]
     #[doc = " transaction."]
     #[prost(message, repeated, tag = "1")]
-    #[serde(
-        serialize_with = "crate::any::vec::serialize",
-        deserialize_with = "crate::any::vec::deserialize"
-    )]
-    pub messages: ::prost::alloc::vec::Vec<A>,
+    pub messages: ::prost::alloc::vec::Vec<crate::any::Any<A>>,
     #[doc = " memo is any arbitrary note/comment to be added to the transaction."]
     #[doc = " WARNING: in clients, any publicly exposed text should not be called memo,"]
     #[doc = " but should be called `note` instead (see <https://github.com/cosmos/cosmos-sdk/issues/9122>)."]
@@ -295,49 +170,17 @@ pub struct TxBody<
     #[doc = " when the default options are not sufficient. If any of these are present"]
     #[doc = " and can't be handled, the transaction will be rejected"]
     #[prost(message, repeated, tag = "1023")]
-    #[serde(
-        serialize_with = "crate::any::vec::serialize",
-        deserialize_with = "crate::any::vec::deserialize"
-    )]
-    pub extension_options: ::prost::alloc::vec::Vec<BB>,
+    pub extension_options: ::prost::alloc::vec::Vec<crate::any::Any<BB>>,
     #[doc = " extension_options are arbitrary options that can be added by chains"]
     #[doc = " when the default options are not sufficient. If any of these are present"]
     #[doc = " and can't be handled, they will be ignored"]
     #[prost(message, repeated, tag = "2047")]
-    #[serde(
-        serialize_with = "crate::any::vec::serialize",
-        deserialize_with = "crate::any::vec::deserialize"
-    )]
-    pub non_critical_extension_options: ::prost::alloc::vec::Vec<C>,
+    pub non_critical_extension_options: ::prost::alloc::vec::Vec<crate::any::Any<C>>,
 }
 impl<
-        A: Clone
-            + PartialEq
-            + Default
-            + Send
-            + Sync
-            + prost::Message
-            + serde::Serialize
-            + serde::de::DeserializeOwned
-            + prost::Name,
-        BB: Clone
-            + PartialEq
-            + Default
-            + Send
-            + Sync
-            + prost::Message
-            + serde::Serialize
-            + serde::de::DeserializeOwned
-            + prost::Name,
-        C: Clone
-            + PartialEq
-            + Default
-            + Send
-            + Sync
-            + prost::Message
-            + serde::Serialize
-            + serde::de::DeserializeOwned
-            + prost::Name,
+        A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name,
+        BB: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name,
+        C: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name,
     > ::prost::Name for TxBody<A, BB, C>
 {
     const NAME: &'static str = "TxBody";
@@ -351,36 +194,18 @@ impl<
 #[derive(:: serde :: Serialize, :: serde :: Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, :: prost :: Message)]
-pub struct AuthInfo<
-    A: Clone
-        + PartialEq
-        + Default
-        + Send
-        + Sync
-        + prost::Message
-        + serde::Serialize
-        + serde::de::DeserializeOwned
-        + prost::Name,
-> {
+pub struct AuthInfo<A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name> {
     #[doc = " signer_infos defines the signing modes for the required signers. The number"]
     #[doc = " and order of elements must match the required signers from TxBody's"]
     #[doc = " messages. The first element is the primary signer and the one which pays"]
     #[doc = " the fee."]
     #[prost(message, repeated, tag = "1")]
-    #[serde(
-        serialize_with = "crate::any::vec::generic_serialize",
-        deserialize_with = "crate::any::vec::generic_deserialize"
-    )]
     pub signer_infos: ::prost::alloc::vec::Vec<SignerInfo<A>>,
     #[doc = " Fee is the fee and gas limit for the transaction. The first signer is the"]
     #[doc = " primary signer and the one which pays the fee. The fee can be calculated"]
     #[doc = " based on the cost of evaluating the body and doing signature verification"]
     #[doc = " of the signers. This can be estimated via simulation."]
     #[prost(message, optional, tag = "2")]
-    #[serde(
-        serialize_with = "crate::any::option::generic_serialize",
-        deserialize_with = "crate::any::option::generic_deserialize"
-    )]
     pub fee: ::core::option::Option<Fee>,
     #[doc = " Tip is the optional tip used for transactions fees paid in another denom."]
     #[doc = ""]
@@ -389,23 +214,10 @@ pub struct AuthInfo<
     #[doc = ""]
     #[doc = " Since: cosmos-sdk 0.46"]
     #[prost(message, optional, tag = "3")]
-    #[serde(
-        serialize_with = "crate::any::option::generic_serialize",
-        deserialize_with = "crate::any::option::generic_deserialize"
-    )]
     pub tip: ::core::option::Option<Tip>,
 }
-impl<
-        A: Clone
-            + PartialEq
-            + Default
-            + Send
-            + Sync
-            + prost::Message
-            + serde::Serialize
-            + serde::de::DeserializeOwned
-            + prost::Name,
-    > ::prost::Name for AuthInfo<A>
+impl<A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name> ::prost::Name
+    for AuthInfo<A>
 {
     const NAME: &'static str = "AuthInfo";
     const PACKAGE: &'static str = "cosmos.tx.v1beta1";
@@ -418,33 +230,15 @@ impl<
 #[derive(:: serde :: Serialize, :: serde :: Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, :: prost :: Message)]
-pub struct SignerInfo<
-    A: Clone
-        + PartialEq
-        + Default
-        + Send
-        + Sync
-        + prost::Message
-        + serde::Serialize
-        + serde::de::DeserializeOwned
-        + prost::Name,
-> {
+pub struct SignerInfo<A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name> {
     #[doc = " public_key is the public key of the signer. It is optional for accounts"]
     #[doc = " that already exist in state. If unset, the verifier can use the required \\"]
     #[doc = " signer address for this position and lookup the public key."]
     #[prost(message, optional, tag = "1")]
-    #[serde(
-        serialize_with = "crate::any::option::serialize",
-        deserialize_with = "crate::any::option::deserialize"
-    )]
-    pub public_key: ::core::option::Option<A>,
+    pub public_key: ::core::option::Option<crate::any::Any<A>>,
     #[doc = " mode_info describes the signing mode of the signer and is a nested"]
     #[doc = " structure to support nested multisig pubkey's"]
     #[prost(message, optional, tag = "2")]
-    #[serde(
-        serialize_with = "crate::any::option::generic_serialize",
-        deserialize_with = "crate::any::option::generic_deserialize"
-    )]
     pub mode_info: ::core::option::Option<ModeInfo>,
     #[doc = " sequence is the sequence of the account, which describes the"]
     #[doc = " number of committed transactions signed by a given address. It is used to"]
@@ -452,17 +246,8 @@ pub struct SignerInfo<
     #[prost(uint64, tag = "3")]
     pub sequence: u64,
 }
-impl<
-        A: Clone
-            + PartialEq
-            + Default
-            + Send
-            + Sync
-            + prost::Message
-            + serde::Serialize
-            + serde::de::DeserializeOwned
-            + prost::Name,
-    > ::prost::Name for SignerInfo<A>
+impl<A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name> ::prost::Name
+    for SignerInfo<A>
 {
     const NAME: &'static str = "SignerInfo";
     const PACKAGE: &'static str = "cosmos.tx.v1beta1";
@@ -551,10 +336,6 @@ impl ::prost::Name for ModeInfo {
 pub struct Fee {
     #[doc = " amount is the amount of coins to be paid as a fee"]
     #[prost(message, repeated, tag = "1")]
-    #[serde(
-        serialize_with = "crate::any::vec::generic_serialize",
-        deserialize_with = "crate::any::vec::generic_deserialize"
-    )]
     pub amount: ::prost::alloc::vec::Vec<super::super::base::v1beta1::Coin>,
     #[doc = " gas_limit is the maximum gas that can be used in transaction processing"]
     #[doc = " before an out of gas error occurs"]
@@ -587,10 +368,6 @@ impl ::prost::Name for Fee {
 pub struct Tip {
     #[doc = " amount is the amount of the tip"]
     #[prost(message, repeated, tag = "1")]
-    #[serde(
-        serialize_with = "crate::any::vec::generic_serialize",
-        deserialize_with = "crate::any::vec::generic_deserialize"
-    )]
     pub amount: ::prost::alloc::vec::Vec<super::super::base::v1beta1::Coin>,
     #[doc = " tipper is the address of the account paying for the tip"]
     #[prost(string, tag = "2")]
@@ -613,15 +390,7 @@ impl ::prost::Name for Tip {
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, :: prost :: Message)]
 pub struct AuxSignerData<
-    A: Clone
-        + PartialEq
-        + Default
-        + Send
-        + Sync
-        + prost::Message
-        + serde::Serialize
-        + serde::de::DeserializeOwned
-        + prost::Name,
+    A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name,
 > {
     #[doc = " address is the bech32-encoded address of the auxiliary signer. If using"]
     #[doc = " AuxSignerData across different chains, the bech32 prefix of the target"]
@@ -632,10 +401,6 @@ pub struct AuxSignerData<
     #[doc = " signs. Note: we use the same sign doc even if we're signing with"]
     #[doc = " LEGACY_AMINO_JSON."]
     #[prost(message, optional, tag = "2")]
-    #[serde(
-        serialize_with = "crate::any::option::generic_serialize",
-        deserialize_with = "crate::any::option::generic_deserialize"
-    )]
     pub sign_doc: ::core::option::Option<SignDocDirectAux<A>>,
     #[doc = " mode is the signing mode of the single signer."]
     #[prost(enumeration = "super::signing::v1beta1::SignMode", tag = "3")]
@@ -644,17 +409,8 @@ pub struct AuxSignerData<
     #[prost(bytes = "vec", tag = "4")]
     pub sig: ::prost::alloc::vec::Vec<u8>,
 }
-impl<
-        A: Clone
-            + PartialEq
-            + Default
-            + Send
-            + Sync
-            + prost::Message
-            + serde::Serialize
-            + serde::de::DeserializeOwned
-            + prost::Name,
-    > ::prost::Name for AuxSignerData<A>
+impl<A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name> ::prost::Name
+    for AuxSignerData<A>
 {
     const NAME: &'static str = "AuxSignerData";
     const PACKAGE: &'static str = "cosmos.tx.v1beta1";
@@ -675,10 +431,6 @@ pub struct GetTxsEventRequest {
     #[doc = " Deprecated post v0.46.x: use page and limit instead."]
     #[deprecated]
     #[prost(message, optional, tag = "2")]
-    #[serde(
-        serialize_with = "crate::any::option::generic_serialize",
-        deserialize_with = "crate::any::option::generic_deserialize"
-    )]
     pub pagination: ::core::option::Option<super::super::base::query::v1beta1::PageRequest>,
     #[prost(enumeration = "OrderBy", tag = "3")]
     pub order_by: i32,
@@ -703,125 +455,33 @@ impl ::prost::Name for GetTxsEventRequest {
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, :: prost :: Message)]
 pub struct GetTxsEventResponse<
-    A: Clone
-        + PartialEq
-        + Default
-        + Send
-        + Sync
-        + prost::Message
-        + serde::Serialize
-        + serde::de::DeserializeOwned
-        + prost::Name,
-    BB: Clone
-        + PartialEq
-        + Default
-        + Send
-        + Sync
-        + prost::Message
-        + serde::Serialize
-        + serde::de::DeserializeOwned
-        + prost::Name,
-    C: Clone
-        + PartialEq
-        + Default
-        + Send
-        + Sync
-        + prost::Message
-        + serde::Serialize
-        + serde::de::DeserializeOwned
-        + prost::Name,
-    D: Clone
-        + PartialEq
-        + Default
-        + Send
-        + Sync
-        + prost::Message
-        + serde::Serialize
-        + serde::de::DeserializeOwned
-        + prost::Name,
-    E: Clone
-        + PartialEq
-        + Default
-        + Send
-        + Sync
-        + prost::Message
-        + serde::Serialize
-        + serde::de::DeserializeOwned
-        + prost::Name,
+    A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name,
+    BB: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name,
+    C: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name,
+    D: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name,
+    E: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name,
 > {
     #[doc = " txs is the list of queried transactions."]
     #[prost(message, repeated, tag = "1")]
-    #[serde(
-        serialize_with = "crate::any::vec::generic_serialize",
-        deserialize_with = "crate::any::vec::generic_deserialize"
-    )]
     pub txs: ::prost::alloc::vec::Vec<Tx<A, BB, C, D>>,
     #[doc = " tx_responses is the list of queried TxResponses."]
     #[prost(message, repeated, tag = "2")]
-    #[serde(
-        serialize_with = "crate::any::vec::generic_serialize",
-        deserialize_with = "crate::any::vec::generic_deserialize"
-    )]
     pub tx_responses: ::prost::alloc::vec::Vec<super::super::base::abci::v1beta1::TxResponse<E>>,
     #[doc = " pagination defines a pagination for the response."]
     #[doc = " Deprecated post v0.46.x: use total instead."]
     #[deprecated]
     #[prost(message, optional, tag = "3")]
-    #[serde(
-        serialize_with = "crate::any::option::generic_serialize",
-        deserialize_with = "crate::any::option::generic_deserialize"
-    )]
     pub pagination: ::core::option::Option<super::super::base::query::v1beta1::PageResponse>,
     #[doc = " total is total number of results available"]
     #[prost(uint64, tag = "4")]
     pub total: u64,
 }
 impl<
-        A: Clone
-            + PartialEq
-            + Default
-            + Send
-            + Sync
-            + prost::Message
-            + serde::Serialize
-            + serde::de::DeserializeOwned
-            + prost::Name,
-        BB: Clone
-            + PartialEq
-            + Default
-            + Send
-            + Sync
-            + prost::Message
-            + serde::Serialize
-            + serde::de::DeserializeOwned
-            + prost::Name,
-        C: Clone
-            + PartialEq
-            + Default
-            + Send
-            + Sync
-            + prost::Message
-            + serde::Serialize
-            + serde::de::DeserializeOwned
-            + prost::Name,
-        D: Clone
-            + PartialEq
-            + Default
-            + Send
-            + Sync
-            + prost::Message
-            + serde::Serialize
-            + serde::de::DeserializeOwned
-            + prost::Name,
-        E: Clone
-            + PartialEq
-            + Default
-            + Send
-            + Sync
-            + prost::Message
-            + serde::Serialize
-            + serde::de::DeserializeOwned
-            + prost::Name,
+        A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name,
+        BB: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name,
+        C: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name,
+        D: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name,
+        E: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name,
     > ::prost::Name for GetTxsEventResponse<A, BB, C, D, E>
 {
     const NAME: &'static str = "GetTxsEventResponse";
@@ -855,35 +515,14 @@ impl ::prost::Name for BroadcastTxRequest {
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, :: prost :: Message)]
 pub struct BroadcastTxResponse<
-    A: Clone
-        + PartialEq
-        + Default
-        + Send
-        + Sync
-        + prost::Message
-        + serde::Serialize
-        + serde::de::DeserializeOwned
-        + prost::Name,
+    A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name,
 > {
     #[doc = " tx_response is the queried TxResponses."]
     #[prost(message, optional, tag = "1")]
-    #[serde(
-        serialize_with = "crate::any::option::generic_serialize",
-        deserialize_with = "crate::any::option::generic_deserialize"
-    )]
     pub tx_response: ::core::option::Option<super::super::base::abci::v1beta1::TxResponse<A>>,
 }
-impl<
-        A: Clone
-            + PartialEq
-            + Default
-            + Send
-            + Sync
-            + prost::Message
-            + serde::Serialize
-            + serde::de::DeserializeOwned
-            + prost::Name,
-    > ::prost::Name for BroadcastTxResponse<A>
+impl<A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name> ::prost::Name
+    for BroadcastTxResponse<A>
 {
     const NAME: &'static str = "BroadcastTxResponse";
     const PACKAGE: &'static str = "cosmos.tx.v1beta1";
@@ -897,51 +536,15 @@ impl<
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, :: prost :: Message)]
 pub struct SimulateRequest<
-    A: Clone
-        + PartialEq
-        + Default
-        + Send
-        + Sync
-        + prost::Message
-        + serde::Serialize
-        + serde::de::DeserializeOwned
-        + prost::Name,
-    BB: Clone
-        + PartialEq
-        + Default
-        + Send
-        + Sync
-        + prost::Message
-        + serde::Serialize
-        + serde::de::DeserializeOwned
-        + prost::Name,
-    C: Clone
-        + PartialEq
-        + Default
-        + Send
-        + Sync
-        + prost::Message
-        + serde::Serialize
-        + serde::de::DeserializeOwned
-        + prost::Name,
-    D: Clone
-        + PartialEq
-        + Default
-        + Send
-        + Sync
-        + prost::Message
-        + serde::Serialize
-        + serde::de::DeserializeOwned
-        + prost::Name,
+    A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name,
+    BB: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name,
+    C: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name,
+    D: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name,
 > {
     #[doc = " tx is the transaction to simulate."]
     #[doc = " Deprecated. Send raw tx bytes instead."]
     #[deprecated]
     #[prost(message, optional, tag = "1")]
-    #[serde(
-        serialize_with = "crate::any::option::generic_serialize",
-        deserialize_with = "crate::any::option::generic_deserialize"
-    )]
     pub tx: ::core::option::Option<Tx<A, BB, C, D>>,
     #[doc = " tx_bytes is the raw transaction."]
     #[doc = ""]
@@ -950,42 +553,10 @@ pub struct SimulateRequest<
     pub tx_bytes: ::prost::alloc::vec::Vec<u8>,
 }
 impl<
-        A: Clone
-            + PartialEq
-            + Default
-            + Send
-            + Sync
-            + prost::Message
-            + serde::Serialize
-            + serde::de::DeserializeOwned
-            + prost::Name,
-        BB: Clone
-            + PartialEq
-            + Default
-            + Send
-            + Sync
-            + prost::Message
-            + serde::Serialize
-            + serde::de::DeserializeOwned
-            + prost::Name,
-        C: Clone
-            + PartialEq
-            + Default
-            + Send
-            + Sync
-            + prost::Message
-            + serde::Serialize
-            + serde::de::DeserializeOwned
-            + prost::Name,
-        D: Clone
-            + PartialEq
-            + Default
-            + Send
-            + Sync
-            + prost::Message
-            + serde::Serialize
-            + serde::de::DeserializeOwned
-            + prost::Name,
+        A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name,
+        BB: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name,
+        C: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name,
+        D: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name,
     > ::prost::Name for SimulateRequest<A, BB, C, D>
 {
     const NAME: &'static str = "SimulateRequest";
@@ -1000,42 +571,17 @@ impl<
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, :: prost :: Message)]
 pub struct SimulateResponse<
-    A: Clone
-        + PartialEq
-        + Default
-        + Send
-        + Sync
-        + prost::Message
-        + serde::Serialize
-        + serde::de::DeserializeOwned
-        + prost::Name,
+    A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name,
 > {
     #[doc = " gas_info is the information about gas used in the simulation."]
     #[prost(message, optional, tag = "1")]
-    #[serde(
-        serialize_with = "crate::any::option::generic_serialize",
-        deserialize_with = "crate::any::option::generic_deserialize"
-    )]
     pub gas_info: ::core::option::Option<super::super::base::abci::v1beta1::GasInfo>,
     #[doc = " result is the result of the simulation."]
     #[prost(message, optional, tag = "2")]
-    #[serde(
-        serialize_with = "crate::any::option::generic_serialize",
-        deserialize_with = "crate::any::option::generic_deserialize"
-    )]
     pub result: ::core::option::Option<super::super::base::abci::v1beta1::Result<A>>,
 }
-impl<
-        A: Clone
-            + PartialEq
-            + Default
-            + Send
-            + Sync
-            + prost::Message
-            + serde::Serialize
-            + serde::de::DeserializeOwned
-            + prost::Name,
-    > ::prost::Name for SimulateResponse<A>
+impl<A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name> ::prost::Name
+    for SimulateResponse<A>
 {
     const NAME: &'static str = "SimulateResponse";
     const PACKAGE: &'static str = "cosmos.tx.v1beta1";
@@ -1065,113 +611,25 @@ impl ::prost::Name for GetTxRequest {
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, :: prost :: Message)]
 pub struct GetTxResponse<
-    A: Clone
-        + PartialEq
-        + Default
-        + Send
-        + Sync
-        + prost::Message
-        + serde::Serialize
-        + serde::de::DeserializeOwned
-        + prost::Name,
-    BB: Clone
-        + PartialEq
-        + Default
-        + Send
-        + Sync
-        + prost::Message
-        + serde::Serialize
-        + serde::de::DeserializeOwned
-        + prost::Name,
-    C: Clone
-        + PartialEq
-        + Default
-        + Send
-        + Sync
-        + prost::Message
-        + serde::Serialize
-        + serde::de::DeserializeOwned
-        + prost::Name,
-    D: Clone
-        + PartialEq
-        + Default
-        + Send
-        + Sync
-        + prost::Message
-        + serde::Serialize
-        + serde::de::DeserializeOwned
-        + prost::Name,
-    E: Clone
-        + PartialEq
-        + Default
-        + Send
-        + Sync
-        + prost::Message
-        + serde::Serialize
-        + serde::de::DeserializeOwned
-        + prost::Name,
+    A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name,
+    BB: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name,
+    C: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name,
+    D: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name,
+    E: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name,
 > {
     #[doc = " tx is the queried transaction."]
     #[prost(message, optional, tag = "1")]
-    #[serde(
-        serialize_with = "crate::any::option::generic_serialize",
-        deserialize_with = "crate::any::option::generic_deserialize"
-    )]
     pub tx: ::core::option::Option<Tx<A, BB, C, D>>,
     #[doc = " tx_response is the queried TxResponses."]
     #[prost(message, optional, tag = "2")]
-    #[serde(
-        serialize_with = "crate::any::option::generic_serialize",
-        deserialize_with = "crate::any::option::generic_deserialize"
-    )]
     pub tx_response: ::core::option::Option<super::super::base::abci::v1beta1::TxResponse<E>>,
 }
 impl<
-        A: Clone
-            + PartialEq
-            + Default
-            + Send
-            + Sync
-            + prost::Message
-            + serde::Serialize
-            + serde::de::DeserializeOwned
-            + prost::Name,
-        BB: Clone
-            + PartialEq
-            + Default
-            + Send
-            + Sync
-            + prost::Message
-            + serde::Serialize
-            + serde::de::DeserializeOwned
-            + prost::Name,
-        C: Clone
-            + PartialEq
-            + Default
-            + Send
-            + Sync
-            + prost::Message
-            + serde::Serialize
-            + serde::de::DeserializeOwned
-            + prost::Name,
-        D: Clone
-            + PartialEq
-            + Default
-            + Send
-            + Sync
-            + prost::Message
-            + serde::Serialize
-            + serde::de::DeserializeOwned
-            + prost::Name,
-        E: Clone
-            + PartialEq
-            + Default
-            + Send
-            + Sync
-            + prost::Message
-            + serde::Serialize
-            + serde::de::DeserializeOwned
-            + prost::Name,
+        A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name,
+        BB: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name,
+        C: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name,
+        D: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name,
+        E: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name,
     > ::prost::Name for GetTxResponse<A, BB, C, D, E>
 {
     const NAME: &'static str = "GetTxResponse";
@@ -1193,10 +651,6 @@ pub struct GetBlockWithTxsRequest {
     pub height: i64,
     #[doc = " pagination defines a pagination for the request."]
     #[prost(message, optional, tag = "2")]
-    #[serde(
-        serialize_with = "crate::any::option::generic_serialize",
-        deserialize_with = "crate::any::option::generic_deserialize"
-    )]
     pub pagination: ::core::option::Option<super::super::base::query::v1beta1::PageRequest>,
 }
 impl ::prost::Name for GetBlockWithTxsRequest {
@@ -1213,103 +667,27 @@ impl ::prost::Name for GetBlockWithTxsRequest {
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, :: prost :: Message)]
 pub struct GetBlockWithTxsResponse<
-    A: Clone
-        + PartialEq
-        + Default
-        + Send
-        + Sync
-        + prost::Message
-        + serde::Serialize
-        + serde::de::DeserializeOwned
-        + prost::Name,
-    BB: Clone
-        + PartialEq
-        + Default
-        + Send
-        + Sync
-        + prost::Message
-        + serde::Serialize
-        + serde::de::DeserializeOwned
-        + prost::Name,
-    C: Clone
-        + PartialEq
-        + Default
-        + Send
-        + Sync
-        + prost::Message
-        + serde::Serialize
-        + serde::de::DeserializeOwned
-        + prost::Name,
-    D: Clone
-        + PartialEq
-        + Default
-        + Send
-        + Sync
-        + prost::Message
-        + serde::Serialize
-        + serde::de::DeserializeOwned
-        + prost::Name,
+    A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name,
+    BB: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name,
+    C: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name,
+    D: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name,
 > {
     #[doc = " txs are the transactions in the block."]
     #[prost(message, repeated, tag = "1")]
-    #[serde(
-        serialize_with = "crate::any::vec::generic_serialize",
-        deserialize_with = "crate::any::vec::generic_deserialize"
-    )]
     pub txs: ::prost::alloc::vec::Vec<Tx<A, BB, C, D>>,
     #[prost(message, optional, tag = "2")]
     pub block_id: ::core::option::Option<::tendermint_proto::v0_37::types::BlockId>,
     #[prost(message, optional, tag = "3")]
-    #[serde(
-        serialize_with = "crate::any::option::generic_serialize",
-        deserialize_with = "crate::any::option::generic_deserialize"
-    )]
     pub block: ::core::option::Option<::tendermint_proto::v0_37::types::Block>,
     #[doc = " pagination defines a pagination for the response."]
     #[prost(message, optional, tag = "4")]
-    #[serde(
-        serialize_with = "crate::any::option::generic_serialize",
-        deserialize_with = "crate::any::option::generic_deserialize"
-    )]
     pub pagination: ::core::option::Option<super::super::base::query::v1beta1::PageResponse>,
 }
 impl<
-        A: Clone
-            + PartialEq
-            + Default
-            + Send
-            + Sync
-            + prost::Message
-            + serde::Serialize
-            + serde::de::DeserializeOwned
-            + prost::Name,
-        BB: Clone
-            + PartialEq
-            + Default
-            + Send
-            + Sync
-            + prost::Message
-            + serde::Serialize
-            + serde::de::DeserializeOwned
-            + prost::Name,
-        C: Clone
-            + PartialEq
-            + Default
-            + Send
-            + Sync
-            + prost::Message
-            + serde::Serialize
-            + serde::de::DeserializeOwned
-            + prost::Name,
-        D: Clone
-            + PartialEq
-            + Default
-            + Send
-            + Sync
-            + prost::Message
-            + serde::Serialize
-            + serde::de::DeserializeOwned
-            + prost::Name,
+        A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name,
+        BB: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name,
+        C: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name,
+        D: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name,
     > ::prost::Name for GetBlockWithTxsResponse<A, BB, C, D>
 {
     const NAME: &'static str = "GetBlockWithTxsResponse";
@@ -1345,88 +723,20 @@ impl ::prost::Name for TxDecodeRequest {
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, :: prost :: Message)]
 pub struct TxDecodeResponse<
-    A: Clone
-        + PartialEq
-        + Default
-        + Send
-        + Sync
-        + prost::Message
-        + serde::Serialize
-        + serde::de::DeserializeOwned
-        + prost::Name,
-    BB: Clone
-        + PartialEq
-        + Default
-        + Send
-        + Sync
-        + prost::Message
-        + serde::Serialize
-        + serde::de::DeserializeOwned
-        + prost::Name,
-    C: Clone
-        + PartialEq
-        + Default
-        + Send
-        + Sync
-        + prost::Message
-        + serde::Serialize
-        + serde::de::DeserializeOwned
-        + prost::Name,
-    D: Clone
-        + PartialEq
-        + Default
-        + Send
-        + Sync
-        + prost::Message
-        + serde::Serialize
-        + serde::de::DeserializeOwned
-        + prost::Name,
+    A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name,
+    BB: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name,
+    C: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name,
+    D: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name,
 > {
     #[doc = " tx is the decoded transaction."]
     #[prost(message, optional, tag = "1")]
-    #[serde(
-        serialize_with = "crate::any::option::generic_serialize",
-        deserialize_with = "crate::any::option::generic_deserialize"
-    )]
     pub tx: ::core::option::Option<Tx<A, BB, C, D>>,
 }
 impl<
-        A: Clone
-            + PartialEq
-            + Default
-            + Send
-            + Sync
-            + prost::Message
-            + serde::Serialize
-            + serde::de::DeserializeOwned
-            + prost::Name,
-        BB: Clone
-            + PartialEq
-            + Default
-            + Send
-            + Sync
-            + prost::Message
-            + serde::Serialize
-            + serde::de::DeserializeOwned
-            + prost::Name,
-        C: Clone
-            + PartialEq
-            + Default
-            + Send
-            + Sync
-            + prost::Message
-            + serde::Serialize
-            + serde::de::DeserializeOwned
-            + prost::Name,
-        D: Clone
-            + PartialEq
-            + Default
-            + Send
-            + Sync
-            + prost::Message
-            + serde::Serialize
-            + serde::de::DeserializeOwned
-            + prost::Name,
+        A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name,
+        BB: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name,
+        C: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name,
+        D: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name,
     > ::prost::Name for TxDecodeResponse<A, BB, C, D>
 {
     const NAME: &'static str = "TxDecodeResponse";
@@ -1443,88 +753,20 @@ impl<
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, :: prost :: Message)]
 pub struct TxEncodeRequest<
-    A: Clone
-        + PartialEq
-        + Default
-        + Send
-        + Sync
-        + prost::Message
-        + serde::Serialize
-        + serde::de::DeserializeOwned
-        + prost::Name,
-    BB: Clone
-        + PartialEq
-        + Default
-        + Send
-        + Sync
-        + prost::Message
-        + serde::Serialize
-        + serde::de::DeserializeOwned
-        + prost::Name,
-    C: Clone
-        + PartialEq
-        + Default
-        + Send
-        + Sync
-        + prost::Message
-        + serde::Serialize
-        + serde::de::DeserializeOwned
-        + prost::Name,
-    D: Clone
-        + PartialEq
-        + Default
-        + Send
-        + Sync
-        + prost::Message
-        + serde::Serialize
-        + serde::de::DeserializeOwned
-        + prost::Name,
+    A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name,
+    BB: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name,
+    C: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name,
+    D: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name,
 > {
     #[doc = " tx is the transaction to encode."]
     #[prost(message, optional, tag = "1")]
-    #[serde(
-        serialize_with = "crate::any::option::generic_serialize",
-        deserialize_with = "crate::any::option::generic_deserialize"
-    )]
     pub tx: ::core::option::Option<Tx<A, BB, C, D>>,
 }
 impl<
-        A: Clone
-            + PartialEq
-            + Default
-            + Send
-            + Sync
-            + prost::Message
-            + serde::Serialize
-            + serde::de::DeserializeOwned
-            + prost::Name,
-        BB: Clone
-            + PartialEq
-            + Default
-            + Send
-            + Sync
-            + prost::Message
-            + serde::Serialize
-            + serde::de::DeserializeOwned
-            + prost::Name,
-        C: Clone
-            + PartialEq
-            + Default
-            + Send
-            + Sync
-            + prost::Message
-            + serde::Serialize
-            + serde::de::DeserializeOwned
-            + prost::Name,
-        D: Clone
-            + PartialEq
-            + Default
-            + Send
-            + Sync
-            + prost::Message
-            + serde::Serialize
-            + serde::de::DeserializeOwned
-            + prost::Name,
+        A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name,
+        BB: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name,
+        C: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name,
+        D: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name,
     > ::prost::Name for TxEncodeRequest<A, BB, C, D>
 {
     const NAME: &'static str = "TxEncodeRequest";

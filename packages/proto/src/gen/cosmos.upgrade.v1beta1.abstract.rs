@@ -2,17 +2,7 @@
 #[derive(:: serde :: Serialize, :: serde :: Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, :: prost :: Message)]
-pub struct Plan<
-    A: Clone
-        + PartialEq
-        + Default
-        + Send
-        + Sync
-        + prost::Message
-        + serde::Serialize
-        + serde::de::DeserializeOwned
-        + prost::Name,
-> {
+pub struct Plan<A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name> {
     #[doc = " Sets the name for the upgrade. This name will be used by the upgraded"]
     #[doc = " version of the software to apply any special \"on-upgrade\" commands during"]
     #[doc = " the first BeginBlock method after the upgrade is applied. It is also used"]
@@ -40,23 +30,10 @@ pub struct Plan<
     #[doc = " If this field is not empty, an error will be thrown."]
     #[deprecated]
     #[prost(message, optional, tag = "5")]
-    #[serde(
-        serialize_with = "crate::any::option::serialize",
-        deserialize_with = "crate::any::option::deserialize"
-    )]
-    pub upgraded_client_state: ::core::option::Option<A>,
+    pub upgraded_client_state: ::core::option::Option<crate::any::Any<A>>,
 }
-impl<
-        A: Clone
-            + PartialEq
-            + Default
-            + Send
-            + Sync
-            + prost::Message
-            + serde::Serialize
-            + serde::de::DeserializeOwned
-            + prost::Name,
-    > ::prost::Name for Plan<A>
+impl<A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name> ::prost::Name
+    for Plan<A>
 {
     const NAME: &'static str = "Plan";
     const PACKAGE: &'static str = "cosmos.upgrade.v1beta1";
@@ -72,15 +49,7 @@ impl<
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, :: prost :: Message)]
 pub struct SoftwareUpgradeProposal<
-    A: Clone
-        + PartialEq
-        + Default
-        + Send
-        + Sync
-        + prost::Message
-        + serde::Serialize
-        + serde::de::DeserializeOwned
-        + prost::Name,
+    A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name,
 > {
     #[doc = " title of the proposal"]
     #[prost(string, tag = "1")]
@@ -90,23 +59,10 @@ pub struct SoftwareUpgradeProposal<
     pub description: ::prost::alloc::string::String,
     #[doc = " plan of the proposal"]
     #[prost(message, optional, tag = "3")]
-    #[serde(
-        serialize_with = "crate::any::option::generic_serialize",
-        deserialize_with = "crate::any::option::generic_deserialize"
-    )]
     pub plan: ::core::option::Option<Plan<A>>,
 }
-impl<
-        A: Clone
-            + PartialEq
-            + Default
-            + Send
-            + Sync
-            + prost::Message
-            + serde::Serialize
-            + serde::de::DeserializeOwned
-            + prost::Name,
-    > ::prost::Name for SoftwareUpgradeProposal<A>
+impl<A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name> ::prost::Name
+    for SoftwareUpgradeProposal<A>
 {
     const NAME: &'static str = "SoftwareUpgradeProposal";
     const PACKAGE: &'static str = "cosmos.upgrade.v1beta1";
@@ -176,35 +132,14 @@ impl ::prost::Name for QueryCurrentPlanRequest {
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, :: prost :: Message)]
 pub struct QueryCurrentPlanResponse<
-    A: Clone
-        + PartialEq
-        + Default
-        + Send
-        + Sync
-        + prost::Message
-        + serde::Serialize
-        + serde::de::DeserializeOwned
-        + prost::Name,
+    A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name,
 > {
     #[doc = " plan is the current upgrade plan."]
     #[prost(message, optional, tag = "1")]
-    #[serde(
-        serialize_with = "crate::any::option::generic_serialize",
-        deserialize_with = "crate::any::option::generic_deserialize"
-    )]
     pub plan: ::core::option::Option<Plan<A>>,
 }
-impl<
-        A: Clone
-            + PartialEq
-            + Default
-            + Send
-            + Sync
-            + prost::Message
-            + serde::Serialize
-            + serde::de::DeserializeOwned
-            + prost::Name,
-    > ::prost::Name for QueryCurrentPlanResponse<A>
+impl<A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name> ::prost::Name
+    for QueryCurrentPlanResponse<A>
 {
     const NAME: &'static str = "QueryCurrentPlanResponse";
     const PACKAGE: &'static str = "cosmos.upgrade.v1beta1";
@@ -312,10 +247,6 @@ impl ::prost::Name for QueryModuleVersionsRequest {
 pub struct QueryModuleVersionsResponse {
     #[doc = " module_versions is a list of module names with their consensus versions."]
     #[prost(message, repeated, tag = "1")]
-    #[serde(
-        serialize_with = "crate::any::vec::generic_serialize",
-        deserialize_with = "crate::any::vec::generic_deserialize"
-    )]
     pub module_versions: ::prost::alloc::vec::Vec<ModuleVersion>,
 }
 impl ::prost::Name for QueryModuleVersionsResponse {
@@ -363,38 +294,17 @@ impl ::prost::Name for QueryAuthorityResponse {
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, :: prost :: Message)]
 pub struct MsgSoftwareUpgrade<
-    A: Clone
-        + PartialEq
-        + Default
-        + Send
-        + Sync
-        + prost::Message
-        + serde::Serialize
-        + serde::de::DeserializeOwned
-        + prost::Name,
+    A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name,
 > {
     #[doc = " authority is the address that controls the module (defaults to x/gov unless overwritten)."]
     #[prost(string, tag = "1")]
     pub authority: ::prost::alloc::string::String,
     #[doc = " plan is the upgrade plan."]
     #[prost(message, optional, tag = "2")]
-    #[serde(
-        serialize_with = "crate::any::option::generic_serialize",
-        deserialize_with = "crate::any::option::generic_deserialize"
-    )]
     pub plan: ::core::option::Option<Plan<A>>,
 }
-impl<
-        A: Clone
-            + PartialEq
-            + Default
-            + Send
-            + Sync
-            + prost::Message
-            + serde::Serialize
-            + serde::de::DeserializeOwned
-            + prost::Name,
-    > ::prost::Name for MsgSoftwareUpgrade<A>
+impl<A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name> ::prost::Name
+    for MsgSoftwareUpgrade<A>
 {
     const NAME: &'static str = "MsgSoftwareUpgrade";
     const PACKAGE: &'static str = "cosmos.upgrade.v1beta1";
