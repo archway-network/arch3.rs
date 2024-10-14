@@ -1,5 +1,57 @@
+use prost::bytes::{Buf, BufMut};
 use prost::{Message, Name};
 use serde::{ser, Deserialize, Deserializer, Serialize, Serializer};
+
+/// Works as a wrapper for Vec<u8> when working with structures that have an undefined/unknown type.
+#[derive(:: serde :: Serialize, :: serde :: Deserialize, Clone, PartialEq, Debug, Default)]
+pub struct GenericData(pub Vec<u8>);
+
+impl Message for GenericData {
+    fn encode_raw<B>(&self, buf: &mut B)
+    where
+        B: BufMut,
+    {
+        buf.put_slice(self.0.as_slice());
+    }
+
+    fn merge_field<B>(
+        &mut self,
+        tag: u32,
+        _wire_type: prost::encoding::WireType,
+        buf: &mut B,
+        _ctx: prost::encoding::DecodeContext,
+    ) -> Result<(), prost::DecodeError>
+    where
+        B: Buf,
+    {
+        if tag == 1 {
+            self.0.push(10u8);
+            while buf.has_remaining() {
+                self.0.push(buf.get_u8());
+            }
+            Ok(())
+        } else {
+            Err(prost::DecodeError::new("invalid tag"))
+        }
+    }
+
+    fn encoded_len(&self) -> usize {
+        self.0.len()
+    }
+
+    fn clear(&mut self) {
+        self.0.clear();
+    }
+}
+
+impl Name for GenericData {
+    const NAME: &'static str = "";
+    const PACKAGE: &'static str = "";
+
+    fn full_name() -> String {
+        format!("{}{}", Self::PACKAGE, Self::NAME)
+    }
+}
 
 // An improved any type that allows you to implement typing directly into it
 #[derive(Clone, PartialEq, Serialize, Deserialize, Message)]
@@ -15,6 +67,13 @@ impl<T: Message + Name + PartialEq + Default> Any<T> {
         Self {
             type_url: T::full_name(),
             value,
+        }
+    }
+
+    pub fn generic(value: T) -> Any<GenericData> {
+        Any {
+            type_url: T::full_name(),
+            value: GenericData(value.encode_to_vec()),
         }
     }
 }
@@ -146,6 +205,7 @@ pub mod vec {
 
 #[cfg(test)]
 mod test {
+    use crate::any::{Any, GenericData};
     use prost::{Message, Name};
     use serde::de::DeserializeOwned;
     use serde::{Deserialize, Serialize};
@@ -237,6 +297,31 @@ mod test {
         fn full_name() -> String {
             format!("{}.{}", Self::PACKAGE, Self::NAME)
         }
+    }
+
+    #[test]
+    fn generic_equal_any() {
+        let val = AnyValue {
+            value: "testinnnng".to_string(),
+            number: 33,
+        };
+
+        dbg!(val.encode_to_vec());
+        dbg!(GenericData(val.encode_to_vec()).encode_to_vec());
+
+        let real_any = Any::new(val.clone());
+        let bytes_any = Any::generic(val);
+
+        let mut real_encoded = real_any.encode_to_vec();
+        let mut bytes_encoded = bytes_any.encode_to_vec();
+
+        assert_eq!(real_encoded, bytes_encoded);
+
+        let real_decoded = Any::<AnyValue>::decode(bytes_encoded.as_slice()).unwrap();
+        let bytes_decoded = Any::<GenericData>::decode(real_encoded.as_slice()).unwrap();
+
+        assert_eq!(real_decoded.type_url, bytes_decoded.type_url);
+        assert_eq!(real_decoded.value.encode_to_vec(), bytes_decoded.value.0);
     }
 
     #[test]
