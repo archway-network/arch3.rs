@@ -178,14 +178,6 @@ fn gen_unnamed_param(name: &str) -> TypeParam {
     type_param
 }
 
-fn gen_type_param(name: &str) -> TypeParam {
-    let mut type_param = gen_unnamed_param(name);
-    type_param
-        .bounds
-        .push(trait_param_bound(vec!["prost", "Name"]));
-    type_param
-}
-
 pub fn generate_advanced_struct(out_dir: &str) -> crate::Result<()> {
     println!("Loading and patching all files containing Any");
     let mut project_tokens = load_and_patch_any(out_dir);
@@ -229,7 +221,7 @@ fn load_and_patch_any(out_dir: &str) -> BTreeMap<String, (File, BTreeMap<String,
                             path.path = gen_any(generic);
                             item.generics
                                 .params
-                                .push(GenericParam::Type(gen_type_param(generic)));
+                                .push(GenericParam::Type(gen_unnamed_param(generic)));
                         }
                     }
                 }
@@ -327,7 +319,7 @@ fn patch_generics(files: &mut BTreeMap<String, (File, BTreeMap<String, usize>)>)
                             let ty_struct = as_struct(
                                 key.items.get_mut(*s.get("GenesisState").unwrap()).unwrap(),
                             )
-                            .unwrap();
+                                .unwrap();
                             new_total_generics = push_generics(ty_struct, ty, new_total_generics);
                         } else if let Some(i) = structs.get(&ident_name) {
                             let ty_item = match i.cmp(&idx) {
@@ -351,7 +343,7 @@ fn patch_generics(files: &mut BTreeMap<String, (File, BTreeMap<String, usize>)>)
                                     .get_mut(*other_structs.get(&ident_name).unwrap())
                                     .unwrap(),
                             )
-                            .unwrap();
+                                .unwrap();
                             new_total_generics = push_generics(ty_struct, ty, new_total_generics);
                         }
                     }
@@ -368,7 +360,7 @@ fn patch_generics(files: &mut BTreeMap<String, (File, BTreeMap<String, usize>)>)
                         curr_struct
                             .generics
                             .params
-                            .push(GenericParam::Type(gen_type_param(gen)));
+                            .push(GenericParam::Type(gen_unnamed_param(gen)));
                     }
                     new_fixes = true;
                 }
@@ -472,13 +464,13 @@ fn save(out_dir: &str, files: &BTreeMap<String, (File, BTreeMap<String, usize>)>
                 ),
             )],
         )
-        .unwrap();
+            .unwrap();
 
         // Export the generated structure and save in file
         fs::write(
             format!("{}/{}", out_dir, new_file),
             quote!(#data).to_string(),
         )
-        .unwrap();
+            .unwrap();
     }
 }

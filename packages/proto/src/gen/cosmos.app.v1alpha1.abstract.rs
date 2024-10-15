@@ -112,7 +112,7 @@ impl ::prost::Name for MigrateFromInfo {
 #[derive(:: serde :: Serialize, :: serde :: Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, :: prost :: Message)]
-pub struct Config<A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name> {
+pub struct Config<A: Clone + PartialEq + Default + Send + Sync + prost::Message> {
     #[doc = " modules are the module configurations for the app."]
     #[prost(message, repeated, tag = "1")]
     pub modules: ::prost::alloc::vec::Vec<ModuleConfig<A>>,
@@ -122,9 +122,7 @@ pub struct Config<A: Clone + PartialEq + Default + Send + Sync + prost::Message 
     #[prost(message, repeated, tag = "2")]
     pub golang_bindings: ::prost::alloc::vec::Vec<GolangBinding>,
 }
-impl<A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name> ::prost::Name
-    for Config<A>
-{
+impl<A: Clone + PartialEq + Default + Send + Sync + prost::Message> ::prost::Name for Config<A> {
     const NAME: &'static str = "Config";
     const PACKAGE: &'static str = "cosmos.app.v1alpha1";
     fn full_name() -> ::prost::alloc::string::String {
@@ -135,8 +133,7 @@ impl<A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name
 #[derive(:: serde :: Serialize, :: serde :: Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, :: prost :: Message)]
-pub struct ModuleConfig<A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name>
-{
+pub struct ModuleConfig<A: Clone + PartialEq + Default + Send + Sync + prost::Message> {
     #[doc = " name is the unique name of the module within the app. It should be a name"]
     #[doc = " that persists between different versions of a module so that modules"]
     #[doc = " can be smoothly upgraded to new versions."]
@@ -159,7 +156,7 @@ pub struct ModuleConfig<A: Clone + PartialEq + Default + Send + Sync + prost::Me
     #[prost(message, repeated, tag = "3")]
     pub golang_bindings: ::prost::alloc::vec::Vec<GolangBinding>,
 }
-impl<A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name> ::prost::Name
+impl<A: Clone + PartialEq + Default + Send + Sync + prost::Message> ::prost::Name
     for ModuleConfig<A>
 {
     const NAME: &'static str = "ModuleConfig";
@@ -203,14 +200,12 @@ impl ::prost::Name for QueryConfigRequest {
 #[derive(:: serde :: Serialize, :: serde :: Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, :: prost :: Message)]
-pub struct QueryConfigResponse<
-    A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name,
-> {
+pub struct QueryConfigResponse<A: Clone + PartialEq + Default + Send + Sync + prost::Message> {
     #[doc = " config is the current app config."]
     #[prost(message, optional, tag = "1")]
     pub config: ::core::option::Option<Config<A>>,
 }
-impl<A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name> ::prost::Name
+impl<A: Clone + PartialEq + Default + Send + Sync + prost::Message> ::prost::Name
     for QueryConfigResponse<A>
 {
     const NAME: &'static str = "QueryConfigResponse";

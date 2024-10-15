@@ -9,6 +9,7 @@
 )]
 #![forbid(unsafe_code)]
 #![warn(trivial_casts, trivial_numeric_casts, unused_import_braces)]
+extern crate core;
 
 #[cfg(feature = "abstract-any")]
 pub mod any;

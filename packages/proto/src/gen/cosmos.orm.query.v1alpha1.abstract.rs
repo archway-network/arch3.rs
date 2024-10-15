@@ -28,14 +28,13 @@ impl ::prost::Name for GetRequest {
 #[derive(:: serde :: Serialize, :: serde :: Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, :: prost :: Message)]
-pub struct GetResponse<A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name>
-{
+pub struct GetResponse<A: Clone + PartialEq + Default + Send + Sync + prost::Message> {
     #[doc = " result is the result of the get query. If no value is found, the gRPC"]
     #[doc = " status code NOT_FOUND will be returned."]
     #[prost(message, optional, tag = "1")]
     pub result: ::core::option::Option<crate::any::Any<A>>,
 }
-impl<A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name> ::prost::Name
+impl<A: Clone + PartialEq + Default + Send + Sync + prost::Message> ::prost::Name
     for GetResponse<A>
 {
     const NAME: &'static str = "GetResponse";
@@ -134,8 +133,7 @@ impl ::prost::Name for ListRequest {
 #[derive(:: serde :: Serialize, :: serde :: Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, :: prost :: Message)]
-pub struct ListResponse<A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name>
-{
+pub struct ListResponse<A: Clone + PartialEq + Default + Send + Sync + prost::Message> {
     #[doc = " results are the results of the query."]
     #[prost(message, repeated, tag = "1")]
     pub results: ::prost::alloc::vec::Vec<crate::any::Any<A>>,
@@ -143,7 +141,7 @@ pub struct ListResponse<A: Clone + PartialEq + Default + Send + Sync + prost::Me
     #[prost(message, optional, tag = "5")]
     pub pagination: ::core::option::Option<super::super::super::base::query::v1beta1::PageResponse>,
 }
-impl<A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name> ::prost::Name
+impl<A: Clone + PartialEq + Default + Send + Sync + prost::Message> ::prost::Name
     for ListResponse<A>
 {
     const NAME: &'static str = "ListResponse";

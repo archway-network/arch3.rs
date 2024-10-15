@@ -71,7 +71,7 @@ impl ::prost::Name for EventBurn {
 #[derive(:: serde :: Serialize, :: serde :: Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, :: prost :: Message)]
-pub struct Class<A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name> {
+pub struct Class<A: Clone + PartialEq + Default + Send + Sync + prost::Message> {
     #[doc = " id defines the unique identifier of the NFT classification, similar to the contract address of ERC721"]
     #[prost(string, tag = "1")]
     pub id: ::prost::alloc::string::String,
@@ -94,9 +94,7 @@ pub struct Class<A: Clone + PartialEq + Default + Send + Sync + prost::Message +
     #[prost(message, optional, tag = "7")]
     pub data: ::core::option::Option<crate::any::Any<A>>,
 }
-impl<A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name> ::prost::Name
-    for Class<A>
-{
+impl<A: Clone + PartialEq + Default + Send + Sync + prost::Message> ::prost::Name for Class<A> {
     const NAME: &'static str = "Class";
     const PACKAGE: &'static str = "cosmos.nft.v1beta1";
     fn full_name() -> ::prost::alloc::string::String {
@@ -107,7 +105,7 @@ impl<A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name
 #[derive(:: serde :: Serialize, :: serde :: Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, :: prost :: Message)]
-pub struct Nft<A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name> {
+pub struct Nft<A: Clone + PartialEq + Default + Send + Sync + prost::Message> {
     #[doc = " class_id associated with the NFT, similar to the contract address of ERC721"]
     #[prost(string, tag = "1")]
     pub class_id: ::prost::alloc::string::String,
@@ -124,9 +122,7 @@ pub struct Nft<A: Clone + PartialEq + Default + Send + Sync + prost::Message + p
     #[prost(message, optional, tag = "10")]
     pub data: ::core::option::Option<crate::any::Any<A>>,
 }
-impl<A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name> ::prost::Name
-    for Nft<A>
-{
+impl<A: Clone + PartialEq + Default + Send + Sync + prost::Message> ::prost::Name for Nft<A> {
     const NAME: &'static str = "NFT";
     const PACKAGE: &'static str = "cosmos.nft.v1beta1";
     fn full_name() -> ::prost::alloc::string::String {
@@ -138,8 +134,8 @@ impl<A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, :: prost :: Message)]
 pub struct GenesisState<
-    A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name,
-    BB: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name,
+    A: Clone + PartialEq + Default + Send + Sync + prost::Message,
+    BB: Clone + PartialEq + Default + Send + Sync + prost::Message,
 > {
     #[doc = " class defines the class of the nft type."]
     #[prost(message, repeated, tag = "1")]
@@ -149,8 +145,8 @@ pub struct GenesisState<
     pub entries: ::prost::alloc::vec::Vec<Entry<BB>>,
 }
 impl<
-        A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name,
-        BB: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name,
+        A: Clone + PartialEq + Default + Send + Sync + prost::Message,
+        BB: Clone + PartialEq + Default + Send + Sync + prost::Message,
     > ::prost::Name for GenesisState<A, BB>
 {
     const NAME: &'static str = "GenesisState";
@@ -163,7 +159,7 @@ impl<
 #[derive(:: serde :: Serialize, :: serde :: Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, :: prost :: Message)]
-pub struct Entry<A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name> {
+pub struct Entry<A: Clone + PartialEq + Default + Send + Sync + prost::Message> {
     #[doc = " owner is the owner address of the following nft"]
     #[prost(string, tag = "1")]
     pub owner: ::prost::alloc::string::String,
@@ -171,9 +167,7 @@ pub struct Entry<A: Clone + PartialEq + Default + Send + Sync + prost::Message +
     #[prost(message, repeated, tag = "2")]
     pub nfts: ::prost::alloc::vec::Vec<Nft<A>>,
 }
-impl<A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name> ::prost::Name
-    for Entry<A>
-{
+impl<A: Clone + PartialEq + Default + Send + Sync + prost::Message> ::prost::Name for Entry<A> {
     const NAME: &'static str = "Entry";
     const PACKAGE: &'static str = "cosmos.nft.v1beta1";
     fn full_name() -> ::prost::alloc::string::String {
@@ -308,9 +302,7 @@ impl ::prost::Name for QueryNfTsRequest {
 #[derive(:: serde :: Serialize, :: serde :: Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, :: prost :: Message)]
-pub struct QueryNfTsResponse<
-    A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name,
-> {
+pub struct QueryNfTsResponse<A: Clone + PartialEq + Default + Send + Sync + prost::Message> {
     #[doc = " NFT defines the NFT"]
     #[prost(message, repeated, tag = "1")]
     pub nfts: ::prost::alloc::vec::Vec<Nft<A>>,
@@ -318,7 +310,7 @@ pub struct QueryNfTsResponse<
     #[prost(message, optional, tag = "2")]
     pub pagination: ::core::option::Option<super::super::base::query::v1beta1::PageResponse>,
 }
-impl<A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name> ::prost::Name
+impl<A: Clone + PartialEq + Default + Send + Sync + prost::Message> ::prost::Name
     for QueryNfTsResponse<A>
 {
     const NAME: &'static str = "QueryNFTsResponse";
@@ -350,14 +342,12 @@ impl ::prost::Name for QueryNftRequest {
 #[derive(:: serde :: Serialize, :: serde :: Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, :: prost :: Message)]
-pub struct QueryNftResponse<
-    A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name,
-> {
+pub struct QueryNftResponse<A: Clone + PartialEq + Default + Send + Sync + prost::Message> {
     #[doc = " owner is the owner address of the nft"]
     #[prost(message, optional, tag = "1")]
     pub nft: ::core::option::Option<Nft<A>>,
 }
-impl<A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name> ::prost::Name
+impl<A: Clone + PartialEq + Default + Send + Sync + prost::Message> ::prost::Name
     for QueryNftResponse<A>
 {
     const NAME: &'static str = "QueryNFTResponse";
@@ -386,14 +376,12 @@ impl ::prost::Name for QueryClassRequest {
 #[derive(:: serde :: Serialize, :: serde :: Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, :: prost :: Message)]
-pub struct QueryClassResponse<
-    A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name,
-> {
+pub struct QueryClassResponse<A: Clone + PartialEq + Default + Send + Sync + prost::Message> {
     #[doc = " class defines the class of the nft type."]
     #[prost(message, optional, tag = "1")]
     pub class: ::core::option::Option<Class<A>>,
 }
-impl<A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name> ::prost::Name
+impl<A: Clone + PartialEq + Default + Send + Sync + prost::Message> ::prost::Name
     for QueryClassResponse<A>
 {
     const NAME: &'static str = "QueryClassResponse";
@@ -422,9 +410,7 @@ impl ::prost::Name for QueryClassesRequest {
 #[derive(:: serde :: Serialize, :: serde :: Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, :: prost :: Message)]
-pub struct QueryClassesResponse<
-    A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name,
-> {
+pub struct QueryClassesResponse<A: Clone + PartialEq + Default + Send + Sync + prost::Message> {
     #[doc = " class defines the class of the nft type."]
     #[prost(message, repeated, tag = "1")]
     pub classes: ::prost::alloc::vec::Vec<Class<A>>,
@@ -432,7 +418,7 @@ pub struct QueryClassesResponse<
     #[prost(message, optional, tag = "2")]
     pub pagination: ::core::option::Option<super::super::base::query::v1beta1::PageResponse>,
 }
-impl<A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name> ::prost::Name
+impl<A: Clone + PartialEq + Default + Send + Sync + prost::Message> ::prost::Name
     for QueryClassesResponse<A>
 {
     const NAME: &'static str = "QueryClassesResponse";

@@ -3,10 +3,10 @@
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, :: prost :: Message)]
 pub struct Tx<
-    A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name,
-    BB: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name,
-    C: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name,
-    D: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name,
+    A: Clone + PartialEq + Default + Send + Sync + prost::Message,
+    BB: Clone + PartialEq + Default + Send + Sync + prost::Message,
+    C: Clone + PartialEq + Default + Send + Sync + prost::Message,
+    D: Clone + PartialEq + Default + Send + Sync + prost::Message,
 > {
     #[doc = " body is the processable content of the transaction"]
     #[prost(message, optional, tag = "1")]
@@ -22,10 +22,10 @@ pub struct Tx<
     pub signatures: ::prost::alloc::vec::Vec<::prost::alloc::vec::Vec<u8>>,
 }
 impl<
-        A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name,
-        BB: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name,
-        C: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name,
-        D: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name,
+        A: Clone + PartialEq + Default + Send + Sync + prost::Message,
+        BB: Clone + PartialEq + Default + Send + Sync + prost::Message,
+        C: Clone + PartialEq + Default + Send + Sync + prost::Message,
+        D: Clone + PartialEq + Default + Send + Sync + prost::Message,
     > ::prost::Name for Tx<A, BB, C, D>
 {
     const NAME: &'static str = "Tx";
@@ -100,9 +100,7 @@ impl ::prost::Name for SignDoc {
 #[derive(:: serde :: Serialize, :: serde :: Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, :: prost :: Message)]
-pub struct SignDocDirectAux<
-    A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name,
-> {
+pub struct SignDocDirectAux<A: Clone + PartialEq + Default + Send + Sync + prost::Message> {
     #[doc = " body_bytes is protobuf serialization of a TxBody that matches the"]
     #[doc = " representation in TxRaw."]
     #[prost(bytes = "vec", tag = "1")]
@@ -130,7 +128,7 @@ pub struct SignDocDirectAux<
     #[prost(message, optional, tag = "6")]
     pub tip: ::core::option::Option<Tip>,
 }
-impl<A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name> ::prost::Name
+impl<A: Clone + PartialEq + Default + Send + Sync + prost::Message> ::prost::Name
     for SignDocDirectAux<A>
 {
     const NAME: &'static str = "SignDocDirectAux";
@@ -144,9 +142,9 @@ impl<A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, :: prost :: Message)]
 pub struct TxBody<
-    A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name,
-    BB: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name,
-    C: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name,
+    A: Clone + PartialEq + Default + Send + Sync + prost::Message,
+    BB: Clone + PartialEq + Default + Send + Sync + prost::Message,
+    C: Clone + PartialEq + Default + Send + Sync + prost::Message,
 > {
     #[doc = " messages is a list of messages to be executed. The required signers of"]
     #[doc = " those messages define the number and order of elements in AuthInfo's"]
@@ -178,9 +176,9 @@ pub struct TxBody<
     pub non_critical_extension_options: ::prost::alloc::vec::Vec<crate::any::Any<C>>,
 }
 impl<
-        A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name,
-        BB: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name,
-        C: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name,
+        A: Clone + PartialEq + Default + Send + Sync + prost::Message,
+        BB: Clone + PartialEq + Default + Send + Sync + prost::Message,
+        C: Clone + PartialEq + Default + Send + Sync + prost::Message,
     > ::prost::Name for TxBody<A, BB, C>
 {
     const NAME: &'static str = "TxBody";
@@ -194,7 +192,7 @@ impl<
 #[derive(:: serde :: Serialize, :: serde :: Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, :: prost :: Message)]
-pub struct AuthInfo<A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name> {
+pub struct AuthInfo<A: Clone + PartialEq + Default + Send + Sync + prost::Message> {
     #[doc = " signer_infos defines the signing modes for the required signers. The number"]
     #[doc = " and order of elements must match the required signers from TxBody's"]
     #[doc = " messages. The first element is the primary signer and the one which pays"]
@@ -216,9 +214,7 @@ pub struct AuthInfo<A: Clone + PartialEq + Default + Send + Sync + prost::Messag
     #[prost(message, optional, tag = "3")]
     pub tip: ::core::option::Option<Tip>,
 }
-impl<A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name> ::prost::Name
-    for AuthInfo<A>
-{
+impl<A: Clone + PartialEq + Default + Send + Sync + prost::Message> ::prost::Name for AuthInfo<A> {
     const NAME: &'static str = "AuthInfo";
     const PACKAGE: &'static str = "cosmos.tx.v1beta1";
     fn full_name() -> ::prost::alloc::string::String {
@@ -230,7 +226,7 @@ impl<A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name
 #[derive(:: serde :: Serialize, :: serde :: Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, :: prost :: Message)]
-pub struct SignerInfo<A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name> {
+pub struct SignerInfo<A: Clone + PartialEq + Default + Send + Sync + prost::Message> {
     #[doc = " public_key is the public key of the signer. It is optional for accounts"]
     #[doc = " that already exist in state. If unset, the verifier can use the required \\"]
     #[doc = " signer address for this position and lookup the public key."]
@@ -246,7 +242,7 @@ pub struct SignerInfo<A: Clone + PartialEq + Default + Send + Sync + prost::Mess
     #[prost(uint64, tag = "3")]
     pub sequence: u64,
 }
-impl<A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name> ::prost::Name
+impl<A: Clone + PartialEq + Default + Send + Sync + prost::Message> ::prost::Name
     for SignerInfo<A>
 {
     const NAME: &'static str = "SignerInfo";
@@ -389,9 +385,7 @@ impl ::prost::Name for Tip {
 #[derive(:: serde :: Serialize, :: serde :: Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, :: prost :: Message)]
-pub struct AuxSignerData<
-    A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name,
-> {
+pub struct AuxSignerData<A: Clone + PartialEq + Default + Send + Sync + prost::Message> {
     #[doc = " address is the bech32-encoded address of the auxiliary signer. If using"]
     #[doc = " AuxSignerData across different chains, the bech32 prefix of the target"]
     #[doc = " chain (where the final transaction is broadcasted) should be used."]
@@ -409,7 +403,7 @@ pub struct AuxSignerData<
     #[prost(bytes = "vec", tag = "4")]
     pub sig: ::prost::alloc::vec::Vec<u8>,
 }
-impl<A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name> ::prost::Name
+impl<A: Clone + PartialEq + Default + Send + Sync + prost::Message> ::prost::Name
     for AuxSignerData<A>
 {
     const NAME: &'static str = "AuxSignerData";
@@ -455,11 +449,11 @@ impl ::prost::Name for GetTxsEventRequest {
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, :: prost :: Message)]
 pub struct GetTxsEventResponse<
-    A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name,
-    BB: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name,
-    C: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name,
-    D: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name,
-    E: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name,
+    A: Clone + PartialEq + Default + Send + Sync + prost::Message,
+    BB: Clone + PartialEq + Default + Send + Sync + prost::Message,
+    C: Clone + PartialEq + Default + Send + Sync + prost::Message,
+    D: Clone + PartialEq + Default + Send + Sync + prost::Message,
+    E: Clone + PartialEq + Default + Send + Sync + prost::Message,
 > {
     #[doc = " txs is the list of queried transactions."]
     #[prost(message, repeated, tag = "1")]
@@ -477,11 +471,11 @@ pub struct GetTxsEventResponse<
     pub total: u64,
 }
 impl<
-        A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name,
-        BB: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name,
-        C: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name,
-        D: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name,
-        E: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name,
+        A: Clone + PartialEq + Default + Send + Sync + prost::Message,
+        BB: Clone + PartialEq + Default + Send + Sync + prost::Message,
+        C: Clone + PartialEq + Default + Send + Sync + prost::Message,
+        D: Clone + PartialEq + Default + Send + Sync + prost::Message,
+        E: Clone + PartialEq + Default + Send + Sync + prost::Message,
     > ::prost::Name for GetTxsEventResponse<A, BB, C, D, E>
 {
     const NAME: &'static str = "GetTxsEventResponse";
@@ -514,14 +508,12 @@ impl ::prost::Name for BroadcastTxRequest {
 #[derive(:: serde :: Serialize, :: serde :: Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, :: prost :: Message)]
-pub struct BroadcastTxResponse<
-    A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name,
-> {
+pub struct BroadcastTxResponse<A: Clone + PartialEq + Default + Send + Sync + prost::Message> {
     #[doc = " tx_response is the queried TxResponses."]
     #[prost(message, optional, tag = "1")]
     pub tx_response: ::core::option::Option<super::super::base::abci::v1beta1::TxResponse<A>>,
 }
-impl<A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name> ::prost::Name
+impl<A: Clone + PartialEq + Default + Send + Sync + prost::Message> ::prost::Name
     for BroadcastTxResponse<A>
 {
     const NAME: &'static str = "BroadcastTxResponse";
@@ -536,10 +528,10 @@ impl<A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, :: prost :: Message)]
 pub struct SimulateRequest<
-    A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name,
-    BB: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name,
-    C: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name,
-    D: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name,
+    A: Clone + PartialEq + Default + Send + Sync + prost::Message,
+    BB: Clone + PartialEq + Default + Send + Sync + prost::Message,
+    C: Clone + PartialEq + Default + Send + Sync + prost::Message,
+    D: Clone + PartialEq + Default + Send + Sync + prost::Message,
 > {
     #[doc = " tx is the transaction to simulate."]
     #[doc = " Deprecated. Send raw tx bytes instead."]
@@ -553,10 +545,10 @@ pub struct SimulateRequest<
     pub tx_bytes: ::prost::alloc::vec::Vec<u8>,
 }
 impl<
-        A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name,
-        BB: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name,
-        C: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name,
-        D: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name,
+        A: Clone + PartialEq + Default + Send + Sync + prost::Message,
+        BB: Clone + PartialEq + Default + Send + Sync + prost::Message,
+        C: Clone + PartialEq + Default + Send + Sync + prost::Message,
+        D: Clone + PartialEq + Default + Send + Sync + prost::Message,
     > ::prost::Name for SimulateRequest<A, BB, C, D>
 {
     const NAME: &'static str = "SimulateRequest";
@@ -570,9 +562,7 @@ impl<
 #[derive(:: serde :: Serialize, :: serde :: Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, :: prost :: Message)]
-pub struct SimulateResponse<
-    A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name,
-> {
+pub struct SimulateResponse<A: Clone + PartialEq + Default + Send + Sync + prost::Message> {
     #[doc = " gas_info is the information about gas used in the simulation."]
     #[prost(message, optional, tag = "1")]
     pub gas_info: ::core::option::Option<super::super::base::abci::v1beta1::GasInfo>,
@@ -580,7 +570,7 @@ pub struct SimulateResponse<
     #[prost(message, optional, tag = "2")]
     pub result: ::core::option::Option<super::super::base::abci::v1beta1::Result<A>>,
 }
-impl<A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name> ::prost::Name
+impl<A: Clone + PartialEq + Default + Send + Sync + prost::Message> ::prost::Name
     for SimulateResponse<A>
 {
     const NAME: &'static str = "SimulateResponse";
@@ -611,11 +601,11 @@ impl ::prost::Name for GetTxRequest {
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, :: prost :: Message)]
 pub struct GetTxResponse<
-    A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name,
-    BB: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name,
-    C: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name,
-    D: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name,
-    E: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name,
+    A: Clone + PartialEq + Default + Send + Sync + prost::Message,
+    BB: Clone + PartialEq + Default + Send + Sync + prost::Message,
+    C: Clone + PartialEq + Default + Send + Sync + prost::Message,
+    D: Clone + PartialEq + Default + Send + Sync + prost::Message,
+    E: Clone + PartialEq + Default + Send + Sync + prost::Message,
 > {
     #[doc = " tx is the queried transaction."]
     #[prost(message, optional, tag = "1")]
@@ -625,11 +615,11 @@ pub struct GetTxResponse<
     pub tx_response: ::core::option::Option<super::super::base::abci::v1beta1::TxResponse<E>>,
 }
 impl<
-        A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name,
-        BB: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name,
-        C: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name,
-        D: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name,
-        E: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name,
+        A: Clone + PartialEq + Default + Send + Sync + prost::Message,
+        BB: Clone + PartialEq + Default + Send + Sync + prost::Message,
+        C: Clone + PartialEq + Default + Send + Sync + prost::Message,
+        D: Clone + PartialEq + Default + Send + Sync + prost::Message,
+        E: Clone + PartialEq + Default + Send + Sync + prost::Message,
     > ::prost::Name for GetTxResponse<A, BB, C, D, E>
 {
     const NAME: &'static str = "GetTxResponse";
@@ -667,10 +657,10 @@ impl ::prost::Name for GetBlockWithTxsRequest {
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, :: prost :: Message)]
 pub struct GetBlockWithTxsResponse<
-    A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name,
-    BB: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name,
-    C: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name,
-    D: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name,
+    A: Clone + PartialEq + Default + Send + Sync + prost::Message,
+    BB: Clone + PartialEq + Default + Send + Sync + prost::Message,
+    C: Clone + PartialEq + Default + Send + Sync + prost::Message,
+    D: Clone + PartialEq + Default + Send + Sync + prost::Message,
 > {
     #[doc = " txs are the transactions in the block."]
     #[prost(message, repeated, tag = "1")]
@@ -684,10 +674,10 @@ pub struct GetBlockWithTxsResponse<
     pub pagination: ::core::option::Option<super::super::base::query::v1beta1::PageResponse>,
 }
 impl<
-        A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name,
-        BB: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name,
-        C: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name,
-        D: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name,
+        A: Clone + PartialEq + Default + Send + Sync + prost::Message,
+        BB: Clone + PartialEq + Default + Send + Sync + prost::Message,
+        C: Clone + PartialEq + Default + Send + Sync + prost::Message,
+        D: Clone + PartialEq + Default + Send + Sync + prost::Message,
     > ::prost::Name for GetBlockWithTxsResponse<A, BB, C, D>
 {
     const NAME: &'static str = "GetBlockWithTxsResponse";
@@ -723,20 +713,20 @@ impl ::prost::Name for TxDecodeRequest {
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, :: prost :: Message)]
 pub struct TxDecodeResponse<
-    A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name,
-    BB: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name,
-    C: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name,
-    D: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name,
+    A: Clone + PartialEq + Default + Send + Sync + prost::Message,
+    BB: Clone + PartialEq + Default + Send + Sync + prost::Message,
+    C: Clone + PartialEq + Default + Send + Sync + prost::Message,
+    D: Clone + PartialEq + Default + Send + Sync + prost::Message,
 > {
     #[doc = " tx is the decoded transaction."]
     #[prost(message, optional, tag = "1")]
     pub tx: ::core::option::Option<Tx<A, BB, C, D>>,
 }
 impl<
-        A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name,
-        BB: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name,
-        C: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name,
-        D: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name,
+        A: Clone + PartialEq + Default + Send + Sync + prost::Message,
+        BB: Clone + PartialEq + Default + Send + Sync + prost::Message,
+        C: Clone + PartialEq + Default + Send + Sync + prost::Message,
+        D: Clone + PartialEq + Default + Send + Sync + prost::Message,
     > ::prost::Name for TxDecodeResponse<A, BB, C, D>
 {
     const NAME: &'static str = "TxDecodeResponse";
@@ -753,20 +743,20 @@ impl<
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, :: prost :: Message)]
 pub struct TxEncodeRequest<
-    A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name,
-    BB: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name,
-    C: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name,
-    D: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name,
+    A: Clone + PartialEq + Default + Send + Sync + prost::Message,
+    BB: Clone + PartialEq + Default + Send + Sync + prost::Message,
+    C: Clone + PartialEq + Default + Send + Sync + prost::Message,
+    D: Clone + PartialEq + Default + Send + Sync + prost::Message,
 > {
     #[doc = " tx is the transaction to encode."]
     #[prost(message, optional, tag = "1")]
     pub tx: ::core::option::Option<Tx<A, BB, C, D>>,
 }
 impl<
-        A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name,
-        BB: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name,
-        C: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name,
-        D: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name,
+        A: Clone + PartialEq + Default + Send + Sync + prost::Message,
+        BB: Clone + PartialEq + Default + Send + Sync + prost::Message,
+        C: Clone + PartialEq + Default + Send + Sync + prost::Message,
+        D: Clone + PartialEq + Default + Send + Sync + prost::Message,
     > ::prost::Name for TxEncodeRequest<A, BB, C, D>
 {
     const NAME: &'static str = "TxEncodeRequest";

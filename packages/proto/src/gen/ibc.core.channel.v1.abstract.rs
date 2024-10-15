@@ -520,7 +520,7 @@ impl ::prost::Name for QueryChannelClientStateRequest {
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, :: prost :: Message)]
 pub struct QueryChannelClientStateResponse<
-    A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name,
+    A: Clone + PartialEq + Default + Send + Sync + prost::Message,
 > {
     #[doc = " client state associated with the channel"]
     #[prost(message, optional, tag = "1")]
@@ -533,7 +533,7 @@ pub struct QueryChannelClientStateResponse<
     #[prost(message, optional, tag = "3")]
     pub proof_height: ::core::option::Option<super::super::client::v1::Height>,
 }
-impl<A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name> ::prost::Name
+impl<A: Clone + PartialEq + Default + Send + Sync + prost::Message> ::prost::Name
     for QueryChannelClientStateResponse<A>
 {
     const NAME: &'static str = "QueryChannelClientStateResponse";
@@ -574,7 +574,7 @@ impl ::prost::Name for QueryChannelConsensusStateRequest {
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, :: prost :: Message)]
 pub struct QueryChannelConsensusStateResponse<
-    A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name,
+    A: Clone + PartialEq + Default + Send + Sync + prost::Message,
 > {
     #[doc = " consensus state associated with the channel"]
     #[prost(message, optional, tag = "1")]
@@ -589,7 +589,7 @@ pub struct QueryChannelConsensusStateResponse<
     #[prost(message, optional, tag = "4")]
     pub proof_height: ::core::option::Option<super::super::client::v1::Height>,
 }
-impl<A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name> ::prost::Name
+impl<A: Clone + PartialEq + Default + Send + Sync + prost::Message> ::prost::Name
     for QueryChannelConsensusStateResponse<A>
 {
     const NAME: &'static str = "QueryChannelConsensusStateResponse";

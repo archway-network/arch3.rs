@@ -73,8 +73,7 @@ impl ::prost::Name for CodeInfo {
 #[derive(:: serde :: Serialize, :: serde :: Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, :: prost :: Message)]
-pub struct ContractInfo<A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name>
-{
+pub struct ContractInfo<A: Clone + PartialEq + Default + Send + Sync + prost::Message> {
     #[doc = " CodeID is the reference to the stored Wasm code"]
     #[prost(uint64, tag = "1")]
     pub code_id: u64,
@@ -97,7 +96,7 @@ pub struct ContractInfo<A: Clone + PartialEq + Default + Send + Sync + prost::Me
     #[prost(message, optional, tag = "7")]
     pub extension: ::core::option::Option<crate::any::Any<A>>,
 }
-impl<A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name> ::prost::Name
+impl<A: Clone + PartialEq + Default + Send + Sync + prost::Message> ::prost::Name
     for ContractInfo<A>
 {
     const NAME: &'static str = "ContractInfo";
@@ -296,16 +295,16 @@ impl ::prost::Name for StoreCodeAuthorization {
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, :: prost :: Message)]
 pub struct ContractExecutionAuthorization<
-    A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name,
-    BB: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name,
+    A: Clone + PartialEq + Default + Send + Sync + prost::Message,
+    BB: Clone + PartialEq + Default + Send + Sync + prost::Message,
 > {
     #[doc = " Grants for contract executions"]
     #[prost(message, repeated, tag = "1")]
     pub grants: ::prost::alloc::vec::Vec<ContractGrant<A, BB>>,
 }
 impl<
-        A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name,
-        BB: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name,
+        A: Clone + PartialEq + Default + Send + Sync + prost::Message,
+        BB: Clone + PartialEq + Default + Send + Sync + prost::Message,
     > ::prost::Name for ContractExecutionAuthorization<A, BB>
 {
     const NAME: &'static str = "ContractExecutionAuthorization";
@@ -320,16 +319,16 @@ impl<
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, :: prost :: Message)]
 pub struct ContractMigrationAuthorization<
-    A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name,
-    BB: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name,
+    A: Clone + PartialEq + Default + Send + Sync + prost::Message,
+    BB: Clone + PartialEq + Default + Send + Sync + prost::Message,
 > {
     #[doc = " Grants for contract migrations"]
     #[prost(message, repeated, tag = "1")]
     pub grants: ::prost::alloc::vec::Vec<ContractGrant<A, BB>>,
 }
 impl<
-        A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name,
-        BB: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name,
+        A: Clone + PartialEq + Default + Send + Sync + prost::Message,
+        BB: Clone + PartialEq + Default + Send + Sync + prost::Message,
     > ::prost::Name for ContractMigrationAuthorization<A, BB>
 {
     const NAME: &'static str = "ContractMigrationAuthorization";
@@ -366,8 +365,8 @@ impl ::prost::Name for CodeGrant {
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, :: prost :: Message)]
 pub struct ContractGrant<
-    A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name,
-    BB: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name,
+    A: Clone + PartialEq + Default + Send + Sync + prost::Message,
+    BB: Clone + PartialEq + Default + Send + Sync + prost::Message,
 > {
     #[doc = " Contract is the bech32 address of the smart contract"]
     #[prost(string, tag = "1")]
@@ -383,8 +382,8 @@ pub struct ContractGrant<
     pub filter: ::core::option::Option<crate::any::Any<BB>>,
 }
 impl<
-        A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name,
-        BB: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name,
+        A: Clone + PartialEq + Default + Send + Sync + prost::Message,
+        BB: Clone + PartialEq + Default + Send + Sync + prost::Message,
     > ::prost::Name for ContractGrant<A, BB>
 {
     const NAME: &'static str = "ContractGrant";
@@ -502,8 +501,7 @@ impl ::prost::Name for AcceptedMessagesFilter {
 #[derive(:: serde :: Serialize, :: serde :: Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, :: prost :: Message)]
-pub struct GenesisState<A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name>
-{
+pub struct GenesisState<A: Clone + PartialEq + Default + Send + Sync + prost::Message> {
     #[prost(message, optional, tag = "1")]
     pub params: ::core::option::Option<Params>,
     #[prost(message, repeated, tag = "2")]
@@ -513,7 +511,7 @@ pub struct GenesisState<A: Clone + PartialEq + Default + Send + Sync + prost::Me
     #[prost(message, repeated, tag = "4")]
     pub sequences: ::prost::alloc::vec::Vec<Sequence>,
 }
-impl<A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name> ::prost::Name
+impl<A: Clone + PartialEq + Default + Send + Sync + prost::Message> ::prost::Name
     for GenesisState<A>
 {
     const NAME: &'static str = "GenesisState";
@@ -548,7 +546,7 @@ impl ::prost::Name for Code {
 #[derive(:: serde :: Serialize, :: serde :: Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, :: prost :: Message)]
-pub struct Contract<A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name> {
+pub struct Contract<A: Clone + PartialEq + Default + Send + Sync + prost::Message> {
     #[prost(string, tag = "1")]
     pub contract_address: ::prost::alloc::string::String,
     #[prost(message, optional, tag = "2")]
@@ -558,9 +556,7 @@ pub struct Contract<A: Clone + PartialEq + Default + Send + Sync + prost::Messag
     #[prost(message, repeated, tag = "4")]
     pub contract_code_history: ::prost::alloc::vec::Vec<ContractCodeHistoryEntry>,
 }
-impl<A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name> ::prost::Name
-    for Contract<A>
-{
+impl<A: Clone + PartialEq + Default + Send + Sync + prost::Message> ::prost::Name for Contract<A> {
     const NAME: &'static str = "Contract";
     const PACKAGE: &'static str = "cosmwasm.wasm.v1";
     fn full_name() -> ::prost::alloc::string::String {
@@ -1098,16 +1094,15 @@ impl ::prost::Name for QueryContractInfoRequest {
 #[derive(:: serde :: Serialize, :: serde :: Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, :: prost :: Message)]
-pub struct QueryContractInfoResponse<
-    A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name,
-> {
+pub struct QueryContractInfoResponse<A: Clone + PartialEq + Default + Send + Sync + prost::Message>
+{
     #[doc = " address is the address of the contract"]
     #[prost(string, tag = "1")]
     pub address: ::prost::alloc::string::String,
     #[prost(message, optional, tag = "2")]
     pub contract_info: ::core::option::Option<ContractInfo<A>>,
 }
-impl<A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name> ::prost::Name
+impl<A: Clone + PartialEq + Default + Send + Sync + prost::Message> ::prost::Name
     for QueryContractInfoResponse<A>
 {
     const NAME: &'static str = "QueryContractInfoResponse";

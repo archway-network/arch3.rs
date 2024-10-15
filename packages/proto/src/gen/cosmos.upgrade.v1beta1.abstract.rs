@@ -2,7 +2,7 @@
 #[derive(:: serde :: Serialize, :: serde :: Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, :: prost :: Message)]
-pub struct Plan<A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name> {
+pub struct Plan<A: Clone + PartialEq + Default + Send + Sync + prost::Message> {
     #[doc = " Sets the name for the upgrade. This name will be used by the upgraded"]
     #[doc = " version of the software to apply any special \"on-upgrade\" commands during"]
     #[doc = " the first BeginBlock method after the upgrade is applied. It is also used"]
@@ -32,9 +32,7 @@ pub struct Plan<A: Clone + PartialEq + Default + Send + Sync + prost::Message + 
     #[prost(message, optional, tag = "5")]
     pub upgraded_client_state: ::core::option::Option<crate::any::Any<A>>,
 }
-impl<A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name> ::prost::Name
-    for Plan<A>
-{
+impl<A: Clone + PartialEq + Default + Send + Sync + prost::Message> ::prost::Name for Plan<A> {
     const NAME: &'static str = "Plan";
     const PACKAGE: &'static str = "cosmos.upgrade.v1beta1";
     fn full_name() -> ::prost::alloc::string::String {
@@ -48,9 +46,7 @@ impl<A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name
 #[derive(:: serde :: Serialize, :: serde :: Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, :: prost :: Message)]
-pub struct SoftwareUpgradeProposal<
-    A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name,
-> {
+pub struct SoftwareUpgradeProposal<A: Clone + PartialEq + Default + Send + Sync + prost::Message> {
     #[doc = " title of the proposal"]
     #[prost(string, tag = "1")]
     pub title: ::prost::alloc::string::String,
@@ -61,7 +57,7 @@ pub struct SoftwareUpgradeProposal<
     #[prost(message, optional, tag = "3")]
     pub plan: ::core::option::Option<Plan<A>>,
 }
-impl<A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name> ::prost::Name
+impl<A: Clone + PartialEq + Default + Send + Sync + prost::Message> ::prost::Name
     for SoftwareUpgradeProposal<A>
 {
     const NAME: &'static str = "SoftwareUpgradeProposal";
@@ -131,14 +127,12 @@ impl ::prost::Name for QueryCurrentPlanRequest {
 #[derive(:: serde :: Serialize, :: serde :: Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, :: prost :: Message)]
-pub struct QueryCurrentPlanResponse<
-    A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name,
-> {
+pub struct QueryCurrentPlanResponse<A: Clone + PartialEq + Default + Send + Sync + prost::Message> {
     #[doc = " plan is the current upgrade plan."]
     #[prost(message, optional, tag = "1")]
     pub plan: ::core::option::Option<Plan<A>>,
 }
-impl<A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name> ::prost::Name
+impl<A: Clone + PartialEq + Default + Send + Sync + prost::Message> ::prost::Name
     for QueryCurrentPlanResponse<A>
 {
     const NAME: &'static str = "QueryCurrentPlanResponse";
@@ -293,9 +287,7 @@ impl ::prost::Name for QueryAuthorityResponse {
 #[derive(:: serde :: Serialize, :: serde :: Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, :: prost :: Message)]
-pub struct MsgSoftwareUpgrade<
-    A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name,
-> {
+pub struct MsgSoftwareUpgrade<A: Clone + PartialEq + Default + Send + Sync + prost::Message> {
     #[doc = " authority is the address that controls the module (defaults to x/gov unless overwritten)."]
     #[prost(string, tag = "1")]
     pub authority: ::prost::alloc::string::String,
@@ -303,7 +295,7 @@ pub struct MsgSoftwareUpgrade<
     #[prost(message, optional, tag = "2")]
     pub plan: ::core::option::Option<Plan<A>>,
 }
-impl<A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name> ::prost::Name
+impl<A: Clone + PartialEq + Default + Send + Sync + prost::Message> ::prost::Name
     for MsgSoftwareUpgrade<A>
 {
     const NAME: &'static str = "MsgSoftwareUpgrade";

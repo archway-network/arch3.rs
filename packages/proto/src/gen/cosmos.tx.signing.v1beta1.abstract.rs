@@ -2,14 +2,12 @@
 #[derive(:: serde :: Serialize, :: serde :: Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, :: prost :: Message)]
-pub struct SignatureDescriptors<
-    A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name,
-> {
+pub struct SignatureDescriptors<A: Clone + PartialEq + Default + Send + Sync + prost::Message> {
     #[doc = " signatures are the signature descriptors"]
     #[prost(message, repeated, tag = "1")]
     pub signatures: ::prost::alloc::vec::Vec<SignatureDescriptor<A>>,
 }
-impl<A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name> ::prost::Name
+impl<A: Clone + PartialEq + Default + Send + Sync + prost::Message> ::prost::Name
     for SignatureDescriptors<A>
 {
     const NAME: &'static str = "SignatureDescriptors";
@@ -25,9 +23,7 @@ impl<A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name
 #[derive(:: serde :: Serialize, :: serde :: Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, :: prost :: Message)]
-pub struct SignatureDescriptor<
-    A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name,
-> {
+pub struct SignatureDescriptor<A: Clone + PartialEq + Default + Send + Sync + prost::Message> {
     #[doc = " public_key is the public key of the signer"]
     #[prost(message, optional, tag = "1")]
     pub public_key: ::core::option::Option<crate::any::Any<A>>,
@@ -122,7 +118,7 @@ pub mod signature_descriptor {
         }
     }
 }
-impl<A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name> ::prost::Name
+impl<A: Clone + PartialEq + Default + Send + Sync + prost::Message> ::prost::Name
     for SignatureDescriptor<A>
 {
     const NAME: &'static str = "SignatureDescriptor";

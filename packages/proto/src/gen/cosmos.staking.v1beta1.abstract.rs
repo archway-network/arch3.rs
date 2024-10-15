@@ -112,15 +112,13 @@ impl AuthorizationType {
 #[derive(:: serde :: Serialize, :: serde :: Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, :: prost :: Message)]
-pub struct HistoricalInfo<
-    A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name,
-> {
+pub struct HistoricalInfo<A: Clone + PartialEq + Default + Send + Sync + prost::Message> {
     #[prost(message, optional, tag = "1")]
     pub header: ::core::option::Option<::tendermint_proto::v0_37::types::Header>,
     #[prost(message, repeated, tag = "2")]
     pub valset: ::prost::alloc::vec::Vec<Validator<A>>,
 }
-impl<A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name> ::prost::Name
+impl<A: Clone + PartialEq + Default + Send + Sync + prost::Message> ::prost::Name
     for HistoricalInfo<A>
 {
     const NAME: &'static str = "HistoricalInfo";
@@ -210,7 +208,7 @@ impl ::prost::Name for Description {
 #[derive(:: serde :: Serialize, :: serde :: Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, :: prost :: Message)]
-pub struct Validator<A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name> {
+pub struct Validator<A: Clone + PartialEq + Default + Send + Sync + prost::Message> {
     #[doc = " operator_address defines the address of the validator's operator; bech encoded in JSON."]
     #[prost(string, tag = "1")]
     pub operator_address: ::prost::alloc::string::String,
@@ -253,9 +251,7 @@ pub struct Validator<A: Clone + PartialEq + Default + Send + Sync + prost::Messa
     #[prost(uint64, repeated, tag = "13")]
     pub unbonding_ids: ::prost::alloc::vec::Vec<u64>,
 }
-impl<A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name> ::prost::Name
-    for Validator<A>
-{
+impl<A: Clone + PartialEq + Default + Send + Sync + prost::Message> ::prost::Name for Validator<A> {
     const NAME: &'static str = "Validator";
     const PACKAGE: &'static str = "cosmos.staking.v1beta1";
     fn full_name() -> ::prost::alloc::string::String {
@@ -706,8 +702,7 @@ impl Infraction {
 #[derive(:: serde :: Serialize, :: serde :: Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, :: prost :: Message)]
-pub struct GenesisState<A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name>
-{
+pub struct GenesisState<A: Clone + PartialEq + Default + Send + Sync + prost::Message> {
     #[doc = " params defines all the parameters of related to deposit."]
     #[prost(message, optional, tag = "1")]
     pub params: ::core::option::Option<Params>,
@@ -734,7 +729,7 @@ pub struct GenesisState<A: Clone + PartialEq + Default + Send + Sync + prost::Me
     #[prost(bool, tag = "8")]
     pub exported: bool,
 }
-impl<A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name> ::prost::Name
+impl<A: Clone + PartialEq + Default + Send + Sync + prost::Message> ::prost::Name
     for GenesisState<A>
 {
     const NAME: &'static str = "GenesisState";
@@ -785,9 +780,7 @@ impl ::prost::Name for QueryValidatorsRequest {
 #[derive(:: serde :: Serialize, :: serde :: Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, :: prost :: Message)]
-pub struct QueryValidatorsResponse<
-    A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name,
-> {
+pub struct QueryValidatorsResponse<A: Clone + PartialEq + Default + Send + Sync + prost::Message> {
     #[doc = " validators contains all the queried validators."]
     #[prost(message, repeated, tag = "1")]
     pub validators: ::prost::alloc::vec::Vec<Validator<A>>,
@@ -795,7 +788,7 @@ pub struct QueryValidatorsResponse<
     #[prost(message, optional, tag = "2")]
     pub pagination: ::core::option::Option<super::super::base::query::v1beta1::PageResponse>,
 }
-impl<A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name> ::prost::Name
+impl<A: Clone + PartialEq + Default + Send + Sync + prost::Message> ::prost::Name
     for QueryValidatorsResponse<A>
 {
     const NAME: &'static str = "QueryValidatorsResponse";
@@ -824,14 +817,12 @@ impl ::prost::Name for QueryValidatorRequest {
 #[derive(:: serde :: Serialize, :: serde :: Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, :: prost :: Message)]
-pub struct QueryValidatorResponse<
-    A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name,
-> {
+pub struct QueryValidatorResponse<A: Clone + PartialEq + Default + Send + Sync + prost::Message> {
     #[doc = " validator defines the validator info."]
     #[prost(message, optional, tag = "1")]
     pub validator: ::core::option::Option<Validator<A>>,
 }
-impl<A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name> ::prost::Name
+impl<A: Clone + PartialEq + Default + Send + Sync + prost::Message> ::prost::Name
     for QueryValidatorResponse<A>
 {
     const NAME: &'static str = "QueryValidatorResponse";
@@ -1140,7 +1131,7 @@ impl ::prost::Name for QueryDelegatorValidatorsRequest {
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, :: prost :: Message)]
 pub struct QueryDelegatorValidatorsResponse<
-    A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name,
+    A: Clone + PartialEq + Default + Send + Sync + prost::Message,
 > {
     #[doc = " validators defines the validators' info of a delegator."]
     #[prost(message, repeated, tag = "1")]
@@ -1149,7 +1140,7 @@ pub struct QueryDelegatorValidatorsResponse<
     #[prost(message, optional, tag = "2")]
     pub pagination: ::core::option::Option<super::super::base::query::v1beta1::PageResponse>,
 }
-impl<A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name> ::prost::Name
+impl<A: Clone + PartialEq + Default + Send + Sync + prost::Message> ::prost::Name
     for QueryDelegatorValidatorsResponse<A>
 {
     const NAME: &'static str = "QueryDelegatorValidatorsResponse";
@@ -1184,13 +1175,13 @@ impl ::prost::Name for QueryDelegatorValidatorRequest {
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, :: prost :: Message)]
 pub struct QueryDelegatorValidatorResponse<
-    A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name,
+    A: Clone + PartialEq + Default + Send + Sync + prost::Message,
 > {
     #[doc = " validator defines the validator info."]
     #[prost(message, optional, tag = "1")]
     pub validator: ::core::option::Option<Validator<A>>,
 }
-impl<A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name> ::prost::Name
+impl<A: Clone + PartialEq + Default + Send + Sync + prost::Message> ::prost::Name
     for QueryDelegatorValidatorResponse<A>
 {
     const NAME: &'static str = "QueryDelegatorValidatorResponse";
@@ -1222,13 +1213,13 @@ impl ::prost::Name for QueryHistoricalInfoRequest {
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, :: prost :: Message)]
 pub struct QueryHistoricalInfoResponse<
-    A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name,
+    A: Clone + PartialEq + Default + Send + Sync + prost::Message,
 > {
     #[doc = " hist defines the historical info at the given height."]
     #[prost(message, optional, tag = "1")]
     pub hist: ::core::option::Option<HistoricalInfo<A>>,
 }
-impl<A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name> ::prost::Name
+impl<A: Clone + PartialEq + Default + Send + Sync + prost::Message> ::prost::Name
     for QueryHistoricalInfoResponse<A>
 {
     const NAME: &'static str = "QueryHistoricalInfoResponse";
@@ -1297,9 +1288,7 @@ impl ::prost::Name for QueryParamsResponse {
 #[derive(:: serde :: Serialize, :: serde :: Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, :: prost :: Message)]
-pub struct MsgCreateValidator<
-    A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name,
-> {
+pub struct MsgCreateValidator<A: Clone + PartialEq + Default + Send + Sync + prost::Message> {
     #[prost(message, optional, tag = "1")]
     pub description: ::core::option::Option<Description>,
     #[prost(message, optional, tag = "2")]
@@ -1315,7 +1304,7 @@ pub struct MsgCreateValidator<
     #[prost(message, optional, tag = "7")]
     pub value: ::core::option::Option<super::super::base::v1beta1::Coin>,
 }
-impl<A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name> ::prost::Name
+impl<A: Clone + PartialEq + Default + Send + Sync + prost::Message> ::prost::Name
     for MsgCreateValidator<A>
 {
     const NAME: &'static str = "MsgCreateValidator";

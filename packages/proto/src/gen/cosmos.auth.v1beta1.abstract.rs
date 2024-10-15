@@ -4,8 +4,7 @@
 #[derive(:: serde :: Serialize, :: serde :: Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, :: prost :: Message)]
-pub struct BaseAccount<A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name>
-{
+pub struct BaseAccount<A: Clone + PartialEq + Default + Send + Sync + prost::Message> {
     #[prost(string, tag = "1")]
     pub address: ::prost::alloc::string::String,
     #[prost(message, optional, tag = "2")]
@@ -15,7 +14,7 @@ pub struct BaseAccount<A: Clone + PartialEq + Default + Send + Sync + prost::Mes
     #[prost(uint64, tag = "4")]
     pub sequence: u64,
 }
-impl<A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name> ::prost::Name
+impl<A: Clone + PartialEq + Default + Send + Sync + prost::Message> ::prost::Name
     for BaseAccount<A>
 {
     const NAME: &'static str = "BaseAccount";
@@ -28,9 +27,7 @@ impl<A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name
 #[derive(:: serde :: Serialize, :: serde :: Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, :: prost :: Message)]
-pub struct ModuleAccount<
-    A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name,
-> {
+pub struct ModuleAccount<A: Clone + PartialEq + Default + Send + Sync + prost::Message> {
     #[prost(message, optional, tag = "1")]
     pub base_account: ::core::option::Option<BaseAccount<A>>,
     #[prost(string, tag = "2")]
@@ -38,7 +35,7 @@ pub struct ModuleAccount<
     #[prost(string, repeated, tag = "3")]
     pub permissions: ::prost::alloc::vec::Vec<::prost::alloc::string::String>,
 }
-impl<A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name> ::prost::Name
+impl<A: Clone + PartialEq + Default + Send + Sync + prost::Message> ::prost::Name
     for ModuleAccount<A>
 {
     const NAME: &'static str = "ModuleAccount";
@@ -96,8 +93,7 @@ impl ::prost::Name for Params {
 #[derive(:: serde :: Serialize, :: serde :: Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, :: prost :: Message)]
-pub struct GenesisState<A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name>
-{
+pub struct GenesisState<A: Clone + PartialEq + Default + Send + Sync + prost::Message> {
     #[doc = " params defines all the parameters of the module."]
     #[prost(message, optional, tag = "1")]
     pub params: ::core::option::Option<Params>,
@@ -105,7 +101,7 @@ pub struct GenesisState<A: Clone + PartialEq + Default + Send + Sync + prost::Me
     #[prost(message, repeated, tag = "2")]
     pub accounts: ::prost::alloc::vec::Vec<crate::any::Any<A>>,
 }
-impl<A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name> ::prost::Name
+impl<A: Clone + PartialEq + Default + Send + Sync + prost::Message> ::prost::Name
     for GenesisState<A>
 {
     const NAME: &'static str = "GenesisState";
@@ -138,9 +134,7 @@ impl ::prost::Name for QueryAccountsRequest {
 #[derive(:: serde :: Serialize, :: serde :: Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, :: prost :: Message)]
-pub struct QueryAccountsResponse<
-    A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name,
-> {
+pub struct QueryAccountsResponse<A: Clone + PartialEq + Default + Send + Sync + prost::Message> {
     #[doc = " accounts are the existing accounts"]
     #[prost(message, repeated, tag = "1")]
     pub accounts: ::prost::alloc::vec::Vec<crate::any::Any<A>>,
@@ -148,7 +142,7 @@ pub struct QueryAccountsResponse<
     #[prost(message, optional, tag = "2")]
     pub pagination: ::core::option::Option<super::super::base::query::v1beta1::PageResponse>,
 }
-impl<A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name> ::prost::Name
+impl<A: Clone + PartialEq + Default + Send + Sync + prost::Message> ::prost::Name
     for QueryAccountsResponse<A>
 {
     const NAME: &'static str = "QueryAccountsResponse";
@@ -177,14 +171,12 @@ impl ::prost::Name for QueryAccountRequest {
 #[derive(:: serde :: Serialize, :: serde :: Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, :: prost :: Message)]
-pub struct QueryAccountResponse<
-    A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name,
-> {
+pub struct QueryAccountResponse<A: Clone + PartialEq + Default + Send + Sync + prost::Message> {
     #[doc = " account defines the account of the corresponding address."]
     #[prost(message, optional, tag = "1")]
     pub account: ::core::option::Option<crate::any::Any<A>>,
 }
-impl<A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name> ::prost::Name
+impl<A: Clone + PartialEq + Default + Send + Sync + prost::Message> ::prost::Name
     for QueryAccountResponse<A>
 {
     const NAME: &'static str = "QueryAccountResponse";
@@ -242,12 +234,12 @@ impl ::prost::Name for QueryModuleAccountsRequest {
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, :: prost :: Message)]
 pub struct QueryModuleAccountsResponse<
-    A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name,
+    A: Clone + PartialEq + Default + Send + Sync + prost::Message,
 > {
     #[prost(message, repeated, tag = "1")]
     pub accounts: ::prost::alloc::vec::Vec<crate::any::Any<A>>,
 }
-impl<A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name> ::prost::Name
+impl<A: Clone + PartialEq + Default + Send + Sync + prost::Message> ::prost::Name
     for QueryModuleAccountsResponse<A>
 {
     const NAME: &'static str = "QueryModuleAccountsResponse";
@@ -276,12 +268,12 @@ impl ::prost::Name for QueryModuleAccountByNameRequest {
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, :: prost :: Message)]
 pub struct QueryModuleAccountByNameResponse<
-    A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name,
+    A: Clone + PartialEq + Default + Send + Sync + prost::Message,
 > {
     #[prost(message, optional, tag = "1")]
     pub account: ::core::option::Option<crate::any::Any<A>>,
 }
-impl<A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name> ::prost::Name
+impl<A: Clone + PartialEq + Default + Send + Sync + prost::Message> ::prost::Name
     for QueryModuleAccountByNameResponse<A>
 {
     const NAME: &'static str = "QueryModuleAccountByNameResponse";
@@ -458,14 +450,12 @@ impl ::prost::Name for QueryAccountInfoRequest {
 #[derive(:: serde :: Serialize, :: serde :: Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, :: prost :: Message)]
-pub struct QueryAccountInfoResponse<
-    A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name,
-> {
+pub struct QueryAccountInfoResponse<A: Clone + PartialEq + Default + Send + Sync + prost::Message> {
     #[doc = " info is the account info which is represented by BaseAccount."]
     #[prost(message, optional, tag = "1")]
     pub info: ::core::option::Option<BaseAccount<A>>,
 }
-impl<A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name> ::prost::Name
+impl<A: Clone + PartialEq + Default + Send + Sync + prost::Message> ::prost::Name
     for QueryAccountInfoResponse<A>
 {
     const NAME: &'static str = "QueryAccountInfoResponse";

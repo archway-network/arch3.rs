@@ -28,13 +28,12 @@ impl ::prost::Name for Equivocation {
 #[derive(:: serde :: Serialize, :: serde :: Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, :: prost :: Message)]
-pub struct GenesisState<A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name>
-{
+pub struct GenesisState<A: Clone + PartialEq + Default + Send + Sync + prost::Message> {
     #[doc = " evidence defines all the evidence at genesis."]
     #[prost(message, repeated, tag = "1")]
     pub evidence: ::prost::alloc::vec::Vec<crate::any::Any<A>>,
 }
-impl<A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name> ::prost::Name
+impl<A: Clone + PartialEq + Default + Send + Sync + prost::Message> ::prost::Name
     for GenesisState<A>
 {
     const NAME: &'static str = "GenesisState";
@@ -70,14 +69,12 @@ impl ::prost::Name for QueryEvidenceRequest {
 #[derive(:: serde :: Serialize, :: serde :: Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, :: prost :: Message)]
-pub struct QueryEvidenceResponse<
-    A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name,
-> {
+pub struct QueryEvidenceResponse<A: Clone + PartialEq + Default + Send + Sync + prost::Message> {
     #[doc = " evidence returns the requested evidence."]
     #[prost(message, optional, tag = "1")]
     pub evidence: ::core::option::Option<crate::any::Any<A>>,
 }
-impl<A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name> ::prost::Name
+impl<A: Clone + PartialEq + Default + Send + Sync + prost::Message> ::prost::Name
     for QueryEvidenceResponse<A>
 {
     const NAME: &'static str = "QueryEvidenceResponse";
@@ -108,9 +105,7 @@ impl ::prost::Name for QueryAllEvidenceRequest {
 #[derive(:: serde :: Serialize, :: serde :: Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, :: prost :: Message)]
-pub struct QueryAllEvidenceResponse<
-    A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name,
-> {
+pub struct QueryAllEvidenceResponse<A: Clone + PartialEq + Default + Send + Sync + prost::Message> {
     #[doc = " evidence returns all evidences."]
     #[prost(message, repeated, tag = "1")]
     pub evidence: ::prost::alloc::vec::Vec<crate::any::Any<A>>,
@@ -118,7 +113,7 @@ pub struct QueryAllEvidenceResponse<
     #[prost(message, optional, tag = "2")]
     pub pagination: ::core::option::Option<super::super::base::query::v1beta1::PageResponse>,
 }
-impl<A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name> ::prost::Name
+impl<A: Clone + PartialEq + Default + Send + Sync + prost::Message> ::prost::Name
     for QueryAllEvidenceResponse<A>
 {
     const NAME: &'static str = "QueryAllEvidenceResponse";
@@ -132,9 +127,7 @@ impl<A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name
 #[derive(:: serde :: Serialize, :: serde :: Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, :: prost :: Message)]
-pub struct MsgSubmitEvidence<
-    A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name,
-> {
+pub struct MsgSubmitEvidence<A: Clone + PartialEq + Default + Send + Sync + prost::Message> {
     #[doc = " submitter is the signer account address of evidence."]
     #[prost(string, tag = "1")]
     pub submitter: ::prost::alloc::string::String,
@@ -142,7 +135,7 @@ pub struct MsgSubmitEvidence<
     #[prost(message, optional, tag = "2")]
     pub evidence: ::core::option::Option<crate::any::Any<A>>,
 }
-impl<A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name> ::prost::Name
+impl<A: Clone + PartialEq + Default + Send + Sync + prost::Message> ::prost::Name
     for MsgSubmitEvidence<A>
 {
     const NAME: &'static str = "MsgSubmitEvidence";

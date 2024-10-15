@@ -66,7 +66,7 @@ impl ::prost::Name for Deposit {
 #[derive(:: serde :: Serialize, :: serde :: Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, :: prost :: Message)]
-pub struct Proposal<A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name> {
+pub struct Proposal<A: Clone + PartialEq + Default + Send + Sync + prost::Message> {
     #[doc = " proposal_id defines the unique id of the proposal."]
     #[prost(uint64, tag = "1")]
     pub proposal_id: u64,
@@ -97,9 +97,7 @@ pub struct Proposal<A: Clone + PartialEq + Default + Send + Sync + prost::Messag
     #[prost(message, optional, tag = "9")]
     pub voting_end_time: ::core::option::Option<::pbjson_types::Timestamp>,
 }
-impl<A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name> ::prost::Name
-    for Proposal<A>
-{
+impl<A: Clone + PartialEq + Default + Send + Sync + prost::Message> ::prost::Name for Proposal<A> {
     const NAME: &'static str = "Proposal";
     const PACKAGE: &'static str = "cosmos.gov.v1beta1";
     fn full_name() -> ::prost::alloc::string::String {
@@ -341,8 +339,7 @@ impl ProposalStatus {
 #[derive(:: serde :: Serialize, :: serde :: Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, :: prost :: Message)]
-pub struct GenesisState<A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name>
-{
+pub struct GenesisState<A: Clone + PartialEq + Default + Send + Sync + prost::Message> {
     #[doc = " starting_proposal_id is the ID of the starting proposal."]
     #[prost(uint64, tag = "1")]
     pub starting_proposal_id: u64,
@@ -365,7 +362,7 @@ pub struct GenesisState<A: Clone + PartialEq + Default + Send + Sync + prost::Me
     #[prost(message, optional, tag = "7")]
     pub tally_params: ::core::option::Option<TallyParams>,
 }
-impl<A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name> ::prost::Name
+impl<A: Clone + PartialEq + Default + Send + Sync + prost::Message> ::prost::Name
     for GenesisState<A>
 {
     const NAME: &'static str = "GenesisState";
@@ -394,13 +391,11 @@ impl ::prost::Name for QueryProposalRequest {
 #[derive(:: serde :: Serialize, :: serde :: Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, :: prost :: Message)]
-pub struct QueryProposalResponse<
-    A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name,
-> {
+pub struct QueryProposalResponse<A: Clone + PartialEq + Default + Send + Sync + prost::Message> {
     #[prost(message, optional, tag = "1")]
     pub proposal: ::core::option::Option<Proposal<A>>,
 }
-impl<A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name> ::prost::Name
+impl<A: Clone + PartialEq + Default + Send + Sync + prost::Message> ::prost::Name
     for QueryProposalResponse<A>
 {
     const NAME: &'static str = "QueryProposalResponse";
@@ -439,9 +434,7 @@ impl ::prost::Name for QueryProposalsRequest {
 #[derive(:: serde :: Serialize, :: serde :: Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, :: prost :: Message)]
-pub struct QueryProposalsResponse<
-    A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name,
-> {
+pub struct QueryProposalsResponse<A: Clone + PartialEq + Default + Send + Sync + prost::Message> {
     #[doc = " proposals defines all the requested governance proposals."]
     #[prost(message, repeated, tag = "1")]
     pub proposals: ::prost::alloc::vec::Vec<Proposal<A>>,
@@ -449,7 +442,7 @@ pub struct QueryProposalsResponse<
     #[prost(message, optional, tag = "2")]
     pub pagination: ::core::option::Option<super::super::base::query::v1beta1::PageResponse>,
 }
-impl<A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name> ::prost::Name
+impl<A: Clone + PartialEq + Default + Send + Sync + prost::Message> ::prost::Name
     for QueryProposalsResponse<A>
 {
     const NAME: &'static str = "QueryProposalsResponse";
@@ -680,9 +673,7 @@ impl ::prost::Name for QueryTallyResultResponse {
 #[derive(:: serde :: Serialize, :: serde :: Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, :: prost :: Message)]
-pub struct MsgSubmitProposal<
-    A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name,
-> {
+pub struct MsgSubmitProposal<A: Clone + PartialEq + Default + Send + Sync + prost::Message> {
     #[doc = " content is the proposal's content."]
     #[prost(message, optional, tag = "1")]
     pub content: ::core::option::Option<crate::any::Any<A>>,
@@ -693,7 +684,7 @@ pub struct MsgSubmitProposal<
     #[prost(string, tag = "3")]
     pub proposer: ::prost::alloc::string::String,
 }
-impl<A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name> ::prost::Name
+impl<A: Clone + PartialEq + Default + Send + Sync + prost::Message> ::prost::Name
     for MsgSubmitProposal<A>
 {
     const NAME: &'static str = "MsgSubmitProposal";

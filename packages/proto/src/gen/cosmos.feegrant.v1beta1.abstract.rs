@@ -57,9 +57,7 @@ impl ::prost::Name for PeriodicAllowance {
 #[derive(:: serde :: Serialize, :: serde :: Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, :: prost :: Message)]
-pub struct AllowedMsgAllowance<
-    A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name,
-> {
+pub struct AllowedMsgAllowance<A: Clone + PartialEq + Default + Send + Sync + prost::Message> {
     #[doc = " allowance can be any of basic and periodic fee allowance."]
     #[prost(message, optional, tag = "1")]
     pub allowance: ::core::option::Option<crate::any::Any<A>>,
@@ -67,7 +65,7 @@ pub struct AllowedMsgAllowance<
     #[prost(string, repeated, tag = "2")]
     pub allowed_messages: ::prost::alloc::vec::Vec<::prost::alloc::string::String>,
 }
-impl<A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name> ::prost::Name
+impl<A: Clone + PartialEq + Default + Send + Sync + prost::Message> ::prost::Name
     for AllowedMsgAllowance<A>
 {
     const NAME: &'static str = "AllowedMsgAllowance";
@@ -80,7 +78,7 @@ impl<A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name
 #[derive(:: serde :: Serialize, :: serde :: Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, :: prost :: Message)]
-pub struct Grant<A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name> {
+pub struct Grant<A: Clone + PartialEq + Default + Send + Sync + prost::Message> {
     #[doc = " granter is the address of the user granting an allowance of their funds."]
     #[prost(string, tag = "1")]
     pub granter: ::prost::alloc::string::String,
@@ -91,9 +89,7 @@ pub struct Grant<A: Clone + PartialEq + Default + Send + Sync + prost::Message +
     #[prost(message, optional, tag = "3")]
     pub allowance: ::core::option::Option<crate::any::Any<A>>,
 }
-impl<A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name> ::prost::Name
-    for Grant<A>
-{
+impl<A: Clone + PartialEq + Default + Send + Sync + prost::Message> ::prost::Name for Grant<A> {
     const NAME: &'static str = "Grant";
     const PACKAGE: &'static str = "cosmos.feegrant.v1beta1";
     fn full_name() -> ::prost::alloc::string::String {
@@ -104,12 +100,11 @@ impl<A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name
 #[derive(:: serde :: Serialize, :: serde :: Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, :: prost :: Message)]
-pub struct GenesisState<A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name>
-{
+pub struct GenesisState<A: Clone + PartialEq + Default + Send + Sync + prost::Message> {
     #[prost(message, repeated, tag = "1")]
     pub allowances: ::prost::alloc::vec::Vec<Grant<A>>,
 }
-impl<A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name> ::prost::Name
+impl<A: Clone + PartialEq + Default + Send + Sync + prost::Message> ::prost::Name
     for GenesisState<A>
 {
     const NAME: &'static str = "GenesisState";
@@ -141,14 +136,12 @@ impl ::prost::Name for QueryAllowanceRequest {
 #[derive(:: serde :: Serialize, :: serde :: Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, :: prost :: Message)]
-pub struct QueryAllowanceResponse<
-    A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name,
-> {
+pub struct QueryAllowanceResponse<A: Clone + PartialEq + Default + Send + Sync + prost::Message> {
     #[doc = " allowance is a allowance granted for grantee by granter."]
     #[prost(message, optional, tag = "1")]
     pub allowance: ::core::option::Option<Grant<A>>,
 }
-impl<A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name> ::prost::Name
+impl<A: Clone + PartialEq + Default + Send + Sync + prost::Message> ::prost::Name
     for QueryAllowanceResponse<A>
 {
     const NAME: &'static str = "QueryAllowanceResponse";
@@ -179,9 +172,7 @@ impl ::prost::Name for QueryAllowancesRequest {
 #[derive(:: serde :: Serialize, :: serde :: Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, :: prost :: Message)]
-pub struct QueryAllowancesResponse<
-    A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name,
-> {
+pub struct QueryAllowancesResponse<A: Clone + PartialEq + Default + Send + Sync + prost::Message> {
     #[doc = " allowances are allowance's granted for grantee by granter."]
     #[prost(message, repeated, tag = "1")]
     pub allowances: ::prost::alloc::vec::Vec<Grant<A>>,
@@ -189,7 +180,7 @@ pub struct QueryAllowancesResponse<
     #[prost(message, optional, tag = "2")]
     pub pagination: ::core::option::Option<super::super::base::query::v1beta1::PageResponse>,
 }
-impl<A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name> ::prost::Name
+impl<A: Clone + PartialEq + Default + Send + Sync + prost::Message> ::prost::Name
     for QueryAllowancesResponse<A>
 {
     const NAME: &'static str = "QueryAllowancesResponse";
@@ -225,7 +216,7 @@ impl ::prost::Name for QueryAllowancesByGranterRequest {
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, :: prost :: Message)]
 pub struct QueryAllowancesByGranterResponse<
-    A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name,
+    A: Clone + PartialEq + Default + Send + Sync + prost::Message,
 > {
     #[doc = " allowances that have been issued by the granter."]
     #[prost(message, repeated, tag = "1")]
@@ -234,7 +225,7 @@ pub struct QueryAllowancesByGranterResponse<
     #[prost(message, optional, tag = "2")]
     pub pagination: ::core::option::Option<super::super::base::query::v1beta1::PageResponse>,
 }
-impl<A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name> ::prost::Name
+impl<A: Clone + PartialEq + Default + Send + Sync + prost::Message> ::prost::Name
     for QueryAllowancesByGranterResponse<A>
 {
     const NAME: &'static str = "QueryAllowancesByGranterResponse";
@@ -248,9 +239,7 @@ impl<A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name
 #[derive(:: serde :: Serialize, :: serde :: Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, :: prost :: Message)]
-pub struct MsgGrantAllowance<
-    A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name,
-> {
+pub struct MsgGrantAllowance<A: Clone + PartialEq + Default + Send + Sync + prost::Message> {
     #[doc = " granter is the address of the user granting an allowance of their funds."]
     #[prost(string, tag = "1")]
     pub granter: ::prost::alloc::string::String,
@@ -261,7 +250,7 @@ pub struct MsgGrantAllowance<
     #[prost(message, optional, tag = "3")]
     pub allowance: ::core::option::Option<crate::any::Any<A>>,
 }
-impl<A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name> ::prost::Name
+impl<A: Clone + PartialEq + Default + Send + Sync + prost::Message> ::prost::Name
     for MsgGrantAllowance<A>
 {
     const NAME: &'static str = "MsgGrantAllowance";

@@ -3,9 +3,7 @@
 #[derive(:: serde :: Serialize, :: serde :: Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, :: prost :: Message)]
-pub struct BaseVestingAccount<
-    A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name,
-> {
+pub struct BaseVestingAccount<A: Clone + PartialEq + Default + Send + Sync + prost::Message> {
     #[prost(message, optional, tag = "1")]
     pub base_account: ::core::option::Option<super::super::auth::v1beta1::BaseAccount<A>>,
     #[prost(message, repeated, tag = "2")]
@@ -18,7 +16,7 @@ pub struct BaseVestingAccount<
     #[prost(int64, tag = "5")]
     pub end_time: i64,
 }
-impl<A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name> ::prost::Name
+impl<A: Clone + PartialEq + Default + Send + Sync + prost::Message> ::prost::Name
     for BaseVestingAccount<A>
 {
     const NAME: &'static str = "BaseVestingAccount";
@@ -32,16 +30,14 @@ impl<A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name
 #[derive(:: serde :: Serialize, :: serde :: Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, :: prost :: Message)]
-pub struct ContinuousVestingAccount<
-    A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name,
-> {
+pub struct ContinuousVestingAccount<A: Clone + PartialEq + Default + Send + Sync + prost::Message> {
     #[prost(message, optional, tag = "1")]
     pub base_vesting_account: ::core::option::Option<BaseVestingAccount<A>>,
     #[doc = " Vesting start time, as unix timestamp (in seconds)."]
     #[prost(int64, tag = "2")]
     pub start_time: i64,
 }
-impl<A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name> ::prost::Name
+impl<A: Clone + PartialEq + Default + Send + Sync + prost::Message> ::prost::Name
     for ContinuousVestingAccount<A>
 {
     const NAME: &'static str = "ContinuousVestingAccount";
@@ -56,13 +52,11 @@ impl<A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name
 #[derive(:: serde :: Serialize, :: serde :: Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, :: prost :: Message)]
-pub struct DelayedVestingAccount<
-    A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name,
-> {
+pub struct DelayedVestingAccount<A: Clone + PartialEq + Default + Send + Sync + prost::Message> {
     #[prost(message, optional, tag = "1")]
     pub base_vesting_account: ::core::option::Option<BaseVestingAccount<A>>,
 }
-impl<A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name> ::prost::Name
+impl<A: Clone + PartialEq + Default + Send + Sync + prost::Message> ::prost::Name
     for DelayedVestingAccount<A>
 {
     const NAME: &'static str = "DelayedVestingAccount";
@@ -94,9 +88,7 @@ impl ::prost::Name for Period {
 #[derive(:: serde :: Serialize, :: serde :: Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, :: prost :: Message)]
-pub struct PeriodicVestingAccount<
-    A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name,
-> {
+pub struct PeriodicVestingAccount<A: Clone + PartialEq + Default + Send + Sync + prost::Message> {
     #[prost(message, optional, tag = "1")]
     pub base_vesting_account: ::core::option::Option<BaseVestingAccount<A>>,
     #[prost(int64, tag = "2")]
@@ -104,7 +96,7 @@ pub struct PeriodicVestingAccount<
     #[prost(message, repeated, tag = "3")]
     pub vesting_periods: ::prost::alloc::vec::Vec<Period>,
 }
-impl<A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name> ::prost::Name
+impl<A: Clone + PartialEq + Default + Send + Sync + prost::Message> ::prost::Name
     for PeriodicVestingAccount<A>
 {
     const NAME: &'static str = "PeriodicVestingAccount";
@@ -121,13 +113,11 @@ impl<A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name
 #[derive(:: serde :: Serialize, :: serde :: Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, :: prost :: Message)]
-pub struct PermanentLockedAccount<
-    A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name,
-> {
+pub struct PermanentLockedAccount<A: Clone + PartialEq + Default + Send + Sync + prost::Message> {
     #[prost(message, optional, tag = "1")]
     pub base_vesting_account: ::core::option::Option<BaseVestingAccount<A>>,
 }
-impl<A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name> ::prost::Name
+impl<A: Clone + PartialEq + Default + Send + Sync + prost::Message> ::prost::Name
     for PermanentLockedAccount<A>
 {
     const NAME: &'static str = "PermanentLockedAccount";

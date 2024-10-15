@@ -4,15 +4,13 @@
 #[derive(:: serde :: Serialize, :: serde :: Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, :: prost :: Message)]
-pub struct LegacyAminoPubKey<
-    A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name,
-> {
+pub struct LegacyAminoPubKey<A: Clone + PartialEq + Default + Send + Sync + prost::Message> {
     #[prost(uint32, tag = "1")]
     pub threshold: u32,
     #[prost(message, repeated, tag = "2")]
     pub public_keys: ::prost::alloc::vec::Vec<crate::any::Any<A>>,
 }
-impl<A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name> ::prost::Name
+impl<A: Clone + PartialEq + Default + Send + Sync + prost::Message> ::prost::Name
     for LegacyAminoPubKey<A>
 {
     const NAME: &'static str = "LegacyAminoPubKey";

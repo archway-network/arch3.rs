@@ -3,9 +3,7 @@
 #[derive(:: serde :: Serialize, :: serde :: Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, :: prost :: Message)]
-pub struct IdentifiedClientState<
-    A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name,
-> {
+pub struct IdentifiedClientState<A: Clone + PartialEq + Default + Send + Sync + prost::Message> {
     #[doc = " client identifier"]
     #[prost(string, tag = "1")]
     pub client_id: ::prost::alloc::string::String,
@@ -13,7 +11,7 @@ pub struct IdentifiedClientState<
     #[prost(message, optional, tag = "2")]
     pub client_state: ::core::option::Option<crate::any::Any<A>>,
 }
-impl<A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name> ::prost::Name
+impl<A: Clone + PartialEq + Default + Send + Sync + prost::Message> ::prost::Name
     for IdentifiedClientState<A>
 {
     const NAME: &'static str = "IdentifiedClientState";
@@ -27,9 +25,7 @@ impl<A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name
 #[derive(:: serde :: Serialize, :: serde :: Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, :: prost :: Message)]
-pub struct ConsensusStateWithHeight<
-    A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name,
-> {
+pub struct ConsensusStateWithHeight<A: Clone + PartialEq + Default + Send + Sync + prost::Message> {
     #[doc = " consensus state height"]
     #[prost(message, optional, tag = "1")]
     pub height: ::core::option::Option<Height>,
@@ -37,7 +33,7 @@ pub struct ConsensusStateWithHeight<
     #[prost(message, optional, tag = "2")]
     pub consensus_state: ::core::option::Option<crate::any::Any<A>>,
 }
-impl<A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name> ::prost::Name
+impl<A: Clone + PartialEq + Default + Send + Sync + prost::Message> ::prost::Name
     for ConsensusStateWithHeight<A>
 {
     const NAME: &'static str = "ConsensusStateWithHeight";
@@ -51,9 +47,7 @@ impl<A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name
 #[derive(:: serde :: Serialize, :: serde :: Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, :: prost :: Message)]
-pub struct ClientConsensusStates<
-    A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name,
-> {
+pub struct ClientConsensusStates<A: Clone + PartialEq + Default + Send + Sync + prost::Message> {
     #[doc = " client identifier"]
     #[prost(string, tag = "1")]
     pub client_id: ::prost::alloc::string::String,
@@ -61,7 +55,7 @@ pub struct ClientConsensusStates<
     #[prost(message, repeated, tag = "2")]
     pub consensus_states: ::prost::alloc::vec::Vec<ConsensusStateWithHeight<A>>,
 }
-impl<A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name> ::prost::Name
+impl<A: Clone + PartialEq + Default + Send + Sync + prost::Message> ::prost::Name
     for ClientConsensusStates<A>
 {
     const NAME: &'static str = "ClientConsensusStates";
@@ -105,8 +99,8 @@ impl ::prost::Name for ClientUpdateProposal {
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, :: prost :: Message)]
 pub struct UpgradeProposal<
-    A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name,
-    BB: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name,
+    A: Clone + PartialEq + Default + Send + Sync + prost::Message,
+    BB: Clone + PartialEq + Default + Send + Sync + prost::Message,
 > {
     #[prost(string, tag = "1")]
     pub title: ::prost::alloc::string::String,
@@ -124,8 +118,8 @@ pub struct UpgradeProposal<
     pub upgraded_client_state: ::core::option::Option<crate::any::Any<BB>>,
 }
 impl<
-        A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name,
-        BB: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name,
+        A: Clone + PartialEq + Default + Send + Sync + prost::Message,
+        BB: Clone + PartialEq + Default + Send + Sync + prost::Message,
     > ::prost::Name for UpgradeProposal<A, BB>
 {
     const NAME: &'static str = "UpgradeProposal";
@@ -185,8 +179,8 @@ impl ::prost::Name for Params {
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, :: prost :: Message)]
 pub struct GenesisState<
-    A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name,
-    BB: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name,
+    A: Clone + PartialEq + Default + Send + Sync + prost::Message,
+    BB: Clone + PartialEq + Default + Send + Sync + prost::Message,
 > {
     #[doc = " client states with their corresponding identifiers"]
     #[prost(message, repeated, tag = "1")]
@@ -207,8 +201,8 @@ pub struct GenesisState<
     pub next_client_sequence: u64,
 }
 impl<
-        A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name,
-        BB: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name,
+        A: Clone + PartialEq + Default + Send + Sync + prost::Message,
+        BB: Clone + PartialEq + Default + Send + Sync + prost::Message,
     > ::prost::Name for GenesisState<A, BB>
 {
     const NAME: &'static str = "GenesisState";
@@ -278,9 +272,7 @@ impl ::prost::Name for QueryClientStateRequest {
 #[derive(:: serde :: Serialize, :: serde :: Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, :: prost :: Message)]
-pub struct QueryClientStateResponse<
-    A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name,
-> {
+pub struct QueryClientStateResponse<A: Clone + PartialEq + Default + Send + Sync + prost::Message> {
     #[doc = " client state associated with the request identifier"]
     #[prost(message, optional, tag = "1")]
     pub client_state: ::core::option::Option<crate::any::Any<A>>,
@@ -291,7 +283,7 @@ pub struct QueryClientStateResponse<
     #[prost(message, optional, tag = "3")]
     pub proof_height: ::core::option::Option<Height>,
 }
-impl<A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name> ::prost::Name
+impl<A: Clone + PartialEq + Default + Send + Sync + prost::Message> ::prost::Name
     for QueryClientStateResponse<A>
 {
     const NAME: &'static str = "QueryClientStateResponse";
@@ -324,9 +316,8 @@ impl ::prost::Name for QueryClientStatesRequest {
 #[derive(:: serde :: Serialize, :: serde :: Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, :: prost :: Message)]
-pub struct QueryClientStatesResponse<
-    A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name,
-> {
+pub struct QueryClientStatesResponse<A: Clone + PartialEq + Default + Send + Sync + prost::Message>
+{
     #[doc = " list of stored ClientStates of the chain."]
     #[prost(message, repeated, tag = "1")]
     pub client_states: ::prost::alloc::vec::Vec<IdentifiedClientState<A>>,
@@ -336,7 +327,7 @@ pub struct QueryClientStatesResponse<
         super::super::super::super::cosmos::base::query::v1beta1::PageResponse,
     >,
 }
-impl<A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name> ::prost::Name
+impl<A: Clone + PartialEq + Default + Send + Sync + prost::Message> ::prost::Name
     for QueryClientStatesResponse<A>
 {
     const NAME: &'static str = "QueryClientStatesResponse";
@@ -379,7 +370,7 @@ impl ::prost::Name for QueryConsensusStateRequest {
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, :: prost :: Message)]
 pub struct QueryConsensusStateResponse<
-    A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name,
+    A: Clone + PartialEq + Default + Send + Sync + prost::Message,
 > {
     #[doc = " consensus state associated with the client identifier at the given height"]
     #[prost(message, optional, tag = "1")]
@@ -391,7 +382,7 @@ pub struct QueryConsensusStateResponse<
     #[prost(message, optional, tag = "3")]
     pub proof_height: ::core::option::Option<Height>,
 }
-impl<A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name> ::prost::Name
+impl<A: Clone + PartialEq + Default + Send + Sync + prost::Message> ::prost::Name
     for QueryConsensusStateResponse<A>
 {
     const NAME: &'static str = "QueryConsensusStateResponse";
@@ -428,7 +419,7 @@ impl ::prost::Name for QueryConsensusStatesRequest {
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, :: prost :: Message)]
 pub struct QueryConsensusStatesResponse<
-    A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name,
+    A: Clone + PartialEq + Default + Send + Sync + prost::Message,
 > {
     #[doc = " consensus states associated with the identifier"]
     #[prost(message, repeated, tag = "1")]
@@ -439,7 +430,7 @@ pub struct QueryConsensusStatesResponse<
         super::super::super::super::cosmos::base::query::v1beta1::PageResponse,
     >,
 }
-impl<A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name> ::prost::Name
+impl<A: Clone + PartialEq + Default + Send + Sync + prost::Message> ::prost::Name
     for QueryConsensusStatesResponse<A>
 {
     const NAME: &'static str = "QueryConsensusStatesResponse";
@@ -574,13 +565,13 @@ impl ::prost::Name for QueryUpgradedClientStateRequest {
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, :: prost :: Message)]
 pub struct QueryUpgradedClientStateResponse<
-    A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name,
+    A: Clone + PartialEq + Default + Send + Sync + prost::Message,
 > {
     #[doc = " client state associated with the request identifier"]
     #[prost(message, optional, tag = "1")]
     pub upgraded_client_state: ::core::option::Option<crate::any::Any<A>>,
 }
-impl<A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name> ::prost::Name
+impl<A: Clone + PartialEq + Default + Send + Sync + prost::Message> ::prost::Name
     for QueryUpgradedClientStateResponse<A>
 {
     const NAME: &'static str = "QueryUpgradedClientStateResponse";
@@ -608,13 +599,13 @@ impl ::prost::Name for QueryUpgradedConsensusStateRequest {
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, :: prost :: Message)]
 pub struct QueryUpgradedConsensusStateResponse<
-    A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name,
+    A: Clone + PartialEq + Default + Send + Sync + prost::Message,
 > {
     #[doc = " Consensus state associated with the request identifier"]
     #[prost(message, optional, tag = "1")]
     pub upgraded_consensus_state: ::core::option::Option<crate::any::Any<A>>,
 }
-impl<A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name> ::prost::Name
+impl<A: Clone + PartialEq + Default + Send + Sync + prost::Message> ::prost::Name
     for QueryUpgradedConsensusStateResponse<A>
 {
     const NAME: &'static str = "QueryUpgradedConsensusStateResponse";
@@ -628,8 +619,8 @@ impl<A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, :: prost :: Message)]
 pub struct MsgCreateClient<
-    A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name,
-    BB: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name,
+    A: Clone + PartialEq + Default + Send + Sync + prost::Message,
+    BB: Clone + PartialEq + Default + Send + Sync + prost::Message,
 > {
     #[doc = " light client state"]
     #[prost(message, optional, tag = "1")]
@@ -643,8 +634,8 @@ pub struct MsgCreateClient<
     pub signer: ::prost::alloc::string::String,
 }
 impl<
-        A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name,
-        BB: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name,
+        A: Clone + PartialEq + Default + Send + Sync + prost::Message,
+        BB: Clone + PartialEq + Default + Send + Sync + prost::Message,
     > ::prost::Name for MsgCreateClient<A, BB>
 {
     const NAME: &'static str = "MsgCreateClient";
@@ -670,9 +661,7 @@ impl ::prost::Name for MsgCreateClientResponse {
 #[derive(:: serde :: Serialize, :: serde :: Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, :: prost :: Message)]
-pub struct MsgUpdateClient<
-    A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name,
-> {
+pub struct MsgUpdateClient<A: Clone + PartialEq + Default + Send + Sync + prost::Message> {
     #[doc = " client unique identifier"]
     #[prost(string, tag = "1")]
     pub client_id: ::prost::alloc::string::String,
@@ -683,7 +672,7 @@ pub struct MsgUpdateClient<
     #[prost(string, tag = "3")]
     pub signer: ::prost::alloc::string::String,
 }
-impl<A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name> ::prost::Name
+impl<A: Clone + PartialEq + Default + Send + Sync + prost::Message> ::prost::Name
     for MsgUpdateClient<A>
 {
     const NAME: &'static str = "MsgUpdateClient";
@@ -710,8 +699,8 @@ impl ::prost::Name for MsgUpdateClientResponse {
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, :: prost :: Message)]
 pub struct MsgUpgradeClient<
-    A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name,
-    BB: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name,
+    A: Clone + PartialEq + Default + Send + Sync + prost::Message,
+    BB: Clone + PartialEq + Default + Send + Sync + prost::Message,
 > {
     #[doc = " client unique identifier"]
     #[prost(string, tag = "1")]
@@ -734,8 +723,8 @@ pub struct MsgUpgradeClient<
     pub signer: ::prost::alloc::string::String,
 }
 impl<
-        A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name,
-        BB: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name,
+        A: Clone + PartialEq + Default + Send + Sync + prost::Message,
+        BB: Clone + PartialEq + Default + Send + Sync + prost::Message,
     > ::prost::Name for MsgUpgradeClient<A, BB>
 {
     const NAME: &'static str = "MsgUpgradeClient";
@@ -762,9 +751,7 @@ impl ::prost::Name for MsgUpgradeClientResponse {
 #[derive(:: serde :: Serialize, :: serde :: Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, :: prost :: Message)]
-pub struct MsgSubmitMisbehaviour<
-    A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name,
-> {
+pub struct MsgSubmitMisbehaviour<A: Clone + PartialEq + Default + Send + Sync + prost::Message> {
     #[doc = " client unique identifier"]
     #[deprecated]
     #[prost(string, tag = "1")]
@@ -778,7 +765,7 @@ pub struct MsgSubmitMisbehaviour<
     #[prost(string, tag = "3")]
     pub signer: ::prost::alloc::string::String,
 }
-impl<A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name> ::prost::Name
+impl<A: Clone + PartialEq + Default + Send + Sync + prost::Message> ::prost::Name
     for MsgSubmitMisbehaviour<A>
 {
     const NAME: &'static str = "MsgSubmitMisbehaviour";

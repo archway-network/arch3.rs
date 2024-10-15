@@ -216,7 +216,7 @@ impl ::prost::Name for MsgRegisterInterchainAccountResponse {
 #[derive(:: serde :: Serialize, :: serde :: Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, :: prost :: Message)]
-pub struct MsgSendTx<A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name> {
+pub struct MsgSendTx<A: Clone + PartialEq + Default + Send + Sync + prost::Message> {
     #[doc = " contract_address is the address of the who wants to submit a transaction to"]
     #[doc = " the counterparty chain"]
     #[prost(string, tag = "1")]
@@ -234,9 +234,7 @@ pub struct MsgSendTx<A: Clone + PartialEq + Default + Send + Sync + prost::Messa
     #[prost(uint64, tag = "5")]
     pub timeout: u64,
 }
-impl<A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name> ::prost::Name
-    for MsgSendTx<A>
-{
+impl<A: Clone + PartialEq + Default + Send + Sync + prost::Message> ::prost::Name for MsgSendTx<A> {
     const NAME: &'static str = "MsgSendTx";
     const PACKAGE: &'static str = "archway.cwica.v1";
     fn full_name() -> ::prost::alloc::string::String {

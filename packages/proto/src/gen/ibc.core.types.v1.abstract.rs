@@ -3,8 +3,8 @@
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, :: prost :: Message)]
 pub struct GenesisState<
-    A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name,
-    BB: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name,
+    A: Clone + PartialEq + Default + Send + Sync + prost::Message,
+    BB: Clone + PartialEq + Default + Send + Sync + prost::Message,
 > {
     #[doc = " ICS002 - Clients genesis state"]
     #[prost(message, optional, tag = "1")]
@@ -17,8 +17,8 @@ pub struct GenesisState<
     pub channel_genesis: ::core::option::Option<super::super::channel::v1::GenesisState>,
 }
 impl<
-        A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name,
-        BB: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name,
+        A: Clone + PartialEq + Default + Send + Sync + prost::Message,
+        BB: Clone + PartialEq + Default + Send + Sync + prost::Message,
     > ::prost::Name for GenesisState<A, BB>
 {
     const NAME: &'static str = "GenesisState";

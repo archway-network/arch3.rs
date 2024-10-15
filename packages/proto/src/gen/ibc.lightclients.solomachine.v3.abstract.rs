@@ -3,8 +3,7 @@
 #[derive(:: serde :: Serialize, :: serde :: Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, :: prost :: Message)]
-pub struct ClientState<A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name>
-{
+pub struct ClientState<A: Clone + PartialEq + Default + Send + Sync + prost::Message> {
     #[doc = " latest sequence of the client state"]
     #[prost(uint64, tag = "1")]
     pub sequence: u64,
@@ -14,7 +13,7 @@ pub struct ClientState<A: Clone + PartialEq + Default + Send + Sync + prost::Mes
     #[prost(message, optional, tag = "3")]
     pub consensus_state: ::core::option::Option<ConsensusState<A>>,
 }
-impl<A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name> ::prost::Name
+impl<A: Clone + PartialEq + Default + Send + Sync + prost::Message> ::prost::Name
     for ClientState<A>
 {
     const NAME: &'static str = "ClientState";
@@ -29,9 +28,7 @@ impl<A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name
 #[derive(:: serde :: Serialize, :: serde :: Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, :: prost :: Message)]
-pub struct ConsensusState<
-    A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name,
-> {
+pub struct ConsensusState<A: Clone + PartialEq + Default + Send + Sync + prost::Message> {
     #[doc = " public key of the solo machine"]
     #[prost(message, optional, tag = "1")]
     pub public_key: ::core::option::Option<crate::any::Any<A>>,
@@ -43,7 +40,7 @@ pub struct ConsensusState<
     #[prost(uint64, tag = "3")]
     pub timestamp: u64,
 }
-impl<A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name> ::prost::Name
+impl<A: Clone + PartialEq + Default + Send + Sync + prost::Message> ::prost::Name
     for ConsensusState<A>
 {
     const NAME: &'static str = "ConsensusState";
@@ -56,7 +53,7 @@ impl<A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name
 #[derive(:: serde :: Serialize, :: serde :: Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, :: prost :: Message)]
-pub struct Header<A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name> {
+pub struct Header<A: Clone + PartialEq + Default + Send + Sync + prost::Message> {
     #[prost(uint64, tag = "1")]
     pub timestamp: u64,
     #[prost(bytes = "vec", tag = "2")]
@@ -66,9 +63,7 @@ pub struct Header<A: Clone + PartialEq + Default + Send + Sync + prost::Message 
     #[prost(string, tag = "4")]
     pub new_diversifier: ::prost::alloc::string::String,
 }
-impl<A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name> ::prost::Name
-    for Header<A>
-{
+impl<A: Clone + PartialEq + Default + Send + Sync + prost::Message> ::prost::Name for Header<A> {
     const NAME: &'static str = "Header";
     const PACKAGE: &'static str = "ibc.lightclients.solomachine.v3";
     fn full_name() -> ::prost::alloc::string::String {
@@ -167,7 +162,7 @@ impl ::prost::Name for SignBytes {
 #[derive(:: serde :: Serialize, :: serde :: Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, :: prost :: Message)]
-pub struct HeaderData<A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name> {
+pub struct HeaderData<A: Clone + PartialEq + Default + Send + Sync + prost::Message> {
     #[doc = " header public key"]
     #[prost(message, optional, tag = "1")]
     pub new_pub_key: ::core::option::Option<crate::any::Any<A>>,
@@ -175,7 +170,7 @@ pub struct HeaderData<A: Clone + PartialEq + Default + Send + Sync + prost::Mess
     #[prost(string, tag = "2")]
     pub new_diversifier: ::prost::alloc::string::String,
 }
-impl<A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name> ::prost::Name
+impl<A: Clone + PartialEq + Default + Send + Sync + prost::Message> ::prost::Name
     for HeaderData<A>
 {
     const NAME: &'static str = "HeaderData";

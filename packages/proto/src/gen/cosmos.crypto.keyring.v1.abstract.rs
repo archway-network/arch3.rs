@@ -2,7 +2,7 @@
 #[derive(:: serde :: Serialize, :: serde :: Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, :: prost :: Message)]
-pub struct Record<A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name> {
+pub struct Record<A: Clone + PartialEq + Default + Send + Sync + prost::Message> {
     #[doc = " name represents a name of Record"]
     #[prost(string, tag = "1")]
     pub name: ::prost::alloc::string::String,
@@ -89,9 +89,7 @@ pub mod record {
         Offline(Offline),
     }
 }
-impl<A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name> ::prost::Name
-    for Record<A>
-{
+impl<A: Clone + PartialEq + Default + Send + Sync + prost::Message> ::prost::Name for Record<A> {
     const NAME: &'static str = "Record";
     const PACKAGE: &'static str = "cosmos.crypto.keyring.v1";
     fn full_name() -> ::prost::alloc::string::String {

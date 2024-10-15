@@ -105,7 +105,7 @@ impl ::prost::Name for GetValidatorSetByHeightRequest {
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, :: prost :: Message)]
 pub struct GetValidatorSetByHeightResponse<
-    A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name,
+    A: Clone + PartialEq + Default + Send + Sync + prost::Message,
 > {
     #[prost(int64, tag = "1")]
     pub block_height: i64,
@@ -115,7 +115,7 @@ pub struct GetValidatorSetByHeightResponse<
     #[prost(message, optional, tag = "3")]
     pub pagination: ::core::option::Option<super::super::query::v1beta1::PageResponse>,
 }
-impl<A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name> ::prost::Name
+impl<A: Clone + PartialEq + Default + Send + Sync + prost::Message> ::prost::Name
     for GetValidatorSetByHeightResponse<A>
 {
     const NAME: &'static str = "GetValidatorSetByHeightResponse";
@@ -145,7 +145,7 @@ impl ::prost::Name for GetLatestValidatorSetRequest {
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, :: prost :: Message)]
 pub struct GetLatestValidatorSetResponse<
-    A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name,
+    A: Clone + PartialEq + Default + Send + Sync + prost::Message,
 > {
     #[prost(int64, tag = "1")]
     pub block_height: i64,
@@ -155,7 +155,7 @@ pub struct GetLatestValidatorSetResponse<
     #[prost(message, optional, tag = "3")]
     pub pagination: ::core::option::Option<super::super::query::v1beta1::PageResponse>,
 }
-impl<A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name> ::prost::Name
+impl<A: Clone + PartialEq + Default + Send + Sync + prost::Message> ::prost::Name
     for GetLatestValidatorSetResponse<A>
 {
     const NAME: &'static str = "GetLatestValidatorSetResponse";
@@ -168,7 +168,7 @@ impl<A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name
 #[derive(:: serde :: Serialize, :: serde :: Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, :: prost :: Message)]
-pub struct Validator<A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name> {
+pub struct Validator<A: Clone + PartialEq + Default + Send + Sync + prost::Message> {
     #[prost(string, tag = "1")]
     pub address: ::prost::alloc::string::String,
     #[prost(message, optional, tag = "2")]
@@ -178,9 +178,7 @@ pub struct Validator<A: Clone + PartialEq + Default + Send + Sync + prost::Messa
     #[prost(int64, tag = "4")]
     pub proposer_priority: i64,
 }
-impl<A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name> ::prost::Name
-    for Validator<A>
-{
+impl<A: Clone + PartialEq + Default + Send + Sync + prost::Message> ::prost::Name for Validator<A> {
     const NAME: &'static str = "Validator";
     const PACKAGE: &'static str = "cosmos.base.tendermint.v1beta1";
     fn full_name() -> ::prost::alloc::string::String {

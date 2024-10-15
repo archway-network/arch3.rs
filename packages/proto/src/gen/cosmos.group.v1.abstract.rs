@@ -185,9 +185,7 @@ impl ::prost::Name for GroupMember {
 #[derive(:: serde :: Serialize, :: serde :: Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, :: prost :: Message)]
-pub struct GroupPolicyInfo<
-    A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name,
-> {
+pub struct GroupPolicyInfo<A: Clone + PartialEq + Default + Send + Sync + prost::Message> {
     #[doc = " address is the account address of group policy."]
     #[prost(string, tag = "1")]
     pub address: ::prost::alloc::string::String,
@@ -213,7 +211,7 @@ pub struct GroupPolicyInfo<
     #[prost(message, optional, tag = "7")]
     pub created_at: ::core::option::Option<::pbjson_types::Timestamp>,
 }
-impl<A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name> ::prost::Name
+impl<A: Clone + PartialEq + Default + Send + Sync + prost::Message> ::prost::Name
     for GroupPolicyInfo<A>
 {
     const NAME: &'static str = "GroupPolicyInfo";
@@ -229,7 +227,7 @@ impl<A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name
 #[derive(:: serde :: Serialize, :: serde :: Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, :: prost :: Message)]
-pub struct Proposal<A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name> {
+pub struct Proposal<A: Clone + PartialEq + Default + Send + Sync + prost::Message> {
     #[doc = " id is the unique id of the proposal."]
     #[prost(uint64, tag = "1")]
     pub id: u64,
@@ -290,9 +288,7 @@ pub struct Proposal<A: Clone + PartialEq + Default + Send + Sync + prost::Messag
     #[prost(string, tag = "14")]
     pub summary: ::prost::alloc::string::String,
 }
-impl<A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name> ::prost::Name
-    for Proposal<A>
-{
+impl<A: Clone + PartialEq + Default + Send + Sync + prost::Message> ::prost::Name for Proposal<A> {
     const NAME: &'static str = "Proposal";
     const PACKAGE: &'static str = "cosmos.group.v1";
     fn full_name() -> ::prost::alloc::string::String {
@@ -696,8 +692,8 @@ impl ::prost::Name for EventProposalPruned {
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, :: prost :: Message)]
 pub struct GenesisState<
-    A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name,
-    BB: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name,
+    A: Clone + PartialEq + Default + Send + Sync + prost::Message,
+    BB: Clone + PartialEq + Default + Send + Sync + prost::Message,
 > {
     #[doc = " group_seq is the group table orm.Sequence,"]
     #[doc = " it is used to get the next group ID."]
@@ -728,8 +724,8 @@ pub struct GenesisState<
     pub votes: ::prost::alloc::vec::Vec<Vote>,
 }
 impl<
-        A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name,
-        BB: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name,
+        A: Clone + PartialEq + Default + Send + Sync + prost::Message,
+        BB: Clone + PartialEq + Default + Send + Sync + prost::Message,
     > ::prost::Name for GenesisState<A, BB>
 {
     const NAME: &'static str = "GenesisState";
@@ -791,13 +787,13 @@ impl ::prost::Name for QueryGroupPolicyInfoRequest {
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, :: prost :: Message)]
 pub struct QueryGroupPolicyInfoResponse<
-    A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name,
+    A: Clone + PartialEq + Default + Send + Sync + prost::Message,
 > {
     #[doc = " info is the GroupPolicyInfo of the group policy."]
     #[prost(message, optional, tag = "1")]
     pub info: ::core::option::Option<GroupPolicyInfo<A>>,
 }
-impl<A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name> ::prost::Name
+impl<A: Clone + PartialEq + Default + Send + Sync + prost::Message> ::prost::Name
     for QueryGroupPolicyInfoResponse<A>
 {
     const NAME: &'static str = "QueryGroupPolicyInfoResponse";
@@ -906,7 +902,7 @@ impl ::prost::Name for QueryGroupPoliciesByGroupRequest {
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, :: prost :: Message)]
 pub struct QueryGroupPoliciesByGroupResponse<
-    A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name,
+    A: Clone + PartialEq + Default + Send + Sync + prost::Message,
 > {
     #[doc = " group_policies are the group policies info associated with the provided group."]
     #[prost(message, repeated, tag = "1")]
@@ -915,7 +911,7 @@ pub struct QueryGroupPoliciesByGroupResponse<
     #[prost(message, optional, tag = "2")]
     pub pagination: ::core::option::Option<super::super::base::query::v1beta1::PageResponse>,
 }
-impl<A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name> ::prost::Name
+impl<A: Clone + PartialEq + Default + Send + Sync + prost::Message> ::prost::Name
     for QueryGroupPoliciesByGroupResponse<A>
 {
     const NAME: &'static str = "QueryGroupPoliciesByGroupResponse";
@@ -948,7 +944,7 @@ impl ::prost::Name for QueryGroupPoliciesByAdminRequest {
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, :: prost :: Message)]
 pub struct QueryGroupPoliciesByAdminResponse<
-    A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name,
+    A: Clone + PartialEq + Default + Send + Sync + prost::Message,
 > {
     #[doc = " group_policies are the group policies info with provided admin."]
     #[prost(message, repeated, tag = "1")]
@@ -957,7 +953,7 @@ pub struct QueryGroupPoliciesByAdminResponse<
     #[prost(message, optional, tag = "2")]
     pub pagination: ::core::option::Option<super::super::base::query::v1beta1::PageResponse>,
 }
-impl<A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name> ::prost::Name
+impl<A: Clone + PartialEq + Default + Send + Sync + prost::Message> ::prost::Name
     for QueryGroupPoliciesByAdminResponse<A>
 {
     const NAME: &'static str = "QueryGroupPoliciesByAdminResponse";
@@ -986,14 +982,12 @@ impl ::prost::Name for QueryProposalRequest {
 #[derive(:: serde :: Serialize, :: serde :: Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, :: prost :: Message)]
-pub struct QueryProposalResponse<
-    A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name,
-> {
+pub struct QueryProposalResponse<A: Clone + PartialEq + Default + Send + Sync + prost::Message> {
     #[doc = " proposal is the proposal info."]
     #[prost(message, optional, tag = "1")]
     pub proposal: ::core::option::Option<Proposal<A>>,
 }
-impl<A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name> ::prost::Name
+impl<A: Clone + PartialEq + Default + Send + Sync + prost::Message> ::prost::Name
     for QueryProposalResponse<A>
 {
     const NAME: &'static str = "QueryProposalResponse";
@@ -1026,7 +1020,7 @@ impl ::prost::Name for QueryProposalsByGroupPolicyRequest {
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, :: prost :: Message)]
 pub struct QueryProposalsByGroupPolicyResponse<
-    A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name,
+    A: Clone + PartialEq + Default + Send + Sync + prost::Message,
 > {
     #[doc = " proposals are the proposals with given group policy."]
     #[prost(message, repeated, tag = "1")]
@@ -1035,7 +1029,7 @@ pub struct QueryProposalsByGroupPolicyResponse<
     #[prost(message, optional, tag = "2")]
     pub pagination: ::core::option::Option<super::super::base::query::v1beta1::PageResponse>,
 }
-impl<A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name> ::prost::Name
+impl<A: Clone + PartialEq + Default + Send + Sync + prost::Message> ::prost::Name
     for QueryProposalsByGroupPolicyResponse<A>
 {
     const NAME: &'static str = "QueryProposalsByGroupPolicyResponse";
@@ -1409,9 +1403,7 @@ impl ::prost::Name for MsgUpdateGroupMetadataResponse {
 #[derive(:: serde :: Serialize, :: serde :: Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, :: prost :: Message)]
-pub struct MsgCreateGroupPolicy<
-    A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name,
-> {
+pub struct MsgCreateGroupPolicy<A: Clone + PartialEq + Default + Send + Sync + prost::Message> {
     #[doc = " admin is the account address of the group admin."]
     #[prost(string, tag = "1")]
     pub admin: ::prost::alloc::string::String,
@@ -1425,7 +1417,7 @@ pub struct MsgCreateGroupPolicy<
     #[prost(message, optional, tag = "4")]
     pub decision_policy: ::core::option::Option<crate::any::Any<A>>,
 }
-impl<A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name> ::prost::Name
+impl<A: Clone + PartialEq + Default + Send + Sync + prost::Message> ::prost::Name
     for MsgCreateGroupPolicy<A>
 {
     const NAME: &'static str = "MsgCreateGroupPolicy";
@@ -1488,9 +1480,7 @@ impl ::prost::Name for MsgUpdateGroupPolicyAdminResponse {
 #[derive(:: serde :: Serialize, :: serde :: Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, :: prost :: Message)]
-pub struct MsgCreateGroupWithPolicy<
-    A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name,
-> {
+pub struct MsgCreateGroupWithPolicy<A: Clone + PartialEq + Default + Send + Sync + prost::Message> {
     #[doc = " admin is the account address of the group and group policy admin."]
     #[prost(string, tag = "1")]
     pub admin: ::prost::alloc::string::String,
@@ -1511,7 +1501,7 @@ pub struct MsgCreateGroupWithPolicy<
     #[prost(message, optional, tag = "6")]
     pub decision_policy: ::core::option::Option<crate::any::Any<A>>,
 }
-impl<A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name> ::prost::Name
+impl<A: Clone + PartialEq + Default + Send + Sync + prost::Message> ::prost::Name
     for MsgCreateGroupWithPolicy<A>
 {
     const NAME: &'static str = "MsgCreateGroupWithPolicy";
@@ -1544,7 +1534,7 @@ impl ::prost::Name for MsgCreateGroupWithPolicyResponse {
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, :: prost :: Message)]
 pub struct MsgUpdateGroupPolicyDecisionPolicy<
-    A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name,
+    A: Clone + PartialEq + Default + Send + Sync + prost::Message,
 > {
     #[doc = " admin is the account address of the group admin."]
     #[prost(string, tag = "1")]
@@ -1556,7 +1546,7 @@ pub struct MsgUpdateGroupPolicyDecisionPolicy<
     #[prost(message, optional, tag = "3")]
     pub decision_policy: ::core::option::Option<crate::any::Any<A>>,
 }
-impl<A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name> ::prost::Name
+impl<A: Clone + PartialEq + Default + Send + Sync + prost::Message> ::prost::Name
     for MsgUpdateGroupPolicyDecisionPolicy<A>
 {
     const NAME: &'static str = "MsgUpdateGroupPolicyDecisionPolicy";
@@ -1615,9 +1605,7 @@ impl ::prost::Name for MsgUpdateGroupPolicyMetadataResponse {
 #[derive(:: serde :: Serialize, :: serde :: Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, :: prost :: Message)]
-pub struct MsgSubmitProposal<
-    A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name,
-> {
+pub struct MsgSubmitProposal<A: Clone + PartialEq + Default + Send + Sync + prost::Message> {
     #[doc = " group_policy_address is the account address of group policy."]
     #[prost(string, tag = "1")]
     pub group_policy_address: ::prost::alloc::string::String,
@@ -1647,7 +1635,7 @@ pub struct MsgSubmitProposal<
     #[prost(string, tag = "7")]
     pub summary: ::prost::alloc::string::String,
 }
-impl<A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name> ::prost::Name
+impl<A: Clone + PartialEq + Default + Send + Sync + prost::Message> ::prost::Name
     for MsgSubmitProposal<A>
 {
     const NAME: &'static str = "MsgSubmitProposal";

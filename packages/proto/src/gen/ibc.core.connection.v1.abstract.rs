@@ -382,7 +382,7 @@ impl ::prost::Name for QueryConnectionClientStateRequest {
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, :: prost :: Message)]
 pub struct QueryConnectionClientStateResponse<
-    A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name,
+    A: Clone + PartialEq + Default + Send + Sync + prost::Message,
 > {
     #[doc = " client state associated with the channel"]
     #[prost(message, optional, tag = "1")]
@@ -395,7 +395,7 @@ pub struct QueryConnectionClientStateResponse<
     #[prost(message, optional, tag = "3")]
     pub proof_height: ::core::option::Option<super::super::client::v1::Height>,
 }
-impl<A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name> ::prost::Name
+impl<A: Clone + PartialEq + Default + Send + Sync + prost::Message> ::prost::Name
     for QueryConnectionClientStateResponse<A>
 {
     const NAME: &'static str = "QueryConnectionClientStateResponse";
@@ -431,7 +431,7 @@ impl ::prost::Name for QueryConnectionConsensusStateRequest {
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, :: prost :: Message)]
 pub struct QueryConnectionConsensusStateResponse<
-    A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name,
+    A: Clone + PartialEq + Default + Send + Sync + prost::Message,
 > {
     #[doc = " consensus state associated with the channel"]
     #[prost(message, optional, tag = "1")]
@@ -446,7 +446,7 @@ pub struct QueryConnectionConsensusStateResponse<
     #[prost(message, optional, tag = "4")]
     pub proof_height: ::core::option::Option<super::super::client::v1::Height>,
 }
-impl<A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name> ::prost::Name
+impl<A: Clone + PartialEq + Default + Send + Sync + prost::Message> ::prost::Name
     for QueryConnectionConsensusStateResponse<A>
 {
     const NAME: &'static str = "QueryConnectionConsensusStateResponse";
@@ -525,9 +525,7 @@ impl ::prost::Name for MsgConnectionOpenInitResponse {
 #[derive(:: serde :: Serialize, :: serde :: Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, :: prost :: Message)]
-pub struct MsgConnectionOpenTry<
-    A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name,
-> {
+pub struct MsgConnectionOpenTry<A: Clone + PartialEq + Default + Send + Sync + prost::Message> {
     #[prost(string, tag = "1")]
     pub client_id: ::prost::alloc::string::String,
     #[doc = " Deprecated: this field is unused. Crossing hellos are no longer supported in core IBC."]
@@ -562,7 +560,7 @@ pub struct MsgConnectionOpenTry<
     #[prost(bytes = "vec", tag = "13")]
     pub host_consensus_state_proof: ::prost::alloc::vec::Vec<u8>,
 }
-impl<A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name> ::prost::Name
+impl<A: Clone + PartialEq + Default + Send + Sync + prost::Message> ::prost::Name
     for MsgConnectionOpenTry<A>
 {
     const NAME: &'static str = "MsgConnectionOpenTry";
@@ -588,9 +586,7 @@ impl ::prost::Name for MsgConnectionOpenTryResponse {
 #[derive(:: serde :: Serialize, :: serde :: Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, :: prost :: Message)]
-pub struct MsgConnectionOpenAck<
-    A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name,
-> {
+pub struct MsgConnectionOpenAck<A: Clone + PartialEq + Default + Send + Sync + prost::Message> {
     #[prost(string, tag = "1")]
     pub connection_id: ::prost::alloc::string::String,
     #[prost(string, tag = "2")]
@@ -619,7 +615,7 @@ pub struct MsgConnectionOpenAck<
     #[prost(bytes = "vec", tag = "11")]
     pub host_consensus_state_proof: ::prost::alloc::vec::Vec<u8>,
 }
-impl<A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name> ::prost::Name
+impl<A: Clone + PartialEq + Default + Send + Sync + prost::Message> ::prost::Name
     for MsgConnectionOpenAck<A>
 {
     const NAME: &'static str = "MsgConnectionOpenAck";
