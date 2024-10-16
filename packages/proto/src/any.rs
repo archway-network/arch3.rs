@@ -16,7 +16,8 @@ pub struct Any<T: Message + PartialEq + Default> {
 impl<T: Message + Name + PartialEq + Default> Any<T> {
     pub fn new(value: T) -> Self {
         Self {
-            type_url: T::full_name(),
+            // The RPC endpoint fails we dont prepend a '/'
+            type_url: format!("/{}", T::full_name()),
             value,
         }
     }
