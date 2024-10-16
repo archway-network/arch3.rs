@@ -4,37 +4,14 @@
 #[derive(:: serde :: Serialize, :: serde :: Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, :: prost :: Message)]
-pub struct LegacyAminoPubKey<
-    A: Clone
-        + PartialEq
-        + Default
-        + Send
-        + Sync
-        + prost::Message
-        + serde::Serialize
-        + serde::de::DeserializeOwned
-        + prost::Name,
-> {
+pub struct LegacyAminoPubKey<A: Clone + PartialEq + Default + Send + Sync + prost::Message> {
     #[prost(uint32, tag = "1")]
     pub threshold: u32,
     #[prost(message, repeated, tag = "2")]
-    #[serde(
-        serialize_with = "crate::any::vec::serialize",
-        deserialize_with = "crate::any::vec::deserialize"
-    )]
-    pub public_keys: ::prost::alloc::vec::Vec<A>,
+    pub public_keys: ::prost::alloc::vec::Vec<crate::any::Any<A>>,
 }
-impl<
-        A: Clone
-            + PartialEq
-            + Default
-            + Send
-            + Sync
-            + prost::Message
-            + serde::Serialize
-            + serde::de::DeserializeOwned
-            + prost::Name,
-    > ::prost::Name for LegacyAminoPubKey<A>
+impl<A: Clone + PartialEq + Default + Send + Sync + prost::Message> ::prost::Name
+    for LegacyAminoPubKey<A>
 {
     const NAME: &'static str = "LegacyAminoPubKey";
     const PACKAGE: &'static str = "cosmos.crypto.multisig";
