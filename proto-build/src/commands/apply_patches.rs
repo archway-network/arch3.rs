@@ -3,7 +3,7 @@ use glob::glob;
 use std::path::{Path, PathBuf};
 
 /// Fix clashing type names in prost-generated code.
-fn apply_cosmos_staking_patches(out_dir: &Path) {
+fn apply_cosmos_staking_patches(out_dir: &Path) -> crate::Result<()> {
     const REPLACEMENTS: &[(&str, &str)] = &[
         ("enum Validators", "enum Policy"),
         (
@@ -12,8 +12,9 @@ fn apply_cosmos_staking_patches(out_dir: &Path) {
         ),
     ];
 
-    patch_file(&out_dir.join("cosmos.staking.v1beta1.rs"), REPLACEMENTS)
-        .expect("error patching cosmos.staking.v1beta1.rs");
+    patch_file(&out_dir.join("cosmos.staking.v1beta1.rs"), REPLACEMENTS)?;
+
+    Ok(())
 }
 
 pub fn apply_patches(out_dir: &Path) -> crate::Result<()> {
@@ -42,7 +43,7 @@ pub fn apply_patches(out_dir: &Path) -> crate::Result<()> {
         patch_file(&src, REPLACEMENTS)?;
     }
 
-    apply_cosmos_staking_patches(out_dir);
+    apply_cosmos_staking_patches(out_dir)?;
 
     Ok(())
 }
