@@ -8,6 +8,7 @@
 #[cfg(feature = "abstract-any")]
 pub mod any;
 
+#[allow(clippy::all)]
 mod gen;
 
 pub use gen::*;
