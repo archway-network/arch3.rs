@@ -3,7 +3,7 @@ use std::path::Path;
 use std::{fs, io};
 
 pub fn patch_file(path: &Path, replacements: &[(&str, &str)]) -> io::Result<()> {
-    let mut contents = fs::read_to_string(&path)?;
+    let mut contents = fs::read_to_string(path)?;
 
     for &(regex, replacement) in replacements {
         contents = Regex::new(regex)

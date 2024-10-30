@@ -6,7 +6,7 @@ pub fn generate(buf_gen_path: &Path, proto_path: &Path, out_dir: &Path) -> crate
     println!("Generating proto...");
 
     if out_dir.exists() {
-        fs::remove_dir_all(&out_dir).unwrap();
+        fs::remove_dir_all(out_dir).unwrap();
     }
 
     run_cmd(
