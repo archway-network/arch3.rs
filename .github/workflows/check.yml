@@ -1,4 +1,4 @@
-on: [push, pull_request]
+on: [ push, pull_request ]
 
 name: Check
 
@@ -9,7 +9,7 @@ jobs:
     strategy:
       matrix:
         rust:
-          - 1.70.0
+          - 1.82.0
           - stable
     steps:
       - name: Checkout sources
@@ -52,7 +52,7 @@ jobs:
     strategy:
       matrix:
         rust:
-          - 1.70.0
+          - 1.82.0
           - stable
     steps:
       - name: Checkout sources
