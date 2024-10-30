@@ -2,8 +2,7 @@ use proc_macro2::Span;
 use syn::punctuated::Punctuated;
 use syn::token::PathSep;
 use syn::{
-    Field, Fields, FieldsNamed, GenericArgument, Ident, Item, ItemStruct, Path, PathArguments,
-    PathSegment, TraitBound, TraitBoundModifier, Type, TypeParam, TypeParamBound, TypePath,
+    Fields, FieldsNamed, Ident, Item, ItemStruct, Path, PathArguments, PathSegment, Type, TypePath,
 };
 
 pub fn item_as_struct(item: &mut Item) -> Option<&mut ItemStruct> {

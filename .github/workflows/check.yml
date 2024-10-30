@@ -9,7 +9,6 @@ jobs:
     strategy:
       matrix:
         rust:
-          - 1.70.0
           - stable
     steps:
       - name: Checkout sources
@@ -52,7 +51,6 @@ jobs:
     strategy:
       matrix:
         rust:
-          - 1.70.0
           - stable
     steps:
       - name: Checkout sources

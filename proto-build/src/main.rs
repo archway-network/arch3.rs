@@ -4,7 +4,7 @@ mod parser;
 mod utils;
 
 use std::path::PathBuf;
-use std::{io, path::Path, process};
+use std::{io, path::Path};
 
 use crate::commands::apply_patches::apply_patches;
 use crate::commands::cleanup::cleanup;
