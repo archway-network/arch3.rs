@@ -6,8 +6,7 @@ use crate::utils::run::run_git;
 use std::path::Path;
 
 pub fn update_submodules(submodules_dir: &Path) {
-    run_git(["submodule", "update", "--init"]).unwrap();
-    run_git(["submodule", "foreach", "git", "fetch"]).unwrap();
+    run_git(["submodule", "update", "--init", "--remote", "--checkout"]).unwrap();
 
     println!("Updating archway-network/archway submodule...");
     let archway_dir = submodules_dir.join(ARCHWAY_DIR);
