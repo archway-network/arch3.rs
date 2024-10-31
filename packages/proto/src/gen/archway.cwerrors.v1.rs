@@ -79,7 +79,7 @@ pub struct Params {
     pub error_stored_time: i64,
     /// subsciption_fee is the fee required to subscribe to error callbacks
     #[prost(message, optional, tag = "2")]
-    pub subscription_fee: ::core::option::Option<super::super::super::cosmos::base::v1beta1::Coin>,
+    pub subscription_fee: ::core::option::Option<crate::cosmos::base::v1beta1::Coin>,
     /// subscription_period is the period for which the subscription is valid
     #[prost(int64, tag = "3")]
     pub subscription_period: i64,
@@ -126,7 +126,7 @@ pub struct SubscribedToErrorsEvent {
     pub contract_address: ::prost::alloc::string::String,
     /// fees_paid is the fees paid for the subscription
     #[prost(message, optional, tag = "3")]
-    pub fees_paid: ::core::option::Option<super::super::super::cosmos::base::v1beta1::Coin>,
+    pub fees_paid: ::core::option::Option<crate::cosmos::base::v1beta1::Coin>,
     /// subscription_valid_till is the block height till which the subscription is
     /// valid
     #[prost(int64, tag = "4")]
@@ -344,7 +344,7 @@ pub struct MsgSubscribeToError {
     /// fee is the subscription fee for the feature (current no fee is charged for
     /// this feature)
     #[prost(message, optional, tag = "3")]
-    pub fee: ::core::option::Option<super::super::super::cosmos::base::v1beta1::Coin>,
+    pub fee: ::core::option::Option<crate::cosmos::base::v1beta1::Coin>,
 }
 impl ::prost::Name for MsgSubscribeToError {
     const NAME: &'static str = "MsgSubscribeToError";

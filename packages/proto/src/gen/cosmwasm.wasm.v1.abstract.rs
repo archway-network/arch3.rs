@@ -576,11 +576,7 @@ impl ::prost::Name for MaxCallsLimit {
 pub struct MaxFundsLimit {
     #[doc = " Amounts is the maximal amount of tokens transferable to the contract."]
     #[prost(message, repeated, tag = "1")]
-    #[serde(
-        serialize_with = "crate::any::vec::generic_serialize",
-        deserialize_with = "crate::any::vec::generic_deserialize"
-    )]
-    pub amounts: ::prost::alloc::vec::Vec<super::super::super::cosmos::base::v1beta1::Coin>,
+    pub amounts: ::prost::alloc::vec::Vec<crate::cosmos::base::v1beta1::Coin>,
 }
 impl ::prost::Name for MaxFundsLimit {
     const NAME: &'static str = "MaxFundsLimit";
@@ -601,11 +597,7 @@ pub struct CombinedLimit {
     pub calls_remaining: u64,
     #[doc = " Amounts is the maximal amount of tokens transferable to the contract."]
     #[prost(message, repeated, tag = "2")]
-    #[serde(
-        serialize_with = "crate::any::vec::generic_serialize",
-        deserialize_with = "crate::any::vec::generic_deserialize"
-    )]
-    pub amounts: ::prost::alloc::vec::Vec<super::super::super::cosmos::base::v1beta1::Coin>,
+    pub amounts: ::prost::alloc::vec::Vec<crate::cosmos::base::v1beta1::Coin>,
 }
 impl ::prost::Name for CombinedLimit {
     const NAME: &'static str = "CombinedLimit";
@@ -958,11 +950,7 @@ pub struct InstantiateContractProposal {
     pub msg: ::prost::alloc::vec::Vec<u8>,
     #[doc = " Funds coins that are transferred to the contract on instantiation"]
     #[prost(message, repeated, tag = "8")]
-    #[serde(
-        serialize_with = "crate::any::vec::generic_serialize",
-        deserialize_with = "crate::any::vec::generic_deserialize"
-    )]
-    pub funds: ::prost::alloc::vec::Vec<super::super::super::cosmos::base::v1beta1::Coin>,
+    pub funds: ::prost::alloc::vec::Vec<crate::cosmos::base::v1beta1::Coin>,
 }
 impl ::prost::Name for InstantiateContractProposal {
     const NAME: &'static str = "InstantiateContractProposal";
@@ -1002,11 +990,7 @@ pub struct InstantiateContract2Proposal {
     pub msg: ::prost::alloc::vec::Vec<u8>,
     #[doc = " Funds coins that are transferred to the contract on instantiation"]
     #[prost(message, repeated, tag = "8")]
-    #[serde(
-        serialize_with = "crate::any::vec::generic_serialize",
-        deserialize_with = "crate::any::vec::generic_deserialize"
-    )]
-    pub funds: ::prost::alloc::vec::Vec<super::super::super::cosmos::base::v1beta1::Coin>,
+    pub funds: ::prost::alloc::vec::Vec<crate::cosmos::base::v1beta1::Coin>,
     #[doc = " Salt is an arbitrary value provided by the sender. Size can be 1 to 64."]
     #[prost(bytes = "vec", tag = "9")]
     pub salt: ::prost::alloc::vec::Vec<u8>,
@@ -1108,11 +1092,7 @@ pub struct ExecuteContractProposal {
     pub msg: ::prost::alloc::vec::Vec<u8>,
     #[doc = " Funds coins that are transferred to the contract on instantiation"]
     #[prost(message, repeated, tag = "6")]
-    #[serde(
-        serialize_with = "crate::any::vec::generic_serialize",
-        deserialize_with = "crate::any::vec::generic_deserialize"
-    )]
-    pub funds: ::prost::alloc::vec::Vec<super::super::super::cosmos::base::v1beta1::Coin>,
+    pub funds: ::prost::alloc::vec::Vec<crate::cosmos::base::v1beta1::Coin>,
 }
 impl ::prost::Name for ExecuteContractProposal {
     const NAME: &'static str = "ExecuteContractProposal";
@@ -1319,11 +1299,7 @@ pub struct StoreAndInstantiateContractProposal {
     pub msg: ::prost::alloc::vec::Vec<u8>,
     #[doc = " Funds coins that are transferred to the contract on instantiation"]
     #[prost(message, repeated, tag = "10")]
-    #[serde(
-        serialize_with = "crate::any::vec::generic_serialize",
-        deserialize_with = "crate::any::vec::generic_deserialize"
-    )]
-    pub funds: ::prost::alloc::vec::Vec<super::super::super::cosmos::base::v1beta1::Coin>,
+    pub funds: ::prost::alloc::vec::Vec<crate::cosmos::base::v1beta1::Coin>,
     #[doc = " Source is the URL where the code is hosted"]
     #[prost(string, tag = "11")]
     pub source: ::prost::alloc::string::String,
@@ -1415,12 +1391,7 @@ pub struct QueryContractHistoryRequest {
     pub address: ::prost::alloc::string::String,
     #[doc = " pagination defines an optional pagination for the request."]
     #[prost(message, optional, tag = "2")]
-    #[serde(
-        serialize_with = "crate::any::option::generic_serialize",
-        deserialize_with = "crate::any::option::generic_deserialize"
-    )]
-    pub pagination:
-        ::core::option::Option<super::super::super::cosmos::base::query::v1beta1::PageRequest>,
+    pub pagination: ::core::option::Option<crate::cosmos::base::query::v1beta1::PageRequest>,
 }
 impl ::prost::Name for QueryContractHistoryRequest {
     const NAME: &'static str = "QueryContractHistoryRequest";
@@ -1443,12 +1414,7 @@ pub struct QueryContractHistoryResponse {
     pub entries: ::prost::alloc::vec::Vec<ContractCodeHistoryEntry>,
     #[doc = " pagination defines the pagination in the response."]
     #[prost(message, optional, tag = "2")]
-    #[serde(
-        serialize_with = "crate::any::option::generic_serialize",
-        deserialize_with = "crate::any::option::generic_deserialize"
-    )]
-    pub pagination:
-        ::core::option::Option<super::super::super::cosmos::base::query::v1beta1::PageResponse>,
+    pub pagination: ::core::option::Option<crate::cosmos::base::query::v1beta1::PageResponse>,
 }
 impl ::prost::Name for QueryContractHistoryResponse {
     const NAME: &'static str = "QueryContractHistoryResponse";
@@ -1468,12 +1434,7 @@ pub struct QueryContractsByCodeRequest {
     pub code_id: u64,
     #[doc = " pagination defines an optional pagination for the request."]
     #[prost(message, optional, tag = "2")]
-    #[serde(
-        serialize_with = "crate::any::option::generic_serialize",
-        deserialize_with = "crate::any::option::generic_deserialize"
-    )]
-    pub pagination:
-        ::core::option::Option<super::super::super::cosmos::base::query::v1beta1::PageRequest>,
+    pub pagination: ::core::option::Option<crate::cosmos::base::query::v1beta1::PageRequest>,
 }
 impl ::prost::Name for QueryContractsByCodeRequest {
     const NAME: &'static str = "QueryContractsByCodeRequest";
@@ -1493,12 +1454,7 @@ pub struct QueryContractsByCodeResponse {
     pub contracts: ::prost::alloc::vec::Vec<::prost::alloc::string::String>,
     #[doc = " pagination defines the pagination in the response."]
     #[prost(message, optional, tag = "2")]
-    #[serde(
-        serialize_with = "crate::any::option::generic_serialize",
-        deserialize_with = "crate::any::option::generic_deserialize"
-    )]
-    pub pagination:
-        ::core::option::Option<super::super::super::cosmos::base::query::v1beta1::PageResponse>,
+    pub pagination: ::core::option::Option<crate::cosmos::base::query::v1beta1::PageResponse>,
 }
 impl ::prost::Name for QueryContractsByCodeResponse {
     const NAME: &'static str = "QueryContractsByCodeResponse";
@@ -1518,12 +1474,7 @@ pub struct QueryAllContractStateRequest {
     pub address: ::prost::alloc::string::String,
     #[doc = " pagination defines an optional pagination for the request."]
     #[prost(message, optional, tag = "2")]
-    #[serde(
-        serialize_with = "crate::any::option::generic_serialize",
-        deserialize_with = "crate::any::option::generic_deserialize"
-    )]
-    pub pagination:
-        ::core::option::Option<super::super::super::cosmos::base::query::v1beta1::PageRequest>,
+    pub pagination: ::core::option::Option<crate::cosmos::base::query::v1beta1::PageRequest>,
 }
 impl ::prost::Name for QueryAllContractStateRequest {
     const NAME: &'static str = "QueryAllContractStateRequest";
@@ -1546,12 +1497,7 @@ pub struct QueryAllContractStateResponse {
     pub models: ::prost::alloc::vec::Vec<Model>,
     #[doc = " pagination defines the pagination in the response."]
     #[prost(message, optional, tag = "2")]
-    #[serde(
-        serialize_with = "crate::any::option::generic_serialize",
-        deserialize_with = "crate::any::option::generic_deserialize"
-    )]
-    pub pagination:
-        ::core::option::Option<super::super::super::cosmos::base::query::v1beta1::PageResponse>,
+    pub pagination: ::core::option::Option<crate::cosmos::base::query::v1beta1::PageResponse>,
 }
 impl ::prost::Name for QueryAllContractStateResponse {
     const NAME: &'static str = "QueryAllContractStateResponse";
@@ -1703,12 +1649,7 @@ impl ::prost::Name for QueryCodeResponse {
 pub struct QueryCodesRequest {
     #[doc = " pagination defines an optional pagination for the request."]
     #[prost(message, optional, tag = "1")]
-    #[serde(
-        serialize_with = "crate::any::option::generic_serialize",
-        deserialize_with = "crate::any::option::generic_deserialize"
-    )]
-    pub pagination:
-        ::core::option::Option<super::super::super::cosmos::base::query::v1beta1::PageRequest>,
+    pub pagination: ::core::option::Option<crate::cosmos::base::query::v1beta1::PageRequest>,
 }
 impl ::prost::Name for QueryCodesRequest {
     const NAME: &'static str = "QueryCodesRequest";
@@ -1730,12 +1671,7 @@ pub struct QueryCodesResponse {
     pub code_infos: ::prost::alloc::vec::Vec<CodeInfoResponse>,
     #[doc = " pagination defines the pagination in the response."]
     #[prost(message, optional, tag = "2")]
-    #[serde(
-        serialize_with = "crate::any::option::generic_serialize",
-        deserialize_with = "crate::any::option::generic_deserialize"
-    )]
-    pub pagination:
-        ::core::option::Option<super::super::super::cosmos::base::query::v1beta1::PageResponse>,
+    pub pagination: ::core::option::Option<crate::cosmos::base::query::v1beta1::PageResponse>,
 }
 impl ::prost::Name for QueryCodesResponse {
     const NAME: &'static str = "QueryCodesResponse";
@@ -1752,12 +1688,7 @@ impl ::prost::Name for QueryCodesResponse {
 pub struct QueryPinnedCodesRequest {
     #[doc = " pagination defines an optional pagination for the request."]
     #[prost(message, optional, tag = "2")]
-    #[serde(
-        serialize_with = "crate::any::option::generic_serialize",
-        deserialize_with = "crate::any::option::generic_deserialize"
-    )]
-    pub pagination:
-        ::core::option::Option<super::super::super::cosmos::base::query::v1beta1::PageRequest>,
+    pub pagination: ::core::option::Option<crate::cosmos::base::query::v1beta1::PageRequest>,
 }
 impl ::prost::Name for QueryPinnedCodesRequest {
     const NAME: &'static str = "QueryPinnedCodesRequest";
@@ -1776,12 +1707,7 @@ pub struct QueryPinnedCodesResponse {
     pub code_ids: ::prost::alloc::vec::Vec<u64>,
     #[doc = " pagination defines the pagination in the response."]
     #[prost(message, optional, tag = "2")]
-    #[serde(
-        serialize_with = "crate::any::option::generic_serialize",
-        deserialize_with = "crate::any::option::generic_deserialize"
-    )]
-    pub pagination:
-        ::core::option::Option<super::super::super::cosmos::base::query::v1beta1::PageResponse>,
+    pub pagination: ::core::option::Option<crate::cosmos::base::query::v1beta1::PageResponse>,
 }
 impl ::prost::Name for QueryPinnedCodesResponse {
     const NAME: &'static str = "QueryPinnedCodesResponse";
@@ -1833,12 +1759,7 @@ pub struct QueryContractsByCreatorRequest {
     pub creator_address: ::prost::alloc::string::String,
     #[doc = " Pagination defines an optional pagination for the request."]
     #[prost(message, optional, tag = "2")]
-    #[serde(
-        serialize_with = "crate::any::option::generic_serialize",
-        deserialize_with = "crate::any::option::generic_deserialize"
-    )]
-    pub pagination:
-        ::core::option::Option<super::super::super::cosmos::base::query::v1beta1::PageRequest>,
+    pub pagination: ::core::option::Option<crate::cosmos::base::query::v1beta1::PageRequest>,
 }
 impl ::prost::Name for QueryContractsByCreatorRequest {
     const NAME: &'static str = "QueryContractsByCreatorRequest";
@@ -1858,12 +1779,7 @@ pub struct QueryContractsByCreatorResponse {
     pub contract_addresses: ::prost::alloc::vec::Vec<::prost::alloc::string::String>,
     #[doc = " Pagination defines the pagination in the response."]
     #[prost(message, optional, tag = "2")]
-    #[serde(
-        serialize_with = "crate::any::option::generic_serialize",
-        deserialize_with = "crate::any::option::generic_deserialize"
-    )]
-    pub pagination:
-        ::core::option::Option<super::super::super::cosmos::base::query::v1beta1::PageResponse>,
+    pub pagination: ::core::option::Option<crate::cosmos::base::query::v1beta1::PageResponse>,
 }
 impl ::prost::Name for QueryContractsByCreatorResponse {
     const NAME: &'static str = "QueryContractsByCreatorResponse";
@@ -1941,11 +1857,7 @@ pub struct MsgInstantiateContract {
     pub msg: ::prost::alloc::vec::Vec<u8>,
     #[doc = " Funds coins that are transferred to the contract on instantiation"]
     #[prost(message, repeated, tag = "6")]
-    #[serde(
-        serialize_with = "crate::any::vec::generic_serialize",
-        deserialize_with = "crate::any::vec::generic_deserialize"
-    )]
-    pub funds: ::prost::alloc::vec::Vec<super::super::super::cosmos::base::v1beta1::Coin>,
+    pub funds: ::prost::alloc::vec::Vec<crate::cosmos::base::v1beta1::Coin>,
 }
 impl ::prost::Name for MsgInstantiateContract {
     const NAME: &'static str = "MsgInstantiateContract";
@@ -1996,11 +1908,7 @@ pub struct MsgInstantiateContract2 {
     pub msg: ::prost::alloc::vec::Vec<u8>,
     #[doc = " Funds coins that are transferred to the contract on instantiation"]
     #[prost(message, repeated, tag = "6")]
-    #[serde(
-        serialize_with = "crate::any::vec::generic_serialize",
-        deserialize_with = "crate::any::vec::generic_deserialize"
-    )]
-    pub funds: ::prost::alloc::vec::Vec<super::super::super::cosmos::base::v1beta1::Coin>,
+    pub funds: ::prost::alloc::vec::Vec<crate::cosmos::base::v1beta1::Coin>,
     #[doc = " Salt is an arbitrary value provided by the sender. Size can be 1 to 64."]
     #[prost(bytes = "vec", tag = "7")]
     pub salt: ::prost::alloc::vec::Vec<u8>,
@@ -2051,11 +1959,7 @@ pub struct MsgExecuteContract {
     pub msg: ::prost::alloc::vec::Vec<u8>,
     #[doc = " Funds coins that are transferred to the contract on execution"]
     #[prost(message, repeated, tag = "5")]
-    #[serde(
-        serialize_with = "crate::any::vec::generic_serialize",
-        deserialize_with = "crate::any::vec::generic_deserialize"
-    )]
-    pub funds: ::prost::alloc::vec::Vec<super::super::super::cosmos::base::v1beta1::Coin>,
+    pub funds: ::prost::alloc::vec::Vec<crate::cosmos::base::v1beta1::Coin>,
 }
 impl ::prost::Name for MsgExecuteContract {
     const NAME: &'static str = "MsgExecuteContract";
@@ -2419,11 +2323,7 @@ pub struct MsgStoreAndInstantiateContract {
     #[doc = " Funds coins that are transferred from the authority account to the contract"]
     #[doc = " on instantiation"]
     #[prost(message, repeated, tag = "9")]
-    #[serde(
-        serialize_with = "crate::any::vec::generic_serialize",
-        deserialize_with = "crate::any::vec::generic_deserialize"
-    )]
-    pub funds: ::prost::alloc::vec::Vec<super::super::super::cosmos::base::v1beta1::Coin>,
+    pub funds: ::prost::alloc::vec::Vec<crate::cosmos::base::v1beta1::Coin>,
     #[doc = " Source is the URL where the code is hosted"]
     #[prost(string, tag = "10")]
     pub source: ::prost::alloc::string::String,

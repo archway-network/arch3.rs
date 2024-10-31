@@ -37,18 +37,16 @@ impl ::prost::Name for Callback {
 pub struct CallbackFeesFeeSplit {
     /// transaction_fees is the transaction fees for the callback based on its gas consumption
     #[prost(message, optional, tag = "1")]
-    pub transaction_fees: ::core::option::Option<super::super::super::cosmos::base::v1beta1::Coin>,
+    pub transaction_fees: ::core::option::Option<crate::cosmos::base::v1beta1::Coin>,
     /// block_reservation_fees is the block reservation fees portion of the callback reservation fees
     #[prost(message, optional, tag = "2")]
-    pub block_reservation_fees:
-        ::core::option::Option<super::super::super::cosmos::base::v1beta1::Coin>,
+    pub block_reservation_fees: ::core::option::Option<crate::cosmos::base::v1beta1::Coin>,
     /// future_reservation_fees is the future reservation fees portion of the callback reservation fees
     #[prost(message, optional, tag = "3")]
-    pub future_reservation_fees:
-        ::core::option::Option<super::super::super::cosmos::base::v1beta1::Coin>,
+    pub future_reservation_fees: ::core::option::Option<crate::cosmos::base::v1beta1::Coin>,
     /// surplus_fees is any extra fees passed in for the registration of the callback
     #[prost(message, optional, tag = "4")]
-    pub surplus_fees: ::core::option::Option<super::super::super::cosmos::base::v1beta1::Coin>,
+    pub surplus_fees: ::core::option::Option<crate::cosmos::base::v1beta1::Coin>,
 }
 impl ::prost::Name for CallbackFeesFeeSplit {
     const NAME: &'static str = "CallbackFeesFeeSplit";
@@ -177,7 +175,7 @@ pub struct CallbackCancelledEvent {
     pub callback_height: i64,
     /// refund_amount is the amount of fees which was refunded on cancellation
     #[prost(message, optional, tag = "5")]
-    pub refund_amount: ::core::option::Option<super::super::super::cosmos::base::v1beta1::Coin>,
+    pub refund_amount: ::core::option::Option<crate::cosmos::base::v1beta1::Coin>,
 }
 impl ::prost::Name for CallbackCancelledEvent {
     const NAME: &'static str = "CallbackCancelledEvent";
@@ -309,7 +307,7 @@ impl ::prost::Name for QueryEstimateCallbackFeesRequest {
 pub struct QueryEstimateCallbackFeesResponse {
     /// total_fees is the total fees that needs to be paid by the contract to reserve a callback
     #[prost(message, optional, tag = "1")]
-    pub total_fees: ::core::option::Option<super::super::super::cosmos::base::v1beta1::Coin>,
+    pub total_fees: ::core::option::Option<crate::cosmos::base::v1beta1::Coin>,
     /// fee_split is the breakdown of the total_fees
     #[prost(message, optional, tag = "2")]
     pub fee_split: ::core::option::Option<CallbackFeesFeeSplit>,
@@ -405,7 +403,7 @@ pub struct MsgRequestCallback {
     pub callback_height: i64,
     /// fees is the amount of fees being paid to register the contract
     #[prost(message, optional, tag = "5")]
-    pub fees: ::core::option::Option<super::super::super::cosmos::base::v1beta1::Coin>,
+    pub fees: ::core::option::Option<crate::cosmos::base::v1beta1::Coin>,
 }
 impl ::prost::Name for MsgRequestCallback {
     const NAME: &'static str = "MsgRequestCallback";
@@ -458,7 +456,7 @@ impl ::prost::Name for MsgCancelCallback {
 pub struct MsgCancelCallbackResponse {
     /// refund is the amount of fees being refunded due to the cancellation of the callback
     #[prost(message, optional, tag = "1")]
-    pub refund: ::core::option::Option<super::super::super::cosmos::base::v1beta1::Coin>,
+    pub refund: ::core::option::Option<crate::cosmos::base::v1beta1::Coin>,
 }
 impl ::prost::Name for MsgCancelCallbackResponse {
     const NAME: &'static str = "MsgCancelCallbackResponse";

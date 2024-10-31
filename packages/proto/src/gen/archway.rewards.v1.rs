@@ -23,8 +23,7 @@ pub struct Params {
     /// minimum tx computational fees, which are independent from contract flat
     /// fees (premiums)
     #[prost(message, optional, tag = "4")]
-    pub min_price_of_gas:
-        ::core::option::Option<super::super::super::cosmos::base::v1beta1::DecCoin>,
+    pub min_price_of_gas: ::core::option::Option<crate::cosmos::base::v1beta1::DecCoin>,
 }
 impl ::prost::Name for Params {
     const NAME: &'static str = "Params";
@@ -75,7 +74,7 @@ pub struct BlockRewards {
     pub height: i64,
     /// inflation_rewards is the rewards to be distributed.
     #[prost(message, optional, tag = "2")]
-    pub inflation_rewards: ::core::option::Option<super::super::super::cosmos::base::v1beta1::Coin>,
+    pub inflation_rewards: ::core::option::Option<crate::cosmos::base::v1beta1::Coin>,
     /// max_gas defines the maximum gas for the block that is used to distribute
     /// inflation rewards (consensus parameter).
     #[prost(uint64, tag = "3")]
@@ -102,7 +101,7 @@ pub struct TxRewards {
     pub height: i64,
     /// fee_rewards is the rewards to be distributed.
     #[prost(message, repeated, tag = "3")]
-    pub fee_rewards: ::prost::alloc::vec::Vec<super::super::super::cosmos::base::v1beta1::Coin>,
+    pub fee_rewards: ::prost::alloc::vec::Vec<crate::cosmos::base::v1beta1::Coin>,
 }
 impl ::prost::Name for TxRewards {
     const NAME: &'static str = "TxRewards";
@@ -129,7 +128,7 @@ pub struct RewardsRecord {
     pub rewards_address: ::prost::alloc::string::String,
     /// rewards are the rewards to be transferred later.
     #[prost(message, repeated, tag = "3")]
-    pub rewards: ::prost::alloc::vec::Vec<super::super::super::cosmos::base::v1beta1::Coin>,
+    pub rewards: ::prost::alloc::vec::Vec<crate::cosmos::base::v1beta1::Coin>,
     /// calculated_height defines the block height of rewards calculation event.
     #[prost(int64, tag = "4")]
     pub calculated_height: i64,
@@ -154,7 +153,7 @@ pub struct FlatFee {
     pub contract_address: ::prost::alloc::string::String,
     /// flat_fee defines the minimum flat fee set by the contract_owner
     #[prost(message, optional, tag = "2")]
-    pub flat_fee: ::core::option::Option<super::super::super::cosmos::base::v1beta1::Coin>,
+    pub flat_fee: ::core::option::Option<crate::cosmos::base::v1beta1::Coin>,
 }
 impl ::prost::Name for FlatFee {
     const NAME: &'static str = "FlatFee";
@@ -198,11 +197,10 @@ pub struct ContractRewardCalculationEvent {
     pub gas_consumed: u64,
     /// inflation_rewards defines the inflation rewards portions of the rewards.
     #[prost(message, optional, tag = "3")]
-    pub inflation_rewards: ::core::option::Option<super::super::super::cosmos::base::v1beta1::Coin>,
+    pub inflation_rewards: ::core::option::Option<crate::cosmos::base::v1beta1::Coin>,
     /// fee_rebate_rewards defines the fee rebate rewards portions of the rewards.
     #[prost(message, repeated, tag = "4")]
-    pub fee_rebate_rewards:
-        ::prost::alloc::vec::Vec<super::super::super::cosmos::base::v1beta1::Coin>,
+    pub fee_rebate_rewards: ::prost::alloc::vec::Vec<crate::cosmos::base::v1beta1::Coin>,
     /// metadata defines the contract metadata (if set).
     #[prost(message, optional, tag = "5")]
     pub metadata: ::core::option::Option<ContractMetadata>,
@@ -226,7 +224,7 @@ pub struct RewardsWithdrawEvent {
     pub reward_address: ::prost::alloc::string::String,
     /// rewards defines the total rewards being distributed.
     #[prost(message, repeated, tag = "2")]
-    pub rewards: ::prost::alloc::vec::Vec<super::super::super::cosmos::base::v1beta1::Coin>,
+    pub rewards: ::prost::alloc::vec::Vec<crate::cosmos::base::v1beta1::Coin>,
 }
 impl ::prost::Name for RewardsWithdrawEvent {
     const NAME: &'static str = "RewardsWithdrawEvent";
@@ -242,7 +240,7 @@ impl ::prost::Name for RewardsWithdrawEvent {
 pub struct MinConsensusFeeSetEvent {
     /// fee defines the updated minimum gas unit price.
     #[prost(message, optional, tag = "1")]
-    pub fee: ::core::option::Option<super::super::super::cosmos::base::v1beta1::DecCoin>,
+    pub fee: ::core::option::Option<crate::cosmos::base::v1beta1::DecCoin>,
 }
 impl ::prost::Name for MinConsensusFeeSetEvent {
     const NAME: &'static str = "MinConsensusFeeSetEvent";
@@ -263,7 +261,7 @@ pub struct ContractFlatFeeSetEvent {
     /// flat_fee defines the amount that has been set as the minimum fee for the
     /// contract
     #[prost(message, optional, tag = "2")]
-    pub flat_fee: ::core::option::Option<super::super::super::cosmos::base::v1beta1::Coin>,
+    pub flat_fee: ::core::option::Option<crate::cosmos::base::v1beta1::Coin>,
 }
 impl ::prost::Name for ContractFlatFeeSetEvent {
     const NAME: &'static str = "ContractFlatFeeSetEvent";
@@ -291,8 +289,7 @@ pub struct GenesisState {
     pub tx_rewards: ::prost::alloc::vec::Vec<TxRewards>,
     /// min_consensus_fee defines the minimum gas unit price.
     #[prost(message, optional, tag = "5")]
-    pub min_consensus_fee:
-        ::core::option::Option<super::super::super::cosmos::base::v1beta1::DecCoin>,
+    pub min_consensus_fee: ::core::option::Option<crate::cosmos::base::v1beta1::DecCoin>,
     /// rewards_record_last_id defines the last unique ID for a RewardsRecord objs.
     #[prost(uint64, tag = "6")]
     pub rewards_record_last_id: u64,
@@ -417,13 +414,12 @@ impl ::prost::Name for QueryRewardsPoolRequest {
 pub struct QueryRewardsPoolResponse {
     /// undistributed_funds are undistributed yet tokens (ready for withdrawal).
     #[prost(message, repeated, tag = "1")]
-    pub undistributed_funds:
-        ::prost::alloc::vec::Vec<super::super::super::cosmos::base::v1beta1::Coin>,
+    pub undistributed_funds: ::prost::alloc::vec::Vec<crate::cosmos::base::v1beta1::Coin>,
     /// treasury_funds are treasury tokens available (no mechanism is available to
     /// withdraw ATM). Treasury tokens are collected on a block basis. Those tokens
     /// are unused block rewards.
     #[prost(message, repeated, tag = "2")]
-    pub treasury_funds: ::prost::alloc::vec::Vec<super::super::super::cosmos::base::v1beta1::Coin>,
+    pub treasury_funds: ::prost::alloc::vec::Vec<crate::cosmos::base::v1beta1::Coin>,
 }
 impl ::prost::Name for QueryRewardsPoolResponse {
     const NAME: &'static str = "QueryRewardsPoolResponse";
@@ -458,10 +454,10 @@ impl ::prost::Name for QueryEstimateTxFeesRequest {
 pub struct QueryEstimateTxFeesResponse {
     /// gas_unit_price defines the minimum transaction fee per gas unit.
     #[prost(message, optional, tag = "1")]
-    pub gas_unit_price: ::core::option::Option<super::super::super::cosmos::base::v1beta1::DecCoin>,
+    pub gas_unit_price: ::core::option::Option<crate::cosmos::base::v1beta1::DecCoin>,
     /// estimated_fee is the estimated transaction fee for a given gas limit.
     #[prost(message, repeated, tag = "2")]
-    pub estimated_fee: ::prost::alloc::vec::Vec<super::super::super::cosmos::base::v1beta1::Coin>,
+    pub estimated_fee: ::prost::alloc::vec::Vec<crate::cosmos::base::v1beta1::Coin>,
 }
 impl ::prost::Name for QueryEstimateTxFeesResponse {
     const NAME: &'static str = "QueryEstimateTxFeesResponse";
@@ -500,8 +496,7 @@ pub struct QueryRewardsRecordsRequest {
     pub rewards_address: ::prost::alloc::string::String,
     /// pagination is an optional pagination options for the request.
     #[prost(message, optional, tag = "2")]
-    pub pagination:
-        ::core::option::Option<super::super::super::cosmos::base::query::v1beta1::PageRequest>,
+    pub pagination: ::core::option::Option<crate::cosmos::base::query::v1beta1::PageRequest>,
 }
 impl ::prost::Name for QueryRewardsRecordsRequest {
     const NAME: &'static str = "QueryRewardsRecordsRequest";
@@ -520,8 +515,7 @@ pub struct QueryRewardsRecordsResponse {
     pub records: ::prost::alloc::vec::Vec<RewardsRecord>,
     /// pagination is the pagination details in the response.
     #[prost(message, optional, tag = "2")]
-    pub pagination:
-        ::core::option::Option<super::super::super::cosmos::base::query::v1beta1::PageResponse>,
+    pub pagination: ::core::option::Option<crate::cosmos::base::query::v1beta1::PageResponse>,
 }
 impl ::prost::Name for QueryRewardsRecordsResponse {
     const NAME: &'static str = "QueryRewardsRecordsResponse";
@@ -554,7 +548,7 @@ impl ::prost::Name for QueryOutstandingRewardsRequest {
 pub struct QueryOutstandingRewardsResponse {
     /// total_rewards is the total rewards credited to the rewards_address.
     #[prost(message, repeated, tag = "1")]
-    pub total_rewards: ::prost::alloc::vec::Vec<super::super::super::cosmos::base::v1beta1::Coin>,
+    pub total_rewards: ::prost::alloc::vec::Vec<crate::cosmos::base::v1beta1::Coin>,
     /// records_num is the total number of RewardsRecord objects stored for the
     /// rewards_address.
     #[prost(uint64, tag = "2")]
@@ -591,7 +585,7 @@ pub struct QueryFlatFeeResponse {
     /// flat_fee_amount defines the minimum flat fee set by the contract_owner per
     /// contract execution.
     #[prost(message, optional, tag = "1")]
-    pub flat_fee_amount: ::core::option::Option<super::super::super::cosmos::base::v1beta1::Coin>,
+    pub flat_fee_amount: ::core::option::Option<crate::cosmos::base::v1beta1::Coin>,
 }
 impl ::prost::Name for QueryFlatFeeResponse {
     const NAME: &'static str = "QueryFlatFeeResponse";
@@ -705,7 +699,7 @@ pub struct MsgWithdrawRewardsResponse {
     pub records_num: u64,
     /// rewards are the total rewards transferred.
     #[prost(message, repeated, tag = "2")]
-    pub total_rewards: ::prost::alloc::vec::Vec<super::super::super::cosmos::base::v1beta1::Coin>,
+    pub total_rewards: ::prost::alloc::vec::Vec<crate::cosmos::base::v1beta1::Coin>,
 }
 impl ::prost::Name for MsgWithdrawRewardsResponse {
     const NAME: &'static str = "MsgWithdrawRewardsResponse";
@@ -727,7 +721,7 @@ pub struct MsgSetFlatFee {
     pub contract_address: ::prost::alloc::string::String,
     /// flat_fee_amount defines the minimum flat fee set by the contract_owner
     #[prost(message, optional, tag = "3")]
-    pub flat_fee_amount: ::core::option::Option<super::super::super::cosmos::base::v1beta1::Coin>,
+    pub flat_fee_amount: ::core::option::Option<crate::cosmos::base::v1beta1::Coin>,
 }
 impl ::prost::Name for MsgSetFlatFee {
     const NAME: &'static str = "MsgSetFlatFee";

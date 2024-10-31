@@ -186,11 +186,7 @@ impl ::prost::Name for AccountRegistered {
 pub struct TxExecuted {
     #[doc = " packet is the ibc packet which was executed"]
     #[prost(message, optional, tag = "1")]
-    #[serde(
-        serialize_with = "crate::any::option::generic_serialize",
-        deserialize_with = "crate::any::option::generic_deserialize"
-    )]
-    pub packet: ::core::option::Option<super::super::super::ibc::core::channel::v1::Packet>,
+    pub packet: ::core::option::Option<crate::ibc::core::channel::v1::Packet>,
     #[doc = " data is the response data after the tx has been executed"]
     #[prost(bytes = "vec", tag = "2")]
     pub data: ::prost::alloc::vec::Vec<u8>,
