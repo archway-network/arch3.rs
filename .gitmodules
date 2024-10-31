@@ -1,4 +1,4 @@
-[submodule "archway"]
+[submodule "external/archway"]
 	path = external/archway
 	url = https://github.com/archway-network/archway
 [submodule "external/cosmos-sdk"]
