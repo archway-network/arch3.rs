@@ -3,7 +3,9 @@ plugins:
   - plugin: buf.build/community/neoeinstein-prost:v0.3.1
     out: .
     opt:
-      - extern_path=.tendermint=::tendermint_proto::v0_37
+      - extern_path=.cosmos=crate::cosmos
+      - extern_path=.tendermint=crate::tendermint
+      - extern_path=.ibc=crate::ibc
       - extern_path=.google.protobuf.Timestamp=::pbjson_types::Timestamp
       - extern_path=.google.protobuf.Duration=::pbjson_types::Duration
       - extern_path=.google.protobuf.Any=::pbjson_types::Any
@@ -14,7 +16,9 @@ plugins:
   - plugin: buf.build/community/neoeinstein-tonic:v0.4.0
     out: .
     opt:
-      - extern_path=.tendermint=::tendermint_proto::v0_37
+      - extern_path=.cosmos=crate::cosmos
+      - extern_path=.tendermint=crate::tendermint
+      - extern_path=.ibc=crate::ibc
       - extern_path=.google.protobuf.Timestamp=::pbjson_types::Timestamp
       - extern_path=.google.protobuf.Duration=::pbjson_types::Duration
       - extern_path=.google.protobuf.Any=::pbjson_types::Any
@@ -27,8 +31,5 @@ plugins:
     out: .
     opt:
       - only_include=.archway
-      - only_include=.cosmos
-      - only_include=.cosmos_proto
       - only_include=.cosmwasm
-      - only_include=.ibc
       - no_features

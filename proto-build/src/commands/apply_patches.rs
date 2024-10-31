@@ -2,21 +2,6 @@ use crate::utils::patch_file::patch_file;
 use glob::glob;
 use std::path::{Path, PathBuf};
 
-/// Fix clashing type names in prost-generated code.
-fn apply_cosmos_staking_patches(out_dir: &Path) -> crate::Result<()> {
-    const REPLACEMENTS: &[(&str, &str)] = &[
-        ("enum Validators", "enum Policy"),
-        (
-            "stake_authorization::Validators",
-            "stake_authorization::Policy",
-        ),
-    ];
-
-    patch_file(&out_dir.join("cosmos.staking.v1beta1.rs"), REPLACEMENTS)?;
-
-    Ok(())
-}
-
 pub fn apply_patches(out_dir: &Path) -> crate::Result<()> {
     println!("Applying patches...");
     /// Regex substitutions to apply to the prost-generated output
@@ -42,8 +27,6 @@ pub fn apply_patches(out_dir: &Path) -> crate::Result<()> {
     for src in src_files {
         patch_file(&src, REPLACEMENTS)?;
     }
-
-    apply_cosmos_staking_patches(out_dir)?;
 
     Ok(())
 }
