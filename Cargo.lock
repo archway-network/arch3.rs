@@ -934,7 +934,6 @@ dependencies = [
  "serde",
  "subtle-encoding",
  "tendermint-proto",
- "tonic",
 ]
 
 [[package]]
