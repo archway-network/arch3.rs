@@ -27,7 +27,7 @@ tonic = { version = "0.12.3", optional = true, default-features = false, feature
   "codegen",
   "prost",
 ] }
-cosmos-sdk-proto = { version = "0.26.0", features = ["serde"] }
+cosmos-sdk-proto = { version = "0.26.0", default-features = false, features = ["serde"] }
 ibc-proto = { version = "0.51.0", default-features = false, features = ["serde"] }
 
 [dev-dependencies]
