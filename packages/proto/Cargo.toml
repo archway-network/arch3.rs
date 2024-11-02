@@ -27,8 +27,12 @@ tonic = { version = "0.12.3", optional = true, default-features = false, feature
   "codegen",
   "prost",
 ] }
-cosmos-sdk-proto = { version = "0.26.0", default-features = false, features = ["serde"] }
-ibc-proto = { version = "0.51.0", default-features = false, features = ["serde"] }
+cosmos-sdk-proto = { version = "0.26.0", default-features = false, features = [
+  "serde",
+] }
+ibc-proto = { version = "0.51.0", default-features = false, features = [
+  "serde",
+] }
 
 [dev-dependencies]
 serde_test = "1.0"
@@ -38,9 +42,14 @@ tokio = { version = "1.41.0", features = ["full"] }
 
 [features]
 default = ["grpc-transport"]
-grpc-transport = ["grpc", "tonic/transport", "cosmos-sdk-proto/grpc-transport"]
-grpc = ["tonic", "cosmos-sdk-proto/grpc"]
-cosmwasm = ["cosmos-sdk-proto/cosmwasm"]
+std = ["prost/std", "cosmos-sdk-proto/std", "ibc-proto/std"]
+grpc = ["std", "tonic", "cosmos-sdk-proto/grpc", "ibc-proto/client"]
+grpc-transport = [
+  "grpc",
+  "tonic/transport",
+  "cosmos-sdk-proto/grpc-transport",
+  "ibc-proto/transport",
+]
 proto-descriptor = ["ibc-proto/proto-descriptor"]
 # Replaces all structs that use Any with a generic type
 abstract-any = []

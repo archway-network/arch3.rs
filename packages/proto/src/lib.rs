@@ -4,6 +4,7 @@
 #![allow(rustdoc::bare_urls, clippy::derive_partial_eq_without_eq)]
 #![forbid(unsafe_code)]
 #![warn(trivial_casts, trivial_numeric_casts, unused_import_braces)]
+#![cfg_attr(not(feature = "std"), no_std)]
 
 #[cfg(feature = "abstract-any")]
 pub mod any;
