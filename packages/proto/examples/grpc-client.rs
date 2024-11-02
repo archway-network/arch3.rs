@@ -1,11 +1,12 @@
 use anyhow::Result;
 use archway_proto::archway;
-use tonic::transport::Channel;
+use tonic::transport::{Channel, ClientTlsConfig};
 
 #[tokio::main]
 async fn main() -> Result<()> {
     let addr = "https://grpc.mainnet.archway.io:443";
-    let channel = Channel::from_static(addr).connect().await?;
+    let tls_config = ClientTlsConfig::new().with_native_roots();
+    let channel = Channel::from_static(addr).tls_config(tls_config)?.connect().await?;
 
     let mut client = archway::rewards::v1::query_client::QueryClient::new(channel);
 
