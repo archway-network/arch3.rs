@@ -178,16 +178,16 @@ mod test {
     }
 
     impl<
-        A: Default
-        + Message
-        + Name
-        + Send
-        + Sync
-        + Serialize
-        + DeserializeOwned
-        + PartialEq
-        + Clone,
-    > Name for ExternalStructTest<A>
+            A: Default
+                + Message
+                + Name
+                + Send
+                + Sync
+                + Serialize
+                + DeserializeOwned
+                + PartialEq
+                + Clone,
+        > Name for ExternalStructTest<A>
     {
         const NAME: &'static str = "AnyValue";
         const PACKAGE: &'static str = "test";
