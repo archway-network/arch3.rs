@@ -1,18 +1,14 @@
 use crate::parser::consts::GENERICS;
-use crate::parser::utils::common::{
-    create_punctuated, fields_as_named, gen_generic, item_as_struct,
-};
+use crate::parser::utils::common::{fields_as_named, gen_generic, item_as_struct};
 use crate::parser::utils::gen_type_param::gen_type_param;
-use crate::parser::utils::is_important::{is_important, FoundEnclosure};
-use proc_macro2::{Ident, Literal, Punct, Spacing, Span, TokenStream};
-use quote::TokenStreamExt;
+use crate::parser::utils::is_important::is_important;
+use proc_macro2::{Ident, Span};
 use std::cmp::Ordering;
 use std::collections::BTreeMap;
 use syn::punctuated::Punctuated;
-use syn::token::Paren;
 use syn::{
-    AngleBracketedGenericArguments, AttrStyle, Attribute, File, GenericArgument, GenericParam,
-    ItemStruct, MacroDelimiter, Meta, MetaList, Path, PathArguments, PathSegment, Type, TypePath,
+    AngleBracketedGenericArguments, File, GenericArgument, GenericParam, ItemStruct, PathArguments,
+    PathSegment, Type, TypePath,
 };
 
 pub fn patch_generics(files: &mut BTreeMap<String, (File, BTreeMap<String, usize>)>) {
@@ -24,7 +20,7 @@ pub fn patch_generics(files: &mut BTreeMap<String, (File, BTreeMap<String, usize
     loop {
         // Go through all keys
         // Pop current key to be able to use the tree map whenever
-        // Check for struct in local struct, if not found check in `all` of the map
+        // Check for struct in local struct, if not found check in all of the map
         // Push the struct back inside
 
         let mut new_fixes = false;
@@ -51,8 +47,7 @@ pub fn patch_generics(files: &mut BTreeMap<String, (File, BTreeMap<String, usize
                     .iter_mut()
                 {
                     let name = field.ident.clone().unwrap().to_string();
-                    let mut found_ty = None;
-                    if let Some((field_ty, path)) = is_important(field) {
+                    if let Some((_, path)) = is_important(field) {
                         let ty = path.path.segments.last_mut().unwrap();
 
                         let ident_name = ty.ident.to_string();
@@ -93,7 +88,6 @@ pub fn patch_generics(files: &mut BTreeMap<String, (File, BTreeMap<String, usize
                                 key.items.get_mut(*s.get("GenesisState").unwrap()).unwrap(),
                             )
                             .unwrap();
-                            found_ty = Some(field_ty);
                             new_total_generics = push_generics(ty_struct, ty, new_total_generics);
                         } else if let Some(i) = structs.get(&ident_name) {
                             let ty_item = match i.cmp(&idx) {
@@ -103,10 +97,9 @@ pub fn patch_generics(files: &mut BTreeMap<String, (File, BTreeMap<String, usize
                             };
 
                             let ty_struct = item_as_struct(ty_item).unwrap();
-                            found_ty = Some(field_ty);
                             new_total_generics = push_generics(ty_struct, ty, new_total_generics);
-                        } else if GENERICS.contains(&&*ident_name) {
-                            ty.ident = Ident::new(GENERICS[new_total_generics], Span::call_site());
+                        } else if contains_any_generic(ty) {
+                            replace_generic(ty, GENERICS[new_total_generics]);
                             new_total_generics += 1;
                         } else if let Some((_, (other_ast, other_structs))) = files
                             .iter_mut()
@@ -119,53 +112,7 @@ pub fn patch_generics(files: &mut BTreeMap<String, (File, BTreeMap<String, usize
                                     .unwrap(),
                             )
                             .unwrap();
-                            found_ty = Some(field_ty);
                             new_total_generics = push_generics(ty_struct, ty, new_total_generics);
-                        }
-                    }
-
-                    // Try to add field attrs
-                    if let Some(found_ty) = found_ty {
-                        let last = field.attrs.last().unwrap().clone();
-                        if let Meta::List(meta_list) = &last.meta {
-                            if meta_list.path.segments.last().unwrap().ident != "serde" {
-                                // Set serialization function
-                                let serde_path = match found_ty {
-                                    FoundEnclosure::Option => "option",
-                                    FoundEnclosure::Vec => "vec",
-                                };
-
-                                let mut token_stream = TokenStream::new();
-                                token_stream
-                                    .append(Ident::new("serialize_with", Span::call_site()));
-                                token_stream.append(Punct::new('=', Spacing::Alone));
-                                token_stream.append(Literal::string(&format!(
-                                    "crate::any::{}::generic_serialize",
-                                    serde_path
-                                )));
-                                token_stream.append(Punct::new(',', Spacing::Alone));
-                                token_stream
-                                    .append(Ident::new("deserialize_with", Span::call_site()));
-                                token_stream.append(Punct::new('=', Spacing::Alone));
-                                token_stream.append(Literal::string(&format!(
-                                    "crate::any::{}::generic_deserialize",
-                                    serde_path
-                                )));
-
-                                field.attrs.push(Attribute {
-                                    pound_token: Default::default(),
-                                    style: AttrStyle::Outer,
-                                    bracket_token: Default::default(),
-                                    meta: Meta::List(MetaList {
-                                        path: Path {
-                                            leading_colon: None,
-                                            segments: create_punctuated(vec!["serde"]),
-                                        },
-                                        delimiter: MacroDelimiter::Paren(Paren::default()),
-                                        tokens: token_stream,
-                                    }),
-                                });
-                            }
                         }
                     }
                 }
@@ -199,6 +146,38 @@ pub fn patch_generics(files: &mut BTreeMap<String, (File, BTreeMap<String, usize
     for (key, updated) in updated_files.iter() {
         if !updated {
             files.remove(key);
+        }
+    }
+}
+
+/// Find any type of Any<GENERIC>
+fn contains_any_generic(segment: &PathSegment) -> bool {
+    if segment.ident == "Any" {
+        if let PathArguments::AngleBracketed(arguments) = &segment.arguments {
+            if let Some(GenericArgument::Type(Type::Path(type_path))) = arguments.args.last() {
+                return GENERICS.contains(
+                    &type_path
+                        .path
+                        .segments
+                        .last()
+                        .unwrap()
+                        .ident
+                        .to_string()
+                        .as_str(),
+                );
+            }
+        }
+    }
+
+    false
+}
+
+/// Function assumes we have a type Any already and want to update the generic
+fn replace_generic(segment: &mut PathSegment, name: &str) {
+    if let PathArguments::AngleBracketed(arguments) = &mut segment.arguments {
+        if let Some(GenericArgument::Type(Type::Path(type_path))) = arguments.args.last_mut() {
+            let last = type_path.path.segments.last_mut().unwrap();
+            last.ident = Ident::new(name, Span::call_site());
         }
     }
 }

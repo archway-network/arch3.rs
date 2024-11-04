@@ -66,10 +66,6 @@ impl ::prost::Name for Params {
 pub struct GenesisState {
     #[doc = " params defines all the parameters of the module."]
     #[prost(message, optional, tag = "1")]
-    #[serde(
-        serialize_with = "crate::any::option::generic_serialize",
-        deserialize_with = "crate::any::option::generic_deserialize"
-    )]
     pub params: ::core::option::Option<Params>,
 }
 impl ::prost::Name for GenesisState {
@@ -98,10 +94,6 @@ impl ::prost::Name for QueryParamsRequest {
 pub struct QueryParamsResponse {
     #[doc = " params defines the parameters for the module"]
     #[prost(message, optional, tag = "1")]
-    #[serde(
-        serialize_with = "crate::any::option::generic_serialize",
-        deserialize_with = "crate::any::option::generic_deserialize"
-    )]
     pub params: ::core::option::Option<Params>,
 }
 impl ::prost::Name for QueryParamsResponse {
@@ -119,10 +111,6 @@ impl ::prost::Name for QueryParamsResponse {
 pub struct SudoPayload {
     #[doc = " ICA is the message which carries the success responses"]
     #[prost(message, optional, tag = "1")]
-    #[serde(
-        serialize_with = "crate::any::option::generic_serialize",
-        deserialize_with = "crate::any::option::generic_deserialize"
-    )]
     pub ica: ::core::option::Option<IcaSuccess>,
 }
 impl ::prost::Name for SudoPayload {
@@ -140,18 +128,10 @@ pub struct IcaSuccess {
     #[doc = " account_registered is the message which carries the success response after"]
     #[doc = " the ica account has been registered"]
     #[prost(message, optional, tag = "1")]
-    #[serde(
-        serialize_with = "crate::any::option::generic_serialize",
-        deserialize_with = "crate::any::option::generic_deserialize"
-    )]
     pub account_registered: ::core::option::Option<AccountRegistered>,
     #[doc = " tx_executed is the message which carries the success response after the ica"]
     #[doc = " tx has been executed"]
     #[prost(message, optional, tag = "2")]
-    #[serde(
-        serialize_with = "crate::any::option::generic_serialize",
-        deserialize_with = "crate::any::option::generic_deserialize"
-    )]
     pub tx_executed: ::core::option::Option<TxExecuted>,
 }
 impl ::prost::Name for IcaSuccess {
@@ -236,17 +216,7 @@ impl ::prost::Name for MsgRegisterInterchainAccountResponse {
 #[derive(:: serde :: Serialize, :: serde :: Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, :: prost :: Message)]
-pub struct MsgSendTx<
-    A: Clone
-        + PartialEq
-        + Default
-        + Send
-        + Sync
-        + prost::Message
-        + serde::Serialize
-        + serde::de::DeserializeOwned
-        + prost::Name,
-> {
+pub struct MsgSendTx<A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name> {
     #[doc = " contract_address is the address of the who wants to submit a transaction to"]
     #[doc = " the counterparty chain"]
     #[prost(string, tag = "1")]
@@ -256,11 +226,7 @@ pub struct MsgSendTx<
     pub connection_id: ::prost::alloc::string::String,
     #[doc = " msgs are the messages to be submitted to the counterparty chain"]
     #[prost(message, repeated, tag = "3")]
-    #[serde(
-        serialize_with = "crate::any::vec::serialize",
-        deserialize_with = "crate::any::vec::deserialize"
-    )]
-    pub msgs: ::prost::alloc::vec::Vec<A>,
+    pub msgs: ::prost::alloc::vec::Vec<crate::any::Any<A>>,
     #[doc = " memo is the memo to be included in the packet"]
     #[prost(string, tag = "4")]
     pub memo: ::prost::alloc::string::String,
@@ -268,17 +234,8 @@ pub struct MsgSendTx<
     #[prost(uint64, tag = "5")]
     pub timeout: u64,
 }
-impl<
-        A: Clone
-            + PartialEq
-            + Default
-            + Send
-            + Sync
-            + prost::Message
-            + serde::Serialize
-            + serde::de::DeserializeOwned
-            + prost::Name,
-    > ::prost::Name for MsgSendTx<A>
+impl<A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name> ::prost::Name
+    for MsgSendTx<A>
 {
     const NAME: &'static str = "MsgSendTx";
     const PACKAGE: &'static str = "archway.cwica.v1";
@@ -318,10 +275,6 @@ pub struct MsgUpdateParams {
     #[doc = " params deines the module parmeters to update"]
     #[doc = " NOTE: All parameters must be supplied."]
     #[prost(message, optional, tag = "2")]
-    #[serde(
-        serialize_with = "crate::any::option::generic_serialize",
-        deserialize_with = "crate::any::option::generic_deserialize"
-    )]
     pub params: ::core::option::Option<Params>,
 }
 impl ::prost::Name for MsgUpdateParams {

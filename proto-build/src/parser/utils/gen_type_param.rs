@@ -1,6 +1,10 @@
-use crate::parser::utils::common::create_punctuated;
+use crate::parser::utils::common::{create_punctuated, gen_generic};
 use proc_macro2::{Ident, Span};
-use syn::{Path, TraitBound, TraitBoundModifier, TypeParam, TypeParamBound};
+use syn::punctuated::Punctuated;
+use syn::{
+    AngleBracketedGenericArguments, GenericArgument, Path, PathArguments, PathSegment, TraitBound,
+    TraitBoundModifier, Type, TypeParam, TypeParamBound, TypePath,
+};
 
 fn trait_param_bound(path: Vec<&str>) -> TypeParamBound {
     TypeParamBound::Trait(TraitBound {
@@ -24,12 +28,6 @@ fn gen_unnamed_param(name: &str) -> TypeParam {
     type_param
         .bounds
         .push(trait_param_bound(vec!["prost", "Message"]));
-    type_param
-        .bounds
-        .push(trait_param_bound(vec!["serde", "Serialize"]));
-    type_param
-        .bounds
-        .push(trait_param_bound(vec!["serde", "de", "DeserializeOwned"]));
 
     type_param
 }
@@ -40,4 +38,29 @@ pub fn gen_type_param(name: &str) -> TypeParam {
         .bounds
         .push(trait_param_bound(vec!["prost", "Name"]));
     type_param
+}
+
+pub fn gen_any(name: &str) -> Path {
+    let mut paths = create_punctuated(vec!["crate", "any"]);
+
+    let mut punctuation = Punctuated::new();
+    punctuation.push(GenericArgument::Type(Type::Path(TypePath {
+        qself: None,
+        path: gen_generic(name),
+    })));
+
+    paths.push(PathSegment {
+        ident: Ident::new("Any", Span::call_site()),
+        arguments: PathArguments::AngleBracketed(AngleBracketedGenericArguments {
+            colon2_token: None,
+            lt_token: Default::default(),
+            args: punctuation,
+            gt_token: Default::default(),
+        }),
+    });
+
+    Path {
+        leading_colon: None,
+        segments: paths,
+    }
 }
