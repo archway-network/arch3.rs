@@ -1,5 +1,8 @@
+use prost::bytes::{Buf, BufMut};
 use prost::{Message, Name};
 use serde::{ser, Deserialize, Deserializer, Serialize, Serializer};
+
+pub type GenericData = Vec<u8>;
 
 // An improved any type that allows you to implement typing directly into it
 #[derive(Clone, PartialEq, Serialize, Deserialize, Message)]
@@ -13,8 +16,16 @@ pub struct Any<T: Message + PartialEq + Default> {
 impl<T: Message + Name + PartialEq + Default> Any<T> {
     pub fn new(value: T) -> Self {
         Self {
-            type_url: T::full_name(),
+            // The RPC endpoint fails we dont prepend a '/'
+            type_url: format!("/{}", T::full_name()),
             value,
+        }
+    }
+
+    pub fn generic(value: T) -> Any<GenericData> {
+        Any {
+            type_url: T::full_name(),
+            value: value.encode_to_vec(),
         }
     }
 }
@@ -146,14 +157,15 @@ pub mod vec {
 
 #[cfg(test)]
 mod test {
+    use crate::any::{Any, GenericData};
     use prost::{Message, Name};
     use serde::de::DeserializeOwned;
     use serde::{Deserialize, Serialize};
     use serde_test::{assert_tokens, Token};
 
-    #[derive(:: serde :: Serialize, :: serde :: Deserialize)]
+    #[derive(::serde::Serialize, ::serde::Deserialize)]
     #[allow(clippy::derive_partial_eq_without_eq)]
-    #[derive(Clone, PartialEq, :: prost :: Message)]
+    #[derive(Clone, PartialEq, ::prost::Message)]
     struct ExternalStructTest<
         A: Default + Message + Name + Send + Sync + Serialize + DeserializeOwned + PartialEq + Clone,
     > {
@@ -185,9 +197,9 @@ mod test {
         }
     }
 
-    #[derive(:: serde :: Serialize, :: serde :: Deserialize)]
+    #[derive(::serde::Serialize, ::serde::Deserialize)]
     #[allow(clippy::derive_partial_eq_without_eq)]
-    #[derive(Clone, PartialEq, :: prost :: Message)]
+    #[derive(Clone, PartialEq, ::prost::Message)]
     struct BuildTest<
         A: Default + Message + Name + Send + Sync + Serialize + DeserializeOwned + PartialEq + Clone,
         C: Default + Message + Name + Send + Sync + Serialize + DeserializeOwned + PartialEq + Clone,

@@ -2,35 +2,13 @@
 #[derive(:: serde :: Serialize, :: serde :: Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, :: prost :: Message)]
-pub struct GenesisState<
-    A: Clone
-        + PartialEq
-        + Default
-        + Send
-        + Sync
-        + prost::Message
-        + serde::Serialize
-        + serde::de::DeserializeOwned
-        + prost::Name,
-> {
+pub struct GenesisState<A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name>
+{
     #[prost(message, repeated, tag = "1")]
-    #[serde(
-        serialize_with = "crate::any::vec::serialize",
-        deserialize_with = "crate::any::vec::deserialize"
-    )]
-    pub messages: ::prost::alloc::vec::Vec<A>,
+    pub messages: ::prost::alloc::vec::Vec<crate::any::Any<A>>,
 }
-impl<
-        A: Clone
-            + PartialEq
-            + Default
-            + Send
-            + Sync
-            + prost::Message
-            + serde::Serialize
-            + serde::de::DeserializeOwned
-            + prost::Name,
-    > ::prost::Name for GenesisState<A>
+impl<A: Clone + PartialEq + Default + Send + Sync + prost::Message + prost::Name> ::prost::Name
+    for GenesisState<A>
 {
     const NAME: &'static str = "GenesisState";
     const PACKAGE: &'static str = "archway.genmsg.v1";
