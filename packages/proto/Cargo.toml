@@ -1,6 +1,6 @@
 [package]
 name = "archway-proto"
-version = "0.3.0"
+version = "0.2.0"
 edition = "2021"
 description = "Rust build of Archway's ProtoBuf definitions"
 authors.workspace = true
@@ -10,10 +10,10 @@ homepage.workspace = true
 readme = "README.md"
 
 categories = [
-  "cryptography",
-  "cryptography::cryptocurrencies",
-  "database",
-  "wasm",
+    "cryptography",
+    "cryptography::cryptocurrencies",
+    "database",
+    "wasm",
 ]
 keywords = ["archway", "blockchain", "cosmwasm", "proto", "smart-contracts"]
 
@@ -24,14 +24,14 @@ pbjson = "0.7.0"
 pbjson-types = "0.7.0"
 prost-types = "0.13.3"
 tonic = { version = "0.12.3", optional = true, default-features = false, features = [
-  "codegen",
-  "prost",
+    "codegen",
+    "prost",
 ] }
 cosmos-sdk-proto = { version = "0.26.0", default-features = false, features = [
-  "serde",
+    "serde",
 ] }
 ibc-proto = { version = "0.51.0", default-features = false, features = [
-  "serde",
+    "serde",
 ] }
 
 [dev-dependencies]
@@ -45,10 +45,10 @@ default = ["grpc-transport"]
 std = ["prost/std", "cosmos-sdk-proto/std", "ibc-proto/std"]
 grpc = ["std", "tonic", "cosmos-sdk-proto/grpc", "ibc-proto/client"]
 grpc-transport = [
-  "grpc",
-  "tonic/transport",
-  "cosmos-sdk-proto/grpc-transport",
-  "ibc-proto/transport",
+    "grpc",
+    "tonic/transport",
+    "cosmos-sdk-proto/grpc-transport",
+    "ibc-proto/transport",
 ]
 proto-descriptor = ["ibc-proto/proto-descriptor"]
 # Replaces all structs that use Any with a generic type
