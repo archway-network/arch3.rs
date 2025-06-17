@@ -16,6 +16,7 @@ use cosmwasm_std::{Coin, CosmosMsg, CustomMsg};
 ///         contract_address: Some(String::from("contract_address")),
 ///         owner_address: Some(String::from("owner")),
 ///         rewards_address: Some(String::from("rewards")),
+///         withdraw_to_wallet: true
 ///     }
 /// );
 #[cw_serde]
@@ -30,6 +31,9 @@ pub enum ArchwayMsg {
         owner_address: Option<String>,
         /// If set to `None`, the contract's rewards address will not be updated.
         rewards_address: Option<String>,
+        /// withdrawn to the wallet instead of creating a rewards record to be lazily
+        /// withdrawn after.
+        withdraw_to_wallet: bool,
     },
     /// Sets a premium fee for a contract. This action should be executed from a contract only if
     /// it's set as the `owner_address` in the metadata of `contract_address`. The tx will fail if
@@ -74,6 +78,7 @@ impl ArchwayMsg {
             contract_address: None,
             owner_address: Some(owner_address.into()),
             rewards_address: None,
+            withdraw_to_wallet: false,
         }
     }
 
@@ -91,6 +96,7 @@ impl ArchwayMsg {
             contract_address: Some(contract_address.into()),
             owner_address: Some(owner_address.into()),
             rewards_address: None,
+            withdraw_to_wallet: false,
         }
     }
 
@@ -104,6 +110,7 @@ impl ArchwayMsg {
             contract_address: None,
             owner_address: None,
             rewards_address: Some(rewards_address.into()),
+            withdraw_to_wallet: false,
         }
     }
 
@@ -121,6 +128,7 @@ impl ArchwayMsg {
             contract_address: Some(contract_address.into()),
             owner_address: None,
             rewards_address: Some(rewards_address.into()),
+            withdraw_to_wallet: false,
         }
     }
 
@@ -197,6 +205,7 @@ mod tests {
             contract_address: Some(contract_address),
             owner_address: Some(owner_address),
             rewards_address: Some(rewards_address),
+            withdraw_to_wallet: false,
         };
         let msg: CosmosMsg<ArchwayMsg> = update_metadata.clone().into();
         match msg {
