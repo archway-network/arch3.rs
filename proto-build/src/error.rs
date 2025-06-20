@@ -11,5 +11,5 @@ pub enum Error {
     #[error("{0}")]
     Pattern(#[from] glob::PatternError),
     #[error("{0}")]
-    Utf8Error(#[from] std::str::Utf8Error),
+    Utf8(#[from] std::str::Utf8Error),
 }
