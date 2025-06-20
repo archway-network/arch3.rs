@@ -147,7 +147,7 @@ fn withdraw_rewards(
 pub fn reply(deps: DepsMut<ArchwayQuery>, env: Env, msg: Reply) -> StdResult<Response> {
     match msg.id {
         STAKE_WITHDRAWN_REWARDS => stake_contract_rewards(deps, env, msg),
-        id => Err(StdError::not_found(format!("Unknown reply id: {}", id))),
+        id => Err(StdError::not_found(format!("Unknown reply id: {id}"))),
     }
 }
 

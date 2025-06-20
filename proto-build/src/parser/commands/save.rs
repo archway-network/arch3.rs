@@ -7,26 +7,24 @@ use std::path::Path;
 use syn::File;
 
 pub fn save(out_dir: &Path, files: &BTreeMap<String, (File, BTreeMap<String, usize>)>) {
+    let file_regex = Regex::new(r"(\.[[:alnum:]]+\.)rs").unwrap();
+    let patch_regex = Regex::new(r"(\.)").unwrap();
+
     for (file, (data, _)) in files.iter() {
         // Patch the mod file
-        let file_regex = Regex::new(r"(\.[[:alnum:]]+\.)rs").unwrap();
         let new_file = file_regex.replace(file, "${1}abstract.rs").to_string();
 
         patch_file(
             &out_dir.join("mod.rs"),
             &[(
-                &format!(
-                    r"include!\(.{}.\);",
-                    Regex::new(r"(\.)").unwrap().replace(file, r"\.")
-                ),
+                &format!(r"include!\(.{}.\);", patch_regex.replace(file, r"\.")),
                 &format!(
                     "\
                 #[cfg(not(feature = \"abstract-any\"))]\n\
-                include!(\"{}\");\n\
+                include!(\"{file}\");\n\
                 #[cfg(feature = \"abstract-any\")]\n\
-                include!(\"{}\");\
-                ",
-                    file, new_file
+                include!(\"{new_file}\");\
+                "
                 ),
             )],
         )
