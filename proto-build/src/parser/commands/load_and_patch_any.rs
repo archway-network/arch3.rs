@@ -56,7 +56,7 @@ pub fn load_and_patch_any(out_dir: &Path) -> BTreeMap<String, (File, BTreeMap<St
             ast.items.pop();
         }
 
-        let file_name = src.to_str().unwrap().split('/').last().unwrap();
+        let file_name = src.to_str().unwrap().split('/').next_back().unwrap();
         project_tokens.insert(file_name.to_string(), (ast, structs));
     }
 

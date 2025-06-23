@@ -15,7 +15,7 @@ pub fn run_buf_export(
     proto: &str,
     export_dir: &Path,
 ) -> crate::Result<String> {
-    println!("Exporting {}...", proto);
+    println!("Exporting {proto}...");
     let proto_path = submodules_dir.join(proto).join("proto");
     run_cmd(
         "buf",

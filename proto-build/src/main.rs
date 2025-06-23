@@ -1,10 +1,12 @@
 mod commands;
 mod consts;
+mod error;
 mod parser;
 mod utils;
 
+pub use error::Result;
+use std::path::Path;
 use std::path::PathBuf;
-use std::{io, path::Path};
 
 use crate::commands::apply_patches::apply_patches;
 use crate::commands::cleanup::cleanup;
@@ -16,16 +18,6 @@ use crate::commands::update_submodules::update_submodules;
 use crate::consts::{OUT_DIR, PROTO_DIR};
 use crate::parser::generate_advanced_struct;
 use crate::utils::run::run_cargo;
-use error_chain::error_chain;
-
-error_chain! {
-    foreign_links {
-        IoError(io::Error);
-        Glob(glob::GlobError);
-        Pattern(glob::PatternError);
-        Utf8Error(std::str::Utf8Error);
-    }
-}
 
 fn workspace_root() -> PathBuf {
     let output = run_cargo(["locate-project", "--workspace", "--message-format=plain"]).unwrap();
